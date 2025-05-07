@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+	<style>
+		th,
+		td {
+			text-align: center !important;
+			border: 1px solid;
+		}
+		table{
+			width: 75% !important;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.elis {
+			font-family: "Elis2";
+			font-size: 20pt;
+		}
+
+		@font-face {
+			font-family: 'Elis2';
+			src: url('./Elis2.ttf') format('truetype')
+		}
+	</style>
+
+  <!-- Set the viewport width to match phone and tablet device widths -->
+  <meta name="viewport" content="width=device-width,user-scalable=no" />
+
+  <!-- Allow KeymanWeb to be saved to the iPhone home screen -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <title>KeymanWeb Sample 1</title>
+</head>
+<body>
+  <h1>KeymanWeb Sample 1</h1>
+  <textarea class="elis" cols="20" rows="5"></textarea>
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/keymanweb.js'></script>
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/kmwuitoggle.js'></script>
+  <script>
+    (function() {
+      keyman.init({attachType:'auto'});
+    })();
+  </script>
+  <script>
+    keyman.addKeyboards({
+      name: 'ELiS',
+      id: 'elis',
+      filename: './elis.js',
+      version: '1.0',
+      language: [{
+        name: 'ELiS',
+        id: 'en',
+        region: 'us'
+      }]
+    });
+  </script>
+</body>
+
+</html>
