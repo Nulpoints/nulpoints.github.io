@@ -1041,7 +1041,7 @@ function Keyboard_elis()
               },
               {
                 "id": "U_00A7",
-                "text": "§"
+                "text": "|"
               }
             ]
           },
@@ -1528,7 +1528,7 @@ function Keyboard_elis()
               },
               {
                 "id": "U_00A7",
-                "text": "§"
+                "text": "|"
               },
               {
                 "id": "K_ENTER",
