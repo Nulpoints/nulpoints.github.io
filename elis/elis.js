@@ -2224,7 +2224,7 @@ function Keyboard_elis()
               },
               {
                 "id": "U_00A7",
-                "text": "§"
+                "text": "|"
               }
             ]
           },
