@@ -344,8 +344,8 @@ function Keyboard_elis()
                 "width": "630"
               },
               {
-                "id": "U_00A7",
-                "text": "§"
+                "id": "U_007C",
+                "text": "|"
               },
               {
                 "id": "K_ENTER",
@@ -1040,7 +1040,7 @@ function Keyboard_elis()
                 ]
               },
               {
-                "id": "U_00A7",
+                "id": "U_007C",
                 "text": "|"
               }
             ]
@@ -1527,7 +1527,7 @@ function Keyboard_elis()
                 "width": "630"
               },
               {
-                "id": "U_00A7",
+                "id": "U_007C",
                 "text": "|"
               },
               {
@@ -2223,7 +2223,7 @@ function Keyboard_elis()
                 ]
               },
               {
-                "id": "U_00A7",
+                "id": "U_007C",
                 "text": "|"
               }
             ]
