@@ -139,6 +139,43 @@ function playHamNoSys() {
     document.getElementById("sigmlOutput").value = sigmlText;
 }
 
+// Function to generate and display a shareable URL
+function generateShareableUrl() {
+    const hamnosysString = document.getElementById("myHamNoSys").value;
+    const encodedHns = encodeURIComponent(hamnosysString);
+    const baseUrl = window.location.origin + window.location.pathname;
+    const shareUrl = `${baseUrl}?hns=${encodedHns}`;
+    const shareUrlElement = document.getElementById("shareUrl");
+    shareUrlElement.value = shareUrl;
+    shareUrlElement.style.display = 'block'; // Make it visible
+    document.getElementById("copyUrlBtn").style.display = 'inline-block';
+}
+
+// Function to copy the URL to the clipboard
+function copyUrlToClipboard() {
+    const shareUrlElement = document.getElementById("shareUrl");
+    shareUrlElement.select();
+    document.execCommand("copy");
+}
+
+// Function to clear the text area and generated URL
+function clearInput() {
+    document.getElementById("myHamNoSys").value = "";
+    document.getElementById("sigmlOutput").value = "";
+    document.getElementById("shareUrl").value = "";
+    document.getElementById("shareUrl").style.display = 'none';
+    document.getElementById("copyUrlBtn").style.display = 'none';
+}
+
+// Function to load HamNoSys from the URL on page load
+function loadFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const hamnosysData = urlParams.get('hns');
+    if (hamnosysData) {
+        document.getElementById("myHamNoSys").value = decodeURIComponent(hamnosysData);
+    }
+}
+
 /**
  * Converts HamNoSys Unicode characters to SiGML XML.
  * This is a direct translation of the HamNoSys2SiGML.py script.
@@ -609,23 +646,33 @@ function insertAtCursor(el, text) {
 
 </head>
 
-<body onload="CWASA.init({avs:['anna', 'marc', 'francoise', 'luna', 'siggi'], avsettings:{avList:'avs', initAv:'luna'}});">
+<body onload="CWASA.init({avs:['anna', 'marc', 'francoise', 'luna', 'siggi']}); loadFromUrl();">
 
 <!-- CWA signing avatar panel 0 -->
 <div class="CWASAPanel av0" align="center" ></div>
 
 <!-- Main container for all UI elements -->
 <div class="main-container">
-
-  <!-- HamNoSys input and button -->
+  
+  <!-- HamNoSys input and buttons -->
   <div class="hamnosys-input-container">
     <div align="center">
       <br>
-      New HamNoSys: <input type="button" value="Play HamNoSys" onclick='playHamNoSys();' /><br>
-      <textarea id="myHamNoSys" class="txtaSiGMLText" rows="3" ></textarea>
+      New HamNoSys:
+      <input type="button" value="Play HamNoSys" onclick="playHamNoSys();" />
+      <input type="button" value="Generate Shareable URL" onclick="generateShareableUrl();" />
+      <input type="button" value="Clear" onclick="clearInput();" />
+      <br>
+      <textarea id="myHamNoSys" class="txtaSiGMLText" rows="3" ></textarea>
     </div>
   </div>
   
+  <!-- URL and Copy button -->
+  <div align="center" style="margin-top: 1em;">
+    <input type="text" id="shareUrl" style="width: 80%; display: none;" readonly>
+    <button id="copyUrlBtn" onclick="copyUrlToClipboard();" style="display: none;">Copy URL</button>
+  </div>
+
   <!-- Keyboard container -->
   <div class="keyboard-container">
     <!-- Tabs for the keyboard -->
@@ -714,11 +761,11 @@ function insertAtCursor(el, text) {
             <td></td>
             <td><button title="hamextfingerdl" class="ham" value=""></button></td>
             <td></td>
-            <td><button title="hamextfingerdr" class="ham" value=""></button></td>
+            <td><button title="hammovedr" class="ham" value=""></button></td>
             <td colspan="4"></td>
             <td><button title="hamextfingeril" class="ham" value=""></button></td>
             <td></td>
-            <td><button title="hamextfingerir" class="ham" value=""></button></td>
+            <td><button title="hammoveir" class="ham" value=""></button></td>
           </tr>
           <tr>
             <td colspan="2"></td>
@@ -758,7 +805,7 @@ function insertAtCursor(el, text) {
           </tr>
           <tr>
             <td></td>
-            <td><button title="hamextfingerdi" class="ham" value=""></button></td>
+            <td><button title="hamfingerdi" class="ham" value=""></button></td>
             <td></td>
             <td><button title="hamcircledo" class="ham" value=""></button></td>
             <td colspan="4"></td>
@@ -1115,8 +1162,7 @@ function insertAtCursor(el, text) {
 <hr/>
 <p>
 <small>
-Available under the
-<a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons BY-SA License</a>. JRWG 2021-01-19
+CWASA is © UEA 2005-2024. The CWASA web pages are covered by a Creative Commons BY-SA 4.0 license, while the underlying CWASA software is licensed under the terms of Creative Commons BY-ND 4.0. For commercial inquiries, contact cmp_virtualsigning@uea.ac.uk.
 </small>
 </p>
 
