@@ -25,6 +25,12 @@
     line-height: 1.2;
     width: 80%;
   }
+
+  #sigmlOutput {
+    width: 80%;
+    height: 15em;
+    margin-top: 1em;
+  }
 </style>
 
 <script language="javascript">
@@ -40,9 +46,11 @@ function playText(stext) {
 }
 
 // New function to handle HamNoSys input
-function playHamNoSys(hamnosysString) {
+function playHamNoSys() {
+    const hamnosysString = document.getElementById("myHamNoSys").value;
     const sigmlText = hamNoSysToSiGML(hamnosysString);
     playText(sigmlText);
+    document.getElementById("sigmlOutput").value = sigmlText;
 }
 
 /**
@@ -51,7 +59,7 @@ function playHamNoSys(hamnosysString) {
  */
 function hamNoSysToSiGML(hamnosysString) {
   // Conversion table mapping HamNoSys Unicode (4-digit hex) to SiGML tags.
-  // This data is sourced from the conversionSpreadSheet.txt file.
+  // This data is sourced from the conversionSpreadSheet.txt file and common HamNoSys font encodings.
   const conversionMap = {
     "0020": "hamspace",
     "0021": "hamexclaim",
@@ -98,7 +106,7 @@ function hamNoSysToSiGML(hamnosysString) {
     "E02E": "hamextfingerui",
     "E02F": "hamextfingerdi",
     "E030": "hamextfingerdo",
-    "E031": "hammoveuo",
+    "E031": "hamextfingeruo", // Corrected mapping
     "E038": "hampalmu",
     "E039": "hampalmur",
     "E03A": "hampalmr",
@@ -266,6 +274,214 @@ function hamNoSysToSiGML(hamnosysString) {
     "E0F1": "hamversion40",
   };
 
+  // Add F-series Unicode mappings
+  const fSeriesMap = {
+      "F000": "hamfist",
+      "F001": "hamflathand",
+      "F002": "hamfinger2",
+      "F003": "hamfinger23",
+      "F004": "hamfinger23spread",
+      "F005": "hamfinger2345",
+      "F006": "hampinch12",
+      "F007": "hampinchall",
+      "F008": "hampinch12open",
+      "F009": "hamcee12",
+      "F00A": "hamceeall",
+      "F00B": "hamceeopen",
+      "F00C": "hamthumboutmod",
+      "F00D": "hamthumbacrossmod",
+      "F00E": "hamthumbopenmod",
+      "F010": "hamfingerstraightmod",
+      "F011": "hamfingerbendmod",
+      "F012": "hamfingerhookmod",
+      "F013": "hamdoublebent",
+      "F014": "hamdoublehooked",
+      "F020": "hamextfingeru",
+      "F021": "hamextfingerur",
+      "F022": "hamextfingerr",
+      "F023": "hamextfingerdr",
+      "F024": "hamextfingerd",
+      "F025": "hamextfingerdl",
+      "F026": "hamextfingerl",
+      "F027": "hamextfingerul",
+      "F028": "hamextfingerol",
+      "F029": "hamextfingero",
+      "F02A": "hamextfingeror",
+      "F02B": "hamextfingeril",
+      "F02C": "hamextfingeri",
+      "F02D": "hamextfingerir",
+      "F02E": "hamextfingerui",
+      "F02F": "hamextfingerdi",
+      "F030": "hamextfingerdo",
+      "F031": "hammoveuo",
+      "F038": "hampalmu",
+      "F039": "hampalmur",
+      "F03A": "hampalmr",
+      "F03B": "hampalmdr",
+      "F03C": "hampalmd",
+      "F03D": "hampalmdl",
+      "F03E": "hampalml",
+      "F03F": "hampalmul",
+      "F040": "hamhead",
+      "F041": "hamheadtop",
+      "F042": "hamforehead",
+      "F043": "hameyebrows",
+      "F044": "hameyes",
+      "F045": "hamnose",
+      "F046": "hamnostrils",
+      "F047": "hamear",
+      "F048": "hamearlobe",
+      "F049": "hamcheek",
+      "F04A": "hamlips",
+      "F04B": "hamtongue",
+      "F04C": "hamteeth",
+      "F04D": "hamchin",
+      "F04E": "hamunderchin",
+      "F04F": "hamneck",
+      "F050": "hamshouldertop",
+      "F051": "hamshoulders",
+      "F052": "hamchest",
+      "F053": "hamstomach",
+      "F054": "hambelowstomach",
+      "F058": "hamlrbeside",
+      "F059": "hamlrat",
+      "F05A": "hamcoreftag",
+      "F05B": "hamcorefref",
+      "F05F": "hamneutralspace",
+      "F060": "hamupperarm",
+      "F061": "hamelbow",
+      "F062": "hamelbowinside",
+      "F063": "hamlowerarm",
+      "F064": "hamwristback",
+      "F065": "hamwristpulse",
+      "F066": "hamthumbball",
+      "F067": "hampalm",
+      "F068": "hamhandback",
+      "F069": "hamthumbside",
+      "F06A": "hampinkyside",
+      "F070": "hamthumb",
+      "F071": "hamindexfinger",
+      "F072": "hammiddlefinger",
+      "F073": "hamringfinger",
+      "F074": "hampinky",
+      "F075": "hamfingertip",
+      "F076": "hamfingernail",
+      "F077": "hamfingerpad",
+      "F078": "hamfingermidjoint",
+      "F079": "hamfingerbase",
+      "F07A": "hamfingerside",
+      "F07C": "hamwristtopulse",
+      "F07D": "hamwristtoback",
+      "F07E": "hamwristtothumb",
+      "F07F": "hamwristtopinky",
+      "F080": "hammoveu",
+      "F081": "hammoveur",
+      "F082": "hammover",
+      "F083": "hammovedr",
+      "F084": "hammoved",
+      "F085": "hammovedl",
+      "F086": "hammovel",
+      "F087": "hammoveul",
+      "F088": "hammoveol",
+      "F089": "hammoveo",
+      "F08A": "hammoveor",
+      "F08B": "hammoveil",
+      "F08C": "hammovei",
+      "F08D": "hammoveir",
+      "F08E": "hammoveui",
+      "F08F": "hammovedi",
+      "F090": "hammovedo",
+      "F091": "hammoveuo",
+      "F092": "hamcircleo",
+      "F093": "hamcirclei",
+      "F094": "hamcircled",
+      "F095": "hamcircleu",
+      "F096": "hamcirclel",
+      "F097": "hamcircler",
+      "F098": "hamcircleul",
+      "F099": "hamcircledr",
+      "F09A": "hamcircleur",
+      "F09B": "hamcircledl",
+      "F09C": "hamcircleol",
+      "F09D": "hamcircleir",
+      "F09E": "hamcircleor",
+      "F09F": "hamcircleil",
+      "F0A0": "hamcircleui",
+      "F0A1": "hamcircledo",
+      "F0A2": "hamcircleuo",
+      "F0A3": "hamcircledi",
+      "F0A4": "hamfingerplay",
+      "F0A5": "hamnodding",
+      "F0A6": "hamswinging",
+      "F0A7": "hamtwisting",
+      "F0A8": "hamstircw",
+      "F0A9": "hamstirccw",
+      "F0AA": "hamreplace",
+      "F0AD": "hammovecross",
+      "F0AE": "hammoveX",
+      "F0AF": "hamnomotion",
+      "F0B0": "hamclocku",
+      "F0B1": "hamclockul",
+      "F0B2": "hamclockl",
+      "F0B3": "hamclockdl",
+      "F0B4": "hamclockd",
+      "F0B5": "hamclockdr",
+      "F0B6": "hamclockr",
+      "F0B7": "hamclockur",
+      "F0B8": "hamclockfull",
+      "F0B9": "hamarcl",
+      "F0BA": "hamarcu",
+      "F0BB": "hamarcr",
+      "F0BC": "hamarcd",
+      "F0BD": "hamwavy",
+      "F0BE": "hamzigzag",
+      "F0C0": "hamellipseh",
+      "F0C1": "hamellipseur",
+      "F0C2": "hamellipsev",
+      "F0C3": "hamellipseul",
+      "F0C4": "hamincreasing",
+      "F0C5": "hamdecreasing",
+      "F0C6": "hamsmallmod",
+      "F0C7": "hamlargemod",
+      "F0C8": "hamfast",
+      "F0C9": "hamslow",
+      "F0CA": "hamtense",
+      "F0CB": "hamrest",
+      "F0CC": "hamhalt",
+      "F0D0": "hamclose",
+      "F0D1": "hamtouch",
+      "F0D2": "haminterlock",
+      "F0D3": "hamcross",
+      "F0D4": "hamarmextended",
+      "F0D5": "hambehind",
+      "F0D6": "hambrushing",
+      "F0D8": "hamrepeatfromstart",
+      "F0D9": "hamrepeatfromstartseveral",
+      "F0DA": "hamrepeatcontinue",
+      "F0DB": "hamrepeatcontinueseveral",
+      "F0DC": "hamrepeatreverse",
+      "F0DD": "hamalternatingmotion",
+      "F0E0": "hamseqbegin",
+      "F0E1": "hamseqend",
+      "F0E2": "hamparbegin",
+      "F0E3": "hamparend",
+      "F0E4": "hamfusionbegin",
+      "F0E5": "hamfusionend",
+      "F0E6": "hambetween",
+      "F0E7": "hamplus",
+      "F0E8": "hamsymmpar",
+      "F0E9": "hamsymmlr",
+      "F0EA": "hamnondominant",
+      "F0EB": "hamnonipsi",
+      "F0EC": "hametc",
+      "F0ED": "hamorirelative",
+      "F0F0": "hammime",
+      "F0F1": "hamversion40",
+  };
+
+  const completeConversionMap = { ...conversionMap, ...fSeriesMap };
+
+
   const sigmlTags = [];
   // Parse the HamNoSys string, character by character
   for (let i = 0; i < hamnosysString.length; i++) {
@@ -274,7 +490,7 @@ function hamNoSysToSiGML(hamnosysString) {
     const hex = codePoint.toString(16).toUpperCase().padStart(4, '0');
 
     // Look up the corresponding SiGML tag
-    const tag = conversionMap[hex];
+    const tag = completeConversionMap[hex];
     if (tag) {
       sigmlTags.push(tag);
     } else {
@@ -301,8 +517,14 @@ function hamNoSysToSiGML(hamnosysString) {
 <!-- New section for HamNoSys input -->
 <div align="center">
   <br>
-  New HamNoSys: <input type="button" value="doHamNoSys" onclick='playHamNoSys(document.getElementById("myHamNoSys").value);' /><br>
-  <textarea id="myHamNoSys" class="txtaSiGMLText" rows="6" ></textarea>
+  New HamNoSys: <input type="button" value="doHamNoSys" onclick='playHamNoSys();' /><br>
+  <textarea id="myHamNoSys" class="txtaSiGMLText" rows="6" ></textarea>
+</div>
+<hr/>
+<div align="center">
+  <br>
+  Generated SiGML:
+  <textarea id="sigmlOutput" class="txtaSiGMLText"></textarea>
 </div>
 <hr/>
 <p>
