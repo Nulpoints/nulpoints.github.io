@@ -25,6 +25,19 @@
     /* Tree View */
     .tree-view { font-family: 'Consolas', 'Courier New', Courier, monospace; font-size: 16px; white-space: pre; overflow-x: auto; color: #bbb; line-height: 1.5; }
     
+    @font-face {
+        font-family: 'Elis2';
+        src: url('./Elis2.ttf');
+    }
+    .elis-font { font-family: 'Elis2', sans-serif; font-size: 32px; color: #fff; }
+    .signature-card { background: #333; border-radius: 6px; padding: 15px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
+    .signature-card-left { display: flex; flex-direction: column; }
+    .signature-card-right { display: flex; align-items: center; justify-content: center; background: #222; padding: 10px 20px; border-radius: 8px; border: 1px solid #444; min-width: 60px; min-height: 50px; }
+    .hs-label { font-size: 12px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
+    .hs-value { font-size: 20px; color: #fff; font-weight: bold; margin-bottom: 5px; }
+    .sig-value { font-family: 'Consolas', monospace; color: #007bff; font-size: 16px; }
+    .beta-tag { font-size: 10px; background: #ff9800; color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 10px; vertical-align: middle; letter-spacing: 0px; }
+
     /* Token Colors */
     .bg-ds { background-color: #dc3545; } /* Dominant Handshape */
     .bg-nds { background-color: #c82333; } /* Non-Dominant Handshape */
@@ -72,6 +85,13 @@
             </div>
         </div>
         
+        <div class="panel" id="signaturesPanel" style="display: none;">
+            <h2>
+                <span>Handshape Signatures & Elis <span class="beta-tag">BETA</span></span>
+            </h2>
+            <div id="signaturesView"></div>
+        </div>
+        
         <div class="panel">
             <h2>
                 JSON View
@@ -90,7 +110,57 @@
     </div>
 </div>
 
+<script src="signature_calculator.js"></script>
 <script>
+var calculator = null;
+if (typeof SignatureCalculator !== 'undefined') {
+    calculator = new SignatureCalculator();
+}
+
+function signatureToElis(sig) {
+    if (!sig || sig === 'None') return '';
+    let hasPlus = sig.includes('+');
+    sig = sig.replace(/\+/g, '');
+    sig = sig.replace(/\|/g, '');
+    
+    let thumbChar = sig[0] || '';
+    let thumbElis = '';
+    if (thumbChar === 'A') thumbElis = 'y';
+    else if (thumbChar === 'E') thumbElis = 'w';
+    else if (thumbChar === 'C') thumbElis = 'e';
+    else if (thumbChar === 'U') thumbElis = 'r';
+    else if (thumbChar === 'F') thumbElis = 't';
+    else thumbElis = thumbChar.toLowerCase();
+    
+    let fingers = sig.slice(1);
+    fingers = fingers.replace(/RR/g, 'j');
+    fingers = fingers.replace(/L\^L/g, 'hh');
+    fingers = fingers.replace(/U\^U/g, 'dd');
+    fingers = fingers.replace(/C\^C/g, 'pp');
+    fingers = fingers.replace(/\^/g, '');
+    
+    let elis = thumbElis;
+    for (let i = 0; i < fingers.length; i++) {
+        let char = fingers[i];
+        if (hasPlus) {
+            if (char === 'X') elis += 'i';
+            else if (char === 'C') elis += 'a';
+            else if (char === 'U') elis += 'f';
+            else if (char === 'L') elis += 'g';
+            else if (char === 'S') elis += 'q';
+            else elis += char;
+        } else {
+            if (char === 'L') elis += 'g';
+            else if (char === 'C') elis += 'o';
+            else if (char === 'U') elis += 's';
+            else if (char === 'X') elis += 'u';
+            else if (char === 'S') elis += 'q';
+            else elis += char;
+        }
+    }
+    return elis;
+}
+
 function copyContent(elementId) {
     const text = document.getElementById(elementId).textContent;
     navigator.clipboard.writeText(text).then(() => {
@@ -290,6 +360,7 @@ function parseCharacterChanges(suffix) {
 }
 
 function parseSLDWord(input) {
+    let originalInput = input;
     if (input && input.length > 0) {
         input = input.charAt(0).toLowerCase() + input.slice(1);
     }
@@ -309,10 +380,12 @@ function parseSLDWord(input) {
     if (current_segment) segments.push({ type: 'string', value: current_segment });
     
     let result = { 
-        transcription: input,
+        transcription: originalInput,
         initial_sign: {
             dominant_handshape: null,
             non_dominant_handshape: null,
+            dominant_handshape_signature: null,
+            non_dominant_handshape_signature: null,
             dominant_orientation: null,
             non_dominant_orientation: null,
             dominant_location: null,
@@ -338,11 +411,31 @@ function parseSLDWord(input) {
             }
         }
 
-        if (init.handshapes.length > 0) result.initial_sign.dominant_handshape = normalizeWord(init.handshapes[0].spelling);
+        if (init.handshapes.length > 0) {
+            let hs = normalizeWord(init.handshapes[0].spelling);
+            result.initial_sign.dominant_handshape = hs;
+            let calc = typeof calculator !== 'undefined' && calculator ? calculator.calculate(hs) : null;
+            if (calc && calc.handshapeSignature && calc.handshapeSignature !== 'None') {
+                result.initial_sign.dominant_handshape_signature = calc.handshapeSignature;
+                result.initial_sign.dominant_handshape_elis = signatureToElis(calc.handshapeSignature);
+            }
+        }
         if (init.handshapes.length === 1 && isTwoHanded) {
-            result.initial_sign.non_dominant_handshape = normalizeWord(init.handshapes[0].spelling);
+            let hs = normalizeWord(init.handshapes[0].spelling);
+            result.initial_sign.non_dominant_handshape = hs;
+            let calc = typeof calculator !== 'undefined' && calculator ? calculator.calculate(hs) : null;
+            if (calc && calc.handshapeSignature && calc.handshapeSignature !== 'None') {
+                result.initial_sign.non_dominant_handshape_signature = calc.handshapeSignature;
+                result.initial_sign.non_dominant_handshape_elis = signatureToElis(calc.handshapeSignature);
+            }
         } else if (init.handshapes.length > 1) {
-            result.initial_sign.non_dominant_handshape = normalizeWord(init.handshapes[1].spelling);
+            let hs = normalizeWord(init.handshapes[1].spelling);
+            result.initial_sign.non_dominant_handshape = hs;
+            let calc = typeof calculator !== 'undefined' && calculator ? calculator.calculate(hs) : null;
+            if (calc && calc.handshapeSignature && calc.handshapeSignature !== 'None') {
+                result.initial_sign.non_dominant_handshape_signature = calc.handshapeSignature;
+                result.initial_sign.non_dominant_handshape_elis = signatureToElis(calc.handshapeSignature);
+            }
         }
         
         if (init.orientations.length > 0) {
@@ -366,6 +459,8 @@ function parseSLDWord(input) {
                 movement: null,
                 change_in_dominant_handshape: null,
                 change_in_non_dominant_handshape: null,
+                change_in_dominant_handshape_signature: null,
+                change_in_non_dominant_handshape_signature: null,
                 change_in_dominant_orientation: null,
                 change_in_non_dominant_orientation: null,
                 change_in_dominant_location: null,
@@ -386,8 +481,20 @@ function parseSLDWord(input) {
                         if (!actionObj.change_in_dominant_orientation) actionObj.change_in_dominant_orientation = t.value;
                         else if (!actionObj.change_in_non_dominant_orientation) actionObj.change_in_non_dominant_orientation = t.value;
                     } else if (t.type === 'Handshape') {
-                        if (!actionObj.change_in_dominant_handshape) actionObj.change_in_dominant_handshape = t.value;
-                        else if (!actionObj.change_in_non_dominant_handshape) actionObj.change_in_non_dominant_handshape = t.value;
+                        let hsNorm = normalizeWord(t.value);
+                        if (!actionObj.change_in_dominant_handshape) {
+                            actionObj.change_in_dominant_handshape = hsNorm;
+                            let calc = typeof calculator !== 'undefined' && calculator ? calculator.calculate(hsNorm) : null;
+                            if (calc && calc.handshapeSignature && calc.handshapeSignature !== 'None') {
+                                actionObj.change_in_dominant_handshape_signature = calc.handshapeSignature;
+                            }
+                        } else if (!actionObj.change_in_non_dominant_handshape) {
+                            actionObj.change_in_non_dominant_handshape = hsNorm;
+                            let calc = typeof calculator !== 'undefined' && calculator ? calculator.calculate(hsNorm) : null;
+                            if (calc && calc.handshapeSignature && calc.handshapeSignature !== 'None') {
+                                actionObj.change_in_non_dominant_handshape_signature = calc.handshapeSignature;
+                            }
+                        }
                     } else {
                         // Any Handshape Modifier, Movement, or Unknown goes to Movement.
                         movs.push(t.value);
@@ -424,10 +531,53 @@ function processInput() {
     let parsed = parseSLDWord(input);
     document.getElementById('resultsContainer').style.display = 'flex';
     
+    // --- Build Signatures View ---
+    let sigHTML = '';
+    let hasSig = false;
+    if (parsed.initial_sign.dominant_handshape_signature) {
+        hasSig = true;
+        sigHTML += `
+            <div class="signature-card">
+                <div class="signature-card-left">
+                    <div class="hs-label">Dominant Handshape</div>
+                    <div class="hs-value">${parsed.initial_sign.dominant_handshape}</div>
+                    <div class="sig-value">${parsed.initial_sign.dominant_handshape_signature}</div>
+                </div>
+                <div class="signature-card-right elis-font">
+                    ${parsed.initial_sign.dominant_handshape_elis}
+                </div>
+            </div>`;
+    }
+    if (parsed.initial_sign.non_dominant_handshape_signature) {
+        hasSig = true;
+        sigHTML += `
+            <div class="signature-card">
+                <div class="signature-card-left">
+                    <div class="hs-label">Non-Dominant Handshape</div>
+                    <div class="hs-value">${parsed.initial_sign.non_dominant_handshape}</div>
+                    <div class="sig-value">${parsed.initial_sign.non_dominant_handshape_signature}</div>
+                </div>
+                <div class="signature-card-right elis-font">
+                    ${parsed.initial_sign.non_dominant_handshape_elis}
+                </div>
+            </div>`;
+    }
+    
+    if (hasSig) {
+        document.getElementById('signaturesPanel').style.display = 'block';
+        document.getElementById('signaturesView').innerHTML = sigHTML;
+    } else {
+        document.getElementById('signaturesPanel').style.display = 'none';
+    }
+
     // --- Build JSON View ---
+    let cleanInitialSign = { ...parsed.initial_sign };
+    delete cleanInitialSign.dominant_handshape_elis;
+    delete cleanInitialSign.non_dominant_handshape_elis;
+
     let jsonOutput = {
         transcription: parsed.transcription,
-        initial_sign: parsed.initial_sign,
+        initial_sign: cleanInitialSign,
         actions: parsed.actions
     };
     document.getElementById('jsonView').textContent = JSON.stringify(jsonOutput, null, 2);
@@ -469,7 +619,9 @@ function processInput() {
     let children = [];
     let state = parsed.initial_sign;
     if (state.dominant_handshape) children.push('Dominant Handshape: ' + state.dominant_handshape);
+    if (state.dominant_handshape_signature) children.push('  └─ Signature: ' + state.dominant_handshape_signature);
     if (state.non_dominant_handshape) children.push('Non-Dominant Handshape: ' + state.non_dominant_handshape);
+    if (state.non_dominant_handshape_signature) children.push('  └─ Signature: ' + state.non_dominant_handshape_signature);
     if (state.dominant_orientation) children.push('Dominant Orientation: ' + state.dominant_orientation);
     if (state.non_dominant_orientation) children.push('Non-Dominant Orientation: ' + state.non_dominant_orientation);
     if (state.dominant_location) children.push('Dominant Location: ' + state.dominant_location);
@@ -488,8 +640,14 @@ function processInput() {
         
         let actChildren = [];
         if (act.movement) actChildren.push('Movement: ' + act.movement);
-        if (act.change_in_dominant_handshape) actChildren.push('Change Dominant Handshape: ' + act.change_in_dominant_handshape);
-        if (act.change_in_non_dominant_handshape) actChildren.push('Change Non-Dominant Handshape: ' + act.change_in_non_dominant_handshape);
+        if (act.change_in_dominant_handshape) {
+            actChildren.push('Change Dominant Handshape: ' + act.change_in_dominant_handshape);
+            if (act.change_in_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_dominant_handshape_signature);
+        }
+        if (act.change_in_non_dominant_handshape) {
+            actChildren.push('Change Non-Dominant Handshape: ' + act.change_in_non_dominant_handshape);
+            if (act.change_in_non_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_non_dominant_handshape_signature);
+        }
         if (act.change_in_dominant_orientation) actChildren.push('Change Dominant Orientation: ' + act.change_in_dominant_orientation);
         if (act.change_in_non_dominant_orientation) actChildren.push('Change Non-Dominant Orientation: ' + act.change_in_non_dominant_orientation);
         if (act.change_in_dominant_location) actChildren.push('Change Dominant Location: ' + act.change_in_dominant_location);
