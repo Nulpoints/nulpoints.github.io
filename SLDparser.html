@@ -290,6 +290,9 @@ function parseCharacterChanges(suffix) {
 }
 
 function parseSLDWord(input) {
+    if (input && input.length > 0) {
+        input = input.charAt(0).toLowerCase() + input.slice(1);
+    }
     const delimiters = ['-', '=', '~'];
     let segments = [];
     let current_segment = "";
@@ -433,8 +436,8 @@ function processInput() {
     let ccHTML = '';
     if (parsed.raw_initial_sign) {
         let init = parsed.raw_initial_sign;
-        if (init.handshapes.length > 0) ccHTML += `<span class="token bg-ds" title="Dominant Handshape">${init.handshapes[0].spelling}</span>`;
-        if (init.handshapes.length > 1) ccHTML += `<span class="token bg-nds" title="Non-Dominant Handshape">${init.handshapes[1].spelling}</span>`;
+        if (init.handshapes.length > 0) ccHTML += `<span class="token bg-ds" title="Dominant Handshape">${normalizeWord(init.handshapes[0].spelling)}</span>`;
+        if (init.handshapes.length > 1) ccHTML += `<span class="token bg-nds" title="Non-Dominant Handshape">${normalizeWord(init.handshapes[1].spelling)}</span>`;
         
         if (init.orientations.length > 0) ccHTML += `<span class="token bg-do" title="Dominant Orientation">${init.orientations[0]}</span>`;
         if (init.orientations.length > 1) ccHTML += `<span class="token bg-ndo" title="Non-Dominant Orientation">${init.orientations[1]}</span>`;
