@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Input Display</title>
+    <script src="https://unpkg.com/@sutton-signwriting/font-ttf@1.5.2"></script>
+    <style>
+      /* custom SignWriting fonts */
+      @font-face {
+        font-family: "SuttonSignWritingLine";
+        src:
+          local('SuttonSignWritingLine'),
+          url('https://unpkg.com/@sutton-signwriting/font-ttf@1.0.0/font/SuttonSignWritingLine.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: "SuttonSignWritingFill";
+        src:
+          local('SuttonSignWritingFill'),
+          url('https://unpkg.com/@sutton-signwriting/font-ttf@1.0.0/font/SuttonSignWritingFill.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: "SuttonSignWritingOneD";
+        src:
+          local('SuttonSignWritingOneD'),
+          url('https://unpkg.com/@sutton-signwriting/font-ttf@1.0.0/font/SuttonSignWritingOneD.ttf') format('truetype');
+      }
+
+      /* apply to your display area (example) */
+      #displayArea {
+        font-family: "SuttonSignWritingFill", "SuttonSignWritingLine", "SuttonSignWritingOneD", sans-serif;
+        font-size: 48px; /* adjust as needed */
+      }
+    </style>
+</head>
+<body>
+    <h1>Text Input</h1>
+    
+    <input type="text" id="textInput" placeholder="Enter text here">
+    
+    <h2>Display Area</h2>
+    <div id="displayArea"></div>
+        
+    <script>
+      const svgString = ssw.ttf.swu.signSvg('𝠀񀀒񀀚񋚥񋛩𝠃𝤟𝤩񋛩𝣵𝤐񀀒𝤇𝣤񋚥𝤐𝤆񀀚𝣮𝣭')
+      const container = document.getElementById('displayArea');
+      container.innerHTML = svgString;
+    </script>
+    
+</body>
+</html>
