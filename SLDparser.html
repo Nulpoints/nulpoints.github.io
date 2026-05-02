@@ -235,12 +235,17 @@
         }
 
         /* Movement */
+        .bg-punct {
+            background-color: #495057;
+            color: #fff;
+        }
+        /* Punctuation */
         .bg-unk {
             background-color: #6c757d;
         }
 
         /* Unknown */
-
+        
         /* Color Legend */
         .legend {
             display: flex;
@@ -774,44 +779,254 @@
             return result;
         }
 
+        function parseSLDText(inputText) {
+            let tokens = [];
+            if (!inputText) return tokens;
+
+            let chunks = inputText.trim().split(/\s+/);
+            const punctRegex = /^([.,:;{}()\[\]]+)?(.*?)([.,:;{}()\[\]]+)?$/;
+
+            for (let i = 0; i < chunks.length; i++) {
+                let chunk = chunks[i];
+                if (!chunk) continue;
+
+                let match = chunk.match(punctRegex);
+                let leading = match[1] || '';
+                let core = match[2] || '';
+                let trailing = match[3] || '';
+
+                if (leading) {
+                    for (let char of leading) {
+                        tokens.push({ type: 'punctuation', value: char });
+                    }
+                }
+
+                if (core) {
+                    if (core === '-' || core === '=') {
+                        tokens.push({ type: 'punctuation', value: core });
+                    } else if (core.startsWith('-/')) {
+                        tokens.push({ type: 'punctuation', value: '-/' });
+                        let signPart = core.substring(2);
+                        if (signPart) tokens.push({ type: 'sign', data: parseSLDWord(signPart) });
+                    } else if (core.startsWith('-')) {
+                        tokens.push({ type: 'punctuation', value: core });
+                    } else {
+                        tokens.push({ type: 'sign', data: parseSLDWord(core) });
+                    }
+                }
+
+                if (trailing) {
+                    for (let char of trailing) {
+                        tokens.push({ type: 'punctuation', value: char });
+                    }
+                }
+
+                if (i < chunks.length - 1) {
+                    tokens.push({ type: 'space', value: ' ' });
+                }
+            }
+            return tokens;
+        }
+
         function processInput() {
             let input = document.getElementById('sldInput').value.trim();
             if (!input) return;
 
-            let parsed = parseSLDWord(input);
+            let parsedArray = parseSLDText(input);
             document.getElementById('resultsContainer').style.display = 'flex';
 
             // --- Build Signatures View ---
             let sigHTML = '';
             let hasSig = false;
-            if (parsed.initial_sign.dominant_handshape_signature) {
-                hasSig = true;
-                sigHTML += `
-            <div class="signature-card">
-                <div class="signature-card-left">
-                    <div class="hs-label">Dominant Handshape</div>
-                    <div class="hs-value">${parsed.initial_sign.dominant_handshape}</div>
-                    <div class="sig-value">${parsed.initial_sign.dominant_handshape_signature}</div>
-                </div>
-                <div class="signature-card-right elis-font">
-                    ${parsed.initial_sign.dominant_handshape_elis}
-                </div>
-            </div>`;
-            }
-            if (parsed.initial_sign.non_dominant_handshape_signature) {
-                hasSig = true;
-                sigHTML += `
-            <div class="signature-card">
-                <div class="signature-card-left">
-                    <div class="hs-label">Non-Dominant Handshape</div>
-                    <div class="hs-value">${parsed.initial_sign.non_dominant_handshape}</div>
-                    <div class="sig-value">${parsed.initial_sign.non_dominant_handshape_signature}</div>
-                </div>
-                <div class="signature-card-right elis-font">
-                    ${parsed.initial_sign.non_dominant_handshape_elis}
-                </div>
-            </div>`;
-            }
+            let jsonOutput = [];
+            let ccHTML = '';
+            let lines = [];
+            let seenHandshapes = new Set();
+
+            parsedArray.forEach((token, index) => {
+                if (token.type === 'punctuation') {
+                    jsonOutput.push({ type: 'punctuation', value: token.value });
+                    ccHTML += `<span class="token bg-punct" title="Punctuation">${token.value}</span>`;
+                    lines.push(`Punctuation: ${token.value}`);
+                } else if (token.type === 'space') {
+                    ccHTML += `<span style="display:inline-block; width: 16px;"></span>`;
+                } else if (token.type === 'sign') {
+                    let parsed = token.data;
+                    
+                    if (parsed.initial_sign.dominant_handshape_signature) {
+                        let domHs = parsed.initial_sign.dominant_handshape;
+                        if (!seenHandshapes.has(domHs)) {
+                            seenHandshapes.add(domHs);
+                            hasSig = true;
+                            sigHTML += `
+                                <div class="signature-card">
+                                    <div class="signature-card-left">
+                                        <div class="hs-label">Dominant Handshape</div>
+                                        <div class="hs-value">${domHs}</div>
+                                        <div class="sig-value">${parsed.initial_sign.dominant_handshape_signature}</div>
+                                    </div>
+                                    <div class="signature-card-right elis-font">
+                                        ${parsed.initial_sign.dominant_handshape_elis}
+                                    </div>
+                                </div>`;
+                        }
+                    }
+                    if (parsed.initial_sign.non_dominant_handshape_signature) {
+                        let ndomHs = parsed.initial_sign.non_dominant_handshape;
+                        if (!seenHandshapes.has(ndomHs)) {
+                            seenHandshapes.add(ndomHs);
+                            hasSig = true;
+                            sigHTML += `
+                                <div class="signature-card">
+                                    <div class="signature-card-left">
+                                        <div class="hs-label">Non-Dominant Handshape</div>
+                                        <div class="hs-value">${ndomHs}</div>
+                                        <div class="sig-value">${parsed.initial_sign.non_dominant_handshape_signature}</div>
+                                    </div>
+                                    <div class="signature-card-right elis-font">
+                                        ${parsed.initial_sign.non_dominant_handshape_elis}
+                                    </div>
+                                </div>`;
+                        }
+                    }
+
+                    if (parsed.actions) {
+                        parsed.actions.forEach(act => {
+                            if (act.change_in_dominant_handshape && act.change_in_dominant_handshape_signature) {
+                                let hs = act.change_in_dominant_handshape;
+                                if (!seenHandshapes.has(hs)) {
+                                    seenHandshapes.add(hs);
+                                    hasSig = true;
+                                    let elis = signatureToElis(act.change_in_dominant_handshape_signature);
+                                    sigHTML += `
+                                        <div class="signature-card">
+                                            <div class="signature-card-left">
+                                                <div class="hs-label">Action Handshape Change</div>
+                                                <div class="hs-value">${hs}</div>
+                                                <div class="sig-value">${act.change_in_dominant_handshape_signature}</div>
+                                            </div>
+                                            <div class="signature-card-right elis-font">
+                                                ${elis}
+                                            </div>
+                                        </div>`;
+                                }
+                            }
+                            if (act.change_in_non_dominant_handshape && act.change_in_non_dominant_handshape_signature) {
+                                let hs = act.change_in_non_dominant_handshape;
+                                if (!seenHandshapes.has(hs)) {
+                                    seenHandshapes.add(hs);
+                                    hasSig = true;
+                                    let elis = signatureToElis(act.change_in_non_dominant_handshape_signature);
+                                    sigHTML += `
+                                        <div class="signature-card">
+                                            <div class="signature-card-left">
+                                                <div class="hs-label">Action Handshape Change (Non-Dominant)</div>
+                                                <div class="hs-value">${hs}</div>
+                                                <div class="sig-value">${act.change_in_non_dominant_handshape_signature}</div>
+                                            </div>
+                                            <div class="signature-card-right elis-font">
+                                                ${elis}
+                                            </div>
+                                        </div>`;
+                                }
+                            }
+                        });
+                    }
+
+                    // --- Build JSON View ---
+                    let cleanInitialSign = { ...parsed.initial_sign };
+                    delete cleanInitialSign.dominant_handshape_elis;
+                    delete cleanInitialSign.non_dominant_handshape_elis;
+
+                    jsonOutput.push({
+                        type: 'sign',
+                        transcription: parsed.transcription,
+                        initial_sign: cleanInitialSign,
+                        actions: parsed.actions
+                    });
+
+                    // --- Build Color Coded View ---
+                    if (parsed.raw_initial_sign) {
+                        let init = parsed.raw_initial_sign;
+                        if (init.handshapes.length > 0) ccHTML += `<span class="token bg-ds" title="Dominant Handshape">${normalizeWord(init.handshapes[0].spelling)}</span>`;
+                        if (init.handshapes.length > 1) ccHTML += `<span class="token bg-nds" title="Non-Dominant Handshape">${normalizeWord(init.handshapes[1].spelling)}</span>`;
+
+                        if (init.orientations.length > 0) ccHTML += `<span class="token bg-do" title="Dominant Orientation">${init.orientations[0]}</span>`;
+                        if (init.orientations.length > 1) ccHTML += `<span class="token bg-ndo" title="Non-Dominant Orientation">${init.orientations[1]}</span>`;
+
+                        init.parsedLocations.forEach((loc, idx) => {
+                            ccHTML += `<span class="token bg-loc" title="Location">${loc}</span>`;
+                        });
+                    }
+
+                    parsed.raw_actions.forEach(act => {
+                        ccHTML += `<span class="token bg-act" title="Action Descriptor">${act.descriptor}</span>`;
+                        if (act.changes) {
+                            act.changes.forEach(t => {
+                                ccHTML += `<span class="token ${t.cls}" title="${t.type}">${t.value}</span>`;
+                            });
+                        }
+                    });
+
+                    // --- Build Tree View ---
+                    lines.push(`Sign: ${parsed.transcription}`);
+
+                    let isLastSegment = parsed.actions.length === 0;
+                    let pfx = isLastSegment ? '└── ' : '├── ';
+                    let childPfx = isLastSegment ? '    ' : '│   ';
+                    lines.push(pfx + 'Initial Sign');
+
+                    let children = [];
+                    let state = parsed.initial_sign;
+                    if (state.dominant_handshape) children.push('Dominant Handshape: ' + state.dominant_handshape);
+                    if (state.dominant_handshape_signature) children.push('  └─ Signature: ' + state.dominant_handshape_signature);
+                    if (state.non_dominant_handshape) children.push('Non-Dominant Handshape: ' + state.non_dominant_handshape);
+                    if (state.non_dominant_handshape_signature) children.push('  └─ Signature: ' + state.non_dominant_handshape_signature);
+                    if (state.dominant_orientation) children.push('Dominant Orientation: ' + state.dominant_orientation);
+                    if (state.non_dominant_orientation) children.push('Non-Dominant Orientation: ' + state.non_dominant_orientation);
+                    if (state.dominant_location) children.push('Dominant Location: ' + state.dominant_location);
+                    if (state.non_dominant_location) children.push('Non-Dominant Location: ' + state.non_dominant_location);
+
+                    children.forEach((c, idx) => {
+                        let isLastChild = idx === children.length - 1;
+                        let branch = isLastChild ? '└── ' : '├── ';
+                        lines.push(childPfx + branch + c);
+                    });
+
+                    parsed.actions.forEach((act, actIdx) => {
+                        let isLastAct = actIdx === parsed.actions.length - 1;
+                        let actPfx = isLastAct ? '└── ' : '├── ';
+                        lines.push(actPfx + 'Action Descriptor: ' + act.descriptor);
+
+                        let actChildren = [];
+                        if (act.movement) actChildren.push('Movement: ' + act.movement);
+                        if (act.change_in_dominant_handshape) {
+                            actChildren.push('Change Dominant Handshape: ' + act.change_in_dominant_handshape);
+                            if (act.change_in_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_dominant_handshape_signature);
+                        }
+                        if (act.change_in_non_dominant_handshape) {
+                            actChildren.push('Change Non-Dominant Handshape: ' + act.change_in_non_dominant_handshape);
+                            if (act.change_in_non_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_non_dominant_handshape_signature);
+                        }
+                        if (act.change_in_dominant_orientation) actChildren.push('Change Dominant Orientation: ' + act.change_in_dominant_orientation);
+                        if (act.change_in_non_dominant_orientation) actChildren.push('Change Non-Dominant Orientation: ' + act.change_in_non_dominant_orientation);
+                        if (act.change_in_dominant_location) actChildren.push('Change Dominant Location: ' + act.change_in_dominant_location);
+                        if (act.change_in_non_dominant_location) actChildren.push('Change Non-Dominant Location: ' + act.change_in_non_dominant_location);
+
+                        let actChildPfx = isLastAct ? '    ' : '│   ';
+                        actChildren.forEach((t, tIdx) => {
+                            let isLastChild = tIdx === actChildren.length - 1;
+                            let branch = isLastChild ? '└── ' : '├── ';
+                            lines.push(actChildPfx + branch + t);
+                        });
+                    });
+                }
+
+                // Add an empty line between top level tokens for readability in tree view
+                if (index < parsedArray.length - 1) {
+                    lines.push('');
+                }
+            });
 
             if (hasSig) {
                 document.getElementById('signaturesPanel').style.display = 'block';
@@ -820,97 +1035,8 @@
                 document.getElementById('signaturesPanel').style.display = 'none';
             }
 
-            // --- Build JSON View ---
-            let cleanInitialSign = { ...parsed.initial_sign };
-            delete cleanInitialSign.dominant_handshape_elis;
-            delete cleanInitialSign.non_dominant_handshape_elis;
-
-            let jsonOutput = {
-                transcription: parsed.transcription,
-                initial_sign: cleanInitialSign,
-                actions: parsed.actions
-            };
             document.getElementById('jsonView').textContent = JSON.stringify(jsonOutput, null, 2);
-
-            // --- Build Color Coded View ---
-            let ccHTML = '';
-            if (parsed.raw_initial_sign) {
-                let init = parsed.raw_initial_sign;
-                if (init.handshapes.length > 0) ccHTML += `<span class="token bg-ds" title="Dominant Handshape">${normalizeWord(init.handshapes[0].spelling)}</span>`;
-                if (init.handshapes.length > 1) ccHTML += `<span class="token bg-nds" title="Non-Dominant Handshape">${normalizeWord(init.handshapes[1].spelling)}</span>`;
-
-                if (init.orientations.length > 0) ccHTML += `<span class="token bg-do" title="Dominant Orientation">${init.orientations[0]}</span>`;
-                if (init.orientations.length > 1) ccHTML += `<span class="token bg-ndo" title="Non-Dominant Orientation">${init.orientations[1]}</span>`;
-
-                init.parsedLocations.forEach((loc, idx) => {
-                    ccHTML += `<span class="token bg-loc" title="Location">${loc}</span>`;
-                });
-            }
-
-            parsed.raw_actions.forEach(act => {
-                ccHTML += `<span class="token bg-act" title="Action Descriptor">${act.descriptor}</span>`;
-                if (act.changes) {
-                    act.changes.forEach(t => {
-                        ccHTML += `<span class="token ${t.cls}" title="${t.type}">${t.value}</span>`;
-                    });
-                }
-            });
-
             document.getElementById('colorCodedView').innerHTML = ccHTML;
-
-            // --- Build Tree View ---
-            let lines = [parsed.transcription];
-
-            let isLastSegment = parsed.actions.length === 0;
-            let pfx = isLastSegment ? '└── ' : '├── ';
-            let childPfx = isLastSegment ? '    ' : '│   ';
-            lines.push(pfx + 'Initial Sign');
-
-            let children = [];
-            let state = parsed.initial_sign;
-            if (state.dominant_handshape) children.push('Dominant Handshape: ' + state.dominant_handshape);
-            if (state.dominant_handshape_signature) children.push('  └─ Signature: ' + state.dominant_handshape_signature);
-            if (state.non_dominant_handshape) children.push('Non-Dominant Handshape: ' + state.non_dominant_handshape);
-            if (state.non_dominant_handshape_signature) children.push('  └─ Signature: ' + state.non_dominant_handshape_signature);
-            if (state.dominant_orientation) children.push('Dominant Orientation: ' + state.dominant_orientation);
-            if (state.non_dominant_orientation) children.push('Non-Dominant Orientation: ' + state.non_dominant_orientation);
-            if (state.dominant_location) children.push('Dominant Location: ' + state.dominant_location);
-            if (state.non_dominant_location) children.push('Non-Dominant Location: ' + state.non_dominant_location);
-
-            children.forEach((c, idx) => {
-                let isLastChild = idx === children.length - 1;
-                let branch = isLastChild ? '└── ' : '├── ';
-                lines.push(childPfx + branch + c);
-            });
-
-            parsed.actions.forEach((act, actIdx) => {
-                let isLastAct = actIdx === parsed.actions.length - 1;
-                let actPfx = isLastAct ? '└── ' : '├── ';
-                lines.push(actPfx + 'Action Descriptor: ' + act.descriptor);
-
-                let actChildren = [];
-                if (act.movement) actChildren.push('Movement: ' + act.movement);
-                if (act.change_in_dominant_handshape) {
-                    actChildren.push('Change Dominant Handshape: ' + act.change_in_dominant_handshape);
-                    if (act.change_in_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_dominant_handshape_signature);
-                }
-                if (act.change_in_non_dominant_handshape) {
-                    actChildren.push('Change Non-Dominant Handshape: ' + act.change_in_non_dominant_handshape);
-                    if (act.change_in_non_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_non_dominant_handshape_signature);
-                }
-                if (act.change_in_dominant_orientation) actChildren.push('Change Dominant Orientation: ' + act.change_in_dominant_orientation);
-                if (act.change_in_non_dominant_orientation) actChildren.push('Change Non-Dominant Orientation: ' + act.change_in_non_dominant_orientation);
-                if (act.change_in_dominant_location) actChildren.push('Change Dominant Location: ' + act.change_in_dominant_location);
-                if (act.change_in_non_dominant_location) actChildren.push('Change Non-Dominant Location: ' + act.change_in_non_dominant_location);
-
-                let actChildPfx = isLastAct ? '    ' : '│   ';
-                actChildren.forEach((t, tIdx) => {
-                    let isLastChild = tIdx === actChildren.length - 1;
-                    let branch = isLastChild ? '└── ' : '├── ';
-                    lines.push(actChildPfx + branch + t);
-                });
-            });
-
             document.getElementById('treeView').textContent = lines.join('\n');
         }
 
