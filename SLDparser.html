@@ -89,7 +89,14 @@
         }
 
         /* Color Coded View */
+        .color-coded-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .color-coded-view {
+            flex: 1;
             font-family: 'Consolas', 'Courier New', Courier, monospace;
             font-size: 28px;
             text-align: center;
@@ -249,11 +256,14 @@
         /* Color Legend */
         .legend {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 10px;
-            margin-top: 20px;
-            justify-content: center;
             font-size: 14px;
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            min-width: 220px;
         }
 
         .legend-item {
@@ -311,31 +321,33 @@
         <div class="results" id="resultsContainer" style="display: none;">
             <div class="panel">
                 <h2>Color Coded Parsing</h2>
-                <div class="color-coded-view" id="colorCodedView"></div>
-                <div class="legend">
-                    <div class="legend-item">
-                        <div class="legend-box bg-ds"></div> Dominant Handshape
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-box bg-nds"></div> Non-Dominant Handshape
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-box bg-do"></div> Dominant Orientation
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-box bg-ndo"></div> Non-Dominant Orientation
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-box bg-loc"></div> Location
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-box bg-act"></div> Action Descriptor
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-box bg-hmod"></div> Handshape Change
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-box bg-mov"></div> Movement
+                <div class="color-coded-container">
+                    <div class="color-coded-view" id="colorCodedView"></div>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-box bg-ds"></div> Dominant Handshape
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box bg-nds"></div> Non-Dominant Handshape
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box bg-do"></div> Dominant Orientation
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box bg-ndo"></div> Non-Dominant Orientation
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box bg-loc"></div> Location
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box bg-act"></div> Action Descriptor
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box bg-hmod"></div> Handshape Change
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box bg-mov"></div> Movement
+                        </div>
                     </div>
                 </div>
             </div>
@@ -376,38 +388,63 @@
             if (!sig || sig === 'None') return '';
             let hasPlus = sig.includes('+');
             sig = sig.replace(/\+/g, '');
-            sig = sig.replace(/\|/g, '');
+            // Ignore ^ characters
+            sig = sig.replace(/\^/g, '');
 
-            let thumbChar = sig[0] || '';
+            sig = sig.replace(/RR/g, 'j');
+
+            let newSig = '';
+            for (let i = 0; i < sig.length; i++) {
+                let char = sig[i];
+                if (char === 'L' || char === 'U' || char === 'C') {
+                    let isAdjToPipe = (i > 0 && sig[i-1] === '|') || (i < sig.length - 1 && sig[i+1] === '|');
+                    
+                    let isAdjToLCU = false;
+                    if (i > 0 && (sig[i-1] === 'L' || sig[i-1] === 'U' || sig[i-1] === 'C')) isAdjToLCU = true;
+                    if (i < sig.length - 1 && (sig[i+1] === 'L' || sig[i+1] === 'U' || sig[i+1] === 'C')) isAdjToLCU = true;
+
+                    if (isAdjToPipe || !isAdjToLCU) {
+                        if (char === 'L') newSig += 'g';
+                        else if (char === 'C') newSig += 'o';
+                        else if (char === 'U') newSig += 's';
+                        continue;
+                    }
+                }
+                newSig += char;
+            }
+            sig = newSig.replace(/\|/g, '');
+
+            if (sig.length === 0) return '';
+
+            let thumbChar = sig[0];
             let thumbElis = '';
-            if (thumbChar === 'A') thumbElis = 'y';
+            
+            if (hasPlus && thumbChar === 'X') thumbElis = 'i';
+            else if (hasPlus && thumbChar === 'C') thumbElis = 'a';
+            else if (hasPlus && thumbChar === 'U') thumbElis = 'f';
+            else if (thumbChar === 'A') thumbElis = 'y';
             else if (thumbChar === 'E') thumbElis = 'w';
             else if (thumbChar === 'C') thumbElis = 'e';
             else if (thumbChar === 'U') thumbElis = 'r';
             else if (thumbChar === 'F') thumbElis = 't';
             else thumbElis = thumbChar.toLowerCase();
 
-            let fingers = sig.slice(1);
-            fingers = fingers.replace(/RR/g, 'j');
-            fingers = fingers.replace(/L\^L/g, 'hh');
-            fingers = fingers.replace(/U\^U/g, 'dd');
-            fingers = fingers.replace(/C\^C/g, 'pp');
-            fingers = fingers.replace(/\^/g, '');
-
             let elis = thumbElis;
+            let fingers = sig.slice(1);
+
             for (let i = 0; i < fingers.length; i++) {
                 let char = fingers[i];
                 if (hasPlus) {
                     if (char === 'X') elis += 'i';
                     else if (char === 'C') elis += 'a';
                     else if (char === 'U') elis += 'f';
-                    else if (char === 'L') elis += 'g';
+                    else if (char === 'L') elis += 'h';
                     else if (char === 'S') elis += 'q';
                     else elis += char;
                 } else {
-                    if (char === 'L') elis += 'g';
-                    else if (char === 'C') elis += 'o';
-                    else if (char === 'U') elis += 's';
+                    if (char === 'L') elis += 'h';
+                    else if (char === 'C') elis += 'p';
+                    else if (char === 'U') elis += 'd';
                     else if (char === 'X') elis += 'u';
                     else if (char === 'S') elis += 'q';
                     else elis += char;
