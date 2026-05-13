@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+  <style>
+    th,
+    td {
+      text-align: center !important;
+      border: 1px solid;
+    }
+
+    table {
+      width: 75% !important;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+    }
+
+    .signfont {
+      font-family: "SignFont New";
+      font-size: 20pt;
+    }
+
+    @font-face {
+      font-family: 'SignFont New';
+      src: url('./SignFontNew.ttf') format('truetype')
+    }
+  </style>
+
+  <!-- Set the viewport width to match phone and tablet device widths -->
+  <meta name="viewport" content="width=device-width,user-scalable=no" />
+
+  <!-- Allow KeymanWeb to be saved to the iPhone home screen -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <title>SignFont Keyboard</title>
+</head>
+
+<body>
+  <div class="w3-container w3-center">
+    <h1>SignFont Keyboard</h1>
+    <p>If you would like to use the keyboard on your phone or computer, the KMP file can be found <a
+        href="signfont.kmp">here</a>.</p>
+    <p>You can find a more extensive explanation of SignFont <a href="SignFont Explained.pdf">here</a>.</p>
+    <textarea class="signfont" cols="20" rows="5" autocomplete="off" autocorrect="off" autocapitalize="off"
+      spellcheck="false"></textarea>
+  </div>
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/keymanweb.js'></script>
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/kmwuitoggle.js'></script>
+  <script>
+    (function () {
+      keyman.init({ attachType: 'auto' });
+    })();
+  </script>
+  <script>
+    keyman.addKeyboards({
+      name: 'SignFont',
+      id: 'signfont',
+      filename: './signfont.js',
+      version: '1.0',
+      language: [{
+        name: 'SignFont',
+        id: 'en',
+        region: 'us'
+      }]
+    });
+  </script>
+
+
+  <div class="w3_bar w3-blue-grey">
+    <div class="w3-bar-item signfont w3 w3-center">a!/A</div>
+  </div>
+
+  <div class="w3-row">
+    <div class="w3-half w3-container">
+      <p>Handshape characters (a-u) represent the basic handshapes in SignFont.</p>
+      <table class="w3-table-all w3-card-4 w3-small">
+        <tr>
+          <th colspan="4" class="w3-blue-grey w3-center">Handshapes</th>
+        </tr>
+        <tr>
+          <td class="signfont">a</td>
+          <td>fist (A)</td>
+          <td class="signfont">l</td>
+          <td>middle finger extended</td>
+        </tr>
+        <tr>
+          <td class="signfont">b</td>
+          <td>flat hand (B)</td>
+          <td class="signfont">m</td>
+          <td>index, middle, ring touching (M)</td>
+        </tr>
+        <tr>
+          <td class="signfont">c</td>
+          <td>cupped hand (C)</td>
+          <td class="signfont">n</td>
+          <td>index, middle, ring, pinky spread (4)</td>
+        </tr>
+        <tr>
+          <td class="signfont">d</td>
+          <td>pointing hand (1)</td>
+          <td class="signfont">o</td>
+          <td>thumb loop with joined fingers (O)</td>
+        </tr>
+        <tr>
+          <td class="signfont">e</td>
+          <td>fingerspelling E</td>
+          <td class="signfont">p</td>
+          <td>thumb and fingers spread (5)</td>
+        </tr>
+        <tr>
+          <td class="signfont">f</td>
+          <td>index, middle, ring spread (W)</td>
+          <td class="signfont">q</td>
+          <td>loop between thumb and middle (8)</td>
+        </tr>
+        <tr>
+          <td class="signfont">g</td>
+          <td>thumb and index extended (G)</td>
+          <td class="signfont">r</td>
+          <td>index and middle twisted (R)</td>
+        </tr>
+        <tr>
+          <td class="signfont">h</td>
+          <td>index and middle extended (H/U)</td>
+          <td class="signfont">s</td>
+          <td>fist with thumb over fingers (S)</td>
+        </tr>
+        <tr>
+          <td class="signfont">i</td>
+          <td>pinky extended (I)</td>
+          <td class="signfont">t</td>
+          <td>fist with thumb under index (T)</td>
+        </tr>
+        <tr>
+          <td class="signfont">j</td>
+          <td>pinky and index extended (HORNS)</td>
+          <td class="signfont">u</td>
+          <td>index and middle spread (V)</td>
+        </tr>
+        <tr>
+          <td class="signfont">k</td>
+          <td>middle extended, thumb on edge (K/P)</td>
+          <td colspan="2"></td>
+        </tr>
+      </table>
+
+      <p>Handshape Diacritics (P-Z) modify the basic handshape characters.</p>
+      <table class="w3-table-all w3-card-4 w3-small">
+        <tr>
+          <th colspan="2" class="w3-blue-grey w3-center">Handshape Diacritics</th>
+        </tr>
+        <tr>
+          <td class="signfont">P</td>
+          <td>thumb extended parallel</td>
+        </tr>
+        <tr>
+          <td class="signfont">Q</td>
+          <td>loop (e.g., baby-O)</td>
+        </tr>
+        <tr>
+          <td class="signfont">R</td>
+          <td>curled fingers</td>
+        </tr>
+        <tr>
+          <td class="signfont">S</td>
+          <td>bent at proximal joint</td>
+        </tr>
+        <tr>
+          <td class="signfont">T</td>
+          <td>thumb extended, fingers curled</td>
+        </tr>
+        <tr>
+          <td class="signfont">U</td>
+          <td>thumb extended, fingers bent</td>
+        </tr>
+        <tr>
+          <td class="signfont">V</td>
+          <td>pinky extended</td>
+        </tr>
+        <tr>
+          <td class="signfont">W</td>
+          <td>thumb laid alongside</td>
+        </tr>
+        <tr>
+          <td class="signfont">X</td>
+          <td>non-significant fingers extended</td>
+        </tr>
+        <tr>
+          <td class="signfont">Y</td>
+          <td>thumb laid over/tucked</td>
+        </tr>
+        <tr>
+          <td class="signfont">Z</td>
+          <td>thumb perpendicular</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="w3-half w3-container">
+      <p>Contacting Regions (! to +) specify which part of the hand makes contact.</p>
+      <table class="w3-table-all w3-card-4 w3-small w3-center">
+        <tr>
+          <th colspan="4" class="w3-blue-grey w3-center">Contacting Regions</th>
+        </tr>
+        <tr>
+          <td class="signfont">!</td>
+          <td>palm side</td>
+          <td class="signfont">"</td>
+          <td>back side</td>
+        </tr>
+        <tr>
+          <td class="signfont">#</td>
+          <td>palm side of fingers</td>
+          <td class="signfont">$</td>
+          <td>heel of hand</td>
+        </tr>
+        <tr>
+          <td class="signfont">%</td>
+          <td>radial edge</td>
+          <td class="signfont">&amp;</td>
+          <td>ulnar edge</td>
+        </tr>
+        <tr>
+          <td class="signfont">(</td>
+          <td>distal end (tip)</td>
+          <td class="signfont">)</td>
+          <td>elbow end</td>
+        </tr>
+        <tr>
+          <td class="signfont">*</td>
+          <td>space between thumb/digits</td>
+          <td class="signfont">+</td>
+          <td>between adjacent fingers</td>
+        </tr>
+      </table>
+
+      <p>Locations (/ to =) specify where the sign is produced.</p>
+      <table class="w3-table-all w3-card-4 w3-small w3-center">
+        <tr>
+          <th colspan="4" class="w3-blue-grey w3-center">Locations</th>
+        </tr>
+        <tr>
+          <td class="signfont">/</td>
+          <td>Ipsilateral Temple</td>
+          <td class="signfont">8</td>
+          <td>Ipsilateral shoulder</td>
+        </tr>
+        <tr>
+          <td class="signfont">0</td>
+          <td>Forehead</td>
+          <td class="signfont">9</td>
+          <td>Sternum (chest)</td>
+        </tr>
+        <tr>
+          <td class="signfont">1</td>
+          <td>Contralateral Temple</td>
+          <td class="signfont">:</td>
+          <td>Contralateral shoulder</td>
+        </tr>
+        <tr>
+          <td class="signfont">2</td>
+          <td>Ipsilateral Ear</td>
+          <td class="signfont">;</td>
+          <td>Ipsilateral abdomen</td>
+        </tr>
+        <tr>
+          <td class="signfont">3</td>
+          <td>Nose</td>
+          <td class="signfont">&lt;</td>
+          <td>Middle abdomen</td>
+        </tr>
+        <tr>
+          <td class="signfont">4</td>
+          <td>Contralateral ear</td>
+          <td class="signfont">=</td>
+          <td>Contralateral abdomen</td>
+        </tr>
+        <tr>
+          <td class="signfont">5</td>
+          <td>Ipsilateral cheek</td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="signfont">6</td>
+          <td>Chin / mouth</td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="signfont">7</td>
+          <td>Contralateral cheek</td>
+          <td colspan="2"></td>
+        </tr>
+      </table>
+
+      <p>Movements (A to M) represent the path or internal hand movement.</p>
+      <table class="w3-table-all w3-card-4 w3-small w3-center">
+        <tr>
+          <th colspan="2" class="w3-blue-grey">Movements</th>
+        </tr>
+        <tr>
+          <td class="signfont">A</td>
+          <td>Move toward ipsilateral side</td>
+        </tr>
+        <tr>
+          <td class="signfont">B</td>
+          <td>Move away from ipsilateral side</td>
+        </tr>
+        <tr>
+          <td class="signfont">C</td>
+          <td>Move back and forth laterally</td>
+        </tr>
+        <tr>
+          <td class="signfont">D</td>
+          <td>Move upwards</td>
+        </tr>
+        <tr>
+          <td class="signfont">E</td>
+          <td>Move downwards</td>
+        </tr>
+        <tr>
+          <td class="signfont">F</td>
+          <td>Move toward the body</td>
+        </tr>
+        <tr>
+          <td class="signfont">G</td>
+          <td>Move away from the body</td>
+        </tr>
+        <tr>
+          <td class="signfont">H</td>
+          <td>Circular path movement</td>
+        </tr>
+        <tr>
+          <td class="signfont">I</td>
+          <td>Twist wrist inward</td>
+        </tr>
+        <tr>
+          <td class="signfont">J</td>
+          <td>Twist wrist outward</td>
+        </tr>
+        <tr>
+          <td class="signfont">K</td>
+          <td>Wiggle the fingers</td>
+        </tr>
+        <tr>
+          <td class="signfont">L</td>
+          <td>Touch</td>
+        </tr>
+        <tr>
+          <td class="signfont">M</td>
+          <td>Continuous contact</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
