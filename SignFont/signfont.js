@@ -225,7 +225,8 @@ function Keyboard_signfont()
                 "id": "K_SHIFT",
                 "text": "*Shift*",
                 "width": "160",
-                "sp": "1"
+                "sp": "1",
+                "nextlayer": "shift"
               },
               {
                 "id": "K_oE2",
@@ -356,10 +357,10 @@ function Keyboard_signfont()
                 "text": "+"
               },
               {
-                "width": "100",
                 "id": "K_BKSP",
-                "sp": "1",
-                "text": "*BkSp*"
+                "text": "*BkSp*",
+                "width": "100",
+                "sp": "1"
               }
             ]
           },
@@ -368,8 +369,8 @@ function Keyboard_signfont()
             "key": [
               {
                 "id": "K_Q",
-                "pad": "75",
-                "text": "Q"
+                "text": "Q",
+                "pad": "75"
               },
               {
                 "id": "K_W",
@@ -416,6 +417,7 @@ function Keyboard_signfont()
                 "text": "}"
               },
               {
+                "id": "T_new_466",
                 "width": "10",
                 "sp": "10"
               }
@@ -482,10 +484,11 @@ function Keyboard_signfont()
             "id": "4",
             "key": [
               {
-                "width": "160",
                 "id": "K_SHIFT",
+                "text": "*Shift*",
+                "width": "160",
                 "sp": "1",
-                "text": "*Shift*"
+                "nextlayer": "default"
               },
               {
                 "id": "K_oE2",
@@ -532,6 +535,7 @@ function Keyboard_signfont()
                 "text": "?"
               },
               {
+                "id": "T_new_492",
                 "width": "10",
                 "sp": "10"
               }
@@ -541,20 +545,20 @@ function Keyboard_signfont()
             "id": "5",
             "key": [
               {
-                "width": "140",
                 "id": "K_LOPT",
-                "sp": "1",
-                "text": "*Menu*"
+                "text": "*Menu*",
+                "width": "140",
+                "sp": "1"
               },
               {
-                "width": "930",
-                "id": "K_SPACE"
+                "id": "K_SPACE",
+                "width": "930"
               },
               {
-                "width": "145",
                 "id": "K_ENTER",
-                "sp": "1",
-                "text": "*Enter*"
+                "text": "*Enter*",
+                "width": "145",
+                "sp": "1"
               }
             ]
           }
@@ -751,7 +755,8 @@ function Keyboard_signfont()
                 "id": "K_SHIFT",
                 "text": "*Shift*",
                 "width": "160",
-                "sp": "1"
+                "sp": "1",
+                "nextlayer": "shift"
               },
               {
                 "id": "K_oE2",
@@ -882,10 +887,10 @@ function Keyboard_signfont()
                 "text": "+"
               },
               {
-                "width": "100",
                 "id": "K_BKSP",
-                "sp": "1",
-                "text": "*BkSp*"
+                "text": "*BkSp*",
+                "width": "100",
+                "sp": "1"
               }
             ]
           },
@@ -894,8 +899,8 @@ function Keyboard_signfont()
             "key": [
               {
                 "id": "K_Q",
-                "pad": "75",
-                "text": "Q"
+                "text": "Q",
+                "pad": "75"
               },
               {
                 "id": "K_W",
@@ -942,6 +947,7 @@ function Keyboard_signfont()
                 "text": "}"
               },
               {
+                "id": "T_new_246",
                 "width": "10",
                 "sp": "10"
               }
@@ -1008,10 +1014,11 @@ function Keyboard_signfont()
             "id": "4",
             "key": [
               {
-                "width": "160",
                 "id": "K_SHIFT",
+                "text": "*Shift*",
+                "width": "160",
                 "sp": "1",
-                "text": "*Shift*"
+                "nextlayer": "default"
               },
               {
                 "id": "K_oE2",
@@ -1058,6 +1065,7 @@ function Keyboard_signfont()
                 "text": "?"
               },
               {
+                "id": "T_new_272",
                 "width": "10",
                 "sp": "10"
               }
@@ -1067,20 +1075,20 @@ function Keyboard_signfont()
             "id": "5",
             "key": [
               {
-                "width": "140",
                 "id": "K_LOPT",
-                "sp": "1",
-                "text": "*Menu*"
+                "text": "*Menu*",
+                "width": "140",
+                "sp": "1"
               },
               {
-                "width": "930",
-                "id": "K_SPACE"
+                "id": "K_SPACE",
+                "width": "930"
               },
               {
-                "width": "145",
                 "id": "K_ENTER",
-                "sp": "1",
-                "text": "*Enter*"
+                "text": "*Enter*",
+                "width": "145",
+                "sp": "1"
               }
             ]
           }
