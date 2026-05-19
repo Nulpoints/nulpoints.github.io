@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignFont Bidirectional Dictionary</title>
+  <meta name="description" content="An interactive, high-fidelity bidirectional lookup dictionary for English words and ASL SignFont transcriptions, featuring smart Keyman keyboard switching.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      --glass-bg: rgba(30, 41, 59, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-hover-border: rgba(255, 255, 255, 0.15);
+      
+      --accent-primary: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      --accent-glow: rgba(124, 58, 237, 0.3);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(15, 23, 42, 0.6);
+      
+      --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: 'SignFont New';
+      src: url('./SignFontNew.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Background decorative blobs */
+    .bg-blobs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.15;
+    }
+
+    .blob-1 {
+      top: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: #7c3aed;
+    }
+
+    .blob-2 {
+      bottom: -10%;
+      left: -10%;
+      width: 45vw;
+      height: 45vw;
+      background: #06b6d4;
+    }
+
+    /* Main Container */
+    .app-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.75rem;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.4));
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0.5rem auto 1.5rem auto;
+    }
+
+    .header-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-spring);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 15px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      border: none;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+    }
+
+    /* Keyman container modifications */
+    .keyman-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .keyboard-toggle-btn {
+      position: absolute;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(4px);
+      z-index: 10;
+    }
+
+    .keyboard-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(139, 92, 246, 0.4);
+      color: #a78bfa;
+      box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+    }
+
+    .keyboard-toggle-btn.active {
+      background: rgba(139, 92, 246, 0.25);
+      border-color: rgba(139, 92, 246, 0.5);
+      color: #c084fc;
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+    }
+
+    /* Search Section */
+    .search-section {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .search-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .search-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    .search-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .search-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.25rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      transition: var(--transition-smooth);
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.1rem 1.25rem 1.1rem 3.2rem;
+      font-family: inherit;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      transition: var(--transition-smooth);
+      height: 3.8rem;
+    }
+
+    textarea.search-input {
+      resize: none;
+      overflow: hidden;
+      white-space: nowrap;
+      padding-top: 1.2rem; /* adjust visual alignment for textarea line-height */
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .search-input:focus + .search-icon {
+      color: var(--accent-primary);
+    }
+
+    .signfont-input {
+      font-family: 'SignFont New', 'Outfit', sans-serif !important;
+      font-size: 1.4rem;
+    }
+
+    /* Extreme specificity override to beat Keyman Web's dynamically injected styles */
+    html body textarea#signfont-search,
+    html body textarea#signfont-search.signfont-input,
+    html body textarea#signfont-search.keymanweb-font {
+      font-family: 'SignFont New', 'SignFontNew', sans-serif !important;
+      padding-right: 5.5rem !important;
+    }
+
+    /* Force the English search field to ALWAYS render in Outfit font and never SignFont */
+    html body #english-search,
+    html body input#english-search {
+      font-family: 'Outfit', sans-serif !important;
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: var(--transition-smooth);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .clear-btn.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .clear-btn:hover {
+      color: var(--text-main);
+    }
+
+    /* Results Info Bar */
+    .results-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding: 0 0.5rem;
+    }
+
+    .results-count {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .results-count strong {
+      color: var(--text-main);
+    }
+
+    /* Dictionary Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.25rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-spring);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .card:hover {
+      border-color: var(--glass-hover-border);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-english {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-main);
+      word-break: break-word;
+    }
+
+    .card-signs-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .card-sign-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.4);
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .signfont-notation {
+      font-family: 'SignFont New';
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      color: #c084fc;
+      user-select: all;
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 6px;
+      font-size: 0.9rem;
+      transition: var(--transition-smooth);
+      border-radius: 6px;
+    }
+
+    .copy-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Load More Trigger */
+    .load-more-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+
+    /* Sliding Drawer Reference Panel */
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+      overflow: hidden;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(600px, 95vw);
+      height: 100vh;
+      background: #0f172a;
+      border-left: 1px solid var(--glass-border);
+      z-index: 101;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .drawer-overlay.active .drawer {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(30, 41, 59, 0.4);
+    }
+
+    .drawer-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .close-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .close-btn:hover {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .drawer-content {
+      padding: 1.5rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    /* Search within Reference Panel */
+    .ref-search-wrapper {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .ref-search-input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.8rem 1rem 0.8rem 2.8rem;
+      font-family: inherit;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+    }
+
+    .ref-search-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+
+    /* Tabs inside Drawer */
+    .drawer-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    .drawer-tabs::-webkit-scrollbar {
+      height: 4px;
+    }
+    .drawer-tabs::-webkit-scrollbar-thumb {
+      background: var(--glass-border);
+      border-radius: 99px;
+    }
+
+    .drawer-tab {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition-smooth);
+    }
+
+    .drawer-tab.active {
+      background: var(--accent-primary);
+      color: var(--text-main);
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
+    }
+
+    /* Reference Grids */
+    .ref-section {
+      display: none;
+    }
+
+    .ref-section.active {
+      display: block;
+    }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .ref-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition-smooth);
+    }
+
+    .ref-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--accent-primary);
+    }
+
+    .ref-key {
+      font-family: 'SignFont New';
+      font-size: 1.8rem;
+      color: #c084fc;
+      width: 40px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .ref-desc-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ref-char-val {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+
+    .ref-desc {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    /* Sign Breakdown Drawer / Modal Style */
+    .breakdown-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      transition: var(--transition-smooth);
+    }
+
+    .breakdown-item:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .breakdown-char {
+      font-family: 'SignFont New';
+      font-size: 2.2rem;
+      color: #c084fc;
+      width: 50px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .breakdown-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .breakdown-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    .breakdown-desc {
+      font-size: 1rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .breakdown-raw {
+      font-size: 0.8rem;
+      font-family: monospace;
+      color: var(--text-muted);
+    }
+
+    .breakdown-notation-title {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      margin-bottom: 2rem;
+    }
+
+    .breakdown-notation-large {
+      font-family: 'SignFont New';
+      font-size: 4rem;
+      letter-spacing: 0.1em;
+      color: #c084fc;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
+    }
+
+    .breakdown-notation-raw {
+      font-family: monospace;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    /* Loading placeholder */
+    .loading-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .loading-spinner {
+      font-size: 2.5rem;
+      color: var(--accent-primary);
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #10b981;
+      color: #e6fcf5;
+      padding: 0.8rem 1.5rem;
+      border-radius: 9999px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: var(--transition-spring);
+      opacity: 0;
+    }
+
+    .toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Keyman UI custom elements */
+    .kmw-disabled:not(input):not(textarea) {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background Art -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header>
+      <div class="logo-container">
+        <i class="fa-solid fa-hands-asl-interpreting logo-icon"></i>
+        <div class="keyman-status-badge">
+          <i class="fa-solid fa-keyboard"></i> Keyman Integrated
+        </div>
+      </div>
+      <h1>SignFont Dictionary</h1>
+      <p class="tagline">A bidirectional lookup utility for English words and ASL SignFont notations, powered by the professional SignFont system.</p>
+      
+      <div class="header-actions">
+        <button class="btn" id="open-ref-btn">
+          <i class="fa-solid fa-circle-info"></i> SignFont Reference Chart
+        </button>
+        <a href="./flashcards.html" class="btn btn-primary">
+          <i class="fa-solid fa-graduation-cap"></i> Practice Flashcards
+        </a>
+      </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="search-grid">
+        <!-- English Search Box -->
+        <div class="search-group">
+          <label for="english-search" class="search-label">
+            English Lookup
+            <i class="fa-solid fa-language text-muted"></i>
+          </label>
+          <div class="search-input-wrapper">
+            <input type="text" id="english-search" class="search-input" placeholder="Type an English word (e.g. act, airplane)..." autocomplete="off" spellcheck="false" data-keyman-disabled="true">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <button class="clear-btn" id="clear-english"><i class="fa-solid fa-circle-xmark"></i></button>
+          </div>
+        </div>
+
+        <!-- SignFont Search Box -->
+        <div class="search-group">
+          <label for="signfont-search" class="search-label">
+            SignFont Notation Lookup
+            <span class="keyman-status-badge" style="font-size: 0.7rem; padding: 2px 8px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; border-color: rgba(139, 92, 246, 0.2);">
+              <i class="fa-solid fa-spell-check"></i> SignFont Keyboard Active
+            </span>
+          </label>
+          <div class="search-input-wrapper">
+            <textarea id="signfont-search" class="search-input signfont-input" placeholder="_ d((Hwy, b&&BAy nT%%KEwy" rows="1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+            <i class="fa-solid fa-keyboard search-icon"></i>
+            <button class="clear-btn" id="clear-signfont" style="right: 3.25rem;"><i class="fa-solid fa-circle-xmark"></i></button>
+            <button type="button" class="keyboard-toggle-btn" id="osk-toggle-btn" title="Toggle On-Screen Keyboard">
+              <i class="fa-solid fa-keyboard"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Info Bar -->
+    <div class="results-info">
+      <div class="results-count" id="results-meta">
+        Showing <strong>0</strong> of <strong>0</strong> total entries
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <main class="cards-grid" id="dictionary-grid">
+      <!-- Injected via JavaScript -->
+      <div class="loading-state">
+        <i class="fa-solid fa-circle-notch loading-spinner"></i>
+        <p>Loading dictionary dataset...</p>
+      </div>
+    </main>
+
+    <!-- Load More Trigger -->
+    <div class="load-more-container" id="load-more-box" style="display: none;">
+      <button class="btn btn-primary" id="load-more-btn">
+        <i class="fa-solid fa-arrow-down-long"></i> Load More Results
+      </button>
+    </div>
+  </div>
+
+  <!-- Reference Panel Drawer -->
+  <div class="drawer-overlay" id="ref-drawer-overlay">
+    <div class="drawer">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <i class="fa-solid fa-circle-info text-accent"></i> SignFont Reference
+        </div>
+        <button class="close-btn" id="close-ref-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      
+      <div class="drawer-content">
+        <div class="ref-search-wrapper">
+          <input type="text" class="ref-search-input" id="ref-search" placeholder="Filter reference symbols...">
+          <i class="fa-solid fa-filter search-icon"></i>
+        </div>
+
+        <div class="drawer-tabs">
+          <button class="drawer-tab active" data-target="ref-handshapes">Handshapes (a-u)</button>
+          <button class="drawer-tab" data-target="ref-diacritics">Diacritics (P-Z)</button>
+          <button class="drawer-tab" data-target="ref-contacts">Contacts (!-+)</button>
+          <button class="drawer-tab" data-target="ref-locations">Locations (/-=)</button>
+          <button class="drawer-tab" data-target="ref-movements">Movements (A-M)</button>
+        </div>
+
+        <!-- Handshapes Grid -->
+        <div class="ref-section active" id="ref-handshapes">
+          <div class="ref-grid" id="grid-handshapes"></div>
+        </div>
+
+        <!-- Diacritics Grid -->
+        <div class="ref-section" id="ref-diacritics">
+          <div class="ref-grid" id="grid-diacritics"></div>
+        </div>
+
+        <!-- Contacts Grid -->
+        <div class="ref-section" id="ref-contacts">
+          <div class="ref-grid" id="grid-contacts"></div>
+        </div>
+
+        <!-- Locations Grid -->
+        <div class="ref-section" id="ref-locations">
+          <div class="ref-grid" id="grid-locations"></div>
+        </div>
+
+        <!-- Movements Grid -->
+        <div class="ref-section" id="ref-movements">
+          <div class="ref-grid" id="grid-movements"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign Breakdown Panel Drawer -->
+  <div class="drawer-overlay" id="breakdown-drawer-overlay">
+    <div class="drawer">
+      <div class="drawer-header">
+        <div class="drawer-title" id="breakdown-title">
+          <i class="fa-solid fa-circle-nodes text-accent"></i> Sign Breakdown
+        </div>
+        <button class="close-btn" id="close-breakdown-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      
+      <div class="drawer-content">
+        <div class="breakdown-notation-title">
+          <div class="breakdown-notation-large" id="breakdown-notation-large"></div>
+          <div class="breakdown-notation-raw" id="breakdown-notation-raw"></div>
+        </div>
+        
+        <h3 style="margin-bottom: 1rem; font-family: 'Space Grotesk', sans-serif;">Symbol Composition</h3>
+        <div id="breakdown-items-container">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Alert -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- Keyman Web Engine Integration -->
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/keymanweb.js'></script>
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/kmwuitoggle.js'></script>
+  
+  <!-- Load Dictionary Data from Clean Generated File -->
+  <script src="./dictionary-data.js"></script>
+
+  <script>
+    // --- Data Dictionary reference charts ---
+    const HANDSHAPES = {
+      'a': 'fist (A)', 'b': 'flat hand (B)', 'c': 'cupped hand (C)', 'd': 'pointing hand (1)',
+      'e': 'fingerspelling E', 'f': 'index, middle, ring spread (W)', 'g': 'thumb and index extended (G)',
+      'h': 'index and middle extended (H/U)', 'i': 'pinky extended (I)', 'j': 'pinky and index extended (HORNS)',
+      'k': 'middle extended, thumb on edge (K/P)', 'l': 'middle finger extended', 'm': 'index, middle, ring touching (M)',
+      'n': 'index, middle, ring, pinky spread (4)', 'o': 'thumb loop with joined fingers (O)',
+      'p': 'thumb and fingers spread (5)', 'q': 'loop between thumb and middle (8)',
+      'r': 'index and middle twisted (R)', 's': 'fist with thumb over fingers (S)',
+      't': 'fist with thumb under index (T)', 'u': 'index and middle spread (V)'
+    };
+
+    const DIACRITICS = {
+      'P': 'thumb extended parallel', 'Q': 'loop (e.g., baby-O)', 'R': 'curled fingers',
+      'S': 'bent at proximal joint', 'T': 'thumb extended, fingers curled', 'U': 'thumb extended, fingers bent',
+      'V': 'pinky extended', 'W': 'thumb laid alongside', 'X': 'non-significant fingers extended',
+      'Y': 'thumb laid over/tucked', 'Z': 'thumb perpendicular'
+    };
+
+    const CONTACTS = {
+      '!': 'palm side', '"': 'back side', '#': 'palm side of fingers', '$': 'heel of hand',
+      '%': 'radial edge', '&': 'ulnar edge', '(': 'distal end (tip)', ')': 'elbow end',
+      '*': 'space between thumb/digits', '+': 'between adjacent fingers'
+    };
+
+    const LOCATIONS = {
+      '/': 'Ipsilateral Temple', '0': 'Forehead', '1': 'Contralateral Temple', '2': 'Ipsilateral Ear',
+      '3': 'Nose', '4': 'Contralateral ear', '5': 'Ipsilateral cheek', '6': 'Chin / mouth',
+      '7': 'Contralateral cheek', '8': 'Ipsilateral shoulder', '9': 'Sternum (chest)',
+      ':': 'Contralateral shoulder', ';': 'Ipsilateral abdomen', '<': 'Middle abdomen',
+      '=': 'Contralateral abdomen'
+    };
+
+    const MOVEMENTS = {
+      'A': 'Move toward ipsilateral side', 'B': 'Move away from ipsilateral side',
+      'C': 'Move back and forth laterally', 'D': 'Move upwards', 'E': 'Move downwards',
+      'F': 'Move toward the body', 'G': 'Move away from the body', 'H': 'Circular path movement',
+      'I': 'Twist wrist inward', 'J': 'Twist wrist outward', 'K': 'Wiggle the fingers',
+      'L': 'Touch', 'M': 'Continuous contact'
+    };
+
+    // Global Search and pagination parameters
+    let filteredDictionary = [];
+    let currentLimit = 60;
+    const itemsPerChunk = 60;
+
+    // DOM References
+    const englishSearch = document.getElementById('english-search');
+    const signfontSearch = document.getElementById('signfont-search');
+    const clearEnglishBtn = document.getElementById('clear-english');
+    const clearSignfontBtn = document.getElementById('clear-signfont');
+    
+    const dictionaryGrid = document.getElementById('dictionary-grid');
+    const resultsMeta = document.getElementById('results-meta');
+    const loadMoreBox = document.getElementById('load-more-box');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    
+    const refDrawerOverlay = document.getElementById('ref-drawer-overlay');
+    const closeRefBtn = document.getElementById('close-ref-btn');
+    const openRefBtn = document.getElementById('open-ref-btn');
+    const refSearch = document.getElementById('ref-search');
+    
+    const breakdownDrawerOverlay = document.getElementById('breakdown-drawer-overlay');
+    const closeBreakdownBtn = document.getElementById('close-breakdown-btn');
+    const breakdownTitle = document.getElementById('breakdown-title');
+    const breakdownNotationLarge = document.getElementById('breakdown-notation-large');
+    const breakdownNotationRaw = document.getElementById('breakdown-notation-raw');
+    const breakdownContainer = document.getElementById('breakdown-items-container');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+
+    // --- Keyman Keyboard Hookup ---
+    let keymanAvailable = false;
+    try {
+      if (typeof keyman !== 'undefined') {
+        keyman.init({
+          attachType: 'auto',
+          ui: {
+            name: 'float',
+            right: true
+          }
+        });
+        keyman.addKeyboards({
+          name: 'SignFont',
+          id: 'signfont',
+          filename: './signfont.js',
+          version: '1.0',
+          language: [{
+            name: 'SignFont',
+            id: 'en',
+            region: 'us'
+          }],
+          font: {
+            family: 'SignFont New',
+            source: ['./SignFontNew.ttf']
+          }
+        });
+        keymanAvailable = true;
+
+        // Programmatically disable Keyman Web on the English lookup input
+        if (englishSearch) {
+          keyman.disableControl(englishSearch);
+        }
+
+        // Manage OSK auto-repositioning to the side on desktop
+        let hasPositionedOSK = false;
+        if (keyman.osk) {
+          keyman.osk.addEventListener('show', () => {
+            if (!hasPositionedOSK) {
+              setTimeout(() => {
+                try {
+                  // Only programmatically position if user hasn't manually moved it yet
+                  if (typeof keyman.osk.userLocated === 'function' && keyman.osk.userLocated()) {
+                    hasPositionedOSK = true;
+                    return;
+                  }
+                  
+                  const rect = keyman.osk.getRect();
+                  const oskWidth = rect.width || 600;
+                  const oskHeight = rect.height || 250;
+                  
+                  // Calculate a comfortable bottom-right margin on wide screen
+                  const targetLeft = Math.max(20, window.innerWidth - oskWidth - 40);
+                  const targetTop = Math.max(20, window.innerHeight - oskHeight - 40);
+                  
+                  if (typeof keyman.osk.setRect === 'function') {
+                    keyman.osk.setRect({ left: targetLeft, top: targetTop });
+                  } else if (typeof keyman.osk.setPos === 'function') {
+                    keyman.osk.setPos(targetLeft, targetTop);
+                  }
+                  hasPositionedOSK = true;
+                } catch (err) {
+                  console.warn("Failed to position Keyman OSK:", err);
+                }
+              }, 100);
+            }
+          });
+        }
+
+        // Hook up custom toggle button in input wrapper
+        const oskToggleBtn = document.getElementById('osk-toggle-btn');
+        if (oskToggleBtn) {
+          oskToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (keyman.osk) {
+              try {
+                if (keyman.osk.isEnabled()) {
+                  keyman.osk.hide();
+                  oskToggleBtn.classList.remove('active');
+                } else {
+                  keyman.osk.show();
+                  if (signfontSearch) {
+                    signfontSearch.focus();
+                  }
+                  oskToggleBtn.classList.add('active');
+                }
+              } catch (err) {
+                console.warn("Failed to toggle OSK:", err);
+              }
+            }
+          });
+        }
+
+        // Keep the toggler's visual state synced with the keyboard's visibility
+        if (keyman.osk) {
+          keyman.osk.addEventListener('show', () => {
+            if (oskToggleBtn) {
+              oskToggleBtn.classList.add('active');
+            }
+          });
+          keyman.osk.addEventListener('hide', () => {
+            if (oskToggleBtn) {
+              oskToggleBtn.classList.remove('active');
+            }
+          });
+        }
+      }
+    } catch (e) {
+      console.warn("Keyman failed to initialize: ", e);
+    }
+
+    // --- Initialize Application ---
+    window.addEventListener('DOMContentLoaded', () => {
+      // populate the Reference Grids in Sidebar
+      populateRefGrids();
+
+      // Programmatically disable Keyman on the English search field as a secondary check
+      if (typeof keyman !== 'undefined' && englishSearch) {
+        try {
+          keyman.disableControl(englishSearch);
+        } catch (e) {}
+      }
+      
+      // Populate whole dictionary initially
+      if (window.signFontDictionary) {
+        filteredDictionary = [...window.signFontDictionary];
+        renderDictionary();
+      }
+      
+      // Event Listeners for inputs
+      englishSearch.addEventListener('input', handleEnglishInput);
+      signfontSearch.addEventListener('input', handleSignfontInput);
+      signfontSearch.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+        }
+      });
+
+      // Programmatically enforce the font family inline to prevent Keyman resets
+      const enforceFont = () => {
+        signfontSearch.style.setProperty('font-family', "'SignFont New', 'SignFontNew', sans-serif", 'important');
+      };
+      signfontSearch.addEventListener('focus', enforceFont);
+      signfontSearch.addEventListener('input', enforceFont);
+      signfontSearch.addEventListener('click', enforceFont);
+      signfontSearch.addEventListener('keyup', enforceFont);
+      signfontSearch.addEventListener('keydown', enforceFont);
+      setInterval(enforceFont, 250);
+      
+      clearEnglishBtn.addEventListener('click', () => {
+        englishSearch.value = '';
+        clearEnglishBtn.classList.remove('active');
+        refilter();
+      });
+      
+      clearSignfontBtn.addEventListener('click', () => {
+        signfontSearch.value = '';
+        clearSignfontBtn.classList.remove('active');
+        refilter();
+      });
+
+      loadMoreBtn.addEventListener('click', () => {
+        currentLimit += itemsPerChunk;
+        renderDictionary();
+      });
+
+      // Reference drawer interactions
+      openRefBtn.addEventListener('click', () => {
+        refDrawerOverlay.classList.add('active');
+      });
+      closeRefBtn.addEventListener('click', () => {
+        refDrawerOverlay.classList.remove('active');
+      });
+      refDrawerOverlay.addEventListener('click', (e) => {
+        if (e.target === refDrawerOverlay) {
+          refDrawerOverlay.classList.remove('active');
+        }
+      });
+
+      // Breakdown drawer interactions
+      closeBreakdownBtn.addEventListener('click', () => {
+        breakdownDrawerOverlay.classList.remove('active');
+      });
+      breakdownDrawerOverlay.addEventListener('click', (e) => {
+        if (e.target === breakdownDrawerOverlay) {
+          breakdownDrawerOverlay.classList.remove('active');
+        }
+      });
+
+      // Reference Tabs Switching
+      const refTabs = document.querySelectorAll('.drawer-tab');
+      refTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          refTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          const sections = document.querySelectorAll('.ref-section');
+          sections.forEach(s => s.classList.remove('active'));
+          
+          const target = tab.getAttribute('data-target');
+          document.getElementById(target).classList.add('active');
+        });
+      });
+
+      // Reference Panel Filtering
+      refSearch.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().strip ? e.target.value.toLowerCase().strip() : e.target.value.toLowerCase();
+        filterReferenceItems(query);
+      });
+    });
+
+    // --- Search Handlers ---
+    function handleEnglishInput() {
+      // Toggle clear button
+      if (englishSearch.value.length > 0) {
+        clearEnglishBtn.classList.add('active');
+      } else {
+        clearEnglishBtn.classList.remove('active');
+      }
+      
+      // Clear other search field
+      if (signfontSearch.value.length > 0) {
+        signfontSearch.value = '';
+        clearSignfontBtn.classList.remove('active');
+      }
+      
+      refilter();
+    }
+
+    function handleSignfontInput() {
+      // Toggle clear button
+      if (signfontSearch.value.length > 0) {
+        clearSignfontBtn.classList.add('active');
+      } else {
+        clearSignfontBtn.classList.remove('active');
+      }
+
+      // Clear other search field
+      if (englishSearch.value.length > 0) {
+        englishSearch.value = '';
+        clearEnglishBtn.classList.remove('active');
+      }
+      
+      refilter();
+    }
+
+    function refilter() {
+      const engQuery = englishSearch.value.toLowerCase().trim();
+      const signQuery = signfontSearch.value.trim(); // keep case as is since SignFont notations are case sensitive
+      
+      if (!window.signFontDictionary) return;
+
+      if (engQuery) {
+        filteredDictionary = window.signFontDictionary.filter(item => {
+          return item.english.toLowerCase().includes(engQuery);
+        });
+      } else if (signQuery) {
+        filteredDictionary = window.signFontDictionary.filter(item => {
+          return item.signs.some(sign => sign.includes(signQuery));
+        });
+      } else {
+        filteredDictionary = [...window.signFontDictionary];
+      }
+
+      currentLimit = itemsPerChunk;
+      renderDictionary();
+    }
+
+    // --- Render Cards Grid ---
+    function renderDictionary() {
+      if (filteredDictionary.length === 0) {
+        dictionaryGrid.innerHTML = `
+          <div class="loading-state" style="grid-column: 1 / -1; padding: 5rem 1rem;">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size: 3rem; color: var(--accent-primary); margin-bottom: 1.5rem;"></i>
+            <p style="font-size: 1.2rem; font-weight: 500;">No matching words or signs found.</p>
+            <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">Try refining your spelling or searching for another word.</p>
+          </div>
+        `;
+        resultsMeta.innerHTML = `Found <strong>0</strong> matching entries`;
+        loadMoreBox.style.display = 'none';
+        return;
+      }
+
+      const totalItems = filteredDictionary.length;
+      const displayChunk = filteredDictionary.slice(0, currentLimit);
+      
+      let html = '';
+      displayChunk.forEach((item, index) => {
+        html += `
+          <div class="card" onclick="openBreakdown('${item.english.replace(/'/g, "\\'")}', ${JSON.stringify(item.signs).replace(/"/g, '&quot;')})">
+            <div>
+              <div class="card-english">${escapeHtml(item.english)}</div>
+            </div>
+            <div class="card-signs-wrapper">
+              ${item.signs.map(sign => `
+                <div class="card-sign-row">
+                  <span class="signfont-notation">${escapeHtml(sign)}</span>
+                  <button class="copy-btn" onclick="copySign(event, '${sign.replace(/'/g, "\\'")}')" title="Copy notation">
+                    <i class="fa-regular fa-copy"></i>
+                  </button>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      });
+
+      dictionaryGrid.innerHTML = html;
+      
+      resultsMeta.innerHTML = `Showing <strong>${displayChunk.length}</strong> of <strong>${totalItems}</strong> matching entries`;
+
+      if (totalItems > currentLimit) {
+        loadMoreBox.style.display = 'flex';
+      } else {
+        loadMoreBox.style.display = 'none';
+      }
+    }
+
+    // --- Sign Breakdown Logic ---
+    function openBreakdown(english, signs) {
+      // Use the first sign transcription for breakdown
+      const sign = signs[0];
+      
+      breakdownTitle.innerHTML = `<i class="fa-solid fa-circle-nodes"></i> Breakdown: ${escapeHtml(english)}`;
+      breakdownNotationLarge.innerText = sign;
+      breakdownNotationRaw.innerText = `Raw transcription: ${sign}`;
+      
+      let itemsHtml = '';
+      
+      // Analyze character by character
+      for (let i = 0; i < sign.length; i++) {
+        const char = sign[i];
+        
+        let desc = '';
+        let category = '';
+        
+        if (HANDSHAPES[char]) {
+          desc = HANDSHAPES[char];
+          category = 'Handshape';
+        } else if (DIACRITICS[char]) {
+          desc = DIACRITICS[char];
+          category = 'Diacritic';
+        } else if (CONTACTS[char]) {
+          desc = CONTACTS[char];
+          category = 'Contacting Region';
+        } else if (LOCATIONS[char]) {
+          desc = LOCATIONS[char];
+          category = 'Location';
+        } else if (MOVEMENTS[char]) {
+          desc = MOVEMENTS[char];
+          category = 'Movement';
+        } else {
+          desc = 'Structural or unknown marker';
+          category = 'Marker';
+        }
+        
+        itemsHtml += `
+          <div class="breakdown-item">
+            <div class="breakdown-char">${escapeHtml(char)}</div>
+            <div class="breakdown-info">
+              <span class="breakdown-category">${category}</span>
+              <span class="breakdown-desc">${desc}</span>
+              <span class="breakdown-raw">Character code: ${char}</span>
+            </div>
+          </div>
+        `;
+      }
+      
+      breakdownContainer.innerHTML = itemsHtml;
+      breakdownDrawerOverlay.classList.add('active');
+    }
+
+    // --- Helper Utilities ---
+    function copySign(event, text) {
+      event.stopPropagation(); // prevent card click breakdown trigger
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`Copied sign: ${text}`);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    function showToast(message) {
+      toastMessage.innerText = message;
+      toast.classList.add('active');
+      setTimeout(() => {
+        toast.classList.remove('active');
+      }, 2500);
+    }
+
+    function escapeHtml(string) {
+      return String(string).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // --- Populate Reference Side Panel Grids ---
+    function populateRefGrids() {
+      // Handshapes
+      const containerHandshapes = document.getElementById('grid-handshapes');
+      let html = '';
+      for (const [key, value] of Object.entries(HANDSHAPES)) {
+        html += createRefCardHtml(key, value);
+      }
+      containerHandshapes.innerHTML = html;
+
+      // Diacritics
+      const containerDiacritics = document.getElementById('grid-diacritics');
+      html = '';
+      for (const [key, value] of Object.entries(DIACRITICS)) {
+        html += createRefCardHtml(key, value);
+      }
+      containerDiacritics.innerHTML = html;
+
+      // Contacts
+      const containerContacts = document.getElementById('grid-contacts');
+      html = '';
+      for (const [key, value] of Object.entries(CONTACTS)) {
+        html += createRefCardHtml(key, value);
+      }
+      containerContacts.innerHTML = html;
+
+      // Locations
+      const containerLocations = document.getElementById('grid-locations');
+      html = '';
+      for (const [key, value] of Object.entries(LOCATIONS)) {
+        html += createRefCardHtml(key, value);
+      }
+      containerLocations.innerHTML = html;
+
+      // Movements
+      const containerMovements = document.getElementById('grid-movements');
+      html = '';
+      for (const [key, value] of Object.entries(MOVEMENTS)) {
+        html += createRefCardHtml(key, value);
+      }
+      containerMovements.innerHTML = html;
+    }
+
+    function createRefCardHtml(key, value) {
+      return `
+        <div class="ref-card" data-search="${escapeHtml(key).toLowerCase()} ${escapeHtml(value).toLowerCase()}">
+          <div class="ref-key">${escapeHtml(key)}</div>
+          <div class="ref-desc-wrapper">
+            <span class="ref-char-val">Code: ${escapeHtml(key)}</span>
+            <span class="ref-desc">${escapeHtml(value)}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function filterReferenceItems(query) {
+      const cards = document.querySelectorAll('.ref-card');
+      cards.forEach(card => {
+        const searchText = card.getAttribute('data-search');
+        if (searchText.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

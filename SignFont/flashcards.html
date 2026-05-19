@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignFont Flashcards Practice</title>
+  <meta name="description"
+    content="An interactive, high-fidelity practice suite for learning ASL SignFont transcriptions through 3D flipping cards and interactive typing tests.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      --glass-bg: rgba(30, 41, 59, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-hover-border: rgba(255, 255, 255, 0.15);
+
+      --accent-primary: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      --accent-glow: rgba(124, 58, 237, 0.3);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(15, 23, 42, 0.6);
+
+      --color-correct: #10b981;
+      --color-incorrect: #ef4444;
+
+      --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: 'SignFont New';
+      src: url('./SignFontNew.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Background decorative blobs */
+    .bg-blobs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.15;
+    }
+
+    .blob-1 {
+      top: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: #7c3aed;
+    }
+
+    .blob-2 {
+      bottom: -10%;
+      left: -10%;
+      width: 45vw;
+      height: 45vw;
+      background: #06b6d4;
+    }
+
+    /* Main Container */
+    .app-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.75rem;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.4));
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0.5rem auto 1.5rem auto;
+    }
+
+    .btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-spring);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 15px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      border: none;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--glass-border);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+      border: none;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-success:hover {
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+      border: none;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    }
+
+    .btn-danger:hover {
+      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+    }
+
+    /* Keyman container modifications */
+    .keyman-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .keyboard-toggle-btn {
+      position: absolute;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(4px);
+      z-index: 10;
+    }
+
+    .keyboard-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(139, 92, 246, 0.4);
+      color: #a78bfa;
+      box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+    }
+
+    .keyboard-toggle-btn.active {
+      background: rgba(139, 92, 246, 0.25);
+      border-color: rgba(139, 92, 246, 0.5);
+      color: #c084fc;
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+    }
+
+    /* Setup Section */
+    .setup-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .setup-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #c084fc;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 1rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .form-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+    }
+
+    .radio-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .radio-btn {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .radio-btn i {
+      font-size: 1.3rem;
+    }
+
+    .radio-btn span {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .radio-btn:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--text-main);
+    }
+
+    .radio-input {
+      display: none;
+    }
+
+    .radio-input:checked+.radio-btn {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: var(--accent-primary);
+      color: var(--text-main);
+      box-shadow: 0 0 10px rgba(124, 58, 237, 0.2);
+    }
+
+    .select-input {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .select-input:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 2px var(--accent-glow);
+    }
+
+    /* Active Practice Session */
+    .session-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .session-header {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .header-stat i {
+      color: var(--accent-primary);
+    }
+
+    .header-stat.streak i {
+      color: #f59e0b;
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(245, 158, 11, 0));
+      }
+
+      100% {
+        transform: scale(1.15);
+        filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
+      }
+    }
+
+    /* Glass Progress Bar */
+    .progress-wrapper {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      border-radius: 99px;
+      height: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--accent-gradient);
+      width: 0%;
+      border-radius: 99px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 3D Flashcard styles */
+    .card-scene {
+      perspective: 1000px;
+      width: 100%;
+      max-width: 550px;
+      height: 340px;
+      margin: 1.5rem auto;
+    }
+
+    .flashcard {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .flashcard.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--glass-border);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      transition: var(--transition-smooth);
+    }
+
+    .card-front {
+      background: var(--glass-bg);
+      background-image: radial-gradient(circle at top right, rgba(139, 92, 246, 0.1), transparent 70%);
+      color: var(--text-main);
+    }
+
+    .card-back {
+      background: rgba(30, 27, 75, 0.9);
+      background-image: radial-gradient(circle at bottom left, rgba(124, 58, 237, 0.15), transparent 70%);
+      border-color: rgba(139, 92, 246, 0.3);
+      transform: rotateY(180deg);
+    }
+
+    .card-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.1);
+      padding: 4px 12px;
+      border-radius: 99px;
+    }
+
+    .prompt-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-align: center;
+      word-break: break-word;
+      line-height: 1.2;
+    }
+
+    .prompt-text.signfont {
+      font-family: 'SignFont New', sans-serif !important;
+      font-size: 4rem;
+      letter-spacing: 0.05em;
+      color: #c084fc;
+      text-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
+    }
+
+    .answer-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-align: center;
+      word-break: break-word;
+      line-height: 1.2;
+    }
+
+    .answer-text.signfont {
+      font-family: 'SignFont New', sans-serif !important;
+      font-size: 4rem;
+      color: #34d399;
+      text-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
+    }
+
+    .click-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Answers / Inputs Container */
+    .answer-section {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      max-width: 550px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1.25rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.1rem 1.25rem 1.1rem 3.2rem;
+      font-family: inherit;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      transition: var(--transition-smooth);
+      height: 3.8rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    textarea.search-input {
+      resize: none;
+      overflow: hidden;
+      white-space: nowrap;
+      padding-top: 1.2rem;
+    }
+
+    /* Target inputs strictly to override Keyman styles */
+    html body textarea#signfont-answer,
+    html body textarea#signfont-answer.signfont-input,
+    html body textarea#signfont-answer.keymanweb-font {
+      font-family: 'SignFont New', 'SignFontNew', sans-serif !important;
+      font-size: 1.4rem;
+      padding-right: 4rem !important;
+    }
+
+    html body input#english-answer {
+      font-family: 'Outfit', sans-serif !important;
+    }
+
+    .kmw-disabled:not(input):not(textarea) {
+      display: none !important;
+    }
+
+    /* Validation Feedback */
+    .feedback-box {
+      border-radius: 14px;
+      padding: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .feedback-box.correct {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.2);
+      color: #a7f3d0;
+    }
+
+    .feedback-box.correct i {
+      color: #34d399;
+      font-size: 1.2rem;
+    }
+
+    .feedback-box.incorrect {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+    }
+
+    .feedback-box.incorrect i {
+      color: #f87171;
+      font-size: 1.2rem;
+    }
+
+    .feedback-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .answer-comparison {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    .comp-line {
+      display: flex;
+      gap: 8px;
+    }
+
+    .comp-label {
+      color: var(--text-muted);
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    .comp-val {
+      font-weight: 600;
+    }
+
+    .comp-val.correct-val {
+      color: #34d399;
+    }
+
+    .comp-val.correct-val.signfont {
+      font-family: 'SignFont New' !important;
+      font-size: 1.2rem;
+    }
+
+    .comp-val.user-val {
+      color: #f87171;
+    }
+
+    .comp-val.user-val.signfont {
+      font-family: 'SignFont New' !important;
+      font-size: 1.2rem;
+    }
+
+    /* Buttons row */
+    .actions-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      max-width: 550px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .actions-row .btn {
+      flex: 1;
+      justify-content: center;
+    }
+
+    /* Summary Section */
+    .summary-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .score-circle-wrapper {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .score-svg {
+      transform: rotate(-90deg);
+      width: 160px;
+      height: 160px;
+    }
+
+    .score-bg-ring {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.05);
+      stroke-width: 12;
+    }
+
+    .score-progress-ring {
+      fill: none;
+      stroke: url(#scoreGrad);
+      stroke-width: 12;
+      stroke-dasharray: 439.8;
+      /* 2 * PI * r */
+      stroke-dashoffset: 439.8;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .score-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Space Grotesk', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .score-percent {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .score-fraction {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-box {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .stat-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .stat-value.highlight {
+      color: #c084fc;
+    }
+
+    .review-section {
+      text-align: left;
+      margin-top: 3rem;
+      border-top: 1px solid var(--glass-border);
+      padding-top: 2rem;
+    }
+
+    .review-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .review-table-wrapper {
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.3);
+    }
+
+    .review-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .review-table th,
+    .review-table td {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .review-table th {
+      background: rgba(30, 41, 59, 0.8);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      color: var(--accent-primary);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .review-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .review-row:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .status-badge.correct {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+
+    .status-badge.incorrect {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+    }
+
+    .review-sign {
+      font-family: 'SignFont New' !important;
+      font-size: 1.5rem;
+      color: #c084fc;
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 6px;
+      font-size: 0.9rem;
+      transition: var(--transition-smooth);
+      border-radius: 6px;
+    }
+
+    .copy-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #10b981;
+      color: #e6fcf5;
+      padding: 0.8rem 1.5rem;
+      border-radius: 9999px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: var(--transition-spring);
+      opacity: 0;
+    }
+
+    .toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: auto;
+      padding: 2.5rem 0 1rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Loading Dataset State */
+    .loading-state {
+      text-align: center;
+      padding: 5rem 1rem;
+      color: var(--text-muted);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .loading-spinner {
+      font-size: 3rem;
+      color: var(--accent-primary);
+      animation: spin 1s linear infinite;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Confirmation Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 2.25rem;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      transform: translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      text-align: center;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-icon {
+      font-size: 2.75rem;
+      color: #f59e0b;
+      filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.4));
+    }
+
+    .modal-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.50rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .modal-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .modal-actions .btn {
+      flex: 1;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background Art -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header>
+      <div class="logo-container">
+        <i class="fa-solid fa-graduation-cap logo-icon"></i>
+        <div class="keyman-status-badge">
+          <i class="fa-solid fa-keyboard"></i> Keyman Integrated
+        </div>
+      </div>
+      <h1>SignFont Practice</h1>
+      <p class="tagline">Hone your bidirectional ASL SignFont symbol literacy through customized interactive testing
+        sessions.</p>
+    </header>
+
+    <!-- Main Workspace -->
+    <main style="flex: 1;">
+      <!-- LOADING DATASET STATE -->
+      <div id="loading-box" class="loading-state">
+        <i class="fa-solid fa-circle-notch loading-spinner"></i>
+        <p style="font-size: 1.15rem; font-weight: 500; color: var(--text-main);">Loading practice material...</p>
+        <p style="margin-top: 0.5rem;">Preparing thousands of ASL dictionary card records.</p>
+      </div>
+
+      <!-- CONFIG / SETUP SCREEN (Initially hidden, revealed when dictionary loads) -->
+      <div id="setup-box" class="setup-card" style="display: none;">
+        <h2 class="setup-title">
+          <i class="fa-solid fa-sliders"></i> Practice Settings
+        </h2>
+
+        <div class="form-grid">
+          <!-- Test Mode Choice -->
+          <div class="form-group">
+            <label class="form-label">Practice Mode</label>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="practice-mode" value="flip" class="radio-input" checked>
+                <div class="radio-btn">
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                  <span>Flip Mode</span>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="practice-mode" value="type" class="radio-input">
+                <div class="radio-btn">
+                  <i class="fa-solid fa-keyboard"></i>
+                  <span>Type Mode</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Prompt Direction Choice -->
+          <div class="form-group">
+            <label class="form-label">Testing Direction</label>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="practice-direction" value="eng-to-sign" class="radio-input" checked>
+                <div class="radio-btn">
+                  <i class="fa-solid fa-font"></i>
+                  <span>English → Sign</span>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="practice-direction" value="sign-to-eng" class="radio-input">
+                <div class="radio-btn">
+                  <i class="fa-solid fa-hands-asl-interpreting"></i>
+                  <span>Sign → English</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Number of Cards Choice -->
+          <div class="form-group">
+            <label class="form-label" for="session-size">Session Length</label>
+            <select class="select-input" id="session-size">
+              <option value="10">10 Cards</option>
+              <option value="20" selected>20 Cards</option>
+              <option value="50">50 Cards</option>
+              <option value="all">All Dictionary Cards (1,500+)</option>
+            </select>
+          </div>
+
+          <!-- Alphabetical scope picker -->
+          <div class="form-group">
+            <label class="form-label" for="session-scope">Vocabulary Scope</label>
+            <select class="select-input" id="session-scope">
+              <option value="all" selected>Full Dictionary (Randomized)</option>
+              <option value="A-E">Words beginning with A to E</option>
+              <option value="F-J">Words beginning with F to J</option>
+              <option value="K-O">Words beginning with K to O</option>
+              <option value="P-T">Words beginning with P to T</option>
+              <option value="U-Z">Words beginning with U to Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+          <a href="./dictionary.html" class="btn btn-outline" style="flex: 1; justify-content: center;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Dictionary
+          </a>
+          <button class="btn btn-primary" id="start-session-btn" style="flex: 1.5; justify-content: center;">
+            <i class="fa-solid fa-play"></i> Start Practice Session
+          </button>
+        </div>
+      </div>
+
+      <!-- ACTIVE SESSION SCREEN (Initially Hidden) -->
+      <div id="session-box" class="session-container" style="display: none;">
+        <!-- Status Bar -->
+        <div class="session-header">
+          <div class="header-stat score-label">
+            <i class="fa-solid fa-circle-check" style="color: #34d399;"></i> Correct: <strong
+              id="stat-correct">0</strong>
+          </div>
+          <div class="header-stat score-label">
+            <i class="fa-solid fa-circle-xmark" style="color: #f87171;"></i> Incorrect: <strong
+              id="stat-incorrect">0</strong>
+          </div>
+          <div class="header-stat streak" id="streak-wrapper">
+            <i class="fa-solid fa-fire"></i> Streak: <strong id="stat-streak">0</strong>
+          </div>
+          <div class="header-stat">
+            <i class="fa-solid fa-clock"></i> Time: <strong id="stat-time">00:00</strong>
+          </div>
+        </div>
+
+        <!-- Glass Progress Bar -->
+        <div class="progress-wrapper">
+          <div class="progress-bar" id="progress-indicator"></div>
+        </div>
+
+        <div style="text-align: center; color: var(--text-muted); font-size: 0.95rem; font-weight: 500;"
+          id="card-counter">
+          Card 1 of 20
+        </div>
+
+        <!-- The 3D Flashcard Widget -->
+        <div class="card-scene">
+          <div class="flashcard" id="interactive-card">
+            <!-- Front Face -->
+            <div class="card-face card-front">
+              <span class="card-label" id="front-label">PROMPT</span>
+              <div class="prompt-text" id="prompt-element">Prompt text loads here</div>
+              <div class="click-hint" id="flip-hint-front">
+                <i class="fa-solid fa-arrows-rotate"></i> Click card to flip
+              </div>
+            </div>
+            <!-- Back Face -->
+            <div class="card-face card-back">
+              <span class="card-label" id="back-label">CORRECT ANSWER</span>
+              <div class="answer-text" id="answer-element">Answer text loads here</div>
+              <div class="click-hint">
+                <i class="fa-solid fa-arrows-rotate"></i> Click card to flip back
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Typing Inputs Panel (Shown in Type Mode) -->
+        <div class="answer-section" id="typing-panel" style="display: none;">
+          <label class="form-label" style="font-size: 0.85rem;" id="typing-input-label">Your Answer</label>
+
+          <!-- Typing interface for English answers -->
+          <div class="input-wrapper" id="english-input-wrapper" style="display: none;">
+            <i class="fa-solid fa-font input-icon"></i>
+            <input type="text" id="english-answer" class="search-input" placeholder="Type the English translation..."
+              autocomplete="off" spellcheck="false" data-keyman-disabled="true">
+          </div>
+
+          <!-- Typing interface for SignFont answers -->
+          <div class="input-wrapper" id="signfont-input-wrapper" style="display: none;">
+            <i class="fa-solid fa-keyboard input-icon"></i>
+            <textarea id="signfont-answer" class="search-input signfont-input" placeholder="_ d((Hwy, b&&BAy nT%%KEwy"
+              rows="1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+            <button type="button" class="keyboard-toggle-btn" id="osk-toggle-btn" title="Toggle On-Screen Keyboard">
+              <i class="fa-solid fa-keyboard"></i>
+            </button>
+          </div>
+
+          <!-- Validation Inline Feedback Container -->
+          <div id="validation-feedback" style="display: none;">
+            <!-- Appended programmatically -->
+          </div>
+        </div>
+
+        <!-- Controls Action Row -->
+        <div class="actions-row">
+          <button class="btn btn-outline" id="quit-session-btn" style="flex: 0.5;">
+            <i class="fa-solid fa-xmark"></i> Quit
+          </button>
+
+          <!-- Buttons dynamically toggled depending on mode & state -->
+          <button class="btn btn-primary" id="flip-btn">
+            <i class="fa-solid fa-arrows-rotate"></i> Flip Card
+          </button>
+
+          <button class="btn btn-success" id="got-correct-btn" style="display: none;">
+            <i class="fa-solid fa-check"></i> Got it Right
+          </button>
+          <button class="btn btn-danger" id="got-incorrect-btn" style="display: none;">
+            <i class="fa-solid fa-times"></i> Got it Wrong
+          </button>
+
+          <button class="btn btn-outline" id="skip-btn" style="display: none;">
+            <i class="fa-solid fa-forward"></i> Skip Card
+          </button>
+          <button class="btn btn-primary" id="submit-btn" style="display: none;">
+            <i class="fa-solid fa-paper-plane"></i> Submit Answer
+          </button>
+          <button class="btn btn-primary" id="next-btn" style="display: none;">
+            <i class="fa-solid fa-arrow-right"></i> Next Card
+          </button>
+        </div>
+      </div>
+
+      <!-- RESULTS SUMMARY SCREEN (Initially Hidden) -->
+      <div id="results-box" class="summary-card" style="display: none;">
+        <h2 class="setup-title"
+          style="justify-content: center; margin-bottom: 1.5rem; border-bottom: none; padding-bottom: 0;">
+          <i class="fa-solid fa-award"></i> Practice Complete!
+        </h2>
+
+        <!-- Animated Ring Progress Graphic -->
+        <div class="score-circle-wrapper">
+          <svg class="score-svg" viewBox="0 0 160 160">
+            <defs>
+              <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a78bfa" />
+                <stop offset="100%" stop-color="#7c3aed" />
+              </linearGradient>
+            </defs>
+            <circle class="score-bg-ring" cx="80" cy="80" r="70" />
+            <circle class="score-progress-ring" id="score-ring" cx="80" cy="80" r="70" />
+          </svg>
+          <div class="score-text">
+            <span class="score-percent" id="score-percent-val">0%</span>
+            <span class="score-fraction" id="score-fraction-val">0 / 0</span>
+          </div>
+        </div>
+
+        <!-- High Fidelity Stats grid -->
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-label">Correct</span>
+            <span class="stat-value" id="summary-correct" style="color: #34d399;">0</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Incorrect</span>
+            <span class="stat-value" id="summary-incorrect" style="color: #f87171;">0</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Best Streak</span>
+            <span class="stat-value highlight" id="summary-streak">0</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Time Spent</span>
+            <span class="stat-value" id="summary-time">00:00</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+          <button class="btn btn-outline" id="restart-session-btn" style="flex: 1; justify-content: center;">
+            <i class="fa-solid fa-arrows-rotate"></i> Practice Again
+          </button>
+          <button class="btn btn-primary" id="new-session-btn" style="flex: 1.5; justify-content: center;">
+            <i class="fa-solid fa-sliders"></i> New Practice Session
+          </button>
+        </div>
+
+        <!-- Tabular Review list -->
+        <div class="review-section">
+          <h3 class="review-title">
+            <i class="fa-solid fa-circle-nodes text-accent"></i> Question Review
+          </h3>
+
+          <div class="review-table-wrapper">
+            <table class="review-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Prompt</th>
+                  <th style="width: 35%;">Your Guess</th>
+                  <th style="width: 25%;">Correct Answer</th>
+                  <th style="width: 15%; text-align: center;">Status</th>
+                </tr>
+              </thead>
+              <tbody id="review-table-body">
+                <!-- Injected programmatically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Toast Alert Alert -->
+    <div class="toast" id="toast">
+      <i class="fa-solid fa-circle-check"></i>
+      <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <!-- Premium Glassmorphic Confirmation Modal -->
+    <div id="confirm-modal" class="modal-overlay" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <i class="fa-solid fa-triangle-exclamation modal-icon"></i>
+          <h3>Quit Practice Session?</h3>
+        </div>
+        <p class="modal-text">Are you sure you want to quit? Your current session progress, active score, and streak
+          will be lost.</p>
+        <div class="modal-actions">
+          <button class="btn btn-outline" id="confirm-cancel-btn">
+            <i class="fa-solid fa-play"></i> Keep Playing
+          </button>
+          <button class="btn btn-danger" id="confirm-ok-btn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Yes, Quit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 SignFont Dictionary Project. Powered by the professional ASL SignFont System.</p>
+    </footer>
+  </div>
+
+  <!-- Keyman Web Engine Integration -->
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/keymanweb.js'></script>
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/kmwuitoggle.js'></script>
+
+  <!-- Load Dictionary Data from Clean Generated File -->
+  <script src="./dictionary-data.js"></script>
+
+  <script>
+    // Global parameters for session
+    let db = [];
+    let practiceMode = 'flip'; // 'flip' or 'type'
+    let practiceDirection = 'eng-to-sign'; // 'eng-to-sign' or 'sign-to-eng'
+    let sessionSize = 20;
+    let sessionScope = 'all';
+
+    // Active state parameters
+    let sessionCards = [];
+    let currentIndex = 0;
+    let correctCount = 0;
+    let incorrectCount = 0;
+    let streakCount = 0;
+    let bestStreak = 0;
+    let timerSeconds = 0;
+    let timerInterval = null;
+    let isFlipped = false;
+    let resultsHistory = [];
+
+    // DOM Elements
+    const loadingBox = document.getElementById('loading-box');
+    const setupBox = document.getElementById('setup-box');
+    const sessionBox = document.getElementById('session-box');
+    const resultsBox = document.getElementById('results-box');
+
+    const startSessionBtn = document.getElementById('start-session-btn');
+    const quitSessionBtn = document.getElementById('quit-session-btn');
+    const restartSessionBtn = document.getElementById('restart-session-btn');
+    const newSessionBtn = document.getElementById('new-session-btn');
+
+    const flipBtn = document.getElementById('flip-btn');
+    const gotCorrectBtn = document.getElementById('got-correct-btn');
+    const gotIncorrectBtn = document.getElementById('got-incorrect-btn');
+
+    const submitBtn = document.getElementById('submit-btn');
+    const skipBtn = document.getElementById('skip-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    const interactiveCard = document.getElementById('interactive-card');
+    const promptElement = document.getElementById('prompt-element');
+    const answerElement = document.getElementById('answer-element');
+    const frontLabel = document.getElementById('front-label');
+    const backLabel = document.getElementById('back-label');
+    const flipHintFront = document.getElementById('flip-hint-front');
+
+    const statCorrect = document.getElementById('stat-correct');
+    const statIncorrect = document.getElementById('stat-incorrect');
+    const statStreak = document.getElementById('stat-streak');
+    const statTime = document.getElementById('stat-time');
+    const streakWrapper = document.getElementById('streak-wrapper');
+    const progressIndicator = document.getElementById('progress-indicator');
+    const cardCounter = document.getElementById('card-counter');
+
+    const typingPanel = document.getElementById('typing-panel');
+    const typingInputLabel = document.getElementById('typing-input-label');
+    const englishInputWrapper = document.getElementById('english-input-wrapper');
+    const englishAnswer = document.getElementById('english-answer');
+    const signfontInputWrapper = document.getElementById('signfont-input-wrapper');
+    const signfontAnswer = document.getElementById('signfont-answer');
+    const validationFeedback = document.getElementById('validation-feedback');
+
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+
+    // Modal elements
+    const confirmModal = document.getElementById('confirm-modal');
+    const confirmCancelBtn = document.getElementById('confirm-cancel-btn');
+    const confirmOkBtn = document.getElementById('confirm-ok-btn');
+
+    // --- Keyman Keyboard Setup ---
+    let keymanAvailable = false;
+    try {
+      if (typeof keyman !== 'undefined') {
+        keyman.init({
+          attachType: 'auto',
+          ui: {
+            name: 'float',
+            right: true
+          }
+        });
+        keyman.addKeyboards({
+          name: 'SignFont',
+          id: 'signfont',
+          filename: './signfont.js',
+          version: '1.0',
+          language: [{
+            name: 'SignFont',
+            id: 'en',
+            region: 'us'
+          }],
+          font: {
+            family: 'SignFont New',
+            source: ['./SignFontNew.ttf']
+          }
+        });
+        keymanAvailable = true;
+
+        // Detach Keyman dynamically from the English input field
+        if (englishAnswer) {
+          keyman.disableControl(englishAnswer);
+        }
+
+        // Manage OSK auto-repositioning to the side on desktop
+        let hasPositionedOSK = false;
+        if (keyman.osk) {
+          keyman.osk.addEventListener('show', () => {
+            if (!hasPositionedOSK) {
+              setTimeout(() => {
+                try {
+                  // Only programmatically position if user hasn't manually moved it yet
+                  if (typeof keyman.osk.userLocated === 'function' && keyman.osk.userLocated()) {
+                    hasPositionedOSK = true;
+                    return;
+                  }
+
+                  const rect = keyman.osk.getRect();
+                  const oskWidth = rect.width || 600;
+                  const oskHeight = rect.height || 250;
+
+                  // Calculate a comfortable bottom-right margin on wide screen
+                  const targetLeft = Math.max(20, window.innerWidth - oskWidth - 40);
+                  const targetTop = Math.max(20, window.innerHeight - oskHeight - 40);
+
+                  if (typeof keyman.osk.setRect === 'function') {
+                    keyman.osk.setRect({ left: targetLeft, top: targetTop });
+                  } else if (typeof keyman.osk.setPos === 'function') {
+                    keyman.osk.setPos(targetLeft, targetTop);
+                  }
+                  hasPositionedOSK = true;
+                } catch (err) {
+                  console.warn("Failed to position Keyman OSK:", err);
+                }
+              }, 100);
+            }
+          });
+        }
+
+        // Hook up custom toggle button in input wrapper
+        const oskToggleBtn = document.getElementById('osk-toggle-btn');
+        if (oskToggleBtn) {
+          oskToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (keyman.osk) {
+              try {
+                if (keyman.osk.isEnabled()) {
+                  keyman.osk.hide();
+                  oskToggleBtn.classList.remove('active');
+                } else {
+                  keyman.osk.show();
+                  if (signfontAnswer) {
+                    signfontAnswer.focus();
+                  }
+                  oskToggleBtn.classList.add('active');
+                }
+              } catch (err) {
+                console.warn("Failed to toggle OSK:", err);
+              }
+            }
+          });
+        }
+
+        // Keep the toggler's visual state synced with the keyboard's visibility
+        if (keyman.osk) {
+          keyman.osk.addEventListener('show', () => {
+            if (oskToggleBtn) {
+              oskToggleBtn.classList.add('active');
+            }
+          });
+          keyman.osk.addEventListener('hide', () => {
+            if (oskToggleBtn) {
+              oskToggleBtn.classList.remove('active');
+            }
+          });
+        }
+      }
+    } catch (e) {
+      console.warn("Keyman failed to initialize: ", e);
+    }
+
+    // --- Initialize Application ---
+    function initApplication() {
+      // Check if dataset is successfully loaded
+      if (window.signFontDictionary && window.signFontDictionary.length > 0) {
+        db = window.signFontDictionary;
+        loadingBox.style.display = 'none';
+        setupBox.style.display = 'block';
+      } else {
+        loadingBox.innerHTML = `
+          <i class="fa-solid fa-triangle-exclamation" style="font-size: 3rem; color: #f87171; margin-bottom: 1.5rem;"></i>
+          <p style="font-size: 1.2rem; font-weight: 500; color: var(--text-main);">Dictionary dataset missing</p>
+          <p style="margin-top: 0.5rem; color: var(--text-muted);">Please make sure dictionary-data.js exists in the SignFont directory.</p>
+        `;
+      }
+
+      // Smart Keyman disabler check
+      if (typeof keyman !== 'undefined' && englishAnswer) {
+        try {
+          keyman.disableControl(englishAnswer);
+        } catch (e) { }
+      }
+
+      // Hook up UI listeners
+      setupBoxEventListeners();
+    }
+
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', initApplication);
+    } else {
+      initApplication();
+    }
+
+    function setupBoxEventListeners() {
+      // Start session button
+      startSessionBtn.addEventListener('click', startPracticeSession);
+
+      // quit session buttons
+      quitSessionBtn.addEventListener('click', confirmAndQuit);
+      restartSessionBtn.addEventListener('click', restartCurrentSession);
+      newSessionBtn.addEventListener('click', backToConfigScreen);
+
+      // Confirmation Modal Actions
+      confirmCancelBtn.addEventListener('click', () => {
+        confirmModal.classList.remove('active');
+        setTimeout(() => {
+          confirmModal.style.display = 'none';
+        }, 300);
+      });
+
+      confirmOkBtn.addEventListener('click', () => {
+        confirmModal.classList.remove('active');
+        setTimeout(() => {
+          confirmModal.style.display = 'none';
+          backToConfigScreen();
+        }, 300);
+      });
+
+      // Close modal on escape key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && confirmModal.classList.contains('active')) {
+          confirmCancelBtn.click();
+        }
+      });
+
+      // Card Flip actions
+      interactiveCard.addEventListener('click', () => {
+        // card flipping is allowed in both Flip mode (at any time)
+        // and Type mode (only after submission to inspect composition details)
+        if (practiceMode === 'flip') {
+          toggleCardFlip();
+        } else {
+          // in Type mode, flipping is permitted only after answer submission
+          if (submitBtn.style.display === 'none' && nextBtn.style.display === 'inline-flex') {
+            toggleCardFlip();
+          }
+        }
+      });
+
+      flipBtn.addEventListener('click', toggleCardFlip);
+
+      // Self grading buttons (Flip Mode)
+      gotCorrectBtn.addEventListener('click', () => handleSelfGrade(true));
+      gotIncorrectBtn.addEventListener('click', () => handleSelfGrade(false));
+
+      // Submitting / Skipping buttons (Type Mode)
+      submitBtn.addEventListener('click', validateUserSubmission);
+      skipBtn.addEventListener('click', handleSkipCard);
+      nextBtn.addEventListener('click', transitionToNextCard);
+
+      // Keyman Font-Enforcer to avoid dynamic input overrides
+      const enforceFont = () => {
+        signfontAnswer.style.setProperty('font-family', "'SignFont New', 'SignFontNew', sans-serif", 'important');
+      };
+      signfontAnswer.addEventListener('focus', enforceFont);
+      signfontAnswer.addEventListener('input', enforceFont);
+      signfontAnswer.addEventListener('click', enforceFont);
+      signfontAnswer.addEventListener('keyup', enforceFont);
+      signfontAnswer.addEventListener('keydown', enforceFont);
+      setInterval(enforceFont, 250);
+
+      // Prevent textarea newline breaks on Enter inside SignFont input field
+      signfontAnswer.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (submitBtn.style.display !== 'none' && !submitBtn.disabled) {
+            validateUserSubmission();
+          }
+        }
+      });
+
+      // Enable Enter submission on English input field
+      englishAnswer.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          if (submitBtn.style.display !== 'none' && !submitBtn.disabled) {
+            validateUserSubmission();
+          }
+        }
+      });
+    }
+
+    // --- Card Flipping Animation ---
+    function toggleCardFlip() {
+      isFlipped = !isFlipped;
+      if (isFlipped) {
+        interactiveCard.classList.add('flipped');
+        if (practiceMode === 'flip') {
+          flipBtn.style.display = 'none';
+          gotCorrectBtn.style.display = 'inline-flex';
+          gotIncorrectBtn.style.display = 'inline-flex';
+        }
+      } else {
+        interactiveCard.classList.remove('flipped');
+        if (practiceMode === 'flip') {
+          flipBtn.style.display = 'inline-flex';
+          gotCorrectBtn.style.display = 'none';
+          gotIncorrectBtn.style.display = 'none';
+        }
+      }
+    }
+
+    // --- Practice Engine Start ---
+    function startPracticeSession() {
+      // Gather configs
+      practiceMode = document.querySelector('input[name="practice-mode"]:checked').value;
+      practiceDirection = document.querySelector('input[name="practice-direction"]:checked').value;
+      sessionSize = document.getElementById('session-size').value;
+      sessionScope = document.getElementById('session-scope').value;
+
+      // Filter DB according to scope selection
+      let vocabularyPool = [...db];
+      if (sessionScope !== 'all') {
+        const ranges = {
+          'A-E': /^[a-e]/i,
+          'F-J': /^[f-j]/i,
+          'K-O': /^[k-o]/i,
+          'P-T': /^[p-t]/i,
+          'U-Z': /^[u-z]/i
+        };
+        const activeRegex = ranges[sessionScope];
+        vocabularyPool = db.filter(item => activeRegex.test(item.english));
+      }
+
+      if (vocabularyPool.length === 0) {
+        showToast("Selected scope has no words! Try another scope.");
+        return;
+      }
+
+      // Shuffle pool
+      shuffleArray(vocabularyPool);
+
+      // Select segment
+      const targetSize = sessionSize === 'all' ? vocabularyPool.length : parseInt(sessionSize, 10);
+      sessionCards = vocabularyPool.slice(0, targetSize);
+
+      // Reset statistics state
+      currentIndex = 0;
+      correctCount = 0;
+      incorrectCount = 0;
+      streakCount = 0;
+      bestStreak = 0;
+      timerSeconds = 0;
+      resultsHistory = [];
+      isFlipped = false;
+      interactiveCard.classList.remove('flipped');
+
+      // Update HUD stats
+      statCorrect.innerText = '0';
+      statIncorrect.innerText = '0';
+      statStreak.innerText = '0';
+      streakWrapper.style.opacity = '0';
+      progressIndicator.style.width = '0%';
+
+      // Configure Active Panels
+      setupBox.style.display = 'none';
+      sessionBox.style.display = 'flex';
+      resultsBox.style.display = 'none';
+
+      // Setup inputs depending on mode
+      if (practiceMode === 'type') {
+        typingPanel.style.display = 'block';
+        flipBtn.style.display = 'none';
+        submitBtn.style.display = 'inline-flex';
+        skipBtn.style.display = 'inline-flex';
+        nextBtn.style.display = 'none';
+        flipHintFront.innerHTML = `<i class="fa-solid fa-lock"></i> Flip locked until submitted`;
+      } else {
+        typingPanel.style.display = 'none';
+        flipBtn.style.display = 'inline-flex';
+        submitBtn.style.display = 'none';
+        skipBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        flipHintFront.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> Click card to flip`;
+      }
+
+      // Set Timer
+      startTimer();
+
+      // Render first card
+      displayCardAtIndex();
+    }
+
+    // --- Render Active Card ---
+    function displayCardAtIndex() {
+      isFlipped = false;
+      interactiveCard.classList.remove('flipped');
+
+      const item = sessionCards[currentIndex];
+      cardCounter.innerText = `Card ${currentIndex + 1} of ${sessionCards.length}`;
+      progressIndicator.style.width = `${(currentIndex / sessionCards.length) * 100}%`;
+
+      // Clear previous validation feedback
+      validationFeedback.style.display = 'none';
+      validationFeedback.innerHTML = '';
+
+      // Enable Submit buttons
+      submitBtn.disabled = false;
+      skipBtn.style.display = practiceMode === 'type' ? 'inline-flex' : 'none';
+      submitBtn.style.display = practiceMode === 'type' ? 'inline-flex' : 'none';
+      nextBtn.style.display = 'none';
+
+      // Switch prompt and answer depending on Testing Direction
+      if (practiceDirection === 'eng-to-sign') {
+        // English prompt on front
+        frontLabel.innerText = "Translate English word to SignFont";
+        promptElement.innerText = item.english;
+        promptElement.className = "prompt-text";
+
+        // SignFont answers on back
+        backLabel.innerText = "Correct SignFont Transcription(s)";
+        answerElement.innerText = item.signs.join(', ');
+        answerElement.className = "answer-text signfont";
+
+        // Input setup (We expect a SignFont input)
+        if (practiceMode === 'type') {
+          englishInputWrapper.style.display = 'none';
+          signfontInputWrapper.style.display = 'flex';
+          typingInputLabel.innerText = "Your SignFont Answer (Type using keyboard)";
+          signfontAnswer.value = '';
+
+          // Focus input box immediately
+          setTimeout(() => {
+            signfontAnswer.focus();
+            if (typeof keyman !== 'undefined') {
+              keyman.setActiveElement(signfontAnswer);
+            }
+          }, 100);
+        }
+      } else {
+        // SignFont prompt on front
+        frontLabel.innerText = "Translate SignFont symbol to English";
+        promptElement.innerText = item.signs[0]; // test on their primary sign representation
+        promptElement.className = "prompt-text signfont";
+
+        // English answer on back
+        backLabel.innerText = "Correct English Meaning";
+        answerElement.innerText = item.english;
+        answerElement.className = "answer-text";
+
+        // Input setup (We expect an English input)
+        if (practiceMode === 'type') {
+          signfontInputWrapper.style.display = 'none';
+          englishInputWrapper.style.display = 'flex';
+          typingInputLabel.innerText = "Your English Answer";
+          englishAnswer.value = '';
+
+          // Disable Keyman on this input explicitly
+          if (typeof keyman !== 'undefined' && englishAnswer) {
+            try {
+              keyman.disableControl(englishAnswer);
+            } catch (e) { }
+          }
+
+          // Focus English input immediately
+          setTimeout(() => {
+            englishAnswer.focus();
+          }, 100);
+        }
+      }
+
+      // If Flip mode is active, reset buttons
+      if (practiceMode === 'flip') {
+        flipBtn.style.display = 'inline-flex';
+        gotCorrectBtn.style.display = 'none';
+        gotIncorrectBtn.style.display = 'none';
+      }
+    }
+
+    // --- Self Grading Routine (Flip Mode) ---
+    function handleSelfGrade(isCorrect) {
+      const item = sessionCards[currentIndex];
+
+      // Log data record
+      resultsHistory.push({
+        item: item,
+        userTyped: isCorrect ? '[Self Graded Correct]' : '[Self Graded Incorrect]',
+        isCorrect: isCorrect
+      });
+
+      // Update Score parameters
+      if (isCorrect) {
+        correctCount++;
+        statCorrect.innerText = correctCount;
+        streakCount++;
+        statStreak.innerText = streakCount;
+        if (streakCount > 0) {
+          streakWrapper.style.opacity = '1';
+        }
+        if (streakCount > bestStreak) {
+          bestStreak = streakCount;
+        }
+      } else {
+        incorrectCount++;
+        statIncorrect.innerText = incorrectCount;
+        streakCount = 0;
+        statStreak.innerText = '0';
+        streakWrapper.style.opacity = '0';
+      }
+
+      transitionToNextCard();
+    }
+
+    // --- Typing Answer Validation (Type Mode) ---
+    function validateUserSubmission() {
+      const item = sessionCards[currentIndex];
+      let userVal = '';
+      let isCorrect = false;
+      let promptDisplay = '';
+      let correctDisplay = '';
+
+      if (practiceDirection === 'eng-to-sign') {
+        userVal = signfontAnswer.value.trim();
+        promptDisplay = item.english;
+        correctDisplay = item.signs.join(', ');
+
+        // Exact case-sensitive match against *any* valid sign transcriptions
+        isCorrect = item.signs.some(sign => sign.trim() === userVal);
+      } else {
+        userVal = englishAnswer.value.trim();
+        promptDisplay = item.signs[0];
+        correctDisplay = item.english;
+
+        // Case-insensitive match against standard english meaning
+        isCorrect = userVal.toLowerCase() === item.english.trim().toLowerCase();
+      }
+
+      // Disable submission inputs until we move forward
+      submitBtn.disabled = true;
+      submitBtn.style.display = 'none';
+      skipBtn.style.display = 'none';
+      nextBtn.style.display = 'inline-flex';
+      flipHintFront.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> Click card to view details`;
+
+      // Log statistics
+      resultsHistory.push({
+        item: item,
+        userTyped: userVal || '[Skipped]',
+        isCorrect: isCorrect
+      });
+
+      // Render Validation Feedback
+      validationFeedback.style.display = 'block';
+      if (isCorrect) {
+        correctCount++;
+        statCorrect.innerText = correctCount;
+        streakCount++;
+        statStreak.innerText = streakCount;
+        streakWrapper.style.opacity = '1';
+        if (streakCount > bestStreak) {
+          bestStreak = streakCount;
+        }
+
+        validationFeedback.innerHTML = `
+          <div class="feedback-box correct">
+            <i class="fa-solid fa-circle-check"></i>
+            <div class="feedback-details">
+              <strong>Perfect! That is absolutely correct.</strong>
+              <span>Great job. Press Enter or click "Next Card" to keep going.</span>
+            </div>
+          </div>
+        `;
+      } else {
+        incorrectCount++;
+        statIncorrect.innerText = incorrectCount;
+        streakCount = 0;
+        statStreak.innerText = '0';
+        streakWrapper.style.opacity = '0';
+
+        const directionClass = practiceDirection === 'eng-to-sign' ? 'signfont' : '';
+        const userTypedClass = practiceDirection === 'eng-to-sign' ? 'signfont' : '';
+
+        validationFeedback.innerHTML = `
+          <div class="feedback-box incorrect">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <div class="feedback-details">
+              <strong>Incorrect. Let's study this card!</strong>
+              <div class="answer-comparison">
+                <div class="comp-line">
+                  <span class="comp-label">Correct answer:</span>
+                  <span class="comp-val correct-val ${directionClass}">${escapeHtml(correctDisplay)}</span>
+                </div>
+                <div class="comp-line">
+                  <span class="comp-label">Your guess:</span>
+                  <span class="comp-val user-val ${userTypedClass}">${escapeHtml(userVal || 'Blank / Skipped')}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Automatically Flip Card after verification to reveal details
+      setTimeout(() => {
+        isFlipped = true;
+        interactiveCard.classList.add('flipped');
+      }, 500);
+
+      // Focus next button
+      nextBtn.focus();
+    }
+
+    // --- Skip Card Routine ---
+    function handleSkipCard() {
+      // Skips count as incorrect guesses
+      const item = sessionCards[currentIndex];
+
+      resultsHistory.push({
+        item: item,
+        userTyped: '[Skipped]',
+        isCorrect: false
+      });
+
+      incorrectCount++;
+      statIncorrect.innerText = incorrectCount;
+      streakCount = 0;
+      statStreak.innerText = '0';
+      streakWrapper.style.opacity = '0';
+
+      transitionToNextCard();
+    }
+
+    // --- Card Transitions ---
+    function transitionToNextCard() {
+      currentIndex++;
+      if (currentIndex < sessionCards.length) {
+        displayCardAtIndex();
+      } else {
+        finishPracticeSession();
+      }
+    }
+
+    // --- Finish Session & Compile Score ---
+    function finishPracticeSession() {
+      // Clear timers
+      stopTimer();
+
+      // Configure Screen Panels
+      sessionBox.style.display = 'none';
+      resultsBox.style.display = 'block';
+
+      // Compile Stats
+      const total = sessionCards.length;
+      const scorePct = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+
+      // Animate score ring
+      const ring = document.getElementById('score-ring');
+      const radius = ring.r.baseVal.value;
+      const circumference = 2 * Math.PI * radius;
+      const strokeOffset = circumference - (scorePct / 100) * circumference;
+
+      // Update values
+      document.getElementById('score-percent-val').innerText = `${scorePct}%`;
+      document.getElementById('score-fraction-val').innerText = `${correctCount} / ${total}`;
+
+      // Apply offset rotation animation
+      setTimeout(() => {
+        ring.style.strokeDashoffset = strokeOffset;
+      }, 100);
+
+      document.getElementById('summary-correct').innerText = correctCount;
+      document.getElementById('summary-incorrect').innerText = incorrectCount;
+      document.getElementById('summary-streak').innerText = bestStreak;
+      document.getElementById('summary-time').innerText = formatTimerValue(timerSeconds);
+
+      // Populate review list
+      renderReviewSummary();
+    }
+
+    function renderReviewSummary() {
+      const tbody = document.getElementById('review-table-body');
+      let html = '';
+
+      resultsHistory.forEach(record => {
+        const item = record.item;
+
+        let promptVal = '';
+        let correctVal = '';
+        let isCorrectText = record.isCorrect ? 'Correct' : 'Incorrect';
+        let statusBadgeClass = record.isCorrect ? 'correct' : 'incorrect';
+        let statusIcon = record.isCorrect ? 'fa-check' : 'fa-times';
+
+        let promptFontClass = '';
+        let typedFontClass = '';
+        let correctFontClass = '';
+
+        if (practiceDirection === 'eng-to-sign') {
+          promptVal = item.english;
+          correctVal = item.signs.join(', ');
+          correctFontClass = 'review-sign';
+          if (practiceMode === 'type') {
+            typedFontClass = 'review-sign';
+          }
+        } else {
+          promptVal = item.signs[0];
+          promptFontClass = 'review-sign';
+          correctVal = item.english;
+        }
+
+        const typedDisplay = record.userTyped;
+
+        html += `
+          <tr class="review-row">
+            <td><span class="${promptFontClass}">${escapeHtml(promptVal)}</span></td>
+            <td><span class="${typedFontClass}">${escapeHtml(typedDisplay)}</span></td>
+            <td>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                <span class="${correctFontClass}">${escapeHtml(correctVal)}</span>
+                <button class="copy-btn" onclick="copyValue(event, '${item.signs[0].replace(/'/g, "\\'")}')" title="Copy primary sign transcription">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </td>
+            <td style="text-align: center;">
+              <span class="status-badge ${statusBadgeClass}">
+                <i class="fa-solid ${statusIcon}"></i> ${isCorrectText}
+              </span>
+            </td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
+    }
+
+    // --- Action Routines ---
+    function confirmAndQuit() {
+      confirmModal.style.display = 'flex';
+      setTimeout(() => {
+        confirmModal.classList.add('active');
+      }, 10);
+    }
+
+    function restartCurrentSession() {
+      // Re-launch with identical cards
+      currentIndex = 0;
+      correctCount = 0;
+      incorrectCount = 0;
+      streakCount = 0;
+      bestStreak = 0;
+      timerSeconds = 0;
+      resultsHistory = [];
+      isFlipped = false;
+      interactiveCard.classList.remove('flipped');
+
+      statCorrect.innerText = '0';
+      statIncorrect.innerText = '0';
+      statStreak.innerText = '0';
+      streakWrapper.style.opacity = '0';
+      progressIndicator.style.width = '0%';
+
+      sessionBox.style.display = 'flex';
+      setupBox.style.display = 'none';
+      resultsBox.style.display = 'none';
+
+      if (practiceMode === 'type') {
+        typingPanel.style.display = 'block';
+        flipBtn.style.display = 'none';
+        submitBtn.style.display = 'inline-flex';
+        skipBtn.style.display = 'inline-flex';
+        nextBtn.style.display = 'none';
+        flipHintFront.innerHTML = `<i class="fa-solid fa-lock"></i> Flip locked until submitted`;
+      } else {
+        typingPanel.style.display = 'none';
+        flipBtn.style.display = 'inline-flex';
+        submitBtn.style.display = 'none';
+        skipBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        flipHintFront.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> Click card to flip`;
+      }
+
+      startTimer();
+      displayCardAtIndex();
+    }
+
+    function backToConfigScreen() {
+      stopTimer();
+      sessionBox.style.display = 'none';
+      resultsBox.style.display = 'none';
+      setupBox.style.display = 'block';
+    }
+
+    // --- Active Session Timer ---
+    function startTimer() {
+      stopTimer();
+      timerSeconds = 0;
+      statTime.innerText = '00:00';
+      timerInterval = setInterval(() => {
+        timerSeconds++;
+        statTime.innerText = formatTimerValue(timerSeconds);
+      }, 1000);
+    }
+
+    function stopTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+    }
+
+    function formatTimerValue(totalSeconds) {
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      const minStr = String(minutes).padStart(2, '0');
+      const secStr = String(seconds).padStart(2, '0');
+      return `${minStr}:${secStr}`;
+    }
+
+    // --- Utility Routines ---
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function escapeHtml(string) {
+      return String(string).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function copyValue(event, text) {
+      event.stopPropagation();
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`Copied sign: ${text}`);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    function showToast(message) {
+      toastMessage.innerText = message;
+      toast.classList.add('active');
+      setTimeout(() => {
+        toast.classList.remove('active');
+      }, 2500);
+    }
+  </script>
+</body>
+
+</html>
