@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLD Interactive Flashcards Practice</title>
+  <meta name="description"
+    content="Practice and master SLD (Sign Language Description) notations and English glosses using premium 3D flipping cards and interactive typing tests.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #090d16 0%, #111026 100%);
+      --glass-bg: rgba(17, 24, 39, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-hover-border: rgba(255, 255, 255, 0.15);
+
+      --accent-primary: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      --accent-glow: rgba(124, 58, 237, 0.3);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(15, 23, 42, 0.6);
+
+      --color-correct: #10b981;
+      --color-incorrect: #ef4444;
+
+      --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Background decorative blobs */
+    .bg-blobs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+    }
+
+    .blob-1 {
+      top: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: #7c3aed;
+    }
+
+    .blob-2 {
+      bottom: -10%;
+      left: -10%;
+      width: 45vw;
+      height: 45vw;
+      background: #0ea5e9;
+    }
+
+    /* Main Container */
+    .app-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.75rem;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.4));
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0.5rem auto 1.5rem auto;
+    }
+
+    .btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-spring);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 15px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      border: none;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--glass-border);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+      border: none;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-success:hover {
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+      border: none;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    }
+
+    .btn-danger:hover {
+      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+    }
+
+    /* Setup Section */
+    .setup-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .setup-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #c084fc;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 1rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .form-group label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+    }
+
+    /* Radio selections styling */
+    .radio-card-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .radio-card {
+      position: relative;
+      background: rgba(10, 15, 30, 0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition-smooth);
+    }
+
+    .radio-card:hover {
+      border-color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.05);
+    }
+
+    .radio-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .custom-radio {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--text-muted);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .radio-card input[type="radio"]:checked + .custom-radio {
+      border-color: var(--accent-primary);
+      background: var(--accent-primary);
+    }
+
+    .radio-card input[type="radio"]:checked + .custom-radio::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .radio-card input[type="radio"]:checked ~ .radio-text h4 {
+      color: #fff;
+    }
+
+    .radio-card.selected {
+      border-color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.1);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
+    }
+
+    .radio-text h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+      transition: var(--transition-smooth);
+    }
+
+    .radio-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Select element styling */
+    .styled-select {
+      background: rgba(10, 15, 30, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .styled-select:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .setup-actions {
+      display: flex;
+      justify-content: center;
+    }
+
+    .setup-actions .btn {
+      padding: 1rem 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Active Session HUD Dashboard */
+    .session-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .hud-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hud-meta-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .hud-meta-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .hud-stats-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .hud-stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hud-stat-icon {
+      font-size: 1.25rem;
+    }
+
+    .hud-stat-icon.correct { color: var(--color-correct); }
+    .hud-stat-icon.incorrect { color: var(--color-incorrect); }
+    .hud-stat-icon.streak { color: #f59e0b; }
+
+    .hud-stat-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hud-stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .hud-stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .streak-container {
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+    }
+
+    /* 3D Flashcard Structure */
+    .flashcard-wrapper {
+      perspective: 1500px;
+      width: 100%;
+      height: 380px;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .flashcard {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+    }
+
+    .flashcard.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 24px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid var(--glass-border);
+    }
+
+    .card-front {
+      background: linear-gradient(135deg, rgba(21, 16, 45, 0.8) 0%, rgba(13, 17, 30, 0.8) 100%);
+    }
+
+    .card-back {
+      background: linear-gradient(135deg, rgba(13, 27, 20, 0.8) 0%, rgba(10, 15, 30, 0.8) 100%);
+      transform: rotateY(180deg);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+
+    .card-tag {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.15);
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .card-back .card-tag {
+      color: var(--color-correct);
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+
+    .prompt-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      word-wrap: break-word;
+      max-width: 100%;
+    }
+
+    .prompt-text.signfont {
+      font-family: monospace;
+      color: #c084fc;
+      font-size: 2rem;
+    }
+
+    .answer-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--color-correct);
+      text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+      word-wrap: break-word;
+      max-width: 100%;
+    }
+
+    .answer-text.signfont {
+      font-family: monospace;
+      color: #c084fc;
+      text-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+      font-size: 2.2rem;
+    }
+
+    .card-hint {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Interactive Inputs Panel */
+    .inputs-section {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      margin-bottom: 2rem;
+    }
+
+    .input-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .input-label-row label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+    }
+
+    .accent-instruction-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      background: rgba(14, 165, 233, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+
+    .typing-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .typing-input {
+      width: 100%;
+      background: rgba(10, 15, 30, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.8rem 1.25rem;
+      font-family: inherit;
+      color: var(--text-main);
+      font-size: 1.15rem;
+      transition: var(--transition-smooth);
+      height: 3.5rem;
+    }
+
+    .typing-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .typing-input.signfont-font {
+      font-family: monospace;
+      letter-spacing: 0.03em;
+      color: #c084fc;
+    }
+
+    /* Detailed Verification Banner Feedback */
+    .feedback-banner {
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      display: none;
+      animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .feedback-banner.correct {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1.5px solid rgba(16, 185, 129, 0.25);
+      color: #34d399;
+    }
+
+    .feedback-banner.incorrect {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1.5px solid rgba(239, 68, 68, 0.25);
+      color: #f87171;
+    }
+
+    .feedback-header {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.25rem;
+    }
+
+    .feedback-detail {
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .feedback-detail strong {
+      font-family: monospace;
+      font-size: 1rem;
+      color: #c084fc;
+    }
+
+    .feedback-detail.eng strong {
+      font-family: inherit;
+      color: #fff;
+    }
+
+    /* Control Buttons Area */
+    .controls-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .controls-left, .controls-right {
+      display: flex;
+      gap: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .controls-panel {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .controls-left, .controls-right {
+        justify-content: center;
+      }
+    }
+
+    /* Progression Bar indicators */
+    .progress-bar-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 9999px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-gradient);
+      box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+      border-radius: 9999px;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Results Dashboard summary */
+    .results-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .results-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .results-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .score-circle-wrapper {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 2rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .score-circle-svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+
+    .score-circle-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.05);
+      stroke-width: 12;
+    }
+
+    .score-circle-fill {
+      fill: none;
+      stroke: url(#scoreGradient);
+      stroke-width: 12;
+      stroke-dasharray: 439.6; /* 2 * PI * 70 */
+      stroke-dashoffset: 439.6;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s ease-in-out;
+    }
+
+    .score-center-text {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .score-percent {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .score-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .summary-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .summary-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    .summary-stat-card {
+      background: rgba(10, 15, 30, 0.5);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    .summary-stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .summary-stat-val.correct { color: var(--color-correct); }
+    .summary-stat-val.incorrect { color: var(--color-incorrect); }
+    .summary-stat-val.streak { color: #f59e0b; }
+
+    .summary-stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* History table dashboard */
+    .history-section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: left;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 0.5rem;
+    }
+
+    .history-table-container {
+      width: 100%;
+      overflow-x: auto;
+      background: rgba(10, 15, 30, 0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      margin-bottom: 2.5rem;
+    }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .history-table th {
+      background: rgba(10, 15, 30, 0.8);
+      padding: 0.75rem 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .history-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: #f8fafc;
+    }
+
+    .history-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .history-table td.eng {
+      font-weight: 500;
+    }
+
+    .history-table td.sld {
+      font-family: monospace;
+      color: #c084fc;
+    }
+
+    .history-table td.user-val {
+      font-family: monospace;
+    }
+
+    .history-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+
+    .history-status-badge.correct {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .history-status-badge.incorrect {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .results-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    /* Toast system styles */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .toast {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--accent-primary);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: toastIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Dropdown Multiselect */
+    .dropdown-multiselect {
+      position: relative;
+      width: 100%;
+    }
+
+    .dropdown-multiselect.active {
+      z-index: 100;
+    }
+
+    .dropdown-trigger {
+      width: 100%;
+      background: rgba(10, 15, 30, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.8rem 1.25rem;
+      font-family: inherit;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 3.4rem;
+      transition: var(--transition-smooth);
+      text-align: left;
+    }
+
+    .dropdown-trigger:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .dropdown-arrow {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: transform 0.3s;
+    }
+
+    .dropdown-multiselect.active .dropdown-arrow {
+      transform: rotate(180deg);
+      color: var(--accent-primary);
+    }
+
+    .dropdown-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 100%;
+      background: #0a0e1a;
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.75rem;
+      z-index: 50;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: var(--transition-smooth);
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .dropdown-multiselect.active .dropdown-panel {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      user-select: none;
+      text-align: left;
+    }
+
+    .checkbox-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: #fff;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .checkbox-custom {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--text-muted);
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .checkbox-item input[type="checkbox"]:checked + .checkbox-custom {
+      border-color: var(--accent-primary);
+      background: var(--accent-primary);
+    }
+
+    .checkbox-item input[type="checkbox"]:checked + .checkbox-custom::after {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 0.7rem;
+      color: #fff;
+      position: absolute;
+    }
+
+    .checkbox-item input[type="checkbox"]:checked ~ .checkbox-label {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* Parser Token Colors */
+    .bg-ds { background-color: #ff5555; color: #fff; }     /* Dominant Handshape - Coral Red */
+    .bg-nds { background-color: #26a69a; color: #fff; }    /* Non-Dominant Handshape - Teal/Mint */
+    .bg-do { background-color: #ff2d55; color: #fff; }     /* Dominant Orientation - Hot Pink */
+    .bg-ndo { background-color: #ff9f0a; color: #000; text-shadow: none; } /* Non-Dominant Orientation - Amber */
+    .bg-loc { background-color: #2979ff; color: #fff; }    /* Location - Royal Blue */
+    .bg-act { background-color: #e040fb; color: #fff; }    /* Action Descriptor - Violet */
+    .bg-hmod { background-color: #ff4081; color: #fff; }   /* Handshape Change - Magenta */
+    .bg-mov { background-color: #00e676; color: #000; text-shadow: none; } /* Movement - Neon Green */
+    .bg-punct { background-color: #495057; } /* Punctuation */
+
+    /* Confirmation Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 2.25rem;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      transform: translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      text-align: center;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-icon {
+      font-size: 2.75rem;
+      color: #f59e0b;
+      filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.4));
+    }
+
+    .modal-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.50rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .modal-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .modal-actions .btn {
+      flex: 1;
+      justify-content: center;
+    }
+  </style>
+  <link rel="stylesheet" href="../theme.css">
+  <script src="../theme.js" defer></script>
+</head>
+
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="toast-container" id="toast-container-el"></div>
+
+  <div class="app-container">
+    <header>
+      <div class="logo-container">
+        <i class="fa-solid fa-graduation-cap logo-icon"></i>
+        <h1>SLD Flashcards Practice</h1>
+      </div>
+      <p class="tagline">Practice 3,330+ English-to-SLD glosses. Master symbols through 3D flipping animations, active recall, and adaptive smart typing tests.</p>
+      <div class="header-actions" id="header-actions-el">
+        <a href="dictionary.html" class="btn">
+          <i class="fa-solid fa-book-open"></i> Back to Dictionary
+        </a>
+      </div>
+    </header>
+
+    <!-- Progress Indicator Bar -->
+    <div class="progress-bar-container" id="progress-bar-container-el" style="display: none;">
+      <div class="progress-bar-fill" id="progress-bar-fill-el"></div>
+    </div>
+
+    <!-- 1. Setup Card Config -->
+    <div class="setup-card" id="setup-card-el">
+      <div class="setup-title">
+        <i class="fa-solid fa-sliders"></i>
+        <span>Configure Practice Session</span>
+      </div>
+
+      <div class="form-grid">
+        <!-- Practice Mode Selection -->
+        <div class="form-group">
+          <label>Practice Mode</label>
+          <div class="radio-card-group">
+            <label class="radio-card selected" id="mode-flip-card">
+              <input type="radio" name="practice-mode" value="flip" checked>
+              <span class="custom-radio"></span>
+              <div class="radio-text">
+                <h4>3D Card Flip</h4>
+                <p>Grade yourself based on active mental recall.</p>
+              </div>
+            </label>
+            <label class="radio-card" id="mode-type-card">
+              <input type="radio" name="practice-mode" value="type">
+              <span class="custom-radio"></span>
+              <div class="radio-text">
+                <h4>Interactive Typing Test</h4>
+                <p>Smart verification with keyboard accent-tolerance.</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Testing Direction -->
+        <div class="form-group">
+          <label>Testing Direction</label>
+          <div class="radio-card-group">
+            <label class="radio-card selected" id="dir-eng2sign-card">
+              <input type="radio" name="practice-direction" value="eng-to-sign" checked>
+              <span class="custom-radio"></span>
+              <div class="radio-text">
+                <h4>English ➔ SLD Gloss</h4>
+                <p>Prompt: English Word. Answer: SLD String.</p>
+              </div>
+            </label>
+            <label class="radio-card" id="dir-sign2eng-card">
+              <input type="radio" name="practice-direction" value="sign-to-eng">
+              <span class="custom-radio"></span>
+              <div class="radio-text">
+                <h4>SLD Gloss ➔ English</h4>
+                <p>Prompt: SLD Sign. Answer: English.</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Session size -->
+        <div class="form-group">
+          <label for="session-size">Session Size</label>
+          <select id="session-size" class="styled-select">
+            <option value="10">10 Cards</option>
+            <option value="20" selected>20 Cards</option>
+            <option value="50">50 Cards</option>
+            <option value="100">100 Cards</option>
+            <option value="all">Practice Entire Dictionary</option>
+          </select>
+        </div>
+
+        <!-- Session scope -->
+        <div class="form-group">
+          <label for="session-scope">Alphabetical Range</label>
+          <select id="session-scope" class="styled-select">
+            <option value="all" selected>All Words (A - Z)</option>
+            <option value="A-E">A - E Range</option>
+            <option value="F-J">F - J Range</option>
+            <option value="K-O">K - O Range</option>
+            <option value="P-T">P - T Range</option>
+            <option value="U-Z">U - Z Range</option>
+          </select>
+        </div>
+
+        <!-- Sources Multiselect Dropdown -->
+        <div class="form-group">
+          <label>Sources to Include</label>
+          <div class="dropdown-multiselect" id="sources-dropdown-container">
+            <button class="dropdown-trigger" id="sources-trigger-btn" type="button">
+              <span id="selected-sources-text">Main ASL Dictionary</span>
+              <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </button>
+            <div class="dropdown-panel" id="sources-panel">
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Main ASL Dictionary" checked>
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Main ASL Dictionary</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Jones et al. (1981)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Jones et al. (1981)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Shroyer et al. (1984)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Shroyer et al. (1984)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Sternberg (1994)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Sternberg (1994)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Stokoe et al. (1965)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Stokoe et al. (1965)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="setup-actions">
+        <button class="btn btn-primary" id="start-session-btn">
+          <i class="fa-solid fa-play"></i> Start Practice Session
+        </button>
+      </div>
+    </div>
+
+    <!-- 2. Active Session Interface -->
+    <div id="session-container-el" style="display: none; flex-direction: column; width: 100%;">
+      <!-- HUD Header -->
+      <div class="session-hud">
+        <div class="hud-meta">
+          <div class="hud-meta-label" id="hud-card-counter">Card 1 of 20</div>
+          <div class="hud-meta-val" id="hud-timer">00:00</div>
+        </div>
+
+        <div class="hud-stats-group">
+          <!-- Streak bonus alert -->
+          <div class="streak-container" id="streak-container-el">
+            <i class="fa-solid fa-fire hud-stat-icon streak"></i>
+            <div class="hud-stat-info" style="margin-left: 4px;">
+              <span class="hud-stat-val" id="hud-streak-val" style="color: #f59e0b;">0</span>
+            </div>
+          </div>
+
+          <div class="hud-stat">
+            <i class="fa-solid fa-circle-check hud-stat-icon correct"></i>
+            <div class="hud-stat-info">
+              <span class="hud-stat-val" id="hud-correct-val" style="color: var(--color-correct);">0</span>
+              <span class="hud-stat-label">Correct</span>
+            </div>
+          </div>
+
+          <div class="hud-stat">
+            <i class="fa-solid fa-circle-xmark hud-stat-icon incorrect"></i>
+            <div class="hud-stat-info">
+              <span class="hud-stat-val" id="hud-incorrect-val" style="color: var(--color-incorrect);">0</span>
+              <span class="hud-stat-label">Incorrect</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Card Display -->
+      <div class="flashcard-wrapper">
+        <div class="flashcard" id="interactive-card-el">
+          <!-- Card Front -->
+          <div class="card-face card-front">
+            <div class="card-tag" id="card-front-tag">Translate Word</div>
+            <div class="prompt-text" id="card-prompt-el">Prompt Word</div>
+
+
+            <div class="card-hint" id="card-flip-hint">
+              <i class="fa-solid fa-arrows-rotate"></i> Click card to flip
+            </div>
+          </div>
+
+          <!-- Card Back -->
+          <div class="card-face card-back">
+            <div class="card-tag">Correct Answer</div>
+            <div class="answer-text" id="card-answer-el">Correct Sign</div>
+            <div class="card-hint">
+              <i class="fa-solid fa-arrows-rotate"></i> Click card to flip back
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typing Input Test Panel -->
+      <div class="inputs-section" id="typing-test-panel-el" style="display: none;">
+        <div class="input-label-row">
+          <label id="typing-input-label">Your Answer</label>
+          <span class="accent-instruction-badge" id="accent-badge-el">
+            <i class="fa-solid fa-circle-info"></i> Normal letters accepted (e.g. 'a' matches 'á')
+          </span>
+        </div>
+        <div class="typing-wrapper">
+          <input type="text" class="typing-input" id="user-typing-input" placeholder="Type response and press Enter..." autocomplete="off">
+        </div>
+
+        <!-- Detailed Feedback Banner -->
+        <div class="feedback-banner" id="feedback-banner-el">
+          <div class="feedback-header" id="feedback-status-title">
+            <i class="fa-solid fa-circle-check"></i> Correct!
+          </div>
+          <div class="feedback-detail" id="feedback-correct-desc">
+            Sign matches: <strong>sign</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Control Buttons -->
+      <div class="controls-panel">
+        <div class="controls-left">
+          <button class="btn btn-outline" id="abort-session-btn">
+            <i class="fa-solid fa-circle-stop"></i> Abort Practice
+          </button>
+        </div>
+        <div class="controls-right">
+          <!-- Flip grade controls -->
+          <button class="btn btn-danger" id="grade-incorrect-btn" style="display: none;">
+            <i class="fa-solid fa-xmark"></i> Incorrect (Active Recall)
+          </button>
+          <button class="btn btn-success" id="grade-correct-btn" style="display: none;">
+            <i class="fa-solid fa-check"></i> Correct (Active Recall)
+          </button>
+
+          <!-- Standard progression buttons -->
+          <button class="btn" id="flip-card-btn">
+            <i class="fa-solid fa-arrows-rotate"></i> Reveal Answer
+          </button>
+          <button class="btn btn-outline" id="skip-card-btn" style="display: none;">
+            <i class="fa-solid fa-forward-step"></i> Skip Card
+          </button>
+          <button class="btn btn-primary" id="submit-answer-btn" style="display: none;">
+            <i class="fa-solid fa-paper-plane"></i> Submit Answer
+          </button>
+          <button class="btn btn-primary" id="next-card-btn" style="display: none;">
+            Next Card <i class="fa-solid fa-arrow-right-long"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Performance Results Summary Card -->
+    <div class="results-card" id="results-card-el" style="display: none;">
+      <h2 class="results-title" id="results-encouragement-title">Session Complete!</h2>
+      <p class="results-subtitle">Here is a detailed breakdown of your practice session performance.</p>
+
+      <!-- SVG Circle Progress Score -->
+      <div class="score-circle-wrapper">
+        <svg class="score-circle-svg">
+          <defs>
+            <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#a78bfa" />
+              <stop offset="100%" stop-color="#7c3aed" />
+            </linearGradient>
+          </defs>
+          <circle class="score-circle-bg" cx="80" cy="80" r="70" />
+          <circle class="score-circle-fill" id="score-circle-fill-el" cx="80" cy="80" r="70" />
+        </svg>
+        <div class="score-center-text">
+          <span class="score-percent" id="results-score-percent">0%</span>
+          <span class="score-label">Score</span>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="summary-stats-grid">
+        <div class="summary-stat-card">
+          <div class="summary-stat-val correct" id="sum-correct-val">0</div>
+          <div class="summary-stat-label">Correct</div>
+        </div>
+        <div class="summary-stat-card">
+          <div class="summary-stat-val incorrect" id="sum-incorrect-val">0</div>
+          <div class="summary-stat-label">Incorrect</div>
+        </div>
+        <div class="summary-stat-card">
+          <div class="summary-stat-val streak" id="sum-streak-val">0</div>
+          <div class="summary-stat-label">Best Streak</div>
+        </div>
+        <div class="summary-stat-card">
+          <div class="summary-stat-val" id="sum-time-val">00:00</div>
+          <div class="summary-stat-label">Elapsed Time</div>
+        </div>
+      </div>
+
+      <!-- Detail list review -->
+      <div class="history-section-title">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Session Review Summary</span>
+      </div>
+      <div class="history-table-container">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>English Word</th>
+              <th>Correct SLD Notation</th>
+              <th>Your Input</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="history-rows-container">
+            <!-- Dyn summary review rows go here -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="results-actions">
+        <button class="btn btn-outline" id="configure-new-session-btn">
+          <i class="fa-solid fa-sliders"></i> Configure Session
+        </button>
+        <button class="btn btn-primary" id="retry-session-btn">
+          <i class="fa-solid fa-rotate-left"></i> Restart Session
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium Glassmorphic Confirmation Modal -->
+  <div id="confirm-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <i class="fa-solid fa-triangle-exclamation modal-icon"></i>
+        <h3>Abort Practice Session?</h3>
+      </div>
+      <p class="modal-text">Are you sure you want to abort? Your current session progress, active score, and streak will be lost.</p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="confirm-cancel-btn">
+          <i class="fa-solid fa-play"></i> Keep Playing
+        </button>
+        <button class="btn btn-danger" id="confirm-ok-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Yes, Abort
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Imports -->
+  <script src="signature_calculator.js"></script>
+  <script src="sld_parser.js"></script>
+  <script src="sld-dictionary-data.js"></script>
+
+  <script>
+    // System database
+    let db = [];
+    
+    // Practice configurations state
+    let practiceMode = 'flip';
+    let practiceDirection = 'eng-to-sign';
+    let sessionSize = '20';
+    let sessionScope = 'all';
+
+    // Live session variables
+    let sessionCards = [];
+    let currentIndex = 0;
+    let correctCount = 0;
+    let incorrectCount = 0;
+    let streakCount = 0;
+    let bestStreak = 0;
+    let timerInterval = null;
+    let timerSeconds = 0;
+    let resultsHistory = [];
+    let isFlipped = false;
+
+    // DOM References
+    const setupCard = document.getElementById('setup-card-el');
+    const sessionBox = document.getElementById('session-container-el');
+    const resultsBox = document.getElementById('results-card-el');
+    const progressBarContainer = document.getElementById('progress-bar-container-el');
+    const progressBarFill = document.getElementById('progress-bar-fill-el');
+
+    const cardPrompt = document.getElementById('card-prompt-el');
+    const cardAnswer = document.getElementById('card-answer-el');
+    const cardCounter = document.getElementById('hud-card-counter');
+    const cardFrontTag = document.getElementById('card-front-tag');
+    const interactiveCard = document.getElementById('interactive-card-el');
+    const typingPanel = document.getElementById('typing-test-panel-el');
+    const typingInputLabel = document.getElementById('typing-input-label');
+    const accentBadge = document.getElementById('accent-badge-el');
+    const userTypingInput = document.getElementById('user-typing-input');
+    const feedbackBanner = document.getElementById('feedback-banner-el');
+    const feedbackStatusTitle = document.getElementById('feedback-status-title');
+    const feedbackCorrectDesc = document.getElementById('feedback-correct-desc');
+
+    const hudTimer = document.getElementById('hud-timer');
+    const hudCorrect = document.getElementById('hud-correct-val');
+    const hudIncorrect = document.getElementById('hud-incorrect-val');
+    const hudStreak = document.getElementById('hud-streak-val');
+    const streakWrapper = document.getElementById('streak-container-el');
+
+    const sumCorrect = document.getElementById('sum-correct-val');
+    const sumIncorrect = document.getElementById('sum-incorrect-val');
+    const sumStreak = document.getElementById('sum-streak-val');
+    const sumTime = document.getElementById('sum-time-val');
+    const scoreCircleFill = document.getElementById('score-circle-fill-el');
+    const resultsScorePercent = document.getElementById('results-score-percent');
+    const resultsEncouragement = document.getElementById('results-encouragement-title');
+    const historyRows = document.getElementById('history-rows-container');
+
+    // Controls
+    const startSessionBtn = document.getElementById('start-session-btn');
+    const abortSessionBtn = document.getElementById('abort-session-btn');
+    const flipCardBtn = document.getElementById('flip-card-btn');
+    const skipCardBtn = document.getElementById('skip-card-btn');
+    const submitAnswerBtn = document.getElementById('submit-answer-btn');
+    const nextCardBtn = document.getElementById('next-card-btn');
+    const gradeCorrectBtn = document.getElementById('grade-correct-btn');
+    const gradeIncorrectBtn = document.getElementById('grade-incorrect-btn');
+    const retrySessionBtn = document.getElementById('retry-session-btn');
+    const configureNewBtn = document.getElementById('configure-new-session-btn');
+
+    // Setup interactive configs
+    const setupRadioCards = document.querySelectorAll('.setup-card .radio-card');
+
+    // Confirmation Modal DOM references
+    const confirmModal = document.getElementById('confirm-modal');
+    const confirmCancelBtn = document.getElementById('confirm-cancel-btn');
+    const confirmOkBtn = document.getElementById('confirm-ok-btn');
+
+    // Accent normalizer mappings (provided globally by sld_parser.js)
+
+    // Init App
+    function initApplication() {
+      if (typeof window.sldDictionary === 'undefined') {
+        showToast("Error: Database not loaded!", "incorrect");
+        return;
+      }
+      db = window.sldDictionary;
+
+      // Toggle Sources Multiselect Dropdown Panel
+      const sourcesDropdownContainer = document.getElementById('sources-dropdown-container');
+      const sourcesTriggerBtn = document.getElementById('sources-trigger-btn');
+      const sourceCheckboxes = document.querySelectorAll('.source-checkbox');
+      const selectedSourcesText = document.getElementById('selected-sources-text');
+
+      sourcesTriggerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sourcesDropdownContainer.classList.toggle('active');
+      });
+
+      // Close dropdown if clicked outside
+      document.addEventListener('click', (e) => {
+        if (!sourcesDropdownContainer.contains(e.target)) {
+          sourcesDropdownContainer.classList.remove('active');
+        }
+      });
+
+      // Update source text when checkbox changes
+      function updateSourcesUI() {
+        const checkedBoxes = Array.from(document.querySelectorAll('.source-checkbox:checked'));
+        if (checkedBoxes.length === 0) {
+          selectedSourcesText.textContent = "No Sources Selected";
+        } else if (checkedBoxes.length === 1) {
+          selectedSourcesText.textContent = checkedBoxes[0].value;
+        } else if (checkedBoxes.length === sourceCheckboxes.length) {
+          selectedSourcesText.textContent = "All Sources Included";
+        } else {
+          selectedSourcesText.textContent = `${checkedBoxes.length} Sources Selected`;
+        }
+      }
+
+      sourceCheckboxes.forEach(cb => {
+        cb.addEventListener('change', updateSourcesUI);
+      });
+
+      // Set initial trigger text
+      updateSourcesUI();
+
+      // Handle config selection radio active states
+      setupRadioCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+          const inputEl = card.querySelector('input[type="radio"]');
+          if (!inputEl) return;
+          
+          if (!inputEl.checked) {
+            inputEl.checked = true;
+          }
+          
+          const groupName = inputEl.name;
+          document.querySelectorAll(`input[name="${groupName}"]`).forEach(radio => {
+            radio.closest('.radio-card').classList.remove('selected');
+          });
+          card.classList.add('selected');
+        });
+      });
+
+      // Interactive actions
+      startSessionBtn.addEventListener('click', startPracticeSession);
+      abortSessionBtn.addEventListener('click', abortPracticeSession);
+      flipCardBtn.addEventListener('click', toggleCardFlip);
+      interactiveCard.addEventListener('click', toggleCardFlip);
+
+      // Confirmation Modal Actions
+      confirmCancelBtn.addEventListener('click', () => {
+        confirmModal.classList.remove('active');
+      });
+
+      confirmOkBtn.addEventListener('click', () => {
+        confirmModal.classList.remove('active');
+        
+        // Execute actual abort logic
+        clearInterval(timerInterval);
+        sessionBox.style.display = 'none';
+        progressBarContainer.style.display = 'none';
+        setupCard.style.display = 'block';
+        document.getElementById('header-actions-el').style.display = 'flex';
+      });
+
+      // Close modal on escape key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && confirmModal.classList.contains('active')) {
+          confirmCancelBtn.click();
+        }
+      });
+
+      // grading recall buttons
+      gradeCorrectBtn.addEventListener('click', () => handleSelfGrade(true));
+      gradeIncorrectBtn.addEventListener('click', () => handleSelfGrade(false));
+
+      // typing submissions
+      submitAnswerBtn.addEventListener('click', validateUserSubmission);
+      skipCardBtn.addEventListener('click', () => handleSkipCard());
+      nextCardBtn.addEventListener('click', transitionToNextCard);
+
+      retrySessionBtn.addEventListener('click', () => {
+        resultsBox.style.display = 'none';
+        startPracticeSession();
+      });
+
+      configureNewBtn.addEventListener('click', () => {
+        resultsBox.style.display = 'none';
+        setupCard.style.display = 'block';
+        progressBarContainer.style.display = 'none';
+        document.getElementById('header-actions-el').style.display = 'flex';
+      });
+
+      // Enable Enter submission on typing input field
+      userTypingInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (submitAnswerBtn.style.display !== 'none' && !submitAnswerBtn.disabled) {
+            validateUserSubmission();
+          } else if (nextCardBtn.style.display !== 'none') {
+            transitionToNextCard();
+          }
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', initApplication);
+    } else {
+      initApplication();
+    }
+
+    // --- Card Flipping Animation ---
+    function toggleCardFlip() {
+      isFlipped = !isFlipped;
+      if (isFlipped) {
+        interactiveCard.classList.add('flipped');
+        if (practiceMode === 'flip') {
+          flipCardBtn.style.display = 'none';
+          gradeCorrectBtn.style.display = 'inline-flex';
+          gradeIncorrectBtn.style.display = 'inline-flex';
+        }
+      } else {
+        interactiveCard.classList.remove('flipped');
+        if (practiceMode === 'flip') {
+          flipCardBtn.style.display = 'inline-flex';
+          gradeCorrectBtn.style.display = 'none';
+          gradeIncorrectBtn.style.display = 'none';
+        }
+      }
+    }
+
+    // --- Practice Engine Start ---
+    function startPracticeSession() {
+      // Gather configs defensively
+      const practiceModeEl = document.querySelector('input[name="practice-mode"]:checked');
+      const practiceDirectionEl = document.querySelector('input[name="practice-direction"]:checked');
+      
+      practiceMode = practiceModeEl ? practiceModeEl.value : 'flip';
+      practiceDirection = practiceDirectionEl ? practiceDirectionEl.value : 'eng-to-sign';
+      
+      const sessionSizeEl = document.getElementById('session-size');
+      sessionSize = sessionSizeEl ? sessionSizeEl.value : '20';
+      
+      const sessionScopeEl = document.getElementById('session-scope');
+      sessionScope = sessionScopeEl ? sessionScopeEl.value : 'all';
+
+      // Get list of selected sources
+      const selectedSources = Array.from(document.querySelectorAll('.source-checkbox:checked')).map(cb => cb.value);
+
+      if (selectedSources.length === 0) {
+        showToast("Please select at least one dictionary source to include!", "incorrect");
+        return;
+      }
+
+      // Filter DB according to selected sources
+      let vocabularyPool = db.map(item => {
+        const matchingSigns = item.signs.filter(sign => {
+          const sources = item.signSources[sign] || [];
+          return sources.some(s => selectedSources.includes(s));
+        });
+        return matchingSigns.length > 0 ? { ...item, signs: matchingSigns } : null;
+      }).filter(Boolean);
+
+      // Filter DB according to scope selection
+      if (sessionScope !== 'all') {
+        const ranges = {
+          'A-E': /^[a-e]/i,
+          'F-J': /^[f-j]/i,
+          'K-O': /^[k-o]/i,
+          'P-T': /^[p-t]/i,
+          'U-Z': /^[u-z]/i
+        };
+        const activeRegex = ranges[sessionScope];
+        vocabularyPool = vocabularyPool.filter(item => activeRegex.test(item.english));
+      }
+
+      if (vocabularyPool.length === 0) {
+        showToast("Selected scope and source combination has no words! Try another setting.", "incorrect");
+        return;
+      }
+
+      // Shuffle pool
+      shuffleArray(vocabularyPool);
+
+      // Select segment
+      const targetSize = sessionSize === 'all' ? vocabularyPool.length : parseInt(sessionSize, 10);
+      sessionCards = vocabularyPool.slice(0, targetSize);
+
+      // Reset statistics state
+      currentIndex = 0;
+      correctCount = 0;
+      incorrectCount = 0;
+      streakCount = 0;
+      bestStreak = 0;
+      timerSeconds = 0;
+      resultsHistory = [];
+      isFlipped = false;
+      interactiveCard.classList.remove('flipped');
+
+      // Update HUD stats
+      hudCorrect.innerText = '0';
+      hudIncorrect.innerText = '0';
+      hudStreak.innerText = '0';
+      streakWrapper.style.opacity = '0';
+      progressBarFill.style.width = '0%';
+
+      // Configure Active Panels
+      setupCard.style.display = 'none';
+      sessionBox.style.display = 'flex';
+      resultsBox.style.display = 'none';
+      progressBarContainer.style.display = 'block';
+      document.getElementById('header-actions-el').style.display = 'none';
+
+      // Setup inputs depending on mode
+      if (practiceMode === 'type') {
+        typingPanel.style.display = 'block';
+        flipCardBtn.style.display = 'none';
+        submitAnswerBtn.style.display = 'inline-flex';
+        skipCardBtn.style.display = 'inline-flex';
+        nextCardBtn.style.display = 'none';
+        document.getElementById('card-flip-hint').innerHTML = `<i class="fa-solid fa-lock"></i> Flip locked until submitted`;
+      } else {
+        typingPanel.style.display = 'none';
+        flipCardBtn.style.display = 'inline-flex';
+        submitAnswerBtn.style.display = 'none';
+        skipCardBtn.style.display = 'none';
+        nextCardBtn.style.display = 'none';
+        document.getElementById('card-flip-hint').innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> Click card to flip`;
+      }
+
+      // Set Timer
+      startTimer();
+
+      // Render first card
+      displayCardAtIndex();
+    }
+
+    // --- Render Active Card ---
+    function displayCardAtIndex() {
+      isFlipped = false;
+      interactiveCard.classList.remove('flipped');
+
+      const item = sessionCards[currentIndex];
+      cardCounter.innerText = `Card ${currentIndex + 1} of ${sessionCards.length}`;
+      progressBarFill.style.width = `${(currentIndex / sessionCards.length) * 100}%`;
+
+      // Clear previous validation feedback
+      feedbackBanner.style.display = 'none';
+      feedbackBanner.className = 'feedback-banner';
+
+      // Enable Submit buttons
+      submitAnswerBtn.disabled = false;
+      skipCardBtn.style.display = practiceMode === 'type' ? 'inline-flex' : 'none';
+      submitAnswerBtn.style.display = practiceMode === 'type' ? 'inline-flex' : 'none';
+      nextCardBtn.style.display = 'none';
+
+      // Switch prompt and answer depending on Testing Direction
+      if (practiceDirection === 'eng-to-sign') {
+        // English prompt on front
+        cardFrontTag.innerText = "Translate English Word";
+        cardPrompt.innerText = item.english;
+        cardPrompt.className = "prompt-text";
+
+        // SLD answers on back
+        cardAnswer.innerText = item.signs.join(', ');
+        cardAnswer.className = "answer-text signfont";
+
+        // Input setup (We expect an SLD input)
+        if (practiceMode === 'type') {
+          typingInputLabel.innerText = "Your SLD Gloss Answer";
+          accentBadge.style.display = 'inline-flex';
+          userTypingInput.className = "typing-input signfont-font";
+          userTypingInput.value = '';
+          userTypingInput.placeholder = "Type SLD notation (e.g. luiaoi=o)...";
+
+          setTimeout(() => { userTypingInput.focus(); }, 100);
+        }
+      } else {
+        // SLD prompt on front
+        cardFrontTag.innerText = "Translate SLD Notation";
+        const primarySign = item.signs[0];
+        cardPrompt.innerText = primarySign;
+        cardPrompt.className = "prompt-text signfont";
+
+        // English answer on back
+        cardAnswer.innerText = item.english;
+        cardAnswer.className = "answer-text";
+
+        // Input setup (We expect an English input)
+        if (practiceMode === 'type') {
+          typingInputLabel.innerText = "Your English Meaning Answer";
+          accentBadge.style.display = 'none';
+          userTypingInput.className = "typing-input";
+          userTypingInput.value = '';
+          userTypingInput.placeholder = "Type English meaning...";
+
+          setTimeout(() => { userTypingInput.focus(); }, 100);
+        }
+      }
+
+      // If Flip mode is active, reset buttons
+      if (practiceMode === 'flip') {
+        flipCardBtn.style.display = 'inline-flex';
+        gradeCorrectBtn.style.display = 'none';
+        gradeIncorrectBtn.style.display = 'none';
+      }
+    }
+
+    // --- Self Grading Routine (Flip Mode) ---
+    function handleSelfGrade(isCorrect) {
+      const item = sessionCards[currentIndex];
+
+      // Log data record
+      resultsHistory.push({
+        item: item,
+        userTyped: isCorrect ? '[Self Graded Correct]' : '[Self Graded Incorrect]',
+        isCorrect: isCorrect
+      });
+
+      // Update Score parameters
+      if (isCorrect) {
+        correctCount++;
+        hudCorrect.innerText = correctCount;
+        streakCount++;
+        hudStreak.innerText = streakCount;
+        if (streakCount > 0) {
+          streakWrapper.style.opacity = '1';
+        }
+        if (streakCount > bestStreak) {
+          bestStreak = streakCount;
+        }
+      } else {
+        incorrectCount++;
+        hudIncorrect.innerText = incorrectCount;
+        streakCount = 0;
+        hudStreak.innerText = '0';
+        streakWrapper.style.opacity = '0';
+      }
+
+      transitionToNextCard();
+    }
+
+    // --- Skip Card (Type Mode) ---
+    function handleSkipCard() {
+      const item = sessionCards[currentIndex];
+
+      resultsHistory.push({
+        item: item,
+        userTyped: '[Skipped]',
+        isCorrect: false
+      });
+
+      incorrectCount++;
+      hudIncorrect.innerText = incorrectCount;
+      streakCount = 0;
+      hudStreak.innerText = '0';
+      streakWrapper.style.opacity = '0';
+
+      // Disallow clicking input during transition
+      submitAnswerBtn.disabled = true;
+      submitAnswerBtn.style.display = 'none';
+      skipCardBtn.style.display = 'none';
+      nextCardBtn.style.display = 'inline-flex';
+      
+      // Auto flip
+      isFlipped = true;
+      interactiveCard.classList.add('flipped');
+      document.getElementById('card-flip-hint').innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> Click card to view details`;
+
+      // Show Skip Banner
+      feedbackBanner.style.display = 'block';
+      feedbackBanner.className = 'feedback-banner incorrect';
+      feedbackStatusTitle.innerHTML = '<i class="fa-solid fa-forward-step"></i> Card Skipped!';
+      feedbackCorrectDesc.innerHTML = practiceDirection === 'eng-to-sign'
+        ? `Correct notation is: <strong>${item.signs.join(', ')}</strong>`
+        : `Correct English is: <span class="feedback-detail eng"><strong>${item.english}</strong></span>`;
+    }
+
+    // --- Typing Answer Validation (Type Mode) ---
+    function validateUserSubmission() {
+      const item = sessionCards[currentIndex];
+      const userVal = userTypingInput.value.trim();
+      let isCorrect = false;
+      let promptDisplay = '';
+      let correctDisplay = '';
+
+      if (practiceDirection === 'eng-to-sign') {
+        promptDisplay = item.english;
+        correctDisplay = item.signs.join(', ');
+
+        // Check if there is an exact case-sensitive match
+        const exactMatch = item.signs.some(sign => sign.trim() === userVal);
+        
+        // Check if there is a normalized match (ignoring case, and normalizing accents 'á', 'é', etc.)
+        const normUser = normalizeWord(userVal.toLowerCase());
+        const normMatch = item.signs.some(sign => normalizeWord(sign.trim().toLowerCase()) === normUser);
+
+        isCorrect = exactMatch || normMatch;
+
+        // Build Banner details
+        feedbackBanner.style.display = 'block';
+        if (isCorrect) {
+          feedbackBanner.className = 'feedback-banner correct';
+          feedbackStatusTitle.innerHTML = '<i class="fa-solid fa-circle-check"></i> Correct!';
+          
+          const matchedSign = item.signs.find(sign => normalizeWord(sign.trim().toLowerCase()) === normUser);
+          if (userVal !== matchedSign) {
+            feedbackCorrectDesc.innerHTML = `Nice! Note the correct accents: <strong>${matchedSign}</strong>`;
+          } else {
+            feedbackCorrectDesc.innerHTML = `Spelling matches: <strong>${matchedSign}</strong>`;
+          }
+        } else {
+          feedbackBanner.className = 'feedback-banner incorrect';
+          feedbackStatusTitle.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Incorrect!';
+          feedbackCorrectDesc.innerHTML = `Correct notation is: <strong>${correctDisplay}</strong>`;
+        }
+
+      } else {
+        promptDisplay = item.signs[0];
+        correctDisplay = item.english;
+
+        // Case-insensitive English translation match
+        isCorrect = userVal.toLowerCase() === item.english.trim().toLowerCase();
+
+        feedbackBanner.style.display = 'block';
+        if (isCorrect) {
+          feedbackBanner.className = 'feedback-banner correct';
+          feedbackStatusTitle.innerHTML = '<i class="fa-solid fa-circle-check"></i> Correct!';
+          feedbackCorrectDesc.innerHTML = `Meaning matches: <span class="feedback-detail eng"><strong>${item.english}</strong></span>`;
+        } else {
+          feedbackBanner.className = 'feedback-banner incorrect';
+          feedbackStatusTitle.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Incorrect!';
+          feedbackCorrectDesc.innerHTML = `Correct meaning is: <span class="feedback-detail eng"><strong>${correctDisplay}</strong></span>`;
+        }
+      }
+
+      // Disable submission inputs until we move forward
+      submitAnswerBtn.disabled = true;
+      submitAnswerBtn.style.display = 'none';
+      skipCardBtn.style.display = 'none';
+      nextCardBtn.style.display = 'inline-flex';
+      document.getElementById('card-flip-hint').innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> Click card to view details`;
+
+      // Auto flip to show back face
+      isFlipped = true;
+      interactiveCard.classList.add('flipped');
+
+      // Log statistics
+      resultsHistory.push({
+        item: item,
+        userTyped: userVal || '[Empty Submission]',
+        isCorrect: isCorrect
+      });
+
+      // Update HUD Scores
+      if (isCorrect) {
+        correctCount++;
+        hudCorrect.innerText = correctCount;
+        streakCount++;
+        hudStreak.innerText = streakCount;
+        streakWrapper.style.opacity = '1';
+        if (streakCount > bestStreak) {
+          bestStreak = streakCount;
+        }
+      } else {
+        incorrectCount++;
+        hudIncorrect.innerText = incorrectCount;
+        streakCount = 0;
+        hudStreak.innerText = '0';
+        streakWrapper.style.opacity = '0';
+      }
+    }
+
+    // --- Progression Transition ---
+    function transitionToNextCard() {
+      currentIndex++;
+      if (currentIndex < sessionCards.length) {
+        displayCardAtIndex();
+      } else {
+        endPracticeSession();
+      }
+    }
+
+    // --- Abort Practice Session ---
+    function abortPracticeSession() {
+      confirmModal.classList.add('active');
+    }
+
+    // --- Practice Engine Session End ---
+    function endPracticeSession() {
+      // Clear timer
+      clearInterval(timerInterval);
+
+      // Hide session, show results card
+      sessionBox.style.display = 'none';
+      resultsBox.style.display = 'block';
+      progressBarContainer.style.display = 'none';
+      document.getElementById('header-actions-el').style.display = 'flex';
+
+      // Set score statistics
+      const total = sessionCards.length;
+      const scorePct = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+      resultsScorePercent.innerText = `${scorePct}%`;
+
+      // Animate stroke svg fill
+      const svgOffset = 439.6 - (439.6 * scorePct) / 100;
+      scoreCircleFill.style.strokeDashoffset = svgOffset;
+
+      // Score-dependent encouragements
+      if (scorePct === 100) resultsEncouragement.innerText = "Masterful Perfection! 🎉";
+      else if (scorePct >= 85) resultsEncouragement.innerText = "Excellent Skill! 🌟";
+      else if (scorePct >= 60) resultsEncouragement.innerText = "Nice Job! Keep Practicing 👍";
+      else resultsEncouragement.innerText = "Keep Learning! Practice makes perfect 💪";
+
+      sumCorrect.innerText = correctCount;
+      sumIncorrect.innerText = incorrectCount;
+      sumStreak.innerText = bestStreak;
+      sumTime.innerText = formatTime(timerSeconds);
+
+      // Build Session Review List
+      historyRows.innerHTML = '';
+      resultsHistory.forEach(record => {
+        const tr = document.createElement('tr');
+
+        const statusBadge = record.isCorrect
+          ? '<span class="history-status-badge correct"><i class="fa-solid fa-circle-check"></i> Correct</span>'
+          : '<span class="history-status-badge incorrect"><i class="fa-solid fa-circle-xmark"></i> Incorrect</span>';
+
+        tr.innerHTML = `
+          <td class="eng">${record.item.english}</td>
+          <td class="sld">${record.item.signs.join(', ')}</td>
+          <td class="user-val">${escapeHTML(record.userTyped)}</td>
+          <td>${statusBadge}</td>
+        `;
+        historyRows.appendChild(tr);
+      });
+    }
+
+    // --- Timer helpers ---
+    function startTimer() {
+      clearInterval(timerInterval);
+      hudTimer.innerText = '00:00';
+      timerInterval = setInterval(() => {
+        timerSeconds++;
+        hudTimer.innerText = formatTime(timerSeconds);
+      }, 1000);
+    }
+
+    function formatTime(totalSecs) {
+      const mins = Math.floor(totalSecs / 60);
+      const secs = totalSecs % 60;
+      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // --- General Utilities ---
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function escapeHTML(str) {
+      return str.replace(/[&<>'"]/g, 
+        tag => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          "'": '&#39;',
+          '"': '&quot;'
+        }[tag] || tag)
+      );
+    }
+
+    // Premium Toast alert system
+    function showToast(message, type = "correct") {
+      const container = document.getElementById('toast-container-el');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      
+      const icon = type === "correct"
+        ? '<i class="fa-solid fa-circle-check" style="color: var(--color-correct);"></i>'
+        : '<i class="fa-solid fa-circle-xmark" style="color: var(--color-incorrect);"></i>';
+
+      toast.innerHTML = `${icon} <span>${message}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.animation = 'toastIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) reverse';
+        setTimeout(() => toast.remove(), 280);
+      }, 3000);
+    }
+  </script>
+</body>
+
+</html>

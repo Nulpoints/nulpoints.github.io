@@ -485,7 +485,9 @@
         }
 
         function processInput() {
-            let input = document.getElementById('sldInput').value.trim();
+            let inputEl = document.getElementById('sldInput');
+            if (!inputEl) return;
+            let input = inputEl.value.trim();
             if (!input) return;
 
             let parsedArray = parseSLDText(input);

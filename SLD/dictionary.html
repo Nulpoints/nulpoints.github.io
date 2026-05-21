@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLD Bidirectional Dictionary & Interactive Analyzer</title>
+  <meta name="description"
+    content="An interactive, high-fidelity bidirectional lookup dictionary and parser analysis suite for SLD (Sign Language Description) notations and English glosses.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #090d16 0%, #111026 100%);
+      --glass-bg: rgba(17, 24, 39, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-hover-border: rgba(255, 255, 255, 0.15);
+
+      --accent-primary: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      --accent-glow: rgba(124, 58, 237, 0.3);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(15, 23, 42, 0.6);
+
+      --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Background decorative blobs */
+    .bg-blobs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+    }
+
+    .blob-1 {
+      top: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: #7c3aed;
+    }
+
+    .blob-2 {
+      bottom: -10%;
+      left: -10%;
+      width: 45vw;
+      height: 45vw;
+      background: #0ea5e9;
+    }
+
+    /* Main Container */
+    .app-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-icon {
+      font-size: 2.2rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.4));
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      font-weight: 400;
+      max-width: 700px;
+      margin: 0.25rem auto 1.25rem auto;
+    }
+
+    .header-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-spring);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 15px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      border: none;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+    }
+
+    /* Search Section */
+    .search-section {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 20;
+    }
+
+    .search-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Dropdown Multiselect */
+    .dropdown-multiselect {
+      position: relative;
+      width: 100%;
+    }
+
+    .dropdown-multiselect.active {
+      z-index: 100;
+    }
+
+    .dropdown-trigger {
+      width: 100%;
+      background: rgba(10, 15, 30, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.8rem 1.25rem;
+      font-family: inherit;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 3.4rem;
+      transition: var(--transition-smooth);
+      text-align: left;
+    }
+
+    .dropdown-trigger:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .dropdown-arrow {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: transform 0.3s;
+    }
+
+    .dropdown-multiselect.active .dropdown-arrow {
+      transform: rotate(180deg);
+      color: var(--accent-primary);
+    }
+
+    .dropdown-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 100%;
+      background: #0a0e1a;
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.75rem;
+      z-index: 50;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: var(--transition-smooth);
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .dropdown-multiselect.active .dropdown-panel {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      user-select: none;
+    }
+
+    .checkbox-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: #fff;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .checkbox-custom {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--text-muted);
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .checkbox-item input[type="checkbox"]:checked + .checkbox-custom {
+      border-color: var(--accent-primary);
+      background: var(--accent-primary);
+    }
+
+    .checkbox-item input[type="checkbox"]:checked + .checkbox-custom::after {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 0.7rem;
+      color: #fff;
+      position: absolute;
+    }
+
+    .checkbox-item input[type="checkbox"]:checked ~ .checkbox-label {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .search-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: relative;
+    }
+
+    .search-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+      transition: var(--transition-smooth);
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(10, 15, 30, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.8rem 1.25rem 0.8rem 2.8rem;
+      font-family: inherit;
+      color: var(--text-main);
+      font-size: 1rem;
+      transition: var(--transition-smooth);
+      height: 3.4rem;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .search-input:focus + .search-icon {
+      color: var(--accent-primary);
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: var(--transition-smooth);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .clear-btn.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .clear-btn:hover {
+      color: var(--text-main);
+    }
+
+    /* Results Info Bar */
+    .results-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      padding: 0 0.5rem;
+    }
+
+    .results-count {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .results-count strong {
+      color: var(--text-main);
+    }
+
+    /* Dictionary List Table */
+    .dict-list {
+      display: flex;
+      flex-direction: column;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .dict-header-row {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: rgba(10, 15, 30, 0.9);
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+    }
+
+    .dict-row {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .dict-row:last-child {
+      border-bottom: none;
+    }
+
+    .dict-row:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .dict-row::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .dict-row:hover::before {
+      opacity: 1;
+    }
+
+    .col-word {
+      flex: 0 0 30%;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      padding-right: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .col-notation {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .notation-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(10, 15, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      transition: var(--transition-smooth);
+      font-family: monospace;
+      color: #c084fc;
+      font-size: 0.95rem;
+    }
+
+    .notation-badge:hover {
+      border-color: rgba(139, 92, 246, 0.3);
+      background: rgba(10, 15, 30, 0.85);
+    }
+
+    .col-actions {
+      flex: 0 0 10%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+
+    .action-icon-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .action-icon-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.15);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    @media (max-width: 768px) {
+      .dict-header-row {
+        display: none;
+      }
+
+      .dict-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        padding: 1rem;
+      }
+
+      .col-word {
+        flex: none;
+        width: 100%;
+        padding-right: 0;
+      }
+
+      .col-notation {
+        width: 100%;
+      }
+
+      .col-actions {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 0.25rem;
+      }
+    }
+
+    /* Load More Trigger */
+    .load-more-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    /* Sliding Drawer Detailed Analysis Panel */
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(9, 13, 22, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+      overflow: hidden;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(650px, 95vw);
+      height: 100vh;
+      background: #0a0e1a;
+      border-left: 1px solid var(--glass-border);
+      z-index: 101;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    .drawer-title-group h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .drawer-title-group p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .close-drawer-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .close-drawer-btn:hover {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .drawer-content {
+      padding: 1.5rem;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .analysis-section {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .analysis-section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Live Signature/EliS character styling */
+    .sign-display-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      background: radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+      padding: 1.5rem;
+    }
+
+    .sign-notation-large {
+      font-family: monospace;
+      font-size: 1.5rem;
+      color: #c084fc;
+      font-weight: bold;
+    }
+
+    /* Color coded token breakdown */
+    .token-timeline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+
+    .token {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+      cursor: default;
+      transition: transform 0.2s;
+    }
+
+    .token:hover {
+      transform: scale(1.05);
+    }
+
+    /* Token Legend styling */
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .legend-box {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Parser Token Colors */
+    .bg-ds { background-color: #ff5555; color: #fff; }     /* Dominant Handshape - Coral Red */
+    .bg-nds { background-color: #26a69a; color: #fff; }    /* Non-Dominant Handshape - Teal/Mint */
+    .bg-do { background-color: #ff2d55; color: #fff; }     /* Dominant Orientation - Hot Pink */
+    .bg-ndo { background-color: #ff9f0a; color: #000; text-shadow: none; } /* Non-Dominant Orientation - Amber */
+    .bg-loc { background-color: #2979ff; color: #fff; }    /* Location - Royal Blue */
+    .bg-act { background-color: #e040fb; color: #fff; }    /* Action Descriptor - Violet */
+    .bg-hmod { background-color: #ff4081; color: #fff; }   /* Handshape Change - Magenta */
+    .bg-mov { background-color: #00e676; color: #000; text-shadow: none; } /* Movement - Neon Green */
+    .bg-punct { background-color: #495057; } /* Punctuation */
+
+    /* EliS and Signature Display Cards */
+    .signatures-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .signature-card {
+      background: rgba(10, 15, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+    }
+
+    .signature-card:hover {
+      border-color: rgba(139, 92, 246, 0.2);
+      background: rgba(10, 15, 30, 0.8);
+    }
+
+    .signature-card-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .hs-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hs-value {
+      font-size: 1rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .sig-value {
+      font-family: monospace;
+      color: #38bdf8;
+      font-size: 0.85rem;
+    }
+
+    .signature-card-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      color: #fff;
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+    }
+
+
+
+    /* Structured Trees and JSONs */
+    .tree-box {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.85rem;
+      background: rgba(10, 15, 30, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 1rem;
+      color: #38bdf8;
+      white-space: pre;
+      overflow-x: auto;
+      line-height: 1.4;
+      max-height: 250px;
+    }
+
+    .copy-link-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: var(--transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .copy-link-btn:hover {
+      color: #fff;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(10, 15, 30, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(139, 92, 246, 0.4);
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state-icon {
+      font-size: 2.5rem;
+      color: var(--accent-primary);
+      margin-bottom: 0.75rem;
+      opacity: 0.7;
+    }
+
+    .empty-state p {
+      font-size: 1rem;
+    }
+  </style>
+  <link rel="stylesheet" href="../theme.css">
+  <script src="../theme.js" defer></script>
+</head>
+
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="app-container">
+    <header>
+      <div class="logo-container">
+        <i class="fa-solid fa-book-open logo-icon"></i>
+        <h1>SLD Bidirectional Dictionary</h1>
+      </div>
+      <p class="tagline">Search 3,330+ Sign Language Description (SLD) signs, interactive timeline breakdowns, and Structural Parameter Trees.</p>
+      <div class="header-actions">
+        <a href="flashcards.html" class="btn btn-primary">
+          <i class="fa-solid fa-graduation-cap"></i> Practice Flashcards
+        </a>
+        <a href="SLDparser.html" class="btn">
+          <i class="fa-solid fa-code"></i> Developer Parser
+        </a>
+      </div>
+    </header>
+
+    <!-- Search Section -->
+    <div class="search-section">
+      <div class="search-grid">
+        <!-- English Search -->
+        <div class="search-group">
+          <label class="search-label" for="english-search">
+            <span>English Gloss Lookup</span>
+            <i class="fa-solid fa-language text-muted"></i>
+          </label>
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="english-search" class="search-input" placeholder="Type English gloss (e.g. 'about', 'accept')..." autocomplete="off">
+            <button class="clear-btn" id="clear-english"><i class="fa-solid fa-circle-xmark"></i></button>
+          </div>
+        </div>
+
+        <!-- SLD Notation Search -->
+        <div class="search-group">
+          <label class="search-label" for="sld-search">
+            <span>SLD Notation Lookup</span>
+            <i class="fa-solid fa-fingerprint text-muted"></i>
+          </label>
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-fingerprint search-icon"></i>
+            <input type="text" id="sld-search" class="search-input" placeholder="Type SLD letters (e.g. 'llé', 'bj', '=ra')..." autocomplete="off">
+            <button class="clear-btn" id="clear-sld"><i class="fa-solid fa-circle-xmark"></i></button>
+          </div>
+        </div>
+
+        <!-- Sources Multiselect Dropdown -->
+        <div class="search-group">
+          <label class="search-label">
+            <span>Sources to Include</span>
+            <i class="fa-solid fa-filter text-muted"></i>
+          </label>
+          <div class="dropdown-multiselect" id="sources-dropdown-container">
+            <button class="dropdown-trigger" id="sources-trigger-btn" type="button">
+              <span id="selected-sources-text">Main ASL Dictionary</span>
+              <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </button>
+            <div class="dropdown-panel" id="sources-panel">
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Main ASL Dictionary" checked>
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Main ASL Dictionary</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Jones et al. (1981)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Jones et al. (1981)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Shroyer et al. (1984)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Shroyer et al. (1984)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Sternberg (1994)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Sternberg (1994)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Stokoe et al. (1965)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Stokoe et al. (1965)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Count Info -->
+    <div class="results-info">
+      <div class="results-count" id="results-count-text">
+        Showing <strong>0</strong> entries
+      </div>
+    </div>
+
+    <!-- High Density List -->
+    <div class="dict-list" id="dictionary-list-element">
+      <div class="dict-header-row">
+        <div class="col-word">English Gloss</div>
+        <div class="col-notation">SLD Transcription Glosses</div>
+        <div class="col-actions">Analyze</div>
+      </div>
+      <div id="dictionary-rows-container">
+        <!-- Dyn Rows go here -->
+      </div>
+    </div>
+
+    <!-- Load More Container -->
+    <div class="load-more-container" id="load-more-container-el" style="display: none;">
+      <button class="btn" id="load-more-btn">
+        <i class="fa-solid fa-arrow-down-long"></i> Load More Entries
+      </button>
+    </div>
+  </div>
+
+  <!-- Detailed Analysis sliding drawer -->
+  <div class="drawer-overlay" id="drawer-overlay-el"></div>
+  <div class="drawer" id="drawer-el">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <h3 id="drawer-english-title">Word</h3>
+        <p>Interactive SLD Sign Analysis Breakdown</p>
+      </div>
+      <button class="close-drawer-btn" id="close-drawer-btn-el">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="drawer-content" id="drawer-content-el">
+      <!-- Dyn analysis panels go here -->
+    </div>
+  </div>
+
+  <!-- Import data and calculation engine -->
+  <script src="signature_calculator.js"></script>
+  <script src="sld_parser.js"></script>
+  <script src="sld-dictionary-data.js"></script>
+
+  <script>
+    // Dictionary State
+    let filteredDictionary = [];
+    let currentLimit = 50;
+    const itemsPerLoad = 50;
+
+    // DOM References
+    const englishSearch = document.getElementById('english-search');
+    const sldSearch = document.getElementById('sld-search');
+    const clearEnglish = document.getElementById('clear-english');
+    const clearSld = document.getElementById('clear-sld');
+    const rowsContainer = document.getElementById('dictionary-rows-container');
+    const resultsCountText = document.getElementById('results-count-text');
+    const loadMoreContainer = document.getElementById('load-more-container-el');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+
+    const drawerOverlay = document.getElementById('drawer-overlay-el');
+    const drawer = document.getElementById('drawer-el');
+    const drawerEnglishTitle = document.getElementById('drawer-english-title');
+    const drawerContent = document.getElementById('drawer-content-el');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn-el');
+
+    // Initialize application
+    window.addEventListener('DOMContentLoaded', () => {
+      // Ensure dataset loaded
+      if (typeof window.sldDictionary === 'undefined') {
+        rowsContainer.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-triangle-exclamation empty-state-icon" style="color: #ef4444;"></i>
+            <p><strong>Error:</strong> Failed to load sld-dictionary-data.js. Ensure it exists in the same directory.</p>
+          </div>`;
+        return;
+      }
+
+      // Toggle Sources Multiselect Dropdown Panel
+      const sourcesDropdownContainer = document.getElementById('sources-dropdown-container');
+      const sourcesTriggerBtn = document.getElementById('sources-trigger-btn');
+      const sourceCheckboxes = document.querySelectorAll('.source-checkbox');
+      const selectedSourcesText = document.getElementById('selected-sources-text');
+
+      sourcesTriggerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sourcesDropdownContainer.classList.toggle('active');
+      });
+
+      // Close dropdown if clicked outside
+      document.addEventListener('click', (e) => {
+        if (!sourcesDropdownContainer.contains(e.target)) {
+          sourcesDropdownContainer.classList.remove('active');
+        }
+      });
+
+      // Update source text and trigger filter when checkbox changes
+      function updateSourcesUI() {
+        const checkedBoxes = Array.from(document.querySelectorAll('.source-checkbox:checked'));
+        if (checkedBoxes.length === 0) {
+          selectedSourcesText.textContent = "No Sources Selected";
+        } else if (checkedBoxes.length === 1) {
+          selectedSourcesText.textContent = checkedBoxes[0].value;
+        } else if (checkedBoxes.length === sourceCheckboxes.length) {
+          selectedSourcesText.textContent = "All Sources Included";
+        } else {
+          selectedSourcesText.textContent = `${checkedBoxes.length} Sources Selected`;
+        }
+        performFilter();
+      }
+
+      sourceCheckboxes.forEach(cb => {
+        cb.addEventListener('change', updateSourcesUI);
+      });
+
+      // Set initial trigger text
+      updateSourcesUI();
+
+      // Listeners
+      englishSearch.addEventListener('input', () => {
+        toggleClearButton(englishSearch, clearEnglish);
+        performFilter();
+      });
+      sldSearch.addEventListener('input', () => {
+        toggleClearButton(sldSearch, clearSld);
+        performFilter();
+      });
+
+      clearEnglish.addEventListener('click', () => {
+        englishSearch.value = '';
+        toggleClearButton(englishSearch, clearEnglish);
+        performFilter();
+      });
+
+      clearSld.addEventListener('click', () => {
+        sldSearch.value = '';
+        toggleClearButton(sldSearch, clearSld);
+        performFilter();
+      });
+
+      loadMoreBtn.addEventListener('click', () => {
+        currentLimit += itemsPerLoad;
+        renderRows(true);
+      });
+
+      // Drawer close handlers
+      closeDrawerBtn.addEventListener('click', closeDrawer);
+      drawerOverlay.addEventListener('click', closeDrawer);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeDrawer();
+      });
+    });
+
+    function toggleClearButton(inputEl, btnEl) {
+      if (inputEl.value.trim().length > 0) {
+        btnEl.classList.add('active');
+      } else {
+        btnEl.classList.remove('active');
+      }
+    }
+
+    // Interactive Search and Substring matching
+    function performFilter() {
+      const engQuery = englishSearch.value.trim().toLowerCase();
+      const sldQuery = sldSearch.value.trim().toLowerCase();
+
+      // Get list of selected sources
+      const selectedSources = Array.from(document.querySelectorAll('.source-checkbox:checked')).map(cb => cb.value);
+
+      filteredDictionary = [];
+
+      window.sldDictionary.forEach(item => {
+        // Filter signs based on sources first
+        const signsWithSelectedSource = item.signs.filter(sign => {
+          const sourcesForSign = item.signSources[sign] || [];
+          return sourcesForSign.some(src => selectedSources.includes(src));
+        });
+
+        if (signsWithSelectedSource.length === 0) {
+          return; // skip this word entirely since none of its signs belong to the selected sources
+        }
+
+        let matchEng = true;
+        let matchSld = true;
+
+        if (engQuery.length > 0) {
+          matchEng = item.english.toLowerCase().includes(engQuery);
+        }
+
+        if (sldQuery.length > 0) {
+          // Check if any of the signs with the selected sources match the SLD query
+          matchSld = signsWithSelectedSource.some(sign => sign.toLowerCase().includes(sldQuery));
+        }
+
+        if (matchEng && matchSld) {
+          // Create a copy of the item containing only the signs matching the selected sources
+          filteredDictionary.push({
+            english: item.english,
+            signs: signsWithSelectedSource,
+            signSources: item.signSources
+          });
+        }
+      });
+
+      currentLimit = itemsPerLoad;
+      renderRows(false);
+    }
+
+    function renderRows(append = false) {
+      if (!append) {
+        rowsContainer.innerHTML = '';
+      }
+
+      const totalItems = filteredDictionary.length;
+      resultsCountText.innerHTML = `Showing <strong>${Math.min(currentLimit, totalItems)}</strong> of <strong>${totalItems}</strong> entries`;
+
+      if (totalItems === 0) {
+        rowsContainer.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-magnifying-glass empty-state-icon"></i>
+            <p>No matching dictionary records found.</p>
+          </div>`;
+        loadMoreContainer.style.display = 'none';
+        return;
+      }
+
+      const endLimit = Math.min(currentLimit, totalItems);
+      const startLimit = append ? rowsContainer.children.length : 0;
+
+      for (let i = startLimit; i < endLimit; i++) {
+        const item = filteredDictionary[i];
+        
+        const row = document.createElement('div');
+        row.className = 'dict-row';
+        row.addEventListener('click', () => openDetailedAnalysis(item));
+
+        // Badges for notation list
+        let badgeHTML = '';
+        item.signs.forEach(sign => {
+          badgeHTML += `<span class="notation-badge">${sign}</span>`;
+        });
+
+        row.innerHTML = `
+          <div class="col-word">${item.english}</div>
+          <div class="col-notation">${badgeHTML}</div>
+          <div class="col-actions">
+            <button class="action-icon-btn" title="View details and Structural Parameter Tree">
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+            </button>
+          </div>
+        `;
+        
+        rowsContainer.appendChild(row);
+      }
+
+      // Toggle load more visibility
+      if (currentLimit < totalItems) {
+        loadMoreContainer.style.display = 'flex';
+      } else {
+        loadMoreContainer.style.display = 'none';
+      }
+    }
+
+    // Sliding Drawer Operations
+    function openDetailedAnalysis(item) {
+      drawerEnglishTitle.textContent = item.english;
+      drawerContent.innerHTML = '';
+
+      item.signs.forEach((sign, idx) => {
+        // Run deep sld_parser routines
+        let parsed = null;
+        try {
+          parsed = parseSLDWord(sign);
+        } catch (e) {
+          console.error("Failed to parse", sign, e);
+        }
+
+        const signPanel = document.createElement('div');
+        signPanel.className = 'analysis-section';
+
+        if (!parsed) {
+          signPanel.innerHTML = `
+            <div class="analysis-section-title">Sign #${idx + 1}</div>
+            <div class="sign-display-card">
+              <div class="sign-notation-large">${sign}</div>
+              <p style="color: #ef4444; font-size: 0.9rem;"><i class="fa-solid fa-triangle-exclamation"></i> Error parsing this sign notation structure.</p>
+            </div>
+          `;
+          drawerContent.appendChild(signPanel);
+          return;
+        }
+
+        // Color coding color coded output
+        let ccHTML = '';
+        if (parsed.raw_initial_sign) {
+          let init = parsed.raw_initial_sign;
+          if (init.handshapes.length > 0) ccHTML += `<span class="token bg-ds" title="Dominant Handshape">${normalizeWord(init.handshapes[0].spelling)}</span>`;
+          if (init.handshapes.length > 1) ccHTML += `<span class="token bg-nds" title="Non-Dominant Handshape">${normalizeWord(init.handshapes[1].spelling)}</span>`;
+
+          if (init.orientations.length > 0) ccHTML += `<span class="token bg-do" title="Dominant Orientation">${init.orientations[0]}</span>`;
+          if (init.orientations.length > 1) ccHTML += `<span class="token bg-ndo" title="Non-Dominant Orientation">${init.orientations[1]}</span>`;
+
+          init.parsedLocations.forEach(loc => {
+            ccHTML += `<span class="token bg-loc" title="Location">${loc}</span>`;
+          });
+        }
+
+        parsed.raw_actions.forEach(act => {
+          ccHTML += `<span class="token bg-act" title="Action">${act.descriptor}</span>`;
+          if (act.changes) {
+            act.changes.forEach(t => {
+              ccHTML += `<span class="token ${t.cls}" title="${t.type}">${t.value}</span>`;
+            });
+          }
+        });
+
+
+
+        // Tree rendering lines
+        let treeLines = [];
+        treeLines.push(`Sign: ${parsed.transcription}`);
+
+        let isLastSegment = parsed.actions.length === 0;
+        let pfx = isLastSegment ? '└── ' : '├── ';
+        let childPfx = isLastSegment ? '    ' : '│   ';
+        treeLines.push(pfx + 'Initial Sign');
+
+        let children = [];
+        let state = parsed.initial_sign;
+        if (state.dominant_handshape) children.push('Dominant Handshape: ' + state.dominant_handshape);
+        if (state.dominant_handshape_signature) children.push('  └─ Signature: ' + state.dominant_handshape_signature);
+        if (state.non_dominant_handshape) children.push('Non-Dominant Handshape: ' + state.non_dominant_handshape);
+        if (state.non_dominant_handshape_signature) children.push('  └─ Signature: ' + state.non_dominant_handshape_signature);
+        if (state.dominant_orientation) children.push('Dominant Orientation: ' + state.dominant_orientation);
+        if (state.non_dominant_orientation) children.push('Non-Dominant Orientation: ' + state.non_dominant_orientation);
+        if (state.dominant_location) children.push('Dominant Location: ' + state.dominant_location);
+        if (state.non_dominant_location) children.push('Non-Dominant Location: ' + state.non_dominant_location);
+
+        children.forEach((c, idx) => {
+          let isLastChild = idx === children.length - 1;
+          let branch = isLastChild ? '└── ' : '├── ';
+          treeLines.push(childPfx + branch + c);
+        });
+
+        parsed.actions.forEach((act, actIdx) => {
+          let isLastAct = actIdx === parsed.actions.length - 1;
+          let actPfx = isLastAct ? '└── ' : '├── ';
+          treeLines.push(actPfx + 'Action: ' + act.descriptor);
+
+          let actChildren = [];
+          if (act.movement) actChildren.push('Movement: ' + act.movement);
+          if (act.change_in_dominant_handshape) {
+            actChildren.push('Change Dominant Handshape: ' + act.change_in_dominant_handshape);
+            if (act.change_in_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_dominant_handshape_signature);
+          }
+          if (act.change_in_non_dominant_handshape) {
+            actChildren.push('Change Non-Dominant Handshape: ' + act.change_in_non_dominant_handshape);
+            if (act.change_in_non_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_non_dominant_handshape_signature);
+          }
+          if (act.change_in_dominant_orientation) actChildren.push('Change Dominant Orientation: ' + act.change_in_dominant_orientation);
+          if (act.change_in_non_dominant_orientation) actChildren.push('Change Non-Dominant Orientation: ' + act.change_in_non_dominant_orientation);
+          if (act.change_in_dominant_location) actChildren.push('Change Dominant Location: ' + act.change_in_dominant_location);
+          if (act.change_in_non_dominant_location) actChildren.push('Change Non-Dominant Location: ' + act.change_in_non_dominant_location);
+
+          let actChildPfx = isLastAct ? '    ' : '│   ';
+          actChildren.forEach((t, tIdx) => {
+            let isLastChild = tIdx === actChildren.length - 1;
+            let branch = isLastChild ? '└── ' : '├── ';
+            treeLines.push(actChildPfx + branch + t);
+          });
+        });
+
+        // Copy button ID helper
+        const randId = 'tree-' + idx;
+
+        signPanel.innerHTML = `
+          <div class="analysis-section-title">
+            <span>Sign Notation Model #${idx + 1}</span>
+            <button class="copy-link-btn" onclick="copyDrawerContent('${randId}')">
+              <i class="fa-regular fa-copy"></i> Copy Tree
+            </button>
+          </div>
+          
+          <div class="sign-display-card">
+            <div class="sign-notation-large">${sign}</div>
+            <div class="token-timeline">${ccHTML}</div>
+          </div>
+
+          <h4 class="hs-label" style="margin-bottom: 0.5rem; font-weight: bold; color: var(--accent-primary);">Structural Parameter Tree</h4>
+          
+          <div class="analysis-tree-container" style="display: flex; gap: 1rem; align-items: stretch; flex-wrap: wrap;">
+            <div class="tree-wrapper" style="flex: 1; min-width: 250px;">
+              <pre class="tree-box" id="${randId}" style="height: 100%; max-height: 350px; margin: 0;">${treeLines.join('\n')}</pre>
+            </div>
+            <div class="legend-sidebar" style="width: 180px; flex-shrink: 0; display: flex; flex-direction: column; gap: 0.5rem; background: rgba(10, 15, 30, 0.4); border: 1px solid rgba(255,255,255,0.05); padding: 0.75rem; border-radius: 8px;">
+              <h5 class="hs-label" style="margin-bottom: 0.25rem; font-weight: bold; color: var(--accent-primary); border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; font-size: 0.75rem; text-transform: uppercase;">Parameter Legend</h5>
+              <div class="legend-item"><div class="legend-box bg-ds"></div> Dominant HS</div>
+              <div class="legend-item"><div class="legend-box bg-nds"></div> Non-Dominant HS</div>
+              <div class="legend-item"><div class="legend-box bg-do"></div> Dom Orientation</div>
+              <div class="legend-item"><div class="legend-box bg-ndo"></div> Non-Dom Orientation</div>
+              <div class="legend-item"><div class="legend-box bg-loc"></div> Location</div>
+              <div class="legend-item"><div class="legend-box bg-act"></div> Action Descriptor</div>
+              <div class="legend-item"><div class="legend-box bg-mov"></div> Movement</div>
+            </div>
+          </div>
+        `;
+
+        drawerContent.appendChild(signPanel);
+      });
+
+      // Show drawer
+      drawerOverlay.classList.add('active');
+      drawer.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawerOverlay.classList.remove('active');
+      drawer.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function copyDrawerContent(elementId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        // Dynamic notification
+        const btn = document.querySelector(`[onclick="copyDrawerContent('${elementId}')"]`);
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+        }, 1500);
+      }).catch(err => {
+        console.error('Could not copy text: ', err);
+      });
+    }
+  </script>
+</body>
+
+</html>

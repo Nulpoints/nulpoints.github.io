@@ -1,0 +1,585 @@
+/* Centralized Minimalist Grayscale Theme System */
+
+:root {
+  /* Dark Mode Variables (Default) */
+  --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #161616 100%);
+  --bg-solid: #0a0a0a;
+  --glass-bg: rgba(20, 20, 20, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover-border: rgba(255, 255, 255, 0.15);
+
+  --accent-primary: #ffffff;
+  --accent-gradient: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+  --accent-glow: rgba(255, 255, 255, 0.15);
+
+  --text-main: #f5f5f5;
+  --text-muted: #a3a3a3;
+  --text-bright: #ffffff;
+  --card-bg: rgba(24, 24, 27, 0.65);
+  --card-bg-solid: #18181b;
+
+  --color-correct: #a3a3a3;
+  --color-incorrect: #525252;
+  --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme="light"] {
+  /* Light Mode Variables */
+  --bg-gradient: linear-gradient(135deg, #f5f5f7 0%, #e5e5ea 100%);
+  --bg-solid: #f5f5f7;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-hover-border: rgba(0, 0, 0, 0.16);
+
+  --accent-primary: #171717;
+  --accent-gradient: linear-gradient(135deg, #171717 0%, #525252 100%);
+  --accent-glow: rgba(0, 0, 0, 0.08);
+
+  --text-main: #171717;
+  --text-muted: #525252;
+  --text-bright: #171717;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-bg-solid: #ffffff;
+
+  --color-correct: #525252;
+  --color-incorrect: #a3a3a3;
+}
+
+/* Base Body Modifications */
+body {
+  background: var(--bg-gradient) !important;
+  background-color: var(--bg-solid) !important;
+  color: var(--text-main) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Background blob color-shifting overrides */
+.blob-1 {
+  background: #27272a !important;
+  opacity: 0.15 !important;
+}
+.blob-2 {
+  background: #18181b !important;
+  opacity: 0.12 !important;
+}
+html[data-theme="light"] .blob-1 {
+  background: #d4d4d8 !important;
+  opacity: 0.25 !important;
+}
+html[data-theme="light"] .blob-2 {
+  background: #e4e4e7 !important;
+  opacity: 0.2 !important;
+}
+
+/* W3.CSS Element Overrides */
+.w3-container, .w3-row, .w3-half {
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-main) !important;
+}
+
+/* Reset headings styled with text gradients */
+h1 {
+  background: var(--accent-gradient) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.logo-icon {
+  background: var(--accent-gradient) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 4px var(--accent-glow)) !important;
+}
+
+/* Buttons and Links */
+.btn, .btn-primary, .btn-outline, .btn-success, .btn-danger, input[type="button"], button {
+  font-family: inherit;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary, input[type="button"] {
+  background: var(--accent-gradient) !important;
+  color: var(--bg-solid) !important;
+  box-shadow: 0 4px 12px var(--accent-glow) !important;
+  border: none !important;
+}
+
+.btn-primary:hover, input[type="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--accent-glow) !important;
+}
+
+.btn-outline {
+  border: 1px solid var(--glass-border) !important;
+  background: transparent !important;
+  color: var(--text-main) !important;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--text-main) !important;
+}
+
+html[data-theme="light"] .btn-outline:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Floating Navigation / Back button styling */
+a {
+  color: var(--text-main);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--text-muted);
+}
+
+/* Interactive Textarea & Inputs styling */
+textarea, input[type="text"], select, .styled-select {
+  background-color: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  outline: none !important;
+  transition: var(--transition-smooth) !important;
+  box-shadow: none !important;
+}
+
+textarea:focus, input[type="text"]:focus, select:focus, .styled-select:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow) !important;
+}
+
+/* Table overrides (for w3-css and bare tables) */
+table, .w3-table-all {
+  background-color: var(--card-bg-solid) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-collapse: collapse !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+th, td, .w3-table-all td, .w3-table-all th {
+  border: 1px solid var(--glass-border) !important;
+  padding: 12px 16px !important;
+  color: var(--text-main) !important;
+  background-color: transparent !important;
+}
+
+tr, .w3-table-all tr {
+  border-bottom: 1px solid var(--glass-border) !important;
+  background-color: transparent !important;
+}
+
+.w3-table-all tr:nth-child(odd), tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+html[data-theme="light"] .w3-table-all tr:nth-child(odd), 
+html[data-theme="light"] tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+th.w3-blue-grey, td.w3-blue-grey, .w3-blue-grey, .w3-theme-black, header.w3-red, header.w3-blue-grey {
+  background-color: var(--card-bg-solid) !important;
+  background: var(--card-bg-solid) !important;
+  color: var(--text-main) !important;
+  border-bottom: 2px solid var(--glass-border) !important;
+}
+
+.w3-card-4 {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Drawers & Sliding Panels overrides */
+.drawer, .drawer-overlay, .drawer-header {
+  border-left-color: var(--glass-border) !important;
+  background-color: var(--bg-solid) !important;
+  color: var(--text-main) !important;
+}
+
+.drawer-header {
+  border-bottom-color: var(--glass-border) !important;
+}
+
+.close-drawer-btn, .close-btn {
+  background-color: var(--glass-bg) !important;
+  border-color: var(--glass-border) !important;
+  color: var(--text-muted) !important;
+}
+
+.close-drawer-btn:hover, .close-btn:hover {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  color: #ef4444 !important;
+}
+
+/* Custom lists and detail cards */
+.dict-list, .dict-header-row, .search-section, .setup-card, .session-hud, .inputs-section, .results-card, .panel {
+  background: var(--glass-bg) !important;
+  background-color: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-main) !important;
+}
+
+.dict-header-row {
+  border-bottom: 1.5px solid var(--glass-border) !important;
+}
+
+.dict-row {
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.dict-row::before {
+  background: var(--accent-gradient) !important;
+}
+
+.notation-badge, .ref-card, .breakdown-item, .signature-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-main) !important;
+}
+
+.notation-text, .sign-notation-large, .prompt-text.signfont, .answer-text.signfont, .ref-key, .breakdown-char {
+  color: var(--text-main) !important;
+}
+
+/* HUD and score progress bars */
+.progress-bar-container {
+  background: var(--glass-border) !important;
+}
+
+.progress-bar-fill {
+  background: var(--accent-gradient) !important;
+  box-shadow: 0 0 10px var(--accent-glow) !important;
+}
+
+/* 3D Flashcards Deck overrides */
+.card-face {
+  background: var(--card-bg) !important;
+  border-color: var(--glass-border) !important;
+  color: var(--text-main) !important;
+}
+
+.card-tag {
+  color: var(--text-main) !important;
+  background: var(--glass-bg) !important;
+  border-color: var(--glass-border) !important;
+}
+
+/* HamNoSys Avatar Specific Tabs and buttons overrides */
+.css-tabs {
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.css-tabs a {
+  background-color: var(--card-bg) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.css-tabs li.current a, .css-tabs a.current {
+  background-color: var(--bg-solid) !important;
+  border-bottom: 1px solid var(--bg-solid) !important;
+  color: var(--text-main) !important;
+}
+
+.css-panes div {
+  background-color: var(--bg-solid) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-main) !important;
+}
+
+/* Floating Theme Switcher Button */
+.theme-toggle-btn {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50% !important;
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-main) !important;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000 !important;
+  transition: var(--transition-spring) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--accent-primary) !important;
+  transform: scale(1.1) translateY(-1px);
+  box-shadow: 0 6px 20px var(--accent-glow) !important;
+}
+
+.theme-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* Keyman status overrides */
+.keyman-status-badge {
+  background: var(--glass-bg) !important;
+  border-color: var(--glass-border) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Parser, Container and Input overrides */
+.container {
+  background: var(--glass-bg) !important;
+  background-color: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25) !important;
+  color: var(--text-main) !important;
+  transition: var(--transition-smooth);
+}
+
+.input-group {
+  border: 1px solid var(--glass-border) !important;
+  background: var(--card-bg) !important;
+}
+
+.input-group input {
+  background: transparent !important;
+  color: var(--text-main) !important;
+  border: none !important;
+  padding: 12px 16px !important;
+  outline: none !important;
+}
+
+.input-group button, button[onclick="processInput()"] {
+  background: var(--accent-gradient) !important;
+  color: var(--bg-solid) !important;
+  transition: var(--transition-smooth) !important;
+  border: none !important;
+  font-weight: 600 !important;
+}
+
+.input-group button:hover, button[onclick="processInput()"]:hover {
+  box-shadow: 0 4px 15px var(--accent-glow) !important;
+  opacity: 0.9;
+}
+
+.legend {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-muted) !important;
+}
+
+.copy-btn {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-main) !important;
+  font-family: inherit !important;
+  transition: var(--transition-smooth) !important;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--text-main) !important;
+}
+
+html[data-theme="light"] .copy-btn:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+.tree-view, .tree-box {
+  background: var(--card-bg-solid) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  color: var(--text-main) !important;
+}
+
+/* Sliding Drawer & Breakdown Drawer Overlays */
+.drawer-overlay {
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.drawer {
+  background: var(--bg-solid) !important;
+  border-left: 1px solid var(--glass-border) !important;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+.drawer-header {
+  background: var(--card-bg) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.drawer-title-group h3, .drawer-title {
+  color: var(--text-main) !important;
+}
+
+/* Dynamic Breakdown and Display Cards inside Drawers */
+.sign-display-card {
+  background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 70%) !important;
+}
+
+.breakdown-notation-title {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.breakdown-notation-large {
+  color: var(--accent-primary) !important;
+  text-shadow: 0 0 20px var(--accent-glow) !important;
+}
+
+.breakdown-item {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.breakdown-item:hover {
+  border-color: var(--accent-primary) !important;
+  background: var(--card-bg-solid) !important;
+}
+
+/* Key and character rendering inside lists/drawers */
+.notation-badge {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--accent-primary) !important;
+}
+
+.notation-badge:hover {
+  border-color: var(--accent-primary) !important;
+  background: var(--card-bg-solid) !important;
+}
+
+.notation-text, .sign-notation-large, .prompt-text.signfont, .answer-text.signfont, .ref-key, .breakdown-char, .review-sign, .history-table td.sld {
+  color: var(--accent-primary) !important;
+  text-shadow: 0 0 15px var(--accent-glow) !important;
+}
+
+/* Keyboard virtual toggle buttons */
+.keyboard-toggle-btn:hover {
+  background: var(--glass-hover-border) !important;
+  border-color: var(--accent-primary) !important;
+  color: var(--text-main) !important;
+  box-shadow: 0 0 10px var(--accent-glow) !important;
+}
+
+.keyboard-toggle-btn.active {
+  background: var(--accent-glow) !important;
+  border-color: var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
+  box-shadow: 0 0 15px var(--accent-glow) !important;
+}
+
+/* Detailed Signatures/Parameters in Dictionaries */
+.signature-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.signature-card:hover {
+  border-color: var(--accent-primary) !important;
+  background: var(--card-bg-solid) !important;
+}
+
+.hs-label {
+  color: var(--text-muted) !important;
+}
+
+.hs-value {
+  color: var(--text-main) !important;
+}
+
+.sig-value {
+  color: var(--text-muted) !important;
+}
+
+.signature-card-right {
+  background: var(--accent-glow) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-main) !important;
+}
+
+/* Legend Sidebars in Dictionaries */
+.legend-sidebar {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.legend-sidebar h5.hs-label {
+  color: var(--text-main) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+/* Flashcard Highlights, Badge instruction, Setups & Feedback Banners */
+.stat-value.highlight {
+  color: var(--accent-primary) !important;
+}
+
+.setup-title {
+  color: var(--text-main) !important;
+  border-bottom-color: var(--glass-border) !important;
+}
+
+.accent-instruction-badge {
+  background: var(--accent-glow) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.feedback-detail strong {
+  color: var(--accent-primary) !important;
+}
+
+.feedback-detail.eng strong {
+  color: var(--text-main) !important;
+}
+
+/* Correct/Incorrect practice status states (highly readable & high contrast) */
+.status-badge.correct, .feedback-banner.correct {
+  background: rgba(16, 185, 129, 0.1) !important;
+  color: #059669 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+html[data-theme="dark"] .status-badge.correct, html[data-theme="dark"] .feedback-banner.correct {
+  color: #34d399 !important;
+}
+
+.status-badge.incorrect, .feedback-banner.incorrect {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #dc2626 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+html[data-theme="dark"] .status-badge.incorrect, html[data-theme="dark"] .feedback-banner.incorrect {
+  color: #f87171 !important;
+}
+
+/* SVG Circle Progress score gradient overrides */
+#scoreGradient stop[offset="0%"], #scoreGrad stop[offset="0%"] {
+  stop-color: var(--accent-primary) !important;
+}
+
+#scoreGradient stop[offset="100%"], #scoreGrad stop[offset="100%"] {
+  stop-color: var(--text-muted) !important;
+}
+
