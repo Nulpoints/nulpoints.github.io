@@ -1,1191 +1,1193 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CoffeeScript WebGL ARP Signing Avatar: vhg.2024</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoffeeScript WebGL ARP Signing Avatar: vhg.2024</title>
 
-<meta http-equiv="Access-Control-Allow-Origin" content="*">
-<meta http-equiv="Access-Control-Allow-Methods" content="GET">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta http-equiv="Access-Control-Allow-Methods" content="GET">
 
-<!-- CWA @ vhg.cmp.uea.ac.uk/jrwg/ -->
-<link rel="stylesheet"
-    href="https://vhg.cmp.uea.ac.uk/tech/jas/vhg2024/cwa/cwasa.css" />
-<script type="text/javascript"
-    src="https://vhg.cmp.uea.ac.uk/tech/jas/vhg2024/cwa/allcsa.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<style>
-  @font-face {
-    font-family: 'HamNoSys';
-    src: url('https://vhg.cmp.uea.ac.uk/tech/hamnosys/HamNoSysUnicode.ttf') format('truetype');
-  }
-
-  /* Main container for the UI elements */
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1em;
-  }
-
-  /* Styling for the HamNoSys input area */
-  .hamnosys-input-container {
-    width: 100%;
-    max-width: 800px;
-  }
-
-  /* Styling for the keyboard section */
-  .keyboard-container {
-    width: 100%;
-    max-width: 800px;
-  }
-
-  #myHamNoSys {
-    font-family: 'HamNoSys', monospace;
-    font-size: 2.5em;
-    line-height: 1.2;
-    width: 100%;
-  }
-
-  #sigmlOutput {
-    width: 100%;
-    height: 15em;
-    margin-top: 1em;
-  }
-
-/* Styles for the keyboard */
-.css-tabs {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    border-bottom: 1px solid #ccc;
-    height: 25px;
-}
-
-.css-tabs li {
-    float: left;
-    margin: 0;
-    padding: 0;
-}
-
-.css-tabs a {
-    float: left;
-    display: block;
-    padding: 0 10px;
-    height: 25px;
-    line-height: 25px;
-    text-decoration: none;
-    color: #666;
-    background-color: #f0f0f0;
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    position: relative;
-    top: 1px;
-    margin-right: 2px;
-}
-
-.css-tabs a.current {
-    background-color: #fff;
-    border-bottom: 1px solid #fff;
-    top: 0;
-    color: #000;
-}
-
-.css-panes div {
-    display: none;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-top: none;
-    background-color: #fff;
-}
-
-.ham {
-    font-family: 'HamNoSys';
-}
-
-button {
-    font-size: 2em;
-    padding: 5px;
-    margin: 2px;
-    border-radius: 5px;
-    background-color: #eee;
-    border: 1px solid #ccc;
-}
-
-button:hover {
-    background-color: #ddd;
-}
-</style>
-
-<script language="javascript">
-
-// CWASA.getLogger("Avatar", "info");
-// CWASA.getLogger("Avatar", "debug");
-//CWASA.getLogger("Avatar", "trace");
-CWASA.getLogger("AGI", "debug");
-CWASA.getLogger("Queue", "debug");
-
-function playText(stext) {
-	CWASA.playSiGMLText(stext);
-}
-
-// New function to handle HamNoSys input
-function playHamNoSys() {
-    const hamnosysString = document.getElementById("myHamNoSys").value;
-    const sigmlText = hamNoSysToSiGML(hamnosysString);
-    playText(sigmlText);
-    document.getElementById("sigmlOutput").value = sigmlText;
-}
-
-// Function to generate and display a shareable URL
-function generateShareableUrl() {
-    const hamnosysString = document.getElementById("myHamNoSys").value;
-    const encodedHns = encodeURIComponent(hamnosysString);
-    const baseUrl = window.location.origin + window.location.pathname;
-    const shareUrl = `${baseUrl}?hns=${encodedHns}`;
-    const shareUrlElement = document.getElementById("shareUrl");
-    shareUrlElement.value = shareUrl;
-    shareUrlElement.style.display = 'block'; // Make it visible
-    document.getElementById("copyUrlBtn").style.display = 'inline-block';
-}
-
-// Function to copy the URL to the clipboard
-function copyUrlToClipboard() {
-    const shareUrlElement = document.getElementById("shareUrl");
-    shareUrlElement.select();
-    document.execCommand("copy");
-}
-
-// Function to clear the text area and generated URL
-function clearInput() {
-    document.getElementById("myHamNoSys").value = "";
-    document.getElementById("sigmlOutput").value = "";
-    document.getElementById("shareUrl").value = "";
-    document.getElementById("shareUrl").style.display = 'none';
-    document.getElementById("copyUrlBtn").style.display = 'none';
-}
-
-// Function to load HamNoSys from the URL on page load
-function loadFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const hamnosysData = urlParams.get('hns');
-    if (hamnosysData) {
-        document.getElementById("myHamNoSys").value = decodeURIComponent(hamnosysData);
+  <!-- CWA @ vhg.cmp.uea.ac.uk/jrwg/ -->
+  <link rel="stylesheet" href="https://vhg.cmp.uea.ac.uk/tech/jas/vhg2024/cwa/cwasa.css" />
+  <script type="text/javascript" src="https://vhg.cmp.uea.ac.uk/tech/jas/vhg2024/cwa/allcsa.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <style>
+    @font-face {
+      font-family: 'HamNoSys';
+      src: url('https://vhg.cmp.uea.ac.uk/tech/hamnosys/HamNoSysUnicode.ttf') format('truetype');
     }
-}
 
-/**
- * Converts HamNoSys Unicode characters to SiGML XML.
- * This is a direct translation of the HamNoSys2SiGML.py script.
- */
-function hamNoSysToSiGML(hamnosysString) {
-  // Combined conversion table mapping HamNoSys Unicode (4-digit hex) to SiGML tags.
-  // This data is sourced from the conversionSpreadSheet.txt file and common HamNoSys font encodings.
-  const hamnosysConversionMap = {
-    "0020": "hamspace",
-    "0021": "hamexclaim",
-    "002C": "hamcomma",
-    "002E": "hamfullstop",
-    "003F": "hamquery",
-    "007B": "hamaltbegin",
-    "007C": "hammetaalt",
-    "007D": "hamaltend",
-    "E000": "hamfist",
-    "E001": "hamflathand",
-    "E002": "hamfinger2",
-    "E003": "hamfinger23",
-    "E004": "hamfinger23spread",
-    "E005": "hamfinger2345",
-    "E006": "hampinch12",
-    "E007": "hampinchall",
-    "E008": "hampinch12open",
-    "E009": "hamcee12",
-    "E00A": "hamceeall",
-    "E00B": "hamceeopen",
-    "E00C": "hamthumboutmod",
-    "E00D": "hamthumbacrossmod",
-    "E00E": "hamthumbopenmod",
-    "E010": "hamfingerstraightmod",
-    "E011": "hamfingerbendmod",
-    "E012": "hamfingerhookmod",
-    "E013": "hamdoublebent",
-    "E014": "hamdoublehooked",
-    "E020": "hamextfingeru",
-    "E021": "hamextfingerur",
-    "E022": "hamextfingerr",
-    "E023": "hamextfingerdr",
-    "E024": "hamextfingerd",
-    "E025": "hamextfingerdl",
-    "E026": "hamextfingerl",
-    "E027": "hamextfingerul",
-    "E028": "hamextfingerol",
-    "E029": "hamextfingero",
-    "E02A": "hamextfingeror",
-    "E02B": "hamextfingeril",
-    "E02C": "hamextfingeri",
-    "E02D": "hamextfingerir",
-    "E02E": "hamextfingerui",
-    "E02F": "hamextfingerdi",
-    "E030": "hamextfingerdo",
-    "E031": "hamextfingeruo",
-    "E038": "hampalmu",
-    "E039": "hampalmur",
-    "E03A": "hampalmr",
-    "E03B": "hampalmdr",
-    "E03C": "hampalmd",
-    "E03D": "hampalmdl",
-    "E03E": "hampalml",
-    "E03F": "hampalmul",
-    "E040": "hamhead",
-    "E041": "hamheadtop",
-    "E042": "hamforehead",
-    "E043": "hameyebrows",
-    "E044": "hameyes",
-    "E045": "hamnose",
-    "E046": "hamnostrils",
-    "E047": "hamear",
-    "E048": "hamearlobe",
-    "E049": "hamcheek",
-    "E04A": "hamlips",
-    "E04B": "hamtongue",
-    "E04C": "hamteeth",
-    "E04D": "hamchin",
-    "E04E": "hamunderchin",
-    "E04F": "hamneck",
-    "E050": "hamshouldertop",
-    "E051": "hamshoulders",
-    "E052": "hamchest",
-    "E053": "hamstomach",
-    "E054": "hambelowstomach",
-    "00EE": "hambelowstomach",
-    "E058": "hamlrbeside",
-    "00EF": "hamlrbeside",
-    "E059": "hamlrat",
-    "E05A": "hamcoreftag",
-    "E05B": "hamcorefref",
-    "E05F": "hamneutralspace",
-    "E060": "hamupperarm",
-    "E061": "hamelbow",
-    "E062": "hamelbowinside",
-    "E063": "hamlowerarm",
-    "E064": "hamwristback",
-    "E065": "hamwristpulse",
-    "E066": "hamthumbball",
-    "E067": "hampalm",
-    "E068": "hamhandback",
-    "E069": "hamthumbside",
-    "E06A": "hampinkyside",
-    "E070": "hamthumb",
-    "E071": "hamindexfinger",
-    "E072": "hammiddlefinger",
-    "E073": "hamringfinger",
-    "E074": "hampinky",
-    "E075": "hamfingertip",
-    "E076": "hamfingernail",
-    "E077": "hamfingerpad",
-    "E078": "hamfingermidjoint",
-    "E079": "hamfingerbase",
-    "E07A": "hamfingerside",
-    "E07C": "hamwristtopulse",
-    "E07D": "hamwristtoback",
-    "E07E": "hamwristtothumb",
-    "E07F": "hamwristtopinky",
-    "E080": "hammoveu",
-    "E081": "hammoveur",
-    "E082": "hammover",
-    "E083": "hammovedr",
-    "E084": "hammoved",
-    "E085": "hammovedl",
-    "E086": "hammovel",
-    "E087": "hammoveul",
-    "E088": "hammoveol",
-    "E089": "hammoveo",
-    "E08A": "hammoveor",
-    "E08B": "hammoveil",
-    "E08C": "hammovei",
-    "E08D": "hammoveir",
-    "E08E": "hammoveui",
-    "E08F": "hammovedi",
-    "E090": "hammovedo",
-    "E091": "hammoveuo",
-    "E092": "hamcircleo",
-    "E093": "hamcirclei",
-    "E094": "hamcircled",
-    "E095": "hamcircleu",
-    "E096": "hamcirclel",
-    "E097": "hamcircler",
-    "E098": "hamcircleul",
-    "E099": "hamcircledr",
-    "E09A": "hamcircleur",
-    "E09B": "hamcircledl",
-    "E09C": "hamcircleol",
-    "E09D": "hamcircleir",
-    "E09E": "hamcircleor",
-    "E09F": "hamcircleil",
-    "E0A0": "hamcircleui",
-    "E0A1": "hamcircledo",
-    "E0A2": "hamcircleuo",
-    "E0A3": "hamcircledi",
-    "E0A4": "hamfingerplay",
-    "E0A5": "hamnodding",
-    "E0A6": "hamswinging",
-    "E0A7": "hamtwisting",
-    "E0A8": "hamstircw",
-    "E0A9": "hamstirccw",
-    "E0AA": "hamreplace",
-    "E0AD": "hammovecross",
-    "E0AE": "hammoveX",
-    "E0AF": "hamnomotion",
-    "E0B0": "hamclocku",
-    "E0B1": "hamclockul",
-    "E0B2": "hamclockl",
-    "E0B3": "hamclockdl",
-    "E0B4": "hamclockd",
-    "E0B5": "hamclockdr",
-    "E0B6": "hamclockr",
-    "E0B7": "hamclockur",
-    "E0B8": "hamclockfull",
-    "E0B9": "hamarcl",
-    "E0BA": "hamarcu",
-    "E0BB": "hamarcr",
-    "E0BC": "hamarcd",
-    "E0BD": "hamwavy",
-    "E0BE": "hamzigzag",
-    "E0C0": "hamellipseh",
-    "E0C1": "hamellipseur",
-    "E0C2": "hamellipsev",
-    "E0C3": "hamellipseul",
-    "E0C4": "hamincreasing",
-    "E0C5": "hamdecreasing",
-    "E0C6": "hamsmallmod",
-    "E0C7": "hamlargemod",
-    "E0C8": "hamfast",
-    "E0C9": "hamslow",
-    "E0CA": "hamtense",
-    "E0CB": "hamrest",
-    "E0CC": "hamhalt",
-    "E0D0": "hamclose",
-    "E0D1": "hamtouch",
-    "E0D2": "haminterlock",
-    "E0D3": "hamcross",
-    "E0D4": "hamarmextended",
-    "E0D5": "hambehind",
-    "E0D6": "hambrushing",
-    "E0D8": "hamrepeatfromstart",
-    "E0D9": "hamrepeatfromstartseveral",
-    "E0DA": "hamrepeatcontinue",
-    "E0DB": "hamrepeatcontinueseveral",
-    "E0DC": "hamrepeatreverse",
-    "E0DD": "hamalternatingmotion",
-    "E0E0": "hamseqbegin",
-    "E0E1": "hamseqend",
-    "E0E2": "hamparbegin",
-    "E0E3": "hamparend",
-    "E0E4": "hamfusionbegin",
-    "E0E5": "hamfusionend",
-    "E0E6": "hambetween",
-    "E0E7": "hamplus",
-    "E0E8": "hamsymmpar",
-    "E0E9": "hamsymmlr",
-    "E0EA": "hamnondominant",
-    "E0EB": "hamnonipsi",
-    "E0EC": "hametc",
-    "E0ED": "hamorirelative",
-    "E0F0": "hammime",
-    "E0F1": "hamversion40",
-    "F000": "hamfist",
-    "F001": "hamflathand",
-    "F002": "hamfinger2",
-    "F003": "hamfinger23",
-    "F004": "hamfinger23spread",
-    "F005": "hamfinger2345",
-    "F006": "hampinch12",
-    "F007": "hampinchall",
-    "F008": "hampinch12open",
-    "F009": "hamcee12",
-    "F00A": "hamceeall",
-    "F00B": "hamceeopen",
-    "F00C": "hamthumboutmod",
-    "F00D": "hamthumbacrossmod",
-    "F00E": "hamthumbopenmod",
-    "F010": "hamfingerstraightmod",
-    "F011": "hamfingerbendmod",
-    "F012": "hamfingerhookmod",
-    "F013": "hamdoublebent",
-    "F014": "hamdoublehooked",
-    "F020": "hamextfingeru",
-    "F021": "hamextfingerur",
-    "F022": "hamextfingerr",
-    "F023": "hamextfingerdr",
-    "F024": "hamextfingerd",
-    "F025": "hamextfingerdl",
-    "F026": "hamextfingerl",
-    "F027": "hamextfingerul",
-    "F028": "hamextfingerol",
-    "F029": "hamextfingero",
-    "F02A": "hamextfingeror",
-    "F02B": "hamextfingeril",
-    "F02C": "hamextfingeri",
-    "F02D": "hamextfingerir",
-    "F02E": "hamextfingerui",
-    "F02F": "hamextfingerdi",
-    "F030": "hamextfingerdo",
-    "F031": "hammoveuo",
-    "F038": "hampalmu",
-    "F039": "hampalmur",
-    "F03A": "hampalmr",
-    "F03B": "hampalmdr",
-    "F03C": "hampalmd",
-    "F03D": "hampalmdl",
-    "F03E": "hampalml",
-    "F03F": "hampalmul",
-    "F040": "hamhead",
-    "F041": "hamheadtop",
-    "F042": "hamforehead",
-    "F043": "hameyebrows",
-    "F044": "hameyes",
-    "F045": "hamnose",
-    "F046": "hamnostrils",
-    "F047": "hamear",
-    "F048": "hamearlobe",
-    "F049": "hamcheek",
-    "F04A": "hamlips",
-    "F04B": "hamtongue",
-    "F04C": "hamteeth",
-    "F04D": "hamchin",
-    "F04E": "hamunderchin",
-    "F04F": "hamneck",
-    "F050": "hamshouldertop",
-    "F051": "hamshoulders",
-    "F052": "hamchest",
-    "F053": "hamstomach",
-    "F054": "hambelowstomach",
-    "F058": "hamlrbeside",
-    "F059": "hamlrat",
-    "F05F": "hamneutralspace",
-    "F060": "hamupperarm",
-    "F061": "hamelbow",
-    "F062": "hamelbowinside",
-    "F063": "hamlowerarm",
-    "F064": "hamwristback",
-    "F065": "hamwristpulse",
-    "F066": "hamthumbball",
-    "F067": "hampalm",
-    "F068": "hamhandback",
-    "F069": "hamthumbside",
-    "F06A": "hampinkyside",
-    "F070": "hamthumb",
-    "F071": "hamindexfinger",
-    "F072": "hammiddlefinger",
-    "F073": "hamringfinger",
-    "F074": "hampinky",
-    "F075": "hamfingertip",
-    "F076": "hamfingernail",
-    "F077": "hamfingerpad",
-    "F078": "hamfingermidjoint",
-    "F079": "hamfingerbase",
-    "F07A": "hamfingerside",
-    "F07C": "hamwristtopulse",
-    "F07D": "hamwristtoback",
-    "F07E": "hamwristtothumb",
-    "F07F": "hamwristtopinky",
-    "F080": "hammoveu",
-    "F081": "hammoveur",
-    "F082": "hammover",
-    "F083": "hammovedr",
-    "F084": "hammoved",
-    "F085": "hammovedl",
-    "F086": "hammovel",
-    "F087": "hammoveul",
-    "F088": "hammoveol",
-    "F089": "hammoveo",
-    "F08A": "hammoveor",
-    "F08B": "hammoveil",
-    "F08C": "hammovei",
-    "F08D": "hammoveir",
-    "F08E": "hammoveui",
-    "F08F": "hammovedi",
-    "F090": "hammovedo",
-    "F091": "hammoveuo",
-    "F092": "hamcircleo",
-    "F093": "hamcirclei",
-    "F094": "hamcircled",
-    "F095": "hamcircleu",
-    "F096": "hamcirclel",
-    "F097": "hamcircler",
-    "F098": "hamcircleul",
-    "F099": "hamcircledr",
-    "F09A": "hamcircleur",
-    "F09B": "hamcircledl",
-    "F09C": "hamcircleol",
-    "F09D": "hamcircleir",
-    "F09E": "hamcircleor",
-    "F09F": "hamcircleil",
-    "F0A0": "hamcircleui",
-    "F0A1": "hamcircledo",
-    "F0A2": "hamcircleuo",
-    "F0A3": "hamcircledi",
-    "F0A4": "hamfingerplay",
-    "F0A5": "hamnodding",
-    "F0A6": "hamswinging",
-    "F0A7": "hamtwisting",
-    "F0A8": "hamstircw",
-    "F0A9": "hamstirccw",
-    "F0AA": "hamreplace",
-    "F0AD": "hammovecross",
-    "F0AE": "hammoveX",
-    "F0AF": "hamnomotion",
-    "F0B0": "hamclocku",
-    "F0B1": "hamclockul",
-    "F0B2": "hamclockl",
-    "F0B3": "hamclockdl",
-    "F0B4": "hamclockd",
-    "F0B5": "hamclockdr",
-    "F0B6": "hamclockr",
-    "F0B7": "hamclockur",
-    "F0B8": "hamclockfull",
-    "F0B9": "hamarcl",
-    "F0BA": "hamarcu",
-    "F0BB": "hamarcr",
-    "F0BC": "hamarcd",
-    "F0BD": "hamwavy",
-    "F0BE": "hamzigzag",
-    "F0C0": "hamellipseh",
-    "F0C1": "hamellipseur",
-    "F0C2": "hamellipsev",
-    "F0C3": "hamellipseul",
-    "F0C4": "hamincreasing",
-    "F0C5": "hamdecreasing",
-    "F0C6": "hamsmallmod",
-    "F0C7": "hamlargemod",
-    "F0C8": "hamfast",
-    "F0C9": "hamslow",
-    "F0CA": "hamtense",
-    "F0CB": "hamrest",
-    "F0CC": "hamhalt",
-    "F0D0": "hamclose",
-    "F0D1": "hamtouch",
-    "F0D2": "haminterlock",
-    "F0D3": "hamcross",
-    "F0D4": "hamarmextended",
-    "F0D5": "hambehind",
-    "E0D6": "hambrushing",
-    "E0D8": "hamrepeatfromstart",
-    "E0D9": "hamrepeatfromstartseveral",
-    "E0DA": "hamrepeatcontinue",
-    "E0DB": "hamrepeatcontinueseveral",
-    "E0DC": "hamrepeatreverse",
-    "E0DD": "hamalternatingmotion",
-    "E0E0": "hamseqbegin",
-    "E0E1": "hamseqend",
-    "E0E2": "hamparbegin",
-    "E0E3": "hamparend",
-    "E0E4": "hamfusionbegin",
-    "E0E5": "hamfusionend",
-    "E0E6": "hambetween",
-    "E0E7": "hamplus",
-    "E0E8": "hamsymmpar",
-    "E0E9": "hamsymmlr",
-    "E0EA": "hamnondominant",
-    "E0EB": "hamnonipsi",
-    "E0EC": "hametc",
-    "E0ED": "hamorirelative",
-    "E0F0": "hammime",
-    "E0F1": "hamversion40",
-  };
+    /* Main container for the UI elements */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+    }
 
-  const sigmlBlocks = [];
-  const hamnosysWords = hamnosysString.split(' ');
+    /* Styling for the HamNoSys input area */
+    .hamnosys-input-container {
+      width: 100%;
+      max-width: 800px;
+    }
 
-  for (const word of hamnosysWords) {
-    if (word.trim() === '') continue;
-    const sigmlTags = [];
-    for (let i = 0; i < word.length; i++) {
-      const char = word[i];
-      const codePoint = char.codePointAt(0);
-      const hex = codePoint.toString(16).toUpperCase().padStart(4, '0');
-      const tag = hamnosysConversionMap[hex];
-      if (tag) {
-        sigmlTags.push(tag);
-      } else {
-        console.warn(`No SiGML tag found for HamNoSys character: ${char} (Unicode: ${hex})`);
+    /* Styling for the keyboard section */
+    .keyboard-container {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    #myHamNoSys {
+      font-family: 'HamNoSys', monospace;
+      font-size: 2.5em;
+      line-height: 1.2;
+      width: 100%;
+    }
+
+    #sigmlOutput {
+      width: 100%;
+      height: 15em;
+      margin-top: 1em;
+    }
+
+    /* Styles for the keyboard */
+    .css-tabs {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-bottom: 1px solid #ccc;
+      height: 25px;
+    }
+
+    .css-tabs li {
+      float: left;
+      margin: 0;
+      padding: 0;
+    }
+
+    .css-tabs a {
+      float: left;
+      display: block;
+      padding: 0 10px;
+      height: 25px;
+      line-height: 25px;
+      text-decoration: none;
+      color: #666;
+      background-color: #f0f0f0;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      position: relative;
+      top: 1px;
+      margin-right: 2px;
+    }
+
+    .css-tabs a.current {
+      background-color: #fff;
+      border-bottom: 1px solid #fff;
+      top: 0;
+      color: #000;
+    }
+
+    .css-panes div {
+      display: none;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-top: none;
+      background-color: #fff;
+    }
+
+    .ham {
+      font-family: 'HamNoSys';
+    }
+
+    button {
+      font-size: 2em;
+      padding: 5px;
+      margin: 2px;
+      border-radius: 5px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+    }
+
+    button:hover {
+      background-color: #ddd;
+    }
+  </style>
+
+  <script language="javascript">
+
+    // CWASA.getLogger("Avatar", "info");
+    // CWASA.getLogger("Avatar", "debug");
+    //CWASA.getLogger("Avatar", "trace");
+    CWASA.getLogger("AGI", "debug");
+    CWASA.getLogger("Queue", "debug");
+
+    function playText(stext) {
+      CWASA.playSiGMLText(stext);
+    }
+
+    // New function to handle HamNoSys input
+    function playHamNoSys() {
+      const hamnosysString = document.getElementById("myHamNoSys").value;
+      const sigmlText = hamNoSysToSiGML(hamnosysString);
+      playText(sigmlText);
+      document.getElementById("sigmlOutput").value = sigmlText;
+    }
+
+    // Function to generate and display a shareable URL
+    function generateShareableUrl() {
+      const hamnosysString = document.getElementById("myHamNoSys").value;
+      const encodedHns = encodeURIComponent(hamnosysString);
+      const baseUrl = window.location.origin + window.location.pathname;
+      const shareUrl = `${baseUrl}?hns=${encodedHns}`;
+      const shareUrlElement = document.getElementById("shareUrl");
+      shareUrlElement.value = shareUrl;
+      shareUrlElement.style.display = 'block'; // Make it visible
+      document.getElementById("copyUrlBtn").style.display = 'inline-block';
+    }
+
+    // Function to copy the URL to the clipboard
+    function copyUrlToClipboard() {
+      const shareUrlElement = document.getElementById("shareUrl");
+      shareUrlElement.select();
+      document.execCommand("copy");
+    }
+
+    // Function to clear the text area and generated URL
+    function clearInput() {
+      document.getElementById("myHamNoSys").value = "";
+      document.getElementById("sigmlOutput").value = "";
+      document.getElementById("shareUrl").value = "";
+      document.getElementById("shareUrl").style.display = 'none';
+      document.getElementById("copyUrlBtn").style.display = 'none';
+    }
+
+    // Function to load HamNoSys from the URL on page load
+    function loadFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const hamnosysData = urlParams.get('hns');
+      if (hamnosysData) {
+        document.getElementById("myHamNoSys").value = decodeURIComponent(hamnosysData);
       }
     }
 
-    const manualTags = sigmlTags.map(tag => `\t\t\t<${tag}/>`).join('\n');
-    const hnsSignBlock = `\t<hns_sign>\n\t\t<hamnosys_nonmanual/>\n\t\t<hamnosys_manual>\n${manualTags}\n\t\t</hamnosys_manual>\n\t</hns_sign>`;
-    sigmlBlocks.push(hnsSignBlock);
-  }
+    /**
+     * Converts HamNoSys Unicode characters to SiGML XML.
+     * This is a direct translation of the HamNoSys2SiGML.py script.
+     */
+    function hamNoSysToSiGML(hamnosysString) {
+      // Combined conversion table mapping HamNoSys Unicode (4-digit hex) to SiGML tags.
+      // This data is sourced from the conversionSpreadSheet.txt file and common HamNoSys font encodings.
+      const hamnosysConversionMap = {
+        "0020": "hamspace",
+        "0021": "hamexclaim",
+        "002C": "hamcomma",
+        "002E": "hamfullstop",
+        "003F": "hamquery",
+        "007B": "hamaltbegin",
+        "007C": "hammetaalt",
+        "007D": "hamaltend",
+        "E000": "hamfist",
+        "E001": "hamflathand",
+        "E002": "hamfinger2",
+        "E003": "hamfinger23",
+        "E004": "hamfinger23spread",
+        "E005": "hamfinger2345",
+        "E006": "hampinch12",
+        "E007": "hampinchall",
+        "E008": "hampinch12open",
+        "E009": "hamcee12",
+        "E00A": "hamceeall",
+        "E00B": "hamceeopen",
+        "E00C": "hamthumboutmod",
+        "E00D": "hamthumbacrossmod",
+        "E00E": "hamthumbopenmod",
+        "E010": "hamfingerstraightmod",
+        "E011": "hamfingerbendmod",
+        "E012": "hamfingerhookmod",
+        "E013": "hamdoublebent",
+        "E014": "hamdoublehooked",
+        "E020": "hamextfingeru",
+        "E021": "hamextfingerur",
+        "E022": "hamextfingerr",
+        "E023": "hamextfingerdr",
+        "E024": "hamextfingerd",
+        "E025": "hamextfingerdl",
+        "E026": "hamextfingerl",
+        "E027": "hamextfingerul",
+        "E028": "hamextfingerol",
+        "E029": "hamextfingero",
+        "E02A": "hamextfingeror",
+        "E02B": "hamextfingeril",
+        "E02C": "hamextfingeri",
+        "E02D": "hamextfingerir",
+        "E02E": "hamextfingerui",
+        "E02F": "hamextfingerdi",
+        "E030": "hamextfingerdo",
+        "E031": "hamextfingeruo",
+        "E038": "hampalmu",
+        "E039": "hampalmur",
+        "E03A": "hampalmr",
+        "E03B": "hampalmdr",
+        "E03C": "hampalmd",
+        "E03D": "hampalmdl",
+        "E03E": "hampalml",
+        "E03F": "hampalmul",
+        "E040": "hamhead",
+        "E041": "hamheadtop",
+        "E042": "hamforehead",
+        "E043": "hameyebrows",
+        "E044": "hameyes",
+        "E045": "hamnose",
+        "E046": "hamnostrils",
+        "E047": "hamear",
+        "E048": "hamearlobe",
+        "E049": "hamcheek",
+        "E04A": "hamlips",
+        "E04B": "hamtongue",
+        "E04C": "hamteeth",
+        "E04D": "hamchin",
+        "E04E": "hamunderchin",
+        "E04F": "hamneck",
+        "E050": "hamshouldertop",
+        "E051": "hamshoulders",
+        "E052": "hamchest",
+        "E053": "hamstomach",
+        "E054": "hambelowstomach",
+        "00EE": "hambelowstomach",
+        "E058": "hamlrbeside",
+        "00EF": "hamlrbeside",
+        "E059": "hamlrat",
+        "E05A": "hamcoreftag",
+        "E05B": "hamcorefref",
+        "E05F": "hamneutralspace",
+        "E060": "hamupperarm",
+        "E061": "hamelbow",
+        "E062": "hamelbowinside",
+        "E063": "hamlowerarm",
+        "E064": "hamwristback",
+        "E065": "hamwristpulse",
+        "E066": "hamthumbball",
+        "E067": "hampalm",
+        "E068": "hamhandback",
+        "E069": "hamthumbside",
+        "E06A": "hampinkyside",
+        "E070": "hamthumb",
+        "E071": "hamindexfinger",
+        "E072": "hammiddlefinger",
+        "E073": "hamringfinger",
+        "E074": "hampinky",
+        "E075": "hamfingertip",
+        "E076": "hamfingernail",
+        "E077": "hamfingerpad",
+        "E078": "hamfingermidjoint",
+        "E079": "hamfingerbase",
+        "E07A": "hamfingerside",
+        "E07C": "hamwristtopulse",
+        "E07D": "hamwristtoback",
+        "E07E": "hamwristtothumb",
+        "E07F": "hamwristtopinky",
+        "E080": "hammoveu",
+        "E081": "hammoveur",
+        "E082": "hammover",
+        "E083": "hammovedr",
+        "E084": "hammoved",
+        "E085": "hammovedl",
+        "E086": "hammovel",
+        "E087": "hammoveul",
+        "E088": "hammoveol",
+        "E089": "hammoveo",
+        "E08A": "hammoveor",
+        "E08B": "hammoveil",
+        "E08C": "hammovei",
+        "E08D": "hammoveir",
+        "E08E": "hammoveui",
+        "E08F": "hammovedi",
+        "E090": "hammovedo",
+        "E091": "hammoveuo",
+        "E092": "hamcircleo",
+        "E093": "hamcirclei",
+        "E094": "hamcircled",
+        "E095": "hamcircleu",
+        "E096": "hamcirclel",
+        "E097": "hamcircler",
+        "E098": "hamcircleul",
+        "E099": "hamcircledr",
+        "E09A": "hamcircleur",
+        "E09B": "hamcircledl",
+        "E09C": "hamcircleol",
+        "E09D": "hamcircleir",
+        "E09E": "hamcircleor",
+        "E09F": "hamcircleil",
+        "E0A0": "hamcircleui",
+        "E0A1": "hamcircledo",
+        "E0A2": "hamcircleuo",
+        "E0A3": "hamcircledi",
+        "E0A4": "hamfingerplay",
+        "E0A5": "hamnodding",
+        "E0A6": "hamswinging",
+        "E0A7": "hamtwisting",
+        "E0A8": "hamstircw",
+        "E0A9": "hamstirccw",
+        "E0AA": "hamreplace",
+        "E0AD": "hammovecross",
+        "E0AE": "hammoveX",
+        "E0AF": "hamnomotion",
+        "E0B0": "hamclocku",
+        "E0B1": "hamclockul",
+        "E0B2": "hamclockl",
+        "E0B3": "hamclockdl",
+        "E0B4": "hamclockd",
+        "E0B5": "hamclockdr",
+        "E0B6": "hamclockr",
+        "E0B7": "hamclockur",
+        "E0B8": "hamclockfull",
+        "E0B9": "hamarcl",
+        "E0BA": "hamarcu",
+        "E0BB": "hamarcr",
+        "E0BC": "hamarcd",
+        "E0BD": "hamwavy",
+        "E0BE": "hamzigzag",
+        "E0C0": "hamellipseh",
+        "E0C1": "hamellipseur",
+        "E0C2": "hamellipsev",
+        "E0C3": "hamellipseul",
+        "E0C4": "hamincreasing",
+        "E0C5": "hamdecreasing",
+        "E0C6": "hamsmallmod",
+        "E0C7": "hamlargemod",
+        "E0C8": "hamfast",
+        "E0C9": "hamslow",
+        "E0CA": "hamtense",
+        "E0CB": "hamrest",
+        "E0CC": "hamhalt",
+        "E0D0": "hamclose",
+        "E0D1": "hamtouch",
+        "E0D2": "haminterlock",
+        "E0D3": "hamcross",
+        "E0D4": "hamarmextended",
+        "E0D5": "hambehind",
+        "E0D6": "hambrushing",
+        "E0D8": "hamrepeatfromstart",
+        "E0D9": "hamrepeatfromstartseveral",
+        "E0DA": "hamrepeatcontinue",
+        "E0DB": "hamrepeatcontinueseveral",
+        "E0DC": "hamrepeatreverse",
+        "E0DD": "hamalternatingmotion",
+        "E0E0": "hamseqbegin",
+        "E0E1": "hamseqend",
+        "E0E2": "hamparbegin",
+        "E0E3": "hamparend",
+        "E0E4": "hamfusionbegin",
+        "E0E5": "hamfusionend",
+        "E0E6": "hambetween",
+        "E0E7": "hamplus",
+        "E0E8": "hamsymmpar",
+        "E0E9": "hamsymmlr",
+        "E0EA": "hamnondominant",
+        "E0EB": "hamnonipsi",
+        "E0EC": "hametc",
+        "E0ED": "hamorirelative",
+        "E0F0": "hammime",
+        "E0F1": "hamversion40",
+        "F000": "hamfist",
+        "F001": "hamflathand",
+        "F002": "hamfinger2",
+        "F003": "hamfinger23",
+        "F004": "hamfinger23spread",
+        "F005": "hamfinger2345",
+        "F006": "hampinch12",
+        "F007": "hampinchall",
+        "F008": "hampinch12open",
+        "F009": "hamcee12",
+        "F00A": "hamceeall",
+        "F00B": "hamceeopen",
+        "F00C": "hamthumboutmod",
+        "F00D": "hamthumbacrossmod",
+        "F00E": "hamthumbopenmod",
+        "F010": "hamfingerstraightmod",
+        "F011": "hamfingerbendmod",
+        "F012": "hamfingerhookmod",
+        "F013": "hamdoublebent",
+        "F014": "hamdoublehooked",
+        "F020": "hamextfingeru",
+        "F021": "hamextfingerur",
+        "F022": "hamextfingerr",
+        "F023": "hamextfingerdr",
+        "F024": "hamextfingerd",
+        "F025": "hamextfingerdl",
+        "F026": "hamextfingerl",
+        "F027": "hamextfingerul",
+        "F028": "hamextfingerol",
+        "F029": "hamextfingero",
+        "F02A": "hamextfingeror",
+        "F02B": "hamextfingeril",
+        "F02C": "hamextfingeri",
+        "F02D": "hamextfingerir",
+        "F02E": "hamextfingerui",
+        "F02F": "hamextfingerdi",
+        "F030": "hamextfingerdo",
+        "F031": "hammoveuo",
+        "F038": "hampalmu",
+        "F039": "hampalmur",
+        "F03A": "hampalmr",
+        "F03B": "hampalmdr",
+        "F03C": "hampalmd",
+        "F03D": "hampalmdl",
+        "F03E": "hampalml",
+        "F03F": "hampalmul",
+        "F040": "hamhead",
+        "F041": "hamheadtop",
+        "F042": "hamforehead",
+        "F043": "hameyebrows",
+        "F044": "hameyes",
+        "F045": "hamnose",
+        "F046": "hamnostrils",
+        "F047": "hamear",
+        "F048": "hamearlobe",
+        "F049": "hamcheek",
+        "F04A": "hamlips",
+        "F04B": "hamtongue",
+        "F04C": "hamteeth",
+        "F04D": "hamchin",
+        "F04E": "hamunderchin",
+        "F04F": "hamneck",
+        "F050": "hamshouldertop",
+        "F051": "hamshoulders",
+        "F052": "hamchest",
+        "F053": "hamstomach",
+        "F054": "hambelowstomach",
+        "F058": "hamlrbeside",
+        "F059": "hamlrat",
+        "F05F": "hamneutralspace",
+        "F060": "hamupperarm",
+        "F061": "hamelbow",
+        "F062": "hamelbowinside",
+        "F063": "hamlowerarm",
+        "F064": "hamwristback",
+        "F065": "hamwristpulse",
+        "F066": "hamthumbball",
+        "F067": "hampalm",
+        "F068": "hamhandback",
+        "F069": "hamthumbside",
+        "F06A": "hampinkyside",
+        "F070": "hamthumb",
+        "F071": "hamindexfinger",
+        "F072": "hammiddlefinger",
+        "F073": "hamringfinger",
+        "F074": "hampinky",
+        "F075": "hamfingertip",
+        "F076": "hamfingernail",
+        "F077": "hamfingerpad",
+        "F078": "hamfingermidjoint",
+        "F079": "hamfingerbase",
+        "F07A": "hamfingerside",
+        "F07C": "hamwristtopulse",
+        "F07D": "hamwristtoback",
+        "F07E": "hamwristtothumb",
+        "F07F": "hamwristtopinky",
+        "F080": "hammoveu",
+        "F081": "hammoveur",
+        "F082": "hammover",
+        "F083": "hammovedr",
+        "F084": "hammoved",
+        "F085": "hammovedl",
+        "F086": "hammovel",
+        "F087": "hammoveul",
+        "F088": "hammoveol",
+        "F089": "hammoveo",
+        "F08A": "hammoveor",
+        "F08B": "hammoveil",
+        "F08C": "hammovei",
+        "F08D": "hammoveir",
+        "F08E": "hammoveui",
+        "F08F": "hammovedi",
+        "F090": "hammovedo",
+        "F091": "hammoveuo",
+        "F092": "hamcircleo",
+        "F093": "hamcirclei",
+        "F094": "hamcircled",
+        "F095": "hamcircleu",
+        "F096": "hamcirclel",
+        "F097": "hamcircler",
+        "F098": "hamcircleul",
+        "F099": "hamcircledr",
+        "F09A": "hamcircleur",
+        "F09B": "hamcircledl",
+        "F09C": "hamcircleol",
+        "F09D": "hamcircleir",
+        "F09E": "hamcircleor",
+        "F09F": "hamcircleil",
+        "F0A0": "hamcircleui",
+        "F0A1": "hamcircledo",
+        "F0A2": "hamcircleuo",
+        "F0A3": "hamcircledi",
+        "F0A4": "hamfingerplay",
+        "F0A5": "hamnodding",
+        "F0A6": "hamswinging",
+        "F0A7": "hamtwisting",
+        "F0A8": "hamstircw",
+        "F0A9": "hamstirccw",
+        "F0AA": "hamreplace",
+        "F0AD": "hammovecross",
+        "F0AE": "hammoveX",
+        "F0AF": "hamnomotion",
+        "F0B0": "hamclocku",
+        "F0B1": "hamclockul",
+        "F0B2": "hamclockl",
+        "F0B3": "hamclockdl",
+        "F0B4": "hamclockd",
+        "F0B5": "hamclockdr",
+        "F0B6": "hamclockr",
+        "F0B7": "hamclockur",
+        "F0B8": "hamclockfull",
+        "F0B9": "hamarcl",
+        "F0BA": "hamarcu",
+        "F0BB": "hamarcr",
+        "F0BC": "hamarcd",
+        "F0BD": "hamwavy",
+        "F0BE": "hamzigzag",
+        "F0C0": "hamellipseh",
+        "F0C1": "hamellipseur",
+        "F0C2": "hamellipsev",
+        "F0C3": "hamellipseul",
+        "F0C4": "hamincreasing",
+        "F0C5": "hamdecreasing",
+        "F0C6": "hamsmallmod",
+        "F0C7": "hamlargemod",
+        "F0C8": "hamfast",
+        "F0C9": "hamslow",
+        "F0CA": "hamtense",
+        "F0CB": "hamrest",
+        "F0CC": "hamhalt",
+        "F0D0": "hamclose",
+        "F0D1": "hamtouch",
+        "F0D2": "haminterlock",
+        "F0D3": "hamcross",
+        "F0D4": "hamarmextended",
+        "F0D5": "hambehind",
+        "E0D6": "hambrushing",
+        "E0D8": "hamrepeatfromstart",
+        "E0D9": "hamrepeatfromstartseveral",
+        "E0DA": "hamrepeatcontinue",
+        "E0DB": "hamrepeatcontinueseveral",
+        "E0DC": "hamrepeatreverse",
+        "E0DD": "hamalternatingmotion",
+        "E0E0": "hamseqbegin",
+        "E0E1": "hamseqend",
+        "E0E2": "hamparbegin",
+        "E0E3": "hamparend",
+        "E0E4": "hamfusionbegin",
+        "E0E5": "hamfusionend",
+        "E0E6": "hambetween",
+        "E0E7": "hamplus",
+        "E0E8": "hamsymmpar",
+        "E0E9": "hamsymmlr",
+        "E0EA": "hamnondominant",
+        "E0EB": "hamnonipsi",
+        "E0EC": "hametc",
+        "E0ED": "hamorirelative",
+        "E0F0": "hammime",
+        "E0F1": "hamversion40",
+      };
 
-  const header = '<?xml version="1.0" encoding="UTF-8"?>\n<sigml>\n';
-  const footer = '\n</sigml>';
-  const body = sigmlBlocks.join('\n');
+      const sigmlBlocks = [];
+      const hamnosysWords = hamnosysString.split(' ');
 
-  return header + body + footer;
-}
+      for (const word of hamnosysWords) {
+        if (word.trim() === '') continue;
+        const sigmlTags = [];
+        for (let i = 0; i < word.length; i++) {
+          const char = word[i];
+          const codePoint = char.codePointAt(0);
+          const hex = codePoint.toString(16).toUpperCase().padStart(4, '0');
+          const tag = hamnosysConversionMap[hex];
+          if (tag) {
+            sigmlTags.push(tag);
+          } else {
+            console.warn(`No SiGML tag found for HamNoSys character: ${char} (Unicode: ${hex})`);
+          }
+        }
 
-// Custom function to insert text at the cursor position
-function insertAtCursor(el, text) {
-  el.focus();
-  if (typeof el.selectionStart === "number" && typeof el.selectionEnd === "number") {
-    var startPos = el.selectionStart;
-    var endPos = el.selectionEnd;
-    el.value = el.value.substring(0, startPos) + text + el.value.substring(endPos, el.value.length);
-    el.selectionStart = el.selectionEnd = startPos + text.length;
-  } else if (typeof document.selection !== "undefined") {
-    el.focus();
-    var range = document.selection.createRange();
-    range.text = text;
-    range.collapse(true);
-    range.select();
-}
-</script>
-<link rel="stylesheet" href="../theme.css">
-<script src="../theme.js" defer></script>
+        const manualTags = sigmlTags.map(tag => `\t\t\t<${tag}/>`).join('\n');
+        const hnsSignBlock = `\t<hns_sign>\n\t\t<hamnosys_nonmanual/>\n\t\t<hamnosys_manual>\n${manualTags}\n\t\t</hamnosys_manual>\n\t</hns_sign>`;
+        sigmlBlocks.push(hnsSignBlock);
+      }
+
+      const header = '<?xml version="1.0" encoding="UTF-8"?>\n<sigml>\n';
+      const footer = '\n</sigml>';
+      const body = sigmlBlocks.join('\n');
+
+      return header + body + footer;
+    }
+
+    // Custom function to insert text at the cursor position
+    function insertAtCursor(el, text) {
+      el.focus();
+      if (typeof el.selectionStart === "number" && typeof el.selectionEnd === "number") {
+        var startPos = el.selectionStart;
+        var endPos = el.selectionEnd;
+        el.value = el.value.substring(0, startPos) + text + el.value.substring(endPos, el.value.length);
+        el.selectionStart = el.selectionEnd = startPos + text.length;
+      } else if (typeof document.selection !== "undefined") {
+        el.focus();
+        var range = document.selection.createRange();
+        range.text = text;
+        range.collapse(true);
+        range.select();
+      }
+  </script>
+  <link rel="stylesheet" href="../theme.css">
+  <script src="../theme.js" defer></script>
 </head>
 
 <body onload="CWASA.init({avs:['anna', 'marc', 'francoise', 'luna', 'siggi']}); loadFromUrl();">
 
-<!-- CWA signing avatar panel 0 -->
-<div class="CWASAPanel av0" align="center" ></div>
+  <!-- CWA signing avatar panel 0 -->
+  <div class="CWASAPanel av0" align="center"></div>
 
-<!-- Main container for all UI elements -->
-<div class="main-container">
-  
-  <!-- HamNoSys input and buttons -->
-  <div class="hamnosys-input-container">
-    <div align="center">
-      <br>
-      New HamNoSys:
-      <input type="button" value="Play HamNoSys" onclick="playHamNoSys();" />
-      <input type="button" value="Generate Shareable URL" onclick="generateShareableUrl();" />
-      <input type="button" value="Clear" onclick="clearInput();" />
-      <br>
-      <textarea id="myHamNoSys" class="txtaSiGMLText" rows="3" ></textarea>
-    </div>
-  </div>
-  
-  <!-- URL and Copy button -->
-  <div align="center" style="margin-top: 1em;">
-    <input type="text" id="shareUrl" style="width: 80%; display: none;" readonly>
-    <button id="copyUrlBtn" onclick="copyUrlToClipboard();" style="display: none;">Copy URL</button>
-  </div>
+  <!-- Main container for all UI elements -->
+  <div class="main-container">
 
-  <!-- Keyboard container -->
-  <div class="keyboard-container">
-    <!-- Tabs for the keyboard -->
-    <ul class="css-tabs">
-      <li class="current"><a href="#keyboard_hsh">Handshape</a></li>
-      <li><a href="#keyboard_ori">Orientation</a></li>
-      <li><a href="#keyboard_loc">Location</a></li>
-      <li><a href="#keyboard_mov1">Movement 1</a></li>
-      <li><a href="#keyboard_mov2">Movement 2</a></li>
-      <li><a href="#keyboard_2hd">Two-handed</a></li>
-    </ul>
-
-    <!-- Panes with keyboard buttons -->
-    <div class="css-panes">
-      <div id="keyboard_hsh">
-        <table>
-          <tr>
-            <td><button title="hamfist" class="ham" value=""></button></td>
-            <td><button title="hamflathand" class="ham" value=""></button></td>
-            <td><button title="hamfinger2" class="ham" value=""></button></td>
-            <td><button title="hamfinger23" class="ham" value=""></button></td>
-            <td><button title="hamfinger23spread" class="ham" value=""></button></td>
-            <td><button title="hamfinger2345" class="ham" value=""></button></td>
-            <td><button title="hampinch12" class="ham" value=""></button></td>
-            <td><button title="hampinchall" class="ham" value=""></button></td>
-            <td><button title="hampinch12open" class="ham" value=""></button></td>
-            <td><button title="hamcee12" class="ham" value=""></button></td>
-            <td><button title="hamceeall" class="ham" value=""></button></td>
-            <td><button title="hamceeopen" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamthumboutmod" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamthumbacrossmod" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamthumbopenmod" class="ham" value="">&nbsp;</button></td>
-            <td colspan="4"></td>
-            <td><button title="hamdoublebent" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamfingerstraightmod" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamfingerbendmod" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamfingerhookmod" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamdoublehooked" class="ham" value="">&nbsp;</button></td>
-          </tr>
-          <tr>
-            <td><button title="hamthumb" class="ham" value=""></button></td>
-            <td><button title="hamindexfinger" class="ham" value=""></button></td>
-            <td><button title="hammiddlefinger" class="ham" value=""></button></td>
-            <td><button title="hamringfinger" class="ham" value=""></button></td>
-            <td><button title="hampinky" class="ham" value=""></button></td>
-            <td><button title="hambetween" class="ham" value=""></button></td>
-            <td><button title="hamfingertip" class="ham" value=""></button></td>
-            <td><button title="hamfingernail" class="ham" value=""></button></td>
-            <td><button title="hamfingerpad" class="ham" value=""></button></td>
-            <td><button title="hamfingermidjoint" class="ham" value=""></button></td>
-            <td><button title="hamfingerbase" class="ham" value=""></button></td>
-            <td><button title="hamfingerside" class="ham" value=""></button></td>
-          </tr>
-        </table>
-      </div>
-      <div id="keyboard_ori">
-        <table>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hamextfingeru" class="ham" value=""></button></td>
-            <td colspan="6"></td>
-            <td><button title="hamextfingero" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hamextfingerul" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamextfingerur" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hamextfingerol" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamextfingeror" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamextfingerl" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hamextfingerr" class="ham" value=""></button></td>
-            <td colspan="2"></td>
-            <td><button title="hamextfingerl" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hamextfingerr" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hamextfingerdl" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hammovedr" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hamextfingeril" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hammoveir" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hamextfingerd" class="ham" value=""></button></td>
-            <td colspan="6"></td>
-            <td><button title="hamextfingeri" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="5"></td>
-            <td><button title="hambetween" class="ham" value=""></button></td>
-            <td><button title="hamorirelative" class="ham" value="">&nbsp;</button></td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hamextfingeru" class="ham" value=""></button></td>
-            <td colspan="6"></td>
-            <td><button title="hampalmu" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hamextfingerui" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamextfingeruo" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hampalmul" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hampalmur" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamextfingeri" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hamextfingero" class="ham" value=""></button></td>
-            <td colspan="2"></td>
-            <td><button title="hampalml" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hampalmr" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hamfingerdi" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamcircledo" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hampalmdl" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hampalmdr" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hamextfingerd" class="ham" value=""></button></td>
-            <td colspan="6"></td>
-            <td><button title="hampalmd" class="ham" value=""></button></td>
-          </tr>
-        </table>
-      </div>
-      <div id="keyboard_loc">
-        <table>
-          <tr>
-            <td><button title="hamheadtop" class="ham" value=""></button></td>
-            <td><button title="hamhead" class="ham" value=""></button></td>
-            <td><button title="hamforehead" class="ham" value=""></button></td>
-            <td><button title="hamnose" class="ham" value=""></button></td>
-            <td><button title="hamnostrils" class="ham" value=""></button></td>
-            <td><button title="hamlips" class="ham" value=""></button></td>
-            <td><button title="hamtongue" class="ham" value=""></button></td>
-            <td><button title="hamteeth" class="ham" value=""></button></td>
-            <td><button title="hamchin" class="ham" value=""></button></td>
-            <td><button title="hamunderchin" class="ham" value=""></button></td>
-            <td><button title="hamneck" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamshouldertop" class="ham" value=""></button></td>
-            <td><button title="hamshoulders" class="ham" value=""></button></td>
-            <td><button title="hamchest" class="ham" value=""></button></td>
-            <td><button title="hamstomach" class="ham" value=""></button></td>
-            <td><button title="hambelowstomach" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hameyebrows" class="ham" value=""></button></td>
-            <td><button title="hameyes" class="ham" value=""></button></td>
-            <td><button title="hamear" class="ham" value=""></button></td>
-            <td><button title="hamearlobe" class="ham" value=""></button></td>
-            <td><button title="hamcheek" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamupperarm" class="ham" value=""></button></td>
-            <td><button title="hamelbowinside" class="ham" value=""></button></td>
-            <td><button title="hamlowerarm" class="ham" value=""></button></td>
-            <td><button title="hamwristback" class="ham" value=""></button></td>
-            <td><button title="hamthumbball" class="ham" value=""></button></td>
-            <td><button title="hampalm" class="ham" value=""></button></td>
-            <td><button title="hamhandback" class="ham" value=""></button></td>
-            <td><button title="hamthumbside" class="ham" value=""></button></td>
-            <td><button title="hampinkyside" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamthumb" class="ham" value=""></button></td>
-            <td><button title="hamindexfinger" class="ham" value=""></button></td>
-            <td><button title="hammiddlefinger" class="ham" value=""></button></td>
-            <td><button title="hamringfinger" class="ham" value=""></button></td>
-            <td><button title="hampinky" class="ham" value=""></button></td>
-            <td><button title="hambetween" class="ham" value=""></button></td>
-            <td><button title="hamfingertip" class="ham" value=""></button></td>
-            <td><button title="hamfingernail" class="ham" value=""></button></td>
-            <td><button title="hamfingerpad" class="ham" value=""></button></td>
-            <td><button title="hamfingermidjoint" class="ham" value=""></button></td>
-            <td><button title="hamfingerbase" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamclose" class="ham" value=""></button></td>
-            <td><button title="hamtouch" class="ham" value=""></button></td>
-            <td><button title="haminterlock" class="ham" value=""></button></td>
-            <td><button title="hamcross" class="ham" value=""></button></td>
-            <td><button title="hambrushing" class="ham" value=""></button></td>
-            <td><button title="hambehind" class="ham" value=""></button></td>
-            <td><button title="hamarmextended" class="ham" value=""></button></td>
-            <td><button title="hamlrbeside" class="ham" value=""></button></td>
-            <td><button title="hamlrat" class="ham" value=""></button></td>
-            <td><button title="hamdoublebent" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamdoublehooked" class="ham" value="">&nbsp;</button></td>
-          </tr>
-          <tr>
-            <td><button title="hamneutralspace" class="ham" value=""></button></td>
-          </tr>
-        </table>
-      </div>
-      <div id="keyboard_mov1">
-        <table>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hammoveu" class="ham" value=""></button></td>
-            <td colspan="6"></td>
-            <td><button title="hammoveo" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hammoveul" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hammoveur" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hammoveol" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hammoveor" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hammovel" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hammover" class="ham" value=""></button></td>
-            <td colspan="2"></td>
-            <td><button title="hammovel" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hammover" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hammovedl" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hammovedr" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hammoveil" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hammoveir" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hammoved" class="ham" value=""></button></td>
-            <td colspan="6"></td>
-            <td><button title="hammovei" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="5"></td>
-            <td><button title="hambetween" class="ham" value=""></button></td>
-            <td><button title="hamspace" class="ham" value=" "> </button></td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hammoveu" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hamfast" class="ham" value=""></button></td>
-            <td><button title="hamslow" class="ham" value=""></button></td>
-            <td><button title="hamtense" class="ham" value=""></button></td>
-            <td><button title="hamrest" class="ham" value=""></button></td>
-            <td><button title="hamhalt" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hammoveui" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hammoveuo" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hamrepeatfromstart" class="ham" value=""></button></td>
-            <td><button title="hamrepeatfromstartseveral" class="ham" value=""></button></td>
-            <td><button title="hamrepeatcontinue" class="ham" value=""></button></td>
-            <td><button title="hamrepeatcontinueseveral" class="ham" value=""></button></td>
-            <td><button title="hamrepeatreverse" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hammovei" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hammoveo" class="ham" value=""></button></td>
-            <td colspan="2"></td>
-            <td><button title="hamsmallmod" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamlargemod" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamnomotion" class="ham" value=""></button></td>
-            <td><button title="hamincreasing" class="ham" value=""></button></td>
-            <td><button title="hamdecreasing" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hammovedi" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hammovedo" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hamarcl" class="ham" value=""></button></td>
-            <td><button title="hamarcu" class="ham" value=""></button></td>
-            <td><button title="hamarcr" class="ham" value=""></button></td>
-            <td><button title="hamwavy" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hammoved" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hamellipsev" class="ham" value=""></button></td>
-            <td><button title="hamellipseur" class="ham" value=""></button></td>
-            <td><button title="hamellipseh" class="ham" value=""></button></td>
-            <td><button title="hamellipseul" class="ham" value=""></button></td>
-            <td><button title="hamzigzag" class="ham" value=""></button></td>
-          </tr>
-        </table>
-      </div>
-      <div id="keyboard_mov2">
-        <table>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hamcircleu" class="ham" value=""></button></td>
-            <td colspan="6"></td>
-            <td><button title="hamcircleo" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hamcircleul" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamcircleur" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hamcircleol" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamcircleor" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamcirclel" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hamcircler" class="ham" value=""></button></td>
-            <td colspan="2"></td>
-            <td><button title="hamcirclel" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hamcircler" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hamcircledl" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamcircledr" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hamcircleil" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamcircleir" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hamcircled" class="ham" value=""></button></td>
-            <td colspan="6"></td>
-            <td><button title="hamcirclei" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="4"></td>
-            <td><button title="hamstircw" class="ham" value=""></button></td>
-            <td><button title="hamnodding" class="ham" value=""></button></td>
-            <td><button title="hamtwisting" class="ham" value=""></button></td>
-            <td><button title="hamreplace" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="4"></td>
-            <td><button title="hamstirccw" class="ham" value=""></button></td>
-            <td><button title="hamswinging" class="ham" value=""></button></td>
-            <td><button title="hamfingerplay" class="ham" value=""></button></td>
-            <td><button title="hambetween" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hamcircleu" class="ham" value=""></button></td>
-            <td colspan="6"></td>
-            <td><button title="hamclocku" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hamcircleui" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamcircleuo" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hamclockul" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamclockur" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamcirclei" class="ham" value=""></button></td>
-            <td colspan="3"></td>
-            <td><button title="hamcircleo" class="ham" value=""></button></td>
-            <td colspan="2"></td>
-            <td><button title="hamclockl" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamclockfull" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamclockr" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><button title="hamcircledi" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamcircledo" class="ham" value=""></button></td>
-            <td colspan="4"></td>
-            <td><button title="hamclockdl" class="ham" value=""></button></td>
-            <td></td>
-            <td><button title="hamclockdr" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td><button title="hamcircled" class="ham" value=""></button></td>
-            <td colspan="6"></td>
-            <td><button title="hamclockd" class="ham" value=""></button></td>
-          </tr>
-        </table>
-      </div>
-      <div id="keyboard_2hd">
-        <table>
-          <tr>
-            <td><button title="hamsymmpar" class="ham" value=""></button></td>
-            <td><button title="hamsymmlr" class="ham" value=""></button></td>
-            <td><button title="hamfingerstraightmod" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamlargemod" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamsymmlr,hamfingerstraightmod,hamlargemod" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamparbegin" class="ham" value=""></button></td>
-            <td><button title="hamplus" class="ham" value=""></button></td>
-            <td><button title="hamparend" class="ham" value=""></button></td>
-            <td><button title="hamalternatingmotion" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamnonipsi" class="ham" value=""></button></td>
-            <td><button title="hamnondominant" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hametc" class="ham" value="">&nbsp;</button></td>
-          </tr>
-          <tr />
-          <tr>
-            <td><button title="hamseqbegin" class="ham" value=""></button></td>
-            <td><button title="hamseqend" class="ham" value=""></button></td>
-            <td><button title="hamparbegin" class="ham" value=""></button></td>
-            <td><button title="hamparend" class="ham" value=""></button></td>
-            <td><button title="hamfusionbegin" class="ham" value=""></button></td>
-            <td><button title="hamfusionend" class="ham" value=""></button></td>
-            <td><button title="hamaltbegin" class="ham" value="{">{</button></td>
-            <td><button title="hamaltend" class="ham" value="}">}</button></td>
-            <td><button title="hammetaalt" class="ham" value="|">|</button></td>
-          </tr>
-          <tr>
-            <td><button title="hamcoreftag" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamcorefref" class="ham" value="">&nbsp;</button></td>
-            <td><button title="hamthumb" class="ham" value=""></button></td>
-            <td><button title="hamindexfinger" class="ham" value=""></button></td>
-            <td><button title="hammiddlefinger" class="ham" value=""></button></td>
-            <td><button title="hamringfinger" class="ham" value=""></button></td>
-            <td><button title="hampinky" class="ham" value=""></button></td>
-          </tr>
-          <tr>
-            <td><button title="hamcomma" class="ham" value=",">,</button></td>
-            <td><button title="hamfullstop" class="ham" value=".">.</button></td>
-            <td><button title="hamexclaim" class="ham" value="!">!</button></td>
-            <td><button title="hamquery" class="ham" value="?">?</button></td>
-            <td><button title="hammime" class="ham" value=""></button></td>
-          </tr>
-        </table>
+    <!-- HamNoSys input and buttons -->
+    <div class="hamnosys-input-container">
+      <div align="center">
+        <br>
+        New HamNoSys:
+        <input type="button" value="Play HamNoSys" onclick="playHamNoSys();" />
+        <input type="button" value="Generate Shareable URL" onclick="generateShareableUrl();" />
+        <input type="button" value="Clear" onclick="clearInput();" />
+        <br>
+        <textarea id="myHamNoSys" class="txtaSiGMLText" rows="3"></textarea>
       </div>
     </div>
+
+    <!-- URL and Copy button -->
+    <div align="center" style="margin-top: 1em;">
+      <input type="text" id="shareUrl" style="width: 80%; display: none;" readonly>
+      <button id="copyUrlBtn" onclick="copyUrlToClipboard();" style="display: none;">Copy URL</button>
+    </div>
+
+    <!-- Keyboard container -->
+    <div class="keyboard-container">
+      <!-- Tabs for the keyboard -->
+      <ul class="css-tabs">
+        <li class="current"><a href="#keyboard_hsh">Handshape</a></li>
+        <li><a href="#keyboard_ori">Orientation</a></li>
+        <li><a href="#keyboard_loc">Location</a></li>
+        <li><a href="#keyboard_mov1">Movement 1</a></li>
+        <li><a href="#keyboard_mov2">Movement 2</a></li>
+        <li><a href="#keyboard_2hd">Two-handed</a></li>
+      </ul>
+
+      <!-- Panes with keyboard buttons -->
+      <div class="css-panes">
+        <div id="keyboard_hsh">
+          <table>
+            <tr>
+              <td><button title="hamfist" class="ham" value=""></button></td>
+              <td><button title="hamflathand" class="ham" value=""></button></td>
+              <td><button title="hamfinger2" class="ham" value=""></button></td>
+              <td><button title="hamfinger23" class="ham" value=""></button></td>
+              <td><button title="hamfinger23spread" class="ham" value=""></button></td>
+              <td><button title="hamfinger2345" class="ham" value=""></button></td>
+              <td><button title="hampinch12" class="ham" value=""></button></td>
+              <td><button title="hampinchall" class="ham" value=""></button></td>
+              <td><button title="hampinch12open" class="ham" value=""></button></td>
+              <td><button title="hamcee12" class="ham" value=""></button></td>
+              <td><button title="hamceeall" class="ham" value=""></button></td>
+              <td><button title="hamceeopen" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamthumboutmod" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamthumbacrossmod" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamthumbopenmod" class="ham" value="">&nbsp;</button></td>
+              <td colspan="4"></td>
+              <td><button title="hamdoublebent" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamfingerstraightmod" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamfingerbendmod" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamfingerhookmod" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamdoublehooked" class="ham" value="">&nbsp;</button></td>
+            </tr>
+            <tr>
+              <td><button title="hamthumb" class="ham" value=""></button></td>
+              <td><button title="hamindexfinger" class="ham" value=""></button></td>
+              <td><button title="hammiddlefinger" class="ham" value=""></button></td>
+              <td><button title="hamringfinger" class="ham" value=""></button></td>
+              <td><button title="hampinky" class="ham" value=""></button></td>
+              <td><button title="hambetween" class="ham" value=""></button></td>
+              <td><button title="hamfingertip" class="ham" value=""></button></td>
+              <td><button title="hamfingernail" class="ham" value=""></button></td>
+              <td><button title="hamfingerpad" class="ham" value=""></button></td>
+              <td><button title="hamfingermidjoint" class="ham" value=""></button></td>
+              <td><button title="hamfingerbase" class="ham" value=""></button></td>
+              <td><button title="hamfingerside" class="ham" value=""></button></td>
+            </tr>
+          </table>
+        </div>
+        <div id="keyboard_ori">
+          <table>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hamextfingeru" class="ham" value=""></button></td>
+              <td colspan="6"></td>
+              <td><button title="hamextfingero" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hamextfingerul" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamextfingerur" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hamextfingerol" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamextfingeror" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamextfingerl" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hamextfingerr" class="ham" value=""></button></td>
+              <td colspan="2"></td>
+              <td><button title="hamextfingerl" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hamextfingerr" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hamextfingerdl" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hammovedr" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hamextfingeril" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hammoveir" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hamextfingerd" class="ham" value=""></button></td>
+              <td colspan="6"></td>
+              <td><button title="hamextfingeri" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="5"></td>
+              <td><button title="hambetween" class="ham" value=""></button></td>
+              <td><button title="hamorirelative" class="ham" value="">&nbsp;</button></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hamextfingeru" class="ham" value=""></button></td>
+              <td colspan="6"></td>
+              <td><button title="hampalmu" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hamextfingerui" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamextfingeruo" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hampalmul" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hampalmur" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamextfingeri" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hamextfingero" class="ham" value=""></button></td>
+              <td colspan="2"></td>
+              <td><button title="hampalml" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hampalmr" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hamfingerdi" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamcircledo" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hampalmdl" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hampalmdr" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hamextfingerd" class="ham" value=""></button></td>
+              <td colspan="6"></td>
+              <td><button title="hampalmd" class="ham" value=""></button></td>
+            </tr>
+          </table>
+        </div>
+        <div id="keyboard_loc">
+          <table>
+            <tr>
+              <td><button title="hamheadtop" class="ham" value=""></button></td>
+              <td><button title="hamhead" class="ham" value=""></button></td>
+              <td><button title="hamforehead" class="ham" value=""></button></td>
+              <td><button title="hamnose" class="ham" value=""></button></td>
+              <td><button title="hamnostrils" class="ham" value=""></button></td>
+              <td><button title="hamlips" class="ham" value=""></button></td>
+              <td><button title="hamtongue" class="ham" value=""></button></td>
+              <td><button title="hamteeth" class="ham" value=""></button></td>
+              <td><button title="hamchin" class="ham" value=""></button></td>
+              <td><button title="hamunderchin" class="ham" value=""></button></td>
+              <td><button title="hamneck" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamshouldertop" class="ham" value=""></button></td>
+              <td><button title="hamshoulders" class="ham" value=""></button></td>
+              <td><button title="hamchest" class="ham" value=""></button></td>
+              <td><button title="hamstomach" class="ham" value=""></button></td>
+              <td><button title="hambelowstomach" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hameyebrows" class="ham" value=""></button></td>
+              <td><button title="hameyes" class="ham" value=""></button></td>
+              <td><button title="hamear" class="ham" value=""></button></td>
+              <td><button title="hamearlobe" class="ham" value=""></button></td>
+              <td><button title="hamcheek" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamupperarm" class="ham" value=""></button></td>
+              <td><button title="hamelbowinside" class="ham" value=""></button></td>
+              <td><button title="hamlowerarm" class="ham" value=""></button></td>
+              <td><button title="hamwristback" class="ham" value=""></button></td>
+              <td><button title="hamthumbball" class="ham" value=""></button></td>
+              <td><button title="hampalm" class="ham" value=""></button></td>
+              <td><button title="hamhandback" class="ham" value=""></button></td>
+              <td><button title="hamthumbside" class="ham" value=""></button></td>
+              <td><button title="hampinkyside" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamthumb" class="ham" value=""></button></td>
+              <td><button title="hamindexfinger" class="ham" value=""></button></td>
+              <td><button title="hammiddlefinger" class="ham" value=""></button></td>
+              <td><button title="hamringfinger" class="ham" value=""></button></td>
+              <td><button title="hampinky" class="ham" value=""></button></td>
+              <td><button title="hambetween" class="ham" value=""></button></td>
+              <td><button title="hamfingertip" class="ham" value=""></button></td>
+              <td><button title="hamfingernail" class="ham" value=""></button></td>
+              <td><button title="hamfingerpad" class="ham" value=""></button></td>
+              <td><button title="hamfingermidjoint" class="ham" value=""></button></td>
+              <td><button title="hamfingerbase" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamclose" class="ham" value=""></button></td>
+              <td><button title="hamtouch" class="ham" value=""></button></td>
+              <td><button title="haminterlock" class="ham" value=""></button></td>
+              <td><button title="hamcross" class="ham" value=""></button></td>
+              <td><button title="hambrushing" class="ham" value=""></button></td>
+              <td><button title="hambehind" class="ham" value=""></button></td>
+              <td><button title="hamarmextended" class="ham" value=""></button></td>
+              <td><button title="hamlrbeside" class="ham" value=""></button></td>
+              <td><button title="hamlrat" class="ham" value=""></button></td>
+              <td><button title="hamdoublebent" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamdoublehooked" class="ham" value="">&nbsp;</button></td>
+            </tr>
+            <tr>
+              <td><button title="hamneutralspace" class="ham" value=""></button></td>
+            </tr>
+          </table>
+        </div>
+        <div id="keyboard_mov1">
+          <table>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hammoveu" class="ham" value=""></button></td>
+              <td colspan="6"></td>
+              <td><button title="hammoveo" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hammoveul" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hammoveur" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hammoveol" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hammoveor" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hammovel" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hammover" class="ham" value=""></button></td>
+              <td colspan="2"></td>
+              <td><button title="hammovel" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hammover" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hammovedl" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hammovedr" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hammoveil" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hammoveir" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hammoved" class="ham" value=""></button></td>
+              <td colspan="6"></td>
+              <td><button title="hammovei" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="5"></td>
+              <td><button title="hambetween" class="ham" value=""></button></td>
+              <td><button title="hamspace" class="ham" value=" "> </button></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hammoveu" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hamfast" class="ham" value=""></button></td>
+              <td><button title="hamslow" class="ham" value=""></button></td>
+              <td><button title="hamtense" class="ham" value=""></button></td>
+              <td><button title="hamrest" class="ham" value=""></button></td>
+              <td><button title="hamhalt" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hammoveui" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hammoveuo" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hamrepeatfromstart" class="ham" value=""></button></td>
+              <td><button title="hamrepeatfromstartseveral" class="ham" value=""></button></td>
+              <td><button title="hamrepeatcontinue" class="ham" value=""></button></td>
+              <td><button title="hamrepeatcontinueseveral" class="ham" value=""></button></td>
+              <td><button title="hamrepeatreverse" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hammovei" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hammoveo" class="ham" value=""></button></td>
+              <td colspan="2"></td>
+              <td><button title="hamsmallmod" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamlargemod" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamnomotion" class="ham" value=""></button></td>
+              <td><button title="hamincreasing" class="ham" value=""></button></td>
+              <td><button title="hamdecreasing" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hammovedi" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hammovedo" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hamarcl" class="ham" value=""></button></td>
+              <td><button title="hamarcu" class="ham" value=""></button></td>
+              <td><button title="hamarcr" class="ham" value=""></button></td>
+              <td><button title="hamwavy" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hammoved" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hamellipsev" class="ham" value=""></button></td>
+              <td><button title="hamellipseur" class="ham" value=""></button></td>
+              <td><button title="hamellipseh" class="ham" value=""></button></td>
+              <td><button title="hamellipseul" class="ham" value=""></button></td>
+              <td><button title="hamzigzag" class="ham" value=""></button></td>
+            </tr>
+          </table>
+        </div>
+        <div id="keyboard_mov2">
+          <table>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hamcircleu" class="ham" value=""></button></td>
+              <td colspan="6"></td>
+              <td><button title="hamcircleo" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hamcircleul" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamcircleur" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hamcircleol" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamcircleor" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamcirclel" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hamcircler" class="ham" value=""></button></td>
+              <td colspan="2"></td>
+              <td><button title="hamcirclel" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hamcircler" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hamcircledl" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamcircledr" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hamcircleil" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamcircleir" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hamcircled" class="ham" value=""></button></td>
+              <td colspan="6"></td>
+              <td><button title="hamcirclei" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="4"></td>
+              <td><button title="hamstircw" class="ham" value=""></button></td>
+              <td><button title="hamnodding" class="ham" value=""></button></td>
+              <td><button title="hamtwisting" class="ham" value=""></button></td>
+              <td><button title="hamreplace" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="4"></td>
+              <td><button title="hamstirccw" class="ham" value=""></button></td>
+              <td><button title="hamswinging" class="ham" value=""></button></td>
+              <td><button title="hamfingerplay" class="ham" value=""></button></td>
+              <td><button title="hambetween" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hamcircleu" class="ham" value=""></button></td>
+              <td colspan="6"></td>
+              <td><button title="hamclocku" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hamcircleui" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamcircleuo" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hamclockul" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamclockur" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamcirclei" class="ham" value=""></button></td>
+              <td colspan="3"></td>
+              <td><button title="hamcircleo" class="ham" value=""></button></td>
+              <td colspan="2"></td>
+              <td><button title="hamclockl" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamclockfull" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamclockr" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button title="hamcircledi" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamcircledo" class="ham" value=""></button></td>
+              <td colspan="4"></td>
+              <td><button title="hamclockdl" class="ham" value=""></button></td>
+              <td></td>
+              <td><button title="hamclockdr" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td><button title="hamcircled" class="ham" value=""></button></td>
+              <td colspan="6"></td>
+              <td><button title="hamclockd" class="ham" value=""></button></td>
+            </tr>
+          </table>
+        </div>
+        <div id="keyboard_2hd">
+          <table>
+            <tr>
+              <td><button title="hamsymmpar" class="ham" value=""></button></td>
+              <td><button title="hamsymmlr" class="ham" value=""></button></td>
+              <td><button title="hamfingerstraightmod" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamlargemod" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamsymmlr,hamfingerstraightmod,hamlargemod" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamparbegin" class="ham" value=""></button></td>
+              <td><button title="hamplus" class="ham" value=""></button></td>
+              <td><button title="hamparend" class="ham" value=""></button></td>
+              <td><button title="hamalternatingmotion" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamnonipsi" class="ham" value=""></button></td>
+              <td><button title="hamnondominant" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hametc" class="ham" value="">&nbsp;</button></td>
+            </tr>
+            <tr />
+            <tr>
+              <td><button title="hamseqbegin" class="ham" value=""></button></td>
+              <td><button title="hamseqend" class="ham" value=""></button></td>
+              <td><button title="hamparbegin" class="ham" value=""></button></td>
+              <td><button title="hamparend" class="ham" value=""></button></td>
+              <td><button title="hamfusionbegin" class="ham" value=""></button></td>
+              <td><button title="hamfusionend" class="ham" value=""></button></td>
+              <td><button title="hamaltbegin" class="ham" value="{">{</button></td>
+              <td><button title="hamaltend" class="ham" value="}">}</button></td>
+              <td><button title="hammetaalt" class="ham" value="|">|</button></td>
+            </tr>
+            <tr>
+              <td><button title="hamcoreftag" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamcorefref" class="ham" value="">&nbsp;</button></td>
+              <td><button title="hamthumb" class="ham" value=""></button></td>
+              <td><button title="hamindexfinger" class="ham" value=""></button></td>
+              <td><button title="hammiddlefinger" class="ham" value=""></button></td>
+              <td><button title="hamringfinger" class="ham" value=""></button></td>
+              <td><button title="hampinky" class="ham" value=""></button></td>
+            </tr>
+            <tr>
+              <td><button title="hamcomma" class="ham" value=",">,</button></td>
+              <td><button title="hamfullstop" class="ham" value=".">.</button></td>
+              <td><button title="hamexclaim" class="ham" value="!">!</button></td>
+              <td><button title="hamquery" class="ham" value="?">?</button></td>
+              <td><button title="hammime" class="ham" value=""></button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<hr/>
-<div align="center">
-  <br>
-  Generated SiGML:
-  <textarea id="sigmlOutput" class="txtaSiGMLText"></textarea>
-</div>
-<hr/>
-<p>
-<small>
-CWASA is © UEA 2005-2024. The CWASA web pages are covered by a Creative Commons BY-SA 4.0 license, while the underlying CWASA software is licensed under the terms of Creative Commons BY-ND 4.0. For commercial inquiries, contact cmp_virtualsigning@uea.ac.uk.
-</small>
-</p>
+  <hr />
+  <div align="center">
+    <br>
+    Generated SiGML:
+    <textarea id="sigmlOutput" class="txtaSiGMLText"></textarea>
+  </div>
+  <hr />
+  <p>
+    <small>
+      CWASA is © UEA 2005-2024. The CWASA web pages are covered by a Creative Commons BY-SA 4.0 license, while the
+      underlying CWASA software is licensed under the terms of Creative Commons BY-ND 4.0. For commercial inquiries,
+      contact cmp_virtualsigning@uea.ac.uk.
+    </small>
+  </p>
 
-<script type="text/javascript">
-$(document).ready(function(){
-    // Manual tab functionality
-    $('.css-panes div').hide();
-    $('#keyboard_hsh').show();
-
-    $('.css-tabs a').bind('click', function(e) {
-        e.preventDefault();
-        $('.css-tabs a').removeClass('current');
-        $(this).addClass('current');
+  <script type="text/javascript">
+      $(document).ready(function () {
+        // Manual tab functionality
         $('.css-panes div').hide();
-        $($(this).attr('href')).show();
-    });
+        $('#keyboard_hsh').show();
 
-	// Handle button clicks to insert text
-	$(".css-panes button").bind("click", function(e) {
-		insertAtCursor(document.getElementById('myHamNoSys'), $(this).val());
-	});
-});
-</script>
+        $('.css-tabs a').bind('click', function (e) {
+          e.preventDefault();
+          $('.css-tabs a').removeClass('current');
+          $(this).addClass('current');
+          $('.css-panes div').hide();
+          $($(this).attr('href')).show();
+        });
+
+        // Handle button clicks to insert text
+        $(".css-panes button").bind("click", function (e) {
+          insertAtCursor(document.getElementById('myHamNoSys'), $(this).val());
+        });
+      });
+  </script>
 
 </body>
+
 </html>
