@@ -1716,10 +1716,22 @@
       });
     }
 
+    // --- Populate Answer Text dynamically when flipping to prevent spoilers ---
+    function populateAnswerText() {
+      const item = sessionCards[currentIndex];
+      if (!item) return;
+      if (practiceDirection === 'eng-to-sign') {
+        answerElement.innerText = item.signs.join(', ');
+      } else {
+        answerElement.innerText = item.english;
+      }
+    }
+
     // --- Card Flipping Animation ---
     function toggleCardFlip() {
       isFlipped = !isFlipped;
       if (isFlipped) {
+        populateAnswerText();
         interactiveCard.classList.add('flipped');
         if (practiceMode === 'flip') {
           flipBtn.style.display = 'none';
@@ -1845,7 +1857,7 @@
 
         // SignFont answers on back
         backLabel.innerText = "Correct SignFont Transcription(s)";
-        answerElement.innerText = item.signs.join(', ');
+        answerElement.innerText = "";
         answerElement.className = "answer-text signfont";
 
         // Input setup (We expect a SignFont input)
@@ -1871,7 +1883,7 @@
 
         // English answer on back
         backLabel.innerText = "Correct English Meaning";
-        answerElement.innerText = item.english;
+        answerElement.innerText = "";
         answerElement.className = "answer-text";
 
         // Input setup (We expect an English input)
@@ -2029,6 +2041,7 @@
       // Automatically Flip Card after verification to reveal details
       setTimeout(() => {
         isFlipped = true;
+        populateAnswerText();
         interactiveCard.classList.add('flipped');
       }, 500);
 

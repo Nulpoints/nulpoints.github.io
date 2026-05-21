@@ -5,13 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SignFont Bidirectional Dictionary</title>
-  <meta name="description" content="An interactive, high-fidelity bidirectional lookup dictionary for English words and ASL SignFont transcriptions, featuring smart Keyman keyboard switching.">
+  <meta name="description"
+    content="An interactive, high-fidelity bidirectional lookup dictionary for English words and ASL SignFont transcriptions, featuring smart Keyman keyboard switching.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <!-- FontAwesome for Premium Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -21,15 +24,15 @@
       --glass-bg: rgba(30, 41, 59, 0.7);
       --glass-border: rgba(255, 255, 255, 0.08);
       --glass-hover-border: rgba(255, 255, 255, 0.15);
-      
+
       --accent-primary: #8b5cf6;
       --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
       --accent-glow: rgba(124, 58, 237, 0.3);
-      
+
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --card-bg: rgba(15, 23, 42, 0.6);
-      
+
       --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -98,13 +101,13 @@
     .app-container {
       max-width: 1300px;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem;
+      padding: 1.25rem 1rem;
     }
 
     /* Header */
     header {
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 1.5rem;
       position: relative;
     }
 
@@ -112,11 +115,11 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .logo-icon {
-      font-size: 2.5rem;
+      font-size: 2rem;
       background: var(--accent-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -125,7 +128,7 @@
 
     h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 3rem;
+      font-size: 2.4rem;
       font-weight: 800;
       letter-spacing: -0.03em;
       background: linear-gradient(to right, #ffffff, #c084fc);
@@ -135,10 +138,10 @@
 
     .tagline {
       color: var(--text-muted);
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 400;
       max-width: 600px;
-      margin: 0.5rem auto 1.5rem auto;
+      margin: 0.25rem auto 1rem auto;
     }
 
     .header-actions {
@@ -233,33 +236,34 @@
       background: var(--glass-bg);
       backdrop-filter: blur(16px);
       border: 1px solid var(--glass-border);
-      border-radius: 24px;
-      padding: 2.5rem;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      margin-bottom: 3rem;
+      margin-bottom: 1.5rem;
       position: relative;
     }
 
     .search-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 1rem;
     }
 
     @media (max-width: 768px) {
       .search-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1rem;
       }
+
       h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
     }
 
     .search-group {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.4rem;
       position: relative;
     }
 
@@ -282,9 +286,9 @@
 
     .search-icon {
       position: absolute;
-      left: 1.25rem;
+      left: 1rem;
       color: var(--text-muted);
-      font-size: 1.1rem;
+      font-size: 1rem;
       transition: var(--transition-smooth);
     }
 
@@ -292,20 +296,21 @@
       width: 100%;
       background: rgba(15, 23, 42, 0.8);
       border: 1px solid var(--glass-border);
-      border-radius: 16px;
-      padding: 1.1rem 1.25rem 1.1rem 3.2rem;
+      border-radius: 12px;
+      padding: 0.75rem 1.25rem 0.75rem 2.8rem;
       font-family: inherit;
       color: var(--text-main);
-      font-size: 1.1rem;
+      font-size: 1rem;
       transition: var(--transition-smooth);
-      height: 3.8rem;
+      height: 3.2rem;
     }
 
     textarea.search-input {
       resize: none;
       overflow: hidden;
       white-space: nowrap;
-      padding-top: 1.2rem; /* adjust visual alignment for textarea line-height */
+      padding-top: 0.85rem;
+      /* adjust visual alignment for textarea line-height */
     }
 
     .search-input:focus {
@@ -314,13 +319,13 @@
       box-shadow: 0 0 0 3px var(--accent-glow);
     }
 
-    .search-input:focus + .search-icon {
+    .search-input:focus+.search-icon {
       color: var(--accent-primary);
     }
 
     .signfont-input {
       font-family: 'SignFont New', 'Outfit', sans-serif !important;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
     }
 
     /* Extreme specificity override to beat Keyman Web's dynamically injected styles */
@@ -364,12 +369,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.75rem;
       padding: 0 0.5rem;
     }
 
     .results-count {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
     }
 
@@ -377,81 +382,135 @@
       color: var(--text-main);
     }
 
-    /* Dictionary Cards Grid */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 1.75rem;
+    /* High-density Dictionary List */
+    .dict-list {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 1.25rem;
-      cursor: pointer;
-      position: relative;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
       overflow: hidden;
-      transition: var(--transition-spring);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     }
 
-    .card::before {
+    .dict-header-row {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      background: rgba(15, 23, 42, 0.85);
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+    }
+
+    .dict-row {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .dict-row:last-child {
+      border-bottom: none;
+    }
+
+    .dict-row:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .dict-row::before {
       content: '';
       position: absolute;
-      top: 0;
       left: 0;
-      width: 100%;
-      height: 4px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
       background: var(--accent-gradient);
       opacity: 0;
       transition: var(--transition-smooth);
     }
 
-    .card:hover {
-      border-color: var(--glass-hover-border);
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    .card:hover::before {
+    .dict-row:hover::before {
       opacity: 1;
     }
 
-    .card-english {
+    .col-word {
+      flex: 0 0 25%;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--text-main);
-      word-break: break-word;
+      padding-right: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .card-signs-wrapper {
+    .col-notation {
+      flex: 1;
       display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .card-sign-row {
-      display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
       align-items: center;
-      background: rgba(15, 23, 42, 0.4);
-      padding: 0.6rem 1rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
     }
 
-    .signfont-notation {
+    .notation-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.2rem 0.5rem 0.2rem 0.75rem;
+      border-radius: 8px;
+      transition: var(--transition-smooth);
+    }
+
+    .notation-badge:hover {
+      border-color: rgba(139, 92, 246, 0.3);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .notation-text {
       font-family: 'SignFont New';
-      font-size: 1.8rem;
-      letter-spacing: 0.05em;
+      font-size: 1.45rem;
+      letter-spacing: 0.03em;
       color: #c084fc;
-      user-select: all;
+    }
+
+    .col-actions {
+      flex: 0 0 10%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+
+    .action-icon-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .action-icon-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.15);
+      box-shadow: 0 0 8px var(--accent-glow);
     }
 
     .copy-btn {
@@ -459,8 +518,8 @@
       border: none;
       color: var(--text-muted);
       cursor: pointer;
-      padding: 6px;
-      font-size: 0.9rem;
+      padding: 4px;
+      font-size: 0.85rem;
       transition: var(--transition-smooth);
       border-radius: 6px;
     }
@@ -470,11 +529,40 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
+    @media (max-width: 768px) {
+      .dict-header-row {
+        display: none;
+      }
+
+      .dict-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 0.85rem 1.25rem;
+      }
+
+      .col-word {
+        flex: none;
+        width: 100%;
+        padding-right: 0;
+      }
+
+      .col-notation {
+        width: 100%;
+      }
+
+      .col-actions {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 0.25rem;
+      }
+    }
+
     /* Load More Trigger */
     .load-more-container {
       display: flex;
       justify-content: center;
-      margin-top: 3rem;
+      margin-top: 1.5rem;
     }
 
     /* Sliding Drawer Reference Panel */
@@ -597,6 +685,7 @@
     .drawer-tabs::-webkit-scrollbar {
       height: 4px;
     }
+
     .drawer-tabs::-webkit-scrollbar-thumb {
       background: var(--glass-border);
       border-radius: 99px;
@@ -825,8 +914,9 @@
         </div>
       </div>
       <h1>SignFont Dictionary</h1>
-      <p class="tagline">A bidirectional lookup utility for English words and ASL SignFont notations, powered by the professional SignFont system.</p>
-      
+      <p class="tagline">A bidirectional lookup utility for English words and ASL SignFont notations, powered by the
+        professional SignFont system.</p>
+
       <div class="header-actions">
         <button class="btn" id="open-ref-btn">
           <i class="fa-solid fa-circle-info"></i> SignFont Reference Chart
@@ -847,7 +937,9 @@
             <i class="fa-solid fa-language text-muted"></i>
           </label>
           <div class="search-input-wrapper">
-            <input type="text" id="english-search" class="search-input" placeholder="Type an English word (e.g. act, airplane)..." autocomplete="off" spellcheck="false" data-keyman-disabled="true">
+            <input type="text" id="english-search" class="search-input"
+              placeholder="Type an English word (e.g. act, airplane)..." autocomplete="off" spellcheck="false"
+              data-keyman-disabled="true">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
             <button class="clear-btn" id="clear-english"><i class="fa-solid fa-circle-xmark"></i></button>
           </div>
@@ -857,14 +949,17 @@
         <div class="search-group">
           <label for="signfont-search" class="search-label">
             SignFont Notation Lookup
-            <span class="keyman-status-badge" style="font-size: 0.7rem; padding: 2px 8px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; border-color: rgba(139, 92, 246, 0.2);">
+            <span class="keyman-status-badge"
+              style="font-size: 0.7rem; padding: 2px 8px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; border-color: rgba(139, 92, 246, 0.2);">
               <i class="fa-solid fa-spell-check"></i> SignFont Keyboard Active
             </span>
           </label>
           <div class="search-input-wrapper">
-            <textarea id="signfont-search" class="search-input signfont-input" placeholder="_ d((Hwy, b&&BAy nT%%KEwy" rows="1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+            <textarea id="signfont-search" class="search-input signfont-input" placeholder="_ d((Hwy, b&&BAy nT%%KEwy"
+              rows="1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
             <i class="fa-solid fa-keyboard search-icon"></i>
-            <button class="clear-btn" id="clear-signfont" style="right: 3.25rem;"><i class="fa-solid fa-circle-xmark"></i></button>
+            <button class="clear-btn" id="clear-signfont" style="right: 3.25rem;"><i
+                class="fa-solid fa-circle-xmark"></i></button>
             <button type="button" class="keyboard-toggle-btn" id="osk-toggle-btn" title="Toggle On-Screen Keyboard">
               <i class="fa-solid fa-keyboard"></i>
             </button>
@@ -880,8 +975,8 @@
       </div>
     </div>
 
-    <!-- Cards Grid -->
-    <main class="cards-grid" id="dictionary-grid">
+    <!-- Dictionary Results List -->
+    <main class="dict-list" id="dictionary-grid">
       <!-- Injected via JavaScript -->
       <div class="loading-state">
         <i class="fa-solid fa-circle-notch loading-spinner"></i>
@@ -908,7 +1003,7 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
-      
+
       <div class="drawer-content">
         <div class="ref-search-wrapper">
           <input type="text" class="ref-search-input" id="ref-search" placeholder="Filter reference symbols...">
@@ -962,13 +1057,13 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
-      
+
       <div class="drawer-content">
         <div class="breakdown-notation-title">
           <div class="breakdown-notation-large" id="breakdown-notation-large"></div>
           <div class="breakdown-notation-raw" id="breakdown-notation-raw"></div>
         </div>
-        
+
         <h3 style="margin-bottom: 1rem; font-family: 'Space Grotesk', sans-serif;">Symbol Composition</h3>
         <div id="breakdown-items-container">
           <!-- Injected via JavaScript -->
@@ -986,7 +1081,7 @@
   <!-- Keyman Web Engine Integration -->
   <script src='https://s.keyman.com/kmw/engine/18.0.235/keymanweb.js'></script>
   <script src='https://s.keyman.com/kmw/engine/18.0.235/kmwuitoggle.js'></script>
-  
+
   <!-- Load Dictionary Data from Clean Generated File -->
   <script src="./dictionary-data.js"></script>
 
@@ -1042,17 +1137,17 @@
     const signfontSearch = document.getElementById('signfont-search');
     const clearEnglishBtn = document.getElementById('clear-english');
     const clearSignfontBtn = document.getElementById('clear-signfont');
-    
+
     const dictionaryGrid = document.getElementById('dictionary-grid');
     const resultsMeta = document.getElementById('results-meta');
     const loadMoreBox = document.getElementById('load-more-box');
     const loadMoreBtn = document.getElementById('load-more-btn');
-    
+
     const refDrawerOverlay = document.getElementById('ref-drawer-overlay');
     const closeRefBtn = document.getElementById('close-ref-btn');
     const openRefBtn = document.getElementById('open-ref-btn');
     const refSearch = document.getElementById('ref-search');
-    
+
     const breakdownDrawerOverlay = document.getElementById('breakdown-drawer-overlay');
     const closeBreakdownBtn = document.getElementById('close-breakdown-btn');
     const breakdownTitle = document.getElementById('breakdown-title');
@@ -1107,15 +1202,15 @@
                     hasPositionedOSK = true;
                     return;
                   }
-                  
+
                   const rect = keyman.osk.getRect();
                   const oskWidth = rect.width || 600;
                   const oskHeight = rect.height || 250;
-                  
+
                   // Calculate a comfortable bottom-right margin on wide screen
                   const targetLeft = Math.max(20, window.innerWidth - oskWidth - 40);
                   const targetTop = Math.max(20, window.innerHeight - oskHeight - 40);
-                  
+
                   if (typeof keyman.osk.setRect === 'function') {
                     keyman.osk.setRect({ left: targetLeft, top: targetTop });
                   } else if (typeof keyman.osk.setPos === 'function') {
@@ -1182,15 +1277,15 @@
       if (typeof keyman !== 'undefined' && englishSearch) {
         try {
           keyman.disableControl(englishSearch);
-        } catch (e) {}
+        } catch (e) { }
       }
-      
+
       // Populate whole dictionary initially
       if (window.signFontDictionary) {
         filteredDictionary = [...window.signFontDictionary];
         renderDictionary();
       }
-      
+
       // Event Listeners for inputs
       englishSearch.addEventListener('input', handleEnglishInput);
       signfontSearch.addEventListener('input', handleSignfontInput);
@@ -1210,13 +1305,13 @@
       signfontSearch.addEventListener('keyup', enforceFont);
       signfontSearch.addEventListener('keydown', enforceFont);
       setInterval(enforceFont, 250);
-      
+
       clearEnglishBtn.addEventListener('click', () => {
         englishSearch.value = '';
         clearEnglishBtn.classList.remove('active');
         refilter();
       });
-      
+
       clearSignfontBtn.addEventListener('click', () => {
         signfontSearch.value = '';
         clearSignfontBtn.classList.remove('active');
@@ -1257,10 +1352,10 @@
         tab.addEventListener('click', () => {
           refTabs.forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
-          
+
           const sections = document.querySelectorAll('.ref-section');
           sections.forEach(s => s.classList.remove('active'));
-          
+
           const target = tab.getAttribute('data-target');
           document.getElementById(target).classList.add('active');
         });
@@ -1281,13 +1376,13 @@
       } else {
         clearEnglishBtn.classList.remove('active');
       }
-      
+
       // Clear other search field
       if (signfontSearch.value.length > 0) {
         signfontSearch.value = '';
         clearSignfontBtn.classList.remove('active');
       }
-      
+
       refilter();
     }
 
@@ -1304,14 +1399,14 @@
         englishSearch.value = '';
         clearEnglishBtn.classList.remove('active');
       }
-      
+
       refilter();
     }
 
     function refilter() {
       const engQuery = englishSearch.value.toLowerCase().trim();
       const signQuery = signfontSearch.value.trim(); // keep case as is since SignFont notations are case sensitive
-      
+
       if (!window.signFontDictionary) return;
 
       if (engQuery) {
@@ -1330,11 +1425,11 @@
       renderDictionary();
     }
 
-    // --- Render Cards Grid ---
+    // --- Render Dictionary List ---
     function renderDictionary() {
       if (filteredDictionary.length === 0) {
         dictionaryGrid.innerHTML = `
-          <div class="loading-state" style="grid-column: 1 / -1; padding: 5rem 1rem;">
+          <div class="loading-state" style="padding: 5rem 1rem;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size: 3rem; color: var(--accent-primary); margin-bottom: 1.5rem;"></i>
             <p style="font-size: 1.2rem; font-weight: 500;">No matching words or signs found.</p>
             <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem;">Try refining your spelling or searching for another word.</p>
@@ -1347,30 +1442,41 @@
 
       const totalItems = filteredDictionary.length;
       const displayChunk = filteredDictionary.slice(0, currentLimit);
-      
-      let html = '';
+
+      let html = `
+        <div class="dict-header-row">
+          <div class="col-word">English Word</div>
+          <div class="col-notation">ASL SignFont Notation</div>
+          <div class="col-actions">Actions</div>
+        </div>
+      `;
       displayChunk.forEach((item, index) => {
+        const escapedEnglish = item.english.replace(/'/g, "\\'");
+        const signsJson = JSON.stringify(item.signs).replace(/"/g, '&quot;');
         html += `
-          <div class="card" onclick="openBreakdown('${item.english.replace(/'/g, "\\'")}', ${JSON.stringify(item.signs).replace(/"/g, '&quot;')})">
-            <div>
-              <div class="card-english">${escapeHtml(item.english)}</div>
-            </div>
-            <div class="card-signs-wrapper">
+          <div class="dict-row" onclick="openBreakdown('${escapedEnglish}', ${signsJson})">
+            <div class="col-word" title="${escapeHtml(item.english)}">${escapeHtml(item.english)}</div>
+            <div class="col-notation">
               ${item.signs.map(sign => `
-                <div class="card-sign-row">
-                  <span class="signfont-notation">${escapeHtml(sign)}</span>
+                <div class="notation-badge">
+                  <span class="notation-text">${escapeHtml(sign)}</span>
                   <button class="copy-btn" onclick="copySign(event, '${sign.replace(/'/g, "\\'")}')" title="Copy notation">
                     <i class="fa-regular fa-copy"></i>
                   </button>
                 </div>
               `).join('')}
             </div>
+            <div class="col-actions">
+              <button class="action-icon-btn" title="View Breakdown">
+                <i class="fa-solid fa-circle-nodes"></i>
+              </button>
+            </div>
           </div>
         `;
       });
 
       dictionaryGrid.innerHTML = html;
-      
+
       resultsMeta.innerHTML = `Showing <strong>${displayChunk.length}</strong> of <strong>${totalItems}</strong> matching entries`;
 
       if (totalItems > currentLimit) {
@@ -1379,25 +1485,24 @@
         loadMoreBox.style.display = 'none';
       }
     }
-
     // --- Sign Breakdown Logic ---
     function openBreakdown(english, signs) {
       // Use the first sign transcription for breakdown
       const sign = signs[0];
-      
+
       breakdownTitle.innerHTML = `<i class="fa-solid fa-circle-nodes"></i> Breakdown: ${escapeHtml(english)}`;
       breakdownNotationLarge.innerText = sign;
       breakdownNotationRaw.innerText = `Raw transcription: ${sign}`;
-      
+
       let itemsHtml = '';
-      
+
       // Analyze character by character
       for (let i = 0; i < sign.length; i++) {
         const char = sign[i];
-        
+
         let desc = '';
         let category = '';
-        
+
         if (HANDSHAPES[char]) {
           desc = HANDSHAPES[char];
           category = 'Handshape';
@@ -1417,7 +1522,7 @@
           desc = 'Structural or unknown marker';
           category = 'Marker';
         }
-        
+
         itemsHtml += `
           <div class="breakdown-item">
             <div class="breakdown-char">${escapeHtml(char)}</div>
@@ -1429,7 +1534,7 @@
           </div>
         `;
       }
-      
+
       breakdownContainer.innerHTML = itemsHtml;
       breakdownDrawerOverlay.classList.add('active');
     }
