@@ -548,7 +548,7 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0;
       padding: 1.5rem;
       background: var(--card-bg);
       border: 1px solid var(--glass-border);
@@ -575,23 +575,32 @@
     .segment-badge.type-location { border-left: 4px solid #2979ff; }
     .segment-badge.type-action { border-left: 4px solid #e040fb; }
 
+    .transcription-literal {
+      font-family: monospace;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: pre;
+    }
+
     /* Blanks */
     .segment-blank {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.4rem 1rem;
-      border-radius: 8px;
+      padding: 0 0.2rem;
+      border-radius: 4px;
       font-family: monospace;
-      font-size: 1.2rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      min-width: 4rem;
-      height: 2.6rem;
+      min-width: 3rem;
+      height: 2.2rem;
       cursor: pointer;
       transition: var(--transition-smooth);
-      border: 1.5px dashed var(--accent-primary);
-      background: var(--glass-bg);
+      border-bottom: 3px solid var(--accent-primary);
+      background: transparent;
       color: var(--accent-primary);
+      margin: 0 0.2rem;
     }
 
     .segment-blank:hover {
@@ -601,16 +610,15 @@
 
     .segment-blank.active-blank {
       background: var(--glass-hover-border);
-      border-style: solid;
       border-color: var(--text-main);
-      box-shadow: 0 0 12px var(--accent-glow);
+      box-shadow: 0 4px 12px var(--accent-glow);
     }
 
     .segment-blank.filled {
-      border-style: solid;
+      border: 2px solid var(--accent-primary);
+      border-radius: 8px;
       background: var(--accent-gradient);
       color: var(--bg-solid);
-      border-color: var(--accent-primary);
     }
 
     /* Color Coded Legend Boxes */
@@ -1165,7 +1173,7 @@
 
         <!-- Transcription blank builder -->
         <div>
-          <div class="gloss-label" style="text-align: center; margin-bottom: 0.5rem;">SLD Notation Breakdown</div>
+          <div class="gloss-label" style="text-align: center; margin-bottom: 0.5rem;">Full SLD Transcription</div>
           <div class="transcription-display" id="transcription-slots-container">
             <!-- Populated dynamically -->
           </div>
@@ -1740,7 +1748,22 @@
       game.hiddenIndices = allIndices.slice(0, hideCount).sort((a,b) => a - b);
 
       // Render Transcription display slots
+      DOM.slotsContainer.innerHTML = '';
+      let currentOffset = 0;
+      let signText = game.currentSign;
+
       game.parameters.forEach((param, idx) => {
+        let pIndex = signText.indexOf(param.value, currentOffset);
+        if (pIndex !== -1) {
+          if (pIndex > currentOffset) {
+            let preText = document.createElement('span');
+            preText.className = 'transcription-literal';
+            preText.textContent = signText.substring(currentOffset, pIndex);
+            DOM.slotsContainer.appendChild(preText);
+          }
+          currentOffset = pIndex + param.value.length;
+        }
+
         if (game.hiddenIndices.includes(idx)) {
           // Render slot blank
           let isTyping = game.inputMode === 'typing';
@@ -1749,12 +1772,11 @@
             input.type = 'text';
             input.className = 'typing-slot-input';
             input.id = `slot-typing-input-${idx}`;
-            input.placeholder = `[? ${param.displayLabel}]`;
+            input.placeholder = `[?]`;
             input.dataset.idx = idx;
             input.autocomplete = 'off';
             input.spellcheck = false;
             
-            // Set up input focus listeners to bind virtual chips
             input.addEventListener('focus', () => {
               game.activeInputFocus = `slot-typing-input-${idx}`;
             });
@@ -1764,15 +1786,13 @@
             let blank = document.createElement('div');
             blank.className = `segment-blank active-blank`;
             blank.id = `slot-blank-${idx}`;
-            blank.textContent = `? ${param.displayLabel}`;
+            blank.textContent = `?`;
             blank.dataset.idx = idx;
             
             blank.addEventListener('click', () => {
-              // Scroll or highlight card input
               let inputCard = document.getElementById(`input-choice-card-${idx}`);
               if (inputCard) {
                 inputCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                // Flash animation
                 inputCard.style.border = '2px solid var(--accent-primary)';
                 setTimeout(() => { inputCard.style.border = '1px solid var(--glass-border)'; }, 1000);
               }
@@ -1781,13 +1801,21 @@
             DOM.slotsContainer.appendChild(blank);
           }
         } else {
-          // Render regular filled segment
-          let badge = document.createElement('div');
-          badge.className = `segment-badge type-${param.type}`;
-          badge.textContent = param.value;
-          DOM.slotsContainer.appendChild(badge);
+          // Render regular filled segment text
+          let filledText = document.createElement('span');
+          filledText.className = 'transcription-literal';
+          filledText.textContent = param.value;
+          DOM.slotsContainer.appendChild(filledText);
         }
       });
+
+      // Append any remaining string
+      if (currentOffset < signText.length) {
+        let postText = document.createElement('span');
+        postText.className = 'transcription-literal';
+        postText.textContent = signText.substring(currentOffset);
+        DOM.slotsContainer.appendChild(postText);
+      }
 
       // Render Dynamic inputs area
       if (game.inputMode === 'mc') {
