@@ -1180,10 +1180,14 @@
       }
     }
 
+    function stripDiacritics(str) {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
     // Interactive Search and Substring matching
     function performFilter() {
-      const engQuery = englishSearch.value.trim().toLowerCase();
-      const sldQuery = sldSearch.value.trim().toLowerCase();
+      const engQuery = stripDiacritics(englishSearch.value.trim().toLowerCase());
+      const sldQuery = stripDiacritics(sldSearch.value.trim().toLowerCase());
 
       // Get list of selected sources
       const selectedSources = Array.from(document.querySelectorAll('.source-checkbox:checked')).map(cb => cb.value);
@@ -1205,12 +1209,12 @@
         let matchSld = true;
 
         if (engQuery.length > 0) {
-          matchEng = item.english.toLowerCase().includes(engQuery);
+          matchEng = stripDiacritics(item.english.toLowerCase()).includes(engQuery);
         }
 
         if (sldQuery.length > 0) {
           // Check if any of the signs with the selected sources match the SLD query
-          matchSld = signsWithSelectedSource.some(sign => sign.toLowerCase().includes(sldQuery));
+          matchSld = signsWithSelectedSource.some(sign => stripDiacritics(sign.toLowerCase()).includes(sldQuery));
         }
 
         if (matchEng && matchSld) {

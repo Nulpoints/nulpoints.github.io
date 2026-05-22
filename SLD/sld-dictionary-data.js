@@ -1,4 +1,4 @@
-window.sldDictionary = [
+﻿window.sldDictionary = [
   {
     "english": "A",
     "signs": [
@@ -367,10 +367,10 @@ window.sldDictionary = [
   {
     "english": "According",
     "signs": [
-      "leak~j▓t-bj"
+      "leak~j/t-bj"
     ],
     "signSources": {
-      "leak~j▓t-bj": [
+      "leak~j/t-bj": [
         "Sternberg (1994)"
       ]
     }
@@ -1550,23 +1550,23 @@ window.sldDictionary = [
   {
     "english": "America",
     "signs": [
-      "Faatfje-ri▓rk",
-      "Fatefje=ri▓rk",
-      "faatfje-ri▓rk",
-      "fatefje-ri▓rj",
+      "Faatfje-ri/rk",
+      "Fatefje=ri/rk",
+      "faatfje-ri/rk",
+      "fatefje-ri/rj",
       "héia-ra-sé-ra"
     ],
     "signSources": {
-      "Fatefje=ri▓rk": [
+      "Fatefje=ri/rk": [
         "Main ASL Dictionary"
       ],
-      "fatefje-ri▓rj": [
+      "fatefje-ri/rj": [
         "Sternberg (1994)"
       ],
-      "Faatfje-ri▓rk": [
+      "Faatfje-ri/rk": [
         "Stokoe et al. (1965)"
       ],
-      "faatfje-ri▓rk": [
+      "faatfje-ri/rk": [
         "Jones et al. (1981)"
       ],
       "héia-ra-sé-ra": [
@@ -1577,10 +1577,10 @@ window.sldDictionary = [
   {
     "english": "American Falls",
     "signs": [
-      "faatfje-ri▓rk fóia-sá-lfá-lfá-sé"
+      "faatfje-ri/rk fóia-sá-lfá-lfá-sé"
     ],
     "signSources": {
-      "faatfje-ri▓rk fóia-sá-lfá-lfá-sé": [
+      "faatfje-ri/rk fóia-sá-lfá-lfá-sé": [
         "Jones et al. (1981)"
       ]
     }
@@ -1824,10 +1824,10 @@ window.sldDictionary = [
   {
     "english": "Annoy",
     "signs": [
-      "baitbj-e▓a"
+      "baitbj-e/a"
     ],
     "signSources": {
-      "baitbj-e▓a": [
+      "baitbj-e/a": [
         "Sternberg (1994)"
       ]
     }
@@ -2425,10 +2425,10 @@ window.sldDictionary = [
   {
     "english": "Arrange",
     "signs": [
-      "baat=rej▓rat"
+      "baat=rej/rat"
     ],
     "signSources": {
-      "baat=rej▓rat": [
+      "baat=rej/rat": [
         "Sternberg (1994)"
       ]
     }
@@ -2436,10 +2436,10 @@ window.sldDictionary = [
   {
     "english": "Arrangement",
     "signs": [
-      "baat=rej▓rat"
+      "baat=rej/rat"
     ],
     "signSources": {
-      "baat=rej▓rat": [
+      "baat=rej/rat": [
         "Main ASL Dictionary"
       ]
     }
@@ -2959,10 +2959,10 @@ window.sldDictionary = [
   {
     "english": "Audio recording",
     "signs": [
-      "fluaak=ri▓rk"
+      "fluaak=ri/rk"
     ],
     "signSources": {
-      "fluaak=ri▓rk": [
+      "fluaak=ri/rk": [
         "Main ASL Dictionary"
       ]
     }
@@ -3667,10 +3667,10 @@ window.sldDictionary = [
   {
     "english": "Baptist",
     "signs": [
-      "saatEA-raj▓ret-aiak"
+      "saatEA-raj/ret-aiak"
     ],
     "signSources": {
-      "saatEA-raj▓ret-aiak": [
+      "saatEA-raj/ret-aiak": [
         "Sternberg (1994)"
       ]
     }
@@ -3680,7 +3680,7 @@ window.sldDictionary = [
     "signs": [
       "saakai-k-i",
       "saat-zsj",
-      "saat-zsj-t▓j",
+      "saat-zsj-t/j",
       "wéit=ui bcóitI-fá",
       "wéit=ui wéta-fi"
     ],
@@ -3691,7 +3691,7 @@ window.sldDictionary = [
       "saat-zsj": [
         "Stokoe et al. (1965)"
       ],
-      "saat-zsj-t▓j": [
+      "saat-zsj-t/j": [
         "Stokoe et al. (1965)"
       ],
       "wéit=ui bcóitI-fá": [
@@ -3759,10 +3759,10 @@ window.sldDictionary = [
     "signs": [
       "bcaakaifj=ufj",
       "bcaakaifjui=a-ba",
-      "fcaakaifj-i▓k-fj"
+      "fcaakaifj-i/k-fj"
     ],
     "signSources": {
-      "fcaakaifj-i▓k-fj": [
+      "fcaakaifj-i/k-fj": [
         "Sternberg (1994)"
       ],
       "bcaakaifj=ufj": [
@@ -4123,10 +4123,10 @@ window.sldDictionary = [
   {
     "english": "Beanpole",
     "signs": [
-      "yueakaifj-i▓k"
+      "yueakaifj-i/k"
     ],
     "signSources": {
-      "yueakaifj-i▓k": [
+      "yueakaifj-i/k": [
         "Sternberg (1994)"
       ]
     }
@@ -6335,18 +6335,18 @@ window.sldDictionary = [
   {
     "english": "Bring",
     "signs": [
-      "baai-j▓t",
-      "baai-ret▓raj",
-      "baaidj-j▓t"
+      "baai-j/t",
+      "baai-ret/raj",
+      "baaidj-j/t"
     ],
     "signSources": {
-      "baai-ret▓raj": [
+      "baai-ret/raj": [
         "Main ASL Dictionary"
       ],
-      "baaidj-j▓t": [
+      "baaidj-j/t": [
         "Sternberg (1994)"
       ],
-      "baai-j▓t": [
+      "baai-j/t": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -6447,10 +6447,10 @@ window.sldDictionary = [
     "english": "Broom",
     "signs": [
       "bbáattipj=t",
-      "seatbj-rat▓rej"
+      "seatbj-rat/rej"
     ],
     "signSources": {
-      "seatbj-rat▓rej": [
+      "seatbj-rat/rej": [
         "Sternberg (1994)"
       ],
       "bbáattipj=t": [
@@ -6956,13 +6956,13 @@ window.sldDictionary = [
     "english": "Cafeteria",
     "signs": [
       "bćitoi-j-oi",
-      "fuóie=oi soat-j▓t"
+      "fuóie=oi soat-j/t"
     ],
     "signSources": {
       "bćitoi-j-oi": [
         "Sternberg (1994)"
       ],
-      "fuóie=oi soat-j▓t": [
+      "fuóie=oi soat-j/t": [
         "Sternberg (1994)"
       ]
     }
@@ -7339,10 +7339,10 @@ window.sldDictionary = [
     "english": "Candle",
     "signs": [
       "faléieitsuj-zfj",
-      "léit-oi ▓faléiaiesuj-zfj"
+      "léit-oi /faléiaiesuj-zfj"
     ],
     "signSources": {
-      "léit-oi ▓faléiaiesuj-zfj": [
+      "léit-oi /faléiaiesuj-zfj": [
         "Sternberg (1994)"
       ],
       "faléieitsuj-zfj": [
@@ -7806,14 +7806,14 @@ window.sldDictionary = [
   {
     "english": "Carry",
     "signs": [
-      "bcaai-ret▓raj",
-      "bcaaidj-raj▓ret"
+      "bcaai-ret/raj",
+      "bcaaidj-raj/ret"
     ],
     "signSources": {
-      "bcaai-ret▓raj": [
+      "bcaai-ret/raj": [
         "Sternberg (1994)"
       ],
-      "bcaaidj-raj▓ret": [
+      "bcaaidj-raj/ret": [
         "Sternberg (1994)"
       ]
     }
@@ -7844,10 +7844,10 @@ window.sldDictionary = [
     "english": "Castle",
     "signs": [
       "bcit=rak",
-      "ssétkluj-ie-▓ie"
+      "ssétkluj-ie-/ie"
     ],
     "signSources": {
-      "ssétkluj-ie-▓ie": [
+      "ssétkluj-ie-/ie": [
         "Sternberg (1994)"
       ],
       "bcit=rak": [
@@ -8687,10 +8687,10 @@ window.sldDictionary = [
   {
     "english": "Cheerleader",
     "signs": [
-      "saat-k-ret▓raj-raj▓ret"
+      "saat-k-ret/raj-raj/ret"
     ],
     "signSources": {
-      "saat-k-ret▓raj-raj▓ret": [
+      "saat-k-ret/raj-raj/ret": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -8698,7 +8698,7 @@ window.sldDictionary = [
   {
     "english": "Cheese",
     "signs": [
-      "batktipj=rk▓ri",
+      "batktipj=rk/ri",
       "bbáaktipj-zsj",
       "ffátktipj-zsj"
     ],
@@ -8706,7 +8706,7 @@ window.sldDictionary = [
       "ffátktipj-zsj": [
         "Main ASL Dictionary"
       ],
-      "batktipj=rk▓ri": [
+      "batktipj=rk/ri": [
         "Sternberg (1994)"
       ],
       "bbáaktipj-zsj": [
@@ -9430,7 +9430,7 @@ window.sldDictionary = [
       "sfatk~rj",
       "vcaia~rt",
       "vcia~rt",
-      "vcseaktksj=rk▓ri",
+      "vcseaktksj=rk/ri",
       "vcéseaktksj=rt",
       "vuébaaktksj-ie-aksj vuélekaktkIK=a'e seat-rja-rte"
     ],
@@ -9465,7 +9465,7 @@ window.sldDictionary = [
       "vcia~rt": [
         "Shroyer et al. (1984)"
       ],
-      "vcseaktksj=rk▓ri": [
+      "vcseaktksj=rk/ri": [
         "Shroyer et al. (1984)"
       ],
       "vcéseaktksj=rt": [
@@ -9480,11 +9480,11 @@ window.sldDictionary = [
     "english": "City",
     "signs": [
       "-TJ bait=fj",
-      "bait=fj-t▓j",
+      "bait=fj-t/j",
       "bćia-yé-slé-yfá"
     ],
     "signSources": {
-      "bait=fj-t▓j": [
+      "bait=fj-t/j": [
         "Sternberg (1994)"
       ],
       "-TJ bait=fj": [
@@ -10299,10 +10299,10 @@ window.sldDictionary = [
   {
     "english": "Common",
     "signs": [
-      "yaak-ri▓rk"
+      "yaak-ri/rk"
     ],
     "signSources": {
-      "yaak-ri▓rk": [
+      "yaak-ri/rk": [
         "Sternberg (1994)"
       ]
     }
@@ -10321,10 +10321,10 @@ window.sldDictionary = [
   {
     "english": "Community",
     "signs": [
-      "batefuj-ri▓rk"
+      "batefuj-ri/rk"
     ],
     "signSources": {
-      "batefuj-ri▓rk": [
+      "batefuj-ri/rk": [
         "Jones et al. (1981)"
       ]
     }
@@ -10468,7 +10468,7 @@ window.sldDictionary = [
     "signs": [
       "bćbaiatksj-t",
       "bćitwi-zsj",
-      "vleia-ra▓re"
+      "vleia-ra/re"
     ],
     "signSources": {
       "bćbaiatksj-t": [
@@ -10477,7 +10477,7 @@ window.sldDictionary = [
       "bćitwi-zsj": [
         "Sternberg (1994)"
       ],
-      "vleia-ra▓re": [
+      "vleia-ra/re": [
         "Sternberg (1994)"
       ]
     }
@@ -10695,10 +10695,10 @@ window.sldDictionary = [
   {
     "english": "Consensus",
     "signs": [
-      "luéie-wi leak-bj yaak-ri▓rk"
+      "luéie-wi leak-bj yaak-ri/rk"
     ],
     "signSources": {
-      "luéie-wi leak-bj yaak-ri▓rk": [
+      "luéie-wi leak-bj yaak-ri/rk": [
         "Sternberg (1994)"
       ]
     }
@@ -10983,10 +10983,10 @@ window.sldDictionary = [
   {
     "english": "Cooperate",
     "signs": [
-      "foitatfje-ri▓rk"
+      "foitatfje-ri/rk"
     ],
     "signSources": {
-      "foitatfje-ri▓rk": [
+      "foitatfje-ri/rk": [
         "Sternberg (1994)",
         "Stokoe et al. (1965)"
       ]
@@ -12753,13 +12753,13 @@ window.sldDictionary = [
     "english": "Depart",
     "signs": [
       "baak-e-saia",
-      "batkjk-j▓t-sa"
+      "batkjk-j/t-sa"
     ],
     "signSources": {
       "baak-e-saia": [
         "Sternberg (1994)"
       ],
-      "batkjk-j▓t-sa": [
+      "batkjk-j/t-sa": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -12793,10 +12793,10 @@ window.sldDictionary = [
   {
     "english": "Deposit",
     "signs": [
-      "buoak-raj▓ret"
+      "buoak-raj/ret"
     ],
     "signSources": {
-      "buoak-raj▓ret": [
+      "buoak-raj/ret": [
         "Sternberg (1994)"
       ]
     }
@@ -14536,7 +14536,7 @@ window.sldDictionary = [
       "bxéta-ia vuébatkakfuj-i",
       "fluábatkai~pj vébakjaipj-i",
       "huéiewi=ufj lúiaoi=o luóte-oi",
-      "sfábaatti~pj ▓vébakjaipj-i",
+      "sfábaatti~pj /vébakjaipj-i",
       "vuébatkaipj-i",
       "vuébatkakfuj-i",
       "vuébatkaksj-rk-i"
@@ -14581,7 +14581,7 @@ window.sldDictionary = [
       "huéiewi=ufj lúiaoi=o luóte-oi": [
         "Shroyer et al. (1984)"
       ],
-      "sfábaatti~pj ▓vébakjaipj-i": [
+      "sfábaatti~pj /vébakjaipj-i": [
         "Shroyer et al. (1984)"
       ],
       "vuébatkakfuj-i": [
@@ -14776,10 +14776,10 @@ window.sldDictionary = [
   {
     "english": "Effort",
     "signs": [
-      "bxeia-rej▓rat"
+      "bxeia-rej/rat"
     ],
     "signSources": {
-      "bxeia-rej▓rat": [
+      "bxeia-rej/rat": [
         "Sternberg (1994)"
       ]
     }
@@ -15417,10 +15417,10 @@ window.sldDictionary = [
   {
     "english": "Envelope",
     "signs": [
-      "lfaiafj-j buoat-z buoatfjoi-j▓t"
+      "lfaiafj-j buoat-z buoatfjoi-j/t"
     ],
     "signSources": {
-      "lfaiafj-j buoat-z buoatfjoi-j▓t": [
+      "lfaiafj-j buoat-z buoatfjoi-j/t": [
         "Sternberg (1994)"
       ]
     }
@@ -15772,13 +15772,13 @@ window.sldDictionary = [
     "english": "Every night",
     "signs": [
       "bbáketk=sj",
-      "buabaaktksj-j▓t"
+      "buabaaktksj-j/t"
     ],
     "signSources": {
       "bbáketk=sj": [
         "Stokoe et al. (1965)"
       ],
-      "buabaaktksj-j▓t": [
+      "buabaaktksj-j/t": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -16131,18 +16131,18 @@ window.sldDictionary = [
   {
     "english": "Face",
     "signs": [
-      "baiaieEA-a'i▓e'i",
-      "baiaieEA-rj▓rt",
+      "baiaieEA-a'i/e'i",
+      "baiaieEA-rj/rt",
       "luéieI-re"
     ],
     "signSources": {
       "luéieI-re": [
         "Main ASL Dictionary"
       ],
-      "baiaieEA-a'i▓e'i": [
+      "baiaieEA-a'i/e'i": [
         "Stokoe et al. (1965)"
       ],
-      "baiaieEA-rj▓rt": [
+      "baiaieEA-rj/rt": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -16456,10 +16456,10 @@ window.sldDictionary = [
   {
     "english": "False preaching",
     "signs": [
-      "foiaieI=a▓e"
+      "foiaieI=a/e"
     ],
     "signSources": {
-      "foiaieI=a▓e": [
+      "foiaieI=a/e": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -16868,10 +16868,10 @@ window.sldDictionary = [
   {
     "english": "Feedback",
     "signs": [
-      "foiaieEA-a▓e-be"
+      "foiaieEA-a/e-be"
     ],
     "signSources": {
-      "foiaieEA-a▓e-be": [
+      "foiaieEA-a/e-be": [
         "Sternberg (1994)"
       ]
     }
@@ -16927,10 +16927,10 @@ window.sldDictionary = [
   {
     "english": "Ferris wheel",
     "signs": [
-      "hcbciaitfja=re▓ra"
+      "hcbciaitfja=re/ra"
     ],
     "signSources": {
-      "hcbciaitfja=re▓ra": [
+      "hcbciaitfja=re/ra": [
         "Sternberg (1994)"
       ]
     }
@@ -17402,10 +17402,10 @@ window.sldDictionary = [
   {
     "english": "Flatbed press",
     "signs": [
-      "fcak-buo-j▓t"
+      "fcak-buo-j/t"
     ],
     "signSources": {
-      "fcak-buo-j▓t": [
+      "fcak-buo-j/t": [
         "Sternberg (1994)"
       ]
     }
@@ -17759,7 +17759,7 @@ window.sldDictionary = [
       "bcáai=j't",
       "bcáie=oi",
       "bcáit-a-at",
-      "báti-gt _▓báia-a",
+      "báti-gt _/báia-a",
       "báti=gt",
       "fait=fje",
       "fate-fje",
@@ -17792,7 +17792,7 @@ window.sldDictionary = [
       "báti=gt": [
         "Shroyer et al. (1984)"
       ],
-      "báti-gt _▓báia-a": [
+      "báti-gt _/báia-a": [
         "Shroyer et al. (1984)"
       ],
       "bbétkit=lj": [
@@ -19080,10 +19080,10 @@ window.sldDictionary = [
   {
     "english": "Ghost",
     "signs": [
-      "fsuaktipj-i▓k-o"
+      "fsuaktipj-i/k-o"
     ],
     "signSources": {
-      "fsuaktipj-i▓k-o": [
+      "fsuaktipj-i/k-o": [
         "Sternberg (1994)"
       ]
     }
@@ -19367,7 +19367,7 @@ window.sldDictionary = [
     "signs": [
       "báia-a-usj",
       "leia-rta-ak",
-      "leia-t▓j-usj",
+      "leia-t/j-usj",
       "lete~rj",
       "lete~rt",
       "lete~rt-a",
@@ -19387,7 +19387,7 @@ window.sldDictionary = [
       "báia-a-usj": [
         "Stokoe et al. (1965)"
       ],
-      "leia-t▓j-usj": [
+      "leia-t/j-usj": [
         "Stokoe et al. (1965)"
       ],
       "lete~rj": [
@@ -20133,7 +20133,7 @@ window.sldDictionary = [
   {
     "english": "Grey",
     "signs": [
-      "faakaiIK~rk▓ri",
+      "faakaiIK~rk/ri",
       "ffáietepj=re",
       "fáieui-zfj",
       "féfaaktipj-e-aipj-e",
@@ -20145,7 +20145,7 @@ window.sldDictionary = [
       "yfáiani-k"
     ],
     "signSources": {
-      "faakaiIK~rk▓ri": [
+      "faakaiIK~rk/ri": [
         "Shroyer et al. (1984)"
       ],
       "fáieui-zfj": [
@@ -20884,11 +20884,11 @@ window.sldDictionary = [
   {
     "english": "Hate",
     "signs": [
-      "baiast-a't▓a'j",
+      "baiast-a't/a'j",
       "floit-a-fa"
     ],
     "signSources": {
-      "baiast-a't▓a'j": [
+      "baiast-a't/a'j": [
         "Stokoe et al. (1965)"
       ],
       "floit-a-fa": [
@@ -21675,10 +21675,10 @@ window.sldDictionary = [
     "english": "Hill",
     "signs": [
       "bbétaakluj-rta-tefj",
-      "sséaiak-sj faak=i'k-j▓t"
+      "sséaiak-sj faak=i'k-j/t"
     ],
     "signSources": {
-      "sséaiak-sj faak=i'k-j▓t": [
+      "sséaiak-sj faak=i'k-j/t": [
         "Sternberg (1994)"
       ],
       "bbétaakluj-rta-tefj": [
@@ -21798,10 +21798,10 @@ window.sldDictionary = [
   {
     "english": "Hitch",
     "signs": [
-      "lcetetkfje-j▓t"
+      "lcetetkfje-j/t"
     ],
     "signSources": {
-      "lcetetkfje-j▓t": [
+      "lcetetkfje-j/t": [
         "Sternberg (1994)"
       ]
     }
@@ -23449,10 +23449,10 @@ window.sldDictionary = [
   {
     "english": "Instead of",
     "signs": [
-      "foatsuj-rja▓rje"
+      "foatsuj-rja/rje"
     ],
     "signSources": {
-      "foatsuj-rja▓rje": [
+      "foatsuj-rja/rje": [
         "Sternberg (1994)"
       ]
     }
@@ -24130,10 +24130,10 @@ window.sldDictionary = [
   {
     "english": "Jerusalem",
     "signs": [
-      "Héat-ra Bbátkaipj-a Bait=fj-t▓j"
+      "Héat-ra Bbátkaipj-a Bait=fj-t/j"
     ],
     "signSources": {
-      "Héat-ra Bbátkaipj-a Bait=fj-t▓j": [
+      "Héat-ra Bbátkaipj-a Bait=fj-t/j": [
         "Sternberg (1994)"
       ]
     }
@@ -24245,7 +24245,7 @@ window.sldDictionary = [
   {
     "english": "Journey",
     "signs": [
-      "lueakaiIK-ri'rk-t▓k",
+      "lueakaiIK-ri'rk-t/k",
       "luéak-rit",
       "vcéak=rat",
       "vcéak=rei"
@@ -24254,7 +24254,7 @@ window.sldDictionary = [
       "vcéak=rei": [
         "Main ASL Dictionary"
       ],
-      "lueakaiIK-ri'rk-t▓k": [
+      "lueakaiIK-ri'rk-t/k": [
         "Sternberg (1994)"
       ],
       "luéak-rit": [
@@ -27784,10 +27784,10 @@ window.sldDictionary = [
   {
     "english": "Merry-go-round",
     "signs": [
-      "hcéheakfje-ri▓rk"
+      "hcéheakfje-ri/rk"
     ],
     "signSources": {
-      "hcéheakfje-ri▓rk": [
+      "hcéheakfje-ri/rk": [
         "Sternberg (1994)"
       ]
     }
@@ -27817,10 +27817,10 @@ window.sldDictionary = [
   {
     "english": "Message",
     "signs": [
-      "lúleat-fj bcaai-ret▓raj"
+      "lúleat-fj bcaai-ret/raj"
     ],
     "signSources": {
-      "lúleat-fj bcaai-ret▓raj": [
+      "lúleat-fj bcaai-ret/raj": [
         "Sternberg (1994)"
       ]
     }
@@ -28777,10 +28777,10 @@ window.sldDictionary = [
   {
     "english": "Mountain",
     "signs": [
-      "sáai=sj baak-k't▓k'j"
+      "sáai=sj baak-k't/k'j"
     ],
     "signSources": {
-      "sáai=sj baak-k't▓k'j": [
+      "sáai=sj baak-k't/k'j": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -29493,10 +29493,10 @@ window.sldDictionary = [
   {
     "english": "Network",
     "signs": [
-      "fluaitfj-ri▓rk"
+      "fluaitfj-ri/rk"
     ],
     "signSources": {
-      "fluaitfj-ri▓rk": [
+      "fluaitfj-ri/rk": [
         "Sternberg (1994)"
       ]
     }
@@ -31362,10 +31362,10 @@ window.sldDictionary = [
   {
     "english": "Orderly",
     "signs": [
-      "baat=ret▓raj"
+      "baat=ret/raj"
     ],
     "signSources": {
-      "baat=ret▓raj": [
+      "baat=ret/raj": [
         "Sternberg (1994)"
       ]
     }
@@ -31993,10 +31993,10 @@ window.sldDictionary = [
   {
     "english": "Parasite",
     "signs": [
-      "huhueitfj=j▓t"
+      "huhueitfj=j/t"
     ],
     "signSources": {
-      "huhueitfj=j▓t": [
+      "huhueitfj=j/t": [
         "Sternberg (1994)"
       ]
     }
@@ -32435,7 +32435,7 @@ window.sldDictionary = [
       "fulétkiepj-i-fafj",
       "fuófuatpj-ffuófj",
       "fuófuatpj-ffuófj-letefj",
-      "fúakaifj-i▓k-o",
+      "fúakaifj-i/k-o",
       "fúbaakaipj-i-o",
       "saatpj-aidj",
       "vléak-z fcit-k-rak"
@@ -32447,7 +32447,7 @@ window.sldDictionary = [
       "flćbuoiaitbj=o-j": [
         "Shroyer et al. (1984)"
       ],
-      "fúakaifj-i▓k-o": [
+      "fúakaifj-i/k-o": [
         "Shroyer et al. (1984)"
       ],
       "ffuóatfj=fuófupj": [
@@ -33529,10 +33529,10 @@ window.sldDictionary = [
   {
     "english": "Plan",
     "signs": [
-      "vleak-k-raj▓ret"
+      "vleak-k-raj/ret"
     ],
     "signSources": {
-      "vleak-k-raj▓ret": [
+      "vleak-k-raj/ret": [
         "Sternberg (1994)"
       ]
     }
@@ -33815,10 +33815,10 @@ window.sldDictionary = [
   {
     "english": "Plus",
     "signs": [
-      "leittk-t▓i-fje"
+      "leittk-t/i-fje"
     ],
     "signSources": {
-      "leittk-t▓i-fje": [
+      "leittk-t/i-fje": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -34999,10 +34999,10 @@ window.sldDictionary = [
   {
     "english": "Proportional",
     "signs": [
-      "vleak-k-raj▓ret"
+      "vleak-k-raj/ret"
     ],
     "signSources": {
-      "vleak-k-raj▓ret": [
+      "vleak-k-raj/ret": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -35938,7 +35938,7 @@ window.sldDictionary = [
   {
     "english": "Read",
     "signs": [
-      "baiedjI=t▓j",
+      "baiedjI=t/j",
       "vébaakaiIK=j't-e",
       "vébaakieEA=k",
       "vébaakieEA=usj",
@@ -35952,7 +35952,7 @@ window.sldDictionary = [
       "vébatkatpj=a": [
         "Sternberg (1994)"
       ],
-      "baiedjI=t▓j": [
+      "baiedjI=t/j": [
         "Sternberg (1994)"
       ],
       "vébaakaiIK=j't-e": [
@@ -35997,7 +35997,7 @@ window.sldDictionary = [
     "signs": [
       "hreai-ak",
       "hreia-j",
-      "hreia-j▓t",
+      "hreia-j/t",
       "hreia=j't",
       "hreiasj-j"
     ],
@@ -36005,7 +36005,7 @@ window.sldDictionary = [
       "hreai-ak": [
         "Sternberg (1994)"
       ],
-      "hreia-j▓t": [
+      "hreia-j/t": [
         "Sternberg (1994)",
         "Stokoe et al. (1965)"
       ],
@@ -37713,13 +37713,13 @@ window.sldDictionary = [
     "signs": [
       "-TJ leak-bj",
       "leak=bj",
-      "yaak-j▓t",
+      "yaak-j/t",
       "yaak-ri",
-      "yaak-t▓j",
+      "yaak-t/j",
       "yáak-j"
     ],
     "signSources": {
-      "yaak-j▓t": [
+      "yaak-j/t": [
         "Sternberg (1994)",
         "Stokoe et al. (1965)"
       ],
@@ -37735,7 +37735,7 @@ window.sldDictionary = [
       "yaak-ri": [
         "Stokoe et al. (1965)"
       ],
-      "yaak-t▓j": [
+      "yaak-t/j": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -38833,10 +38833,10 @@ window.sldDictionary = [
   {
     "english": "Set aside",
     "signs": [
-      "baajat-j▓t"
+      "baajat-j/t"
     ],
     "signSources": {
-      "baajat-j▓t": [
+      "baajat-j/t": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -39904,7 +39904,7 @@ window.sldDictionary = [
     "signs": [
       "bcáieni-t-ni",
       "faak~a'k",
-      "fcatkti~rk▓ri",
+      "fcatkti~rk/ri",
       "fáitni-j-ni",
       "fátkui-zfj",
       "hétk-ci-k hhétk-fj-i",
@@ -39931,7 +39931,7 @@ window.sldDictionary = [
       "fátkui-zfj": [
         "Shroyer et al. (1984)"
       ],
-      "fcatkti~rk▓ri": [
+      "fcatkti~rk/ri": [
         "Shroyer et al. (1984)"
       ],
       "hétk-ci-k hhétk-fj-i": [
@@ -40038,7 +40038,7 @@ window.sldDictionary = [
   {
     "english": "Smile",
     "signs": [
-      "bcakaiuiIK-j▓t-ai",
+      "bcakaiuiIK-j/t-ai",
       "bcateui-j",
       "bákjoi-i",
       "bátkoi-i-kj",
@@ -40051,7 +40051,7 @@ window.sldDictionary = [
       "bátkoi-i-kj": [
         "Stokoe et al. (1965)"
       ],
-      "bcakaiuiIK-j▓t-ai": [
+      "bcakaiuiIK-j/t-ai": [
         "Stokoe et al. (1965)"
       ],
       "bcateui-j": [
@@ -41321,10 +41321,10 @@ window.sldDictionary = [
   {
     "english": "Steam",
     "signs": [
-      "fáie-zfj _▓séakfj-zsj-i"
+      "fáie-zfj _/séakfj-zsj-i"
     ],
     "signSources": {
-      "fáie-zfj _▓séakfj-zsj-i": [
+      "fáie-zfj _/séakfj-zsj-i": [
         "Sternberg (1994)"
       ]
     }
@@ -41719,10 +41719,10 @@ window.sldDictionary = [
   {
     "english": "Storm",
     "signs": [
-      "bcakaiIK-ri▓rk bćak-i-sá"
+      "bcakaiIK-ri/rk bćak-i-sá"
     ],
     "signSources": {
-      "bcakaiIK-ri▓rk bćak-i-sá": [
+      "bcakaiIK-ri/rk bćak-i-sá": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -42026,7 +42026,7 @@ window.sldDictionary = [
       "fábakeaiIK-zfj",
       "fábakeaiIK=k",
       "fábatkat-zfj",
-      "léie-ci ▓sáak-ri"
+      "léie-ci /sáak-ri"
     ],
     "signSources": {
       "fábatkat-zfj": [
@@ -42038,7 +42038,7 @@ window.sldDictionary = [
       "fábakeaiIK-zfj": [
         "Stokoe et al. (1965)"
       ],
-      "léie-ci ▓sáak-ri": [
+      "léie-ci /sáak-ri": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -42205,10 +42205,10 @@ window.sldDictionary = [
   {
     "english": "Sugar City",
     "signs": [
-      "báieui=k bait=fj-rk▓ri"
+      "báieui=k bait=fj-rk/ri"
     ],
     "signSources": {
-      "báieui=k bait=fj-rk▓ri": [
+      "báieui=k bait=fj-rk/ri": [
         "Jones et al. (1981)"
       ]
     }
@@ -42422,13 +42422,13 @@ window.sldDictionary = [
     "english": "Superior",
     "signs": [
       "sébaakIK-ri",
-      "vleatbj=rk▓ri baatct-k"
+      "vleatbj=rk/ri baatct-k"
     ],
     "signSources": {
       "sébaakIK-ri": [
         "Sternberg (1994)"
       ],
-      "vleatbj=rk▓ri baatct-k": [
+      "vleatbj=rk/ri baatct-k": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -42436,14 +42436,14 @@ window.sldDictionary = [
   {
     "english": "Supervise",
     "signs": [
-      "vleatbj-ri▓rk",
-      "vleatbj=rk▓ri"
+      "vleatbj-ri/rk",
+      "vleatbj=rk/ri"
     ],
     "signSources": {
-      "vleatbj-ri▓rk": [
+      "vleatbj-ri/rk": [
         "Sternberg (1994)"
       ],
-      "vleatbj=rk▓ri": [
+      "vleatbj=rk/ri": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -43909,7 +43909,7 @@ window.sldDictionary = [
       "fótkci-k",
       "lcáteI-k",
       "lúteci-k",
-      "yueaiakfj=k▓i",
+      "yueaiakfj=k/i",
       "yyuéaiakfj-k",
       "yéleittkfj-k"
     ],
@@ -43945,7 +43945,7 @@ window.sldDictionary = [
       "yéleittkfj-k": [
         "Shroyer et al. (1984)"
       ],
-      "yueaiakfj=k▓i": [
+      "yueaiakfj=k/i": [
         "Shroyer et al. (1984)"
       ],
       "yyuéaiakfj-k": [
@@ -44486,10 +44486,10 @@ window.sldDictionary = [
     "english": "Together",
     "signs": [
       "saatpj-a",
-      "saatpj-ri▓rk"
+      "saatpj-ri/rk"
     ],
     "signSources": {
-      "saatpj-ri▓rk": [
+      "saatpj-ri/rk": [
         "Sternberg (1994)",
         "Stokoe et al. (1965)"
       ],
@@ -44795,10 +44795,10 @@ window.sldDictionary = [
   {
     "english": "Tow",
     "signs": [
-      "lxetetkfj-j▓t"
+      "lxetetkfj-j/t"
     ],
     "signSources": {
-      "lxetetkfj-j▓t": [
+      "lxetetkfj-j/t": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -44972,10 +44972,10 @@ window.sldDictionary = [
   {
     "english": "Travel",
     "signs": [
-      "lekeieIK=rk▓ri-j▓t"
+      "lekeieIK=rk/ri-j/t"
     ],
     "signSources": {
-      "lekeieIK=rk▓ri-j▓t": [
+      "lekeieIK=rk/ri-j/t": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -45315,7 +45315,7 @@ window.sldDictionary = [
     "signs": [
       "bćia-ai",
       "bćia-zsj",
-      "lekeieIK-ri▓rk",
+      "lekeieIK-ri/rk",
       "luéak-ri"
     ],
     "signSources": {
@@ -45328,7 +45328,7 @@ window.sldDictionary = [
       "bćia-zsj": [
         "Stokoe et al. (1965)"
       ],
-      "lekeieIK-ri▓rk": [
+      "lekeieIK-ri/rk": [
         "Stokoe et al. (1965)"
       ]
     }
@@ -45793,11 +45793,11 @@ window.sldDictionary = [
   {
     "english": "Union",
     "signs": [
-      "foitatfje=ri▓rk",
+      "foitatfje=ri/rk",
       "heiabj-ria-iedj"
     ],
     "signSources": {
-      "foitatfje=ri▓rk": [
+      "foitatfje=ri/rk": [
         "Main ASL Dictionary"
       ],
       "heiabj-ria-iedj": [
@@ -46432,10 +46432,10 @@ window.sldDictionary = [
   {
     "english": "View",
     "signs": [
-      "véieqi-a-ak vaak~j▓t"
+      "véieqi-a-ak vaak~j/t"
     ],
     "signSources": {
-      "véieqi-a-ak vaak~j▓t": [
+      "véieqi-a-ak vaak~j/t": [
         "Sternberg (1994)"
       ]
     }
@@ -46683,10 +46683,10 @@ window.sldDictionary = [
   {
     "english": "Wagon",
     "signs": [
-      "seaikebj-t▓j"
+      "seaikebj-t/j"
     ],
     "signSources": {
-      "seaikebj-t▓j": [
+      "seaikebj-t/j": [
         "Sternberg (1994)"
       ]
     }
@@ -48869,3 +48869,4 @@ window.sldDictionary = [
     }
   }
 ];
+
