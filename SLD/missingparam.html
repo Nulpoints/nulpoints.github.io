@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLD Missing Parameter Game</title>
+  <meta name="description"
+    content="Test and improve your Sign Language Description (SLD) transcription skills. Identify missing handshapes, orientations, locations, and actions in a premium interactive game.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #090d16 0%, #111026 100%);
+      --glass-bg: rgba(17, 24, 39, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-hover-border: rgba(255, 255, 255, 0.15);
+
+      --accent-primary: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      --accent-glow: rgba(124, 58, 237, 0.3);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(15, 23, 42, 0.6);
+
+      --color-correct: #10b981;
+      --color-incorrect: #ef4444;
+
+      --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Background decorative blobs */
+    .bg-blobs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+    }
+
+    .blob-1 {
+      top: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: #7c3aed;
+    }
+
+    .blob-2 {
+      bottom: -10%;
+      left: -10%;
+      width: 45vw;
+      height: 45vw;
+      background: #0ea5e9;
+    }
+
+    /* Main Container */
+    .app-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.75rem;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.4));
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0.5rem auto 1.5rem auto;
+    }
+
+    .header-actions {
+      display: inline-flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    /* Buttons */
+    .btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-spring);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 15px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      border: none;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      color: #fff !important;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--glass-border);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+      border: none;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+      color: #fff !important;
+    }
+
+    .btn-success:hover {
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    }
+
+    /* Setup Section */
+    .setup-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .setup-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 1rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .form-group label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+    }
+
+    /* Option Group selectors */
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .select-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.75rem;
+      cursor: pointer;
+      text-align: center;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+      user-select: none;
+    }
+
+    .select-card:hover {
+      border-color: var(--accent-primary);
+      background: var(--glass-hover-border);
+      color: var(--text-main);
+    }
+
+    .select-card.active {
+      border-color: var(--accent-primary);
+      background: var(--accent-gradient);
+      color: var(--bg-solid);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    /* Dropdown Multiselect */
+    .dropdown-multiselect {
+      position: relative;
+      width: 100%;
+    }
+
+    .dropdown-multiselect.active {
+      z-index: 100;
+    }
+
+    .dropdown-trigger {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.8rem 1.25rem;
+      font-family: inherit;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 3.4rem;
+      transition: var(--transition-smooth);
+      text-align: left;
+    }
+
+    .dropdown-trigger:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .dropdown-arrow {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: transform 0.3s;
+    }
+
+    .dropdown-multiselect.active .dropdown-arrow {
+      transform: rotate(180deg);
+      color: var(--accent-primary);
+    }
+
+    .dropdown-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 100%;
+      background: var(--bg-solid);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.75rem;
+      z-index: 50;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: var(--transition-smooth);
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .dropdown-multiselect.active .dropdown-panel {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      user-select: none;
+    }
+
+    .checkbox-item:hover {
+      background: var(--glass-hover-border);
+      color: var(--text-main);
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .checkbox-custom {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--text-muted);
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .checkbox-item input[type="checkbox"]:checked + .checkbox-custom {
+      border-color: var(--accent-primary);
+      background: var(--accent-primary);
+    }
+
+    .checkbox-item input[type="checkbox"]:checked + .checkbox-custom::after {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 0.7rem;
+      color: #fff;
+      position: absolute;
+    }
+
+    .checkbox-item input[type="checkbox"]:checked ~ .checkbox-label {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .setup-actions {
+      display: flex;
+      justify-content: center;
+    }
+
+    .setup-actions .btn {
+      padding: 1rem 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Active Session HUD Dashboard */
+    .session-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .hud-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hud-meta-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .hud-meta-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .hud-stats-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .hud-stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hud-stat-icon {
+      font-size: 1.25rem;
+    }
+
+    .hud-stat-icon.correct { color: var(--color-correct); }
+    .hud-stat-icon.incorrect { color: var(--color-incorrect); }
+    .hud-stat-icon.streak { color: #f59e0b; }
+
+    .hud-stat-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hud-stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .hud-stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    /* Gameplay Panel */
+    .gameplay-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .prompt-section {
+      text-align: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .gloss-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-primary);
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .gloss-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Transcription display with parameter slots */
+    .transcription-display {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      min-height: 5.5rem;
+    }
+
+    .segment-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-main);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+    }
+
+    /* Colors representing actual parameter types */
+    .segment-badge.type-handshape { border-left: 4px solid #ff5555; }
+    .segment-badge.type-orientation { border-left: 4px solid #ff2d55; }
+    .segment-badge.type-location { border-left: 4px solid #2979ff; }
+    .segment-badge.type-action { border-left: 4px solid #e040fb; }
+
+    /* Blanks */
+    .segment-blank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+      min-width: 4rem;
+      height: 2.6rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      border: 1.5px dashed var(--accent-primary);
+      background: var(--glass-bg);
+      color: var(--accent-primary);
+    }
+
+    .segment-blank:hover {
+      background: var(--glass-hover-border);
+      border-color: var(--text-main);
+    }
+
+    .segment-blank.active-blank {
+      background: var(--glass-hover-border);
+      border-style: solid;
+      border-color: var(--text-main);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .segment-blank.filled {
+      border-style: solid;
+      background: var(--accent-gradient);
+      color: var(--bg-solid);
+      border-color: var(--accent-primary);
+    }
+
+    /* Color Coded Legend Boxes */
+    .bg-ds { background-color: #ff5555; }
+    .bg-do { background-color: #ff2d55; }
+    .bg-loc { background-color: #2979ff; }
+    .bg-act { background-color: #e040fb; }
+
+    /* Typing inline input */
+    .typing-slot-input {
+      background: var(--bg-solid) !important;
+      border: 1.5px solid var(--accent-primary) !important;
+      color: var(--text-main) !important;
+      font-family: monospace !important;
+      font-size: 1.1rem !important;
+      font-weight: 600 !important;
+      border-radius: 8px !important;
+      padding: 0 0.5rem !important;
+      width: 7rem;
+      height: 2.4rem;
+      text-align: center;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .typing-slot-input:focus {
+      border-color: var(--text-main) !important;
+      box-shadow: 0 0 10px var(--accent-glow) !important;
+    }
+
+    /* Input Area */
+    .inputs-area-container {
+      margin-top: 0.5rem;
+    }
+
+    .param-question-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .question-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mc-choices-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 480px) {
+      .mc-choices-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .choice-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      font-family: monospace;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-spring);
+      text-align: center;
+      outline: none;
+    }
+
+    .choice-btn:hover {
+      border-color: var(--accent-primary);
+      background: var(--glass-hover-border);
+      transform: translateY(-1px);
+    }
+
+    .choice-btn.selected {
+      background: var(--accent-gradient);
+      border-color: var(--accent-primary);
+      color: var(--bg-solid);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    /* Virtual Character Helper Widget */
+    .char-helper-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.75rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .char-helper-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-right: 0.4rem;
+    }
+
+    .char-chip {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: monospace;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      user-select: none;
+    }
+
+    .char-chip:hover {
+      background: var(--glass-hover-border);
+      border-color: var(--accent-primary);
+      transform: scale(1.1);
+    }
+
+    .char-chip:active {
+      transform: scale(0.95);
+    }
+
+    /* Submit Section */
+    .gameplay-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Feedback Banner */
+    .feedback-banner {
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1rem;
+      display: none;
+      animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .feedback-banner.correct {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1.5px solid rgba(16, 185, 129, 0.25);
+      color: #34d399;
+    }
+
+    .feedback-banner.incorrect {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1.5px solid rgba(239, 68, 68, 0.25);
+      color: #f87171;
+    }
+
+    .feedback-header {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .feedback-detail {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    .feedback-detail strong {
+      font-family: monospace;
+      font-size: 1.1rem;
+      color: #c084fc;
+    }
+
+    .feedback-detail.eng strong {
+      font-family: inherit;
+      color: #fff;
+    }
+
+    /* Progress bar */
+    .progress-bar-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-gradient);
+      box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+      border-radius: 9999px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Results Screen */
+    .results-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      text-align: center;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .results-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .results-subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .score-circle-wrapper {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 2.5rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .score-circle-svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+
+    .score-circle-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.05);
+      stroke-width: 12;
+    }
+
+    .score-circle-fill {
+      fill: none;
+      stroke: #7c3aed;
+      stroke-width: 12;
+      stroke-dasharray: 439.6; /* 2 * PI * 70 */
+      stroke-dashoffset: 439.6;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .score-center-text {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .score-percent {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .score-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .stats-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      background: rgba(10, 15, 30, 0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 540px) {
+      .stats-summary-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .summary-stat-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .summary-stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .summary-stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .results-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    /* Custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(10, 15, 30, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(139, 92, 246, 0.4);
+    }
+  </style>
+  <link rel="stylesheet" href="../theme.css">
+  <script src="../theme.js" defer></script>
+</head>
+
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="app-container">
+    <header>
+      <div class="logo-container">
+        <i class="fa-solid fa-circle-question logo-icon"></i>
+        <h1>Missing Parameter</h1>
+      </div>
+      <p class="tagline">Phonemic breakdown training game. Fill in the missing Handshape, Orientation, Location, or Action parameters.</p>
+      
+      <div class="header-actions">
+        <a href="dictionary.html" class="btn">
+          <i class="fa-solid fa-book-open"></i> Back to Dictionary
+        </a>
+        <a href="flashcards.html" class="btn">
+          <i class="fa-solid fa-graduation-cap"></i> Practice Flashcards
+        </a>
+        <a href="https://sldictionary.org/" target="_blank" rel="noopener" class="btn btn-outline">
+          <i class="fa-solid fa-globe"></i> Official SLD Website
+        </a>
+      </div>
+    </header>
+
+    <!-- SECTION 1: SETUP SCREEN -->
+    <div class="setup-card" id="setup-screen-el">
+      <h3 class="setup-title">
+        <i class="fa-solid fa-sliders"></i> Game Settings
+      </h3>
+
+      <div class="form-grid">
+        <!-- Difficulty Selection -->
+        <div class="form-group">
+          <label>Difficulty level</label>
+          <div class="option-grid" id="difficulty-grid">
+            <div class="select-card active" data-value="easy">
+              <div style="font-size: 1.1rem;">Easy</div>
+              <div style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">1 missing param</div>
+            </div>
+            <div class="select-card" data-value="medium">
+              <div style="font-size: 1.1rem;">Medium</div>
+              <div style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">2 missing params</div>
+            </div>
+            <div class="select-card" data-value="hard">
+              <div style="font-size: 1.1rem;">Hard</div>
+              <div style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">3 missing params</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Mode Selection -->
+        <div class="form-group">
+          <label>Input mode</label>
+          <div class="option-grid" id="inputmode-grid">
+            <div class="select-card active" data-value="mc">
+              <div style="font-size: 1.1rem;"><i class="fa-solid fa-list-check"></i> Multiple Choice</div>
+              <div style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">Interactive selection</div>
+            </div>
+            <div class="select-card" data-value="typing">
+              <div style="font-size: 1.1rem;"><i class="fa-solid fa-keyboard"></i> Typing Test</div>
+              <div style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">Type SLD symbols</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Round Length Selection -->
+        <div class="form-group">
+          <label>Session length</label>
+          <div class="option-grid" id="length-grid">
+            <div class="select-card active" data-value="5">5 Rounds</div>
+            <div class="select-card" data-value="10">10 Rounds</div>
+            <div class="select-card" data-value="15">15 Rounds</div>
+            <div class="select-card" data-value="endless">Endless</div>
+          </div>
+        </div>
+
+        <!-- Sources Checklist -->
+        <div class="form-group">
+          <label>Source Dictionaries</label>
+          <div class="dropdown-multiselect" id="sources-dropdown-container">
+            <button class="dropdown-trigger" id="sources-trigger-btn" type="button">
+              <span id="selected-sources-text">Main ASL Dictionary</span>
+              <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </button>
+            <div class="dropdown-panel" id="sources-checkbox-panel">
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Main ASL Dictionary" checked>
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Main ASL Dictionary</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Jones et al. (1981)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Jones et al. (1981)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Shroyer et al. (1984)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Shroyer et al. (1984)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Sternberg (1994)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Sternberg (1994)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" class="source-checkbox" value="Stokoe et al. (1965)">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">Stokoe et al. (1965)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="setup-actions">
+        <button class="btn btn-primary" id="start-game-btn">
+          <i class="fa-solid fa-play"></i> Start Game
+        </button>
+      </div>
+    </div>
+
+    <!-- SECTION 2: GAMEPLAY CARD -->
+    <div id="gameplay-screen-el" style="display: none; width: 100%;">
+      <!-- HUD Dashboard -->
+      <div class="session-hud">
+        <div class="hud-meta">
+          <div class="hud-meta-label" id="round-label-el">Round</div>
+          <div class="hud-meta-val" id="round-number-el">1 / 5</div>
+        </div>
+
+        <div class="hud-stats-group">
+          <div class="hud-stat">
+            <i class="fa-solid fa-fire hud-stat-icon streak"></i>
+            <div class="hud-stat-info">
+              <div class="hud-stat-val" id="hud-streak-el">0</div>
+              <div class="hud-stat-label">Streak</div>
+            </div>
+          </div>
+          <div class="hud-stat">
+            <i class="fa-solid fa-trophy hud-stat-icon" style="color: #c084fc;"></i>
+            <div class="hud-stat-info">
+              <div class="hud-stat-val" id="hud-score-el">0 XP</div>
+              <div class="hud-stat-label">Score</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Round Progress Bar -->
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progress-fill-el"></div>
+      </div>
+
+      <!-- Question Panel -->
+      <div class="gameplay-card">
+        <div class="prompt-section">
+          <div class="gloss-label">English Translation Gloss</div>
+          <div class="gloss-text" id="sign-english-gloss-el">Accept</div>
+        </div>
+
+        <!-- Transcription blank builder -->
+        <div>
+          <div class="gloss-label" style="text-align: center; margin-bottom: 0.5rem;">SLD Notation Breakdown</div>
+          <div class="transcription-display" id="transcription-slots-container">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Character Helper for Typing test -->
+        <div id="typing-char-helper-panel" style="display: none;">
+          <div class="char-helper-bar">
+            <div class="char-helper-label">Helper Chips:</div>
+            <button class="char-chip" data-char="á">á</button>
+            <button class="char-chip" data-char="é">é</button>
+            <button class="char-chip" data-char="ć">ć</button>
+            <button class="char-chip" data-char="ú">ú</button>
+            <button class="char-chip" data-char="ó">ó</button>
+            <button class="char-chip" data-char="=">=</button>
+            <button class="char-chip" data-char="~">~</button>
+            <button class="char-chip" data-char="-">-</button>
+          </div>
+        </div>
+
+        <!-- Dynamic User Inputs Area -->
+        <div class="inputs-area-container" id="inputs-area-el">
+          <!-- Dyn multiple choice selector cards or typing instructions -->
+        </div>
+
+        <!-- Correct/Incorrect feedback alert -->
+        <div class="feedback-banner" id="round-feedback-banner">
+          <div class="feedback-header" id="round-feedback-header">
+            <i class="fa-solid fa-circle-check"></i> Correct!
+          </div>
+          <div class="feedback-detail" id="round-feedback-detail">
+            Detail goes here.
+          </div>
+        </div>
+
+        <!-- Actions Panel -->
+        <div class="gameplay-actions">
+          <button class="btn btn-outline" id="game-quit-btn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Quit Game
+          </button>
+          <button class="btn btn-primary" id="game-submit-btn">
+            <i class="fa-solid fa-check"></i> Submit Selections
+          </button>
+          <button class="btn btn-success" id="game-next-btn" style="display: none;">
+            Next Round <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: RESULTS SCREEN -->
+    <div class="results-card" id="results-screen-el" style="display: none;">
+      <h2 class="results-title">Training Complete!</h2>
+      <p class="results-subtitle" id="results-subtitle-el">Fantastic progress on learning SLD structure.</p>
+
+      <!-- Percentage circular meter -->
+      <div class="score-circle-wrapper">
+        <svg class="score-circle-svg">
+          <circle class="score-circle-bg" cx="80" cy="80" r="70"></circle>
+          <circle class="score-circle-fill" id="results-circle-fill-el" cx="80" cy="80" r="70"></circle>
+        </svg>
+        <div class="score-center-text">
+          <div class="score-percent" id="results-percentage-el">0%</div>
+          <div class="score-label">Accuracy</div>
+        </div>
+      </div>
+
+      <!-- Stats Summary -->
+      <div class="stats-summary-grid">
+        <div class="summary-stat-box">
+          <div class="summary-stat-val" id="results-xp-el">0</div>
+          <div class="summary-stat-label">XP Gained</div>
+        </div>
+        <div class="summary-stat-box">
+          <div class="summary-stat-val" id="results-correct-rounds-el">0 / 0</div>
+          <div class="summary-stat-label">Rounds Passed</div>
+        </div>
+        <div class="summary-stat-box">
+          <div class="summary-stat-val" id="results-streak-el">0</div>
+          <div class="summary-stat-label">Best Streak</div>
+        </div>
+      </div>
+
+      <div class="results-actions">
+        <button class="btn btn-outline" id="results-home-btn">
+          <i class="fa-solid fa-home"></i> Setup Screen
+        </button>
+        <button class="btn btn-primary" id="results-replay-btn">
+          <i class="fa-solid fa-arrow-rotate-left"></i> Replay Session
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Imports -->
+  <script src="signature_calculator.js"></script>
+  <script src="sld_parser.js"></script>
+  <script src="sld-dictionary-data.js"></script>
+
+  <script>
+    // central core game state
+    const game = {
+      // Configuration
+      difficulty: 'easy',       // easy (1), medium (2), hard (3)
+      inputMode: 'mc',          // mc, typing
+      totalRounds: 5,           // 5, 10, 15, endless
+      allowedSources: [],       // list of checked sources
+      
+      // Dynamic round state
+      dictionary: [],           // filtered dataset
+      questionList: [],         // list of selected words for session
+      roundIndex: 0,            // current round index (0-based)
+      score: 0,                 // session score (XP)
+      streak: 0,                // current correct streak
+      maxStreak: 0,             // session max streak
+      correctRounds: 0,         // correct rounds count
+      
+      // Active question state
+      currentWord: null,        // word object from dict
+      currentSign: '',          // sign transcription string
+      parameters: [],           // extracted parameters
+      hiddenIndices: [],        // list of parameter indices that are hidden
+      userAnswers: {},          // maps hidden index -> user chosen string
+      
+      // UI State
+      activeInputFocus: null    // active typing input ID
+    };
+
+    // DOM selectors (lazily evaluated getters to ensure no early null reference exceptions)
+    const DOM = {
+      get setupScreen() { return document.getElementById('setup-screen-el'); },
+      get gameplayScreen() { return document.getElementById('gameplay-screen-el'); },
+      get resultsScreen() { return document.getElementById('results-screen-el'); },
+      
+      get difficultyGrid() { return document.getElementById('difficulty-grid'); },
+      get inputModeGrid() { return document.getElementById('inputmode-grid'); },
+      get lengthGrid() { return document.getElementById('length-grid'); },
+      get sourcesPanel() { return document.getElementById('sources-checkbox-panel'); },
+      get sourcesDropdownContainer() { return document.getElementById('sources-dropdown-container'); },
+      get sourcesTriggerBtn() { return document.getElementById('sources-trigger-btn'); },
+      get selectedSourcesText() { return document.getElementById('selected-sources-text'); },
+      
+      get startBtn() { return document.getElementById('start-game-btn'); },
+      
+      get roundLabel() { return document.getElementById('round-label-el'); },
+      get roundNumber() { return document.getElementById('round-number-el'); },
+      get hudStreak() { return document.getElementById('hud-streak-el'); },
+      get hudScore() { return document.getElementById('hud-score-el'); },
+      get progressFill() { return document.getElementById('progress-fill-el'); },
+      
+      get englishGloss() { return document.getElementById('sign-english-gloss-el'); },
+      get slotsContainer() { return document.getElementById('transcription-slots-container'); },
+      get typingCharBar() { return document.getElementById('typing-char-helper-panel'); },
+      get inputsArea() { return document.getElementById('inputs-area-el'); },
+      
+      get feedbackBanner() { return document.getElementById('round-feedback-banner'); },
+      get feedbackHeader() { return document.getElementById('round-feedback-header'); },
+      get feedbackDetail() { return document.getElementById('round-feedback-detail'); },
+      
+      get quitBtn() { return document.getElementById('game-quit-btn'); },
+      get submitBtn() { return document.getElementById('game-submit-btn'); },
+      get nextBtn() { return document.getElementById('game-next-btn'); },
+      
+      get resultsCircleFill() { return document.getElementById('results-circle-fill-el'); },
+      get resultsPercentage() { return document.getElementById('results-percentage-el'); },
+      get resultsSubtitle() { return document.getElementById('results-subtitle-el'); },
+      get resultsXp() { return document.getElementById('results-xp-el'); },
+      get resultsCorrect() { return document.getElementById('results-correct-rounds-el'); },
+      get resultsStreak() { return document.getElementById('results-streak-el'); },
+      get resultsHomeBtn() { return document.getElementById('results-home-btn'); },
+      get resultsReplayBtn() { return document.getElementById('results-replay-btn'); }
+    };
+
+    // Helper functions for parsing initial signs
+    const MP_INITIAL_SET = new Set(['s', 'l', 'y', 'h', 'v', 'm', 'w', 'b', 'f']);
+    const MP_ACCENT_MAP = { 'á': 'a', 'é': 'e', 'ć': 'c', 'ú': 'u', 'ó': 'o' };
+    function normalizeChar(char) { return MP_ACCENT_MAP[char] || char; }
+    function normalizeString(word) { return word.split('').map(normalizeChar).join(''); }
+
+    // Sequential Parameter Extractor
+    function extractParameters(signText) {
+      if (typeof parseSLDWord !== 'function') {
+        console.error('parseSLDWord is not loaded!');
+        return [];
+      }
+      
+      try {
+        let wordObj = parseSLDWord(signText);
+        if (!wordObj) return [];
+        let params = [];
+        
+        if (wordObj.raw_initial_sign) {
+          let init = wordObj.raw_initial_sign;
+          
+          // 1. Handshape Part
+          if (init.handshapes && init.handshapes.length > 0) {
+            // Check for doubling: if length > 1 and first two spellings match
+            let doubled = false;
+            let spelling = init.handshapes[0] ? init.handshapes[0].spelling : null;
+            if (spelling) {
+              if (init.handshapes.length > 1 && init.handshapes[1] && init.handshapes[0].spelling === init.handshapes[1].spelling) {
+                let doubleChar = spelling[0];
+                if (signText.startsWith(doubleChar + spelling)) {
+                  doubled = true;
+                }
+              }
+              let hsVal = (doubled ? spelling[0] : '') + spelling;
+              params.push({
+                type: 'handshape',
+                label: 'Handshape',
+                value: hsVal,
+                displayLabel: 'Handshape'
+              });
+            }
+          }
+          
+          // 2. Orientations Part
+          if (init.orientations && init.orientations.length > 0) {
+            let oriVal = init.orientations.join('');
+            params.push({
+              type: 'orientation',
+              label: 'Orientation',
+              value: oriVal,
+              displayLabel: 'Orientation'
+            });
+          }
+          
+          // 3. Locations Part
+          if (init.parsedLocations && init.parsedLocations.length > 0) {
+            init.parsedLocations.forEach((loc, idx) => {
+              if (loc) {
+                params.push({
+                  type: 'location',
+                  label: init.parsedLocations.length > 1 ? `Location ${idx + 1}` : 'Location',
+                  value: loc,
+                  displayLabel: 'Location'
+                });
+              }
+            });
+          }
+        }
+        
+        // 4. Actions / Movements Part
+        if (wordObj.raw_actions && wordObj.raw_actions.length > 0) {
+          wordObj.raw_actions.forEach((act, idx) => {
+            if (act) {
+              let actVal = act.descriptor || '';
+              if (act.changes) {
+                actVal += act.changes.map(c => c.value).join('');
+              }
+              params.push({
+                type: 'action',
+                label: wordObj.raw_actions.length > 1 ? `Action ${idx + 1}` : 'Action/Movement',
+                value: actVal,
+                displayLabel: 'Movement/Action'
+              });
+            }
+          });
+        }
+        
+        return params;
+      } catch (err) {
+        console.warn('Failed to parse sign parameter breakdown for:', signText, err);
+        return [];
+      }
+    }
+
+    // Distractor pool builder
+    function getDistractorOptions(type, correctValue) {
+      let candidates = new Set();
+      // Scan dictionary for matching types
+      for (let i = 0; i < 300; i++) {
+        let randIdx = Math.floor(Math.random() * window.sldDictionary.length);
+        let entry = window.sldDictionary[randIdx];
+        if (entry && entry.signs) {
+          for (let s of entry.signs) {
+            if (!s.includes(' ')) {
+              let parsedParams = extractParameters(s);
+              for (let p of parsedParams) {
+                if (p.type === type && p.value !== correctValue && p.value.trim().length > 0) {
+                  candidates.add(p.value);
+                }
+              }
+            }
+          }
+        }
+        if (candidates.size >= 12) break;
+      }
+
+      // Safe fallback options representing typical values in Stokoe/SLD
+      if (candidates.size < 3) {
+        const fallbacks = {
+          handshape: ['sa', 'ba', 'fá', 'lu', 'mo', 'bo', 'yo', 's', 'vla', 'le'],
+          orientation: ['at', 'ia', 'ei', 't', 'j', 'i', 'k', 'o'],
+          location: ['pj', 'wi', 'z', 'fi', 'ni', 'cj', 'luj', 'sj', 'ut', 'ct'],
+          action: ['-a', '=rj', '-sebj', '-z', '=k', '-k', '-x', '=rj', '-e']
+        };
+        let items = fallbacks[type] || [];
+        for (let item of items) {
+          if (item !== correctValue) candidates.add(item);
+        }
+      }
+
+      let options = Array.from(candidates);
+      options.sort(() => 0.5 - Math.random());
+      options = options.slice(0, 3);
+      options.push(correctValue);
+      options.sort(() => 0.5 - Math.random()); // randomize positions
+      return options;
+    }
+
+    // Local Storage stats saver
+    function saveLifetimeStats(sessionXp, roundsTotal, roundsCorrect) {
+      try {
+        let lifetime = JSON.parse(localStorage.getItem('sld_missingparam_lifetime')) || {
+          totalXp: 0,
+          roundsPlayed: 0,
+          roundsPassed: 0,
+          bestStreak: 0
+        };
+        
+        lifetime.totalXp += sessionXp;
+        lifetime.roundsPlayed += roundsTotal;
+        lifetime.roundsPassed += roundsCorrect;
+        if (game.maxStreak > (lifetime.bestStreak || 0)) {
+          lifetime.bestStreak = game.maxStreak;
+        }
+        
+        localStorage.setItem('sld_missingparam_lifetime', JSON.stringify(lifetime));
+      } catch (err) {
+        console.error('Failed to save lifetime statistics:', err);
+      }
+    }
+
+    // Update source text trigger when checkbox changes
+    function updateSourcesUI() {
+      const sourceCheckboxes = DOM.sourcesPanel.querySelectorAll('.source-checkbox');
+      const checkedBoxes = Array.from(DOM.sourcesPanel.querySelectorAll('.source-checkbox:checked'));
+      if (!DOM.selectedSourcesText) return;
+      
+      if (checkedBoxes.length === 0) {
+        DOM.selectedSourcesText.textContent = "No Sources Selected";
+      } else if (checkedBoxes.length === 1) {
+        DOM.selectedSourcesText.textContent = checkedBoxes[0].value;
+      } else if (checkedBoxes.length === sourceCheckboxes.length) {
+        DOM.selectedSourcesText.textContent = "All Sources Included";
+      } else {
+        DOM.selectedSourcesText.textContent = `${checkedBoxes.length} Sources Selected`;
+      }
+    }
+
+    // Setup screen initialization
+    function initSetupScreen() {
+      // Update dropdown trigger button text based on initial checked boxes
+      updateSourcesUI();
+
+      // 3. Grid selections setup handlers
+      setupGridHandlers(DOM.difficultyGrid, val => { game.difficulty = val; });
+      setupGridHandlers(DOM.inputModeGrid, val => { game.inputMode = val; });
+      setupGridHandlers(DOM.lengthGrid, val => {
+        game.totalRounds = val === 'endless' ? 'endless' : parseInt(val);
+      });
+    }
+
+    function setupGridHandlers(parentElement, callback) {
+      if (!parentElement) {
+        console.warn('setupGridHandlers: parentElement is null');
+        return;
+      }
+      const cards = parentElement.querySelectorAll('.select-card');
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          cards.forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+          callback(card.dataset.value);
+        });
+      });
+    }
+
+    // Start training session
+    function startGame() {
+      // Gather allowed sources
+      const checkBoxes = DOM.sourcesPanel.querySelectorAll('.source-checkbox');
+      game.allowedSources = [];
+      checkBoxes.forEach(box => {
+        if (box.checked) game.allowedSources.push(box.value);
+      });
+
+      if (game.allowedSources.length === 0) {
+        alert('Please select at least one Source Dictionary to practice!');
+        return;
+      }
+
+      // Filter dictionary to valid items matching the sources and the single-word requirement
+      game.dictionary = window.sldDictionary.filter(item => {
+        if (!item.signs || item.signs.length === 0) return false;
+        
+        // must have a sign without spaces
+        let hasSingleWordSign = item.signs.some(s => !s.includes(' ') && s.trim().length > 0);
+        if (!hasSingleWordSign) return false;
+        
+        // must match source constraints
+        let matchesSource = false;
+        if (item.signSources) {
+          Object.entries(item.signSources).forEach(([sign, srcArr]) => {
+            if (!sign.includes(' ')) {
+              srcArr.forEach(src => {
+                if (game.allowedSources.includes(src)) matchesSource = true;
+              });
+            }
+          });
+        }
+        return matchesSource;
+      });
+
+      if (game.dictionary.length === 0) {
+        alert('No signs found matching the selected sources. Please choose a broader source list.');
+        return;
+      }
+
+      // Reset statistics
+      game.roundIndex = 0;
+      game.score = 0;
+      game.streak = 0;
+      game.maxStreak = 0;
+      game.correctRounds = 0;
+      
+      DOM.hudStreak.textContent = '0';
+      DOM.hudScore.textContent = '0 XP';
+
+      // Build session questions list
+      game.questionList = [];
+      let shuffledDict = [...game.dictionary].sort(() => 0.5 - Math.random());
+      
+      // Determine N targets needed
+      let roundsNeeded = game.totalRounds === 'endless' ? 100 : game.totalRounds;
+      let diffN = game.difficulty === 'easy' ? 1 : (game.difficulty === 'medium' ? 2 : 3);
+      
+      // Filter signs that have at least diffN parameters
+      for (let item of shuffledDict) {
+        // Find signs under allowed sources
+        for (let sign of item.signs) {
+          if (!sign.includes(' ') && sign.trim().length > 0) {
+            // Verify source
+            let hasValidSource = false;
+            if (item.signSources && item.signSources[sign]) {
+              item.signSources[sign].forEach(src => {
+                if (game.allowedSources.includes(src)) hasValidSource = true;
+              });
+            }
+            if (hasValidSource) {
+              let params = extractParameters(sign);
+              if (params.length >= diffN) {
+                game.questionList.push({
+                  word: item,
+                  sign: sign,
+                  params: params
+                });
+                break; // only one sign per gloss card
+              }
+            }
+          }
+        }
+        if (game.questionList.length >= roundsNeeded) break;
+      }
+
+      // If we couldn't find enough signs matching strict parameter size:
+      if (game.questionList.length < 3 && game.totalRounds !== 'endless') {
+        alert(`We could only find ${game.questionList.length} signs with enough parameters matching your settings. Starting game with fallback lower parameter sizes.`);
+        // Fallback: relax parameter constraint
+        game.questionList = [];
+        for (let item of shuffledDict) {
+          for (let sign of item.signs) {
+            if (!sign.includes(' ') && sign.trim().length > 0) {
+              // Verify source
+              let hasValidSource = false;
+              if (item.signSources && item.signSources[sign]) {
+                item.signSources[sign].forEach(src => {
+                  if (game.allowedSources.includes(src)) hasValidSource = true;
+                });
+              }
+              if (hasValidSource) {
+                let params = extractParameters(sign);
+                if (params.length >= 1) {
+                  game.questionList.push({
+                    word: item,
+                    sign: sign,
+                    params: params
+                  });
+                  break;
+                }
+              }
+            }
+          }
+          if (game.questionList.length >= roundsNeeded) break;
+        }
+      }
+
+      if (game.questionList.length === 0) {
+        alert('No compatible single-word signs could be extracted from your settings. Please try selecting all sources.');
+        return;
+      }
+
+      // Transition screen
+      DOM.setupScreen.style.display = 'none';
+      DOM.gameplayScreen.style.display = 'block';
+      
+      loadNextQuestion();
+    }
+
+    // Load active question
+    function loadNextQuestion() {
+      // Clean UI
+      DOM.feedbackBanner.style.display = 'none';
+      DOM.submitBtn.style.display = 'inline-flex';
+      DOM.nextBtn.style.display = 'none';
+      DOM.slotsContainer.innerHTML = '';
+      DOM.inputsArea.innerHTML = '';
+      DOM.typingCharBar.style.display = 'none';
+      game.userAnswers = {};
+      
+      // End checking
+      if (game.totalRounds !== 'endless' && game.roundIndex >= game.totalRounds) {
+        endGame();
+        return;
+      }
+
+      // Update HUD
+      if (game.totalRounds === 'endless') {
+        DOM.roundLabel.textContent = 'Endless Mode';
+        DOM.roundNumber.textContent = `Round ${game.roundIndex + 1}`;
+        DOM.progressFill.style.width = '100%';
+      } else {
+        DOM.roundLabel.textContent = 'Round';
+        DOM.roundNumber.textContent = `${game.roundIndex + 1} / ${game.totalRounds}`;
+        let percent = (game.roundIndex / game.totalRounds) * 100;
+        DOM.progressFill.style.width = `${percent}%`;
+      }
+
+      // Pick round question
+      let question;
+      if (game.totalRounds === 'endless') {
+        // pick random
+        let idx = Math.floor(Math.random() * game.dictionary.length);
+        let item = game.dictionary[idx];
+        // find a single word sign
+        let possibleSigns = item.signs.filter(s => !s.includes(' '));
+        let sign = possibleSigns[Math.floor(Math.random() * possibleSigns.length)];
+        question = {
+          word: item,
+          sign: sign,
+          params: extractParameters(sign)
+        };
+      } else {
+        question = game.questionList[game.roundIndex];
+      }
+
+      game.currentWord = question.word;
+      game.currentSign = question.sign;
+      game.parameters = question.params;
+
+      DOM.englishGloss.textContent = game.currentWord.english;
+
+      // Decide how many parameters to hide
+      let hideCount = game.difficulty === 'easy' ? 1 : (game.difficulty === 'medium' ? 2 : 3);
+      hideCount = Math.min(hideCount, game.parameters.length);
+
+      // Randomly select indices to hide
+      game.hiddenIndices = [];
+      let allIndices = game.parameters.map((_, idx) => idx);
+      allIndices.sort(() => 0.5 - Math.random());
+      game.hiddenIndices = allIndices.slice(0, hideCount).sort((a,b) => a - b);
+
+      // Render Transcription display slots
+      game.parameters.forEach((param, idx) => {
+        if (game.hiddenIndices.includes(idx)) {
+          // Render slot blank
+          let isTyping = game.inputMode === 'typing';
+          if (isTyping) {
+            let input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'typing-slot-input';
+            input.id = `slot-typing-input-${idx}`;
+            input.placeholder = `[? ${param.displayLabel}]`;
+            input.dataset.idx = idx;
+            input.autocomplete = 'off';
+            input.spellcheck = false;
+            
+            // Set up input focus listeners to bind virtual chips
+            input.addEventListener('focus', () => {
+              game.activeInputFocus = `slot-typing-input-${idx}`;
+            });
+
+            DOM.slotsContainer.appendChild(input);
+          } else {
+            let blank = document.createElement('div');
+            blank.className = `segment-blank active-blank`;
+            blank.id = `slot-blank-${idx}`;
+            blank.textContent = `? ${param.displayLabel}`;
+            blank.dataset.idx = idx;
+            
+            blank.addEventListener('click', () => {
+              // Scroll or highlight card input
+              let inputCard = document.getElementById(`input-choice-card-${idx}`);
+              if (inputCard) {
+                inputCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                // Flash animation
+                inputCard.style.border = '2px solid var(--accent-primary)';
+                setTimeout(() => { inputCard.style.border = '1px solid var(--glass-border)'; }, 1000);
+              }
+            });
+
+            DOM.slotsContainer.appendChild(blank);
+          }
+        } else {
+          // Render regular filled segment
+          let badge = document.createElement('div');
+          badge.className = `segment-badge type-${param.type}`;
+          badge.textContent = param.value;
+          DOM.slotsContainer.appendChild(badge);
+        }
+      });
+
+      // Render Dynamic inputs area
+      if (game.inputMode === 'mc') {
+        game.hiddenIndices.forEach(idx => {
+          let param = game.parameters[idx];
+          let options = getDistractorOptions(param.type, param.value);
+          
+          let card = document.createElement('div');
+          card.className = 'param-question-card';
+          card.id = `input-choice-card-${idx}`;
+          card.innerHTML = `
+            <div class="question-title">
+              <i class="fa-solid fa-circle-question"></i> Select the missing ${param.displayLabel}:
+            </div>
+            <div class="mc-choices-grid" id="choices-grid-${idx}"></div>
+          `;
+          DOM.inputsArea.appendChild(card);
+          
+          let grid = card.querySelector(`#choices-grid-${idx}`);
+          options.forEach(opt => {
+            let btn = document.createElement('button');
+            btn.className = 'choice-btn';
+            btn.textContent = opt;
+            btn.addEventListener('click', () => {
+              // Clear current selection in this grid
+              grid.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+              btn.classList.add('selected');
+              
+              // Record answer
+              game.userAnswers[idx] = opt;
+              
+              // Update slot text in the top display
+              let blankSlot = document.getElementById(`slot-blank-${idx}`);
+              if (blankSlot) {
+                blankSlot.textContent = opt;
+                blankSlot.classList.remove('active-blank');
+                blankSlot.classList.add('filled');
+              }
+            });
+            grid.appendChild(btn);
+          });
+        });
+      } else {
+        // Typing mode layout
+        DOM.typingCharBar.style.display = 'flex';
+        
+        let card = document.createElement('div');
+        card.className = 'param-question-card';
+        card.innerHTML = `
+          <div class="question-title">
+            <i class="fa-solid fa-keyboard"></i> Typing Instructions
+          </div>
+          <div style="font-size: 0.95rem; color: var(--text-muted);">
+            Type the missing parameters in the input boxes inside the transcription display. You can click the helper chips above to append SLD characters like accents or dividers.
+          </div>
+        `;
+        DOM.inputsArea.appendChild(card);
+
+        // Auto focus first typing input
+        setTimeout(() => {
+          let firstInput = DOM.slotsContainer.querySelector('input');
+          if (firstInput) firstInput.focus();
+        }, 100);
+      }
+    }
+
+    // Submit answer verification
+    function submitAnswer() {
+      // Gather user entries
+      if (game.inputMode === 'typing') {
+        game.hiddenIndices.forEach(idx => {
+          let input = document.getElementById(`slot-typing-input-${idx}`);
+          if (input) {
+            game.userAnswers[idx] = input.value.trim();
+          }
+        });
+      }
+
+      // Check if all answers provided
+      let missingCount = 0;
+      game.hiddenIndices.forEach(idx => {
+        if (!game.userAnswers[idx] || game.userAnswers[idx].trim() === '') {
+          missingCount++;
+        }
+      });
+
+      if (missingCount > 0) {
+        alert('Please fill in or select all missing parameters before submitting!');
+        return;
+      }
+
+      // Validate answers
+      let allCorrect = true;
+      let wrongParameters = [];
+
+      game.hiddenIndices.forEach(idx => {
+        let correctVal = game.parameters[idx].value;
+        let userVal = game.userAnswers[idx];
+        
+        // Exact spelling match
+        if (userVal === correctVal) {
+          // Correct
+        } else {
+          // Normalize comparison
+          let normCorrect = normalizeString(correctVal);
+          let normUser = normalizeString(userVal);
+          if (normUser === normCorrect) {
+            // Almost correct, count as correct but log warning
+            wrongParameters.push({
+              idx: idx,
+              type: game.parameters[idx].displayLabel,
+              correct: correctVal,
+              user: userVal,
+              almost: true
+            });
+          } else {
+            allCorrect = false;
+            wrongParameters.push({
+              idx: idx,
+              type: game.parameters[idx].displayLabel,
+              correct: correctVal,
+              user: userVal,
+              almost: false
+            });
+          }
+        }
+      });
+
+      // Update Session stats
+      let scoreGained = 0;
+      if (allCorrect) {
+        game.correctRounds++;
+        game.streak++;
+        if (game.streak > game.maxStreak) game.maxStreak = game.streak;
+        
+        // Easy gets 10XP, Medium 20XP, Hard 30XP
+        let base = game.difficulty === 'easy' ? 10 : (game.difficulty === 'medium' ? 20 : 30);
+        // Add streak bonus (+5 XP per streak above 2)
+        let streakBonus = game.streak > 2 ? (game.streak - 2) * 5 : 0;
+        scoreGained = base + streakBonus;
+        game.score += scoreGained;
+        
+        // Render Correct banner
+        DOM.feedbackHeader.innerHTML = `<i class="fa-solid fa-circle-check"></i> CORRECT! +${scoreGained} XP`;
+        DOM.feedbackBanner.className = 'feedback-banner correct';
+        
+        let detailHtml = `Excellent! The full transcription is <strong>${game.currentSign}</strong>.`;
+        if (wrongParameters.length > 0) {
+          detailHtml += `<br><span style="font-size: 0.85rem; opacity: 0.8;"><i class="fa-solid fa-triangle-exclamation"></i> <strong>Spelling warning:</strong> `;
+          wrongParameters.forEach(w => {
+            detailHtml += `For ${w.type}, typed "${w.user}" instead of "${w.correct}" (watch accents). `;
+          });
+          detailHtml += '</span>';
+        }
+        DOM.feedbackDetail.innerHTML = detailHtml;
+      } else {
+        game.streak = 0;
+        DOM.feedbackHeader.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> INCORRECT`;
+        DOM.feedbackBanner.className = 'feedback-banner incorrect';
+        
+        let wrongHtml = '';
+        wrongParameters.forEach(w => {
+          wrongHtml += `<br>• Missing ${w.type} parameter was: <strong>${w.correct}</strong> (you selected "${w.user || 'None'}").`;
+        });
+        
+        DOM.feedbackDetail.innerHTML = `Not quite! The correct sign is <strong>${game.currentSign}</strong>.${wrongHtml}`;
+      }
+
+      // Update dynamic HUD stats
+      DOM.hudStreak.textContent = game.streak;
+      DOM.hudScore.textContent = `${game.score} XP`;
+
+      // Show banner and update actions
+      DOM.feedbackBanner.style.display = 'block';
+      DOM.submitBtn.style.display = 'none';
+      DOM.nextBtn.style.display = 'inline-flex';
+
+      // Highlight correct/incorrect slots visually
+      game.hiddenIndices.forEach(idx => {
+        let correctVal = game.parameters[idx].value;
+        let userVal = game.userAnswers[idx];
+        
+        if (game.inputMode === 'mc') {
+          let blank = document.getElementById(`slot-blank-${idx}`);
+          if (blank) {
+            if (userVal === correctVal || normalizeString(userVal) === normalizeString(correctVal)) {
+              blank.style.background = 'rgba(16, 185, 129, 0.4)';
+              blank.style.borderColor = 'rgba(16, 185, 129, 1)';
+            } else {
+              blank.style.background = 'rgba(239, 68, 68, 0.4)';
+              blank.style.borderColor = 'rgba(239, 68, 68, 1)';
+            }
+          }
+        } else {
+          let input = document.getElementById(`slot-typing-input-${idx}`);
+          if (input) {
+            if (userVal === correctVal || normalizeString(userVal) === normalizeString(correctVal)) {
+              input.style.borderColor = 'rgba(16, 185, 129, 1)';
+              input.style.background = 'rgba(16, 185, 129, 0.15)';
+            } else {
+              input.style.borderColor = 'rgba(239, 68, 68, 1)';
+              input.style.background = 'rgba(239, 68, 68, 0.15)';
+            }
+            input.disabled = true;
+          }
+        }
+      });
+    }
+
+    // Next round handler
+    function nextRound() {
+      game.roundIndex++;
+      loadNextQuestion();
+    }
+
+    // Quit session midway
+    function quitGame() {
+      DOM.gameplayScreen.style.display = 'none';
+      DOM.setupScreen.style.display = 'block';
+      game.questionList = [];
+    }
+
+    // End session and show stats summary
+    function endGame() {
+      DOM.gameplayScreen.style.display = 'none';
+      DOM.resultsScreen.style.display = 'block';
+
+      // Record lifetime statistics safely
+      let totalPlayed = game.totalRounds === 'endless' ? game.roundIndex : game.questionList.length;
+      saveLifetimeStats(game.score, totalPlayed, game.correctRounds);
+
+      // Render stats text
+      DOM.resultsXp.textContent = game.score;
+      DOM.resultsCorrect.textContent = `${game.correctRounds} / ${totalPlayed}`;
+      DOM.resultsStreak.textContent = game.maxStreak;
+
+      // Accuracy circle and percentage
+      let accuracy = totalPlayed > 0 ? Math.round((game.correctRounds / totalPlayed) * 100) : 0;
+      DOM.resultsPercentage.textContent = `${accuracy}%`;
+
+      // Set circular svg stroke-dashoffset: 439.6 is empty, 0 is full
+      let offset = 439.6 - (accuracy / 100) * 439.6;
+      setTimeout(() => {
+        DOM.resultsCircleFill.style.strokeDashoffset = offset;
+      }, 200);
+
+      // Text feedback based on performance
+      let msg = '';
+      if (accuracy === 100) msg = 'Flawless victory! You are an SLD transcription wizard.';
+      else if (accuracy >= 80) msg = 'Exceptional job! Your param analysis skills are stellar.';
+      else if (accuracy >= 50) msg = 'Great progress! Keep practicing to master sign details.';
+      else msg = 'Keep it up! Sign structure takes patience and study.';
+      DOM.resultsSubtitle.textContent = msg;
+    }
+
+    // Setup global listeners
+    function initGamePage() {
+      // Init theme floating button setup in core theme
+      initSetupScreen();
+
+      // Toggle Sources Multiselect Dropdown Panel
+      if (DOM.sourcesTriggerBtn && DOM.sourcesDropdownContainer) {
+        DOM.sourcesTriggerBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          DOM.sourcesDropdownContainer.classList.toggle('active');
+        });
+
+        // Close dropdown if clicked outside
+        document.addEventListener('click', (e) => {
+          if (!DOM.sourcesDropdownContainer.contains(e.target)) {
+            DOM.sourcesDropdownContainer.classList.remove('active');
+          }
+        });
+      }
+
+      // Attach change listener directly to source checkboxes to ensure reliable cross-browser state changes
+      if (DOM.sourcesPanel) {
+        const sourceCheckboxes = DOM.sourcesPanel.querySelectorAll('.source-checkbox');
+        sourceCheckboxes.forEach(cb => {
+          cb.addEventListener('change', updateSourcesUI);
+        });
+      }
+
+      // UI Actions
+      DOM.startBtn.addEventListener('click', startGame);
+      DOM.quitBtn.addEventListener('click', quitGame);
+      DOM.submitBtn.addEventListener('click', submitAnswer);
+      DOM.nextBtn.addEventListener('click', nextRound);
+      
+      DOM.resultsHomeBtn.addEventListener('click', () => {
+        DOM.resultsScreen.style.display = 'none';
+        DOM.setupScreen.style.display = 'block';
+        DOM.resultsCircleFill.style.strokeDashoffset = 439.6; // reset circular fill
+      });
+      DOM.resultsReplayBtn.addEventListener('click', () => {
+        DOM.resultsScreen.style.display = 'none';
+        DOM.resultsCircleFill.style.strokeDashoffset = 439.6; // reset circular fill
+        startGame();
+      });
+
+      // Virtual helpers implementation
+      document.querySelectorAll('.char-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          if (game.inputMode === 'typing' && game.activeInputFocus) {
+            let activeInput = document.getElementById(game.activeInputFocus);
+            if (activeInput) {
+              let char = chip.dataset.char;
+              let start = activeInput.selectionStart || 0;
+              let end = activeInput.selectionEnd || 0;
+              let val = activeInput.value;
+              activeInput.value = val.substring(0, start) + char + val.substring(end);
+              // reset focus and selection
+              activeInput.focus();
+              activeInput.selectionStart = activeInput.selectionEnd = start + char.length;
+            }
+          }
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGamePage);
+    } else {
+      initGamePage();
+    }
+  </script>
+</body>
+
+</html>
