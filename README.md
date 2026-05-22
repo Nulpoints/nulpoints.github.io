@@ -19,7 +19,7 @@ Welcome to the official portal for **Nulpoints** sign language notation tools. T
 ## 📐 The Sign Notation Suites
 
 ### 1. SLD (Sign Language Description) Suite
-A high-fidelity suite designed for parsing, analyzing, and looking up SLD notation structures.
+A high-fidelity suite designed for parsing, analyzing, and looking up SLD notation structures. For more information on the notation, visit the [official SLD website](https://sldictionary.org/).
 
 | App / Resource | Direct Launch Link | Key Features & Highlights |
 | :--- | :--- | :--- |
