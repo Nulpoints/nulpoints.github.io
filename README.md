@@ -12,13 +12,13 @@
 
 ---
 
-Welcome to the official portal for **Nulpoints** sign language notation tools. This repository hosts a suite of interactive web applications and resources designed to help users read, write, study, and analyze three major sign language writing and description systems: **Escrita das Línguas de Sinais (ELiS)**, **SignFont (ASL)**, and **Sign Language Description (SLD)**.
+Welcome to the official portal for **Nulpoints** sign language notation tools. This repository hosts a suite of interactive web applications and resources designed to help users read, write, study, and analyze three major sign language writing and description systems: **Escrita das Línguas de Sinais (ELiS)**, **SignFont (ASL)**, and the **Sign Language Dictionary (SLD)** transcription system.
 
 ---
 
 ## 📐 The Sign Notation Suites
 
-### 1. SLD (Sign Language Description) Suite
+### 1. SLD (Sign Language Dictionary) Suite
 A high-fidelity suite designed for parsing, analyzing, and looking up SLD notation structures. For more information on the notation, visit the [official SLD website](https://sldictionary.org/).
 
 | App / Resource | Direct Launch Link | Key Features & Highlights |
