@@ -26,6 +26,7 @@ A high-fidelity suite designed for parsing, analyzing, and looking up SLD notati
 | 📖 **SLD Bidirectional Dictionary** | [**Launch Dictionary 🚀**](./SLD/dictionary.html) | High-fidelity bidirectional search between English glosses and SLD symbols. Features detailed token breakdowns and interactive analyzer drawers. |
 | ⚡ **SLD Interactive Flashcards** | [**Practice Flashcards 🚀**](./SLD/flashcards.html) | Dynamic visual practice tool with card-flip animations, custom score trackers, and tailored study sessions. |
 | 🔬 **SLD Parser & Segmenter** | [**Launch Parser 🚀**](./SLD/SLDparser.html) | Segment and decompose complex SLD code structures into constituent handshape, action, and movement features. |
+| 🎮 **SLD Missing Parameter Game** | [**Play Game 🚀**](./SLD/missingparam.html) | Test and improve your transcription skills by identifying missing handshapes, orientations, locations, and actions in an interactive game. |
 
 ---
 
