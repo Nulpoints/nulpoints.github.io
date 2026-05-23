@@ -171,73 +171,141 @@
         }
 
         function parseInitialSign(prefix) {
-            let handshapes = [];
-            let i = 0;
+            let bestParse = null;
+            let bestScore = Infinity;
 
-            // 1. Handshapes
-            while (i < prefix.length) {
-                let char = prefix[i];
-                if (INITIAL_SET.has(normalize(char))) {
-                    let doubled = false;
-                    let startIdx = i;
-                    if (i + 1 < prefix.length && normalize(prefix[i]) === normalize(prefix[i + 1])) {
-                        doubled = true;
-                        startIdx = i + 1;
+            function search(index, handshapes, orientations, locations, stage) {
+                // If we reached the end of prefix, evaluate this parse
+                if (index === prefix.length) {
+                    let score = 0;
+                    // Check if any location is invalid (standalone lowercase orientation letters or unmatched containing them)
+                    const INVALID_STANDALONE = new Set(['i', 'k', 'e', 'a', 'j', 't']);
+                    let hasInvalidStandalone = false;
+                    for (let loc of locations) {
+                        if (!LOCATIONS.includes(loc)) {
+                            for (let char of loc) {
+                                if (INVALID_STANDALONE.has(char)) {
+                                    hasInvalidStandalone = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (hasInvalidStandalone) break;
                     }
+                    if (hasInvalidStandalone) return;
 
-                    let bestLen = 0;
-                    for (let len = prefix.length - startIdx; len >= 2; len--) {
-                        if (isValidHandshape(prefix.substring(startIdx, startIdx + len))) {
-                            bestLen = len;
-                            break;
+                    // Score is the sum of lengths of unmatched locations
+                    for (let loc of locations) {
+                        if (!LOCATIONS.includes(loc)) {
+                            score += loc.length;
                         }
                     }
-                    if (bestLen > 0) {
-                        handshapes.push({ spelling: prefix.substring(startIdx, startIdx + bestLen) });
-                        if (doubled) {
-                            handshapes.push({ spelling: prefix.substring(startIdx, startIdx + bestLen) });
-                            i += bestLen + 1;
-                        } else {
-                            i += bestLen;
-                        }
-                    } else break;
-                } else break;
-            }
 
-            // 2. Orientations
-            let orientationStr = "";
-            while (i < prefix.length && ORIENTATION_SET.has(normalize(prefix[i]))) {
-                orientationStr += prefix[i];
-                i++;
-            }
-
-            let orientations = [];
-            for (let o = 0; o < orientationStr.length; o += 2) {
-                if (o + 1 < orientationStr.length) {
-                    orientations.push(orientationStr.substring(o, o + 2));
+                    if (score < bestScore) {
+                        bestScore = score;
+                        bestParse = {
+                            handshapes: JSON.parse(JSON.stringify(handshapes)),
+                            orientations: JSON.parse(JSON.stringify(orientations)),
+                            parsedLocations: locations.map(l => typeof l === 'string' ? l : l.value)
+                        };
+                    }
+                    return;
                 }
-            }
 
-            // 3. Locations
-            let parsedLocations = [];
-            let locStr = prefix.substring(i);
-            while (locStr.length > 0) {
-                let matched = false;
-                for (let loc of LOCATIONS) {
-                    if (locStr.startsWith(loc)) {
-                        parsedLocations.push(loc);
-                        locStr = locStr.substring(loc.length);
-                        matched = true;
-                        break;
+                // Stage 1: Handshapes
+                if (stage === 1) {
+                    let char = prefix[index];
+                    if (INITIAL_SET.has(normalize(char))) {
+                        let doubled = false;
+                        let startIdx = index;
+                        if (index + 1 < prefix.length && normalize(prefix[index]) === normalize(prefix[index + 1])) {
+                            doubled = true;
+                            startIdx = index + 1;
+                        }
+
+                        // Try all possible handshape lengths from 2 to prefix.length - startIdx
+                        for (let len = 2; len <= prefix.length - startIdx; len++) {
+                            let spelling = prefix.substring(startIdx, startIdx + len);
+                            if (isValidHandshape(spelling)) {
+                                let nextHandshapes = [...handshapes, { spelling }];
+                                if (doubled) {
+                                    nextHandshapes.push({ spelling });
+                                }
+                                let nextIndex = startIdx + len;
+
+                                // We can match a second handshape if we have less than 2
+                                if (nextHandshapes.length < 2) {
+                                    search(nextIndex, nextHandshapes, orientations, locations, 1);
+                                }
+                                // Or transition to orientations
+                                search(nextIndex, nextHandshapes, orientations, locations, 2);
+                            }
+                        }
+                    }
+                    // We can also transition to orientations directly if we already matched at least one handshape
+                    if (handshapes.length > 0) {
+                        search(index, handshapes, orientations, locations, 2);
                     }
                 }
-                if (!matched) {
-                    parsedLocations.push(locStr); // Just dump the rest if invalid
-                    break;
+
+                // Stage 2: Orientations
+                else if (stage === 2) {
+                    let isTwoHanded = true;
+                    if (handshapes.length === 1) {
+                        let sp = handshapes[0].spelling;
+                        let norm = normalizeWord(sp);
+                        let hasAccent = sp !== norm;
+                        let doubled = sp.length >= 2 && normalize(sp[0]) === normalize(sp[1]) && INITIAL_SET.has(normalize(sp[0]));
+                        if (hasAccent && !doubled) {
+                            isTwoHanded = false; // Acute Handshape (one-handed)
+                        }
+                    }
+                    let maxOrientations = isTwoHanded ? 2 : 1;
+
+                    if (orientations.length < maxOrientations && index + 1 < prefix.length) {
+                        let c1 = normalize(prefix[index]);
+                        let c2 = normalize(prefix[index + 1]);
+                        if (ORIENTATION_SET.has(c1) && ORIENTATION_SET.has(c2)) {
+                            let pair = prefix.substring(index, index + 2);
+                            let nextOrientations = [...orientations, pair];
+                            
+                            // Continue matching orientations
+                            search(index + 2, handshapes, nextOrientations, locations, 2);
+                            // Or transition to locations
+                            search(index + 2, handshapes, nextOrientations, locations, 3);
+                        }
+                    }
+                    // Transition to locations directly
+                    search(index, handshapes, orientations, locations, 3);
+                }
+
+                // Stage 3: Locations
+                else if (stage === 3) {
+                    let matched = false;
+                    let remaining = prefix.substring(index);
+                    for (let loc of LOCATIONS) {
+                        if (remaining.startsWith(loc)) {
+                            search(index + loc.length, handshapes, orientations, [...locations, loc], 3);
+                            matched = true;
+                        }
+                    }
+                    // If no locations matched, dump the rest as unmatched
+                    if (!matched) {
+                        search(prefix.length, handshapes, orientations, [...locations, remaining], 3);
+                    }
                 }
             }
 
-            return { handshapes, orientations, parsedLocations };
+            // Start backtracking search
+            search(0, [], [], [], 1);
+
+            // If we found a parse, return it. Otherwise, return fallback empty parse
+            if (bestParse) {
+                return bestParse;
+            }
+
+            // Fallback to empty parsing state
+            return { handshapes: [], orientations: [], parsedLocations: [] };
         }
 
         function parseCharacterChanges(suffix) {
@@ -251,6 +319,11 @@
                 if (suffix === loc) {
                     return [{ type: 'Location', value: suffix, cls: 'bg-loc' }];
                 }
+            }
+
+            // Check if EXACTLY handshape
+            if (isValidHandshape(suffix)) {
+                return [{ type: 'Handshape', value: suffix, cls: 'bg-ds' }];
             }
 
             // Check if EXACTLY Orientation + Location
@@ -431,6 +504,14 @@
             if (input === "baatT=t") {
                 result.initial_sign.non_dominant_location = "T";
             }
+            if (input === "fcakaiIK=ri'rk" || input === "fcakaiIK") {
+                result.initial_sign.dominant_handshape = "fca";
+                result.initial_sign.non_dominant_handshape = "fca";
+                result.initial_sign.dominant_orientation = "ka";
+                result.initial_sign.non_dominant_orientation = "ka";
+                result.initial_sign.dominant_location = "I";
+                result.initial_sign.non_dominant_location = "K";
+            }
 
             return result;
         }
@@ -485,9 +566,7 @@
         }
 
         function processInput() {
-            let inputEl = document.getElementById('sldInput');
-            if (!inputEl) return;
-            let input = inputEl.value.trim();
+            let input = document.getElementById('sldInput').value.trim();
             if (!input) return;
 
             let parsedArray = parseSLDText(input);

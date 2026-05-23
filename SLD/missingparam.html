@@ -1353,6 +1353,33 @@
     function normalizeChar(char) { return MP_ACCENT_MAP[char] || char; }
     function normalizeString(word) { return word.split('').map(normalizeChar).join(''); }
 
+    function getSpelledString() {
+      let spelled = '';
+      let currentOffset = 0;
+      let signText = game.currentSign;
+
+      game.parameters.forEach((param, idx) => {
+        let pIndex = signText.indexOf(param.value, currentOffset);
+        if (pIndex !== -1) {
+          if (pIndex > currentOffset) {
+            spelled += signText.substring(currentOffset, pIndex);
+          }
+          currentOffset = pIndex + param.value.length;
+        }
+        
+        if (game.hiddenIndices.includes(idx)) {
+          spelled += game.userAnswers[idx] || '';
+        } else {
+          spelled += param.value;
+        }
+      });
+
+      if (currentOffset < signText.length) {
+        spelled += signText.substring(currentOffset);
+      }
+      return spelled;
+    }
+
     // Sequential Parameter Extractor
     function extractParameters(signText) {
       if (typeof parseSLDWord !== 'function') {
@@ -1981,7 +2008,32 @@
           wrongHtml += `<br>• Missing ${w.type} parameter was: <strong>${w.correct}</strong> (you selected "${w.user || 'None'}").`;
         });
         
-        DOM.feedbackDetail.innerHTML = `Not quite! The correct sign is <strong>${game.currentSign}</strong>.${wrongHtml}`;
+        let detailHtml = `Not quite! The correct sign is <strong>${game.currentSign}</strong>.${wrongHtml}`;
+
+        // Check if user's error spelled a valid word in the dictionary
+        const spelledWord = getSpelledString();
+        // Skip check if spelledWord is empty or matches correct sign (though it shouldn't if they are incorrect)
+        if (spelledWord && spelledWord !== game.currentSign) {
+          const matchingEntries = window.sldDictionary.filter(entry => {
+            if (!entry.signs) return false;
+            return entry.signs.some(s => s.toLowerCase() === spelledWord.toLowerCase());
+          });
+          
+          if (matchingEntries.length > 0) {
+            // Found a match!
+            const match = matchingEntries[0];
+            detailHtml += `
+              <div style="margin-top: 0.8rem; padding: 0.75rem 1rem; background: rgba(139, 92, 246, 0.1); border: 1.5px solid rgba(139, 92, 246, 0.25); border-radius: 12px; display: flex; align-items: flex-start; gap: 10px;">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: #a78bfa; font-size: 1.1rem; margin-top: 2px;"></i>
+                <div style="font-size: 0.9rem; color: #e2e8f0; line-height: 1.4;">
+                  <strong style="color: #a78bfa;">Accidental Spelling:</strong> Your transcription <code>"${spelledWord}"</code> is a valid entry in the dictionary! You accidentally spelled <strong>"${match.english}"</strong>.
+                </div>
+              </div>
+            `;
+          }
+        }
+
+        DOM.feedbackDetail.innerHTML = detailHtml;
       }
 
       // Update dynamic HUD stats

@@ -315,12 +315,12 @@
       position: relative;
     }
 
-    .checkbox-item input[type="checkbox"]:checked + .checkbox-custom {
+    .checkbox-item input[type="checkbox"]:checked+.checkbox-custom {
       border-color: var(--accent-primary);
       background: var(--accent-primary);
     }
 
-    .checkbox-item input[type="checkbox"]:checked + .checkbox-custom::after {
+    .checkbox-item input[type="checkbox"]:checked+.checkbox-custom::after {
       content: '\f00c';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
@@ -329,7 +329,7 @@
       position: absolute;
     }
 
-    .checkbox-item input[type="checkbox"]:checked ~ .checkbox-label {
+    .checkbox-item input[type="checkbox"]:checked~.checkbox-label {
       color: #fff;
       font-weight: 500;
     }
@@ -385,7 +385,7 @@
       box-shadow: 0 0 0 3px var(--accent-glow);
     }
 
-    .search-input:focus + .search-icon {
+    .search-input:focus+.search-icon {
       color: var(--accent-primary);
     }
 
@@ -770,15 +770,61 @@
     }
 
     /* Parser Token Colors */
-    .bg-ds { background-color: #ff5555; color: #fff; }     /* Dominant Handshape - Coral Red */
-    .bg-nds { background-color: #26a69a; color: #fff; }    /* Non-Dominant Handshape - Teal/Mint */
-    .bg-do { background-color: #ff2d55; color: #fff; }     /* Dominant Orientation - Hot Pink */
-    .bg-ndo { background-color: #ff9f0a; color: #000; text-shadow: none; } /* Non-Dominant Orientation - Amber */
-    .bg-loc { background-color: #2979ff; color: #fff; }    /* Location - Royal Blue */
-    .bg-act { background-color: #e040fb; color: #fff; }    /* Action Descriptor - Violet */
-    .bg-hmod { background-color: #ff4081; color: #fff; }   /* Handshape Change - Magenta */
-    .bg-mov { background-color: #00e676; color: #000; text-shadow: none; } /* Movement - Neon Green */
-    .bg-punct { background-color: #495057; } /* Punctuation */
+    .bg-ds {
+      background-color: #ff5555;
+      color: #fff;
+    }
+
+    /* Dominant Handshape - Coral Red */
+    .bg-nds {
+      background-color: #26a69a;
+      color: #fff;
+    }
+
+    /* Non-Dominant Handshape - Teal/Mint */
+    .bg-do {
+      background-color: #ff2d55;
+      color: #fff;
+    }
+
+    /* Dominant Orientation - Hot Pink */
+    .bg-ndo {
+      background-color: #ff9f0a;
+      color: #000;
+      text-shadow: none;
+    }
+
+    /* Non-Dominant Orientation - Amber */
+    .bg-loc {
+      background-color: #2979ff;
+      color: #fff;
+    }
+
+    /* Location - Royal Blue */
+    .bg-act {
+      background-color: #e040fb;
+      color: #fff;
+    }
+
+    /* Action Descriptor - Violet */
+    .bg-hmod {
+      background-color: #ff4081;
+      color: #fff;
+    }
+
+    /* Handshape Change - Magenta */
+    .bg-mov {
+      background-color: #00e676;
+      color: #000;
+      text-shadow: none;
+    }
+
+    /* Movement - Neon Green */
+    .bg-punct {
+      background-color: #495057;
+    }
+
+    /* Punctuation */
 
     /* EliS and Signature Display Cards */
     .signatures-list {
@@ -928,7 +974,8 @@
         <i class="fa-solid fa-book-open logo-icon"></i>
         <h1>SLD Bidirectional Dictionary</h1>
       </div>
-      <p class="tagline">Search 3,330+ Sign Language Dictionary (SLD) signs, interactive timeline breakdowns, and Structural Parameter Trees.</p>
+      <p class="tagline">Search 3,330+ Sign Language Dictionary (SLD) signs, interactive timeline breakdowns, and
+        Structural Parameter Trees.</p>
       <div class="header-actions">
         <a href="flashcards.html" class="btn btn-primary">
           <i class="fa-solid fa-graduation-cap"></i> Practice Flashcards
@@ -956,7 +1003,8 @@
           </label>
           <div class="search-input-wrapper">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="english-search" class="search-input" placeholder="Type English gloss (e.g. 'about', 'accept')..." autocomplete="off">
+            <input type="text" id="english-search" class="search-input"
+              placeholder="Type English gloss (e.g. 'about', 'accept')..." autocomplete="off">
             <button class="clear-btn" id="clear-english"><i class="fa-solid fa-circle-xmark"></i></button>
           </div>
         </div>
@@ -969,7 +1017,8 @@
           </label>
           <div class="search-input-wrapper">
             <i class="fa-solid fa-fingerprint search-icon"></i>
-            <input type="text" id="sld-search" class="search-input" placeholder="Type SLD letters (e.g. 'llé', 'bj', '=ra')..." autocomplete="off">
+            <input type="text" id="sld-search" class="search-input"
+              placeholder="Type SLD letters (e.g. 'llé', 'bj', '=ra')..." autocomplete="off">
             <button class="clear-btn" id="clear-sld"><i class="fa-solid fa-circle-xmark"></i></button>
           </div>
         </div>
@@ -1257,7 +1306,7 @@
 
       for (let i = startLimit; i < endLimit; i++) {
         const item = filteredDictionary[i];
-        
+
         const row = document.createElement('div');
         row.className = 'dict-row';
         row.addEventListener('click', () => openDetailedAnalysis(item));
@@ -1277,7 +1326,7 @@
             </button>
           </div>
         `;
-        
+
         rowsContainer.appendChild(row);
       }
 
