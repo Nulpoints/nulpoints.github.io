@@ -1,0 +1,996 @@
+{
+  "handshape": {
+    "ba": {
+      "description": ""
+    },
+    "bc": {
+      "description": ""
+    },
+    "bca": {
+      "description": ""
+    },
+    "bce": {
+      "description": ""
+    },
+    "bco": {
+      "description": ""
+    },
+    "be": {
+      "description": ""
+    },
+    "bfa": {
+      "description": ""
+    },
+    "bfca": {
+      "description": ""
+    },
+    "bfu": {
+      "description": ""
+    },
+    "bha": {
+      "description": ""
+    },
+    "bla": {
+      "description": ""
+    },
+    "blyuo": {
+      "description": ""
+    },
+    "bo": {
+      "description": ""
+    },
+    "bu": {
+      "description": ""
+    },
+    "bua": {
+      "description": ""
+    },
+    "bue": {
+      "description": ""
+    },
+    "buo": {
+      "description": ""
+    },
+    "bvuo": {
+      "description": ""
+    },
+    "bwa": {
+      "description": ""
+    },
+    "bxa": {
+      "description": ""
+    },
+    "bxe": {
+      "description": ""
+    },
+    "fa": {
+      "description": ""
+    },
+    "fc": {
+      "description": ""
+    },
+    "fca": {
+      "description": ""
+    },
+    "fce": {
+      "description": ""
+    },
+    "fco": {
+      "description": ""
+    },
+    "fe": {
+      "description": ""
+    },
+    "fla": {
+      "description": ""
+    },
+    "flc": {
+      "description": ""
+    },
+    "flco": {
+      "description": ""
+    },
+    "fle": {
+      "description": ""
+    },
+    "flu": {
+      "description": ""
+    },
+    "flua": {
+      "description": ""
+    },
+    "flue": {
+      "description": ""
+    },
+    "fluo": {
+      "description": ""
+    },
+    "fmco": {
+      "description": ""
+    },
+    "fo": {
+      "description": ""
+    },
+    "fsc": {
+      "description": ""
+    },
+    "fsca": {
+      "description": ""
+    },
+    "fsce": {
+      "description": ""
+    },
+    "fsu": {
+      "description": ""
+    },
+    "fsuo": {
+      "description": ""
+    },
+    "fu": {
+      "description": ""
+    },
+    "fua": {
+      "description": ""
+    },
+    "fue": {
+      "description": ""
+    },
+    "fuo": {
+      "description": ""
+    },
+    "fvc": {
+      "description": ""
+    },
+    "fvua": {
+      "description": ""
+    },
+    "fwc": {
+      "description": ""
+    },
+    "fwu": {
+      "description": ""
+    },
+    "ha": {
+      "description": ""
+    },
+    "hc": {
+      "description": ""
+    },
+    "hce": {
+      "description": ""
+    },
+    "hco": {
+      "description": ""
+    },
+    "he": {
+      "description": ""
+    },
+    "hfa": {
+      "description": ""
+    },
+    "hre": {
+      "description": ""
+    },
+    "hu": {
+      "description": ""
+    },
+    "hue": {
+      "description": ""
+    },
+    "huo": {
+      "description": ""
+    },
+    "la": {
+      "description": ""
+    },
+    "lc": {
+      "description": ""
+    },
+    "lca": {
+      "description": ""
+    },
+    "lce": {
+      "description": ""
+    },
+    "lco": {
+      "description": ""
+    },
+    "le": {
+      "description": ""
+    },
+    "lfa": {
+      "description": ""
+    },
+    "lfca": {
+      "description": ""
+    },
+    "lo": {
+      "description": ""
+    },
+    "lu": {
+      "description": ""
+    },
+    "lua": {
+      "description": ""
+    },
+    "lue": {
+      "description": ""
+    },
+    "luo": {
+      "description": ""
+    },
+    "lxa": {
+      "description": ""
+    },
+    "lxe": {
+      "description": ""
+    },
+    "ma": {
+      "description": ""
+    },
+    "me": {
+      "description": ""
+    },
+    "mue": {
+      "description": ""
+    },
+    "sa": {
+      "description": ""
+    },
+    "se": {
+      "description": ""
+    },
+    "sfa": {
+      "description": ""
+    },
+    "she": {
+      "description": ""
+    },
+    "sle": {
+      "description": ""
+    },
+    "slyue": {
+      "description": ""
+    },
+    "sme": {
+      "description": ""
+    },
+    "so": {
+      "description": ""
+    },
+    "va": {
+      "description": ""
+    },
+    "vc": {
+      "description": ""
+    },
+    "vca": {
+      "description": ""
+    },
+    "vce": {
+      "description": ""
+    },
+    "vco": {
+      "description": ""
+    },
+    "ve": {
+      "description": ""
+    },
+    "vfa": {
+      "description": ""
+    },
+    "vfca": {
+      "description": ""
+    },
+    "vla": {
+      "description": ""
+    },
+    "vle": {
+      "description": ""
+    },
+    "vluo": {
+      "description": ""
+    },
+    "vo": {
+      "description": ""
+    },
+    "vse": {
+      "description": ""
+    },
+    "vu": {
+      "description": ""
+    },
+    "vue": {
+      "description": ""
+    },
+    "vuo": {
+      "description": ""
+    },
+    "vxe": {
+      "description": ""
+    },
+    "wa": {
+      "description": ""
+    },
+    "we": {
+      "description": ""
+    },
+    "wo": {
+      "description": ""
+    },
+    "ya": {
+      "description": ""
+    },
+    "yce": {
+      "description": ""
+    },
+    "ye": {
+      "description": ""
+    },
+    "yfa": {
+      "description": ""
+    },
+    "yla": {
+      "description": ""
+    },
+    "yle": {
+      "description": ""
+    },
+    "ylfa": {
+      "description": ""
+    },
+    "yma": {
+      "description": ""
+    },
+    "ysle": {
+      "description": ""
+    },
+    "yue": {
+      "description": ""
+    },
+    "ywe": {
+      "description": ""
+    }
+  },
+  "orientation": {
+    "ai": {
+      "description": ""
+    },
+    "aj": {
+      "description": ""
+    },
+    "ak": {
+      "description": ""
+    },
+    "at": {
+      "description": ""
+    },
+    "ei": {
+      "description": ""
+    },
+    "ej": {
+      "description": ""
+    },
+    "ek": {
+      "description": ""
+    },
+    "et": {
+      "description": ""
+    },
+    "ia": {
+      "description": ""
+    },
+    "ie": {
+      "description": ""
+    },
+    "ij": {
+      "description": ""
+    },
+    "it": {
+      "description": ""
+    },
+    "ja": {
+      "description": ""
+    },
+    "ji": {
+      "description": ""
+    },
+    "jk": {
+      "description": ""
+    },
+    "ka": {
+      "description": ""
+    },
+    "ke": {
+      "description": ""
+    },
+    "kj": {
+      "description": ""
+    },
+    "kt": {
+      "description": ""
+    },
+    "oi": {
+      "description": ""
+    },
+    "ta": {
+      "description": ""
+    },
+    "te": {
+      "description": ""
+    },
+    "ti": {
+      "description": ""
+    },
+    "tk": {
+      "description": ""
+    },
+    "át": {
+      "description": ""
+    }
+  },
+  "location": {
+    "A": {
+      "description": ""
+    },
+    "E": {
+      "description": ""
+    },
+    "I": {
+      "description": ""
+    },
+    "J": {
+      "description": ""
+    },
+    "K": {
+      "description": ""
+    },
+    "T": {
+      "description": ""
+    },
+    "b": {
+      "description": ""
+    },
+    "bj": {
+      "description": ""
+    },
+    "bt": {
+      "description": ""
+    },
+    "ci": {
+      "description": ""
+    },
+    "cj": {
+      "description": ""
+    },
+    "ct": {
+      "description": ""
+    },
+    "dj": {
+      "description": ""
+    },
+    "e": {
+      "description": ""
+    },
+    "fi": {
+      "description": ""
+    },
+    "fj": {
+      "description": ""
+    },
+    "fje": {
+      "description": ""
+    },
+    "fjl": {
+      "description": ""
+    },
+    "fjv": {
+      "description": ""
+    },
+    "fjw": {
+      "description": ""
+    },
+    "fjy": {
+      "description": ""
+    },
+    "fk": {
+      "description": ""
+    },
+    "fly": {
+      "description": ""
+    },
+    "fuj": {
+      "description": ""
+    },
+    "gi": {
+      "description": ""
+    },
+    "gk": {
+      "description": ""
+    },
+    "gt": {
+      "description": ""
+    },
+    "lj": {
+      "description": ""
+    },
+    "lk": {
+      "description": ""
+    },
+    "luj": {
+      "description": ""
+    },
+    "ni": {
+      "description": ""
+    },
+    "oi": {
+      "description": ""
+    },
+    "pj": {
+      "description": ""
+    },
+    "qi": {
+      "description": ""
+    },
+    "s": {
+      "description": ""
+    },
+    "sj": {
+      "description": ""
+    },
+    "st": {
+      "description": ""
+    },
+    "suj": {
+      "description": ""
+    },
+    "ui": {
+      "description": ""
+    },
+    "ut": {
+      "description": ""
+    },
+    "wi": {
+      "description": ""
+    },
+    "z": {
+      "description": ""
+    }
+  },
+  "action_descriptor": {
+    "-": {
+      "description": ""
+    },
+    "=": {
+      "description": ""
+    },
+    "~": {
+      "description": ""
+    }
+  },
+  "movement": {
+    "/a": {
+      "description": ""
+    },
+    "/a'k": {
+      "description": ""
+    },
+    "/ai": {
+      "description": ""
+    },
+    "/aiakpj": {
+      "description": ""
+    },
+    "/fuj": {
+      "description": ""
+    },
+    "/ie": {
+      "description": ""
+    },
+    "/j't": {
+      "description": ""
+    },
+    "a": {
+      "description": ""
+    },
+    "a'e": {
+      "description": ""
+    },
+    "a'i": {
+      "description": ""
+    },
+    "a'i/e'i": {
+      "description": ""
+    },
+    "a'j": {
+      "description": ""
+    },
+    "a'k": {
+      "description": ""
+    },
+    "a't": {
+      "description": ""
+    },
+    "a't/a'j": {
+      "description": ""
+    },
+    "a/e": {
+      "description": ""
+    },
+    "c": {
+      "description": ""
+    },
+    "cfj": {
+      "description": ""
+    },
+    "cjti": {
+      "description": ""
+    },
+    "cuj": {
+      "description": ""
+    },
+    "di": {
+      "description": ""
+    },
+    "e": {
+      "description": ""
+    },
+    "e'a": {
+      "description": ""
+    },
+    "e'i": {
+      "description": ""
+    },
+    "e'j": {
+      "description": ""
+    },
+    "e'k": {
+      "description": ""
+    },
+    "e't": {
+      "description": ""
+    },
+    "e/a": {
+      "description": ""
+    },
+    "e/j": {
+      "description": ""
+    },
+    "ffuófj": {
+      "description": ""
+    },
+    "fj'a": {
+      "description": ""
+    },
+    "fj'e": {
+      "description": ""
+    },
+    "fj'l": {
+      "description": ""
+    },
+    "fj'v": {
+      "description": ""
+    },
+    "fj'y": {
+      "description": ""
+    },
+    "fja": {
+      "description": ""
+    },
+    "fja'l'v'w'y": {
+      "description": ""
+    },
+    "fló": {
+      "description": ""
+    },
+    "fuófupj": {
+      "description": ""
+    },
+    "hése": {
+      "description": ""
+    },
+    "i": {
+      "description": ""
+    },
+    "i'a": {
+      "description": ""
+    },
+    "i'e": {
+      "description": ""
+    },
+    "i'j": {
+      "description": ""
+    },
+    "i'k": {
+      "description": ""
+    },
+    "i't": {
+      "description": ""
+    },
+    "i't/i'j": {
+      "description": ""
+    },
+    "i/k": {
+      "description": ""
+    },
+    "j": {
+      "description": ""
+    },
+    "j'a": {
+      "description": ""
+    },
+    "j'e": {
+      "description": ""
+    },
+    "j'i": {
+      "description": ""
+    },
+    "j'k": {
+      "description": ""
+    },
+    "j't": {
+      "description": ""
+    },
+    "j/t": {
+      "description": ""
+    },
+    "k": {
+      "description": ""
+    },
+    "k'a": {
+      "description": ""
+    },
+    "k'e": {
+      "description": ""
+    },
+    "k'i": {
+      "description": ""
+    },
+    "k'j": {
+      "description": ""
+    },
+    "k't": {
+      "description": ""
+    },
+    "k't/k'j": {
+      "description": ""
+    },
+    "k/i": {
+      "description": ""
+    },
+    "k¨j": {
+      "description": ""
+    },
+    "láleatbj": {
+      "description": ""
+    },
+    "o": {
+      "description": ""
+    },
+    "rI": {
+      "description": ""
+    },
+    "ra": {
+      "description": ""
+    },
+    "ra/re": {
+      "description": ""
+    },
+    "rai": {
+      "description": ""
+    },
+    "raj": {
+      "description": ""
+    },
+    "raj/ret": {
+      "description": ""
+    },
+    "rak": {
+      "description": ""
+    },
+    "rat": {
+      "description": ""
+    },
+    "rat/rej": {
+      "description": ""
+    },
+    "re": {
+      "description": ""
+    },
+    "re/ra": {
+      "description": ""
+    },
+    "rei": {
+      "description": ""
+    },
+    "rej": {
+      "description": ""
+    },
+    "rej/rat": {
+      "description": ""
+    },
+    "rek": {
+      "description": ""
+    },
+    "ret": {
+      "description": ""
+    },
+    "ret/raj": {
+      "description": ""
+    },
+    "ri": {
+      "description": ""
+    },
+    "ri'rk": {
+      "description": ""
+    },
+    "ri/rj": {
+      "description": ""
+    },
+    "ri/rk": {
+      "description": ""
+    },
+    "ria": {
+      "description": ""
+    },
+    "rij": {
+      "description": ""
+    },
+    "rit": {
+      "description": ""
+    },
+    "rj": {
+      "description": ""
+    },
+    "rj/rt": {
+      "description": ""
+    },
+    "rja": {
+      "description": ""
+    },
+    "rja/rje": {
+      "description": ""
+    },
+    "rje": {
+      "description": ""
+    },
+    "rji": {
+      "description": ""
+    },
+    "rjk": {
+      "description": ""
+    },
+    "rjk't": {
+      "description": ""
+    },
+    "rk": {
+      "description": ""
+    },
+    "rk'ri": {
+      "description": ""
+    },
+    "rk/ri": {
+      "description": ""
+    },
+    "rka": {
+      "description": ""
+    },
+    "rke": {
+      "description": ""
+    },
+    "rkj": {
+      "description": ""
+    },
+    "rkt": {
+      "description": ""
+    },
+    "rt": {
+      "description": ""
+    },
+    "rta": {
+      "description": ""
+    },
+    "rte": {
+      "description": ""
+    },
+    "rti": {
+      "description": ""
+    },
+    "rtk": {
+      "description": ""
+    },
+    "ssá": {
+      "description": ""
+    },
+    "t": {
+      "description": ""
+    },
+    "t'a": {
+      "description": ""
+    },
+    "t'e": {
+      "description": ""
+    },
+    "t'i": {
+      "description": ""
+    },
+    "t'j": {
+      "description": ""
+    },
+    "t'k": {
+      "description": ""
+    },
+    "t/i": {
+      "description": ""
+    },
+    "t/j": {
+      "description": ""
+    },
+    "t/k": {
+      "description": ""
+    },
+    "tadi": {
+      "description": ""
+    },
+    "tjk": {
+      "description": ""
+    },
+    "tke": {
+      "description": ""
+    },
+    "uI": {
+      "description": ""
+    },
+    "ucfj": {
+      "description": ""
+    },
+    "ucj": {
+      "description": ""
+    },
+    "ufj": {
+      "description": ""
+    },
+    "usj": {
+      "description": ""
+    },
+    "x": {
+      "description": ""
+    },
+    "xfj": {
+      "description": ""
+    },
+    "xfj'l": {
+      "description": ""
+    },
+    "xfja": {
+      "description": ""
+    },
+    "z": {
+      "description": ""
+    },
+    "zfj": {
+      "description": ""
+    },
+    "zfj'a": {
+      "description": ""
+    },
+    "zfja": {
+      "description": ""
+    },
+    "zfjv": {
+      "description": ""
+    },
+    "zj": {
+      "description": ""
+    },
+    "zlj": {
+      "description": ""
+    },
+    "zo": {
+      "description": ""
+    },
+    "zsj": {
+      "description": ""
+    }
+  }
+}

@@ -1390,6 +1390,9 @@
       try {
         let wordObj = parseSLDWord(signText);
         if (!wordObj) return [];
+        if (Array.isArray(wordObj)) {
+          wordObj = wordObj[0];
+        }
         let params = [];
         
         if (wordObj.raw_initial_sign) {

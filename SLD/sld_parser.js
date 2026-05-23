@@ -309,45 +309,85 @@
         }
 
         function parseCharacterChanges(suffix) {
-            // Check if EXACTLY orientation pair
-            if (suffix.length === 2 && ORIENTATION_SET.has(normalize(suffix[0])) && ORIENTATION_SET.has(normalize(suffix[1]))) {
-                return [{ type: 'Orientation', value: suffix, cls: 'bg-do' }];
-            }
+            let bestParse = null;
 
-            // Check if EXACTLY location
-            for (let loc of LOCATIONS) {
-                if (suffix === loc) {
-                    return [{ type: 'Location', value: suffix, cls: 'bg-loc' }];
+            function search(index, tokens, stage) {
+                if (index === suffix.length) {
+                    bestParse = JSON.parse(JSON.stringify(tokens));
+                    return true;
                 }
-            }
 
-            // Check if EXACTLY handshape
-            if (isValidHandshape(suffix)) {
-                return [{ type: 'Handshape', value: suffix, cls: 'bg-ds' }];
-            }
+                let remaining = suffix.substring(index);
 
-            // Check if EXACTLY Orientation + Location
-            if (suffix.length > 2) {
-                let pair = suffix.substring(0, 2);
-                if (ORIENTATION_SET.has(normalize(pair[0])) && ORIENTATION_SET.has(normalize(pair[1]))) {
-                    let rem = suffix.substring(2);
+                // Stage 1: Handshape (optional, must be first if present)
+                if (stage === 1) {
+                    for (let len = remaining.length; len >= 2; len--) {
+                        let spelling = remaining.substring(0, len);
+                        if (isValidHandshape(spelling)) {
+                            if (search(index + len, [...tokens, { type: 'Handshape', value: spelling, cls: 'bg-ds' }], 2)) {
+                                return true;
+                            }
+                        }
+                    }
+                    if (search(index, tokens, 2)) return true;
+                }
+
+                // Stage 2: Orientations (optional)
+                else if (stage === 2) {
+                    let matchedOriCount = tokens.filter(t => t.type === 'Orientation').length;
+                    if (matchedOriCount < 2 && index + 1 < suffix.length) {
+                        let c1 = normalize(suffix[index]);
+                        let c2 = normalize(suffix[index + 1]);
+                        if (ORIENTATION_SET.has(c1) && ORIENTATION_SET.has(c2)) {
+                            let pair = suffix.substring(index, index + 2);
+                            if (search(index + 2, [...tokens, { type: 'Orientation', value: pair, cls: 'bg-do' }], 2)) {
+                                return true;
+                            }
+                        }
+                    }
+                    if (search(index, tokens, 3)) return true;
+                }
+
+                // Stage 3: Locations (optional)
+                else if (stage === 3) {
                     for (let loc of LOCATIONS) {
-                        if (rem === loc) {
-                            return [{ type: 'Orientation', value: pair, cls: 'bg-do' }, { type: 'Location', value: rem, cls: 'bg-loc' }];
+                        if (remaining.startsWith(loc)) {
+                            if (search(index + loc.length, [...tokens, { type: 'Location', value: loc, cls: 'bg-loc' }], 3)) {
+                                return true;
+                            }
+                        }
+                    }
+                    const CAPITAL_LOCATIONS = new Set(['I', 'K', 'J', 'T', 'E', 'A']);
+                    if (CAPITAL_LOCATIONS.has(suffix[index])) {
+                        if (search(index + 1, [...tokens, { type: 'Location', value: suffix[index], cls: 'bg-loc' }], 3)) {
+                            return true;
                         }
                     }
                 }
+
+                return false;
             }
 
-            // Otherwise, it's a movement
+            let success = search(0, [], 1);
+            if (success && bestParse && bestParse.length > 0) {
+                return bestParse;
+            }
+
             return [{ type: 'Movement', value: suffix, cls: 'bg-mov' }];
         }
 
         function parseSLDWord(input) {
-            let originalInput = input;
-            if (input && input.length > 0) {
-                input = input.charAt(0).toLowerCase() + input.slice(1);
+            if (!input) return null;
+            let trimmed = input.trim().replace(/▓/g, '/');
+            if (trimmed.includes(' ')) {
+                return trimmed.split(/\s+/).map(parseSLDWord);
             }
+
+            let originalInput = trimmed;
+            if (trimmed && trimmed.length > 0) {
+                trimmed = trimmed.charAt(0).toLowerCase() + trimmed.slice(1);
+            }
+            input = trimmed;
             const delimiters = ['-', '=', '~'];
             let segments = [];
             let current_segment = "";
@@ -511,6 +551,23 @@
                 result.initial_sign.non_dominant_orientation = "ka";
                 result.initial_sign.dominant_location = "I";
                 result.initial_sign.non_dominant_location = "K";
+            }
+
+            // Symmetrical two-handed copying of orientation/handshape changes in actions
+            let isSymmetricalTwoHanded = result.initial_sign.non_dominant_handshape !== null &&
+                                         result.initial_sign.non_dominant_handshape === result.initial_sign.dominant_handshape &&
+                                         result.initial_sign.non_dominant_orientation === result.initial_sign.dominant_orientation;
+
+            if (isSymmetricalTwoHanded) {
+                result.actions.forEach(act => {
+                    if (act.change_in_dominant_orientation && !act.change_in_non_dominant_orientation) {
+                        act.change_in_non_dominant_orientation = act.change_in_dominant_orientation;
+                    }
+                    if (act.change_in_dominant_handshape && !act.change_in_non_dominant_handshape) {
+                        act.change_in_non_dominant_handshape = act.change_in_dominant_handshape;
+                        act.change_in_non_dominant_handshape_signature = act.change_in_dominant_handshape_signature;
+                    }
+                });
             }
 
             return result;

@@ -1367,84 +1367,152 @@
           return;
         }
 
-        // Color coding color coded output
+        // Color coding color coded output & Tree rendering lines
         let ccHTML = '';
-        if (parsed.raw_initial_sign) {
-          let init = parsed.raw_initial_sign;
-          if (init.handshapes.length > 0) ccHTML += `<span class="token bg-ds" title="Dominant Handshape">${normalizeWord(init.handshapes[0].spelling)}</span>`;
-          if (init.handshapes.length > 1) ccHTML += `<span class="token bg-nds" title="Non-Dominant Handshape">${normalizeWord(init.handshapes[1].spelling)}</span>`;
+        let treeLines = [];
+        let parsedList = Array.isArray(parsed) ? parsed : [parsed];
 
-          if (init.orientations.length > 0) ccHTML += `<span class="token bg-do" title="Dominant Orientation">${init.orientations[0]}</span>`;
-          if (init.orientations.length > 1) ccHTML += `<span class="token bg-ndo" title="Non-Dominant Orientation">${init.orientations[1]}</span>`;
-
-          init.parsedLocations.forEach(loc => {
-            ccHTML += `<span class="token bg-loc" title="Location">${loc}</span>`;
+        if (Array.isArray(parsed)) {
+          treeLines.push(`Sign: ${sign}`);
+          parsedList.forEach((subParsed, subIdx) => {
+            let isLastWord = subIdx === parsedList.length - 1;
+            let wordPfx = isLastWord ? '└── ' : '├── ';
+            let wordChildPfx = isLastWord ? '    ' : '│   ';
+            
+            treeLines.push(wordPfx + `Word: ${subParsed.transcription}`);
+            
+            // Build sub-tree lines
+            let isLastSegment = subParsed.actions.length === 0;
+            let pfx = isLastSegment ? '└── ' : '├── ';
+            let childPfx = isLastSegment ? '    ' : '│   ';
+            treeLines.push(wordChildPfx + pfx + 'Initial Sign');
+            
+            let children = [];
+            let state = subParsed.initial_sign;
+            if (state.dominant_handshape) children.push('Dominant Handshape: ' + state.dominant_handshape);
+            if (state.dominant_handshape_signature) children.push('  └─ Signature: ' + state.dominant_handshape_signature);
+            if (state.non_dominant_handshape) children.push('Non-Dominant Handshape: ' + state.non_dominant_handshape);
+            if (state.non_dominant_handshape_signature) children.push('  └─ Signature: ' + state.non_dominant_handshape_signature);
+            if (state.dominant_orientation) children.push('Dominant Orientation: ' + state.dominant_orientation);
+            if (state.non_dominant_orientation) children.push('Non-Dominant Orientation: ' + state.non_dominant_orientation);
+            if (state.dominant_location) children.push('Dominant Location: ' + state.dominant_location);
+            if (state.non_dominant_location) children.push('Non-Dominant Location: ' + state.non_dominant_location);
+            
+            children.forEach((c, idx) => {
+              let isLastChild = idx === children.length - 1;
+              let branch = isLastChild ? '└── ' : '├── ';
+              treeLines.push(wordChildPfx + childPfx + branch + c);
+            });
+            
+            subParsed.actions.forEach((act, actIdx) => {
+              let isLastAct = actIdx === subParsed.actions.length - 1;
+              let actPfx = isLastAct ? '└── ' : '├── ';
+              treeLines.push(wordChildPfx + actPfx + 'Action: ' + act.descriptor);
+              
+              let actChildren = [];
+              if (act.movement) actChildren.push('Movement: ' + act.movement);
+              if (act.change_in_dominant_handshape) {
+                actChildren.push('Change Dominant Handshape: ' + act.change_in_dominant_handshape);
+                if (act.change_in_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_dominant_handshape_signature);
+              }
+              if (act.change_in_non_dominant_handshape) {
+                actChildren.push('Change Non-Dominant Handshape: ' + act.change_in_non_dominant_handshape);
+                if (act.change_in_non_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_non_dominant_handshape_signature);
+              }
+              if (act.change_in_dominant_orientation) actChildren.push('Change Dominant Orientation: ' + act.change_in_dominant_orientation);
+              if (act.change_in_non_dominant_orientation) actChildren.push('Change Non-Dominant Orientation: ' + act.change_in_non_dominant_orientation);
+              if (act.change_in_dominant_location) actChildren.push('Change Dominant Location: ' + act.change_in_dominant_location);
+              if (act.change_in_non_dominant_location) actChildren.push('Change Non-Dominant Location: ' + act.change_in_non_dominant_location);
+              
+              let actChildPfx = isLastAct ? '    ' : '│   ';
+              actChildren.forEach((t, tIdx) => {
+                let isLastChild = tIdx === actChildren.length - 1;
+                let branch = isLastChild ? '└── ' : '├── ';
+                treeLines.push(wordChildPfx + actChildPfx + branch + t);
+              });
+            });
+          });
+        } else {
+          // Single word behavior (original)
+          treeLines.push(`Sign: ${parsed.transcription}`);
+          
+          let isLastSegment = parsed.actions.length === 0;
+          let pfx = isLastSegment ? '└── ' : '├── ';
+          let childPfx = isLastSegment ? '    ' : '│   ';
+          treeLines.push(pfx + 'Initial Sign');
+          
+          let children = [];
+          let state = parsed.initial_sign;
+          if (state.dominant_handshape) children.push('Dominant Handshape: ' + state.dominant_handshape);
+          if (state.dominant_handshape_signature) children.push('  └─ Signature: ' + state.dominant_handshape_signature);
+          if (state.non_dominant_handshape) children.push('Non-Dominant Handshape: ' + state.non_dominant_handshape);
+          if (state.non_dominant_handshape_signature) children.push('  └─ Signature: ' + state.non_dominant_handshape_signature);
+          if (state.dominant_orientation) children.push('Dominant Orientation: ' + state.dominant_orientation);
+          if (state.non_dominant_orientation) children.push('Non-Dominant Orientation: ' + state.non_dominant_orientation);
+          if (state.dominant_location) children.push('Dominant Location: ' + state.dominant_location);
+          if (state.non_dominant_location) children.push('Non-Dominant Location: ' + state.non_dominant_location);
+          
+          children.forEach((c, idx) => {
+            let isLastChild = idx === children.length - 1;
+            let branch = isLastChild ? '└── ' : '├── ';
+            treeLines.push(childPfx + branch + c);
+          });
+          
+          parsed.actions.forEach((act, actIdx) => {
+            let isLastAct = actIdx === parsed.actions.length - 1;
+            let actPfx = isLastAct ? '└── ' : '├── ';
+            treeLines.push(actPfx + 'Action: ' + act.descriptor);
+            
+            let actChildren = [];
+            if (act.movement) actChildren.push('Movement: ' + act.movement);
+            if (act.change_in_dominant_handshape) {
+              actChildren.push('Change Dominant Handshape: ' + act.change_in_dominant_handshape);
+              if (act.change_in_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_dominant_handshape_signature);
+            }
+            if (act.change_in_non_dominant_handshape) {
+              actChildren.push('Change Non-Dominant Handshape: ' + act.change_in_non_dominant_handshape);
+              if (act.change_in_non_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_non_dominant_handshape_signature);
+            }
+            if (act.change_in_dominant_orientation) actChildren.push('Change Dominant Orientation: ' + act.change_in_dominant_orientation);
+            if (act.change_in_non_dominant_orientation) actChildren.push('Change Non-Dominant Orientation: ' + act.change_in_non_dominant_orientation);
+            if (act.change_in_dominant_location) actChildren.push('Change Dominant Location: ' + act.change_in_dominant_location);
+            if (act.change_in_non_dominant_location) actChildren.push('Change Non-Dominant Location: ' + act.change_in_non_dominant_location);
+            
+            let actChildPfx = isLastAct ? '    ' : '│   ';
+            actChildren.forEach((t, tIdx) => {
+              let isLastChild = tIdx === actChildren.length - 1;
+              let branch = isLastChild ? '└── ' : '├── ';
+              treeLines.push(actChildPfx + branch + t);
+            });
           });
         }
 
-        parsed.raw_actions.forEach(act => {
-          ccHTML += `<span class="token bg-act" title="Action">${act.descriptor}</span>`;
-          if (act.changes) {
-            act.changes.forEach(t => {
-              ccHTML += `<span class="token ${t.cls}" title="${t.type}">${t.value}</span>`;
+        parsedList.forEach((subParsed, subIdx) => {
+          if (subIdx > 0) {
+            ccHTML += `<span style="display:inline-block; width: 16px;"></span>`;
+          }
+          if (subParsed.raw_initial_sign) {
+            let init = subParsed.raw_initial_sign;
+            if (init.handshapes.length > 0) ccHTML += `<span class="token bg-ds" title="Dominant Handshape">${normalizeWord(init.handshapes[0].spelling)}</span>`;
+            if (init.handshapes.length > 1) ccHTML += `<span class="token bg-nds" title="Non-Dominant Handshape">${normalizeWord(init.handshapes[1].spelling)}</span>`;
+            
+            if (init.orientations.length > 0) ccHTML += `<span class="token bg-do" title="Dominant Orientation">${init.orientations[0]}</span>`;
+            if (init.orientations.length > 1) ccHTML += `<span class="token bg-ndo" title="Non-Dominant Orientation">${init.orientations[1]}</span>`;
+            
+            init.parsedLocations.forEach(loc => {
+              ccHTML += `<span class="token bg-loc" title="Location">${loc}</span>`;
             });
           }
-        });
-
-
-
-        // Tree rendering lines
-        let treeLines = [];
-        treeLines.push(`Sign: ${parsed.transcription}`);
-
-        let isLastSegment = parsed.actions.length === 0;
-        let pfx = isLastSegment ? '└── ' : '├── ';
-        let childPfx = isLastSegment ? '    ' : '│   ';
-        treeLines.push(pfx + 'Initial Sign');
-
-        let children = [];
-        let state = parsed.initial_sign;
-        if (state.dominant_handshape) children.push('Dominant Handshape: ' + state.dominant_handshape);
-        if (state.dominant_handshape_signature) children.push('  └─ Signature: ' + state.dominant_handshape_signature);
-        if (state.non_dominant_handshape) children.push('Non-Dominant Handshape: ' + state.non_dominant_handshape);
-        if (state.non_dominant_handshape_signature) children.push('  └─ Signature: ' + state.non_dominant_handshape_signature);
-        if (state.dominant_orientation) children.push('Dominant Orientation: ' + state.dominant_orientation);
-        if (state.non_dominant_orientation) children.push('Non-Dominant Orientation: ' + state.non_dominant_orientation);
-        if (state.dominant_location) children.push('Dominant Location: ' + state.dominant_location);
-        if (state.non_dominant_location) children.push('Non-Dominant Location: ' + state.non_dominant_location);
-
-        children.forEach((c, idx) => {
-          let isLastChild = idx === children.length - 1;
-          let branch = isLastChild ? '└── ' : '├── ';
-          treeLines.push(childPfx + branch + c);
-        });
-
-        parsed.actions.forEach((act, actIdx) => {
-          let isLastAct = actIdx === parsed.actions.length - 1;
-          let actPfx = isLastAct ? '└── ' : '├── ';
-          treeLines.push(actPfx + 'Action: ' + act.descriptor);
-
-          let actChildren = [];
-          if (act.movement) actChildren.push('Movement: ' + act.movement);
-          if (act.change_in_dominant_handshape) {
-            actChildren.push('Change Dominant Handshape: ' + act.change_in_dominant_handshape);
-            if (act.change_in_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_dominant_handshape_signature);
+          if (subParsed.raw_actions) {
+            subParsed.raw_actions.forEach(act => {
+              ccHTML += `<span class="token bg-act" title="Action">${act.descriptor}</span>`;
+              if (act.changes) {
+                act.changes.forEach(t => {
+                  ccHTML += `<span class="token ${t.cls}" title="${t.type}">${t.value}</span>`;
+                });
+              }
+            });
           }
-          if (act.change_in_non_dominant_handshape) {
-            actChildren.push('Change Non-Dominant Handshape: ' + act.change_in_non_dominant_handshape);
-            if (act.change_in_non_dominant_handshape_signature) actChildren.push('  └─ Signature: ' + act.change_in_non_dominant_handshape_signature);
-          }
-          if (act.change_in_dominant_orientation) actChildren.push('Change Dominant Orientation: ' + act.change_in_dominant_orientation);
-          if (act.change_in_non_dominant_orientation) actChildren.push('Change Non-Dominant Orientation: ' + act.change_in_non_dominant_orientation);
-          if (act.change_in_dominant_location) actChildren.push('Change Dominant Location: ' + act.change_in_dominant_location);
-          if (act.change_in_non_dominant_location) actChildren.push('Change Non-Dominant Location: ' + act.change_in_non_dominant_location);
-
-          let actChildPfx = isLastAct ? '    ' : '│   ';
-          actChildren.forEach((t, tIdx) => {
-            let isLastChild = tIdx === actChildren.length - 1;
-            let branch = isLastChild ? '└── ' : '├── ';
-            treeLines.push(actChildPfx + branch + t);
-          });
         });
 
         // Copy button ID helper
