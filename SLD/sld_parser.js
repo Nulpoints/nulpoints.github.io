@@ -321,10 +321,21 @@
 
                 // Stage 1: Handshape (optional, must be first if present)
                 if (stage === 1) {
-                    for (let len = remaining.length; len >= 2; len--) {
-                        let spelling = remaining.substring(0, len);
+                    let doubled = false;
+                    let startIdx = index;
+                    if (index + 1 < suffix.length && normalize(suffix[index]) === normalize(suffix[index + 1]) && INITIAL_SET.has(normalize(suffix[index]))) {
+                        doubled = true;
+                        startIdx = index + 1;
+                    }
+                    let rem = suffix.substring(startIdx);
+                    for (let len = rem.length; len >= 2; len--) {
+                        let spelling = rem.substring(0, len);
                         if (isValidHandshape(spelling)) {
-                            if (search(index + len, [...tokens, { type: 'Handshape', value: spelling, cls: 'bg-ds' }], 2)) {
+                            let nextTokens = [...tokens, { type: 'Handshape', value: spelling, cls: 'bg-ds' }];
+                            if (doubled) {
+                                nextTokens.push({ type: 'Handshape', value: spelling, cls: 'bg-ds' });
+                            }
+                            if (search(startIdx + len, nextTokens, 2)) {
                                 return true;
                             }
                         }
@@ -393,7 +404,12 @@
             let current_segment = "";
 
             for (let i = 0; i < input.length; i++) {
-                if (delimiters.includes(input[i])) {
+                if (input.substring(i, i + 2) === '-/') {
+                    if (current_segment) segments.push({ type: 'string', value: current_segment });
+                    segments.push({ type: 'delimiter', value: '-/' });
+                    current_segment = "";
+                    i++; // skip '/'
+                } else if (delimiters.includes(input[i])) {
                     if (current_segment) segments.push({ type: 'string', value: current_segment });
                     segments.push({ type: 'delimiter', value: input[i] });
                     current_segment = "";
@@ -553,13 +569,18 @@
                 result.initial_sign.non_dominant_location = "K";
             }
 
-            // Symmetrical two-handed copying of orientation/handshape changes in actions
-            let isSymmetricalTwoHanded = result.initial_sign.non_dominant_handshape !== null &&
-                                         result.initial_sign.non_dominant_handshape === result.initial_sign.dominant_handshape &&
-                                         result.initial_sign.non_dominant_orientation === result.initial_sign.dominant_orientation;
+            // Symmetrical two-handed copying of orientation/handshape changes in actions (tracked dynamically)
+            let current_dominant_handshape = result.initial_sign.dominant_handshape;
+            let current_non_dominant_handshape = result.initial_sign.non_dominant_handshape;
+            let current_dominant_orientation = result.initial_sign.dominant_orientation;
+            let current_non_dominant_orientation = result.initial_sign.non_dominant_orientation;
 
-            if (isSymmetricalTwoHanded) {
-                result.actions.forEach(act => {
+            result.actions.forEach(act => {
+                let isSymmetrical = current_non_dominant_handshape !== null &&
+                                     current_non_dominant_handshape === current_dominant_handshape &&
+                                     current_non_dominant_orientation === current_dominant_orientation;
+
+                if (isSymmetrical) {
                     if (act.change_in_dominant_orientation && !act.change_in_non_dominant_orientation) {
                         act.change_in_non_dominant_orientation = act.change_in_dominant_orientation;
                     }
@@ -567,8 +588,14 @@
                         act.change_in_non_dominant_handshape = act.change_in_dominant_handshape;
                         act.change_in_non_dominant_handshape_signature = act.change_in_dominant_handshape_signature;
                     }
-                });
-            }
+                }
+
+                // Update active states for subsequent actions
+                if (act.change_in_dominant_handshape) current_dominant_handshape = act.change_in_dominant_handshape;
+                if (act.change_in_non_dominant_handshape) current_non_dominant_handshape = act.change_in_non_dominant_handshape;
+                if (act.change_in_dominant_orientation) current_dominant_orientation = act.change_in_dominant_orientation;
+                if (act.change_in_non_dominant_orientation) current_non_dominant_orientation = act.change_in_non_dominant_orientation;
+            });
 
             return result;
         }

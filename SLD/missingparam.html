@@ -275,22 +275,38 @@
       cursor: pointer;
       text-align: center;
       font-weight: 600;
-      color: var(--text-muted);
+      color: var(--text-main);
       transition: var(--transition-smooth);
       user-select: none;
+    }
+
+    .select-card .card-desc {
+      color: var(--text-muted);
+      opacity: 0.85;
+      transition: var(--transition-smooth);
     }
 
     .select-card:hover {
       border-color: var(--accent-primary);
       background: var(--glass-hover-border);
-      color: var(--text-main);
+      color: var(--text-bright);
+    }
+
+    .select-card:hover .card-desc {
+      color: var(--text-bright);
+      opacity: 0.95;
     }
 
     .select-card.active {
       border-color: var(--accent-primary);
       background: var(--accent-gradient);
-      color: var(--bg-solid);
+      color: var(--bg-solid) !important;
       box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .select-card.active .card-desc {
+      color: var(--bg-solid) !important;
+      opacity: 0.8;
     }
 
     /* Dropdown Multiselect */
@@ -1028,6 +1044,9 @@
         <a href="flashcards.html" class="btn">
           <i class="fa-solid fa-graduation-cap"></i> Practice Flashcards
         </a>
+        <a href="handshape_game.html" class="btn">
+          <i class="fa-solid fa-hand"></i> Handshape Game
+        </a>
         <a href="https://sldictionary.org/" target="_blank" rel="noopener" class="btn btn-outline">
           <i class="fa-solid fa-globe"></i> Official SLD Website
         </a>
@@ -1047,15 +1066,15 @@
           <div class="option-grid" id="difficulty-grid">
             <div class="select-card active" data-value="easy">
               <div style="font-size: 1.1rem;">Easy</div>
-              <div style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">1 missing param</div>
+              <div class="card-desc" style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">1 missing param</div>
             </div>
             <div class="select-card" data-value="medium">
               <div style="font-size: 1.1rem;">Medium</div>
-              <div style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">2 missing params</div>
+              <div class="card-desc" style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">2 missing params</div>
             </div>
             <div class="select-card" data-value="hard">
               <div style="font-size: 1.1rem;">Hard</div>
-              <div style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">3 missing params</div>
+              <div class="card-desc" style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">3 missing params</div>
             </div>
           </div>
         </div>
@@ -1066,11 +1085,11 @@
           <div class="option-grid" id="inputmode-grid">
             <div class="select-card active" data-value="mc">
               <div style="font-size: 1.1rem;"><i class="fa-solid fa-list-check"></i> Multiple Choice</div>
-              <div style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">Interactive selection</div>
+              <div class="card-desc" style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">Interactive selection</div>
             </div>
             <div class="select-card" data-value="typing">
               <div style="font-size: 1.1rem;"><i class="fa-solid fa-keyboard"></i> Typing Test</div>
-              <div style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">Type SLD symbols</div>
+              <div class="card-desc" style="font-size: 0.75rem; font-weight: normal; margin-top: 2px;">Type SLD symbols</div>
             </div>
           </div>
         </div>

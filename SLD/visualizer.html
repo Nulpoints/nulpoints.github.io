@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLD Handshape Converter & Visualizer</title>
+    <link rel="stylesheet" href="../theme.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+        }
+      }
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 16px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .back-link {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .back-link:hover {
+            color: var(--accent-primary);
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            background: rgba(20, 20, 20, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel-title {
+            font-size: 15px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 8px;
+            margin: 0 0 10px 0;
+        }
+
+        /* Converter Inputs */
+        .converter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-box label {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .input-box input {
+            padding: 12px 14px;
+            font-size: 16px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .input-box input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px var(--accent-glow);
+        }
+
+        /* Signature Builder */
+        .signature-builder {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sig-inline-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+        }
+
+        .sig-inline-row .sig-col {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .sig-col label {
+            font-size: 9px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+
+        .sig-inline-row .sig-select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px 2px;
+            font-size: 13px;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .sig-inline-row .sig-select:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px var(--accent-glow);
+        }
+
+        .sig-spacer-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            width: 16px;
+            flex-shrink: 0;
+            padding-bottom: 10px;
+        }
+
+        .sig-spacer-col input[type="checkbox"] {
+            cursor: pointer;
+            accent-color: var(--accent-primary);
+            width: 13px;
+            height: 13px;
+            margin: 0;
+        }
+
+
+
+        /* Realistic Visualizer Canvas */
+        .canvas-card {
+            background: linear-gradient(145deg, #131317 0%, #1d1d23 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            min-height: 300px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Hand SVG & Illustration Styling */
+        .hand-svg {
+            width: 100%;
+            max-width: 260px;
+            height: auto;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+        }
+
+        /* SVG Class Overrides to draw a real hand */
+        .hand-svg path.hand-outline {
+            fill: var(--svg-outline-color, #1f2937);
+            stroke: var(--svg-outline-color, #1f2937);
+            stroke-width: var(--svg-outline-width, 32px);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .hand-svg path.hand-flesh {
+            fill: var(--svg-flesh-color, #f3f4f6);
+            stroke: var(--svg-flesh-color, #f3f4f6);
+            stroke-width: var(--svg-flesh-width, 24px);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .hand-svg line.crease {
+            stroke: var(--svg-crease-color, rgba(0, 0, 0, 0.22));
+            stroke-width: 1.8px;
+            stroke-linecap: round;
+        }
+
+        .hand-svg ellipse.fingernail {
+            fill: var(--svg-nail-color, rgba(255, 255, 255, 0.35));
+            stroke: var(--svg-crease-color, rgba(0, 0, 0, 0.15));
+            stroke-width: 0.8px;
+        }
+
+        /* Meta details */
+        .details-box {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .meta-title {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
+
+        .signature-value {
+            font-family: monospace;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-primary);
+            text-shadow: 0 0 10px var(--accent-glow);
+            letter-spacing: 2px;
+            margin: 5px 0;
+            display: inline-block;
+        }
+
+        .handshape-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .details-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+
+
+        .status-message {
+            font-size: 13px;
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+    <script src="../theme.js" defer></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <a href="SLDparser.html" class="back-link">← Back to Parser</a>
+            <h1>Handshape Converter & Visualizer</h1>
+            <p class="subtitle">Translate between handshape names, signatures, and realistic drawings</p>
+        </header>
+
+        <div class="workspace">
+            <!-- Left Panel: Bidirectional Converter & Guided Builder -->
+            <div class="panel">
+                <!-- Bidirectional Converter -->
+                <div>
+                    <h3 class="panel-title">Bidirectional Converter</h3>
+                    <div class="converter-grid">
+                        <div class="input-box">
+                            <label for="hsNameInput">Handshape Name</label>
+                            <input type="text" id="hsNameInput" placeholder="e.g. ba, le, sa, vo" value="ba">
+                        </div>
+                        <div class="input-box">
+                            <label for="hsSigInput">Grammatical Signature</label>
+                            <input type="text" id="hsSigInput" placeholder="e.g. ALLLL, E^XSSS" value="ALLLL">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Signature Builder -->
+                <div>
+                    <h3 class="panel-title">Signature Builder</h3>
+                    <div class="signature-builder">
+                        <div class="sig-inline-row">
+                            <div class="sig-col">
+                                <label for="sigThumb">Thumb</label>
+                                <select id="sigThumb" class="sig-select" onchange="builderChanged()">
+                                    <option value="A">A</option>
+                                    <option value="F">F</option>
+                                    <option value="E">E</option>
+                                    <option value="C">C</option>
+                                    <option value="U">U</option>
+                                </select>
+                            </div>
+                            <div class="sig-col">
+                                <label for="sigContact">Contact</label>
+                                <select id="sigContact" class="sig-select" onchange="builderChanged()">
+                                    <option value="none">—</option>
+                                    <option value="+">+ Tip</option>
+                                    <option value="^1">^ Index</option>
+                                    <option value="^2">^ Middle</option>
+                                    <option value="^3">^ Ring</option>
+                                    <option value="^4">^ Pinky</option>
+                                </select>
+                            </div>
+                            <div class="sig-col">
+                                <label for="sigIndex">Index</label>
+                                <select id="sigIndex" class="sig-select" onchange="builderChanged()">
+                                    <option value="L">L</option>
+                                    <option value="S">S</option>
+                                    <option value="C">C</option>
+                                    <option value="U">U</option>
+                                    <option value="X">X</option>
+                                    <option value="R">R</option>
+                                </select>
+                            </div>
+                            <div class="sig-spacer-col" title="Index-Middle abduction">
+                                <input type="checkbox" id="sigSpaceIM" onchange="builderChanged()">
+                            </div>
+                            <div class="sig-col">
+                                <label for="sigMiddle">Middle</label>
+                                <select id="sigMiddle" class="sig-select" onchange="builderChanged()">
+                                    <option value="L">L</option>
+                                    <option value="S">S</option>
+                                    <option value="C">C</option>
+                                    <option value="U">U</option>
+                                    <option value="X">X</option>
+                                    <option value="R">R</option>
+                                </select>
+                            </div>
+                            <div class="sig-spacer-col" title="Middle-Ring abduction">
+                                <input type="checkbox" id="sigSpaceMR" onchange="builderChanged()">
+                            </div>
+                            <div class="sig-col">
+                                <label for="sigRing">Ring</label>
+                                <select id="sigRing" class="sig-select" onchange="builderChanged()">
+                                    <option value="L">L</option>
+                                    <option value="S">S</option>
+                                    <option value="C">C</option>
+                                    <option value="U">U</option>
+                                    <option value="X">X</option>
+                                    <option value="R">R</option>
+                                </select>
+                            </div>
+                            <div class="sig-spacer-col" title="Ring-Pinky abduction">
+                                <input type="checkbox" id="sigSpaceRP" onchange="builderChanged()">
+                            </div>
+                            <div class="sig-col">
+                                <label for="sigPinky">Pinky</label>
+                                <select id="sigPinky" class="sig-select" onchange="builderChanged()">
+                                    <option value="L">L</option>
+                                    <option value="S">S</option>
+                                    <option value="C">C</option>
+                                    <option value="U">U</option>
+                                    <option value="X">X</option>
+                                    <option value="R">R</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="statusAlert" class="status-message"></div>
+            </div>
+
+            <!-- Right Panel: Visualizer & Details -->
+            <div class="panel">
+                <h3 class="panel-title">Interactive 3D Handshape</h3>
+
+                <!-- 3D WebGL Canvas Card -->
+                <div class="canvas-card" style="padding: 0; overflow: hidden; position: relative;">
+                    <div id="handshape3d" style="width: 100%; height: 350px;"></div>
+                </div>
+
+                <!-- Handshape Metadata Details -->
+                <div class="details-box">
+                    <div class="meta-title">Selected Handshape Details</div>
+                    <div id="detailsName" class="handshape-name">ba</div>
+                    <div id="detailsSig" class="signature-value">ALLLL</div>
+                    <div id="detailsDesc" class="details-desc">Flat hand with thumb extended.</div>
+                </div>
+
+            </div>
+        </div>
+        
+        <footer style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+            <p>3D Handshape visualization adapted from <a href="https://sldictionary.org" target="_blank" style="color: var(--accent-primary); text-decoration: none; font-weight: 500; transition: var(--transition-smooth);">SLDictionary.org</a>. Original scripts by <strong>Dr. Jacob Tosado</strong>.</p>
+        </footer>
+    </div>
+
+    <!-- Calculations & SVG Logic scripts -->
+    <script src="signature_calculator.js"></script>
+    <script src="handshape_calculator.js"></script>
+    <script>
+        let handshapeDescriptions = {};
+        let signatureDict = {};
+        let calculator = null;
+        let isSyncing = false; // prevents recursive loop when syncing inputs
+
+        // Coordinates & constants to draw a realistic hand
+        const KNUCKLES = {
+            thumb: { x: 82, y: 172 },
+            index: { x: 115, y: 125 },
+            middle: { x: 140, y: 118 },
+            ring: { x: 165, y: 123 },
+            pinky: { x: 190, y: 135 }
+        };
+
+        const LENGTHS = {
+            thumb: 40,
+            index: 68,
+            middle: 74,
+            ring: 68,
+            pinky: 54
+        };
+
+        const BASE_ANGLES = {
+            thumb: -55,
+            index: -10,
+            middle: -2,
+            ring: 6,
+            pinky: 14
+        };
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            // Instantiate calculators
+            if (typeof HandshapeCalculator !== 'undefined') {
+                calculator = new HandshapeCalculator();
+                signatureDict = calculator.signatureDict;
+            }
+
+            // Load parameter descriptions
+            try {
+                const response = await fetch('sld_parameters.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && data.handshape) {
+                        handshapeDescriptions = data.handshape;
+                    }
+                }
+            } catch (e) {
+                console.warn("Could not load descriptions JSON. Falling back to default calculator data.");
+            }
+
+            // Event Listeners for direct text boxes
+            document.getElementById('hsNameInput').addEventListener('input', nameInputChanged);
+            document.getElementById('hsSigInput').addEventListener('input', sigInputChanged);
+
+            // Setup default view
+            nameInputChanged();
+        });
+
+        // 1. Converter: Handshape Name Input Changed
+        function nameInputChanged() {
+            if (isSyncing) return;
+            isSyncing = true;
+
+            const nameInput = document.getElementById('hsNameInput').value.trim().toLowerCase();
+            const sigInput = document.getElementById('hsSigInput');
+            const alertBox = document.getElementById('statusAlert');
+            alertBox.style.display = 'none';
+
+            let foundSig = '';
+            // Search dictionary first
+            for (const sig in signatureDict) {
+                if (signatureDict[sig].name.toLowerCase() === nameInput) {
+                    foundSig = sig;
+                    break;
+                }
+            }
+
+            // Fallback: Calculate signature from name
+            if (!foundSig && typeof SignatureCalculator !== 'undefined') {
+                const tempSigCalc = new SignatureCalculator();
+                const calcResult = tempSigCalc.calculate(nameInput);
+                if (calcResult && calcResult.handshapeSignature && calcResult.handshapeSignature !== 'None') {
+                    foundSig = calcResult.handshapeSignature;
+                }
+            }
+
+            if (foundSig) {
+                sigInput.value = foundSig;
+                syncSignatureBuilderFromSignature(foundSig);
+                renderHand(foundSig);
+                updateDetails(nameInput, foundSig);
+            } else {
+                if (nameInput) {
+                    alertBox.textContent = `⚠️ Handshape "${nameInput}" not found in current dictionary database.`;
+                    alertBox.style.display = 'block';
+                }
+                updateDetails(nameInput || 'Unknown', sigInput.value || 'None');
+            }
+            isSyncing = false;
+        }
+
+        // 2. Converter: Signature Input Changed
+        function sigInputChanged() {
+            if (isSyncing) return;
+            isSyncing = true;
+
+            const sigInput = document.getElementById('hsSigInput').value.trim().toUpperCase();
+            const nameInput = document.getElementById('hsNameInput');
+            const alertBox = document.getElementById('statusAlert');
+            alertBox.style.display = 'none';
+
+            if (sigInput.length >= 5) {
+                let resolvedName = '';
+                const dictEntry = signatureDict[sigInput];
+                if (dictEntry) {
+                    resolvedName = dictEntry.name;
+                }
+
+                // Fallback: Derive spelling from signature
+                if (!resolvedName && calculator) {
+                    const calcResult = calculator.calculate(sigInput);
+                    if (calcResult && calcResult.spelling1) {
+                        resolvedName = calcResult.spelling1;
+                    }
+                }
+
+                if (resolvedName) {
+                    nameInput.value = resolvedName;
+                } else {
+                    nameInput.value = ''; // custom shape
+                }
+
+                syncSignatureBuilderFromSignature(sigInput);
+                renderHand(sigInput);
+                updateDetails(resolvedName || 'Custom Shape', sigInput);
+            } else {
+                nameInput.value = '';
+            }
+            isSyncing = false;
+        }
+
+        // 3. Signature Builder inputs changed
+        function builderChanged() {
+            if (isSyncing) return;
+            isSyncing = true;
+
+            // Compute signature string from inputs
+            const computedSig = generateSignatureFromInputs();
+            
+            // Sync text boxes
+            document.getElementById('hsSigInput').value = computedSig;
+
+            let resolvedName = '';
+            const dictEntry = signatureDict[computedSig];
+            if (dictEntry) {
+                resolvedName = dictEntry.name;
+            }
+
+            // Fallback: Derive spelling from computed signature
+            if (!resolvedName && calculator) {
+                const calcResult = calculator.calculate(computedSig);
+                if (calcResult && calcResult.spelling1) {
+                    resolvedName = calcResult.spelling1;
+                }
+            }
+
+            document.getElementById('hsNameInput').value = resolvedName;
+            renderHand(computedSig);
+            updateDetails(resolvedName || 'Custom Shape', computedSig);
+
+            isSyncing = false;
+        }
+
+        // Parse signature builder settings into signature string
+        function generateSignatureFromInputs() {
+            const thumb = document.getElementById('sigThumb').value;
+            const index = document.getElementById('sigIndex').value;
+            const middle = document.getElementById('sigMiddle').value;
+            const ring = document.getElementById('sigRing').value;
+            const pinky = document.getElementById('sigPinky').value;
+
+            const spaceIM = document.getElementById('sigSpaceIM').checked;
+            const spaceMR = document.getElementById('sigSpaceMR').checked;
+            const spaceRP = document.getElementById('sigSpaceRP').checked;
+
+            const contact = document.getElementById('sigContact').value;
+
+            // Build fingers part
+            let fingersStr = '';
+            fingersStr += index;
+            if (spaceIM) fingersStr += '|';
+            fingersStr += middle;
+            if (spaceMR) fingersStr += '|';
+            fingersStr += ring;
+            if (spaceRP) fingersStr += '|';
+            fingersStr += pinky;
+
+            // Insert tuck caret ^ if contact is tuck
+            if (contact.startsWith('^')) {
+                let tuckIdx = parseInt(contact[1]);
+                let chars = fingersStr.split('');
+                let fingerCount = 0;
+                let inserted = false;
+                for (let idx = 0; idx < chars.length; idx++) {
+                    if (chars[idx] !== '|') {
+                        fingerCount++;
+                        if (fingerCount === tuckIdx) {
+                            chars.splice(idx, 0, '^');
+                            inserted = true;
+                            break;
+                        }
+                    }
+                }
+                if (!inserted) chars.push('^');
+                fingersStr = chars.join('');
+            }
+
+            let sig = thumb + fingersStr;
+            if (contact === '+') {
+                sig += '+';
+            }
+            return sig;
+        }
+
+        // Reverse sync: Signature -> Signature Builder Dropdowns
+        function syncSignatureBuilderFromSignature(sigStr) {
+            const parsed = parseSignatureString(sigStr);
+            if (!parsed) return;
+
+            // Set Thumb Position
+            document.getElementById('sigThumb').value = parsed.thumb;
+
+            // Set Finger States
+            const fingers = ['sigIndex', 'sigMiddle', 'sigRing', 'sigPinky'];
+            for (let i = 0; i < 4; i++) {
+                if (parsed.fingerStates[i]) {
+                    document.getElementById(fingers[i]).value = parsed.fingerStates[i];
+                } else {
+                    document.getElementById(fingers[i]).value = 'S'; // default closed
+                }
+            }
+
+            // Set Spacings
+            document.getElementById('sigSpaceIM').checked = parsed.abductions[0] || false;
+            document.getElementById('sigSpaceMR').checked = parsed.abductions[1] || false;
+            document.getElementById('sigSpaceRP').checked = parsed.abductions[2] || false;
+
+            // Set Contact/Tuck
+            if (parsed.hasContact) {
+                document.getElementById('sigContact').value = '+';
+            } else if (parsed.tuckIndex !== null) {
+                document.getElementById('sigContact').value = `^${parsed.tuckIndex}`;
+            } else {
+                document.getElementById('sigContact').value = 'none';
+            }
+        }
+
+        // Parse signature string details
+        function parseSignatureString(sigString) {
+            let clean = sigString.trim().toUpperCase();
+            if (clean.length < 5) return null;
+
+            let hasContact = clean.endsWith('+');
+            if (hasContact) clean = clean.slice(0, -1);
+
+            let tuckIndex = null;
+            let caretPos = clean.indexOf('^');
+            if (caretPos !== -1) {
+                let fingersBeforeCaret = clean.slice(1, caretPos).replace(/\|/g, '');
+                tuckIndex = fingersBeforeCaret.length + 1;
+                clean = clean.replace('^', '');
+            }
+
+            let thumb = clean[0];
+            let fingersStr = clean.slice(1);
+
+            let fingerStates = [];
+            let abductions = [false, false, false];
+
+            let fingerIdx = 0;
+            for (let i = 0; i < fingersStr.length; i++) {
+                let char = fingersStr[i];
+                if (char === '|') {
+                    if (fingerIdx > 0 && fingerIdx <= 3) {
+                        abductions[fingerIdx - 1] = true;
+                    }
+                } else {
+                    fingerStates.push(char);
+                    fingerIdx++;
+                }
+            }
+
+            return { thumb, fingerStates, abductions, hasContact, tuckIndex };
+        }
+
+        // Update selected handshape details panel
+        function updateDetails(name, sig) {
+            document.getElementById('detailsName').textContent = name || 'Custom Configuration';
+            document.getElementById('detailsSig').textContent = sig;
+
+            const descEl = document.getElementById('detailsDesc');
+            const descEntry = handshapeDescriptions[name.toLowerCase()];
+            if (descEntry) {
+                descEl.textContent = descEntry.description;
+            } else if (name === 'Custom Shape') {
+                descEl.textContent = 'Custom built signature. Fits custom visual description.';
+            } else {
+                descEl.textContent = 'Custom combination of finger flexions and thumb parameters.';
+            }
+        }
+
+        // 3D HANDSHAPE RENDERER BRIDGE
+        function renderHand(sigStr) {
+            if (window.applyHandshape3D) {
+                window.applyHandshape3D(sigStr);
+            } else {
+                window.pendingSignature = sigStr;
+            }
+        }
+
+
+    </script>
+    <script type="module" src="handshape_3d_visualizer.js?v=3"></script>
+</body>
+
+</html>

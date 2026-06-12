@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLD Handshape Testing Game</title>
+  <meta name="description" content="Test your Sign Language Dictionary (SLD) handshape spelling and recognition skills in a premium 3D interactive training suite.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #090d16 0%, #111026 100%);
+      --glass-bg: rgba(17, 24, 39, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-hover-border: rgba(255, 255, 255, 0.15);
+
+      --accent-primary: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      --accent-glow: rgba(124, 58, 237, 0.3);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(15, 23, 42, 0.6);
+
+      --color-correct: #10b981;
+      --color-incorrect: #ef4444;
+
+      --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Background decorative blobs */
+    .bg-blobs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+    }
+
+    .blob-1 {
+      top: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: #7c3aed;
+    }
+
+    .blob-2 {
+      bottom: -10%;
+      left: -10%;
+      width: 45vw;
+      height: 45vw;
+      background: #0ea5e9;
+    }
+
+    /* Main Container */
+    .app-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.75rem;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.4));
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0.5rem auto 1.5rem auto;
+    }
+
+    .header-actions {
+      display: inline-flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    /* Buttons */
+    .btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-spring);
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 15px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      border: none;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+      color: #fff !important;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--glass-border);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+      border: none;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+      color: #fff !important;
+    }
+
+    .btn-success:hover {
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+      border: none;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+      color: #fff !important;
+    }
+
+    .btn-danger:hover {
+      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+    }
+
+    /* Option Group selectors */
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .select-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1rem;
+      cursor: pointer;
+      text-align: center;
+      font-weight: 600;
+      color: var(--text-main);
+      transition: var(--transition-smooth);
+      user-select: none;
+    }
+
+    .select-card .card-desc {
+      color: var(--text-muted);
+      opacity: 0.85;
+      transition: var(--transition-smooth);
+    }
+
+    .select-card:hover {
+      border-color: var(--accent-primary);
+      background: var(--glass-hover-border);
+      color: var(--text-bright);
+    }
+
+    .select-card:hover .card-desc {
+      color: var(--text-bright);
+      opacity: 0.95;
+    }
+
+    .select-card.active {
+      border-color: var(--accent-primary);
+      background: var(--accent-gradient);
+      color: var(--bg-solid) !important;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .select-card.active .card-desc {
+      color: var(--bg-solid) !important;
+      opacity: 0.8;
+    }
+
+    /* Setup Section */
+    .setup-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .setup-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 1rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .form-group label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+    }
+
+    .setup-actions {
+      display: flex;
+      justify-content: center;
+    }
+
+    .setup-actions .btn {
+      padding: 1rem 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Active Session HUD Dashboard */
+    .session-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .hud-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hud-meta-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .hud-meta-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .hud-stats-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .hud-stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hud-stat-icon {
+      font-size: 1.25rem;
+    }
+
+    .hud-stat-icon.correct { color: var(--color-correct); }
+    .hud-stat-icon.incorrect { color: var(--color-incorrect); }
+    .hud-stat-icon.streak { color: #f59e0b; }
+
+    .hud-stat-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hud-stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .hud-stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 9999px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-gradient);
+      box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+      border-radius: 9999px;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Gameplay Screen Card Layouts */
+    .gameplay-layout {
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .gameplay-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Mode A: Sign to Text Grid */
+    .mode-a-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .mode-a-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .canvas-container {
+      background: linear-gradient(145deg, #131317 0%, #1d1d23 100%);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .three-canvas-el {
+      width: 100%;
+      height: 350px;
+    }
+
+    .canvas-caption {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border: 1px solid var(--glass-border);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mode-a-inputs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .prompt-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-primary);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .typing-input {
+      width: 100%;
+      background: rgba(10, 15, 30, 0.8);
+      border: 1.5px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.8rem 1.25rem;
+      font-family: inherit;
+      color: var(--text-main);
+      font-size: 1.2rem;
+      transition: var(--transition-smooth);
+      height: 3.8rem;
+      outline: none;
+    }
+
+    .typing-input:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .typing-input[readonly] {
+      opacity: 0.6;
+      cursor: not-allowed;
+      border-color: var(--glass-border) !important;
+      box-shadow: none !important;
+    }
+
+    /* Mode B: Multiple Choice Layout */
+    .mode-b-prompt {
+      text-align: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .target-spelling-display {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+    }
+
+    .target-desc-display {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    .mode-b-choices-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .mode-b-choices-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .choice-card {
+      background: var(--card-bg);
+      border: 2px solid var(--glass-border);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition-spring);
+      position: relative;
+    }
+
+    .choice-card:hover {
+      border-color: var(--glass-hover-border);
+      transform: translateY(-4px);
+    }
+
+    .choice-card.selected {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 25px var(--accent-glow);
+      background: rgba(139, 92, 246, 0.05);
+    }
+
+    .choice-card-header {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--glass-border);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .choice-card.selected .choice-card-header {
+      color: var(--accent-primary);
+    }
+
+    /* Feedback Banner */
+    .feedback-banner {
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1rem;
+      display: none;
+      animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .feedback-banner.correct {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1.5px solid rgba(16, 185, 129, 0.25);
+      color: #34d399;
+    }
+
+    .feedback-banner.incorrect {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1.5px solid rgba(239, 68, 68, 0.25);
+      color: #f87171;
+    }
+
+    .feedback-header {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.25rem;
+    }
+
+    .feedback-detail {
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .feedback-detail strong {
+      color: #c084fc;
+      font-family: monospace;
+      font-size: 1.05rem;
+    }
+
+    /* Actions Panel */
+    .gameplay-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .gameplay-actions-right {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* Results Dashboard */
+    .results-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      display: none;
+    }
+
+    .results-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #ffffff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .results-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .score-circle-wrapper {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 2rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .score-circle-svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+
+    .score-circle-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.05);
+      stroke-width: 12;
+    }
+
+    .score-circle-fill {
+      fill: none;
+      stroke: url(#scoreGradient);
+      stroke-width: 12;
+      stroke-dasharray: 439.6; /* 2 * PI * 70 */
+      stroke-dashoffset: 439.6;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s ease-in-out;
+    }
+
+    .score-center-text {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .score-percent {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .score-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .summary-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .summary-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .summary-stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .summary-stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .summary-stat-val.correct { color: var(--color-correct); }
+    .summary-stat-val.incorrect { color: var(--color-incorrect); }
+    .summary-stat-val.streak { color: #f59e0b; }
+
+    .summary-stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .history-section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #c084fc;
+      margin-bottom: 0.75rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .history-table-container {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      overflow-x: auto;
+      background: rgba(10, 15, 30, 0.4);
+      margin-bottom: 2rem;
+    }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .history-table th {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-primary);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .history-table td {
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+    }
+
+    .history-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .history-table td.correct-cell {
+      color: var(--color-correct);
+      font-weight: 600;
+    }
+
+    .history-table td.incorrect-cell {
+      color: var(--color-incorrect);
+      font-weight: 600;
+    }
+
+    .results-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    /* Sliding Drawer Cheat Sheet */
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(9, 13, 22, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+      overflow: hidden;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(650px, 95vw);
+      height: 100vh;
+      background: #0a0e1a;
+      border-left: 1px solid var(--glass-border);
+      z-index: 101;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    .drawer-title-group h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .drawer-title-group p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .close-drawer-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .close-drawer-btn:hover {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .drawer-content {
+      padding: 1.5rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .cheat-sheet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .cheat-card {
+      background: rgba(20, 20, 20, 0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+    }
+
+    .cheat-card:hover {
+      border-color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.05);
+      transform: scale(1.02);
+    }
+
+    .cheat-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .cheat-sig {
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: var(--accent-primary);
+      margin: 2px 0;
+    }
+
+    .cheat-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* Confirmation Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 2.25rem;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      transform: translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      text-align: center;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-icon {
+      font-size: 2.75rem;
+      color: #f59e0b;
+      filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.4));
+    }
+
+    .modal-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.50rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .modal-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .modal-actions .btn {
+      flex: 1;
+      justify-content: center;
+    }
+
+    /* Floating Study Button */
+    .study-btn-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 90;
+    }
+
+    .study-btn {
+      background: var(--accent-gradient);
+      color: #fff;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+      border: none;
+      transition: var(--transition-spring);
+      font-size: 1.25rem;
+    }
+
+    .study-btn:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+    }
+  </style>
+
+  <link rel="stylesheet" href="../theme.css">
+  <script src="../theme.js" defer></script>
+</head>
+
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="app-container">
+    <header>
+      <div class="logo-container">
+        <i class="fa-solid fa-hand logo-icon"></i>
+        <h1>Handshape Tester</h1>
+      </div>
+      <p class="tagline">Master the SLD handshape spelling system. Train on spelling recognition and identification in realistic 3D.</p>
+      
+      <div class="header-actions" id="header-actions-el">
+        <a href="dictionary.html" class="btn">
+          <i class="fa-solid fa-book-open"></i> Dictionary
+        </a>
+        <a href="flashcards.html" class="btn">
+          <i class="fa-solid fa-graduation-cap"></i> Flashcards
+        </a>
+        <a href="missingparam.html" class="btn">
+          <i class="fa-solid fa-circle-question"></i> Missing Parameter
+        </a>
+      </div>
+    </header>
+
+    <!-- Progress Indicator Bar -->
+    <div class="progress-bar-container" id="progress-bar-container-el" style="display: none;">
+      <div class="progress-bar-fill" id="progress-bar-fill-el"></div>
+    </div>
+
+    <!-- 1. SETUP CARD CONFIG SCREEN -->
+    <div class="setup-card" id="setup-screen-el">
+      <div class="setup-title">
+        <i class="fa-solid fa-sliders"></i>
+        <span>Configure Game Session</span>
+      </div>
+
+      <div class="form-grid">
+        <!-- Game Mode Selection -->
+        <div class="form-group">
+          <label>Practice Mode</label>
+          <div class="option-grid" id="mode-grid">
+            <div class="select-card active" data-value="identify">
+              <div style="font-size: 1.15rem; margin-bottom: 2px;"><i class="fa-solid fa-keyboard"></i> Identify Shape</div>
+              <div class="card-desc" style="font-size: 0.75rem; font-weight: normal;">See 3D hand, type the spelling</div>
+            </div>
+            <div class="select-card" data-value="select">
+              <div style="font-size: 1.15rem; margin-bottom: 2px;"><i class="fa-solid fa-list-check"></i> Select Shape</div>
+              <div class="card-desc" style="font-size: 0.75rem; font-weight: normal;">See spelling, select correct 3D hand</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session Length Selection -->
+        <div class="form-group">
+          <label>Session Length</label>
+          <div class="option-grid" id="length-grid">
+            <div class="select-card active" data-value="5">5 Rounds</div>
+            <div class="select-card" data-value="10">10 Rounds</div>
+            <div class="select-card" data-value="20">20 Rounds</div>
+            <div class="select-card" data-value="endless">Endless Mode</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="setup-actions">
+        <button class="btn btn-primary" id="start-game-btn">
+          <i class="fa-solid fa-play"></i> Start Training Session
+        </button>
+      </div>
+    </div>
+
+    <!-- 2. ACTIVE GAMEPLAY INTERFACE -->
+    <div id="gameplay-screen-el" class="gameplay-layout">
+      <!-- HUD Dashboard -->
+      <div class="session-hud">
+        <div class="hud-meta">
+          <div class="hud-meta-label" id="hud-round-label">Round</div>
+          <div class="hud-meta-val" id="hud-round-counter">1 of 10</div>
+        </div>
+        <div class="hud-stats-group">
+          <div class="hud-stat">
+            <i class="fa-solid fa-fire hud-stat-icon streak" id="hud-streak-icon"></i>
+            <div class="hud-stat-info">
+              <span class="hud-stat-val" id="hud-streak-val" style="color: #f59e0b;">0</span>
+              <span class="hud-stat-label">Streak</span>
+            </div>
+          </div>
+          <div class="hud-stat">
+            <i class="fa-solid fa-trophy hud-stat-icon" style="color: #c084fc;"></i>
+            <div class="hud-stat-info">
+              <span class="hud-stat-val" id="hud-score-val" style="color: #c084fc;">0 XP</span>
+              <span class="hud-stat-label">Score</span>
+            </div>
+          </div>
+          <div class="hud-stat">
+            <i class="fa-solid fa-clock hud-stat-icon" style="color: var(--text-muted)"></i>
+            <div class="hud-stat-info">
+              <span class="hud-stat-val" id="hud-timer-val">00:00</span>
+              <span class="hud-stat-label">Elapsed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode A Card: Identify Handshape -->
+      <div class="gameplay-card" id="mode-a-card" style="display: none;">
+        <div class="mode-a-grid">
+          <!-- Left: 3D canvas -->
+          <div class="canvas-container">
+            <div id="handshape3d-modea" class="three-canvas-el"></div>
+            <div class="canvas-caption">
+              <i class="fa-solid fa-arrows-spin"></i> Drag to rotate hand model
+            </div>
+          </div>
+          <!-- Right: Text spelling input -->
+          <div class="mode-a-inputs">
+            <div>
+              <div class="prompt-label">Target Handshape</div>
+              <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 4px;">Inspect the active 3D configuration. What is the spelling notation of this handshape?</p>
+            </div>
+
+            <div style="margin-top: 1rem;">
+              <div class="prompt-label">Your spelling</div>
+              <input type="text" class="typing-input" id="mode-a-typing-input" placeholder="Type shape code (e.g. ba, le, fo)..." autocomplete="off" autofocus>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode B Card: Select Handshape -->
+      <div class="gameplay-card" id="mode-b-card" style="display: none;">
+        <div class="mode-b-prompt">
+          <div class="prompt-label">Find the handshape for:</div>
+          <div class="target-spelling-display" id="mode-b-target-spelling">ba</div>
+          <div class="target-desc-display" id="mode-b-target-desc">Flat hand with thumb extended.</div>
+        </div>
+
+        <div class="mode-b-choices-grid">
+          <!-- Choice Option 1 -->
+          <div class="choice-card" data-index="0">
+            <div class="choice-card-header">Option A</div>
+            <div class="canvas-container" style="min-height: 250px;">
+              <div id="handshape3d-modeb-0" class="three-canvas-el" style="height: 250px;"></div>
+            </div>
+          </div>
+          <!-- Choice Option 2 -->
+          <div class="choice-card" data-index="1">
+            <div class="choice-card-header">Option B</div>
+            <div class="canvas-container" style="min-height: 250px;">
+              <div id="handshape3d-modeb-1" class="three-canvas-el" style="height: 250px;"></div>
+            </div>
+          </div>
+          <!-- Choice Option 3 -->
+          <div class="choice-card" data-index="2">
+            <div class="choice-card-header">Option C</div>
+            <div class="canvas-container" style="min-height: 250px;">
+              <div id="handshape3d-modeb-2" class="three-canvas-el" style="height: 250px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Correct/Incorrect feedback alert -->
+      <div class="feedback-banner" id="game-feedback-banner">
+        <div class="feedback-header" id="game-feedback-header">
+          <i class="fa-solid fa-circle-check"></i> Correct!
+        </div>
+        <div class="feedback-detail" id="game-feedback-detail">
+          Spelling matches. Signature is <strong>ALLLL</strong>.
+        </div>
+      </div>
+
+      <!-- Actions Panel -->
+      <div class="gameplay-actions">
+        <button class="btn btn-outline" id="game-abort-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Abort Practice
+        </button>
+        <div class="gameplay-actions-right">
+          <button class="btn" id="game-skip-btn">
+            <i class="fa-solid fa-forward-step"></i> Skip
+          </button>
+          <button class="btn btn-primary" id="game-submit-btn">
+            <i class="fa-solid fa-circle-check"></i> Submit Answer
+          </button>
+          <button class="btn btn-success" id="game-next-btn" style="display: none;">
+            Next Round <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. PERFORMANCE RESULTS SUMMARY SCREEN -->
+    <div class="results-card" id="results-screen-el">
+      <h2 class="results-title" id="results-encouragement">Session Complete!</h2>
+      <p class="results-subtitle">Here is a detailed breakdown of your handshape testing performance.</p>
+
+      <!-- SVG Circle Progress Score -->
+      <div class="score-circle-wrapper">
+        <svg class="score-circle-svg">
+          <defs>
+            <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#a78bfa" />
+              <stop offset="100%" stop-color="#7c3aed" />
+            </linearGradient>
+          </defs>
+          <circle class="score-circle-bg" cx="80" cy="80" r="70" />
+          <circle class="score-circle-fill" id="results-score-circle-fill" cx="80" cy="80" r="70" />
+        </svg>
+        <div class="score-center-text">
+          <span class="score-percent" id="results-score-percent">0%</span>
+          <span class="score-label">Accuracy</span>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="summary-stats-grid">
+        <div class="summary-stat-card">
+          <div class="summary-stat-val correct" id="sum-correct-val">0</div>
+          <div class="summary-stat-label">Correct</div>
+        </div>
+        <div class="summary-stat-card">
+          <div class="summary-stat-val incorrect" id="sum-incorrect-val">0</div>
+          <div class="summary-stat-label">Incorrect</div>
+        </div>
+        <div class="summary-stat-card">
+          <div class="summary-stat-val streak" id="sum-streak-val">0</div>
+          <div class="summary-stat-label">Best Streak</div>
+        </div>
+        <div class="summary-stat-card">
+          <div class="summary-stat-val" id="sum-time-val">00:00</div>
+          <div class="summary-stat-label">Elapsed Time</div>
+        </div>
+      </div>
+
+      <!-- History Table review -->
+      <div class="history-section-title">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Session Review Summary</span>
+      </div>
+      <div class="history-table-container">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Round</th>
+              <th>Question Prompt</th>
+              <th>Your Answer</th>
+              <th>Correct Answer</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="results-history-tbody">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="results-actions">
+        <button class="btn btn-outline" id="results-configure-btn">
+          <i class="fa-solid fa-sliders"></i> Game Settings
+        </button>
+        <button class="btn btn-primary" id="results-retry-btn">
+          <i class="fa-solid fa-rotate-left"></i> Restart Session
+        </button>
+      </div>
+    </div>
+    
+    <footer style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-muted); font-size: 0.85rem; width: 100%;">
+      <p>3D Handshape visualization adapted from <a href="https://sldictionary.org" target="_blank" style="color: var(--accent-primary); text-decoration: none; font-weight: 500; transition: var(--transition-smooth);">SLDictionary.org</a>. Original scripts by <strong>Dr. Jacob Tosado</strong>.</p>
+    </footer>
+  </div>
+
+  <!-- FLOATING STUDY BTN & DRAWERS -->
+  <div class="study-btn-container" id="study-btn-wrapper">
+    <button class="study-btn" id="open-sheet-btn" title="Study Cheat Sheet">
+      <i class="fa-solid fa-book-bookmark"></i>
+    </button>
+  </div>
+
+  <div class="drawer-overlay" id="drawer-overlay-el">
+    <div class="drawer" id="drawer-el">
+      <div class="drawer-header">
+        <div class="drawer-title-group">
+          <h3>Handshape Reference Panel</h3>
+          <p>The top 68 handshapes in the SLD dictionary database.</p>
+        </div>
+        <button class="close-drawer-btn" id="close-sheet-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="drawer-content">
+        <div class="cheat-sheet-grid" id="cheat-sheet-container">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREMIUM CONFIRMATION MODAL -->
+  <div id="confirm-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <i class="fa-solid fa-triangle-exclamation modal-icon"></i>
+        <h3>Abort Game Session?</h3>
+      </div>
+      <p class="modal-text">Are you sure you want to abort this session? Your current score, streak, and round progress will be lost.</p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="modal-cancel-btn">
+          <i class="fa-solid fa-play"></i> Keep Playing
+        </button>
+        <button class="btn btn-danger" id="modal-ok-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Yes, Abort
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculations Script files -->
+  <script src="signature_calculator.js"></script>
+  <script src="handshape_calculator.js"></script>
+
+  <!-- 3D Gameplay Visualizer logic -->
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { HanshapeControls } from './handshape_controls.js?v=3';
+
+    // All 68 handshapes pool
+    const ALL_HANDSHAPES = [
+      "ba", "bc", "bca", "bco", "be", "bfa", "bu", "bua", "buo", "bvuo", "bxe", "fa", "fc", "fca", "fe", "flc", "flco", "fle", "flu", "flua", "fluo", "fo", "fsc", "fsu", "fu", "fua", "fuo", "fvc", "fwc", "ha", "hco", "he", "hfa", "hre", "hue", "la", "lc", "lce", "lco", "le", "lfa", "lo", "lu", "lue", "lxe", "mue", "sa", "se", "sfa", "sle", "so", "va", "vce", "ve", "vfa", "vle", "vluo", "vu", "vue", "vxe", "we", "wo", "ya", "ye", "yfa", "yla", "yle", "yue"
+    ];
+
+    // Mappings and descriptions loaded from sld_parameters.json or fallbacks
+    let handshapeDescriptions = {};
+    const sigCalc = new SignatureCalculator();
+    const hsCalc = new HandshapeCalculator();
+
+    // Three.js instances management
+    const activeInstances = {};
+    const handshapeUrl = new URL('./hand_model.glb', import.meta.url);
+    const assetLoader = new GLTFLoader();
+
+    // Procedural skin bump map (same high fidelity as dictionary/visualizer.html)
+    function createSkinBumpMap() {
+      const size = 128;
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#808080';
+      ctx.fillRect(0, 0, size, size);
+      const imgData = ctx.getImageData(0, 0, size, size);
+      const data = imgData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        const noise = (Math.random() - 0.5) * 16;
+        data[i] = Math.min(255, Math.max(0, data[i] + noise));
+        data[i+1] = Math.min(255, Math.max(0, data[i+1] + noise));
+        data[i+2] = Math.min(255, Math.max(0, data[i+2] + noise));
+      }
+      ctx.putImageData(imgData, 0, 0);
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.repeat.set(12, 12);
+      return texture;
+    }
+    const skinBumpMap = createSkinBumpMap();
+
+    // Create a WebGL 3D Hand visualizer inside target element
+    function create3DInstance(containerId, sigStr) {
+      // Clear previous renderer
+      if (activeInstances[containerId]) {
+        destroy3DInstance(containerId);
+      }
+
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const width = container.clientWidth || 250;
+      const height = container.clientHeight || 250;
+
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, preserveDrawingBuffer: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(window.devicePixelRatio || 1);
+      container.appendChild(renderer.domElement);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+      camera.position.set(0, 0, 1.3);
+
+      const orbit = new OrbitControls(camera, renderer.domElement);
+      orbit.enablePan = false;
+      orbit.enableZoom = true;
+      orbit.minDistance = 0.8;
+      orbit.maxDistance = 2.0;
+      orbit.update();
+
+      // Lighting
+      const light1 = new THREE.DirectionalLight(0xFFF5E6, 1.2);
+      light1.position.set(5, 2, 5);
+      scene.add(light1);
+
+      const fillLight = new THREE.DirectionalLight(0xB0C4DE, 0.4);
+      fillLight.position.set(-3, 1, 2);
+      scene.add(fillLight);
+
+      const hemiLight = new THREE.HemisphereLight(0xFFF5E6, 0x3E2723, 0.3);
+      scene.add(hemiLight);
+
+      const rimLight = new THREE.DirectionalLight(0xFFFFFF, 0.6);
+      rimLight.position.set(-2, 2, -3);
+      scene.add(rimLight);
+
+      let hanshapeControls = null;
+
+      // Keep reference
+      const instance = {
+        container,
+        renderer,
+        scene,
+        camera,
+        orbit,
+        light: light1,
+        controls: null,
+        destroyed: false
+      };
+      activeInstances[containerId] = instance;
+
+      assetLoader.load(handshapeUrl.href, function (gltf) {
+        if (instance.destroyed) return;
+
+        const model = gltf.scene;
+        scene.add(model);
+        model.position.set(0.65, -0.45, -0.5);
+
+        model.traverse((child) => {
+          if (child.isMesh && child.material) {
+            child.material.vertexColors = false;
+            child.material.color.setHex(0x6D4C41); // Rich dark skin tone
+            child.material.roughness = 0.85;
+            child.material.metalness = 0.02;
+            child.material.emissive = new THREE.Color(0x22140d); // Darker warm shadow
+            child.material.emissiveIntensity = 0.2;
+            child.material.bumpMap = skinBumpMap;
+            child.material.bumpScale = 0.003;
+            child.material.needsUpdate = true;
+          }
+        });
+
+        const mixer = new THREE.AnimationMixer(model);
+        hanshapeControls = new HanshapeControls(model, mixer, orbit, camera);
+        instance.controls = hanshapeControls;
+
+        // Apply visual shape signature
+        hanshapeControls.setHandshape(sigStr);
+      });
+
+      // Animation Loop
+      function animate() {
+        if (instance.destroyed) return;
+        if (hanshapeControls) {
+          hanshapeControls.update();
+        }
+        // light alignments
+        light1.position.x = camera.position.x * 5;
+        light1.position.y = camera.position.y;
+        light1.position.z = camera.position.z * 5;
+
+        orbit.update();
+        renderer.render(scene, camera);
+      }
+
+      renderer.setAnimationLoop(animate);
+    }
+
+    function destroy3DInstance(containerId) {
+      const instance = activeInstances[containerId];
+      if (!instance) return;
+
+      instance.destroyed = true;
+      instance.renderer.setAnimationLoop(null);
+      instance.orbit.dispose();
+
+      instance.scene.traverse((object) => {
+        if (object.isMesh) {
+          object.geometry.dispose();
+          if (Array.isArray(object.material)) {
+            object.material.forEach(mat => mat.dispose());
+          } else {
+            object.material.dispose();
+          }
+        }
+      });
+
+      instance.renderer.dispose();
+      try {
+        if (instance.container && instance.renderer.domElement) {
+          instance.container.removeChild(instance.renderer.domElement);
+        }
+      } catch (err) {
+        console.warn("Error removing WebGL domElement:", err);
+      }
+
+      delete activeInstances[containerId];
+    }
+
+    function clearAll3DInstances() {
+      Object.keys(activeInstances).forEach(key => {
+        destroy3DInstance(key);
+      });
+    }
+
+    // GAME STATE VARIABLES
+    let gameMode = 'identify'; // identify or select
+    let sessionLength = '10'; // 5, 10, 20, endless
+    let currentRound = 1;
+    let scoreXP = 0;
+    let streak = 0;
+    let bestStreak = 0;
+    let elapsedSeconds = 0;
+    let timerInterval = null;
+    let roundActive = false;
+
+    // Session Data
+    let roundsPool = []; // pool of questions
+    let currentQuestion = null; // target question
+    let roundResults = []; // reviews history
+
+    // Target choices for Mode B selection
+    let modeBChoices = [];
+    let modeBSelectedIdx = -1;
+
+    // DOM References
+    const setupCard = document.getElementById('setup-screen-el');
+    const gameplayCard = document.getElementById('gameplay-screen-el');
+    const resultsCard = document.getElementById('results-screen-el');
+
+    const modeAInputEl = document.getElementById('mode-a-card');
+    const modeBInputEl = document.getElementById('mode-b-card');
+
+    const typingInput = document.getElementById('mode-a-typing-input');
+
+    const hudRoundLabel = document.getElementById('hud-round-label');
+    const hudRoundCounter = document.getElementById('hud-round-counter');
+    const hudStreakVal = document.getElementById('hud-streak-val');
+    const hudStreakIcon = document.getElementById('hud-streak-icon');
+    const hudScoreVal = document.getElementById('hud-score-val');
+    const hudTimerVal = document.getElementById('hud-timer-val');
+
+    const progressBar = document.getElementById('progress-bar-container-el');
+    const progressFill = document.getElementById('progress-bar-fill-el');
+
+    const feedbackBanner = document.getElementById('game-feedback-banner');
+    const feedbackHeader = document.getElementById('game-feedback-header');
+    const feedbackDetail = document.getElementById('game-feedback-detail');
+
+    // Setup configurations actions
+    function setupSelectConfigCards(gridId) {
+      const cards = document.querySelectorAll(`#${gridId} .select-card`);
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          cards.forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+        });
+      });
+    }
+
+    function getSelectedConfigVal(gridId) {
+      const card = document.querySelector(`#${gridId} .select-card.active`);
+      return card ? card.getAttribute('data-value') : null;
+    }
+
+    // Init Cheat Sheet reference panel
+    async function loadDescriptionsAndInit() {
+      try {
+        const response = await fetch('sld_parameters.json');
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.handshape) {
+            handshapeDescriptions = data.handshape;
+          }
+        }
+      } catch (err) {
+        console.warn("Could not load descriptions JSON, falling back to default signatures.");
+      }
+
+      // Populate cheat sheet grid
+      const container = document.getElementById('cheat-sheet-container');
+      container.innerHTML = '';
+      ALL_HANDSHAPES.forEach(hs => {
+        const calc = sigCalc.calculate(hs);
+        const sig = calc.handshapeSignature;
+        const desc = handshapeDescriptions[hs] ? handshapeDescriptions[hs].description : 'Handshape parameters definition.';
+
+        const card = document.createElement('div');
+        card.className = 'cheat-card';
+        card.innerHTML = `
+          <div class="cheat-name">${hs}</div>
+          <div class="cheat-sig">${sig}</div>
+          <div class="cheat-desc">${desc}</div>
+        `;
+        card.addEventListener('click', () => {
+          // Preview it on Mode A canvas if visible
+          if (gameplayCard.style.display === 'flex' && gameMode === 'identify' && roundActive) {
+            create3DInstance('handshape3d-modea', sig);
+            showToastMessage(`Previewing "${hs}" on 3D hand!`, 'correct');
+          } else {
+            showToastMessage(`Handshape "${hs}": ${desc}`, 'correct');
+          }
+        });
+        container.appendChild(card);
+      });
+    }
+
+    // Timer utility
+    function startTimer() {
+      elapsedSeconds = 0;
+      hudTimerVal.textContent = "00:00";
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        elapsedSeconds++;
+        const mins = Math.floor(elapsedSeconds / 60).toString().padStart(2, '0');
+        const secs = (elapsedSeconds % 60).toString().padStart(2, '0');
+        hudTimerVal.textContent = `${mins}:${secs}`;
+      }, 1000);
+    }
+
+    // Shuffle array helper
+    function shuffleArray(array) {
+      const copy = [...array];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    // Set active progress bar percentage
+    function updateProgressBar() {
+      if (sessionLength === 'endless') {
+        progressFill.style.width = '100%';
+        return;
+      }
+      const percent = ((currentRound - 1) / parseInt(sessionLength)) * 100;
+      progressFill.style.width = `${percent}%`;
+    }
+
+    // Show slide up transient notifications/toasts
+    function showToastMessage(msg, type = 'correct') {
+      const container = document.body;
+      const el = document.createElement('div');
+      el.style.position = 'fixed';
+      el.style.bottom = '100px';
+      el.style.left = '50%';
+      el.style.transform = 'translateX(-50%)';
+      el.style.background = type === 'correct' ? 'rgba(16, 185, 129, 0.95)' : 'rgba(239, 68, 68, 0.95)';
+      el.style.color = '#fff';
+      el.style.padding = '10px 24px';
+      el.style.borderRadius = '9999px';
+      el.style.border = '1px solid rgba(255,255,255,0.15)';
+      el.style.fontSize = '0.95rem';
+      el.style.fontWeight = '500';
+      el.style.boxShadow = '0 10px 25px rgba(0,0,0,0.3)';
+      el.style.zIndex = '3000';
+      el.style.textAlign = 'center';
+      el.style.backdropFilter = 'blur(4px)';
+      el.textContent = msg;
+
+      container.appendChild(el);
+      setTimeout(() => {
+        el.style.transition = 'all 0.4s ease';
+        el.style.opacity = '0';
+        el.style.transform = 'translateX(-50%) translateY(20px)';
+        setTimeout(() => container.removeChild(el), 400);
+      }, 2000);
+    }
+
+    // Generate distraction choices for Mode B selection
+    function getChoicesForTarget(targetHs) {
+      const correctSig = sigCalc.calculate(targetHs).handshapeSignature;
+      const distractors = ALL_HANDSHAPES.filter(hs => {
+        if (hs === targetHs) return false;
+        const sig = sigCalc.calculate(hs).handshapeSignature;
+        return sig !== correctSig; // make sure the signature is actually unique
+      });
+
+      const shuffledDistractors = shuffleArray(distractors);
+      const choices = [
+        targetHs,
+        shuffledDistractors[0],
+        shuffledDistractors[1]
+      ];
+
+      return shuffleArray(choices);
+    }
+
+    // MAIN GAME CONTROLLERS
+    function startGame() {
+      gameMode = getSelectedConfigVal('mode-grid');
+      sessionLength = getSelectedConfigVal('length-grid');
+
+      // Reset score metrics
+      currentRound = 1;
+      scoreXP = 0;
+      streak = 0;
+      bestStreak = 0;
+      roundResults = [];
+      roundActive = true;
+
+      // Reset HUD labels
+      hudScoreVal.textContent = "0 XP";
+      hudStreakVal.textContent = "0";
+      hudStreakIcon.style.color = 'var(--text-muted)';
+
+      // Set round counter details
+      if (sessionLength === 'endless') {
+        hudRoundLabel.textContent = "Round";
+        hudRoundCounter.textContent = `Round 1`;
+      } else {
+        hudRoundLabel.textContent = "Round";
+        hudRoundCounter.textContent = `1 of ${sessionLength}`;
+      }
+
+      // Hide config panel, show gameplay panels
+      setupCard.style.display = 'none';
+      document.getElementById('header-actions-el').style.display = 'none';
+      gameplayCard.style.display = 'flex';
+      progressBar.style.display = 'block';
+
+      // Hide results dashboard just in case
+      resultsCard.style.display = 'none';
+
+      // Shuffle list of handshapes to make pool
+      roundsPool = shuffleArray(ALL_HANDSHAPES);
+
+      // Start elapsed timer
+      startTimer();
+      updateProgressBar();
+
+      // Launch first round question
+      loadRoundQuestion();
+    }
+
+    // Set up active round contents
+    function loadRoundQuestion() {
+      roundActive = true;
+      feedbackBanner.style.display = 'none';
+      document.getElementById('game-submit-btn').style.display = 'inline-flex';
+      document.getElementById('game-next-btn').style.display = 'none';
+      document.getElementById('game-skip-btn').disabled = false;
+
+      // Handle pool wrap around
+      if (roundsPool.length === 0) {
+        roundsPool = shuffleArray(ALL_HANDSHAPES);
+      }
+
+      // Grab first item
+      const targetHs = roundsPool.pop();
+      const calc = sigCalc.calculate(targetHs);
+      const targetSig = calc.handshapeSignature;
+      const targetDesc = handshapeDescriptions[targetHs] ? handshapeDescriptions[targetHs].description : 'Handshape parameters definition.';
+
+      currentQuestion = {
+        hs: targetHs,
+        sig: targetSig,
+        desc: targetDesc
+      };
+
+      // Clear previous WebGL canvasses
+      clearAll3DInstances();
+
+      if (gameMode === 'identify') {
+        // Show Mode A spelling test card
+        modeAInputEl.style.display = 'block';
+        modeBInputEl.style.display = 'none';
+
+        // Clear input field
+        typingInput.value = '';
+        typingInput.readOnly = false;
+        setTimeout(() => typingInput.focus(), 150);
+
+        // Instatiate 3D render inside container
+        create3DInstance('handshape3d-modea', targetSig);
+
+      } else {
+        // Show Mode B multiple choice card
+        modeAInputEl.style.display = 'none';
+        modeBInputEl.style.display = 'block';
+
+        // Display target spelling prompt
+        document.getElementById('mode-b-target-spelling').textContent = targetHs;
+        document.getElementById('mode-b-target-desc').textContent = targetDesc;
+
+        // Populate options distractors
+        modeBChoices = getChoicesForTarget(targetHs);
+        modeBSelectedIdx = -1;
+
+        // Reset choice cards styles
+        const cards = document.querySelectorAll('.choice-card');
+        cards.forEach((card, index) => {
+          card.classList.remove('selected');
+          const choiceHs = modeBChoices[index];
+          const choiceSig = sigCalc.calculate(choiceHs).handshapeSignature;
+
+          // Render choice 3D Canvas
+          create3DInstance(`handshape3d-modeb-${index}`, choiceSig);
+        });
+      }
+    }
+
+    // Submit Answer callback check
+    function submitAnswer() {
+      if (!roundActive) return;
+
+      let userAnswer = '';
+      let isCorrect = false;
+
+      if (gameMode === 'identify') {
+        userAnswer = typingInput.value.trim().toLowerCase();
+        if (!userAnswer) {
+          showToastMessage("Please type a spelling response first!", 'incorrect');
+          return;
+        }
+
+        // 1. Direct spelling check (normalized)
+        const targetSpelling = currentQuestion.hs.toLowerCase();
+        const normUser = userAnswer.replace('á','a').replace('é','e').replace('ć','c').replace('ú','u').replace('ó','o');
+        const normTarget = targetSpelling.replace('á','a').replace('é','e').replace('ć','c').replace('ú','u').replace('ó','o');
+
+        if (normUser === normTarget) {
+          isCorrect = true;
+        } else {
+          // 2. Structural signature check (signature equivalency)
+          const userCalc = sigCalc.calculate(userAnswer);
+          if (userCalc && userCalc.handshapeSignature && userCalc.handshapeSignature !== 'None') {
+            if (userCalc.handshapeSignature === currentQuestion.sig) {
+              isCorrect = true;
+            }
+          }
+        }
+      } else {
+        // Mode B selection validation
+        if (modeBSelectedIdx === -1) {
+          showToastMessage("Please select one of the 3D hand shapes first!", 'incorrect');
+          return;
+        }
+
+        userAnswer = modeBChoices[modeBSelectedIdx];
+        isCorrect = (userAnswer === currentQuestion.hs);
+      }
+
+      // Freeze input controls
+      roundActive = false;
+      document.getElementById('game-submit-btn').style.display = 'none';
+      document.getElementById('game-next-btn').style.display = 'inline-flex';
+      document.getElementById('game-skip-btn').disabled = true;
+
+      if (gameMode === 'identify') {
+        typingInput.readOnly = true;
+      }
+
+      // Handle Scoring and Streaks
+      if (isCorrect) {
+        streak++;
+        if (streak > bestStreak) bestStreak = streak;
+        // Base XP: 10 points. Streak bonus: +2 XP per active streak count up to +30 max.
+        const streakBonus = Math.min(streak * 2, 30);
+        const addedXP = 10 + streakBonus;
+        scoreXP += addedXP;
+
+        // Render HUD Correct status
+        hudScoreVal.textContent = `${scoreXP} XP`;
+        hudStreakVal.textContent = streak;
+
+        // Color streak icons
+        if (streak >= 3) {
+          hudStreakIcon.style.color = '#f59e0b'; // Gold fire
+        }
+
+        // Show Feedback Correct banner
+        feedbackBanner.className = "feedback-banner correct";
+        feedbackHeader.innerHTML = `<i class="fa-solid fa-circle-check"></i> Correct! (+${addedXP} XP)`;
+        feedbackDetail.innerHTML = `The handshape spelling is <strong>${currentQuestion.hs}</strong>. Signature matches <strong>${currentQuestion.sig}</strong>.`;
+        feedbackBanner.style.display = 'block';
+
+        roundResults.push({
+          round: currentRound,
+          prompt: gameMode === 'identify' ? `3D Handshape Signature: ${currentQuestion.sig}` : `Find Handshape: ${currentQuestion.hs}`,
+          userVal: userAnswer,
+          correctVal: currentQuestion.hs,
+          correct: true
+        });
+      } else {
+        // Reset streak on error
+        streak = 0;
+        hudStreakVal.textContent = "0";
+        hudStreakIcon.style.color = 'var(--text-muted)';
+
+        // Show Feedback Incorrect banner
+        feedbackBanner.className = "feedback-banner incorrect";
+        feedbackHeader.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Incorrect`;
+        feedbackDetail.innerHTML = `The correct spelling is <strong>${currentQuestion.hs}</strong> (${currentQuestion.desc}). Signature: <strong>${currentQuestion.sig}</strong>.`;
+        feedbackBanner.style.display = 'block';
+
+        roundResults.push({
+          round: currentRound,
+          prompt: gameMode === 'identify' ? `3D Handshape Signature: ${currentQuestion.sig}` : `Find Handshape: ${currentQuestion.hs}`,
+          userVal: userAnswer || 'None selected',
+          correctVal: currentQuestion.hs,
+          correct: false
+        });
+      }
+    }
+
+    // Skip Round question
+    function skipQuestion() {
+      if (!roundActive) return;
+
+      roundActive = false;
+      streak = 0;
+      hudStreakVal.textContent = "0";
+      hudStreakIcon.style.color = 'var(--text-muted)';
+
+      feedbackBanner.className = "feedback-banner incorrect";
+      feedbackHeader.innerHTML = `<i class="fa-solid fa-forward-step"></i> Question Skipped`;
+      feedbackDetail.innerHTML = `The correct answer was <strong>${currentQuestion.hs}</strong>. Description: ${currentQuestion.desc}.`;
+      feedbackBanner.style.display = 'block';
+
+      document.getElementById('game-submit-btn').style.display = 'none';
+      document.getElementById('game-next-btn').style.display = 'inline-flex';
+      document.getElementById('game-skip-btn').disabled = true;
+
+      if (gameMode === 'identify') {
+        typingInput.readOnly = true;
+      }
+
+      roundResults.push({
+        round: currentRound,
+        prompt: gameMode === 'identify' ? `3D Handshape Signature: ${currentQuestion.sig}` : `Find Handshape: ${currentQuestion.hs}`,
+        userVal: 'Skipped',
+        correctVal: currentQuestion.hs,
+        correct: false
+      });
+    }
+
+    // Progress game rounds
+    function nextRound() {
+      if (sessionLength !== 'endless' && currentRound >= parseInt(sessionLength)) {
+        endGameSession();
+        return;
+      }
+
+      currentRound++;
+
+      // Update HUD count
+      if (sessionLength === 'endless') {
+        hudRoundCounter.textContent = `Round ${currentRound}`;
+      } else {
+        hudRoundCounter.textContent = `${currentRound} of ${sessionLength}`;
+      }
+
+      updateProgressBar();
+      loadRoundQuestion();
+    }
+
+    // Finish session game loop
+    function endGameSession() {
+      clearInterval(timerInterval);
+      clearAll3DInstances();
+
+      // Calculate totals
+      const totalQuestions = roundResults.length;
+      const corrects = roundResults.filter(r => r.correct).length;
+      const incorrects = totalQuestions - corrects;
+      const accuracy = totalQuestions > 0 ? Math.round((corrects / totalQuestions) * 100) : 0;
+
+      // Select encouragement label
+      let titleMsg = "Session Complete!";
+      if (accuracy === 100) titleMsg = "🌟 Flawless Victory!";
+      else if (accuracy >= 80) titleMsg = "🔥 Outstanding Performance!";
+      else if (accuracy >= 50) titleMsg = "👍 Great Effort!";
+      else titleMsg = "📚 Keep Practicing!";
+
+      document.getElementById('results-encouragement').textContent = titleMsg;
+
+      // Render circular score ring
+      document.getElementById('results-score-percent').textContent = `${accuracy}%`;
+      const fillCircle = document.getElementById('results-score-circle-fill');
+      // circle dasharray matches 439.6
+      const offset = 439.6 - (439.6 * accuracy) / 100;
+      fillCircle.style.strokeDashoffset = offset;
+
+      // HUD Stats Cards
+      document.getElementById('sum-correct-val').textContent = corrects;
+      document.getElementById('sum-incorrect-val').textContent = incorrects;
+      document.getElementById('sum-streak-val').textContent = bestStreak;
+      
+      const mins = Math.floor(elapsedSeconds / 60).toString().padStart(2, '0');
+      const secs = (elapsedSeconds % 60).toString().padStart(2, '0');
+      document.getElementById('sum-time-val').textContent = `${mins}:${secs}`;
+
+      // Populate detailed reviews history table
+      const tbody = document.getElementById('results-history-tbody');
+      tbody.innerHTML = '';
+      roundResults.forEach(res => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${res.round}</td>
+          <td>${res.prompt}</td>
+          <td><strong>${res.userVal}</strong></td>
+          <td><strong>${res.correctVal}</strong></td>
+          <td class="${res.correct ? 'correct-cell' : 'incorrect-cell'}">
+            <i class="fa-solid ${res.correct ? 'fa-circle-check' : 'fa-circle-xmark'}"></i>
+            ${res.correct ? 'Correct' : 'Incorrect'}
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Switch screens panels
+      gameplayCard.style.display = 'none';
+      progressBar.style.display = 'none';
+      resultsCard.style.display = 'block';
+    }
+
+    // Toggle Modal confirmations
+    const confirmModal = document.getElementById('confirm-modal');
+    function triggerAbortConfirmation() {
+      confirmModal.classList.add('active');
+    }
+    document.getElementById('modal-cancel-btn').addEventListener('click', () => {
+      confirmModal.classList.remove('active');
+    });
+    document.getElementById('modal-ok-btn').addEventListener('click', () => {
+      confirmModal.classList.remove('active');
+      clearInterval(timerInterval);
+      clearAll3DInstances();
+      gameplayCard.style.display = 'none';
+      progressBar.style.display = 'none';
+      setupCard.style.display = 'block';
+      document.getElementById('header-actions-el').style.display = 'inline-flex';
+    });
+
+    // Option grid Click triggers
+    setupSelectConfigCards('mode-grid');
+    setupSelectConfigCards('length-grid');
+
+    // Choice Cards Click validation (Mode B)
+    const choiceCards = document.querySelectorAll('.choice-card');
+    choiceCards.forEach(card => {
+      card.addEventListener('click', () => {
+        if (!roundActive) return;
+        choiceCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        modeBSelectedIdx = parseInt(card.getAttribute('data-index'));
+      });
+    });
+
+    // Global Enter/Return key triggers submissions or next round
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        // Ignore if modal overlay is active
+        if (confirmModal.classList.contains('active')) return;
+        // Ignore if drawer overlay is active
+        if (drawerOverlay.classList.contains('active')) return;
+
+        // Only act if gameplay screen is currently visible
+        if (gameplayCard.style.display === 'flex') {
+          e.preventDefault();
+          if (!roundActive) {
+            nextRound();
+          } else {
+            // In Mode B, verify they have selected an option before submitting on Enter
+            if (gameMode === 'select' && modeBSelectedIdx === -1) {
+              return;
+            }
+            // In Mode A, verify they have typed something before submitting on Enter
+            if (gameMode === 'identify' && !typingInput.value.trim()) {
+              return;
+            }
+            submitAnswer();
+          }
+        }
+      }
+    });
+
+    // Button event actions listeners
+    document.getElementById('start-game-btn').addEventListener('click', startGame);
+    document.getElementById('game-submit-btn').addEventListener('click', submitAnswer);
+    document.getElementById('game-skip-btn').addEventListener('click', skipQuestion);
+    document.getElementById('game-next-btn').addEventListener('click', nextRound);
+    document.getElementById('game-abort-btn').addEventListener('click', triggerAbortConfirmation);
+
+    // Results panel actions
+    document.getElementById('results-configure-btn').addEventListener('click', () => {
+      resultsCard.style.display = 'none';
+      setupCard.style.display = 'block';
+      document.getElementById('header-actions-el').style.display = 'inline-flex';
+    });
+    document.getElementById('results-retry-btn').addEventListener('click', () => {
+      resultsCard.style.display = 'none';
+      startGame();
+    });
+
+    // Side Cheat Sheet drawer toggle
+    const drawerOverlay = document.getElementById('drawer-overlay-el');
+    const drawerEl = document.getElementById('drawer-el');
+    document.getElementById('open-sheet-btn').addEventListener('click', () => {
+      drawerOverlay.classList.add('active');
+      drawerEl.classList.add('active');
+    });
+    const closeDrawer = () => {
+      drawerOverlay.classList.remove('active');
+      drawerEl.classList.remove('active');
+    };
+    document.getElementById('close-sheet-btn').addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', (e) => {
+      if (e.target === drawerOverlay) {
+        closeDrawer();
+      }
+    });
+
+    // Run loader on startup
+    window.addEventListener('DOMContentLoaded', loadDescriptionsAndInit);
+  </script>
+</body>
+
+</html>

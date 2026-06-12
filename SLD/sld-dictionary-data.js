@@ -6599,10 +6599,10 @@
   {
     "english": "Buckle",
     "signs": [
-      "bbuát-pj"
+      "bbúat-pj"
     ],
     "signSources": {
-      "bbuát-pj": [
+      "bbúat-pj": [
         "Sternberg (1994)"
       ]
     }
@@ -6984,7 +6984,7 @@
       "bcat-z",
       "bcábaataipj=ri",
       "buábaakaipj=i-sá",
-      "buátui-k buábaaktipj-j",
+      "búatui-k buábaaktipj-j",
       "báieoi-k-sá",
       "báieoi-k-sá bcat-k",
       "bćbaakaipj-j-tkpj-a",
@@ -7010,7 +7010,7 @@
       "báieoi-k-sá bcat-k": [
         "Shroyer et al. (1984)"
       ],
-      "buátui-k buábaaktipj-j": [
+      "búatui-k buábaaktipj-j": [
         "Shroyer et al. (1984)"
       ],
       "bcat-z": [

@@ -1,996 +1,969 @@
 {
   "handshape": {
     "ba": {
-      "description": ""
-    },
-    "bc": {
-      "description": ""
-    },
-    "bca": {
-      "description": ""
-    },
-    "bce": {
-      "description": ""
-    },
-    "bco": {
-      "description": ""
-    },
-    "be": {
-      "description": ""
-    },
-    "bfa": {
-      "description": ""
-    },
-    "bfca": {
-      "description": ""
-    },
-    "bfu": {
-      "description": ""
-    },
-    "bha": {
-      "description": ""
-    },
-    "bla": {
-      "description": ""
-    },
-    "blyuo": {
-      "description": ""
-    },
-    "bo": {
-      "description": ""
-    },
-    "bu": {
-      "description": ""
-    },
-    "bua": {
-      "description": ""
-    },
-    "bue": {
-      "description": ""
-    },
-    "buo": {
-      "description": ""
-    },
-    "bvuo": {
-      "description": ""
-    },
-    "bwa": {
-      "description": ""
-    },
-    "bxa": {
-      "description": ""
-    },
-    "bxe": {
-      "description": ""
-    },
-    "fa": {
-      "description": ""
-    },
-    "fc": {
-      "description": ""
-    },
-    "fca": {
-      "description": ""
-    },
-    "fce": {
-      "description": ""
-    },
-    "fco": {
-      "description": ""
-    },
-    "fe": {
-      "description": ""
-    },
-    "fla": {
-      "description": ""
-    },
-    "flc": {
-      "description": ""
-    },
-    "flco": {
-      "description": ""
-    },
-    "fle": {
-      "description": ""
-    },
-    "flu": {
-      "description": ""
-    },
-    "flua": {
-      "description": ""
-    },
-    "flue": {
-      "description": ""
-    },
-    "fluo": {
-      "description": ""
-    },
-    "fmco": {
-      "description": ""
-    },
-    "fo": {
-      "description": ""
-    },
-    "fsc": {
-      "description": ""
-    },
-    "fsca": {
-      "description": ""
-    },
-    "fsce": {
-      "description": ""
-    },
-    "fsu": {
-      "description": ""
-    },
-    "fsuo": {
-      "description": ""
-    },
-    "fu": {
-      "description": ""
-    },
-    "fua": {
-      "description": ""
-    },
-    "fue": {
-      "description": ""
-    },
-    "fuo": {
-      "description": ""
-    },
-    "fvc": {
-      "description": ""
-    },
-    "fvua": {
-      "description": ""
-    },
-    "fwc": {
-      "description": ""
-    },
-    "fwu": {
-      "description": ""
-    },
-    "ha": {
-      "description": ""
-    },
-    "hc": {
-      "description": ""
-    },
-    "hce": {
-      "description": ""
-    },
-    "hco": {
-      "description": ""
-    },
-    "he": {
-      "description": ""
-    },
-    "hfa": {
-      "description": ""
-    },
-    "hre": {
-      "description": ""
-    },
-    "hu": {
-      "description": ""
-    },
-    "hue": {
-      "description": ""
-    },
-    "huo": {
-      "description": ""
-    },
-    "la": {
-      "description": ""
-    },
-    "lc": {
-      "description": ""
-    },
-    "lca": {
-      "description": ""
-    },
-    "lce": {
-      "description": ""
-    },
-    "lco": {
-      "description": ""
+      "description": "Flat hand with thumb extended."
     },
     "le": {
-      "description": ""
+      "description": "Index finger extended (G hand)."
     },
-    "lfa": {
-      "description": ""
-    },
-    "lfca": {
-      "description": ""
-    },
-    "lo": {
-      "description": ""
-    },
-    "lu": {
-      "description": ""
-    },
-    "lua": {
-      "description": ""
-    },
-    "lue": {
-      "description": ""
-    },
-    "luo": {
-      "description": ""
-    },
-    "lxa": {
-      "description": ""
-    },
-    "lxe": {
-      "description": ""
-    },
-    "ma": {
-      "description": ""
-    },
-    "me": {
-      "description": ""
-    },
-    "mue": {
-      "description": ""
-    },
-    "sa": {
-      "description": ""
+    "fa": {
+      "description": "Open hand with thumb extended."
     },
     "se": {
-      "description": ""
+      "description": "Fist with thumb closed (S hand)."
+    },
+    "sa": {
+      "description": "Fist with thumb extended."
+    },
+    "bc": {
+      "description": "Flat hand curled."
+    },
+    "bco": {
+      "description": "Flat hand curled and pinched."
+    },
+    "fo": {
+      "description": "Open hand pinched."
+    },
+    "he": {
+      "description": "H hand with thumb closed."
     },
     "sfa": {
-      "description": ""
-    },
-    "she": {
-      "description": ""
-    },
-    "sle": {
-      "description": ""
-    },
-    "slyue": {
-      "description": ""
-    },
-    "sme": {
-      "description": ""
-    },
-    "so": {
-      "description": ""
-    },
-    "va": {
-      "description": ""
-    },
-    "vc": {
-      "description": ""
-    },
-    "vca": {
-      "description": ""
-    },
-    "vce": {
-      "description": ""
-    },
-    "vco": {
-      "description": ""
+      "description": "Fist with thumb fully extended."
     },
     "ve": {
-      "description": ""
+      "description": "V hand with thumb closed."
     },
-    "vfa": {
-      "description": ""
-    },
-    "vfca": {
-      "description": ""
-    },
-    "vla": {
-      "description": ""
+    "be": {
+      "description": "Flat hand with thumb closed."
     },
     "vle": {
-      "description": ""
+      "description": "V hand with G-shape (index finger extended)."
     },
-    "vluo": {
-      "description": ""
+    "bua": {
+      "description": "Flat hand bent with thumb extended."
     },
-    "vo": {
-      "description": ""
-    },
-    "vse": {
-      "description": ""
-    },
-    "vu": {
-      "description": ""
-    },
-    "vue": {
-      "description": ""
-    },
-    "vuo": {
-      "description": ""
-    },
-    "vxe": {
-      "description": ""
-    },
-    "wa": {
-      "description": ""
-    },
-    "we": {
-      "description": ""
-    },
-    "wo": {
-      "description": ""
-    },
-    "ya": {
-      "description": ""
-    },
-    "yce": {
-      "description": ""
+    "bca": {
+      "description": "Flat hand curled with thumb extended."
     },
     "ye": {
-      "description": ""
+      "description": "Y hand with thumb closed."
+    },
+    "lfa": {
+      "description": "Index finger and thumb fully extended."
+    },
+    "lu": {
+      "description": "L hand bent."
+    },
+    "lxe": {
+      "description": "L hand clawed with thumb closed."
+    },
+    "lue": {
+      "description": "L hand bent with thumb closed."
+    },
+    "hue": {
+      "description": "H hand bent with thumb closed."
+    },
+    "fca": {
+      "description": "Open hand curled with thumb extended."
+    },
+    "hre": {
+      "description": "H hand with fingers crossed, thumb closed."
+    },
+    "ya": {
+      "description": "Y hand with thumb extended."
+    },
+    "fc": {
+      "description": "Open hand curled."
+    },
+    "buo": {
+      "description": "Flat hand bent and pinched."
+    },
+    "fuo": {
+      "description": "Open hand bent and pinched."
+    },
+    "flua": {
+      "description": "Open hand bent with thumb extended."
+    },
+    "lce": {
+      "description": "L hand curled with thumb closed."
+    },
+    "vce": {
+      "description": "V hand curled with thumb closed."
+    },
+    "sle": {
+      "description": "Fist with thumb closed (hyper-articulated T)."
+    },
+    "we": {
+      "description": "W hand with thumb closed."
+    },
+    "bxe": {
+      "description": "Flat hand clawed with thumb closed."
+    },
+    "so": {
+      "description": "Fist pinched."
+    },
+    "mue": {
+      "description": "3 hand bent with thumb closed."
     },
     "yfa": {
-      "description": ""
+      "description": "Y hand with thumb fully extended."
     },
-    "yla": {
-      "description": ""
+    "lco": {
+      "description": "L hand curled and pinched."
+    },
+    "la": {
+      "description": "L hand with thumb extended."
+    },
+    "fe": {
+      "description": "Open hand with thumb closed."
+    },
+    "lo": {
+      "description": "L hand pinched."
+    },
+    "lc": {
+      "description": "L hand curled."
+    },
+    "luo": {
+      "description": "L hand bent and pinched."
+    },
+    "fu": {
+      "description": "Open hand bent."
     },
     "yle": {
-      "description": ""
+      "description": "Y hand with G-shape."
     },
-    "ylfa": {
-      "description": ""
+    "bu": {
+      "description": "Flat hand bent."
     },
-    "yma": {
-      "description": ""
+    "vue": {
+      "description": "V hand bent with thumb closed."
     },
-    "ysle": {
-      "description": ""
+    "vfa": {
+      "description": "V hand with thumb fully extended."
     },
     "yue": {
-      "description": ""
+      "description": "Y hand bent with thumb closed."
+    },
+    "va": {
+      "description": "V hand with thumb extended."
+    },
+    "fco": {
+      "description": "Open hand curled and pinched."
+    },
+    "fsu": {
+      "description": "Open hand bent with index finger flexed."
+    },
+    "fua": {
+      "description": "Open hand bent with thumb extended."
+    },
+    "ha": {
+      "description": "H hand with thumb extended."
+    },
+    "vc": {
+      "description": "V hand curled."
+    },
+    "vxe": {
+      "description": "V hand clawed with thumb closed."
+    },
+    "fsc": {
+      "description": "Open hand curled with index finger flexed."
+    },
+    "lca": {
+      "description": "L hand curled with thumb extended."
+    },
+    "hce": {
+      "description": "H hand curled with thumb closed."
+    },
+    "wo": {
+      "description": "W hand pinched."
+    },
+    "hu": {
+      "description": "H hand bent."
+    },
+    "lfca": {
+      "description": "Index finger and thumb fully extended, curled."
+    },
+    "lxa": {
+      "description": "L hand clawed with thumb extended."
+    },
+    "yla": {
+      "description": "Y hand with L-shape."
+    },
+    "me": {
+      "description": "3 hand with thumb closed."
+    },
+    "bce": {
+      "description": "Flat hand curled with thumb closed."
+    },
+    "bfa": {
+      "description": "Flat hand with thumb fully extended."
+    },
+    "flu": {
+      "description": "Open hand bent."
+    },
+    "bfca": {
+      "description": "Flat hand curled with thumb fully extended."
+    },
+    "bue": {
+      "description": "Flat hand bent with thumb closed."
+    },
+    "hfa": {
+      "description": "H hand with thumb fully extended."
+    },
+    "vca": {
+      "description": "V hand curled with thumb extended."
+    },
+    "vse": {
+      "description": "V hand with fingers closed (variant)."
+    },
+    "flco": {
+      "description": "Open hand curled and pinched with middle finger flexed."
+    },
+    "huo": {
+      "description": "H hand bent and pinched."
+    },
+    "vu": {
+      "description": "V hand bent."
+    },
+    "bha": {
+      "description": "Flat hand with ring finger closed (horn shape)."
+    },
+    "lua": {
+      "description": "L hand bent with thumb extended."
+    },
+    "vco": {
+      "description": "V hand curled and pinched."
+    },
+    "bwa": {
+      "description": "Flat hand (variant)."
+    },
+    "bxa": {
+      "description": "Flat hand clawed with thumb extended."
+    },
+    "fce": {
+      "description": "Open hand curled with thumb closed."
+    },
+    "fue": {
+      "description": "Open hand bent with thumb closed."
+    },
+    "ma": {
+      "description": "3 hand with thumb extended."
+    },
+    "vuo": {
+      "description": "V hand bent and pinched."
+    },
+    "ylfa": {
+      "description": "Y hand with thumb fully extended (variant)."
+    },
+    "blyuo": {
+      "description": "Flat hand bent and pinched (variant)."
+    },
+    "bo": {
+      "description": "Flat hand pinched."
+    },
+    "fla": {
+      "description": "Open hand with index and thumb extended (variant)."
+    },
+    "flc": {
+      "description": "Open hand curled with middle finger flexed."
+    },
+    "fle": {
+      "description": "Open hand with middle finger flexed, thumb closed."
+    },
+    "flue": {
+      "description": "Open hand bent with thumb closed."
+    },
+    "fsca": {
+      "description": "Open hand curled with index finger flexed, thumb extended."
+    },
+    "fsuo": {
+      "description": "Open hand bent and pinched with index finger flexed."
+    },
+    "hc": {
+      "description": "H hand curled."
+    },
+    "sme": {
+      "description": "Fist with thumb closed (hyper-articulated M)."
+    },
+    "vfca": {
+      "description": "V hand curled with thumb fully extended."
+    },
+    "wa": {
+      "description": "W hand with thumb extended."
+    },
+    "yce": {
+      "description": "Y hand curled with thumb closed."
+    },
+    "bfu": {
+      "description": "Flat hand bent with thumb fully extended."
+    },
+    "bla": {
+      "description": "Flat hand with middle finger closed."
+    },
+    "bvuo": {
+      "description": "Flat hand bent and pinched (variant)."
+    },
+    "fluo": {
+      "description": "Open hand bent and pinched."
+    },
+    "fmco": {
+      "description": "Open hand curled and pinched with ring finger flexed."
+    },
+    "fsce": {
+      "description": "Open hand curled with index finger flexed, thumb closed."
+    },
+    "fvc": {
+      "description": "Open hand curled with index and middle fingers flexed."
+    },
+    "fvua": {
+      "description": "Open hand bent with index and middle fingers flexed, thumb extended."
+    },
+    "fwc": {
+      "description": "Open hand curled with pinky finger flexed."
+    },
+    "fwu": {
+      "description": "Open hand bent with pinky finger flexed."
+    },
+    "hco": {
+      "description": "H hand curled and pinched."
+    },
+    "she": {
+      "description": "Fist with thumb closed (hyper-articulated N)."
+    },
+    "slyue": {
+      "description": "Fist with thumb closed (hyper-articulated variant)."
+    },
+    "vla": {
+      "description": "V hand with L-shape."
+    },
+    "vluo": {
+      "description": "V hand bent and pinched."
+    },
+    "vo": {
+      "description": "V hand pinched."
+    },
+    "yma": {
+      "description": "Y hand with 3-shape."
+    },
+    "ysle": {
+      "description": "Y hand with fist-shape (variant)."
     },
     "ywe": {
-      "description": ""
+      "description": "Y hand with W-shape."
     }
   },
   "orientation": {
-    "ai": {
-      "description": ""
-    },
-    "aj": {
-      "description": ""
-    },
-    "ak": {
-      "description": ""
+    "it": {
+      "description": "Knuckles upward, palm inward."
     },
     "at": {
-      "description": ""
+      "description": "Knuckles forward, palm inward."
     },
-    "ei": {
-      "description": ""
-    },
-    "ej": {
-      "description": ""
-    },
-    "ek": {
-      "description": ""
-    },
-    "et": {
-      "description": ""
+    "ak": {
+      "description": "Knuckles forward, palm downward."
     },
     "ia": {
-      "description": ""
-    },
-    "ie": {
-      "description": ""
-    },
-    "ij": {
-      "description": ""
-    },
-    "it": {
-      "description": ""
-    },
-    "ja": {
-      "description": ""
-    },
-    "ji": {
-      "description": ""
-    },
-    "jk": {
-      "description": ""
-    },
-    "ka": {
-      "description": ""
-    },
-    "ke": {
-      "description": ""
-    },
-    "kj": {
-      "description": ""
-    },
-    "kt": {
-      "description": ""
-    },
-    "oi": {
-      "description": ""
-    },
-    "ta": {
-      "description": ""
+      "description": "Knuckles upward, palm forward."
     },
     "te": {
-      "description": ""
+      "description": "Knuckles inward, palm backward."
     },
-    "ti": {
-      "description": ""
+    "ie": {
+      "description": "Knuckles upward, palm backward."
+    },
+    "ai": {
+      "description": "Knuckles forward, palm upward."
     },
     "tk": {
-      "description": ""
+      "description": "Knuckles inward, palm downward."
     },
-    "át": {
-      "description": ""
+    "ti": {
+      "description": "Knuckles inward, palm upward."
+    },
+    "oi": {
+      "description": "Knuckles o, palm upward."
+    },
+    "ke": {
+      "description": "Knuckles downward, palm backward."
+    },
+    "kt": {
+      "description": "Knuckles downward, palm inward."
+    },
+    "ta": {
+      "description": "Knuckles inward, palm forward."
+    },
+    "ek": {
+      "description": "Knuckles backward, palm downward."
+    },
+    "ja": {
+      "description": "Knuckles outward, palm forward."
+    },
+    "ij": {
+      "description": "Knuckles upward, palm outward."
+    },
+    "ji": {
+      "description": "Knuckles outward, palm upward."
+    },
+    "jk": {
+      "description": "Knuckles outward, palm downward."
+    },
+    "kj": {
+      "description": "Knuckles downward, palm outward."
+    },
+    "aj": {
+      "description": "Knuckles forward, palm outward."
+    },
+    "et": {
+      "description": "Knuckles backward, palm inward."
+    },
+    "ka": {
+      "description": "Knuckles downward, palm forward."
+    },
+    "ej": {
+      "description": "Knuckles backward, palm outward."
+    },
+    "ei": {
+      "description": "Knuckles backward, palm upward."
     }
   },
   "location": {
-    "A": {
-      "description": ""
+    "pj": {
+      "description": "Palm of the hand"
     },
-    "E": {
-      "description": ""
+    "fj": {
+      "description": "Fingers"
+    },
+    "bj": {
+      "description": "Radial edge (thumb side) of hand"
+    },
+    "wi": {
+      "description": "Temple"
     },
     "I": {
-      "description": ""
+      "description": "Above neutral space (high)."
     },
-    "J": {
-      "description": ""
+    "sj": {
+      "description": "Wrist"
+    },
+    "ui": {
+      "description": "Chin"
+    },
+    "ni": {
+      "description": "Cheek"
+    },
+    "oi": {
+      "description": "Mouth"
+    },
+    "ct": {
+      "description": "Chest"
+    },
+    "st": {
+      "description": "Stomach or heart area"
+    },
+    "ci": {
+      "description": "Nose"
+    },
+    "cj": {
+      "description": "Shoulder or upper arm"
+    },
+    "lj": {
+      "description": "Forearm"
+    },
+    "fuj": {
+      "description": "Fingertips"
     },
     "K": {
-      "description": ""
+      "description": "Below neutral space (low)."
+    },
+    "dj": {
+      "description": "Ulnar edge (pinky side) of hand"
+    },
+    "fje": {
+      "description": "Between the fingers"
+    },
+    "qi": {
+      "description": "Eye"
+    },
+    "A": {
+      "description": "In front of neutral space (forward)."
+    },
+    "E": {
+      "description": "Behind neutral space (backward)."
+    },
+    "gi": {
+      "description": "Ear"
+    },
+    "suj": {
+      "description": "Back of the hand"
+    },
+    "bt": {
+      "description": "Belly or abdomen"
+    },
+    "luj": {
+      "description": "Elbow"
+    },
+    "gt": {
+      "description": "Ribs or waist"
+    },
+    "ut": {
+      "description": "Throat"
+    },
+    "fi": {
+      "description": "Forehead"
+    },
+    "fjl": {
+      "description": "Side of the fingers"
     },
     "T": {
+      "description": "Close to the body (inward)."
+    },
+    "J": {
+      "description": "Far from the body (outward)."
+    },
+    "fjv": {
+      "description": "Knuckles"
+    },
+    "gk": {
+      "description": "Hips, waist, or lap"
+    },
+    "fjy": {
+      "description": "Pinky finger or pinky side of hand"
+    },
+    "fjw": {
+      "description": "Fingernails or back of fingers"
+    },
+    "fk": {
+      "description": "Foot or feet"
+    },
+    "z": {
       "description": ""
     },
     "b": {
       "description": ""
     },
-    "bj": {
-      "description": ""
-    },
-    "bt": {
-      "description": ""
-    },
-    "ci": {
-      "description": ""
-    },
-    "cj": {
-      "description": ""
-    },
-    "ct": {
-      "description": ""
-    },
-    "dj": {
-      "description": ""
-    },
     "e": {
-      "description": ""
-    },
-    "fi": {
-      "description": ""
-    },
-    "fj": {
-      "description": ""
-    },
-    "fje": {
-      "description": ""
-    },
-    "fjl": {
-      "description": ""
-    },
-    "fjv": {
-      "description": ""
-    },
-    "fjw": {
-      "description": ""
-    },
-    "fjy": {
-      "description": ""
-    },
-    "fk": {
       "description": ""
     },
     "fly": {
       "description": ""
     },
-    "fuj": {
-      "description": ""
-    },
-    "gi": {
-      "description": ""
-    },
-    "gk": {
-      "description": ""
-    },
-    "gt": {
-      "description": ""
-    },
-    "lj": {
-      "description": ""
-    },
     "lk": {
-      "description": ""
-    },
-    "luj": {
-      "description": ""
-    },
-    "ni": {
-      "description": ""
-    },
-    "oi": {
-      "description": ""
-    },
-    "pj": {
-      "description": ""
-    },
-    "qi": {
-      "description": ""
+      "description": "Knee or thigh"
     },
     "s": {
-      "description": ""
-    },
-    "sj": {
-      "description": ""
-    },
-    "st": {
-      "description": ""
-    },
-    "suj": {
-      "description": ""
-    },
-    "ui": {
-      "description": ""
-    },
-    "ut": {
-      "description": ""
-    },
-    "wi": {
-      "description": ""
-    },
-    "z": {
       "description": ""
     }
   },
   "action_descriptor": {
     "-": {
-      "description": ""
+      "description": "Single articulation of the motion."
     },
     "=": {
-      "description": ""
+      "description": "Repeated or reduplicated motion."
     },
     "~": {
-      "description": ""
+      "description": "Mirrored repeating or alternating motion."
+    },
+    "-/": {
+      "description": "Single articulation of the motion with non-dominant hand"
     }
   },
   "movement": {
-    "/a": {
-      "description": ""
-    },
-    "/a'k": {
-      "description": ""
-    },
-    "/ai": {
-      "description": ""
-    },
-    "/aiakpj": {
-      "description": ""
-    },
-    "/fuj": {
-      "description": ""
-    },
-    "/ie": {
-      "description": ""
-    },
-    "/j't": {
-      "description": ""
-    },
     "a": {
-      "description": ""
+      "description": "Linear motion forward."
+    },
+    "k": {
+      "description": "Linear motion downward."
+    },
+    "j": {
+      "description": "Linear motion outward."
+    },
+    "i": {
+      "description": "Linear motion upward."
+    },
+    "zsj": {
+      "description": "Wiggling of the wrist."
+    },
+    "t": {
+      "description": "Linear motion inward."
+    },
+    "e": {
+      "description": "Linear motion backward."
+    },
+    "rt": {
+      "description": "Rotational motion about inward axis."
+    },
+    "z": {
+      "description": "Wiggling motion."
+    },
+    "o": {
+      "description": "Pinching motion."
+    },
+    "i'k": {
+      "description": "Diagonal motion upward and downward."
+    },
+    "j't": {
+      "description": "Diagonal motion outward and inward."
+    },
+    "re": {
+      "description": "Rotational motion about backward axis."
+    },
+    "xfj": {
+      "description": "Flexing of the fingers."
+    },
+    "zfj": {
+      "description": "Wiggling of the fingers."
+    },
+    "usj": {
+      "description": "Bending of the wrist."
+    },
+    "ri": {
+      "description": "Rotational motion about upward axis."
+    },
+    "ra": {
+      "description": "Rotational motion about forward axis."
     },
     "a'e": {
-      "description": ""
-    },
-    "a'i": {
-      "description": ""
-    },
-    "a'i/e'i": {
-      "description": ""
-    },
-    "a'j": {
-      "description": ""
-    },
-    "a'k": {
-      "description": ""
-    },
-    "a't": {
-      "description": ""
-    },
-    "a't/a'j": {
-      "description": ""
-    },
-    "a/e": {
-      "description": ""
+      "description": "Diagonal motion forward and backward."
     },
     "c": {
+      "description": "Flicking motion."
+    },
+    "ufj": {
+      "description": "Bending of the fingers."
+    },
+    "rk": {
+      "description": "Rotational motion about downward axis."
+    },
+    "raj": {
+      "description": "Partial rotation (hop) about forward axis ending outward."
+    },
+    "rta": {
+      "description": "Partial rotation (hop) about inward axis ending forward."
+    },
+    "x": {
+      "description": "Flexing motion."
+    },
+    "a'k": {
+      "description": "Diagonal motion forward and downward."
+    },
+    "t'j": {
+      "description": "Diagonal motion inward and outward."
+    },
+    "j'k": {
+      "description": "Diagonal motion outward and downward."
+    },
+    "t'k": {
+      "description": "Diagonal motion inward and downward."
+    },
+    "ria": {
+      "description": "Partial rotation (hop) about upward axis ending forward."
+    },
+    "rj": {
+      "description": "Rotational motion about outward axis."
+    },
+    "rak": {
+      "description": "Partial rotation (hop) about forward axis ending downward."
+    },
+    "a'i": {
+      "description": "Diagonal motion forward and upward."
+    },
+    "j/t": {
+      "description": "Unified inverse linear motion (dominant outward, non-dominant inward)."
+    },
+    "ri/rk": {
+      "description": "Unified inverse rotation."
+    },
+    "ret": {
+      "description": "Partial rotation (hop) about backward axis ending inward."
+    },
+    "rje": {
+      "description": "Partial rotation (hop) about outward axis ending backward."
+    },
+    "rke": {
+      "description": "Partial rotation (hop) about downward axis ending backward."
+    },
+    "rei": {
+      "description": "Partial rotation (hop) about backward axis ending upward."
+    },
+    "zo": {
+      "description": "Wiggling of the thumb/fingers in pinch configuration."
+    },
+    "i'j": {
+      "description": "Diagonal motion upward and outward."
+    },
+    "rej": {
+      "description": "Partial rotation (hop) about backward axis ending outward."
+    },
+    "rja": {
+      "description": "Partial rotation (hop) about outward axis ending forward."
+    },
+    "t/j": {
+      "description": "Unified inverse linear motion (dominant inward, non-dominant outward)."
+    },
+    "e'k": {
+      "description": "Diagonal motion backward and downward."
+    },
+    "fj'e": {
       "description": ""
     },
-    "cfj": {
+    "j'i": {
+      "description": "Diagonal motion outward and upward."
+    },
+    "rte": {
+      "description": "Partial rotation (hop) about inward axis ending backward."
+    },
+    "rtk": {
+      "description": "Partial rotation (hop) about inward axis ending downward."
+    },
+    "a'j": {
+      "description": "Diagonal motion forward and outward."
+    },
+    "e'a": {
+      "description": "Diagonal motion backward and forward."
+    },
+    "rit": {
+      "description": "Partial rotation (hop) about upward axis ending inward."
+    },
+    "rk/ri": {
+      "description": "Unified inverse rotation."
+    },
+    "k't": {
+      "description": "Diagonal motion downward and inward."
+    },
+    "fja": {
       "description": ""
     },
-    "cjti": {
-      "description": ""
+    "i'a": {
+      "description": "Diagonal motion upward and forward."
     },
-    "cuj": {
-      "description": ""
+    "rat": {
+      "description": "Partial rotation (hop) about forward axis ending inward."
+    },
+    "rek": {
+      "description": "Partial rotation (hop) about backward axis ending downward."
+    },
+    "rjk": {
+      "description": "Partial rotation (hop) about outward axis ending downward."
     },
     "di": {
       "description": ""
     },
-    "e": {
-      "description": ""
+    "rI": {
+      "description": "Rotational motion about I axis."
     },
-    "e'a": {
-      "description": ""
+    "raj/ret": {
+      "description": "Unified inverse partial rotation (hop)."
     },
-    "e'i": {
-      "description": ""
+    "ret/raj": {
+      "description": "Unified inverse partial rotation (hop)."
+    },
+    "ri'rk": {
+      "description": "Opposed inverse rotation."
+    },
+    "rij": {
+      "description": "Partial rotation (hop) about upward axis ending outward."
+    },
+    "rkj": {
+      "description": "Partial rotation (hop) about downward axis ending outward."
+    },
+    "zlj": {
+      "description": "Wiggling of the forearm."
     },
     "e'j": {
-      "description": ""
-    },
-    "e'k": {
-      "description": ""
+      "description": "Diagonal motion backward and outward."
     },
     "e't": {
-      "description": ""
+      "description": "Diagonal motion backward and inward."
     },
-    "e/a": {
-      "description": ""
+    "i't": {
+      "description": "Diagonal motion upward and inward."
     },
-    "e/j": {
-      "description": ""
+    "i/k": {
+      "description": "Unified inverse linear motion (dominant upward, non-dominant downward)."
     },
-    "ffuófj": {
-      "description": ""
+    "j'a": {
+      "description": "Diagonal motion outward and forward."
+    },
+    "rji": {
+      "description": "Partial rotation (hop) about outward axis ending upward."
+    },
+    "rti": {
+      "description": "Partial rotation (hop) about inward axis ending upward."
+    },
+    "ucfj": {
+      "description": "Bending of the shoulder and fingers."
+    },
+    "xfja": {
+      "description": "Flexing of the fingers moving forward."
+    },
+    "a't": {
+      "description": "Diagonal motion forward and inward."
+    },
+    "cfj": {
+      "description": "Flicking of the fingers."
+    },
+    "e'i": {
+      "description": "Diagonal motion backward and upward."
     },
     "fj'a": {
-      "description": ""
-    },
-    "fj'e": {
       "description": ""
     },
     "fj'l": {
       "description": ""
     },
-    "fj'v": {
-      "description": ""
-    },
     "fj'y": {
       "description": ""
     },
-    "fja": {
+    "k'a": {
+      "description": "Diagonal motion downward and forward."
+    },
+    "k'i": {
+      "description": "Diagonal motion downward and upward."
+    },
+    "k'j": {
+      "description": "Diagonal motion downward and outward."
+    },
+    "rk'ri": {
+      "description": "Opposed inverse rotation."
+    },
+    "t'i": {
+      "description": "Diagonal motion inward and upward."
+    },
+    "uI": {
+      "description": "Bending upward."
+    },
+    "a/e": {
+      "description": "Unified inverse linear motion (dominant forward, non-dominant backward)."
+    },
+    "fló": {
+      "description": "Change to handshape flo."
+    },
+    "k'e": {
+      "description": "Diagonal motion downward and backward."
+    },
+    "k't/k'j": {
+      "description": "Reciprocating diagonal motion for both hands."
+    },
+    "láleatbj": {
+      "description": "Change of handshape from la to le at radial edge of hand."
+    },
+    "rej/rat": {
+      "description": "Unified inverse partial rotation (hop)."
+    },
+    "rka": {
+      "description": "Partial rotation (hop) about downward axis ending forward."
+    },
+    "rkt": {
+      "description": "Partial rotation (hop) about downward axis ending inward."
+    },
+    "zfja": {
+      "description": "Wiggling of the fingers moving forward."
+    },
+    "a'i/e'i": {
+      "description": "Reciprocating diagonal motion for both hands."
+    },
+    "a't/a'j": {
+      "description": "Reciprocating diagonal motion for both hands."
+    },
+    "cjti": {
+      "description": ""
+    },
+    "cuj": {
+      "description": "Flicking at the elbow."
+    },
+    "e/a": {
+      "description": "Unified inverse linear motion (dominant backward, non-dominant forward)."
+    },
+    "e/j": {
+      "description": "Unified inverse linear motion (dominant backward, non-dominant outward)."
+    },
+    "fj'v": {
       "description": ""
     },
     "fja'l'v'w'y": {
       "description": ""
     },
-    "fló": {
-      "description": ""
-    },
     "fuófupj": {
-      "description": ""
+      "description": "Change to handshape fuo at fingertips/palm."
     },
     "hése": {
-      "description": ""
-    },
-    "i": {
-      "description": ""
-    },
-    "i'a": {
-      "description": ""
+      "description": "Change of handshape to he and then se."
     },
     "i'e": {
-      "description": ""
-    },
-    "i'j": {
-      "description": ""
-    },
-    "i'k": {
-      "description": ""
-    },
-    "i't": {
-      "description": ""
+      "description": "Diagonal motion upward and backward."
     },
     "i't/i'j": {
-      "description": ""
-    },
-    "i/k": {
-      "description": ""
-    },
-    "j": {
-      "description": ""
-    },
-    "j'a": {
-      "description": ""
+      "description": "Reciprocating diagonal motion for both hands."
     },
     "j'e": {
-      "description": ""
-    },
-    "j'i": {
-      "description": ""
-    },
-    "j'k": {
-      "description": ""
-    },
-    "j't": {
-      "description": ""
-    },
-    "j/t": {
-      "description": ""
-    },
-    "k": {
-      "description": ""
-    },
-    "k'a": {
-      "description": ""
-    },
-    "k'e": {
-      "description": ""
-    },
-    "k'i": {
-      "description": ""
-    },
-    "k'j": {
-      "description": ""
-    },
-    "k't": {
-      "description": ""
-    },
-    "k't/k'j": {
-      "description": ""
+      "description": "Diagonal motion outward and backward."
     },
     "k/i": {
-      "description": ""
+      "description": "Unified inverse linear motion (dominant downward, non-dominant upward)."
     },
     "k¨j": {
       "description": ""
     },
-    "láleatbj": {
-      "description": ""
-    },
-    "o": {
-      "description": ""
-    },
-    "rI": {
-      "description": ""
-    },
-    "ra": {
-      "description": ""
-    },
     "ra/re": {
-      "description": ""
+      "description": "Unified inverse rotation."
     },
     "rai": {
-      "description": ""
-    },
-    "raj": {
-      "description": ""
-    },
-    "raj/ret": {
-      "description": ""
-    },
-    "rak": {
-      "description": ""
-    },
-    "rat": {
-      "description": ""
+      "description": "Partial rotation (hop) about forward axis ending upward."
     },
     "rat/rej": {
-      "description": ""
-    },
-    "re": {
-      "description": ""
+      "description": "Unified inverse partial rotation (hop)."
     },
     "re/ra": {
-      "description": ""
-    },
-    "rei": {
-      "description": ""
-    },
-    "rej": {
-      "description": ""
-    },
-    "rej/rat": {
-      "description": ""
-    },
-    "rek": {
-      "description": ""
-    },
-    "ret": {
-      "description": ""
-    },
-    "ret/raj": {
-      "description": ""
-    },
-    "ri": {
-      "description": ""
-    },
-    "ri'rk": {
-      "description": ""
+      "description": "Unified inverse rotation."
     },
     "ri/rj": {
-      "description": ""
-    },
-    "ri/rk": {
-      "description": ""
-    },
-    "ria": {
-      "description": ""
-    },
-    "rij": {
-      "description": ""
-    },
-    "rit": {
-      "description": ""
-    },
-    "rj": {
-      "description": ""
+      "description": "Unified inverse rotation."
     },
     "rj/rt": {
-      "description": ""
-    },
-    "rja": {
-      "description": ""
+      "description": "Unified inverse rotation."
     },
     "rja/rje": {
-      "description": ""
-    },
-    "rje": {
-      "description": ""
-    },
-    "rji": {
-      "description": ""
-    },
-    "rjk": {
-      "description": ""
+      "description": "Unified inverse partial rotation (hop)."
     },
     "rjk't": {
       "description": ""
     },
-    "rk": {
-      "description": ""
-    },
-    "rk'ri": {
-      "description": ""
-    },
-    "rk/ri": {
-      "description": ""
-    },
-    "rka": {
-      "description": ""
-    },
-    "rke": {
-      "description": ""
-    },
-    "rkj": {
-      "description": ""
-    },
-    "rkt": {
-      "description": ""
-    },
-    "rt": {
-      "description": ""
-    },
-    "rta": {
-      "description": ""
-    },
-    "rte": {
-      "description": ""
-    },
-    "rti": {
-      "description": ""
-    },
-    "rtk": {
-      "description": ""
-    },
-    "ssá": {
-      "description": ""
-    },
-    "t": {
-      "description": ""
-    },
     "t'a": {
-      "description": ""
+      "description": "Diagonal motion inward and forward."
     },
     "t'e": {
-      "description": ""
-    },
-    "t'i": {
-      "description": ""
-    },
-    "t'j": {
-      "description": ""
-    },
-    "t'k": {
-      "description": ""
+      "description": "Diagonal motion inward and backward."
     },
     "t/i": {
-      "description": ""
-    },
-    "t/j": {
-      "description": ""
+      "description": "Unified inverse linear motion (dominant inward, non-dominant upward)."
     },
     "t/k": {
-      "description": ""
+      "description": "Unified inverse linear motion (dominant inward, non-dominant downward)."
     },
     "tadi": {
-      "description": ""
+      "description": "Change of handshape to ta."
     },
     "tjk": {
-      "description": ""
+      "description": "Change of orientation to tjk."
     },
     "tke": {
-      "description": ""
-    },
-    "uI": {
-      "description": ""
-    },
-    "ucfj": {
-      "description": ""
+      "description": "Change of orientation to tke."
     },
     "ucj": {
-      "description": ""
-    },
-    "ufj": {
-      "description": ""
-    },
-    "usj": {
-      "description": ""
-    },
-    "x": {
-      "description": ""
-    },
-    "xfj": {
-      "description": ""
+      "description": "Bending of the shoulder or upper arm."
     },
     "xfj'l": {
-      "description": ""
-    },
-    "xfja": {
-      "description": ""
-    },
-    "z": {
-      "description": ""
-    },
-    "zfj": {
       "description": ""
     },
     "zfj'a": {
       "description": ""
     },
-    "zfja": {
-      "description": ""
-    },
     "zfjv": {
-      "description": ""
+      "description": "Wiggling of the knuckles/fingers."
     },
     "zj": {
-      "description": ""
-    },
-    "zlj": {
-      "description": ""
-    },
-    "zo": {
-      "description": ""
-    },
-    "zsj": {
-      "description": ""
+      "description": "Wiggling of the arm/hand."
     }
   }
 }
