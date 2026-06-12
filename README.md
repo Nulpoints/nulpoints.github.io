@@ -27,6 +27,8 @@ A high-fidelity suite designed for parsing, analyzing, and looking up SLD notati
 | ⚡ **SLD Interactive Flashcards** | [**Practice Flashcards 🚀**](./SLD/flashcards.html) | Dynamic visual practice tool with card-flip animations, custom score trackers, and tailored study sessions. |
 | 🔬 **SLD Parser & Segmenter** | [**Launch Parser 🚀**](./SLD/SLDparser.html) | Segment and decompose complex SLD code structures into constituent handshape, action, and movement features. |
 | 🎮 **SLD Missing Parameter Game** | [**Play Game 🚀**](./SLD/missingparam.html) | Test and improve your transcription skills by identifying missing handshapes, orientations, locations, and actions in an interactive game. |
+| 🎮 **SLD Handshape Testing Game** | [**Play Game 🚀**](./SLD/handshape_game.html) | Premium 3D interactive training game to test and build your recognition and spelling skills for SLD handshapes. |
+| 🔮 **SLD Handshape Visualizer** | [**Launch Visualizer 🚀**](./SLD/visualizer.html) | Translate between handshape names, signatures, and interactive 3D hand shapes with a guided builder. |
 
 ---
 
