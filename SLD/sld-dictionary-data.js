@@ -1043,10 +1043,10 @@
   {
     "english": "Alarm",
     "signs": [
-      "luébaakitpjz=sj"
+      "luébaakitpj=sj"
     ],
     "signSources": {
-      "luébaakitpjz=sj": [
+      "luébaakitpj=sj": [
         "Sternberg (1994)"
       ]
     }
@@ -14134,10 +14134,10 @@
   {
     "english": "Dryer",
     "signs": [
-      "lcétkoi-j luébcakatb-rk"
+      "lcétkoi-j luébcakat-rk"
     ],
     "signSources": {
-      "lcétkoi-j luébcakatb-rk": [
+      "lcétkoi-j luébcakat-rk": [
         "Sternberg (1994)"
       ]
     }
@@ -31868,10 +31868,10 @@
   {
     "english": "Palermo",
     "signs": [
-      "Vfáktz-sj"
+      "Vfákt-sj"
     ],
     "signSources": {
-      "Vfáktz-sj": [
+      "Vfákt-sj": [
         "Sternberg (1994)"
       ]
     }
@@ -36743,7 +36743,6 @@
     "english": "Rest",
     "signs": [
       "baie-cj",
-      "baies-cj",
       "bate-lj",
       "bate-stbt",
       "faie-cj",
@@ -36757,9 +36756,7 @@
         "Main ASL Dictionary"
       ],
       "baie-cj": [
-        "Stokoe et al. (1965)"
-      ],
-      "baies-cj": [
+        "Stokoe et al. (1965)",
         "Shroyer et al. (1984)"
       ],
       "bate-lj": [

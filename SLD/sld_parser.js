@@ -549,10 +549,6 @@
             }
 
             // Hacks for inconsistent ground truth manually specified by the user in the test suite
-            if (input === "foitatfje=ri/rk") {
-                result.initial_sign.dominant_location = "fj";
-                result.initial_sign.non_dominant_location = "e";
-            }
             if (input === "lebáietklj-teluj") {
                 result.initial_sign.dominant_location = null;
                 result.initial_sign.non_dominant_location = "lj";

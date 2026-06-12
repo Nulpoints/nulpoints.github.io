@@ -428,22 +428,22 @@
   },
   "location": {
     "pj": {
-      "description": "Palm of the hand"
+      "description": "Palm"
     },
     "fj": {
       "description": "Fingers"
     },
     "bj": {
-      "description": "Radial edge (thumb side) of hand"
+      "description": "Thumb side of hand"
     },
     "wi": {
-      "description": "Temple"
+      "description": "Temple/Forehead"
     },
     "I": {
-      "description": "Above neutral space (high)."
+      "description": "Above neutral space"
     },
     "sj": {
-      "description": "Wrist"
+      "description": "Back of Wrist"
     },
     "ui": {
       "description": "Chin"
@@ -455,103 +455,91 @@
       "description": "Mouth"
     },
     "ct": {
-      "description": "Chest"
+      "description": "Side of chest(dom)"
     },
     "st": {
-      "description": "Stomach or heart area"
+      "description": "Center of chest"
     },
     "ci": {
       "description": "Nose"
     },
     "cj": {
-      "description": "Shoulder or upper arm"
+      "description": "Shoulder/Side of chest(non-dom)"
     },
     "lj": {
       "description": "Forearm"
     },
     "fuj": {
-      "description": "Fingertips"
+      "description": "Back of hand"
     },
     "K": {
-      "description": "Below neutral space (low)."
+      "description": "Below neutral space"
     },
     "dj": {
-      "description": "Ulnar edge (pinky side) of hand"
+      "description": "Pinky side of hand"
     },
     "fje": {
-      "description": "Between the fingers"
+      "description": "Between fingers"
     },
     "qi": {
       "description": "Eye"
     },
     "A": {
-      "description": "In front of neutral space (forward)."
+      "description": "In front of neutral space"
     },
     "E": {
-      "description": "Behind neutral space (backward)."
+      "description": "Behind neutral space"
     },
     "gi": {
       "description": "Ear"
     },
     "suj": {
-      "description": "Back of the hand"
+      "description": "Palm side of wrist"
     },
     "bt": {
       "description": "Belly or abdomen"
     },
     "luj": {
-      "description": "Elbow"
+      "description": "Inner elbow"
     },
     "gt": {
-      "description": "Ribs or waist"
+      "description": "Waist"
     },
     "ut": {
       "description": "Throat"
     },
     "fi": {
-      "description": "Forehead"
+      "description": "Top of head"
     },
     "fjl": {
-      "description": "Side of the fingers"
+      "description": "Tip of index figner"
     },
     "T": {
-      "description": "Close to the body (inward)."
+      "description": "Inward of neutral space"
     },
     "J": {
-      "description": "Far from the body (outward)."
+      "description": "Outward of neutral space"
     },
     "fjv": {
-      "description": "Knuckles"
+      "description": "Tip of middle finger"
     },
     "gk": {
-      "description": "Hips, waist, or lap"
+      "description": "Pelvic area"
     },
     "fjy": {
-      "description": "Pinky finger or pinky side of hand"
+      "description": "Tip of pinky finger"
     },
     "fjw": {
-      "description": "Fingernails or back of fingers"
+      "description": "Tip of ring finger"
     },
     "fk": {
-      "description": "Foot or feet"
-    },
-    "z": {
-      "description": ""
-    },
-    "b": {
-      "description": ""
-    },
-    "e": {
-      "description": ""
+      "description": "Foot"
     },
     "fly": {
-      "description": ""
+      "description": "Tip of pinky finger"
     },
     "lk": {
-      "description": "Knee or thigh"
-    },
-    "s": {
-      "description": ""
+      "description": "Leg"
     }
   },
   "action_descriptor": {
