@@ -365,7 +365,7 @@ export class HanshapeControls {
 			]);
 
 		this.thumb.targetShape('U', [
-				[88 * this.cnvt, 0 * this.cnvt, 0 * this.cnvt],
+				[48 * this.cnvt, 0 * this.cnvt, 0 * this.cnvt],
 				[0 * this.cnvt, 0 * this.cnvt, 0 * this.cnvt],
 				[0 * this.cnvt, 0 * this.cnvt, 0 * this.cnvt]
 			]);
@@ -680,6 +680,24 @@ export class HanshapeControls {
 			return this.signatureSpellingError;
 		} else {
 			this.mapCharacters();
+
+			// Dynamically adjust thumb 'U' flexion angle based on the number of active fingers
+			let activeCount = 0;
+			for (let i = 1; i <= 4; i++) {
+				if (this.sigLetters[i] && this.sigLetters[i] !== 'S') {
+					activeCount++;
+				}
+			}
+			let thumbAngle = 48; // default for 1 or fewer active fingers
+			if (activeCount === 4) {
+				thumbAngle = 88;
+			} else if (activeCount === 3) {
+				thumbAngle = 72;
+			} else if (activeCount === 2) {
+				thumbAngle = 56;
+			}
+			this.thumb.shapes['U'].k1.target[0] = thumbAngle * this.cnvt;
+
 			var k1Offset = this.getk1Offset();
 			for (let x in this.sigLetters) {
 				this.fingers[x].setShape(this.sigLetters[x], k1Offset[x]);
