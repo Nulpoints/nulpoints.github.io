@@ -171,7 +171,8 @@
       const urlParams = new URLSearchParams(window.location.search);
       const hamnosysData = urlParams.get('hns');
       if (hamnosysData) {
-        document.getElementById("myHamNoSys").value = decodeURIComponent(hamnosysData);
+        document.getElementById("myHamNoSys").value = hamnosysData;
+        playHamNoSys();
       }
     }
 
@@ -640,6 +641,7 @@
         range.collapse(true);
         range.select();
       }
+    }
   </script>
   <link rel="stylesheet" href="../theme.css">
   <script src="../theme.js" defer></script>
