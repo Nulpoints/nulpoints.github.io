@@ -579,19 +579,40 @@ export class HanshapeControls {
 				[0 * this.cnvt, 0 * this.cnvt, 0 * this.cnvt],
 				[0 * this.cnvt, 0 * this.cnvt, 0 * this.cnvt]
 			];
+		const bentShapes = ['U', 'C', 'X'];
 		if (this.abduction[0]) {
-			k1Offset[1] = [0 * this.cnvt, -32 * this.cnvt, 0 * this.cnvt];
+			if (bentShapes.includes(this.sigLetters[1])) {
+				k1Offset[1] = [0 * this.cnvt, 0 * this.cnvt, -24 * this.cnvt];
+			} else {
+				k1Offset[1] = [0 * this.cnvt, -32 * this.cnvt, 0 * this.cnvt];
+			}
 		}
 		if (this.abduction[1]) {
-			k1Offset[3] = [0 * this.cnvt, -16 * this.cnvt, 0 * this.cnvt];
-			if (this.abduction[2]) {
-				k1Offset[4] = [0 * this.cnvt, -32 * this.cnvt, 0 * this.cnvt];
+			if (bentShapes.includes(this.sigLetters[3])) {
+				k1Offset[3] = [0 * this.cnvt, 0 * this.cnvt, 16 * this.cnvt];
 			} else {
-				k1Offset[4] = [0 * this.cnvt, -16 * this.cnvt, 0 * this.cnvt];
+				k1Offset[3] = [0 * this.cnvt, -16 * this.cnvt, 0 * this.cnvt];
+			}
+			if (this.abduction[2]) {
+				if (bentShapes.includes(this.sigLetters[4])) {
+					k1Offset[4] = [0 * this.cnvt, 0 * this.cnvt, 24 * this.cnvt];
+				} else {
+					k1Offset[4] = [0 * this.cnvt, -32 * this.cnvt, 0 * this.cnvt];
+				}
+			} else {
+				if (bentShapes.includes(this.sigLetters[4])) {
+					k1Offset[4] = [0 * this.cnvt, 0 * this.cnvt, 16 * this.cnvt];
+				} else {
+					k1Offset[4] = [0 * this.cnvt, -16 * this.cnvt, 0 * this.cnvt];
+				}
 			}
 		}
 		if (this.abduction[2] && !this.abduction[1]) {
-			k1Offset[4] = [0 * this.cnvt, -16 * this.cnvt, 0 * this.cnvt];
+			if (bentShapes.includes(this.sigLetters[4])) {
+				k1Offset[4] = [0 * this.cnvt, 0 * this.cnvt, 16 * this.cnvt];
+			} else {
+				k1Offset[4] = [0 * this.cnvt, -16 * this.cnvt, 0 * this.cnvt];
+			}
 		}
 		return k1Offset;
 	}
