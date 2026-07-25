@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+  <style>
+    th,
+    td {
+      text-align: center !important;
+      border: 1px solid;
+    }
+
+    table {
+      width: 75% !important;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+    }
+
+    .aslwrite {
+      font-family: "ASLwrite", "ASLWrite", "ASLWrite1.7", sans-serif;
+      font-size: 24pt;
+      width: 90% !important;
+      max-width: 950px !important;
+      min-height: 180px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      margin-top: 15px !important;
+      margin-bottom: 25px !important;
+      padding: 14px !important;
+      box-sizing: border-box !important;
+      border-radius: 8px !important;
+    }
+
+    @font-face {
+      font-family: 'ASLwrite';
+      src: url('./ASLWrite1.7.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'ASLWrite';
+      src: url('./ASLWrite1.7.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'ASLWrite1.7';
+      src: url('./ASLWrite1.7.otf') format('opentype');
+    }
+
+    /* Force Keyman On-Screen Keyboard key caps to use the ASLwrite font without enlarging key text */
+    .kmw-key-text,
+    .kmw-key,
+    .kmw-osk-inner,
+    .kmw-osk-button {
+      font-family: "ASLwrite", "ASLWrite", "ASLWrite1.7", sans-serif !important;
+    }
+  </style>
+
+  <!-- Set the viewport width to match phone and tablet device widths -->
+  <meta name="viewport" content="width=device-width,user-scalable=no" />
+
+  <title>ASLwrite Keyboard</title>
+  <link rel="stylesheet" href="../theme.css">
+  <script src="../theme.js" defer></script>
+</head>
+
+<body>
+  <div class="w3-container w3-center">
+    <h1>ASLwrite Keyboard</h1>
+    <p style="max-width: 800px; margin-left: auto; margin-right: auto; text-align: justify;">
+      <strong>ASLwrite</strong> is an open-source, iconic featural writing system and orthography developed specifically for American Sign Language (ASL). Originally created in 2011 by Adrean Clark and Julia Dameron, it evolved from si5s (which itself derived from SignWriting) into a public-domain system designed to capture the rich phonemic and visual nuances of sign language. Maintained as a community-driven orthography, ASLwrite provides a practical way to transcribe ASL directly in-line from left to right.
+    </p>
+    <p style="max-width: 800px; margin-left: auto; margin-right: auto; text-align: justify;">
+      The system represents signs through a structured sequence of four primary components: <em>digits</em> (symbols representing handshapes and finger configurations), <em>locatives</em> (characters indicating body or spatial locations from frontal or profile perspectives), <em>diacritics and movement marks</em> (which detail hand orientation, small motions, or directional paths), and <em>non-manual marks</em> (which capture facial expressions like eyebrow movements, mouth shapes, and body shifts). By arranging these elements sequentially, ASLwrite provides a comprehensive script for writing complete signs, phrases, and sentences in American Sign Language.
+    </p>
+    <textarea class="aslwrite" cols="50" rows="6" autocomplete="off" autocorrect="off" autocapitalize="off"
+      spellcheck="false"></textarea>
+  </div>
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/keymanweb.js'></script>
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/kmwuitoggle.js'></script>
+  <script>
+    (function () {
+      keyman.init({ attachType: 'auto' });
+    })();
+  </script>
+  <script>
+    keyman.addKeyboards({
+      name: 'ASLwrite Helper Keyboard',
+      id: 'aslwrite_helper_keyboard',
+      filename: './aslwrite_helper_keyboard.js',
+      version: '1.0',
+      language: [{
+        name: 'ASLwrite',
+        id: 'en',
+        region: 'us'
+      }],
+      font: {
+        family: 'ASLwrite',
+        source: ['./ASLWrite1.7.otf']
+      },
+      oskFont: {
+        family: 'ASLwrite',
+        source: ['./ASLWrite1.7.otf']
+      }
+    });
+  </script>
+</body>
+
+</html>
