@@ -12,14 +12,11 @@
     "se": {
       "description": "Fist with thumb closed (S hand)."
     },
-    "sa": {
-      "description": "Fist with thumb extended."
-    },
     "bc": {
       "description": "Flat hand curled."
     },
-    "bco": {
-      "description": "Flat hand curled and pinched."
+    "sa": {
+      "description": "Fist with thumb extended."
     },
     "fo": {
       "description": "Open hand pinched."
@@ -47,6 +44,9 @@
     },
     "ye": {
       "description": "Y hand with thumb closed."
+    },
+    "bco": {
+      "description": "Flat hand curled and pinched."
     },
     "lfa": {
       "description": "Index finger and thumb fully extended."
@@ -189,14 +189,14 @@
     "yla": {
       "description": "Y hand with L-shape."
     },
+    "bfa": {
+      "description": "Flat hand with thumb fully extended."
+    },
     "me": {
       "description": "3 hand with thumb closed."
     },
     "bce": {
       "description": "Flat hand curled with thumb closed."
-    },
-    "bfa": {
-      "description": "Flat hand with thumb fully extended."
     },
     "flu": {
       "description": "Open hand bent."
@@ -380,9 +380,6 @@
     "ti": {
       "description": "Knuckles inward, palm upward."
     },
-    "oi": {
-      "description": "Knuckles o, palm upward."
-    },
     "ke": {
       "description": "Knuckles downward, palm backward."
     },
@@ -436,6 +433,9 @@
     "bj": {
       "description": "Thumb side of hand"
     },
+    "oi": {
+      "description": "Mouth"
+    },
     "wi": {
       "description": "Temple/Forehead"
     },
@@ -450,9 +450,6 @@
     },
     "ni": {
       "description": "Cheek"
-    },
-    "oi": {
-      "description": "Mouth"
     },
     "ct": {
       "description": "Side of chest(dom)"
@@ -469,6 +466,9 @@
     "lj": {
       "description": "Forearm"
     },
+    "fje": {
+      "description": "Between fingers"
+    },
     "fuj": {
       "description": "Back of hand"
     },
@@ -477,9 +477,6 @@
     },
     "dj": {
       "description": "Pinky side of hand"
-    },
-    "fje": {
-      "description": "Between fingers"
     },
     "qi": {
       "description": "Eye"
@@ -691,9 +688,6 @@
     },
     "e'k": {
       "description": "Diagonal motion backward and downward."
-    },
-    "fj'e": {
-      "description": ""
     },
     "j'i": {
       "description": "Diagonal motion outward and upward."

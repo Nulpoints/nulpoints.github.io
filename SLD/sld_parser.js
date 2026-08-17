@@ -83,12 +83,22 @@
         // SLD Text Rules & Sets
         const ACCENT_MAP = { 'á': 'a', 'é': 'e', 'ć': 'c', 'ú': 'u', 'ó': 'o' };
         function normalize(char) { return ACCENT_MAP[char] || char; }
-        function normalizeWord(word) { return word.split('').map(normalize).join(''); }
+        function normalizeWord(word) { 
+            if (word === 'bcó') return 'bc';
+            let norm = word.split('').map(normalize).join('');
+            if (isValidHandshape(norm)) return norm;
+            if (word.endsWith('ó') && word.length > 2 && isValidHandshape(word.slice(0, -1))) {
+                return normalizeWord(word.slice(0, -1));
+            }
+            return norm;
+        }
 
         const INITIAL_SET = new Set(['s', 'l', 'y', 'h', 'v', 'm', 'w', 'b', 'f']);
         const FLEXING_SET = new Set(['f', 'a', 'e', 'c', 'u', 'o', 'x', 'r', 'á', 'é', 'ć', 'ú', 'ó']);
-        const ORIENTATION_SET = new Set(['a', 'e', 't', 'j', 'i', 'k', 'o']);
+        const ORIENTATION_SET = new Set(['a', 'e', 't', 'j', 'i', 'k']);
         const FORBIDDEN_PAIRS = new Set(['ae', 'ik', 'tj', 'ea', 'ki', 'jt', 'aa', 'ee', 'ii', 'kk', 'tt', 'jj']);
+
+        const HAND_LOCATIONS = new Set(["cj", "luj", "lj", "sj", "suj", "pj", "fj", "fuj", "fje", "fjl", "fjv", "fjw", "fjy", "bj", "dj"]);
 
         const LOCATIONS = [
             "fi", "wi", "qi", "gi", "ni", "ci", "oi", "ui",
@@ -488,7 +498,12 @@
                     result.initial_sign.non_dominant_orientation = init.orientations[1];
                 }
 
-                if (init.parsedLocations.length > 0) result.initial_sign.dominant_location = init.parsedLocations[0];
+                if (init.parsedLocations.length > 0) {
+                    result.initial_sign.dominant_location = init.parsedLocations[0];
+                    if (isTwoHanded && init.parsedLocations.length === 1 && init.parsedLocations[0] === 'oi') {
+                        result.initial_sign.non_dominant_location = init.parsedLocations[0];
+                    }
+                }
                 if (init.parsedLocations.length > 1) result.initial_sign.non_dominant_location = init.parsedLocations[1];
             }
 

@@ -1,0 +1,314 @@
+﻿category,code,description
+handshape,ba,Flat hand with thumb extended.
+handshape,le,Index finger extended (G hand).
+handshape,fa,Open hand with thumb extended.
+handshape,se,Fist with thumb closed (S hand).
+handshape,bc,Flat hand curled.
+handshape,sa,Fist with thumb extended.
+handshape,fo,Open hand pinched.
+handshape,he,H hand with thumb closed.
+handshape,sfa,Fist with thumb fully extended.
+handshape,ve,V hand with thumb closed.
+handshape,be,Flat hand with thumb closed.
+handshape,vle,V hand with G-shape (index finger extended).
+handshape,bua,Flat hand bent with thumb extended.
+handshape,bca,Flat hand curled with thumb extended.
+handshape,ye,Y hand with thumb closed.
+handshape,bco,Flat hand curled and pinched.
+handshape,lfa,Index finger and thumb fully extended.
+handshape,lu,L hand bent.
+handshape,lxe,L hand clawed with thumb closed.
+handshape,lue,L hand bent with thumb closed.
+handshape,hue,H hand bent with thumb closed.
+handshape,fca,Open hand curled with thumb extended.
+handshape,hre,"H hand with fingers crossed, thumb closed."
+handshape,ya,Y hand with thumb extended.
+handshape,fc,Open hand curled.
+handshape,buo,Flat hand bent and pinched.
+handshape,fuo,Open hand bent and pinched.
+handshape,flua,Open hand bent with thumb extended.
+handshape,lce,L hand curled with thumb closed.
+handshape,vce,V hand curled with thumb closed.
+handshape,sle,Fist with thumb closed (hyper-articulated T).
+handshape,we,W hand with thumb closed.
+handshape,bxe,Flat hand clawed with thumb closed.
+handshape,so,Fist pinched.
+handshape,mue,3 hand bent with thumb closed.
+handshape,yfa,Y hand with thumb fully extended.
+handshape,lco,L hand curled and pinched.
+handshape,la,L hand with thumb extended.
+handshape,fe,Open hand with thumb closed.
+handshape,lo,L hand pinched.
+handshape,lc,L hand curled.
+handshape,luo,L hand bent and pinched.
+handshape,fu,Open hand bent.
+handshape,yle,Y hand with G-shape.
+handshape,bu,Flat hand bent.
+handshape,vue,V hand bent with thumb closed.
+handshape,vfa,V hand with thumb fully extended.
+handshape,yue,Y hand bent with thumb closed.
+handshape,va,V hand with thumb extended.
+handshape,fco,Open hand curled and pinched.
+handshape,fsu,Open hand bent with index finger flexed.
+handshape,fua,Open hand bent with thumb extended.
+handshape,ha,H hand with thumb extended.
+handshape,vc,V hand curled.
+handshape,vxe,V hand clawed with thumb closed.
+handshape,fsc,Open hand curled with index finger flexed.
+handshape,lca,L hand curled with thumb extended.
+handshape,hce,H hand curled with thumb closed.
+handshape,wo,W hand pinched.
+handshape,hu,H hand bent.
+handshape,lfca,"Index finger and thumb fully extended, curled."
+handshape,lxa,L hand clawed with thumb extended.
+handshape,yla,Y hand with L-shape.
+handshape,bfa,Flat hand with thumb fully extended.
+handshape,me,3 hand with thumb closed.
+handshape,bce,Flat hand curled with thumb closed.
+handshape,flu,Open hand bent.
+handshape,bfca,Flat hand curled with thumb fully extended.
+handshape,bue,Flat hand bent with thumb closed.
+handshape,hfa,H hand with thumb fully extended.
+handshape,vca,V hand curled with thumb extended.
+handshape,vse,V hand with fingers closed (variant).
+handshape,flco,Open hand curled and pinched with middle finger flexed.
+handshape,huo,H hand bent and pinched.
+handshape,vu,V hand bent.
+handshape,bha,Flat hand with ring finger closed (horn shape).
+handshape,lua,L hand bent with thumb extended.
+handshape,vco,V hand curled and pinched.
+handshape,bwa,Flat hand (variant).
+handshape,bxa,Flat hand clawed with thumb extended.
+handshape,fce,Open hand curled with thumb closed.
+handshape,fue,Open hand bent with thumb closed.
+handshape,ma,3 hand with thumb extended.
+handshape,vuo,V hand bent and pinched.
+handshape,ylfa,Y hand with thumb fully extended (variant).
+handshape,blyuo,Flat hand bent and pinched (variant).
+handshape,bo,Flat hand pinched.
+handshape,fla,Open hand with index and thumb extended (variant).
+handshape,flc,Open hand curled with middle finger flexed.
+handshape,fle,"Open hand with middle finger flexed, thumb closed."
+handshape,flue,Open hand bent with thumb closed.
+handshape,fsca,"Open hand curled with index finger flexed, thumb extended."
+handshape,fsuo,Open hand bent and pinched with index finger flexed.
+handshape,hc,H hand curled.
+handshape,sme,Fist with thumb closed (hyper-articulated M).
+handshape,vfca,V hand curled with thumb fully extended.
+handshape,wa,W hand with thumb extended.
+handshape,yce,Y hand curled with thumb closed.
+handshape,bfu,Flat hand bent with thumb fully extended.
+handshape,bla,Flat hand with middle finger closed.
+handshape,bvuo,Flat hand bent and pinched (variant).
+handshape,fluo,Open hand bent and pinched.
+handshape,fmco,Open hand curled and pinched with ring finger flexed.
+handshape,fsce,"Open hand curled with index finger flexed, thumb closed."
+handshape,fvc,Open hand curled with index and middle fingers flexed.
+handshape,fvua,"Open hand bent with index and middle fingers flexed, thumb extended."
+handshape,fwc,Open hand curled with pinky finger flexed.
+handshape,fwu,Open hand bent with pinky finger flexed.
+handshape,hco,H hand curled and pinched.
+handshape,she,Fist with thumb closed (hyper-articulated N).
+handshape,slyue,Fist with thumb closed (hyper-articulated variant).
+handshape,vla,V hand with L-shape.
+handshape,vluo,V hand bent and pinched.
+handshape,vo,V hand pinched.
+handshape,yma,Y hand with 3-shape.
+handshape,ysle,Y hand with fist-shape (variant).
+handshape,ywe,Y hand with W-shape.
+orientation,it,"Knuckles upward, palm inward."
+orientation,at,"Knuckles forward, palm inward."
+orientation,ak,"Knuckles forward, palm downward."
+orientation,ia,"Knuckles upward, palm forward."
+orientation,te,"Knuckles inward, palm backward."
+orientation,ie,"Knuckles upward, palm backward."
+orientation,ai,"Knuckles forward, palm upward."
+orientation,tk,"Knuckles inward, palm downward."
+orientation,ti,"Knuckles inward, palm upward."
+orientation,ke,"Knuckles downward, palm backward."
+orientation,kt,"Knuckles downward, palm inward."
+orientation,ta,"Knuckles inward, palm forward."
+orientation,ek,"Knuckles backward, palm downward."
+orientation,ja,"Knuckles outward, palm forward."
+orientation,ij,"Knuckles upward, palm outward."
+orientation,ji,"Knuckles outward, palm upward."
+orientation,jk,"Knuckles outward, palm downward."
+orientation,kj,"Knuckles downward, palm outward."
+orientation,aj,"Knuckles forward, palm outward."
+orientation,et,"Knuckles backward, palm inward."
+orientation,ka,"Knuckles downward, palm forward."
+orientation,ej,"Knuckles backward, palm outward."
+orientation,ei,"Knuckles backward, palm upward."
+location,pj,Palm
+location,fj,Fingers
+location,bj,Thumb side of hand
+location,oi,Mouth
+location,wi,Temple/Forehead
+location,I,Above neutral space
+location,sj,Back of Wrist
+location,ui,Chin
+location,ni,Cheek
+location,ct,Side of chest(dom)
+location,st,Center of chest
+location,ci,Nose
+location,cj,Shoulder/Side of chest(non-dom)
+location,lj,Forearm
+location,fje,Between fingers
+location,fuj,Back of hand
+location,K,Below neutral space
+location,dj,Pinky side of hand
+location,qi,Eye
+location,A,In front of neutral space
+location,E,Behind neutral space
+location,gi,Ear
+location,suj,Palm side of wrist
+location,bt,Belly or abdomen
+location,luj,Inner elbow
+location,gt,Waist
+location,ut,Throat
+location,fi,Top of head
+location,fjl,Tip of index figner
+location,T,Inward of neutral space
+location,J,Outward of neutral space
+location,fjv,Tip of middle finger
+location,gk,Pelvic area
+location,fjy,Tip of pinky finger
+location,fjw,Tip of ring finger
+location,fk,Foot
+location,fly,Tip of pinky finger
+location,lk,Leg
+action_descriptor,-,Single articulation of the motion.
+action_descriptor,=,Repeated or reduplicated motion.
+action_descriptor,~,Mirrored repeating or alternating motion.
+action_descriptor,-/,Single articulation of the motion with non-dominant hand
+movement,a,Linear motion forward.
+movement,k,Linear motion downward.
+movement,j,Linear motion outward.
+movement,i,Linear motion upward.
+movement,zsj,Wiggling of the wrist.
+movement,t,Linear motion inward.
+movement,e,Linear motion backward.
+movement,rt,Rotational motion about inward axis.
+movement,z,Wiggling motion.
+movement,o,Pinching motion.
+movement,i'k,Diagonal motion upward and downward.
+movement,j't,Diagonal motion outward and inward.
+movement,re,Rotational motion about backward axis.
+movement,xfj,Flexing of the fingers.
+movement,zfj,Wiggling of the fingers.
+movement,usj,Bending of the wrist.
+movement,ri,Rotational motion about upward axis.
+movement,ra,Rotational motion about forward axis.
+movement,a'e,Diagonal motion forward and backward.
+movement,c,Flicking motion.
+movement,ufj,Bending of the fingers.
+movement,rk,Rotational motion about downward axis.
+movement,raj,Partial rotation (hop) about forward axis ending outward.
+movement,rta,Partial rotation (hop) about inward axis ending forward.
+movement,x,Flexing motion.
+movement,a'k,Diagonal motion forward and downward.
+movement,t'j,Diagonal motion inward and outward.
+movement,j'k,Diagonal motion outward and downward.
+movement,t'k,Diagonal motion inward and downward.
+movement,ria,Partial rotation (hop) about upward axis ending forward.
+movement,rj,Rotational motion about outward axis.
+movement,rak,Partial rotation (hop) about forward axis ending downward.
+movement,a'i,Diagonal motion forward and upward.
+movement,j/t,"Unified inverse linear motion (dominant outward, non-dominant inward)."
+movement,ri/rk,Unified inverse rotation.
+movement,ret,Partial rotation (hop) about backward axis ending inward.
+movement,rje,Partial rotation (hop) about outward axis ending backward.
+movement,rke,Partial rotation (hop) about downward axis ending backward.
+movement,rei,Partial rotation (hop) about backward axis ending upward.
+movement,zo,Wiggling of the thumb/fingers in pinch configuration.
+movement,i'j,Diagonal motion upward and outward.
+movement,rej,Partial rotation (hop) about backward axis ending outward.
+movement,rja,Partial rotation (hop) about outward axis ending forward.
+movement,t/j,"Unified inverse linear motion (dominant inward, non-dominant outward)."
+movement,e'k,Diagonal motion backward and downward.
+movement,j'i,Diagonal motion outward and upward.
+movement,rte,Partial rotation (hop) about inward axis ending backward.
+movement,rtk,Partial rotation (hop) about inward axis ending downward.
+movement,a'j,Diagonal motion forward and outward.
+movement,e'a,Diagonal motion backward and forward.
+movement,rit,Partial rotation (hop) about upward axis ending inward.
+movement,rk/ri,Unified inverse rotation.
+movement,k't,Diagonal motion downward and inward.
+movement,fja,
+movement,i'a,Diagonal motion upward and forward.
+movement,rat,Partial rotation (hop) about forward axis ending inward.
+movement,rek,Partial rotation (hop) about backward axis ending downward.
+movement,rjk,Partial rotation (hop) about outward axis ending downward.
+movement,di,
+movement,rI,Rotational motion about I axis.
+movement,raj/ret,Unified inverse partial rotation (hop).
+movement,ret/raj,Unified inverse partial rotation (hop).
+movement,ri'rk,Opposed inverse rotation.
+movement,rij,Partial rotation (hop) about upward axis ending outward.
+movement,rkj,Partial rotation (hop) about downward axis ending outward.
+movement,zlj,Wiggling of the forearm.
+movement,e'j,Diagonal motion backward and outward.
+movement,e't,Diagonal motion backward and inward.
+movement,i't,Diagonal motion upward and inward.
+movement,i/k,"Unified inverse linear motion (dominant upward, non-dominant downward)."
+movement,j'a,Diagonal motion outward and forward.
+movement,rji,Partial rotation (hop) about outward axis ending upward.
+movement,rti,Partial rotation (hop) about inward axis ending upward.
+movement,ucfj,Bending of the shoulder and fingers.
+movement,xfja,Flexing of the fingers moving forward.
+movement,a't,Diagonal motion forward and inward.
+movement,cfj,Flicking of the fingers.
+movement,e'i,Diagonal motion backward and upward.
+movement,fj'a,
+movement,fj'l,
+movement,fj'y,
+movement,k'a,Diagonal motion downward and forward.
+movement,k'i,Diagonal motion downward and upward.
+movement,k'j,Diagonal motion downward and outward.
+movement,rk'ri,Opposed inverse rotation.
+movement,t'i,Diagonal motion inward and upward.
+movement,uI,Bending upward.
+movement,a/e,"Unified inverse linear motion (dominant forward, non-dominant backward)."
+movement,fló,Change to handshape flo.
+movement,k'e,Diagonal motion downward and backward.
+movement,k't/k'j,Reciprocating diagonal motion for both hands.
+movement,láleatbj,Change of handshape from la to le at radial edge of hand.
+movement,rej/rat,Unified inverse partial rotation (hop).
+movement,rka,Partial rotation (hop) about downward axis ending forward.
+movement,rkt,Partial rotation (hop) about downward axis ending inward.
+movement,zfja,Wiggling of the fingers moving forward.
+movement,a'i/e'i,Reciprocating diagonal motion for both hands.
+movement,a't/a'j,Reciprocating diagonal motion for both hands.
+movement,cjti,
+movement,cuj,Flicking at the elbow.
+movement,e/a,"Unified inverse linear motion (dominant backward, non-dominant forward)."
+movement,e/j,"Unified inverse linear motion (dominant backward, non-dominant outward)."
+movement,fj'v,
+movement,fja'l'v'w'y,
+movement,fuófupj,Change to handshape fuo at fingertips/palm.
+movement,hése,Change of handshape to he and then se.
+movement,i'e,Diagonal motion upward and backward.
+movement,i't/i'j,Reciprocating diagonal motion for both hands.
+movement,j'e,Diagonal motion outward and backward.
+movement,k/i,"Unified inverse linear motion (dominant downward, non-dominant upward)."
+movement,k¨j,
+movement,ra/re,Unified inverse rotation.
+movement,rai,Partial rotation (hop) about forward axis ending upward.
+movement,rat/rej,Unified inverse partial rotation (hop).
+movement,re/ra,Unified inverse rotation.
+movement,ri/rj,Unified inverse rotation.
+movement,rj/rt,Unified inverse rotation.
+movement,rja/rje,Unified inverse partial rotation (hop).
+movement,rjk't,
+movement,t'a,Diagonal motion inward and forward.
+movement,t'e,Diagonal motion inward and backward.
+movement,t/i,"Unified inverse linear motion (dominant inward, non-dominant upward)."
+movement,t/k,"Unified inverse linear motion (dominant inward, non-dominant downward)."
+movement,tadi,Change of handshape to ta.
+movement,tjk,Change of orientation to tjk.
+movement,tke,Change of orientation to tke.
+movement,ucj,Bending of the shoulder or upper arm.
+movement,xfj'l,
+movement,zfj'a,
+movement,zfjv,Wiggling of the knuckles/fingers.
+movement,zj,Wiggling of the arm/hand.
