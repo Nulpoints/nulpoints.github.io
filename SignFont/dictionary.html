@@ -546,6 +546,43 @@
       box-shadow: 0 0 8px var(--accent-glow);
     }
 
+    /* Search Mode Toggle */
+    .search-mode-toggle {
+      display: inline-flex;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--glass-border);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .mode-toggle-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .mode-toggle-btn.active {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(124, 58, 237, 0.4);
+    }
+
+    .mode-toggle-btn:hover:not(.active) {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
     .copy-btn {
       background: none;
       border: none;
@@ -981,13 +1018,26 @@
 
         <!-- SignFont Search Box -->
         <div class="search-group">
-          <label for="signfont-search" class="search-label">
-            SignFont Notation Lookup
-            <span class="keyman-status-badge"
-              style="font-size: 0.7rem; padding: 2px 8px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; border-color: rgba(139, 92, 246, 0.2);">
-              <i class="fa-solid fa-spell-check"></i> SignFont Keyboard Active
-            </span>
-          </label>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 8px;">
+            <label for="signfont-search" class="search-label" style="margin-bottom: 0;">
+              <span id="signfont-search-title">SignFont Lookup</span>
+              <span class="keyman-status-badge" id="keyman-badge"
+                style="font-size: 0.7rem; padding: 2px 8px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; border-color: rgba(139, 92, 246, 0.2);">
+                <i class="fa-solid fa-spell-check"></i> Keyboard Active
+              </span>
+            </label>
+
+            <!-- Search Mode Toggle -->
+            <div class="search-mode-toggle" id="search-mode-toggle">
+              <button type="button" class="mode-toggle-btn active" data-mode="original" id="btn-mode-original" title="Search using original SignFont font notation">
+                <i class="fa-solid fa-font"></i> Original SignFont
+              </button>
+              <button type="button" class="mode-toggle-btn" data-mode="unicode" id="btn-mode-unicode" title="Search using adapted Unicode spelling (jan Olipija)">
+                <i class="fa-solid fa-code"></i> Unicode Search
+              </button>
+            </div>
+          </div>
+
           <div class="search-input-wrapper">
             <textarea id="signfont-search" class="search-input signfont-input" placeholder="_ d((Hwy, b&&BAy nT%%KEwy"
               rows="1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
@@ -1209,12 +1259,16 @@
     let filteredDictionary = [];
     let currentLimit = 60;
     const itemsPerChunk = 60;
+    let currentSignSearchMode = 'original'; // 'original' or 'unicode'
 
     // DOM References
     const englishSearch = document.getElementById('english-search');
     const signfontSearch = document.getElementById('signfont-search');
     const clearEnglishBtn = document.getElementById('clear-english');
     const clearSignfontBtn = document.getElementById('clear-signfont');
+    const btnModeOriginal = document.getElementById('btn-mode-original');
+    const btnModeUnicode = document.getElementById('btn-mode-unicode');
+    const keymanBadge = document.getElementById('keyman-badge');
 
     const dictionaryGrid = document.getElementById('dictionary-grid');
     const resultsMeta = document.getElementById('results-meta');
@@ -1373,9 +1427,37 @@
         }
       });
 
-      // Programmatically enforce the font family inline to prevent Keyman resets
+      // Search Mode Toggle Listeners
+      if (btnModeOriginal && btnModeUnicode) {
+        btnModeOriginal.addEventListener('click', () => setSignSearchMode('original'));
+        btnModeUnicode.addEventListener('click', () => setSignSearchMode('unicode'));
+      }
+
+      function setSignSearchMode(mode) {
+        currentSignSearchMode = mode;
+        if (mode === 'original') {
+          btnModeOriginal.classList.add('active');
+          btnModeUnicode.classList.remove('active');
+          signfontSearch.placeholder = '_ d((Hwy, b&&BAy nT%%KEwy';
+          signfontSearch.style.setProperty('font-family', "'SignFont New', 'SignFontNew', sans-serif", 'important');
+          if (keymanBadge) keymanBadge.style.display = 'inline-flex';
+        } else {
+          btnModeUnicode.classList.add('active');
+          btnModeOriginal.classList.remove('active');
+          signfontSearch.placeholder = 'e.g. റ⸝O̱ര⊖Xᕤ, ΠO̱⊖...';
+          signfontSearch.style.setProperty('font-family', "'Space Grotesk', system-ui, sans-serif", 'important');
+          if (keymanBadge) keymanBadge.style.display = 'none';
+        }
+        refilter();
+      }
+
+      // Programmatically enforce font family based on active search mode
       const enforceFont = () => {
-        signfontSearch.style.setProperty('font-family', "'SignFont New', 'SignFontNew', sans-serif", 'important');
+        if (currentSignSearchMode === 'original') {
+          signfontSearch.style.setProperty('font-family', "'SignFont New', 'SignFontNew', sans-serif", 'important');
+        } else {
+          signfontSearch.style.setProperty('font-family', "'Space Grotesk', system-ui, sans-serif", 'important');
+        }
       };
       signfontSearch.addEventListener('focus', enforceFont);
       signfontSearch.addEventListener('input', enforceFont);
@@ -1493,10 +1575,13 @@
         });
       } else if (signQuery) {
         filteredDictionary = window.signFontDictionary.filter(item => {
-          const matchSign = item.signs && item.signs.some(sign => sign.includes(signQuery));
-          const matchUnicode = item.unicodeSigns && item.unicodeSigns.some(uSign => uSign.includes(signQuery));
-          const matchConverted = item.signs && item.signs.some(sign => convertToUnicode(sign).includes(signQuery));
-          return matchSign || matchUnicode || matchConverted;
+          if (currentSignSearchMode === 'unicode') {
+            const matchUnicode = item.unicodeSigns && item.unicodeSigns.some(uSign => uSign.includes(signQuery));
+            const matchConverted = item.signs && item.signs.some(sign => convertToUnicode(sign).includes(signQuery));
+            return matchUnicode || matchConverted;
+          } else {
+            return item.signs && item.signs.some(sign => sign.includes(signQuery));
+          }
         });
       } else {
         filteredDictionary = [...window.signFontDictionary];
