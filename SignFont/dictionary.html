@@ -549,8 +549,8 @@
     /* Search Mode Toggle */
     .search-mode-toggle {
       display: inline-flex;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--glass-border);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 9999px;
       padding: 3px;
       gap: 3px;
@@ -559,10 +559,10 @@
     .mode-toggle-btn {
       background: transparent;
       border: none;
-      color: var(--text-muted);
-      padding: 4px 12px;
+      color: #94a3b8;
+      padding: 5px 14px;
       border-radius: 9999px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 600;
       font-family: 'Space Grotesk', sans-serif;
       cursor: pointer;
@@ -573,14 +573,34 @@
     }
 
     .mode-toggle-btn.active {
-      background: var(--accent-gradient);
-      color: #ffffff;
-      box-shadow: 0 2px 10px rgba(124, 58, 237, 0.4);
+      background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 10px rgba(124, 58, 237, 0.45) !important;
     }
 
     .mode-toggle-btn:hover:not(.active) {
-      color: var(--text-main);
-      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    html[data-theme="light"] .search-mode-toggle {
+      background: rgba(226, 232, 240, 0.95) !important;
+      border-color: rgba(203, 213, 225, 0.9) !important;
+    }
+
+    html[data-theme="light"] .mode-toggle-btn {
+      color: #475569 !important;
+    }
+
+    html[data-theme="light"] .mode-toggle-btn:hover:not(.active) {
+      color: #0f172a !important;
+      background: rgba(0, 0, 0, 0.06) !important;
+    }
+
+    html[data-theme="light"] .mode-toggle-btn.active {
+      background: linear-gradient(135deg, #6d28d9 0%, #4c1d95 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 10px rgba(109, 40, 217, 0.35) !important;
     }
 
     .copy-btn {
@@ -992,8 +1012,11 @@
         <button class="btn" id="open-ref-btn">
           <i class="fa-solid fa-circle-info"></i> SignFont Reference Chart
         </button>
-        <a href="./flashcards.html" class="btn btn-primary">
+        <a href="./flashcards.html" class="btn">
           <i class="fa-solid fa-graduation-cap"></i> Practice Flashcards
+        </a>
+        <a href="./convert.html" class="btn btn-primary">
+          <i class="fa-solid fa-arrow-right-arrow-left"></i> Unicode Converter
         </a>
       </div>
     </header>

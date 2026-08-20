@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignFont Bidirectional Unicode Converter</title>
+  <meta name="description"
+    content="Dedicated bidirectional converter between SignFont long-form text (1987 original ASCII notation) and adapted Unicode text (developed by jan Olipija). Features real-time sync, keyman typing schema integration, file import/export, and component breakdown.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      --glass-bg: rgba(30, 41, 59, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-hover-border: rgba(255, 255, 255, 0.15);
+
+      --accent-primary: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      --accent-glow: rgba(124, 58, 237, 0.35);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(15, 23, 42, 0.65);
+
+      --color-success: #10b981;
+      --color-info: #3b82f6;
+      --color-warning: #f59e0b;
+
+      --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: 'SignFont New';
+      src: url('./SignFontNew.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 3rem;
+      position: relative;
+    }
+
+    /* Ambient Background Glows */
+    .bg-blobs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+      animation: pulse 12s ease-in-out infinite alternate;
+    }
+
+    .blob-1 {
+      top: -10%;
+      left: -10%;
+      width: 55vw;
+      height: 55vw;
+      background: #4c1d95;
+    }
+
+    .blob-2 {
+      bottom: -15%;
+      right: -10%;
+      width: 60vw;
+      height: 60vw;
+      background: #1e3a8a;
+      animation-delay: -6s;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.1) translate(30px, -20px); }
+    }
+
+    .app-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem;
+    }
+
+    /* Header Navigation & Banner */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1.2rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .brand-logo i {
+      font-size: 1.5rem;
+      color: var(--accent-primary);
+      filter: drop-shadow(0 0 8px var(--accent-glow));
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: var(--transition-smooth);
+      border: 1px solid transparent;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-link.active {
+      color: #ffffff;
+      background: var(--accent-gradient);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    .header-title-section h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .header-title-section p.tagline {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 820px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.55;
+    }
+
+    /* Badges & Notice Banner */
+    .unicode-notice-banner {
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.28);
+      border-radius: 14px;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .unicode-notice-banner strong {
+      color: #a78bfa;
+    }
+
+    /* Control Toolbar */
+    .control-toolbar {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .preset-select {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--glass-hover-border);
+      color: var(--text-main);
+      padding: 0.55rem 1rem;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .preset-select:hover, .preset-select:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 1.1rem;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+    }
+
+    .toggle-btn.active {
+      background: rgba(139, 92, 246, 0.22);
+      border-color: var(--accent-primary);
+      color: #ffffff;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    /* Converter Grid Layout */
+    .converter-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1.25rem;
+      align-items: stretch;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 992px) {
+      .converter-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .editor-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      transition: var(--transition-smooth);
+    }
+
+    .editor-card:focus-within {
+      border-color: rgba(139, 92, 246, 0.4);
+      box-shadow: 0 12px 40px rgba(124, 58, 237, 0.15);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title-group h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .card-title-group i {
+      color: var(--accent-primary);
+      font-size: 1.1rem;
+    }
+
+    .badge-sub {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(139, 92, 246, 0.18);
+      color: #a78bfa;
+      font-weight: 600;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .editor-textarea-wrapper {
+      position: relative;
+      flex: 1;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .converter-textarea {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 1.1rem;
+      color: var(--text-main);
+      font-size: 1.35rem;
+      line-height: 1.6;
+      resize: vertical;
+      outline: none;
+      transition: var(--transition-smooth);
+      font-family: inherit;
+    }
+
+    .converter-textarea:focus {
+      border-color: var(--accent-primary);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .converter-textarea.signfont-font {
+      font-family: 'SignFont New', sans-serif;
+      font-size: 1.8rem;
+    }
+
+    .converter-textarea.unicode-font {
+      font-family: 'Space Grotesk', 'Outfit', monospace;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .editor-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.85rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .action-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-sm {
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-sm:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      border-color: var(--glass-hover-border);
+    }
+
+    .btn-primary-sm {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-primary-sm:hover {
+      box-shadow: 0 4px 14px var(--accent-glow);
+      color: #ffffff;
+    }
+
+    .editor-stats {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Central Swap Column */
+    .swap-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .swap-circle-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--accent-gradient);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px var(--accent-glow);
+      transition: var(--transition-spring);
+    }
+
+    .swap-circle-btn:hover {
+      transform: scale(1.12) rotate(180deg);
+      box-shadow: 0 12px 30px rgba(124, 58, 237, 0.5);
+    }
+
+    .swap-circle-btn:active {
+      transform: scale(0.95) rotate(180deg);
+    }
+
+    /* Live Breakdown Section */
+    .breakdown-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .breakdown-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .breakdown-header h3 {
+      font-size: 1.25rem;
+      font-family: 'Space Grotesk', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .breakdown-header h3 i {
+      color: var(--accent-primary);
+    }
+
+    .components-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .comp-pill {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .comp-pill:hover {
+      border-color: rgba(139, 92, 246, 0.35);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .comp-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .comp-values {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .glyph-badge {
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+      background: rgba(139, 92, 246, 0.2);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: #a78bfa;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .glyph-badge.sf-font {
+      font-family: 'SignFont New', sans-serif;
+      font-size: 1.4rem;
+    }
+
+    .comp-desc {
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    /* File Import/Export Bar */
+    .file-bar {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .file-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .file-input-hidden {
+      display: none;
+    }
+
+    /* Cheat Sheet Reference Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(11, 15, 25, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-container {
+      background: #0f172a;
+      border: 1px solid var(--glass-hover-border);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 1000px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 1.25rem 1.75rem;
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-header h3 {
+      font-size: 1.35rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-close-btn:hover {
+      color: #ffffff;
+    }
+
+    .modal-body {
+      padding: 1.5rem 1.75rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .matrix-table th, .matrix-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .matrix-table th {
+      background: rgba(30, 41, 59, 0.6);
+      color: #a78bfa;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .matrix-table td {
+      font-size: 0.95rem;
+    }
+
+    .matrix-table tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .sf-rendered {
+      font-family: 'SignFont New', sans-serif;
+      font-size: 1.5rem;
+      color: #ffffff;
+    }
+
+    .unicode-rendered {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.3rem;
+      color: #a78bfa;
+      font-weight: 600;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--accent-primary);
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      color: #ffffff;
+      box-shadow: 0 8px 30px var(--accent-glow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      z-index: 10000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: var(--transition-spring);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast i {
+      color: var(--color-success);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Ambient Background Art -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+      <a href="./dictionary.html" class="brand-logo">
+        <i class="fa-solid fa-hands-asl-interpreting"></i>
+        <span>SignFont Suite</span>
+      </a>
+      <div class="nav-links">
+        <a href="./dictionary.html" class="nav-link">
+          <i class="fa-solid fa-book"></i> Dictionary
+        </a>
+        <a href="./flashcards.html" class="nav-link">
+          <i class="fa-solid fa-graduation-cap"></i> Flashcards
+        </a>
+        <a href="./keyboard.html" class="nav-link">
+          <i class="fa-solid fa-keyboard"></i> Virtual Keyboard
+        </a>
+        <a href="./convert.html" class="nav-link active">
+          <i class="fa-solid fa-arrow-right-arrow-left"></i> Converter
+        </a>
+      </div>
+    </nav>
+
+    <!-- Header Title Area -->
+    <header>
+      <div class="header-title-section">
+        <h1>SignFont Bidirectional Converter</h1>
+        <p class="tagline">Convert long-form SignFont text into adapted Unicode representation and vice versa. Type in real time using original SignFont notation or standard Unicode symbols.</p>
+      </div>
+
+      <!-- Credit Banner -->
+      <div class="unicode-notice-banner">
+        <i class="fa-solid fa-sparkles" style="color: #a78bfa; font-size: 1.1rem;"></i>
+        <span><strong>Adapted Unicode Specification:</strong> Developed by <strong>jan Olipija</strong> for native cross-platform Unicode text rendering, preserving original 1987 SignFont structural phonology.</span>
+      </div>
+    </header>
+
+    <!-- Toolbar Controls -->
+    <section class="control-toolbar">
+      <div class="toolbar-group">
+        <label for="preset-select" style="font-size: 0.9rem; font-weight: 500; color: var(--text-muted);">
+          <i class="fa-solid fa-folder-open"></i> Sample Presets:
+        </label>
+        <select id="preset-select" class="preset-select">
+          <option value="">-- Choose a sample ASL sign / text --</option>
+          <option value="aP&s&quot;LG">Accuse (aP&amp;s&quot;LG)</option>
+          <option value="b&amp;&quot;MGJ&amp;">Across (b&amp;&quot;MGJ&amp;)</option>
+          <option value="pR%%Cvzzy">Activity (pR%%Cvzzy)</option>
+          <option value="aP%8:LEGwy">Act (aP%8:LEGwy)</option>
+          <option value="b)&quot;MJ!Ez">All afternoon (b)&quot;MJ!Ez)</option>
+          <option value="d&amp;AFy">Always (d&amp;AFy)</option>
+          <option value="aP&amp;s&quot;LG b&amp;&quot;MGJ&amp; d&amp;AFy">Multi-word sentence</option>
+        </select>
+      </div>
+
+      <div class="toolbar-group">
+        <button id="toggle-keyman" class="toggle-btn" title="Toggle Keyman virtual keyboard layout integration">
+          <i class="fa-solid fa-keyboard"></i> Direct Keyboard Schema
+        </button>
+        <button id="toggle-font-view" class="toggle-btn active" title="Toggle visual SignFont font glyphs vs raw ASCII font">
+          <i class="fa-solid fa-font"></i> Rendered SignFont Font
+        </button>
+        <button id="open-matrix-btn" class="toggle-btn" title="Open complete 94-character conversion cheat sheet matrix">
+          <i class="fa-solid fa-table-cells"></i> Mapping Table
+        </button>
+      </div>
+    </section>
+
+    <!-- Dual Converter Grid Workspace -->
+    <main class="converter-grid">
+      <!-- Left Card: SignFont Original / ASCII -->
+      <div class="editor-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <i class="fa-solid fa-font"></i>
+            <h2>SignFont Notation (ASCII)</h2>
+          </div>
+          <span class="badge-sub">1987 Original</span>
+        </div>
+        <div class="editor-textarea-wrapper">
+          <textarea id="ascii-input" class="converter-textarea signfont-font"
+            placeholder="Type or paste SignFont notation (e.g. aP&s&quot;LG)..." autocomplete="off" spellcheck="false"></textarea>
+        </div>
+        <div class="editor-actions">
+          <div class="action-btn-group">
+            <button class="btn-sm" id="copy-ascii-btn"><i class="fa-regular fa-copy"></i> Copy</button>
+            <button class="btn-sm" id="clear-ascii-btn"><i class="fa-solid fa-trash-can"></i> Clear</button>
+          </div>
+          <div class="editor-stats">
+            <span id="ascii-char-count">0 chars</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Swap Button -->
+      <div class="swap-column">
+        <button id="swap-btn" class="swap-circle-btn" title="Swap input and output fields">
+          <i class="fa-solid fa-right-left"></i>
+        </button>
+      </div>
+
+      <!-- Right Card: Adapted Unicode -->
+      <div class="editor-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <i class="fa-solid fa-code"></i>
+            <h2>SignFont Unicode</h2>
+          </div>
+          <span class="badge-sub" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);">jan Olipija</span>
+        </div>
+        <div class="editor-textarea-wrapper">
+          <textarea id="unicode-input" class="converter-textarea unicode-font"
+            placeholder="Converted Unicode text will appear here (or type Unicode directly e.g. റ⸝O̱ര⊖Xᕤ)..." autocomplete="off" spellcheck="false" data-keyman-disabled="true"></textarea>
+        </div>
+        <div class="editor-actions">
+          <div class="action-btn-group">
+            <button class="btn-sm btn-primary-sm" id="copy-unicode-btn"><i class="fa-regular fa-copy"></i> Copy Unicode</button>
+            <button class="btn-sm" id="clear-unicode-btn"><i class="fa-solid fa-trash-can"></i> Clear</button>
+          </div>
+          <div class="editor-stats">
+            <span id="unicode-char-count">0 glyphs</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- File Import / Export Bar -->
+    <section class="file-bar">
+      <div class="file-bar-left">
+        <i class="fa-solid fa-file-arrow-up" style="font-size: 1.4rem; color: var(--accent-primary);"></i>
+        <div>
+          <strong style="font-size: 0.95rem;">Batch File Conversion:</strong>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Import a plain text file (.txt) with SignFont text to convert instantly.</p>
+        </div>
+      </div>
+      <div class="action-btn-group">
+        <input type="file" id="file-uploader" accept=".txt" class="file-input-hidden">
+        <button class="btn-sm" onclick="document.getElementById('file-uploader').click()">
+          <i class="fa-solid fa-upload"></i> Upload .txt File
+        </button>
+        <button class="btn-sm" id="export-ascii-file">
+          <i class="fa-solid fa-download"></i> Save ASCII .txt
+        </button>
+        <button class="btn-sm btn-primary-sm" id="export-unicode-file">
+          <i class="fa-solid fa-download"></i> Save Unicode .txt
+        </button>
+      </div>
+    </section>
+
+    <!-- Live Component Breakdown Section -->
+    <section class="breakdown-card">
+      <div class="breakdown-header">
+        <h3><i class="fa-solid fa-microscope"></i> Live Component Breakdown Inspector</h3>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Parses current sign into Handshape, Diacritic, Region, Location &amp; Movement</span>
+      </div>
+      <div id="breakdown-container" class="components-grid">
+        <div class="comp-pill">
+          <div class="comp-label"><span>Handshape</span><span style="color: #a78bfa;">a-u</span></div>
+          <div class="comp-values">
+            <span class="glyph-badge sf-font" id="breakdown-hs-sf">-</span>
+            <span class="glyph-badge" id="breakdown-hs-uni">-</span>
+          </div>
+          <span class="comp-desc" id="breakdown-hs-desc">None detected</span>
+        </div>
+
+        <div class="comp-pill">
+          <div class="comp-label"><span>Handshape Diacritic</span><span style="color: #a78bfa;">P-Z</span></div>
+          <div class="comp-values">
+            <span class="glyph-badge sf-font" id="breakdown-dia-sf">-</span>
+            <span class="glyph-badge" id="breakdown-dia-uni">-</span>
+          </div>
+          <span class="comp-desc" id="breakdown-dia-desc">None detected</span>
+        </div>
+
+        <div class="comp-pill">
+          <div class="comp-label"><span>Contacting Region</span><span style="color: #a78bfa;">! to +</span></div>
+          <div class="comp-values">
+            <span class="glyph-badge sf-font" id="breakdown-reg-sf">-</span>
+            <span class="glyph-badge" id="breakdown-reg-uni">-</span>
+          </div>
+          <span class="comp-desc" id="breakdown-reg-desc">None detected</span>
+        </div>
+
+        <div class="comp-pill">
+          <div class="comp-label"><span>Location</span><span style="color: #a78bfa;">/ to =</span></div>
+          <div class="comp-values">
+            <span class="glyph-badge sf-font" id="breakdown-loc-sf">-</span>
+            <span class="glyph-badge" id="breakdown-loc-uni">-</span>
+          </div>
+          <span class="comp-desc" id="breakdown-loc-desc">None detected</span>
+        </div>
+
+        <div class="comp-pill">
+          <div class="comp-label"><span>Movement</span><span style="color: #a78bfa;">A to M</span></div>
+          <div class="comp-values">
+            <span class="glyph-badge sf-font" id="breakdown-mov-sf">-</span>
+            <span class="glyph-badge" id="breakdown-mov-uni">-</span>
+          </div>
+          <span class="comp-desc" id="breakdown-mov-desc">None detected</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 94-Character Matrix Modal -->
+  <div id="matrix-modal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-table-cells" style="color: var(--accent-primary);"></i> SignFont to Unicode Complete Mapping Table</h3>
+        <button class="modal-close-btn" id="close-matrix-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1rem;">
+          Complete 94-character bidirectional mapping table for original 1987 SignFont ASCII notation and jan Olipija's adapted Unicode representation.
+        </p>
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>ASCII Code</th>
+              <th>SignFont Glyph</th>
+              <th>Unicode Character</th>
+              <th>Unicode Codepoint</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-tbody">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- Keyman Web Integration Scripts -->
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/keymanweb.js'></script>
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/kmwuitoggle.js'></script>
+
+  <script>
+    // Primary SignFont to Unicode Master Dictionary
+    const SIGNFONT_UNICODE_MAP = {
+      "A": "<", "B": ">", "C": "ⵢ", "D": "ᐲ", "E": "Ṿ", "F": "ᘐ", "G": "ᕤ", "H": "ꕊ", "I": "ᘖ", "J": "ᘕ", "K": "≈", "L": "X", "M": "ⴳ", "N": "¦", "O": "¦ᐨ", "P": "⸝", "Q": "ₒ", "R": "℩", "S": "⁊", "T": "℩⸝", "U": "⁊⸝", "V": "ʟ", "W": "ɳ", "X": "ѵ", "Y": "⩝", "Z": "⊥", "Ã": "|˘", "Ï": "✳˘", "Ô": "ᐯ˘", "a": "റ", "b": "Π", "c": "C", "d": "|", "e": "Ω", "f": "ᗐ", "g": "⊃", "h": "⫪", "i": "Һ", "j": "Ч", "k": "७", "l": "⫛", "m": "爪", "n": "ቨ", "o": "O", "p": "✳", "q": "ᕬ", "r": "୪", "s": "ര", "t": "൪", "u": "ᐯ", "v": "⁼", "w": "ᣛ", "x": "ᙾ", "y": "ᴺ", "z": "⁷", "0": "ᨓ", "1": "ᕃ", "2": "ᖌ", "3": "⦣", "4": "ᖍ", "5": "ᒍ", "6": "⩇", "7": "ᒐ", "8": "ᑯ", "9": "ɤ", "!": "ⵀ", "\"": "⊖", "#": "ⵚ", "$": "ⵕ", "%": "Ō", "&": "O̱", "(": "ᓂ", ")": "ᓇ", "*": "⊕", "+": "◷", "/": "ᕂ", ":": "ᑲ", ";": "ᕟ", "<": "Э", "=": "ᕞ", ">": "ᗫ", "?": "⍰", "@": "ᗠ", "[": "⍃", "\\": "⍌", "]": "⍄", "^": "⍓", "_": "⦵", "`": "◫", "{": "ᗟ", "|": "⌽", "}": "ᗥ", "~": "Ø"
+    };
+
+    // Reverse Map: Unicode -> ASCII
+    const REVERSE_UNICODE_MAP = {};
+    for (const [asciiKey, uniVal] of Object.entries(SIGNFONT_UNICODE_MAP)) {
+      REVERSE_UNICODE_MAP[uniVal] = asciiKey;
+    }
+
+    // Component Descriptions
+    const HANDSHAPES = {
+      'a': 'fist (A)', 'b': 'flat hand (B)', 'c': 'cupped hand (C)', 'd': 'pointing hand (1)',
+      'e': 'fingerspelling E', 'f': 'index, middle, ring spread (W)', 'g': 'thumb and index extended (G)',
+      'h': 'index and middle extended (H/U)', 'i': 'pinky extended (I)', 'j': 'pinky and index extended (HORNS)',
+      'k': 'middle extended, thumb on edge (K/P)', 'l': 'middle finger extended', 'm': 'index, middle, ring touching (M)',
+      'n': 'index, middle, ring, pinky spread (4)', 'o': 'thumb loop with joined fingers (O)',
+      'p': 'thumb and fingers spread (5)', 'q': 'loop between thumb and middle (8)',
+      'r': 'index and middle twisted (R)', 's': 'fist with thumb over fingers (S)',
+      't': 'fist with thumb under index (T)', 'u': 'index and middle spread (V)'
+    };
+
+    const DIACRITICS = {
+      'P': 'thumb extended parallel', 'Q': 'loop (e.g., baby-O)', 'R': 'curled fingers',
+      'S': 'bent at proximal joint', 'T': 'thumb extended, fingers curled', 'U': 'thumb extended, fingers bent',
+      'V': 'pinky extended', 'W': 'thumb laid alongside', 'X': 'non-significant fingers extended',
+      'Y': 'thumb laid over/tucked', 'Z': 'thumb perpendicular'
+    };
+
+    const REGIONS = {
+      '!': 'palm side', '"': 'back side', '#': 'palm side of fingers', '$': 'heel of hand',
+      '%': 'radial edge', '&': 'ulnar edge', '(': 'distal end (tip)', ')': 'elbow end',
+      '*': 'space between thumb/digits', '+': 'between adjacent fingers'
+    };
+
+    const LOCATIONS = {
+      '/': 'Ipsilateral Temple', '0': 'Forehead', '1': 'Contralateral Temple', '2': 'Ipsilateral Ear',
+      '3': 'Nose', '4': 'Contralateral ear', '5': 'Ipsilateral cheek', '6': 'Chin / mouth',
+      '7': 'Contralateral cheek', '8': 'Ipsilateral shoulder', '9': 'Sternum (chest)', ':': 'Contralateral shoulder',
+      ';': 'Ipsilateral abdomen', '<': 'Middle abdomen', '=': 'Contralateral abdomen'
+    };
+
+    const MOVEMENTS = {
+      'A': 'Move toward ipsilateral side', 'B': 'Move away from ipsilateral side', 'C': 'Move back and forth laterally',
+      'D': 'Move upwards', 'E': 'Move downwards', 'F': 'Move toward the body', 'G': 'Move away from the body',
+      'H': 'Circular path movement', 'I': 'Twist wrist inward', 'J': 'Twist wrist outward',
+      'K': 'Wiggle the fingers', 'L': 'Touch', 'M': 'Continuous contact'
+    };
+
+    // Forward Conversion: ASCII -> Unicode
+    function asciiToUnicode(asciiStr) {
+      if (!asciiStr) return '';
+      const keys = Object.keys(SIGNFONT_UNICODE_MAP).sort((a, b) => b.length - a.length);
+      let i = 0;
+      let res = '';
+      while (i < asciiStr.length) {
+        let matched = false;
+        for (let k of keys) {
+          if (asciiStr.startsWith(k, i)) {
+            res += SIGNFONT_UNICODE_MAP[k];
+            i += k.length;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          res += asciiStr[i];
+          i++;
+        }
+      }
+      return res;
+    }
+
+    // Reverse Conversion: Unicode -> ASCII
+    function unicodeToAscii(uniStr) {
+      if (!uniStr) return '';
+      const keys = Object.keys(REVERSE_UNICODE_MAP).sort((a, b) => b.length - a.length);
+      let i = 0;
+      let res = '';
+      while (i < uniStr.length) {
+        let matched = false;
+        for (let k of keys) {
+          if (uniStr.startsWith(k, i)) {
+            res += REVERSE_UNICODE_MAP[k];
+            i += k.length;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          res += uniStr[i];
+          i++;
+        }
+      }
+      return res;
+    }
+
+    // DOM Elements
+    const asciiInput = document.getElementById('ascii-input');
+    const unicodeInput = document.getElementById('unicode-input');
+    const asciiCharCount = document.getElementById('ascii-char-count');
+    const unicodeCharCount = document.getElementById('unicode-char-count');
+    const presetSelect = document.getElementById('preset-select');
+    const toggleKeymanBtn = document.getElementById('toggle-keyman');
+    const toggleFontViewBtn = document.getElementById('toggle-font-view');
+    const swapBtn = document.getElementById('swap-btn');
+
+    let isUpdating = false;
+    let keymanEnabled = false;
+
+    // Synchronize Input Fields
+    function syncFromAscii() {
+      if (isUpdating) return;
+      isUpdating = true;
+      const text = asciiInput.value;
+      unicodeInput.value = asciiToUnicode(text);
+      updateCounts();
+      updateBreakdown(text);
+      isUpdating = false;
+    }
+
+    function syncFromUnicode() {
+      if (isUpdating) return;
+      isUpdating = true;
+      const uText = unicodeInput.value;
+      asciiInput.value = unicodeToAscii(uText);
+      updateCounts();
+      updateBreakdown(asciiInput.value);
+      isUpdating = false;
+    }
+
+    function updateCounts() {
+      const asciiLen = asciiInput.value.length;
+      const unicodeLen = [...unicodeInput.value].length; // Handles multi-byte surrogate pairs correctly
+      asciiCharCount.textContent = `${asciiLen} chars`;
+      unicodeCharCount.textContent = `${unicodeLen} glyphs`;
+    }
+
+    // Breakdown Component Inspector
+    function updateBreakdown(asciiStr) {
+      if (!asciiStr) {
+        setBreakdownPill('hs', '-', '-', 'None detected');
+        setBreakdownPill('dia', '-', '-', 'None detected');
+        setBreakdownPill('reg', '-', '-', 'None detected');
+        setBreakdownPill('loc', '-', '-', 'None detected');
+        setBreakdownPill('mov', '-', '-', 'None detected');
+        return;
+      }
+
+      // Find first matching component character in sequence
+      let hs = '', dia = '', reg = '', loc = '', mov = '';
+
+      for (let ch of asciiStr) {
+        if (!hs && HANDSHAPES[ch]) hs = ch;
+        if (!dia && DIACRITICS[ch]) dia = ch;
+        if (!reg && REGIONS[ch]) reg = ch;
+        if (!loc && LOCATIONS[ch]) loc = ch;
+        if (!mov && MOVEMENTS[ch]) mov = ch;
+      }
+
+      setBreakdownPill('hs', hs || '-', hs ? (SIGNFONT_UNICODE_MAP[hs] || '-') : '-', hs ? HANDSHAPES[hs] : 'None detected');
+      setBreakdownPill('dia', dia || '-', dia ? (SIGNFONT_UNICODE_MAP[dia] || '-') : '-', dia ? DIACRITICS[dia] : 'None detected');
+      setBreakdownPill('reg', reg || '-', reg ? (SIGNFONT_UNICODE_MAP[reg] || '-') : '-', reg ? REGIONS[reg] : 'None detected');
+      setBreakdownPill('loc', loc || '-', loc ? (SIGNFONT_UNICODE_MAP[loc] || '-') : '-', loc ? LOCATIONS[loc] : 'None detected');
+      setBreakdownPill('mov', mov || '-', mov ? (SIGNFONT_UNICODE_MAP[mov] || '-') : '-', mov ? MOVEMENTS[mov] : 'None detected');
+    }
+
+    function setBreakdownPill(id, sfVal, uniVal, desc) {
+      document.getElementById(`breakdown-${id}-sf`).textContent = sfVal;
+      document.getElementById(`breakdown-${id}-uni`).textContent = uniVal;
+      document.getElementById(`breakdown-${id}-desc`).textContent = desc;
+    }
+
+    // Event Listeners
+    asciiInput.addEventListener('input', syncFromAscii);
+    unicodeInput.addEventListener('input', syncFromUnicode);
+
+    // Preset Selection
+    presetSelect.addEventListener('change', (e) => {
+      if (e.target.value) {
+        asciiInput.value = e.target.value;
+        syncFromAscii();
+      }
+    });
+
+    // Swap Direction
+    swapBtn.addEventListener('click', () => {
+      const temp = asciiInput.value;
+      asciiInput.value = unicodeInput.value;
+      syncFromAscii();
+    });
+
+    // Clear Buttons
+    document.getElementById('clear-ascii-btn').addEventListener('click', () => {
+      asciiInput.value = '';
+      syncFromAscii();
+    });
+
+    document.getElementById('clear-unicode-btn').addEventListener('click', () => {
+      unicodeInput.value = '';
+      syncFromUnicode();
+    });
+
+    // Copy Buttons with Toast
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    document.getElementById('copy-ascii-btn').addEventListener('click', () => {
+      if (!asciiInput.value) return;
+      navigator.clipboard.writeText(asciiInput.value);
+      showToast('Copied SignFont ASCII notation to clipboard!');
+    });
+
+    document.getElementById('copy-unicode-btn').addEventListener('click', () => {
+      if (!unicodeInput.value) return;
+      navigator.clipboard.writeText(unicodeInput.value);
+      showToast('Copied SignFont Unicode text to clipboard!');
+    });
+
+    // Rendered Font vs Raw View Toggle
+    toggleFontViewBtn.addEventListener('click', () => {
+      asciiInput.classList.toggle('signfont-font');
+      const isFont = asciiInput.classList.contains('signfont-font');
+      toggleFontViewBtn.classList.toggle('active', isFont);
+      toggleFontViewBtn.innerHTML = isFont ?
+        '<i class="fa-solid fa-font"></i> Rendered SignFont Font' :
+        '<i class="fa-solid fa-code"></i> Raw ASCII View';
+    });
+
+    // Keyman Web Integration
+    if (typeof keyman !== 'undefined') {
+      keyman.init({ attachType: 'manual' });
+      keyman.addKeyboards({
+        name: 'SignFont',
+        id: 'signfont',
+        filename: './signfont.js',
+        version: '1.0',
+        language: [{ name: 'SignFont', id: 'en', region: 'us' }]
+      });
+
+      toggleKeymanBtn.addEventListener('click', () => {
+        keymanEnabled = !keymanEnabled;
+        toggleKeymanBtn.classList.toggle('active', keymanEnabled);
+
+        if (keymanEnabled) {
+          keyman.attachToControl(asciiInput);
+          showToast('Direct Keyboard Schema activated! Type with QWERTY keys.');
+        } else {
+          keyman.detachFromControl(asciiInput);
+          showToast('Standard Keyboard layout restored.');
+        }
+      });
+    }
+
+    // Batch File Import/Export
+    document.getElementById('file-uploader').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        asciiInput.value = event.target.result;
+        syncFromAscii();
+        showToast(`Loaded "${file.name}" (${file.size} bytes)!`);
+      };
+      reader.readAsText(file);
+    });
+
+    function downloadFile(filename, content) {
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+
+    document.getElementById('export-ascii-file').addEventListener('click', () => {
+      if (!asciiInput.value) return showToast('Input is empty!');
+      downloadFile('signfont-ascii.txt', asciiInput.value);
+      showToast('Exported SignFont ASCII file!');
+    });
+
+    document.getElementById('export-unicode-file').addEventListener('click', () => {
+      if (!unicodeInput.value) return showToast('Output is empty!');
+      downloadFile('signfont-unicode.txt', unicodeInput.value);
+      showToast('Exported SignFont Unicode file!');
+    });
+
+    // Matrix Modal Handler
+    const matrixModal = document.getElementById('matrix-modal');
+    const openMatrixBtn = document.getElementById('open-matrix-btn');
+    const closeMatrixBtn = document.getElementById('close-matrix-btn');
+    const matrixTbody = document.getElementById('matrix-tbody');
+
+    openMatrixBtn.addEventListener('click', () => {
+      buildMatrixTable();
+      matrixModal.classList.add('open');
+    });
+
+    closeMatrixBtn.addEventListener('click', () => matrixModal.classList.remove('open'));
+    matrixModal.addEventListener('click', (e) => {
+      if (e.target === matrixModal) matrixModal.classList.remove('open');
+    });
+
+    function buildMatrixTable() {
+      if (matrixTbody.children.length > 0) return; // already built
+      let html = '';
+      for (const [asciiKey, uniVal] of Object.entries(SIGNFONT_UNICODE_MAP)) {
+        let cat = 'Other / Punctuation';
+        if (HANDSHAPES[asciiKey]) cat = `Handshape: ${HANDSHAPES[asciiKey]}`;
+        else if (DIACRITICS[asciiKey]) cat = `Diacritic: ${DIACRITICS[asciiKey]}`;
+        else if (REGIONS[asciiKey]) cat = `Region: ${REGIONS[asciiKey]}`;
+        else if (LOCATIONS[asciiKey]) cat = `Location: ${LOCATIONS[asciiKey]}`;
+        else if (MOVEMENTS[asciiKey]) cat = `Movement: ${MOVEMENTS[asciiKey]}`;
+
+        const codePoints = [...uniVal].map(ch => `U+${ch.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')}`).join(' ');
+
+        html += `
+          <tr>
+            <td><code style="color: #60a5fa;">${escapeHtml(asciiKey)}</code></td>
+            <td class="sf-rendered">${escapeHtml(asciiKey)}</td>
+            <td class="unicode-rendered">${escapeHtml(uniVal)}</td>
+            <td><code style="color: var(--text-muted); font-size: 0.82rem;">${codePoints}</code></td>
+            <td style="color: var(--text-muted);">${escapeHtml(cat)}</td>
+          </tr>
+        `;
+      }
+      matrixTbody.innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    // Initialize with default sample
+    asciiInput.value = 'aP&s"LG';
+    syncFromAscii();
+  </script>
+</body>
+
+</html>
