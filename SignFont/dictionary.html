@@ -485,6 +485,39 @@
       color: #c084fc;
     }
 
+    .notation-group {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      align-items: flex-start;
+      margin-right: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .unicode-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: #a78bfa;
+      transition: var(--transition-smooth);
+    }
+
+    .unicode-badge:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      background: rgba(139, 92, 246, 0.2);
+    }
+
+    .unicode-text {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
     .col-actions {
       flex: 0 0 10%;
       display: flex;
@@ -916,8 +949,7 @@
         </div>
       </div>
       <h1>SignFont Dictionary</h1>
-      <p class="tagline">A bidirectional lookup utility for English words and ASL SignFont notations, powered by the
-        professional SignFont system.</p>
+      <p class="tagline">A bidirectional lookup utility for English words and ASL SignFont notations, featuring original font transcriptions and adapted Unicode spellings (developed by <strong>jan Olipija</strong>).</p>
 
       <div class="header-actions">
         <button class="btn" id="open-ref-btn">
@@ -969,6 +1001,12 @@
         </div>
       </div>
     </section>
+
+    <!-- Unicode Credit Note -->
+    <div class="unicode-notice-banner" style="margin-bottom: 1rem; padding: 0.65rem 1.1rem; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.22); border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; display: flex; align-items: center; gap: 10px;">
+      <i class="fa-solid fa-circle-info" style="color: #a78bfa; font-size: 1.1rem;"></i>
+      <span><strong>Note:</strong> The secondary purple badges show the <em>adapted Unicode spelling</em> (developed by <strong>jan Olipija</strong>) for native Unicode text rendering, distinct from the original 1987 font notation.</span>
+    </div>
 
     <!-- Results Info Bar -->
     <div class="results-info">
@@ -1086,6 +1124,44 @@
 
   <!-- Load Dictionary Data from Clean Generated File -->
   <script src="./dictionary-data.js"></script>
+
+  <script>
+    // Global SignFont to Unicode Map from SignFontUnicode.json
+    window.signFontUnicodeMap = {
+      "A": "<", "B": ">", "C": "ⵢ", "D": "ᐲ", "E": "Ṿ", "F": "ᘐ", "G": "ᕤ", "H": "ꕊ", "I": "ᘖ", "J": "ᘕ", "K": "≈", "L": "X", "M": "ⴳ", "N": "¦", "O": "¦ᐨ", "P": "⸝", "Q": "ₒ", "R": "℩", "S": "⁊", "T": "℩⸝", "U": "⁊⸝", "V": "ʟ", "W": "ɳ", "X": "ѵ", "Y": "⩝", "Z": "⊥", "Ã": "|˘", "Ï": "✳˘", "Ô": "ᐯ˘", "a": "റ", "b": "Π", "c": "C", "d": "|", "e": "Ω", "f": "ᗐ", "g": "⊃", "h": "⫪", "i": "Һ", "j": "Ч", "k": "७", "l": "⫛", "m": "爪", "n": "ቨ", "o": "O", "p": "✳", "q": "ᕬ", "r": "୪", "s": "ര", "t": "൪", "u": "ᐯ", "v": "⁼", "w": "ᣛ", "x": "ᙾ", "y": "ᴺ", "z": "⁷", "0": "ᨓ", "1": "ᕃ", "2": "ᖌ", "3": "⦣", "4": "ᖍ", "5": "ᒍ", "6": "⩇", "7": "ᒐ", "8": "ᑯ", "9": "ɤ", "!": "ⵀ", "\"": "⊖", "#": "ⵚ", "$": "ⵕ", "%": "Ō", "&": "O̱", "(": "ᓂ", ")": "ᓇ", "*": "⊕", "+": "◷", "/": "ᕂ", ":": "ᑲ", ";": "ᕟ", "<": "Э", "=": "ᕞ", ">": "ᗫ", "?": "⍰", "@": "ᗠ", "[": "⍃", "\\": "⍌", "]": "⍄", "^": "⍓", "_": "⦵", "`": "◫", "{": "ᗟ", "|": "⌽", "}": "ᗥ", "~": "Ø"
+    };
+
+    fetch('./SignFontUnicode.json')
+      .then(res => res.json())
+      .then(data => {
+        window.signFontUnicodeMap = data;
+      })
+      .catch(err => console.warn('Could not fetch SignFontUnicode.json, using fallback map:', err));
+
+    function convertToUnicode(signStr) {
+      if (!signStr) return '';
+      const map = window.signFontUnicodeMap || {};
+      const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+      let i = 0;
+      let res = '';
+      while (i < signStr.length) {
+        let matched = false;
+        for (let k of keys) {
+          if (signStr.startsWith(k, i)) {
+            res += map[k];
+            i += k.length;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          res += signStr[i];
+          i++;
+        }
+      }
+      return res;
+    }
+  </script>
 
   <script>
     // --- Data Dictionary reference charts ---
@@ -1417,7 +1493,10 @@
         });
       } else if (signQuery) {
         filteredDictionary = window.signFontDictionary.filter(item => {
-          return item.signs.some(sign => sign.includes(signQuery));
+          const matchSign = item.signs && item.signs.some(sign => sign.includes(signQuery));
+          const matchUnicode = item.unicodeSigns && item.unicodeSigns.some(uSign => uSign.includes(signQuery));
+          const matchConverted = item.signs && item.signs.some(sign => convertToUnicode(sign).includes(signQuery));
+          return matchSign || matchUnicode || matchConverted;
         });
       } else {
         filteredDictionary = [...window.signFontDictionary];
@@ -1455,18 +1534,30 @@
       displayChunk.forEach((item, index) => {
         const escapedEnglish = item.english.replace(/'/g, "\\'");
         const signsJson = JSON.stringify(item.signs).replace(/"/g, '&quot;');
+        const unicodeSigns = item.unicodeSigns || item.signs.map(convertToUnicode);
+        const unicodeSignsJson = JSON.stringify(unicodeSigns).replace(/"/g, '&quot;');
         html += `
-          <div class="dict-row" onclick="openBreakdown('${escapedEnglish}', ${signsJson})">
+          <div class="dict-row" onclick="openBreakdown('${escapedEnglish}', ${signsJson}, ${unicodeSignsJson})">
             <div class="col-word" title="${escapeHtml(item.english)}">${escapeHtml(item.english)}</div>
             <div class="col-notation">
-              ${item.signs.map(sign => `
-                <div class="notation-badge">
-                  <span class="notation-text">${escapeHtml(sign)}</span>
-                  <button class="copy-btn" onclick="copySign(event, '${sign.replace(/'/g, "\\'")}')" title="Copy notation">
-                    <i class="fa-regular fa-copy"></i>
-                  </button>
+              ${item.signs.map((sign, idx) => {
+                const uSign = (item.unicodeSigns && item.unicodeSigns[idx]) || convertToUnicode(sign);
+                return `
+                <div class="notation-group">
+                  <div class="notation-badge" title="SignFont Font Representation">
+                    <span class="notation-text">${escapeHtml(sign)}</span>
+                    <button class="copy-btn" onclick="copySign(event, '${sign.replace(/'/g, "\\'")}')" title="Copy SignFont notation">
+                      <i class="fa-regular fa-copy"></i>
+                    </button>
+                  </div>
+                  <div class="unicode-badge" title="Adapted Unicode spelling by jan Olipija">
+                    <span class="unicode-text">${escapeHtml(uSign)}</span>
+                    <button class="copy-btn" onclick="copySign(event, '${uSign.replace(/'/g, "\\'")}')" title="Copy Unicode spelling">
+                      <i class="fa-regular fa-copy"></i>
+                    </button>
+                  </div>
                 </div>
-              `).join('')}
+              `}).join('')}
             </div>
             <div class="col-actions">
               <button class="action-icon-btn" title="View Breakdown">
@@ -1488,13 +1579,14 @@
       }
     }
     // --- Sign Breakdown Logic ---
-    function openBreakdown(english, signs) {
+    function openBreakdown(english, signs, unicodeSigns) {
       // Use the first sign transcription for breakdown
       const sign = signs[0];
+      const uSign = (unicodeSigns && unicodeSigns[0]) || convertToUnicode(sign);
 
       breakdownTitle.innerHTML = `<i class="fa-solid fa-circle-nodes"></i> Breakdown: ${escapeHtml(english)}`;
       breakdownNotationLarge.innerText = sign;
-      breakdownNotationRaw.innerText = `Raw transcription: ${sign}`;
+      breakdownNotationRaw.innerHTML = `Raw notation: <strong>${escapeHtml(sign)}</strong> &nbsp;&bull;&nbsp; Adapted Unicode (by jan Olipija): <strong style="color:#a78bfa;">${escapeHtml(uSign)}</strong>`;
 
       let itemsHtml = '';
 
