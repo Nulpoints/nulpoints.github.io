@@ -53,8 +53,19 @@
     <p>If you would like to use the keyboard on your phone or computer, the KMP file can be found <a
         href="signfont.kmp">here</a>.</p>
     <p>You can find a more extensive explanation of SignFont <a href="SignFont Explained.pdf">here</a>.</p>
+    <!-- Compact Live Breakdown Bar (Above Text Box) -->
+    <div id="live-breakdown-bar" style="max-width: 700px; margin: 0.75rem auto 0.5rem auto; padding: 6px 14px; background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 20px; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 38px;">
+      <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #a78bfa; letter-spacing: 0.5px;"><i class="fa fa-circle-nodes"></i> Breakdown:</span>
+        <span id="active-word-badge" style="font-size: 0.82rem; color: #cbd5e1; font-weight: 500;">(type a word)</span>
+      </div>
+      <div id="live-breakdown-chips" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end;">
+        <span style="font-size: 0.8rem; color: #64748b; font-style: italic;">No active word</span>
+      </div>
+    </div>
+
     <textarea class="signfont" cols="20" rows="5" autocomplete="off" autocorrect="off" autocapitalize="off"
-      spellcheck="false"></textarea>
+      spellcheck="false" placeholder="Type SignFont notation here..."></textarea>
   </div>
   <script src='https://s.keyman.com/kmw/engine/18.0.235/keymanweb.js'></script>
   <script src='https://s.keyman.com/kmw/engine/18.0.235/kmwuitoggle.js'></script>
@@ -204,6 +215,10 @@
         <tr>
           <td class="signfont">Z</td>
           <td>thumb perpendicular</td>
+        </tr>
+        <tr>
+          <td class="signfont">-</td>
+          <td>syllable separation</td>
         </tr>
       </table>
     </div>
@@ -364,6 +379,476 @@
       </table>
     </div>
   </div>
+
+  <!-- Digraphs Reference Section -->
+  <div class="w3-container w3-center" style="margin-top: 3rem; margin-bottom: 1.5rem;">
+    <h2>Digraphs & Complex Notation Reference</h2>
+    <p>SignFont uses digraphs (two-character combinations) and multigraphs to notate complex handshapes, fine locations, contacting regions, and movements.</p>
+  </div>
+
+  <div class="w3-row">
+    <!-- Handshapes Digraphs Column -->
+    <div class="w3-half w3-container">
+      <table class="w3-table-all w3-card-4 w3-small">
+        <tr>
+          <th colspan="4" class="w3-blue-grey w3-center">Handshape Digraphs & Classifiers</th>
+        </tr>
+        <tr><td class="signfont">aP</td><td>Numeral 10 / upright inanimate object classifier</td><td class="signfont">aQ</td><td>Sturdy grasping classifier</td></tr>
+        <tr><td class="signfont">bP</td><td>Flat objects & planes classifier</td><td class="signfont">bR</td><td>Convex/concave surface classifier</td></tr>
+        <tr><td class="signfont">cQ</td><td>Small 2D round object classifier / C-handshape</td><td class="signfont">cS</td><td>Bent-C handshape</td></tr>
+        <tr><td class="signfont">dP</td><td>Fingerspelling L</td><td class="signfont">dQ</td><td>Fingerspelling D</td></tr>
+        <tr><td class="signfont">dR</td><td>Fingerspelling X</td><td class="signfont">dT</td><td>Bent-L</td></tr>
+        <tr><td class="signfont">dS</td><td>Pointing index bent at proximal joint</td><td class="signfont">dW</td><td>Pointing hand with thumb alongside middle</td></tr>
+        <tr><td class="signfont">fQS</td><td>Flattened F instrument classifier</td><td class="signfont">gQ</td><td>Flat baby-O classifier</td></tr>
+        <tr><td class="signfont">hZ</td><td>Rectilinear movement classifier</td><td class="signfont">hRY</td><td>Fingerspelling N</td></tr>
+        <tr><td class="signfont">uR</td><td>Curled-V classifier</td><td class="signfont">uS</td><td>Angle-V alternate</td></tr>
+        <tr><td class="signfont">uP</td><td>Numeral 3 handshape</td><td class="signfont">uT</td><td>Curled 3 alternate</td></tr>
+        <tr><td class="signfont">iP</td><td>Fingerspelling Y / small rod classifier</td><td class="signfont">jP</td><td>I LOVE YOU handshape</td></tr>
+        <tr><td class="signfont">jS</td><td>Bent-HORNS alternate</td><td class="signfont">oQ</td><td>Baby-O handshape</td></tr>
+        <tr><td class="signfont">oS</td><td>Flat-O (tense alternate)</td><td class="signfont">pR</td><td>Claw classifier</td></tr>
+        <tr><td class="signfont">pS</td><td>Bent-5 classifier</td><td class="signfont">qP</td><td>Open-8 handshape</td></tr>
+        <tr><td class="signfont">qQ</td><td>Tightened 8 handshape</td><td class="signfont">qX</td><td>D handshape variant</td></tr>
+      </table>
+
+      <table class="w3-table-all w3-card-4 w3-small" style="margin-top: 20px;">
+        <tr>
+          <th colspan="4" class="w3-blue-grey w3-center">Movement & Non-Manual Digraphs</th>
+        </tr>
+        <tr><td class="signfont">J!</td><td>Nod wrist (palm leading)</td><td class="signfont">J"</td><td>Nod wrist (back leading)</td></tr>
+        <tr><td class="signfont">J%</td><td>Wave wrist (radial side)</td><td class="signfont">J&</td><td>Wave wrist (ulnar side)</td></tr>
+        <tr><td class="signfont">KZ</td><td>Simultaneous wiggling</td><td class="signfont">KX</td><td>Sequential / random wiggling</td></tr>
+        <tr><td class="signfont">LS</td><td>Contact on proximal side of vertical surface</td><td class="signfont">LV</td><td>Contact on top of horizontal surface</td></tr>
+        <tr><td class="signfont">LQ</td><td>Contact on ipsilateral side of sagittal surface</td><td class="signfont">LR</td><td>Contact on distal side of vertical surface</td></tr>
+        <tr><td class="signfont">LZ</td><td>Contact on bottom of horizontal surface</td><td class="signfont">LX</td><td>Contact on contralateral side of sagittal surface</td></tr>
+        <tr><td class="signfont">LP</td><td>Contact at an angle</td><td class="signfont">MS</td><td>Continuous contact (proximal vertical)</td></tr>
+        <tr><td class="signfont">MV</td><td>Continuous contact (top horizontal)</td><td class="signfont">MQ</td><td>Continuous contact (ipsilateral sagittal)</td></tr>
+        <tr><td class="signfont">MR</td><td>Continuous contact (distal vertical)</td><td class="signfont">MZ</td><td>Continuous contact (bottom horizontal)</td></tr>
+        <tr><td class="signfont">MX</td><td>Continuous contact (contralateral sagittal)</td><td class="signfont">MP</td><td>Continuous contact at an angle</td></tr>
+        <tr><td class="signfont">NS</td><td>Virtual contact (proximal vertical)</td><td class="signfont">NV</td><td>Virtual contact (top horizontal)</td></tr>
+        <tr><td class="signfont">NQ</td><td>Virtual contact (ipsilateral sagittal)</td><td class="signfont">NR</td><td>Virtual contact (distal vertical)</td></tr>
+        <tr><td class="signfont">NZ</td><td>Virtual contact (bottom horizontal)</td><td class="signfont">NX</td><td>Virtual contact (contralateral sagittal)</td></tr>
+        <tr><td class="signfont">OS</td><td>Virtual sliding contact (proximal vertical)</td><td class="signfont">OV</td><td>Virtual sliding contact (top horizontal)</td></tr>
+        <tr><td class="signfont">OQ</td><td>Virtual sliding contact (ipsilateral sagittal)</td><td class="signfont">OR</td><td>Virtual sliding contact (distal vertical)</td></tr>
+        <tr><td class="signfont">OZ</td><td>Virtual sliding contact (bottom horizontal)</td><td class="signfont">OX</td><td>Virtual sliding contact (contralateral)</td></tr>
+        <tr><td class="signfont">yQ</td><td>Interrupted / incremental repetition</td><td class="signfont">zz</td><td>Fast emphasis</td></tr>
+        <tr><td class="signfont">?V</td><td>WH question (lowered chin)</td><td class="signfont">?S</td><td>YES/NO question (raised chin)</td></tr>
+        <tr><td class="signfont">[P</td><td>Tilt head to dominant side</td><td class="signfont">]P</td><td>Tilt head to non-dominant side</td></tr>
+        <tr><td class="signfont">]Q</td><td>Switch to non-dominant hand active</td><td class="signfont">[Q</td><td>Switch back to dominant hand active</td></tr>
+      </table>
+    </div>
+
+    <!-- Contacting Regions & Fine Locations Digraphs Column -->
+    <div class="w3-half w3-container">
+      <table class="w3-table-all w3-card-4 w3-small">
+        <tr>
+          <th colspan="4" class="w3-blue-grey w3-center">Contacting Region Digraphs</th>
+        </tr>
+        <tr><td class="signfont">!P</td><td>Base of thumb on palm side</td><td class="signfont">!Q</td><td>Well in center of palm</td></tr>
+        <tr><td class="signfont">!S</td><td>Fleshy ridge over proximal finger joints</td><td class="signfont">!V</td><td>Ulnar edge of palm side</td></tr>
+        <tr><td class="signfont">!X</td><td>Ulnar edge closest to wrist</td><td class="signfont">!Z</td><td>Radial edge closest to wrist</td></tr>
+        <tr><td class="signfont">"P</td><td>Back of forearm</td><td class="signfont">"Q</td><td>Back of fingers</td></tr>
+        <tr><td class="signfont">"S</td><td>Back of wrist</td><td class="signfont">#P</td><td>Pad of thumb</td></tr>
+        <tr><td class="signfont">#Q</td><td>Pad of index fingertip</td><td class="signfont">#R</td><td>Pad of middle finger</td></tr>
+        <tr><td class="signfont">#S</td><td>Pad of ring finger</td><td class="signfont">#V</td><td>Pad of pinky finger</td></tr>
+        <tr><td class="signfont">#Z</td><td>Pads of all fingers collectively</td><td class="signfont">$P</td><td>Ventral side of forearm</td></tr>
+        <tr><td class="signfont">$Q</td><td>Radial end of heel of hand</td><td class="signfont">$S</td><td>Ventral side of wrist</td></tr>
+        <tr><td class="signfont">$V</td><td>Ulnar end of heel of hand</td><td class="signfont">%P</td><td>Radial edge of extended finger(s)</td></tr>
+        <tr><td class="signfont">%Q</td><td>Radial edge of most-radial finger tip</td><td class="signfont">%S</td><td>Radial edge of proximal phalanx of thumb</td></tr>
+        <tr><td class="signfont">%Z</td><td>Radial edge of wrist</td><td class="signfont">&amp;P</td><td>Ulnar edge of extended finger(s)</td></tr>
+        <tr><td class="signfont">&amp;Q</td><td>Ulnar edge of most-ulnar finger tip</td><td class="signfont">&amp;Z</td><td>Ulnar edge of wrist</td></tr>
+        <tr><td class="signfont">(P</td><td>Tip of thumb</td><td class="signfont">(Q</td><td>Tip of index finger</td></tr>
+        <tr><td class="signfont">(R</td><td>Tip of middle finger</td><td class="signfont">(S</td><td>Tip of ring finger</td></tr>
+        <tr><td class="signfont">(V</td><td>Tip of pinky finger</td><td class="signfont">(X</td><td>Fingernail(s) of extended finger(s)</td></tr>
+        <tr><td class="signfont">)P</td><td>Underside of upper arm (armpit)</td><td class="signfont">)R</td><td>Ventral side (crook) of elbow</td></tr>
+        <tr><td class="signfont">)S</td><td>Underside of upper arm (elbow)</td><td class="signfont">)X</td><td>Outer side of upper arm (elbow)</td></tr>
+        <tr><td class="signfont">)Z</td><td>Outer side of upper arm (shoulder)</td><td class="signfont">*Q</td><td>Lumen of thumb-loop (radial approach)</td></tr>
+        <tr><td class="signfont">*X</td><td>Lumen of thumb-loop (ulnar approach)</td><td class="signfont">+P</td><td>Between thumb and index finger</td></tr>
+        <tr><td class="signfont">+Q</td><td>Digital interstice at great knuckles</td><td class="signfont">+R</td><td>Between index and middle finger</td></tr>
+        <tr><td class="signfont">+S</td><td>Between middle and ring finger</td><td class="signfont">+V</td><td>Between ring finger and pinky</td></tr>
+        <tr><td class="signfont">+Z</td><td>Digital interstice at fingertips</td><td colspan="2"></td></tr>
+      </table>
+
+      <table class="w3-table-all w3-card-4 w3-small" style="margin-top: 20px;">
+        <tr>
+          <th colspan="4" class="w3-blue-grey w3-center">Fine Location Digraphs</th>
+        </tr>
+        <tr><td class="signfont">/V</td><td>Top of head above ipsilateral temple</td><td class="signfont">/Z</td><td>Ipsilateral brow</td></tr>
+        <tr><td class="signfont">/W</td><td>Side of ipsilateral temple</td><td class="signfont">/Q</td><td>6" above ipsilateral temple</td></tr>
+        <tr><td class="signfont">0V</td><td>Top of head above forehead</td><td class="signfont">0Q</td><td>6" above center of forehead</td></tr>
+        <tr><td class="signfont">1V</td><td>Top of head above contralateral temple</td><td class="signfont">1Z</td><td>Contralateral brow</td></tr>
+        <tr><td class="signfont">1W</td><td>Side of contralateral temple</td><td class="signfont">1Q</td><td>6" above contralateral temple</td></tr>
+        <tr><td class="signfont">2Q</td><td>Ipsilateral eye</td><td class="signfont">3V</td><td>Ipsilateral side of nose</td></tr>
+        <tr><td class="signfont">3Q</td><td>Bottom of nose</td><td class="signfont">3Z</td><td>Contralateral side of nose</td></tr>
+        <tr><td class="signfont">4Q</td><td>Contralateral eye</td><td class="signfont">5V</td><td>Ipsilateral corner of mouth</td></tr>
+        <tr><td class="signfont">5Z</td><td>Ipsilateral side under chin</td><td class="signfont">5W</td><td>Side of ipsilateral cheek</td></tr>
+        <tr><td class="signfont">6V</td><td>Upper lip</td><td class="signfont">6W</td><td>Teeth</td></tr>
+        <tr><td class="signfont">6X</td><td>Lower lip</td><td class="signfont">6Y</td><td>Tongue</td></tr>
+        <tr><td class="signfont">6Z</td><td>Central under chin</td><td class="signfont">7V</td><td>Contralateral corner of mouth</td></tr>
+        <tr><td class="signfont">7Z</td><td>Contralateral side under chin</td><td class="signfont">7W</td><td>Side of contralateral cheek</td></tr>
+        <tr><td class="signfont">8Z</td><td>Ipsilateral side of neck</td><td class="signfont">8V</td><td>Top of ipsilateral shoulder</td></tr>
+        <tr><td class="signfont">8X</td><td>Ipsilateral front of ribcage</td><td class="signfont">8Q</td><td>Ipsilateral armpit</td></tr>
+        <tr><td class="signfont">8W</td><td>Side of ipsilateral shoulder</td><td class="signfont">9Z</td><td>Larynx (front of throat)</td></tr>
+        <tr><td class="signfont">9V</td><td>Hollow of neck / top of sternum</td><td class="signfont">9X</td><td>Bottom of sternum</td></tr>
+        <tr><td class="signfont">:Z</td><td>Contralateral side of neck</td><td class="signfont">:V</td><td>Top of contralateral shoulder</td></tr>
+        <tr><td class="signfont">:X</td><td>Contralateral front of ribcage</td><td class="signfont">:Q</td><td>Contralateral armpit</td></tr>
+        <tr><td class="signfont">:W</td><td>Side of contralateral shoulder</td><td class="signfont">;X</td><td>Ipsilateral bottom of ribcage</td></tr>
+        <tr><td class="signfont">;Q</td><td>Ipsilateral groin area</td><td class="signfont">;Z</td><td>Ipsilateral thigh</td></tr>
+        <tr><td class="signfont">;V</td><td>Ipsilateral hip</td><td class="signfont">;T</td><td>Ipsilateral outer thigh</td></tr>
+        <tr><td class="signfont">;R</td><td>Ipsilateral inner thigh</td><td class="signfont">;W</td><td>Side of ipsilateral hip</td></tr>
+        <tr><td class="signfont">&lt;X</td><td>Solar plexus, below sternum</td><td class="signfont">&lt;Q</td><td>Middle groin area</td></tr>
+        <tr><td class="signfont">=X</td><td>Contralateral bottom of ribcage</td><td class="signfont">=Q</td><td>Contralateral groin area</td></tr>
+        <tr><td class="signfont">=Z</td><td>Contralateral thigh</td><td class="signfont">=V</td><td>Contralateral hip</td></tr>
+        <tr><td class="signfont">=T</td><td>Contralateral outer thigh</td><td class="signfont">=R</td><td>Contralateral inner thigh</td></tr>
+        <tr><td class="signfont">=W</td><td>Side of contralateral hip</td><td colspan="2"></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const HANDSHAPES = {
+      'a': 'fist (A)', 'b': 'flat hand (B)', 'c': 'cupped hand (C)', 'd': 'pointing hand (1)',
+      'e': 'fingerspelling E', 'f': 'index, middle, ring spread (W)', 'g': 'thumb and index extended (G)',
+      'h': 'index and middle extended (H/U)', 'i': 'pinky extended (I)', 'j': 'pinky and index extended (HORNS)',
+      'k': 'middle extended, thumb on edge (K/P)', 'l': 'middle finger extended', 'm': 'index, middle, ring touching (M)',
+      'n': 'index, middle, ring, pinky spread (4)', 'o': 'thumb loop with joined fingers (O)',
+      'p': 'thumb and fingers spread (5)', 'q': 'loop between thumb and middle (8)',
+      'r': 'index and middle twisted (R)', 's': 'fist with thumb over fingers (S)',
+      't': 'fist with thumb under index (T)', 'u': 'index and middle spread (V)'
+    };
+
+    const DIACRITICS = {
+      'P': 'thumb extended parallel', 'Q': 'loop (e.g., baby-O)', 'R': 'curled fingers',
+      'S': 'bent at proximal joint', 'T': 'thumb extended, fingers curled', 'U': 'thumb extended, fingers bent',
+      'V': 'pinky extended', 'W': 'thumb laid alongside', 'X': 'non-significant fingers extended',
+      'Y': 'thumb laid over/tucked', 'Z': 'thumb perpendicular', '-': 'syllable separation'
+    };
+
+    const CONTACTS = {
+      '!': 'palm side', '"': 'back side', '#': 'palm side of fingers', '$': 'heel of hand',
+      '%': 'radial edge', '&': 'ulnar edge', '(': 'distal end (tip)', ')': 'elbow end',
+      '*': 'space between thumb/digits', '+': 'between adjacent fingers'
+    };
+
+    const LOCATIONS = {
+      '/': 'Ipsilateral Temple', '0': 'Forehead', '1': 'Contralateral Temple', '2': 'Ipsilateral Ear',
+      '3': 'Nose', '4': 'Contralateral ear', '5': 'Ipsilateral cheek', '6': 'Chin / mouth',
+      '7': 'Contralateral cheek', '8': 'Ipsilateral shoulder', '9': 'Sternum (chest)',
+      ':': 'Contralateral shoulder', ';': 'Ipsilateral abdomen', '<': 'Middle abdomen',
+      '=': 'Contralateral abdomen'
+    };
+
+    const MOVEMENTS = {
+      'A': 'Move toward ipsilateral side', 'B': 'Move away from ipsilateral side',
+      'C': 'Move back and forth laterally', 'D': 'Move upwards', 'E': 'Move downwards',
+      'F': 'Move toward the body', 'G': 'Move away from the body', 'H': 'Circular path movement',
+      'I': 'Twist wrist inward', 'J': 'Twist wrist outward', 'K': 'Wiggle the fingers',
+      'L': 'Touch', 'M': 'Continuous contact', 'N': 'Pause', 'y': 'Sequential Repetition', 'O': 'Virtual continuous contact',
+      'v': 'Simultaneous idential movement by both hands', 'w': 'Alternating identical movement by both hands',
+      'x': 'Simultaneous movemetn by both hands, performed in retrograde fashion by the non-dominant hand',
+      'z': 'Slow emphasis, super tense. Fast when doubled.'
+    };
+
+    const DIGRAPHS = {
+      // --- Handshapes ---
+      'aP': { category: 'Handshape', desc: 'Numeral 10 / upright inanimate object classifier (thumb extended from fist)' },
+      'aQ': { category: 'Handshape', desc: 'Sturdy grasping classifier (thumb in crook of curled index)' },
+      'bP': { category: 'Handshape', desc: 'Flat objects & planes classifier (thumb extended from flat hand)' },
+      'bR': { category: 'Handshape', desc: 'Convex/concave surface classifier (curled fist)' },
+      'cQ': { category: 'Handshape', desc: 'Small 2D round object classifier / C-handshape' },
+      'cS': { category: 'Handshape', desc: 'Bent-C handshape (proximal knuckles bent)' },
+      'dP': { category: 'Handshape', desc: 'Fingerspelling L (1 handshape with parallel extended thumb)' },
+      'dQ': { category: 'Handshape', desc: 'Fingerspelling D (index extended, thumb loop)' },
+      'dR': { category: 'Handshape', desc: 'Fingerspelling X (index curled at medial/distal joints)' },
+      'dT': { category: 'Handshape', desc: 'Bent-L (index curled, thumb extended)' },
+      'dS': { category: 'Handshape', desc: 'Pointing index bent at proximal joint (phonetic alternate for 1)' },
+      'dW': { category: 'Handshape', desc: 'Pointing hand with thumb alongside middle finger' },
+      'ÃR': { category: 'Handshape', desc: 'Tip-contact index alternate' },
+      'fQS': { category: 'Handshape', desc: 'Flattened F (fQ) instrument classifier for grasping small objects' },
+      'gQ': { category: 'Handshape', desc: 'Flat baby-O (grasping small object classifier)' },
+      'hZ': { category: 'Handshape', desc: 'Rectilinear movement classifier (U-handshape with thumb perpendicular)' },
+      'hRY': { category: 'Handshape', desc: 'Fingerspelling N (index & middle touching & curled, thumb tucked)' },
+      'uR': { category: 'Handshape', desc: 'Curled-V classifier (index & middle spread & curled)' },
+      'uS': { category: 'Handshape', desc: 'Angle-V (pointing fingertips straight spread towards PA)' },
+      'ÔR': { category: 'Handshape', desc: 'Lenited curled-V classifier' },
+      'uP': { category: 'Handshape', desc: 'Numeral 3 handshape (V + extended thumb)' },
+      'uT': { category: 'Handshape', desc: 'Curled 3 (thumb extended anchor, index & middle curled)' },
+      'iP': { category: 'Handshape', desc: 'Fingerspelling Y / small rod classifier' },
+      'jP': { category: 'Handshape', desc: 'I LOVE YOU handshape (HORNS + thumb)' },
+      'jS': { category: 'Handshape', desc: 'Bent-HORNS alternate' },
+      'oQ': { category: 'Handshape', desc: 'Baby-O (thumb-index loop, other fingers tucked)' },
+      'oS': { category: 'Handshape', desc: 'Flat-O (tense alternate of O)' },
+      'pR': { category: 'Handshape', desc: 'Claw classifier (tense 5 handshape)' },
+      'ÏR': { category: 'Handshape', desc: 'Curled-5 classifier (lax variant of claw)' },
+      'pS': { category: 'Handshape', desc: 'Bent-5 classifier' },
+      'qX': { category: 'Handshape', desc: 'D handshape variant (ring & pinky tucked)' },
+      'qP': { category: 'Handshape', desc: 'Open-8 handshape (feelings, emotions)' },
+      'qQ': { category: 'Handshape', desc: 'Tightened 8 handshape (thumb holding middle)' },
+
+      // --- Contacting Regions ---
+      '!P': { category: 'Contacting Region', desc: 'Base of thumb on palm side' },
+      '!Q': { category: 'Contacting Region', desc: 'Well in center of palm' },
+      '!S': { category: 'Contacting Region', desc: 'Fleshy ridge overlying proximal finger joints' },
+      '!V': { category: 'Contacting Region', desc: 'Ulnar edge of palm side of hand' },
+      '!X': { category: 'Contacting Region', desc: 'Ulnar edge of palm side closest to wrist' },
+      '!Z': { category: 'Contacting Region', desc: 'Radial edge of palm side closest to wrist' },
+      '"P': { category: 'Contacting Region', desc: 'Back of forearm' },
+      '"Q': { category: 'Contacting Region', desc: 'Back of fingers' },
+      '"S': { category: 'Contacting Region', desc: 'Back of wrist' },
+      '#P': { category: 'Contacting Region', desc: 'Pad of thumb' },
+      '#Q': { category: 'Contacting Region', desc: 'Pad of index fingertip' },
+      '#R': { category: 'Contacting Region', desc: 'Pad of middle finger' },
+      '#S': { category: 'Contacting Region', desc: 'Pad of ring finger' },
+      '#V': { category: 'Contacting Region', desc: 'Pad of pinky finger' },
+      '#Z': { category: 'Contacting Region', desc: 'Pads of all fingers collectively' },
+      '$P': { category: 'Contacting Region', desc: 'Ventral side of forearm' },
+      '$Q': { category: 'Contacting Region', desc: 'Radial end of heel of hand' },
+      '$S': { category: 'Contacting Region', desc: 'Ventral side of wrist' },
+      '$V': { category: 'Contacting Region', desc: 'Ulnar end of heel of hand' },
+      '%P': { category: 'Contacting Region', desc: 'Radial edge of extended finger(s)' },
+      '%Q': { category: 'Contacting Region', desc: "Radial edge of most-radial extended finger's tip" },
+      '%S': { category: 'Contacting Region', desc: 'Radial edge of proximal phalanx of thumb' },
+      '%Z': { category: 'Contacting Region', desc: 'Radial edge of wrist' },
+      '&P': { category: 'Contacting Region', desc: 'Ulnar edge of extended finger(s)' },
+      '&Q': { category: 'Contacting Region', desc: "Ulnar edge of most-ulnar extended finger's tip" },
+      '&Z': { category: 'Contacting Region', desc: 'Ulnar edge of wrist' },
+      '(P': { category: 'Contacting Region', desc: 'Tip of thumb' },
+      '(Q': { category: 'Contacting Region', desc: 'Tip of index finger' },
+      '(R': { category: 'Contacting Region', desc: 'Tip of middle finger' },
+      '(S': { category: 'Contacting Region', desc: 'Tip of ring finger' },
+      '(V': { category: 'Contacting Region', desc: 'Tip of pinky finger' },
+      '(X': { category: 'Contacting Region', desc: 'Fingernail(s) of extended finger(s)' },
+      ')P': { category: 'Contacting Region', desc: 'Underside of upper arm, nearest armpit' },
+      ')R': { category: 'Contacting Region', desc: 'Ventral side (crook) of elbow' },
+      ')S': { category: 'Contacting Region', desc: 'Underside of upper arm, nearest elbow' },
+      ')X': { category: 'Contacting Region', desc: 'Outer side of upper arm, nearest elbow' },
+      ')Z': { category: 'Contacting Region', desc: 'Outer side of upper arm, nearest shoulder' },
+      '*Q': { category: 'Contacting Region', desc: 'Within lumen of thumb-loop (radial approach)' },
+      '*X': { category: 'Contacting Region', desc: 'Within lumen of thumb-loop (ulnar approach)' },
+      '+P': { category: 'Contacting Region', desc: 'Between thumb and index finger' },
+      '+Q': { category: 'Contacting Region', desc: 'Digital interstice closest to great knuckles' },
+      '+R': { category: 'Contacting Region', desc: 'Between index finger and middle finger' },
+      '+S': { category: 'Contacting Region', desc: 'Between middle finger and ring finger' },
+      '+V': { category: 'Contacting Region', desc: 'Between ring finger and pinky finger' },
+      '+Z': { category: 'Contacting Region', desc: 'Digital interstice closest to fingertips' },
+
+      // --- Locations ---
+      '/V': { category: 'Location', desc: 'Top of head above ipsilateral temple' },
+      '/Z': { category: 'Location', desc: 'Ipsilateral brow' },
+      '/W': { category: 'Location', desc: 'Just to ipsilateral side of ipsilateral temple' },
+      '/Q': { category: 'Location', desc: 'Up to 6" above ipsilateral temple' },
+      '0V': { category: 'Location', desc: 'Top of head above forehead' },
+      '0Q': { category: 'Location', desc: 'Up to 6" above center of forehead' },
+      '1V': { category: 'Location', desc: 'Top of head above contralateral temple' },
+      '1Z': { category: 'Location', desc: 'Contralateral brow' },
+      '1W': { category: 'Location', desc: 'Just to contralateral side of contralateral temple' },
+      '1Q': { category: 'Location', desc: 'Up to 6" above contralateral temple' },
+      '2Q': { category: 'Location', desc: 'Ipsilateral eye' },
+      '3V': { category: 'Location', desc: 'Ipsilateral side of nose' },
+      '3Q': { category: 'Location', desc: 'Bottom of nose' },
+      '3Z': { category: 'Location', desc: 'Contralateral side of nose' },
+      '4Q': { category: 'Location', desc: 'Contralateral eye' },
+      '5V': { category: 'Location', desc: 'Ipsilateral corner of mouth' },
+      '5Z': { category: 'Location', desc: 'Ipsilateral side under chin' },
+      '5W': { category: 'Location', desc: 'To ipsilateral side of ipsilateral cheek' },
+      '6V': { category: 'Location', desc: 'Upper lip' },
+      '6W': { category: 'Location', desc: 'Teeth' },
+      '6X': { category: 'Location', desc: 'Lower lip' },
+      '6Y': { category: 'Location', desc: 'Tongue' },
+      '6Z': { category: 'Location', desc: 'Central under chin' },
+      '7V': { category: 'Location', desc: 'Contralateral corner of mouth' },
+      '7Z': { category: 'Location', desc: 'Contralateral side under chin' },
+      '7W': { category: 'Location', desc: 'To contralateral side of contralateral cheek' },
+      '8Z': { category: 'Location', desc: 'Ipsilateral side of neck' },
+      '8V': { category: 'Location', desc: 'Top of ipsilateral shoulder' },
+      '8X': { category: 'Location', desc: 'Ipsilateral front of ribcage (breast)' },
+      '8Q': { category: 'Location', desc: 'Ipsilateral armpit' },
+      '8W': { category: 'Location', desc: 'Just to ipsilateral side of ipsilateral shoulder' },
+      '9Z': { category: 'Location', desc: 'Larynx, front of throat' },
+      '9V': { category: 'Location', desc: 'Hollow of neck, top of sternum' },
+      '9X': { category: 'Location', desc: 'Bottom of sternum' },
+      ':Z': { category: 'Location', desc: 'Contralateral side of neck' },
+      ':V': { category: 'Location', desc: 'Top of contralateral shoulder' },
+      ':X': { category: 'Location', desc: 'Contralateral front of ribcage (breast)' },
+      ':Q': { category: 'Location', desc: 'Contralateral armpit' },
+      ':W': { category: 'Location', desc: 'Just to contralateral side of contralateral shoulder' },
+      ';X': { category: 'Location', desc: 'Ipsilateral bottom of ribcage' },
+      ';Q': { category: 'Location', desc: 'Ipsilateral groin area' },
+      ';Z': { category: 'Location', desc: 'Ipsilateral thigh' },
+      ';V': { category: 'Location', desc: 'Ipsilateral hip' },
+      ';T': { category: 'Location', desc: 'Ipsilateral outer thigh' },
+      ';R': { category: 'Location', desc: 'Ipsilateral inner thigh' },
+      ';W': { category: 'Location', desc: 'To ipsilateral side of ipsilateral side/hip' },
+      '<X': { category: 'Location', desc: 'Solar plexus, below sternum' },
+      '<Q': { category: 'Location', desc: 'Middle groin area' },
+      '=X': { category: 'Location', desc: 'Contralateral bottom of ribcage' },
+      '=Q': { category: 'Location', desc: 'Contralateral groin area' },
+      '=Z': { category: 'Location', desc: 'Contralateral thigh' },
+      '=V': { category: 'Location', desc: 'Contralateral hip' },
+      '=T': { category: 'Location', desc: 'Contralateral outer thigh' },
+      '=R': { category: 'Location', desc: 'Contralateral inner thigh' },
+      '=W': { category: 'Location', desc: 'To contralateral side of contralateral side/hip' },
+
+      // --- Movements ---
+      'J!': { category: 'Movement', desc: 'Nod wrist with palm leading' },
+      'J"': { category: 'Movement', desc: 'Nod wrist with back of hand leading' },
+      'J%': { category: 'Movement', desc: 'Wave wrist toward radial side' },
+      'J&': { category: 'Movement', desc: 'Wave wrist toward ulnar side' },
+      'KZ': { category: 'Movement', desc: 'Simultaneous wiggling' },
+      'KX': { category: 'Movement', desc: 'Sequential or random wiggling' },
+      'LS': { category: 'Movement', desc: 'Contact on proximal side of vertical surface' },
+      'LV': { category: 'Movement', desc: 'Contact on top of horizontal surface' },
+      'LQ': { category: 'Movement', desc: 'Contact on ipsilateral side of sagittal surface' },
+      'LR': { category: 'Movement', desc: 'Contact on distal side of vertical surface' },
+      'LZ': { category: 'Movement', desc: 'Contact on bottom of horizontal surface' },
+      'LX': { category: 'Movement', desc: 'Contact on contralateral side of sagittal surface' },
+      'LP': { category: 'Movement', desc: 'Contact at an angle' },
+      'MS': { category: 'Movement', desc: 'Continuous contact on proximal side of vertical surface' },
+      'MV': { category: 'Movement', desc: 'Continuous contact on top of horizontal surface' },
+      'MQ': { category: 'Movement', desc: 'Continuous contact on ipsilateral side of sagittal surface' },
+      'MR': { category: 'Movement', desc: 'Continuous contact on distal side of vertical surface' },
+      'MZ': { category: 'Movement', desc: 'Continuous contact on bottom of horizontal surface' },
+      'MX': { category: 'Movement', desc: 'Continuous contact on contralateral side of sagittal surface' },
+      'MP': { category: 'Movement', desc: 'Continuous contact at an angle' },
+      'NS': { category: 'Movement', desc: 'Virtual contact on proximal side of imaginary vertical surface' },
+      'NV': { category: 'Movement', desc: 'Virtual contact on top of imaginary horizontal surface' },
+      'NQ': { category: 'Movement', desc: 'Virtual contact on ipsilateral side of imaginary sagittal surface' },
+      'NR': { category: 'Movement', desc: 'Virtual contact on distal side of imaginary vertical surface' },
+      'NZ': { category: 'Movement', desc: 'Virtual contact on bottom of imaginary horizontal surface' },
+      'NX': { category: 'Movement', desc: 'Virtual contact on contralateral side of imaginary sagittal surface' },
+      'OS': { category: 'Movement', desc: 'Virtual sliding contact on proximal side of imaginary vertical surface' },
+      'OV': { category: 'Movement', desc: 'Virtual sliding contact on top of imaginary horizontal surface' },
+      'OQ': { category: 'Movement', desc: 'Virtual sliding contact on ipsilateral side of imaginary sagittal surface' },
+      'OR': { category: 'Movement', desc: 'Virtual sliding contact on distal side of imaginary vertical surface' },
+      'OZ': { category: 'Movement', desc: 'Virtual sliding contact on bottom of imaginary horizontal surface' },
+      'OX': { category: 'Movement', desc: 'Virtual sliding contact on contralateral side of imaginary sagittal surface' },
+      'yQ': { category: 'Movement', desc: 'Interrupted or incremental repetition' },
+      'zz': { category: 'Movement', desc: 'Fast emphasis (increased speed and size)' },
+
+      // --- Non-Manual Markers & Hand Switch Digraphs ---
+      '?V': { category: 'Marker', desc: 'WH question (lowered chin)' },
+      '?S': { category: 'Marker', desc: 'YES/NO question (raised chin)' },
+      '[P': { category: 'Marker', desc: 'Tilt head toward dominant side' },
+      ']P': { category: 'Marker', desc: 'Tilt head toward non-dominant side' },
+      ']Q': { category: 'Marker', desc: 'Switch to non-dominant hand active' },
+      '[Q': { category: 'Marker', desc: 'Switch back to dominant hand active' }
+    };
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const signfontTextarea = document.querySelector('textarea.signfont');
+      const liveBreakdownContainer = document.getElementById('live-breakdown');
+
+      const activeWordBadge = document.getElementById('active-word-badge');
+      const liveBreakdownChips = document.getElementById('live-breakdown-chips');
+
+      function getCurrentWord() {
+        if (!signfontTextarea) return '';
+        const text = signfontTextarea.value;
+        if (!text.trim()) return '';
+
+        const pos = signfontTextarea.selectionStart || text.length;
+        let left = text.lastIndexOf(' ', pos - 1);
+        let leftNL = text.lastIndexOf('\n', pos - 1);
+        left = Math.max(left, leftNL);
+
+        let right = text.indexOf(' ', pos);
+        let rightNL = text.indexOf('\n', pos);
+        if (right === -1) right = rightNL;
+        else if (rightNL !== -1) right = Math.min(right, rightNL);
+
+        const start = left === -1 ? 0 : left + 1;
+        const end = right === -1 ? text.length : right;
+        let word = text.substring(start, end).trim();
+
+        if (!word) {
+          const words = text.trim().split(/\s+/);
+          word = words[words.length - 1] || '';
+        }
+        return word;
+      }
+
+      function updateLiveBreakdown() {
+        if (!signfontTextarea || !liveBreakdownChips) return;
+        const currentWord = getCurrentWord();
+
+        if (!currentWord) {
+          if (activeWordBadge) activeWordBadge.innerText = '(type a word)';
+          liveBreakdownChips.innerHTML = '<span style="font-size: 0.8rem; color: #64748b; font-style: italic;">No active word</span>';
+          return;
+        }
+
+        if (activeWordBadge) {
+          activeWordBadge.innerHTML = '<span class="signfont" style="font-size: 1.15rem; color: #a78bfa;">' + escapeHtml(currentWord) + '</span>';
+        }
+
+        let i = 0;
+        let html = '';
+        
+        const categoryColors = {
+          'Handshape': '#8b5cf6',
+          'Diacritic': '#ec4899',
+          'Contacting Region': '#3b82f6',
+          'Location': '#10b981',
+          'Movement': '#f59e0b',
+          'Marker': '#64748b'
+        };
+
+        while (i < currentWord.length) {
+          let matched = false;
+          let token = '';
+          let desc = '';
+          let category = '';
+
+          for (let len = 3; len >= 2; len--) {
+            if (i + len <= currentWord.length) {
+              const sub = currentWord.substring(i, i + len);
+              if (DIGRAPHS[sub]) {
+                token = sub;
+                desc = DIGRAPHS[sub].desc;
+                category = DIGRAPHS[sub].category;
+                i += len;
+                matched = true;
+                break;
+              }
+            }
+          }
+
+          if (!matched) {
+            const char = currentWord[i];
+            token = char;
+            if (HANDSHAPES[char]) { desc = HANDSHAPES[char]; category = 'Handshape'; }
+            else if (DIACRITICS[char]) { desc = DIACRITICS[char]; category = 'Diacritic'; }
+            else if (CONTACTS[char]) { desc = CONTACTS[char]; category = 'Contacting Region'; }
+            else if (LOCATIONS[char]) { desc = LOCATIONS[char]; category = 'Location'; }
+            else if (MOVEMENTS[char]) { desc = MOVEMENTS[char]; category = 'Movement'; }
+            else { desc = 'Marker / symbol'; category = 'Marker'; }
+            i++;
+          }
+
+          const borderCol = categoryColors[category] || '#8b5cf6';
+
+          html += `
+            <div title="${escapeHtml(category)}: ${escapeHtml(desc)}" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(30, 41, 59, 0.8); border: 1px solid ${borderCol}; border-radius: 12px; padding: 2px 8px; font-size: 0.78rem;">
+              <span class="signfont" style="font-size: 14pt; color: #a78bfa; line-height: 1;">${escapeHtml(token)}</span>
+              <span style="color: #cbd5e1; white-space: nowrap; max-width: 140px; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(desc)}</span>
+            </div>
+          `;
+        }
+        liveBreakdownChips.innerHTML = html;
+      }
+
+      if (signfontTextarea) {
+        signfontTextarea.addEventListener('input', updateLiveBreakdown);
+        signfontTextarea.addEventListener('keyup', updateLiveBreakdown);
+        signfontTextarea.addEventListener('click', updateLiveBreakdown);
+        signfontTextarea.addEventListener('change', updateLiveBreakdown);
+      }
+    });
+  </script>
 </body>
+
 
 </html>
