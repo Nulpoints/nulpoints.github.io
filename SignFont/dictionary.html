@@ -1006,7 +1006,8 @@
         </div>
       </div>
       <h1>SignFont Dictionary</h1>
-      <p class="tagline">A bidirectional lookup utility for English words and ASL SignFont notations, featuring original font transcriptions and adapted Unicode spellings (developed by <strong>jan Olipija</strong>).</p>
+      <p class="tagline">A bidirectional lookup utility for English words and ASL SignFont notations, featuring original
+        font transcriptions and adapted Unicode spellings (developed by <strong>jan Olipija</strong>).</p>
 
       <div class="header-actions">
         <button class="btn" id="open-ref-btn">
@@ -1041,7 +1042,8 @@
 
         <!-- SignFont Search Box -->
         <div class="search-group">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 8px;">
+          <div
+            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 8px;">
             <label for="signfont-search" class="search-label" style="margin-bottom: 0;">
               <span id="signfont-search-title">SignFont Lookup</span>
               <span class="keyman-status-badge" id="keyman-badge"
@@ -1052,10 +1054,12 @@
 
             <!-- Search Mode Toggle -->
             <div class="search-mode-toggle" id="search-mode-toggle">
-              <button type="button" class="mode-toggle-btn active" data-mode="original" id="btn-mode-original" title="Search using original SignFont font notation">
+              <button type="button" class="mode-toggle-btn active" data-mode="original" id="btn-mode-original"
+                title="Search using original SignFont font notation">
                 <i class="fa-solid fa-font"></i> Original SignFont
               </button>
-              <button type="button" class="mode-toggle-btn" data-mode="unicode" id="btn-mode-unicode" title="Search using adapted Unicode spelling (jan Olipija)">
+              <button type="button" class="mode-toggle-btn" data-mode="unicode" id="btn-mode-unicode"
+                title="Search using adapted Unicode spelling (jan Olipija)">
                 <i class="fa-solid fa-code"></i> Unicode Search
               </button>
             </div>
@@ -1076,9 +1080,12 @@
     </section>
 
     <!-- Unicode Credit Note -->
-    <div class="unicode-notice-banner" style="margin-bottom: 1rem; padding: 0.65rem 1.1rem; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.22); border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; display: flex; align-items: center; gap: 10px;">
+    <div class="unicode-notice-banner"
+      style="margin-bottom: 1rem; padding: 0.65rem 1.1rem; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.22); border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; display: flex; align-items: center; gap: 10px;">
       <i class="fa-solid fa-circle-info" style="color: #a78bfa; font-size: 1.1rem;"></i>
-      <span><strong>Note:</strong> The secondary purple badges show the <em>adapted Unicode spelling</em> (developed by <strong>jan Olipija</strong>) for native Unicode text rendering, distinct from the original 1987 font notation.</span>
+      <span><strong>Note:</strong> The secondary purple badges show the <em>adapted Unicode spelling</em> (developed by
+        <strong>jan Olipija</strong>) for native Unicode text rendering, distinct from the original 1987 font
+        notation.</span>
     </div>
 
     <!-- Results Info Bar -->
@@ -1275,7 +1282,10 @@
       'C': 'Move back and forth laterally', 'D': 'Move upwards', 'E': 'Move downwards',
       'F': 'Move toward the body', 'G': 'Move away from the body', 'H': 'Circular path movement',
       'I': 'Twist wrist inward', 'J': 'Twist wrist outward', 'K': 'Wiggle the fingers',
-      'L': 'Touch', 'M': 'Continuous contact'
+      'L': 'Touch', 'M': 'Continuous contact', 'N': 'Pause', 'y': 'Sequential Repetition', 'O': 'Virtual continuous contact',
+      'v': 'Simultaneous idential movement by both hands', 'w': 'Alternating identical movement by both hands',
+      'x': 'Simultaneous movemetn by both hands, performed in retrograde fashion by the non-dominant hand',
+      'z': 'Slow emphasis, super tense. Fast when doubled.'
     };
 
     // Global Search and pagination parameters
@@ -1649,8 +1659,8 @@
             <div class="col-word" title="${escapeHtml(item.english)}">${escapeHtml(item.english)}</div>
             <div class="col-notation">
               ${item.signs.map((sign, idx) => {
-                const uSign = (item.unicodeSigns && item.unicodeSigns[idx]) || convertToUnicode(sign);
-                return `
+          const uSign = (item.unicodeSigns && item.unicodeSigns[idx]) || convertToUnicode(sign);
+          return `
                 <div class="notation-group">
                   <div class="notation-badge" title="SignFont Font Representation">
                     <span class="notation-text">${escapeHtml(sign)}</span>
