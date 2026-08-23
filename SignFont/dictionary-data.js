@@ -7,7 +7,7 @@ window.signFontDictionary = [
       "aP&s\"LG"
     ],
     "unicodeSigns": [
-      "റ⸝O̱ര⊖Xᕤ"
+      "റ⸝⍛ര⊖☓ᕤ"
     ]
   },
   {
@@ -16,7 +16,7 @@ window.signFontDictionary = [
       "b&\"MGJ&"
     ],
     "unicodeSigns": [
-      "ΠO̱⊖ⴳᕤᘕO̱"
+      "Π⍛⊖ⴳᕤᘕ⍛"
     ]
   },
   {
@@ -25,7 +25,7 @@ window.signFontDictionary = [
       "aP%8:LEGwy"
     ],
     "unicodeSigns": [
-      "റ⸝ŌᑯᑲXṾᕤᣛᴺ"
+      "റ⸝ōᑯᑲ☓Ṿᕤᣛᴺ"
     ]
   },
   {
@@ -35,8 +35,8 @@ window.signFontDictionary = [
       "c%%Cvy"
     ],
     "unicodeSigns": [
-      "✳℩ŌŌⵢ⁼ᴺ",
-      "CŌŌⵢ⁼ᴺ"
+      "✳℩ōōⵢ⁼ᴺ",
+      "Сōōⵢ⁼ᴺ"
     ]
   },
   {
@@ -46,8 +46,8 @@ window.signFontDictionary = [
       "c%%Cvzzy"
     ],
     "unicodeSigns": [
-      "✳℩ŌŌⵢ⁼⁷⁷ᴺ",
-      "CŌŌⵢ⁼⁷⁷ᴺ"
+      "✳℩ōōⵢ⁼⁷⁷ᴺ",
+      "Сōōⵢ⁼⁷⁷ᴺ"
     ]
   },
   {
@@ -56,7 +56,7 @@ window.signFontDictionary = [
       "p!!DxoSoSL"
     ],
     "unicodeSigns": [
-      "✳ⵀⵀᐲᙾO⁊O⁊X"
+      "✳ⵀⵀᐲᙾО⁊О⁊☓"
     ]
   },
   {
@@ -74,7 +74,7 @@ window.signFontDictionary = [
       "s\"6LGzz"
     ],
     "unicodeSigns": [
-      "ര⊖⩇Xᕤ⁷⁷"
+      "ര⊖⩇☓ᕤ⁷⁷"
     ]
   },
   {
@@ -84,7 +84,7 @@ window.signFontDictionary = [
       "bS!!8S:SD/S1Sv"
     ],
     "unicodeSigns": [
-      "റ⸝Ō⩇XᐲᨓX",
+      "റ⸝ō⩇☓ᐲᨓ☓",
       "Π⁊ⵀⵀᑯ⁊ᑲ⁊ᐲᕂ⁊ᕃ⁊⁼"
     ]
   },
@@ -103,7 +103,7 @@ window.signFontDictionary = [
       "d(p(MB"
     ],
     "unicodeSigns": [
-      "|ᓂ✳ᓂⴳ>"
+      "∣ᓂ✳ᓂⴳᐳ"
     ]
   },
   {
@@ -112,7 +112,7 @@ window.signFontDictionary = [
       "oS$b\"MGpy"
     ],
     "unicodeSigns": [
-      "O⁊ⵕΠ⊖ⴳᕤ✳ᴺ"
+      "О⁊ⵕΠ⊖ⴳᕤ✳ᴺ"
     ]
   },
   {
@@ -122,8 +122,8 @@ window.signFontDictionary = [
       "oSb\"MGpS"
     ],
     "unicodeSigns": [
-      "O⁊Π⊖ⴳᕤ✳",
-      "O⁊Π⊖ⴳᕤ✳⁊"
+      "О⁊Π⊖ⴳᕤ✳",
+      "О⁊Π⊖ⴳᕤ✳⁊"
     ]
   },
   {
@@ -132,7 +132,7 @@ window.signFontDictionary = [
       "o*d(BMB"
     ],
     "unicodeSigns": [
-      "O⊕|ᓂ>ⴳ>"
+      "О⊕∣ᓂᐳⴳᐳ"
     ]
   },
   {
@@ -141,7 +141,7 @@ window.signFontDictionary = [
       "p((9BAy"
     ],
     "unicodeSigns": [
-      "✳ᓂᓂɤ><ᴺ"
+      "✳ᓂᓂɤᐳᐸᴺ"
     ]
   },
   {
@@ -151,8 +151,8 @@ window.signFontDictionary = [
       "oS&ApSEoS"
     ],
     "unicodeSigns": [
-      "റŌ⦣ꕊX",
-      "O⁊O̱<✳⁊ṾO⁊"
+      "റō⦣ꕊ☓",
+      "О⁊⍛ᐸ✳⁊ṾО⁊"
     ]
   },
   {
@@ -161,7 +161,7 @@ window.signFontDictionary = [
       "b$P%MJ!y"
     ],
     "unicodeSigns": [
-      "Πⵕ⸝Ōⴳᘕⵀᴺ"
+      "Πⵕ⸝ōⴳᘕⵀᴺ"
     ]
   },
   {
@@ -170,7 +170,7 @@ window.signFontDictionary = [
       "bS!b!IL"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀΠⵀᘖX"
+      "Π⁊ⵀΠⵀᘖ☓"
     ]
   },
   {
@@ -179,7 +179,7 @@ window.signFontDictionary = [
       "c%6LEsy"
     ],
     "unicodeSigns": [
-      "CŌ⩇XṾരᴺ"
+      "Сō⩇☓Ṿരᴺ"
     ]
   },
   {
@@ -188,7 +188,7 @@ window.signFontDictionary = [
       "d(0L-d!!IEv"
     ],
     "unicodeSigns": [
-      "|ᓂᨓX-|ⵀⵀᘖṾ⁼"
+      "∣ᓂᨓ☓-∣ⵀⵀᘖṾ⁼"
     ]
   },
   {
@@ -207,8 +207,8 @@ window.signFontDictionary = [
       "b\"!JHL"
     ],
     "unicodeSigns": [
-      "റO̱<|⸝",
-      "Π⊖ⵀᘕꕊX"
+      "റ⍛ᐸ∣⸝",
+      "Π⊖ⵀᘕꕊ☓"
     ]
   },
   {
@@ -226,7 +226,7 @@ window.signFontDictionary = [
       "b)\"MJ!ELz"
     ],
     "unicodeSigns": [
-      "Πᓇ⊖ⴳᘕⵀṾX⁷"
+      "Πᓇ⊖ⴳᘕⵀṾ☓⁷"
     ]
   },
   {
@@ -235,7 +235,7 @@ window.signFontDictionary = [
       "b)R%MDz"
     ],
     "unicodeSigns": [
-      "Πᓇ℩Ōⴳᐲ⁷"
+      "Πᓇ℩ōⴳᐲ⁷"
     ]
   },
   {
@@ -245,7 +245,7 @@ window.signFontDictionary = [
       "bS$\"MJ!Ez"
     ],
     "unicodeSigns": [
-      "Πᓇᓂⴳᘕⵀ>⁷",
+      "Πᓇᓂⴳᘕⵀᐳ⁷",
       "Π⁊ⵕ⊖ⴳᘕⵀṾ⁷"
     ]
   },
@@ -255,7 +255,7 @@ window.signFontDictionary = [
       "a&GAdP"
     ],
     "unicodeSigns": [
-      "റO̱ᕤ<|⸝"
+      "റ⍛ᕤᐸ∣⸝"
     ]
   },
   {
@@ -264,7 +264,7 @@ window.signFontDictionary = [
       "b&!MGJ%y"
     ],
     "unicodeSigns": [
-      "ΠO̱ⵀⴳᕤᘕŌᴺ"
+      "Π⍛ⵀⴳᕤᘕōᴺ"
     ]
   },
   {
@@ -273,7 +273,7 @@ window.signFontDictionary = [
       "d!b!LAzL"
     ],
     "unicodeSigns": [
-      "|ⵀΠⵀX<⁷X"
+      "∣ⵀΠⵀ☓ᐸ⁷☓"
     ]
   },
   {
@@ -282,7 +282,7 @@ window.signFontDictionary = [
       "pR!!LJ\"Dvy"
     ],
     "unicodeSigns": [
-      "✳℩ⵀⵀXᘕ⊖ᐲ⁼ᴺ"
+      "✳℩ⵀⵀ☓ᘕ⊖ᐲ⁼ᴺ"
     ]
   },
   {
@@ -291,7 +291,7 @@ window.signFontDictionary = [
       "b!!J%G"
     ],
     "unicodeSigns": [
-      "ΠⵀⵀᘕŌᕤ"
+      "Πⵀⵀᘕōᕤ"
     ]
   },
   {
@@ -300,7 +300,7 @@ window.signFontDictionary = [
       "b#\"QLD"
     ],
     "unicodeSigns": [
-      "Πⵚ⊖ₒXᐲ"
+      "Πⵚ⊖ₒ☓ᐲ"
     ]
   },
   {
@@ -309,7 +309,7 @@ window.signFontDictionary = [
       "d\"CyG"
     ],
     "unicodeSigns": [
-      "|⊖ⵢᴺᕤ"
+      "∣⊖ⵢᴺᕤ"
     ]
   },
   {
@@ -318,7 +318,7 @@ window.signFontDictionary = [
       "d&AFy"
     ],
     "unicodeSigns": [
-      "|O̱<ᘐᴺ"
+      "∣⍛ᐸᘐᴺ"
     ]
   },
   {
@@ -327,7 +327,7 @@ window.signFontDictionary = [
       "p++LHvy"
     ],
     "unicodeSigns": [
-      "✳◷◷Xꕊ⁼ᴺ"
+      "✳◷◷☓ꕊ⁼ᴺ"
     ]
   },
   {
@@ -336,7 +336,7 @@ window.signFontDictionary = [
       "d(n(GFyE"
     ],
     "unicodeSigns": [
-      "|ᓂቨᓂᕤᘐᴺṾ"
+      "∣ᓂቨᓂᕤᘐᴺṾ"
     ]
   },
   {
@@ -355,8 +355,8 @@ window.signFontDictionary = [
       "u++ABuRy"
     ],
     "unicodeSigns": [
-      "ᐯᓂᓂ<>ᐯ℩ᴺ",
-      "ᐯ◷◷<>ᐯ℩ᴺ"
+      "ᐯᓂᓂᐸᐳᐯ℩ᴺ",
+      "ᐯ◷◷ᐸᐳᐯ℩ᴺ"
     ]
   },
   {
@@ -374,7 +374,7 @@ window.signFontDictionary = [
       "pS\"AoS"
     ],
     "unicodeSigns": [
-      "✳⁊⊖<O⁊"
+      "✳⁊⊖ᐸО⁊"
     ]
   },
   {
@@ -383,7 +383,7 @@ window.signFontDictionary = [
       "pR!9DAB"
     ],
     "unicodeSigns": [
-      "✳℩ⵀɤᐲ<>"
+      "✳℩ⵀɤᐲᐸᐳ"
     ]
   },
   {
@@ -393,8 +393,8 @@ window.signFontDictionary = [
       "b(9LBAy"
     ],
     "unicodeSigns": [
-      "✳ᓂɤX><ᴺ",
-      "ΠᓂɤX><ᴺ"
+      "✳ᓂɤ☓ᐳᐸᴺ",
+      "Πᓂɤ☓ᐳᐸᴺ"
     ]
   },
   {
@@ -404,8 +404,8 @@ window.signFontDictionary = [
       "d(6LJ\"AB"
     ],
     "unicodeSigns": [
-      "|ⵚ⩇Xᘖ<>",
-      "|ᓂ⩇Xᘕ⊖<>"
+      "∣ⵚ⩇☓ᘖᐸᐳ",
+      "∣ᓂ⩇☓ᘕ⊖ᐸᐳ"
     ]
   },
   {
@@ -414,7 +414,7 @@ window.signFontDictionary = [
       "d\"Q6L-d!69SLJ!v"
     ],
     "unicodeSigns": [
-      "|⊖ₒ⩇X-|ⵀ⩇ɤ⁊Xᘕⵀ⁼"
+      "∣⊖ₒ⩇☓-∣ⵀ⩇ɤ⁊☓ᘕⵀ⁼"
     ]
   },
   {
@@ -423,7 +423,7 @@ window.signFontDictionary = [
       "qP!9Lwy"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀɤXᣛᴺ"
+      "ᕬ⸝ⵀɤ☓ᣛᴺ"
     ]
   },
   {
@@ -432,7 +432,7 @@ window.signFontDictionary = [
       "aP&IA"
     ],
     "unicodeSigns": [
-      "റ⸝O̱ᘖ<"
+      "റ⸝⍛ᘖᐸ"
     ]
   },
   {
@@ -441,7 +441,7 @@ window.signFontDictionary = [
       "d(b+DL"
     ],
     "unicodeSigns": [
-      "|ᓂΠ◷ᐲX"
+      "∣ᓂΠ◷ᐲ☓"
     ]
   },
   {
@@ -450,7 +450,7 @@ window.signFontDictionary = [
       "dR(6MJy"
     ],
     "unicodeSigns": [
-      "|℩ᓂ⩇ⴳᘕᴺ"
+      "∣℩ᓂ⩇ⴳᘕᴺ"
     ]
   },
   {
@@ -459,7 +459,7 @@ window.signFontDictionary = [
       "dR!6Cy"
     ],
     "unicodeSigns": [
-      "|℩ⵀ⩇ⵢᴺ"
+      "∣℩ⵀ⩇ⵢᴺ"
     ]
   },
   {
@@ -468,7 +468,7 @@ window.signFontDictionary = [
       "s$\"HL"
     ],
     "unicodeSigns": [
-      "രⵕ⊖ꕊX"
+      "രⵕ⊖ꕊ☓"
     ]
   },
   {
@@ -486,7 +486,7 @@ window.signFontDictionary = [
       "d((JDvy"
     ],
     "unicodeSigns": [
-      "|ᓂᓂᘕᐲ⁼ᴺ"
+      "∣ᓂᓂᘕᐲ⁼ᴺ"
     ]
   },
   {
@@ -495,7 +495,7 @@ window.signFontDictionary = [
       "k&%MBxy"
     ],
     "unicodeSigns": [
-      "७O̱Ōⴳ>ᙾᴺ"
+      "७⍛ōⴳᐳᙾᴺ"
     ]
   },
   {
@@ -513,7 +513,7 @@ window.signFontDictionary = [
       "a!8;Lvy"
     ],
     "unicodeSigns": [
-      "റⵀᑯᕟX⁼ᴺ"
+      "റⵀᑯᕟ☓⁼ᴺ"
     ]
   },
   {
@@ -522,7 +522,7 @@ window.signFontDictionary = [
       "b\"!J\"L"
     ],
     "unicodeSigns": [
-      "Π⊖ⵀᘕ⊖X"
+      "Π⊖ⵀᘕ⊖☓"
     ]
   },
   {
@@ -531,7 +531,7 @@ window.signFontDictionary = [
       "b!!BAEL"
     ],
     "unicodeSigns": [
-      "Πⵀⵀ><ṾX"
+      "ΠⵀⵀᐳᐸṾ☓"
     ]
   },
   {
@@ -540,7 +540,7 @@ window.signFontDictionary = [
       "d!G:PdRN"
     ],
     "unicodeSigns": [
-      "|ⵀᕤᑲ⸝|℩¦"
+      "∣ⵀᕤᑲ⸝∣℩¦"
     ]
   },
   {
@@ -549,7 +549,7 @@ window.signFontDictionary = [
       "aP%&DLy"
     ],
     "unicodeSigns": [
-      "റ⸝ŌO̱ᐲXᴺ"
+      "റ⸝ō⍛ᐲ☓ᴺ"
     ]
   },
   {
@@ -558,7 +558,7 @@ window.signFontDictionary = [
       "uR!6LJ\"E"
     ],
     "unicodeSigns": [
-      "ᐯ℩ⵀ⩇Xᘕ⊖Ṿ"
+      "ᐯ℩ⵀ⩇☓ᘕ⊖Ṿ"
     ]
   },
   {
@@ -568,8 +568,8 @@ window.signFontDictionary = [
       "hR!!LJ\"E"
     ],
     "unicodeSigns": [
-      "⫪℩ⵀⵀXṾ",
-      "⫪℩ⵀⵀXᘕ⊖Ṿ"
+      "⫪℩ⵀⵀ☓Ṿ",
+      "⫪℩ⵀⵀ☓ᘕ⊖Ṿ"
     ]
   },
   {
@@ -578,7 +578,7 @@ window.signFontDictionary = [
       "d!8S9SGJ!vy"
     ],
     "unicodeSigns": [
-      "|ⵀᑯ⁊ɤ⁊ᕤᘕⵀ⁼ᴺ"
+      "∣ⵀᑯ⁊ɤ⁊ᕤᘕⵀ⁼ᴺ"
     ]
   },
   {
@@ -587,7 +587,7 @@ window.signFontDictionary = [
       "a%5LEy"
     ],
     "unicodeSigns": [
-      "റŌᒍXṾᴺ"
+      "റōᒍ☓Ṿᴺ"
     ]
   },
   {
@@ -596,7 +596,7 @@ window.signFontDictionary = [
       "b%0LIL"
     ],
     "unicodeSigns": [
-      "ΠŌᨓXᘖX"
+      "Πōᨓ☓ᘖ☓"
     ]
   },
   {
@@ -605,7 +605,7 @@ window.signFontDictionary = [
       "oQ!!DL"
     ],
     "unicodeSigns": [
-      "OₒⵀⵀᐲX"
+      "Оₒⵀⵀᐲ☓"
     ]
   },
   {
@@ -614,7 +614,7 @@ window.signFontDictionary = [
       "aP($LHF"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂⵕXꕊᘐ"
+      "റ⸝ᓂⵕ☓ꕊᘐ"
     ]
   },
   {
@@ -632,7 +632,7 @@ window.signFontDictionary = [
       "q8%NqPzz"
     ],
     "unicodeSigns": [
-      "ᕬᑯŌ¦ᕬ⸝⁷⁷"
+      "ᕬᑯō¦ᕬ⸝⁷⁷"
     ]
   },
   {
@@ -641,7 +641,7 @@ window.signFontDictionary = [
       "b!\"LCvy"
     ],
     "unicodeSigns": [
-      "Πⵀ⊖Xⵢ⁼ᴺ"
+      "Πⵀ⊖☓ⵢ⁼ᴺ"
     ]
   },
   {
@@ -650,7 +650,7 @@ window.signFontDictionary = [
       "aP%8Fy"
     ],
     "unicodeSigns": [
-      "റ⸝Ōᑯᘐᴺ"
+      "റ⸝ōᑯᘐᴺ"
     ]
   },
   {
@@ -668,7 +668,7 @@ window.signFontDictionary = [
       "a!8:Ly"
     ],
     "unicodeSigns": [
-      "റⵀᑯᑲXᴺ"
+      "റⵀᑯᑲ☓ᴺ"
     ]
   },
   {
@@ -678,8 +678,8 @@ window.signFontDictionary = [
       "a!8:FLvzzy"
     ],
     "unicodeSigns": [
-      "|℩ⵀᑯᑲᘐX⁼⁷⁷ᴺ",
-      "റⵀᑯᑲᘐX⁼⁷⁷ᴺ"
+      "∣℩ⵀᑯᑲᘐ☓⁼⁷⁷ᴺ",
+      "റⵀᑯᑲᘐ☓⁼⁷⁷ᴺ"
     ]
   },
   {
@@ -688,7 +688,7 @@ window.signFontDictionary = [
       "h((LKAB"
     ],
     "unicodeSigns": [
-      "⫪ᓂᓂX≈<>"
+      "⫪ᓂᓂ☓≈ᐸᐳ"
     ]
   },
   {
@@ -697,7 +697,7 @@ window.signFontDictionary = [
       "b#6LIGNEzzN"
     ],
     "unicodeSigns": [
-      "Πⵚ⩇Xᘖᕤ¦Ṿ⁷⁷¦"
+      "Πⵚ⩇☓ᘖᕤ¦Ṿ⁷⁷¦"
     ]
   },
   {
@@ -726,7 +726,7 @@ window.signFontDictionary = [
       "pR!!Ly"
     ],
     "unicodeSigns": [
-      "✳℩ⵀⵀXᴺ"
+      "✳℩ⵀⵀ☓ᴺ"
     ]
   },
   {
@@ -735,7 +735,7 @@ window.signFontDictionary = [
       "dR(d%PMEy"
     ],
     "unicodeSigns": [
-      "|℩ᓂ|Ō⸝ⴳṾᴺ"
+      "∣℩ᓂ∣ō⸝ⴳṾᴺ"
     ]
   },
   {
@@ -744,7 +744,7 @@ window.signFontDictionary = [
       "h#\"MAJ\""
     ],
     "unicodeSigns": [
-      "⫪ⵚ⊖ⴳ<ᘕ⊖"
+      "⫪ⵚ⊖ⴳᐸᘕ⊖"
     ]
   },
   {
@@ -753,7 +753,7 @@ window.signFontDictionary = [
       "u%/1Fhvy-b$;=MEv"
     ],
     "unicodeSigns": [
-      "ᐯŌᕂᕃᘐ⫪⁼ᴺ-ΠⵕᕟᕞⴳṾ⁼"
+      "ᐯōᕂᕃᘐ⫪⁼ᴺ-ΠⵕᕟᕞⴳṾ⁼"
     ]
   },
   {
@@ -771,7 +771,7 @@ window.signFontDictionary = [
       "s&%LGBvy"
     ],
     "unicodeSigns": [
-      "രO̱ŌXᕤ>⁼ᴺ"
+      "ര⍛ō☓ᕤᐳ⁼ᴺ"
     ]
   },
   {
@@ -780,7 +780,7 @@ window.signFontDictionary = [
       "p!!J%vy"
     ],
     "unicodeSigns": [
-      "✳ⵀⵀᘕŌ⁼ᴺ"
+      "✳ⵀⵀᘕō⁼ᴺ"
     ]
   },
   {
@@ -807,7 +807,7 @@ window.signFontDictionary = [
       "s&%LGpv"
     ],
     "unicodeSigns": [
-      "രO̱ŌXᕤ✳⁼"
+      "ര⍛ō☓ᕤ✳⁼"
     ]
   },
   {
@@ -816,7 +816,7 @@ window.signFontDictionary = [
       "aP($LFy"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂⵕXᘐᴺ"
+      "റ⸝ᓂⵕ☓ᘐᴺ"
     ]
   },
   {
@@ -843,7 +843,7 @@ window.signFontDictionary = [
       "b\"!LIE"
     ],
     "unicodeSigns": [
-      "Π⊖ⵀXᘖṾ"
+      "Π⊖ⵀ☓ᘖṾ"
     ]
   },
   {
@@ -852,7 +852,7 @@ window.signFontDictionary = [
       "a%6ME"
     ],
     "unicodeSigns": [
-      "റŌ⩇ⴳṾ"
+      "റō⩇ⴳṾ"
     ]
   },
   {
@@ -861,7 +861,7 @@ window.signFontDictionary = [
       "c!57LJGv&&L"
     ],
     "unicodeSigns": [
-      "CⵀᒍᒐXᘕᕤ⁼O̱O̱X"
+      "Сⵀᒍᒐ☓ᘕᕤ⁼⍛⍛☓"
     ]
   },
   {
@@ -871,8 +871,8 @@ window.signFontDictionary = [
       "s%&EhL"
     ],
     "unicodeSigns": [
-      "രŌO̱ṾᐯX",
-      "രŌO̱Ṿ⫪X"
+      "രō⍛Ṿᐯ☓",
+      "രō⍛Ṿ⫪☓"
     ]
   },
   {
@@ -892,7 +892,7 @@ window.signFontDictionary = [
       "s(d%PLALBy"
     ],
     "unicodeSigns": [
-      "രᓂ|Ō⸝X<X>ᴺ"
+      "രᓂ∣ō⸝☓ᐸ☓ᐳᴺ"
     ]
   },
   {
@@ -919,7 +919,7 @@ window.signFontDictionary = [
       "fQ!5L-b%5LG"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀᒍX-ΠŌᒍXᕤ"
+      "ᗐₒⵀᒍ☓-Πōᒍ☓ᕤ"
     ]
   },
   {
@@ -928,7 +928,7 @@ window.signFontDictionary = [
       "b!8FbSL"
     ],
     "unicodeSigns": [
-      "ΠⵀᑯᘐΠ⁊X"
+      "ΠⵀᑯᘐΠ⁊☓"
     ]
   },
   {
@@ -937,7 +937,7 @@ window.signFontDictionary = [
       "bS(b!LF"
     ],
     "unicodeSigns": [
-      "Π⁊ᓂΠⵀXᘐ"
+      "Π⁊ᓂΠⵀ☓ᘐ"
     ]
   },
   {
@@ -956,8 +956,8 @@ window.signFontDictionary = [
       "aP($FBGL"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂⵕXᘐ⁷⁷",
-      "റ⸝ᓂⵕᘐ>ᕤX"
+      "റ⸝ᓂⵕ☓ᘐ⁷⁷",
+      "റ⸝ᓂⵕᘐᐳᕤ☓"
     ]
   },
   {
@@ -966,7 +966,7 @@ window.signFontDictionary = [
       "d(0L-c**EL"
     ],
     "unicodeSigns": [
-      "|ᓂᨓX-C⊕⊕ṾX"
+      "∣ᓂᨓ☓-С⊕⊕Ṿ☓"
     ]
   },
   {
@@ -975,7 +975,7 @@ window.signFontDictionary = [
       "s%b!L-p%b!KA"
     ],
     "unicodeSigns": [
-      "രŌΠⵀX-✳ŌΠⵀ≈<"
+      "രōΠⵀ☓-✳ōΠⵀ≈ᐸ"
     ]
   },
   {
@@ -984,7 +984,7 @@ window.signFontDictionary = [
       "s%b!BL-p%b!JyA"
     ],
     "unicodeSigns": [
-      "രŌΠⵀ>X-✳ŌΠⵀᘕᴺ<"
+      "രōΠⵀᐳ☓-✳ōΠⵀᘕᴺᐸ"
     ]
   },
   {
@@ -1002,7 +1002,7 @@ window.signFontDictionary = [
       "b\"!LE"
     ],
     "unicodeSigns": [
-      "Π⊖ⵀXṾ"
+      "Π⊖ⵀ☓Ṿ"
     ]
   },
   {
@@ -1011,7 +1011,7 @@ window.signFontDictionary = [
       "h((<J!BAL"
     ],
     "unicodeSigns": [
-      "⫪ᓂᓂЭᘕⵀ><X"
+      "⫪ᓂᓂЭᘕⵀᐳᐸ☓"
     ]
   },
   {
@@ -1020,7 +1020,7 @@ window.signFontDictionary = [
       "oS!!MJ\"v"
     ],
     "unicodeSigns": [
-      "O⁊ⵀⵀⴳᘕ⊖⁼"
+      "О⁊ⵀⵀⴳᘕ⊖⁼"
     ]
   },
   {
@@ -1029,7 +1029,7 @@ window.signFontDictionary = [
       "o*d(MJy"
     ],
     "unicodeSigns": [
-      "O⊕|ᓂⴳᘕᴺ"
+      "О⊕∣ᓂⴳᘕᴺ"
     ]
   },
   {
@@ -1038,7 +1038,7 @@ window.signFontDictionary = [
       "b#6LADaP"
     ],
     "unicodeSigns": [
-      "Πⵚ⩇X<ᐲറ⸝"
+      "Πⵚ⩇☓ᐸᐲറ⸝"
     ]
   },
   {
@@ -1047,7 +1047,7 @@ window.signFontDictionary = [
       "b&&IBAN"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱ᘖ><¦"
+      "Π⍛⍛ᘖᐳᐸ¦"
     ]
   },
   {
@@ -1056,7 +1056,7 @@ window.signFontDictionary = [
       "b#6LAaP"
     ],
     "unicodeSigns": [
-      "Πⵚ⩇X<റ⸝"
+      "Πⵚ⩇☓ᐸറ⸝"
     ]
   },
   {
@@ -1066,8 +1066,8 @@ window.signFontDictionary = [
       "s%%GEwy"
     ],
     "unicodeSigns": [
-      "രŌŌꕊᣛᴺ",
-      "രŌŌᕤṾᣛᴺ"
+      "രōōꕊᣛᴺ",
+      "രōōᕤṾᣛᴺ"
     ]
   },
   {
@@ -1076,7 +1076,7 @@ window.signFontDictionary = [
       "s%%Hwzzy"
     ],
     "unicodeSigns": [
-      "രŌŌꕊᣛ⁷⁷ᴺ"
+      "രōōꕊᣛ⁷⁷ᴺ"
     ]
   },
   {
@@ -1094,7 +1094,7 @@ window.signFontDictionary = [
       "g\"6MoQy"
     ],
     "unicodeSigns": [
-      "⊃⊖⩇ⴳOₒᴺ"
+      "⊃⊖⩇ⴳОₒᴺ"
     ]
   },
   {
@@ -1103,7 +1103,7 @@ window.signFontDictionary = [
       "b!9L-b\"!L"
     ],
     "unicodeSigns": [
-      "ΠⵀɤX-Π⊖ⵀX"
+      "Πⵀɤ☓-Π⊖ⵀ☓"
     ]
   },
   {
@@ -1113,8 +1113,8 @@ window.signFontDictionary = [
       "c!b&DoL"
     ],
     "unicodeSigns": [
-      "CⵀΠŌᕤOX",
-      "CⵀΠO̱ᐲOX"
+      "СⵀΠōᕤО☓",
+      "СⵀΠ⍛ᐲО☓"
     ]
   },
   {
@@ -1123,7 +1123,7 @@ window.signFontDictionary = [
       "pR!6By"
     ],
     "unicodeSigns": [
-      "✳℩ⵀ⩇>ᴺ"
+      "✳℩ⵀ⩇ᐳᴺ"
     ]
   },
   {
@@ -1132,7 +1132,7 @@ window.signFontDictionary = [
       "d%P0MA"
     ],
     "unicodeSigns": [
-      "|Ō⸝ᨓⴳ<"
+      "∣ō⸝ᨓⴳᐸ"
     ]
   },
   {
@@ -1141,7 +1141,7 @@ window.signFontDictionary = [
       "bS%9<Ly"
     ],
     "unicodeSigns": [
-      "Π⁊ŌɤЭXᴺ"
+      "Π⁊ōɤЭ☓ᴺ"
     ]
   },
   {
@@ -1150,7 +1150,7 @@ window.signFontDictionary = [
       "a\"6LEGpv"
     ],
     "unicodeSigns": [
-      "റ⊖⩇XṾᕤ✳⁼"
+      "റ⊖⩇☓Ṿᕤ✳⁼"
     ]
   },
   {
@@ -1159,7 +1159,7 @@ window.signFontDictionary = [
       "d(6L-p#\"LKE"
     ],
     "unicodeSigns": [
-      "|ᓂ⩇X-✳ⵚ⊖X≈Ṿ"
+      "∣ᓂ⩇☓-✳ⵚ⊖☓≈Ṿ"
     ]
   },
   {
@@ -1168,7 +1168,7 @@ window.signFontDictionary = [
       "c*)PLy"
     ],
     "unicodeSigns": [
-      "C⊕ᓇ⸝Xᴺ"
+      "С⊕ᓇ⸝☓ᴺ"
     ]
   },
   {
@@ -1186,7 +1186,7 @@ window.signFontDictionary = [
       "p%8:LJE;=Lv"
     ],
     "unicodeSigns": [
-      "✳ŌᑯᑲXᘕṾᕟᕞX⁼"
+      "✳ōᑯᑲ☓ᘕṾᕟᕞ☓⁼"
     ]
   },
   {
@@ -1195,7 +1195,7 @@ window.signFontDictionary = [
       "oS\"6LGpS"
     ],
     "unicodeSigns": [
-      "O⁊⊖⩇Xᕤ✳⁊"
+      "О⁊⊖⩇☓ᕤ✳⁊"
     ]
   },
   {
@@ -1204,7 +1204,7 @@ window.signFontDictionary = [
       "b&Iy"
     ],
     "unicodeSigns": [
-      "ΠO̱ᘖᴺ"
+      "Π⍛ᘖᴺ"
     ]
   },
   {
@@ -1213,7 +1213,7 @@ window.signFontDictionary = [
       "aP%;=Lwy"
     ],
     "unicodeSigns": [
-      "റ⸝ŌᕟᕞXᣛᴺ"
+      "റ⸝ōᕟᕞ☓ᣛᴺ"
     ]
   },
   {
@@ -1222,7 +1222,7 @@ window.signFontDictionary = [
       "bR&&LGvy"
     ],
     "unicodeSigns": [
-      "Π℩O̱O̱Xᕤ⁼ᴺ"
+      "Π℩⍛⍛☓ᕤ⁼ᴺ"
     ]
   },
   {
@@ -1231,7 +1231,7 @@ window.signFontDictionary = [
       "b#8:LELv"
     ],
     "unicodeSigns": [
-      "ΠⵚᑯᑲXṾX⁼"
+      "Πⵚᑯᑲ☓Ṿ☓⁼"
     ]
   },
   {
@@ -1249,7 +1249,7 @@ window.signFontDictionary = [
       "s&%LABpSy"
     ],
     "unicodeSigns": [
-      "രO̱ŌX<>✳⁊ᴺ"
+      "ര⍛ō☓ᐸᐳ✳⁊ᴺ"
     ]
   },
   {
@@ -1258,7 +1258,7 @@ window.signFontDictionary = [
       "b!!LJvy"
     ],
     "unicodeSigns": [
-      "ΠⵀⵀXᘕ⁼ᴺ"
+      "Πⵀⵀ☓ᘕ⁼ᴺ"
     ]
   },
   {
@@ -1267,7 +1267,7 @@ window.signFontDictionary = [
       "b&s\"SLy"
     ],
     "unicodeSigns": [
-      "ΠO̱ര⊖⁊Xᴺ"
+      "Π⍛ര⊖⁊☓ᴺ"
     ]
   },
   {
@@ -1276,7 +1276,7 @@ window.signFontDictionary = [
       "d(3MJ"
     ],
     "unicodeSigns": [
-      "|ᓂ⦣ⴳᘕ"
+      "∣ᓂ⦣ⴳᘕ"
     ]
   },
   {
@@ -1285,7 +1285,7 @@ window.signFontDictionary = [
       "k&%LJ%Fv"
     ],
     "unicodeSigns": [
-      "७O̱ŌXᘕŌᘐ⁼"
+      "७⍛ō☓ᘕōᘐ⁼"
     ]
   },
   {
@@ -1294,7 +1294,7 @@ window.signFontDictionary = [
       "pR!8ELy"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᑯṾXᴺ"
+      "✳℩ⵀᑯṾ☓ᴺ"
     ]
   },
   {
@@ -1303,7 +1303,7 @@ window.signFontDictionary = [
       "b&bP+GLy"
     ],
     "unicodeSigns": [
-      "ΠO̱Π⸝◷ᕤXᴺ"
+      "Π⍛Π⸝◷ᕤ☓ᴺ"
     ]
   },
   {
@@ -1312,7 +1312,7 @@ window.signFontDictionary = [
       "hS!!9HLABhQ"
     ],
     "unicodeSigns": [
-      "⫪⁊ⵀⵀɤꕊX<>⫪ₒ"
+      "⫪⁊ⵀⵀɤꕊ☓ᐸᐳ⫪ₒ"
     ]
   },
   {
@@ -1321,7 +1321,7 @@ window.signFontDictionary = [
       "bR&&LABIDv"
     ],
     "unicodeSigns": [
-      "Π℩O̱O̱X<>ᘖᐲ⁼"
+      "Π℩⍛⍛☓ᐸᐳᘖᐲ⁼"
     ]
   },
   {
@@ -1330,7 +1330,7 @@ window.signFontDictionary = [
       "cS%0MoSy"
     ],
     "unicodeSigns": [
-      "C⁊ŌᨓⴳO⁊ᴺ"
+      "С⁊ōᨓⴳО⁊ᴺ"
     ]
   },
   {
@@ -1339,7 +1339,7 @@ window.signFontDictionary = [
       "cQ!9MABy"
     ],
     "unicodeSigns": [
-      "Cₒⵀɤⴳ<>ᴺ"
+      "Сₒⵀɤⴳᐸᐳᴺ"
     ]
   },
   {
@@ -1348,7 +1348,7 @@ window.signFontDictionary = [
       "cQ*s\"SELy"
     ],
     "unicodeSigns": [
-      "Cₒ⊕ര⊖⁊ṾXᴺ"
+      "Сₒ⊕ര⊖⁊Ṿ☓ᴺ"
     ]
   },
   {
@@ -1368,7 +1368,7 @@ window.signFontDictionary = [
       "pR!8:LGszzv"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᑯᑲXᕤര⁷⁷⁼"
+      "✳℩ⵀᑯᑲ☓ᕤര⁷⁷⁼"
     ]
   },
   {
@@ -1377,7 +1377,7 @@ window.signFontDictionary = [
       "bS!b\"LEy"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀΠ⊖XṾᴺ"
+      "Π⁊ⵀΠ⊖☓Ṿᴺ"
     ]
   },
   {
@@ -1386,7 +1386,7 @@ window.signFontDictionary = [
       "s%%LJAB"
     ],
     "unicodeSigns": [
-      "രŌŌXᘕ<>"
+      "രōō☓ᘕᐸᐳ"
     ]
   },
   {
@@ -1395,7 +1395,7 @@ window.signFontDictionary = [
       "pR((LJ!Ev"
     ],
     "unicodeSigns": [
-      "✳℩ᓂᓂXᘕⵀṾ⁼"
+      "✳℩ᓂᓂ☓ᘕⵀṾ⁼"
     ]
   },
   {
@@ -1404,7 +1404,7 @@ window.signFontDictionary = [
       "c!!LIEv"
     ],
     "unicodeSigns": [
-      "CⵀⵀXᘖṾ⁼"
+      "Сⵀⵀ☓ᘖṾ⁼"
     ]
   },
   {
@@ -1413,7 +1413,7 @@ window.signFontDictionary = [
       "bS!8LB:L"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀᑯX>ᑲX"
+      "Π⁊ⵀᑯ☓ᐳᑲ☓"
     ]
   },
   {
@@ -1442,7 +1442,7 @@ window.signFontDictionary = [
       "oS$b!MZGN"
     ],
     "unicodeSigns": [
-      "O⁊ⵕΠⵀⴳ⊥ᕤ¦"
+      "О⁊ⵕΠⵀⴳ⊥ᕤ¦"
     ]
   },
   {
@@ -1451,7 +1451,7 @@ window.signFontDictionary = [
       "u(b!LBL"
     ],
     "unicodeSigns": [
-      "ᐯᓂΠⵀX>X"
+      "ᐯᓂΠⵀ☓ᐳ☓"
     ]
   },
   {
@@ -1460,7 +1460,7 @@ window.signFontDictionary = [
       "o!!LDABp"
     ],
     "unicodeSigns": [
-      "OⵀⵀXᐲ<>✳"
+      "Оⵀⵀ☓ᐲᐸᐳ✳"
     ]
   },
   {
@@ -1478,7 +1478,7 @@ window.signFontDictionary = [
       "c!57N"
     ],
     "unicodeSigns": [
-      "Cⵀᒍᒐ¦"
+      "Сⵀᒍᒐ¦"
     ]
   },
   {
@@ -1487,7 +1487,7 @@ window.signFontDictionary = [
       "b%8(ALv"
     ],
     "unicodeSigns": [
-      "ΠŌᑯᓂ<X⁼"
+      "Πōᑯᓂᐸ☓⁼"
     ]
   },
   {
@@ -1496,7 +1496,7 @@ window.signFontDictionary = [
       "pR((LJ!Ev"
     ],
     "unicodeSigns": [
-      "✳℩ᓂᓂXᘕⵀṾ⁼"
+      "✳℩ᓂᓂ☓ᘕⵀṾ⁼"
     ]
   },
   {
@@ -1505,7 +1505,7 @@ window.signFontDictionary = [
       "b&!FLFzzy"
     ],
     "unicodeSigns": [
-      "ΠO̱ⵀᘐXᘐ⁷⁷ᴺ"
+      "Π⍛ⵀᘐ☓ᘐ⁷⁷ᴺ"
     ]
   },
   {
@@ -1514,7 +1514,7 @@ window.signFontDictionary = [
       "dP%0L-dP&%L"
     ],
     "unicodeSigns": [
-      "|⸝ŌᨓX-|⸝O̱ŌX"
+      "∣⸝ōᨓ☓-∣⸝⍛ō☓"
     ]
   },
   {
@@ -1523,7 +1523,7 @@ window.signFontDictionary = [
       "b%5ME"
     ],
     "unicodeSigns": [
-      "ΠŌᒍⴳṾ"
+      "ΠōᒍⴳṾ"
     ]
   },
   {
@@ -1532,7 +1532,7 @@ window.signFontDictionary = [
       "b&I-c&)PL"
     ],
     "unicodeSigns": [
-      "ΠO̱ᘖ-CO̱ᓇ⸝X"
+      "Π⍛ᘖ-С⍛ᓇ⸝☓"
     ]
   },
   {
@@ -1559,7 +1559,7 @@ window.signFontDictionary = [
       "d%6By"
     ],
     "unicodeSigns": [
-      "|Ō⩇>ᴺ"
+      "∣ō⩇ᐳᴺ"
     ]
   },
   {
@@ -1568,7 +1568,7 @@ window.signFontDictionary = [
       "b#\"LwyD"
     ],
     "unicodeSigns": [
-      "Πⵚ⊖Xᣛᴺᐲ"
+      "Πⵚ⊖☓ᣛᴺᐲ"
     ]
   },
   {
@@ -1577,7 +1577,7 @@ window.signFontDictionary = [
       "b#\"ELwy"
     ],
     "unicodeSigns": [
-      "Πⵚ⊖ṾXᣛᴺ"
+      "Πⵚ⊖Ṿ☓ᣛᴺ"
     ]
   },
   {
@@ -1587,8 +1587,8 @@ window.signFontDictionary = [
       "iP\"0Ly"
     ],
     "unicodeSigns": [
-      "ᗐₒ⊕⦣Xᴺ",
-      "Һ⸝⊖ᨓXᴺ"
+      "ᗐₒ⊕⦣☓ᴺ",
+      "Һ⸝⊖ᨓ☓ᴺ"
     ]
   },
   {
@@ -1606,7 +1606,7 @@ window.signFontDictionary = [
       "b%&LJyG"
     ],
     "unicodeSigns": [
-      "ΠŌO̱Xᘕᴺᕤ"
+      "Πō⍛☓ᘕᴺᕤ"
     ]
   },
   {
@@ -1624,7 +1624,7 @@ window.signFontDictionary = [
       "pS&&KDv"
     ],
     "unicodeSigns": [
-      "✳⁊O̱O̱≈ᐲ⁼"
+      "✳⁊⍛⍛≈ᐲ⁼"
     ]
   },
   {
@@ -1642,7 +1642,7 @@ window.signFontDictionary = [
       "dR!2Q4QLIEv"
     ],
     "unicodeSigns": [
-      "|℩ⵀᖌₒᖍₒXᘖṾ⁼"
+      "∣℩ⵀᖌₒᖍₒ☓ᘖṾ⁼"
     ]
   },
   {
@@ -1651,7 +1651,7 @@ window.signFontDictionary = [
       "b%%LJ\"Fv"
     ],
     "unicodeSigns": [
-      "ΠŌŌXᘕ⊖ᘐ⁼"
+      "Πōō☓ᘕ⊖ᘐ⁼"
     ]
   },
   {
@@ -1660,7 +1660,7 @@ window.signFontDictionary = [
       "b&%LFx"
     ],
     "unicodeSigns": [
-      "ΠO̱ŌXᘐᙾ"
+      "Π⍛ō☓ᘐᙾ"
     ]
   },
   {
@@ -1678,7 +1678,7 @@ window.signFontDictionary = [
       "d#\"QLAB"
     ],
     "unicodeSigns": [
-      "|ⵚ⊖ₒX<>"
+      "∣ⵚ⊖ₒ☓ᐸᐳ"
     ]
   },
   {
@@ -1687,7 +1687,7 @@ window.signFontDictionary = [
       "h#b!LFy"
     ],
     "unicodeSigns": [
-      "⫪ⵚΠⵀXᘐᴺ"
+      "⫪ⵚΠⵀ☓ᘐᴺ"
     ]
   },
   {
@@ -1705,7 +1705,7 @@ window.signFontDictionary = [
       "oS(b!LGE"
     ],
     "unicodeSigns": [
-      "O⁊ᓂΠⵀXᕤṾ"
+      "О⁊ᓂΠⵀ☓ᕤṾ"
     ]
   },
   {
@@ -1723,7 +1723,7 @@ window.signFontDictionary = [
       "pR$/Ly"
     ],
     "unicodeSigns": [
-      "✳℩ⵕᕂXᴺ"
+      "✳℩ⵕᕂ☓ᴺ"
     ]
   },
   {
@@ -1732,7 +1732,7 @@ window.signFontDictionary = [
       "c%6LBL"
     ],
     "unicodeSigns": [
-      "CŌ⩇X>X"
+      "Сō⩇☓ᐳ☓"
     ]
   },
   {
@@ -1742,8 +1742,8 @@ window.signFontDictionary = [
       "jP(2LiPy"
     ],
     "unicodeSigns": [
-      "Ч⸝ᓂᖌX-Һ⸝O̱ᘖᴺ",
-      "Ч⸝ᓂᖌXҺ⸝ᴺ"
+      "Ч⸝ᓂᖌ☓-Һ⸝⍛ᘖᴺ",
+      "Ч⸝ᓂᖌ☓Һ⸝ᴺ"
     ]
   },
   {
@@ -1752,7 +1752,7 @@ window.signFontDictionary = [
       "iP!5FL"
     ],
     "unicodeSigns": [
-      "Һ⸝ⵀᒍᘐX"
+      "Һ⸝ⵀᒍᘐ☓"
     ]
   },
   {
@@ -1761,7 +1761,7 @@ window.signFontDictionary = [
       "b#\"LFa"
     ],
     "unicodeSigns": [
-      "Πⵚ⊖Xᘐറ"
+      "Πⵚ⊖☓ᘐറ"
     ]
   },
   {
@@ -1770,7 +1770,7 @@ window.signFontDictionary = [
       "p%%Evy"
     ],
     "unicodeSigns": [
-      "✳ŌŌṾ⁼ᴺ"
+      "✳ōōṾ⁼ᴺ"
     ]
   },
   {
@@ -1779,7 +1779,7 @@ window.signFontDictionary = [
       "b&AJ"
     ],
     "unicodeSigns": [
-      "ΠO̱<ᘕ"
+      "Π⍛ᐸᘕ"
     ]
   },
   {
@@ -1789,8 +1789,8 @@ window.signFontDictionary = [
       "dP%%57NdTy"
     ],
     "unicodeSigns": [
-      "|⸝Ō|℩⸝Ōᒍᒐ¦|℩⸝ᴺ",
-      "|⸝ŌŌᒍᒐ¦|℩⸝ᴺ"
+      "∣⸝ō∣℩⸝ōᒍᒐ¦∣℩⸝ᴺ",
+      "∣⸝ōōᒍᒐ¦∣℩⸝ᴺ"
     ]
   },
   {
@@ -1799,7 +1799,7 @@ window.signFontDictionary = [
       "j((LEAB"
     ],
     "unicodeSigns": [
-      "ЧᓂᓂXṾ<>"
+      "Чᓂᓂ☓Ṿᐸᐳ"
     ]
   },
   {
@@ -1808,7 +1808,7 @@ window.signFontDictionary = [
       "j((LEABy"
     ],
     "unicodeSigns": [
-      "ЧᓂᓂXṾ<>ᴺ"
+      "Чᓂᓂ☓Ṿᐸᐳᴺ"
     ]
   },
   {
@@ -1826,7 +1826,7 @@ window.signFontDictionary = [
       "a!8Ly"
     ],
     "unicodeSigns": [
-      "റⵀᑯXᴺ"
+      "റⵀᑯ☓ᴺ"
     ]
   },
   {
@@ -1835,7 +1835,7 @@ window.signFontDictionary = [
       "p$d(MK"
     ],
     "unicodeSigns": [
-      "✳ⵕ|ᓂⴳ≈"
+      "✳ⵕ∣ᓂⴳ≈"
     ]
   },
   {
@@ -1844,7 +1844,7 @@ window.signFontDictionary = [
       "d(6MJy"
     ],
     "unicodeSigns": [
-      "|ᓂ⩇ⴳᘕᴺ"
+      "∣ᓂ⩇ⴳᘕᴺ"
     ]
   },
   {
@@ -1853,7 +1853,7 @@ window.signFontDictionary = [
       "d#\"QELE"
     ],
     "unicodeSigns": [
-      "|ⵚ⊖ₒṾXṾ"
+      "∣ⵚ⊖ₒṾ☓Ṿ"
     ]
   },
   {
@@ -1862,7 +1862,7 @@ window.signFontDictionary = [
       "pR$\"GsLv"
     ],
     "unicodeSigns": [
-      "✳℩ⵕ⊖ᕤരX⁼"
+      "✳℩ⵕ⊖ᕤര☓⁼"
     ]
   },
   {
@@ -1871,7 +1871,7 @@ window.signFontDictionary = [
       "s&EDwzzy"
     ],
     "unicodeSigns": [
-      "രO̱Ṿᐲᣛ⁷⁷ᴺ"
+      "ര⍛Ṿᐲᣛ⁷⁷ᴺ"
     ]
   },
   {
@@ -1880,7 +1880,7 @@ window.signFontDictionary = [
       "p((BAsLzz"
     ],
     "unicodeSigns": [
-      "✳ᓂᓂ><രX⁷⁷"
+      "✳ᓂᓂᐳᐸര☓⁷⁷"
     ]
   },
   {
@@ -1889,7 +1889,7 @@ window.signFontDictionary = [
       "aQ!!LJ&y"
     ],
     "unicodeSigns": [
-      "റₒⵀⵀXᘕO̱ᴺ"
+      "റₒⵀⵀ☓ᘕ⍛ᴺ"
     ]
   },
   {
@@ -1898,7 +1898,7 @@ window.signFontDictionary = [
       "s&b!MGFy"
     ],
     "unicodeSigns": [
-      "രO̱Πⵀⴳᕤᘐᴺ"
+      "ര⍛Πⵀⴳᕤᘐᴺ"
     ]
   },
   {
@@ -1908,8 +1908,8 @@ window.signFontDictionary = [
       "s%6J!y"
     ],
     "unicodeSigns": [
-      "റ⸝ŌΠⵀXᘕᴺ",
-      "രŌ⩇ᘕⵀᴺ"
+      "റ⸝ōΠⵀ☓ᘕᴺ",
+      "രō⩇ᘕⵀᴺ"
     ]
   },
   {
@@ -1918,7 +1918,7 @@ window.signFontDictionary = [
       "b&&AENvyA"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱<Ṿ¦⁼ᴺ<"
+      "Π⍛⍛ᐸṾ¦⁼ᴺᐸ"
     ]
   },
   {
@@ -1927,7 +1927,7 @@ window.signFontDictionary = [
       "s%%Gpv"
     ],
     "unicodeSigns": [
-      "രŌŌᕤ✳⁼"
+      "രōōᕤ✳⁼"
     ]
   },
   {
@@ -1937,8 +1937,8 @@ window.signFontDictionary = [
       "gX!5LAfQy"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀᒍᘐXᘐᴺ",
-      "⊃ѵⵀᒍX<ᗐₒᴺ"
+      "ᗐₒⵀᒍᘐ☓ᘐᴺ",
+      "⊃ѵⵀᒍ☓ᐸᗐₒᴺ"
     ]
   },
   {
@@ -1947,7 +1947,7 @@ window.signFontDictionary = [
       "p!!Fc$$L"
     ],
     "unicodeSigns": [
-      "✳ⵀⵀᘐCⵕⵕX"
+      "✳ⵀⵀᘐСⵕⵕ☓"
     ]
   },
   {
@@ -1956,7 +1956,7 @@ window.signFontDictionary = [
       "aP($GL"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂⵕᕤX"
+      "റ⸝ᓂⵕᕤ☓"
     ]
   },
   {
@@ -1965,7 +1965,7 @@ window.signFontDictionary = [
       "s&%LGpRv"
     ],
     "unicodeSigns": [
-      "രO̱ŌXᕤ✳℩⁼"
+      "ര⍛ō☓ᕤ✳℩⁼"
     ]
   },
   {
@@ -1974,7 +1974,7 @@ window.signFontDictionary = [
       "b%%0SLAB"
     ],
     "unicodeSigns": [
-      "ΠŌŌᨓ⁊X<>"
+      "Πōōᨓ⁊☓ᐸᐳ"
     ]
   },
   {
@@ -1993,8 +1993,8 @@ window.signFontDictionary = [
       "d(0LGN"
     ],
     "unicodeSigns": [
-      "|ᓂᕂXᕤ¦",
-      "|ᓂᨓXᕤ¦"
+      "∣ᓂᕂ☓ᕤ¦",
+      "∣ᓂᨓ☓ᕤ¦"
     ]
   },
   {
@@ -2003,7 +2003,7 @@ window.signFontDictionary = [
       "bS!b!HL"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀΠⵀꕊX"
+      "Π⁊ⵀΠⵀꕊ☓"
     ]
   },
   {
@@ -2012,7 +2012,7 @@ window.signFontDictionary = [
       "c$$BALy"
     ],
     "unicodeSigns": [
-      "Cⵕⵕ><Xᴺ"
+      "Сⵕⵕᐳᐸ☓ᴺ"
     ]
   },
   {
@@ -2021,7 +2021,7 @@ window.signFontDictionary = [
       "c$$BAL"
     ],
     "unicodeSigns": [
-      "Cⵕⵕ><X"
+      "Сⵕⵕᐳᐸ☓"
     ]
   },
   {
@@ -2030,7 +2030,7 @@ window.signFontDictionary = [
       "hR#\"QLy"
     ],
     "unicodeSigns": [
-      "⫪℩ⵚ⊖ₒXᴺ"
+      "⫪℩ⵚ⊖ₒ☓ᴺ"
     ]
   },
   {
@@ -2039,7 +2039,7 @@ window.signFontDictionary = [
       "aP((JLv"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂᓂᘕX⁼"
+      "റ⸝ᓂᓂᘕ☓⁼"
     ]
   },
   {
@@ -2048,7 +2048,7 @@ window.signFontDictionary = [
       "oQ!!MJx"
     ],
     "unicodeSigns": [
-      "Oₒⵀⵀⴳᘕᙾ"
+      "Оₒⵀⵀⴳᘕᙾ"
     ]
   },
   {
@@ -2057,7 +2057,7 @@ window.signFontDictionary = [
       "u(Q/LI(RL"
     ],
     "unicodeSigns": [
-      "ᐯᓂₒᕂXᘖᓂ℩X"
+      "ᐯᓂₒᕂ☓ᘖᓂ℩☓"
     ]
   },
   {
@@ -2066,7 +2066,7 @@ window.signFontDictionary = [
       "s&b!MABNzz"
     ],
     "unicodeSigns": [
-      "രO̱Πⵀⴳ<>¦⁷⁷"
+      "ര⍛Πⵀⴳᐸᐳ¦⁷⁷"
     ]
   },
   {
@@ -2075,7 +2075,7 @@ window.signFontDictionary = [
       "dR(b!ELE"
     ],
     "unicodeSigns": [
-      "|℩ᓂΠⵀṾXṾ"
+      "∣℩ᓂΠⵀṾ☓Ṿ"
     ]
   },
   {
@@ -2093,7 +2093,7 @@ window.signFontDictionary = [
       "p&;=J&Evy"
     ],
     "unicodeSigns": [
-      "✳O̱ᕟᕞᘕO̱Ṿ⁼ᴺ"
+      "✳⍛ᕟᕞᘕ⍛Ṿ⁼ᴺ"
     ]
   },
   {
@@ -2102,7 +2102,7 @@ window.signFontDictionary = [
       "u+b%ELy"
     ],
     "unicodeSigns": [
-      "ᐯ◷ΠŌṾXᴺ"
+      "ᐯ◷ΠōṾ☓ᴺ"
     ]
   },
   {
@@ -2111,7 +2111,7 @@ window.signFontDictionary = [
       "d(3L-d#b!LG"
     ],
     "unicodeSigns": [
-      "|ᓂ⦣X-|ⵚΠⵀXᕤ"
+      "∣ᓂ⦣☓-∣ⵚΠⵀ☓ᕤ"
     ]
   },
   {
@@ -2138,7 +2138,7 @@ window.signFontDictionary = [
       "aP%EGwy"
     ],
     "unicodeSigns": [
-      "റ⸝ŌṾᕤᣛᴺ"
+      "റ⸝ōṾᕤᣛᴺ"
     ]
   },
   {
@@ -2147,7 +2147,7 @@ window.signFontDictionary = [
       "e!6LEs"
     ],
     "unicodeSigns": [
-      "Ωⵀ⩇XṾര"
+      "Ωⵀ⩇☓Ṿര"
     ]
   },
   {
@@ -2156,7 +2156,7 @@ window.signFontDictionary = [
       "o*i(MJy"
     ],
     "unicodeSigns": [
-      "O⊕Һᓂⴳᘕᴺ"
+      "О⊕Һᓂⴳᘕᴺ"
     ]
   },
   {
@@ -2174,7 +2174,7 @@ window.signFontDictionary = [
       "c&AE"
     ],
     "unicodeSigns": [
-      "CO̱<Ṿ"
+      "С⍛ᐸṾ"
     ]
   },
   {
@@ -2183,7 +2183,7 @@ window.signFontDictionary = [
       "b!EvyAB"
     ],
     "unicodeSigns": [
-      "ΠⵀṾ⁼ᴺ<>"
+      "ΠⵀṾ⁼ᴺᐸᐳ"
     ]
   },
   {
@@ -2202,8 +2202,8 @@ window.signFontDictionary = [
       "d(:MANEN"
     ],
     "unicodeSigns": [
-      "|ᓂᖌₒⴳᘕᴺ",
-      "|ᓂᑲⴳ<¦Ṿ¦"
+      "∣ᓂᖌₒⴳᘕᴺ",
+      "∣ᓂᑲⴳᐸ¦Ṿ¦"
     ]
   },
   {
@@ -2212,7 +2212,7 @@ window.signFontDictionary = [
       "c$s\"MHy"
     ],
     "unicodeSigns": [
-      "Cⵕര⊖ⴳꕊᴺ"
+      "Сⵕര⊖ⴳꕊᴺ"
     ]
   },
   {
@@ -2221,7 +2221,7 @@ window.signFontDictionary = [
       "c*9(L"
     ],
     "unicodeSigns": [
-      "C⊕ɤᓂX"
+      "С⊕ɤᓂ☓"
     ]
   },
   {
@@ -2239,7 +2239,7 @@ window.signFontDictionary = [
       "b&!LyJ!"
     ],
     "unicodeSigns": [
-      "ΠO̱ⵀXᴺᘕⵀ"
+      "Π⍛ⵀ☓ᴺᘕⵀ"
     ]
   },
   {
@@ -2248,7 +2248,7 @@ window.signFontDictionary = [
       "b&)BLy"
     ],
     "unicodeSigns": [
-      "ΠO̱ᓇ>Xᴺ"
+      "Π⍛ᓇᐳ☓ᴺ"
     ]
   },
   {
@@ -2258,8 +2258,8 @@ window.signFontDictionary = [
       "pR%6LJE9L"
     ],
     "unicodeSigns": [
-      "Cⵀᕂ⁊ᘕ",
-      "✳℩Ō⩇XᘕṾɤX"
+      "Сⵀᕂ⁊ᘕ",
+      "✳℩ō⩇☓ᘕṾɤ☓"
     ]
   },
   {
@@ -2268,7 +2268,7 @@ window.signFontDictionary = [
       "c#s\"Ly"
     ],
     "unicodeSigns": [
-      "Cⵚര⊖Xᴺ"
+      "Сⵚര⊖☓ᴺ"
     ]
   },
   {
@@ -2277,7 +2277,7 @@ window.signFontDictionary = [
       "j#d%PLy"
     ],
     "unicodeSigns": [
-      "Чⵚ|Ō⸝Xᴺ"
+      "Чⵚ∣ō⸝☓ᴺ"
     ]
   },
   {
@@ -2295,7 +2295,7 @@ window.signFontDictionary = [
       "o!!LAB-p!!L"
     ],
     "unicodeSigns": [
-      "OⵀⵀX<>-✳ⵀⵀX"
+      "Оⵀⵀ☓ᐸᐳ-✳ⵀⵀ☓"
     ]
   },
   {
@@ -2304,7 +2304,7 @@ window.signFontDictionary = [
       "c%%LJLv"
     ],
     "unicodeSigns": [
-      "CŌŌXᘕX⁼"
+      "Сōō☓ᘕ☓⁼"
     ]
   },
   {
@@ -2313,7 +2313,7 @@ window.signFontDictionary = [
       "b!!LG"
     ],
     "unicodeSigns": [
-      "ΠⵀⵀXᕤ"
+      "Πⵀⵀ☓ᕤ"
     ]
   },
   {
@@ -2322,7 +2322,7 @@ window.signFontDictionary = [
       "b!!LGy"
     ],
     "unicodeSigns": [
-      "ΠⵀⵀXᕤᴺ"
+      "Πⵀⵀ☓ᕤᴺ"
     ]
   },
   {
@@ -2331,7 +2331,7 @@ window.signFontDictionary = [
       "qP!/LIG"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀᕂXᘖᕤ"
+      "ᕬ⸝ⵀᕂ☓ᘖᕤ"
     ]
   },
   {
@@ -2342,7 +2342,7 @@ window.signFontDictionary = [
     ],
     "unicodeSigns": [
       "✳℩ⵀᕤ¦ᣛᴺᐲ",
-      "ᐯ℩ᓂ≈ᐲ<"
+      "ᐯ℩ᓂ≈ᐲᐸ"
     ]
   },
   {
@@ -2360,7 +2360,7 @@ window.signFontDictionary = [
       "s&%LGJ&Ev"
     ],
     "unicodeSigns": [
-      "രO̱ŌXᕤᘕO̱Ṿ⁼"
+      "ര⍛ō☓ᕤᘕ⍛Ṿ⁼"
     ]
   },
   {
@@ -2369,7 +2369,7 @@ window.signFontDictionary = [
       "dR!s\"SL-cQ!!3PN"
     ],
     "unicodeSigns": [
-      "|℩ⵀര⊖⁊X-Cₒⵀⵀ⦣⸝¦"
+      "∣℩ⵀര⊖⁊☓-Сₒⵀⵀ⦣⸝¦"
     ]
   },
   {
@@ -2378,7 +2378,7 @@ window.signFontDictionary = [
       "b%%BAL"
     ],
     "unicodeSigns": [
-      "ΠŌŌ><X"
+      "Πōōᐳᐸ☓"
     ]
   },
   {
@@ -2387,7 +2387,7 @@ window.signFontDictionary = [
       "b%%IAL"
     ],
     "unicodeSigns": [
-      "ΠŌŌᘖ<X"
+      "Πōōᘖᐸ☓"
     ]
   },
   {
@@ -2396,7 +2396,7 @@ window.signFontDictionary = [
       "b&%EL"
     ],
     "unicodeSigns": [
-      "ΠO̱ŌṾX"
+      "Π⍛ōṾ☓"
     ]
   },
   {
@@ -2405,7 +2405,7 @@ window.signFontDictionary = [
       "dR#d%LyA"
     ],
     "unicodeSigns": [
-      "|℩ⵚ|ŌXᴺ<"
+      "∣℩ⵚ∣ō☓ᴺᐸ"
     ]
   },
   {
@@ -2423,7 +2423,7 @@ window.signFontDictionary = [
       "p%8:LEvy"
     ],
     "unicodeSigns": [
-      "✳ŌᑯᑲXṾ⁼ᴺ"
+      "✳ōᑯᑲ☓Ṿ⁼ᴺ"
     ]
   },
   {
@@ -2432,7 +2432,7 @@ window.signFontDictionary = [
       "pR!3Ly"
     ],
     "unicodeSigns": [
-      "✳℩ⵀ⦣Xᴺ"
+      "✳℩ⵀ⦣☓ᴺ"
     ]
   },
   {
@@ -2441,7 +2441,7 @@ window.signFontDictionary = [
       "aP!8:MEBA"
     ],
     "unicodeSigns": [
-      "റ⸝ⵀᑯᑲⴳṾ><"
+      "റ⸝ⵀᑯᑲⴳṾᐳᐸ"
     ]
   },
   {
@@ -2450,7 +2450,7 @@ window.signFontDictionary = [
       "c!!LGvy"
     ],
     "unicodeSigns": [
-      "CⵀⵀXᕤ⁼ᴺ"
+      "Сⵀⵀ☓ᕤ⁼ᴺ"
     ]
   },
   {
@@ -2459,7 +2459,7 @@ window.signFontDictionary = [
       "s&%MHy"
     ],
     "unicodeSigns": [
-      "രO̱Ōⴳꕊᴺ"
+      "ര⍛ōⴳꕊᴺ"
     ]
   },
   {
@@ -2468,7 +2468,7 @@ window.signFontDictionary = [
       "dP()SMK"
     ],
     "unicodeSigns": [
-      "|⸝ᓂᓇ⁊ⴳ≈"
+      "∣⸝ᓂᓇ⁊ⴳ≈"
     ]
   },
   {
@@ -2477,7 +2477,7 @@ window.signFontDictionary = [
       "s!!BAy"
     ],
     "unicodeSigns": [
-      "രⵀⵀ><ᴺ"
+      "രⵀⵀᐳᐸᴺ"
     ]
   },
   {
@@ -2486,7 +2486,7 @@ window.signFontDictionary = [
       "pR&b!J!yB"
     ],
     "unicodeSigns": [
-      "✳℩O̱Πⵀᘕⵀᴺ>"
+      "✳℩⍛Πⵀᘕⵀᴺᐳ"
     ]
   },
   {
@@ -2495,7 +2495,7 @@ window.signFontDictionary = [
       "b!!LAD"
     ],
     "unicodeSigns": [
-      "ΠⵀⵀX<ᐲ"
+      "Πⵀⵀ☓ᐸᐲ"
     ]
   },
   {
@@ -2513,7 +2513,7 @@ window.signFontDictionary = [
       "cQ&OSEyA"
     ],
     "unicodeSigns": [
-      "CₒO̱¦ᐨ⁊Ṿᴺ<"
+      "Сₒ⍛¦ᐨ⁊Ṿᴺᐸ"
     ]
   },
   {
@@ -2540,7 +2540,7 @@ window.signFontDictionary = [
       "pR++BAL"
     ],
     "unicodeSigns": [
-      "✳℩◷◷><X"
+      "✳℩◷◷ᐳᐸ☓"
     ]
   },
   {
@@ -2549,7 +2549,7 @@ window.signFontDictionary = [
       "d&&FdSv"
     ],
     "unicodeSigns": [
-      "|O̱O̱ᘐ|⁊⁼"
+      "∣⍛⍛ᘐ∣⁊⁼"
     ]
   },
   {
@@ -2558,7 +2558,7 @@ window.signFontDictionary = [
       "c!!BAL"
     ],
     "unicodeSigns": [
-      "Cⵀⵀ><X"
+      "Сⵀⵀᐳᐸ☓"
     ]
   },
   {
@@ -2567,7 +2567,7 @@ window.signFontDictionary = [
       "b!\"LAw"
     ],
     "unicodeSigns": [
-      "Πⵀ⊖X<ᣛ"
+      "Πⵀ⊖☓ᐸᣛ"
     ]
   },
   {
@@ -2576,7 +2576,7 @@ window.signFontDictionary = [
       "d\"Q6LAJ!G"
     ],
     "unicodeSigns": [
-      "|⊖ₒ⩇X<ᘕⵀᕤ"
+      "∣⊖ₒ⩇☓ᐸᘕⵀᕤ"
     ]
   },
   {
@@ -2585,7 +2585,7 @@ window.signFontDictionary = [
       "c%6LGwy"
     ],
     "unicodeSigns": [
-      "CŌ⩇Xᕤᣛᴺ"
+      "Сō⩇☓ᕤᣛᴺ"
     ]
   },
   {
@@ -2603,7 +2603,7 @@ window.signFontDictionary = [
       "c\"Jwy"
     ],
     "unicodeSigns": [
-      "C⊖ᘕᣛᴺ"
+      "С⊖ᘕᣛᴺ"
     ]
   },
   {
@@ -2612,7 +2612,7 @@ window.signFontDictionary = [
       "c&Jwzzy"
     ],
     "unicodeSigns": [
-      "CO̱ᘕᣛ⁷⁷ᴺ"
+      "С⍛ᘕᣛ⁷⁷ᴺ"
     ]
   },
   {
@@ -2639,7 +2639,7 @@ window.signFontDictionary = [
       "pR!9Ly"
     ],
     "unicodeSigns": [
-      "✳℩ⵀɤXᴺ"
+      "✳℩ⵀɤ☓ᴺ"
     ]
   },
   {
@@ -2648,7 +2648,7 @@ window.signFontDictionary = [
       "b&%MA-b#(ME"
     ],
     "unicodeSigns": [
-      "ΠO̱Ōⴳ<-ΠⵚᓂⴳṾ"
+      "Π⍛ōⴳᐸ-ΠⵚᓂⴳṾ"
     ]
   },
   {
@@ -2657,7 +2657,7 @@ window.signFontDictionary = [
       "c$0Ly"
     ],
     "unicodeSigns": [
-      "CⵕᨓXᴺ"
+      "Сⵕᨓ☓ᴺ"
     ]
   },
   {
@@ -2666,7 +2666,7 @@ window.signFontDictionary = [
       "c&%Msvzz"
     ],
     "unicodeSigns": [
-      "CO̱Ōⴳര⁼⁷⁷"
+      "С⍛ōⴳര⁼⁷⁷"
     ]
   },
   {
@@ -2675,7 +2675,7 @@ window.signFontDictionary = [
       "bT!;=LDJGv"
     ],
     "unicodeSigns": [
-      "Π℩⸝ⵀᕟᕞXᐲᘕᕤ⁼"
+      "Π℩⸝ⵀᕟᕞ☓ᐲᘕᕤ⁼"
     ]
   },
   {
@@ -2684,7 +2684,7 @@ window.signFontDictionary = [
       "d((BA&P%PL"
     ],
     "unicodeSigns": [
-      "|ᓂᓂ><O̱⸝Ō⸝X"
+      "∣ᓂᓂᐳᐸ⍛⸝ō⸝☓"
     ]
   },
   {
@@ -2693,7 +2693,7 @@ window.signFontDictionary = [
       "d(0L-pR!!Hwy"
     ],
     "unicodeSigns": [
-      "|ᓂᨓX-✳℩ⵀⵀꕊᣛᴺ"
+      "∣ᓂᨓ☓-✳℩ⵀⵀꕊᣛᴺ"
     ]
   },
   {
@@ -2702,7 +2702,7 @@ window.signFontDictionary = [
       "gX!!ABfQL"
     ],
     "unicodeSigns": [
-      "⊃ѵⵀⵀ<>ᗐₒX"
+      "⊃ѵⵀⵀᐸᐳᗐₒ☓"
     ]
   },
   {
@@ -2729,7 +2729,7 @@ window.signFontDictionary = [
       "b&d%PBL"
     ],
     "unicodeSigns": [
-      "ΠO̱|Ō⸝>X"
+      "Π⍛∣ō⸝ᐳ☓"
     ]
   },
   {
@@ -2738,7 +2738,7 @@ window.signFontDictionary = [
       "b!!LJL"
     ],
     "unicodeSigns": [
-      "ΠⵀⵀXᘕX"
+      "Πⵀⵀ☓ᘕ☓"
     ]
   },
   {
@@ -2747,7 +2747,7 @@ window.signFontDictionary = [
       "pS$b!FoSEL"
     ],
     "unicodeSigns": [
-      "✳⁊ⵕΠⵀᘐO⁊ṾX"
+      "✳⁊ⵕΠⵀᘐО⁊Ṿ☓"
     ]
   },
   {
@@ -2756,7 +2756,7 @@ window.signFontDictionary = [
       "p!b!LEoy"
     ],
     "unicodeSigns": [
-      "✳ⵀΠⵀXṾOᴺ"
+      "✳ⵀΠⵀ☓ṾОᴺ"
     ]
   },
   {
@@ -2765,7 +2765,7 @@ window.signFontDictionary = [
       "d%P3MJy"
     ],
     "unicodeSigns": [
-      "|Ō⸝⦣ⴳᘕᴺ"
+      "∣ō⸝⦣ⴳᘕᴺ"
     ]
   },
   {
@@ -2774,7 +2774,7 @@ window.signFontDictionary = [
       "c!!6DJ!Gvy"
     ],
     "unicodeSigns": [
-      "Cⵀⵀ⩇ᐲᘕⵀᕤ⁼ᴺ"
+      "Сⵀⵀ⩇ᐲᘕⵀᕤ⁼ᴺ"
     ]
   },
   {
@@ -2783,7 +2783,7 @@ window.signFontDictionary = [
       "d(b!LELF"
     ],
     "unicodeSigns": [
-      "|ᓂΠⵀXṾXᘐ"
+      "∣ᓂΠⵀ☓Ṿ☓ᘐ"
     ]
   },
   {
@@ -2792,7 +2792,7 @@ window.signFontDictionary = [
       "s!!Bdwy"
     ],
     "unicodeSigns": [
-      "രⵀⵀ>|ᣛᴺ"
+      "രⵀⵀᐳ∣ᣛᴺ"
     ]
   },
   {
@@ -2801,7 +2801,7 @@ window.signFontDictionary = [
       "c!9MJ&y"
     ],
     "unicodeSigns": [
-      "CⵀɤⴳᘕO̱ᴺ"
+      "Сⵀɤⴳᘕ⍛ᴺ"
     ]
   },
   {
@@ -2810,7 +2810,7 @@ window.signFontDictionary = [
       "c!9MJ&zzy"
     ],
     "unicodeSigns": [
-      "CⵀɤⴳᘕO̱⁷⁷ᴺ"
+      "Сⵀɤⴳᘕ⍛⁷⁷ᴺ"
     ]
   },
   {
@@ -2839,7 +2839,7 @@ window.signFontDictionary = [
       "c%2Iy"
     ],
     "unicodeSigns": [
-      "CŌᖌᘖᴺ"
+      "Сōᖌᘖᴺ"
     ]
   },
   {
@@ -2848,7 +2848,7 @@ window.signFontDictionary = [
       "c!5Iy"
     ],
     "unicodeSigns": [
-      "Cⵀᒍᘖᴺ"
+      "Сⵀᒍᘖᴺ"
     ]
   },
   {
@@ -2857,7 +2857,7 @@ window.signFontDictionary = [
       "c!/Iy"
     ],
     "unicodeSigns": [
-      "Cⵀᕂᘖᴺ"
+      "Сⵀᕂᘖᴺ"
     ]
   },
   {
@@ -2866,7 +2866,7 @@ window.signFontDictionary = [
       "iP%/MIy"
     ],
     "unicodeSigns": [
-      "Һ⸝Ōᕂⴳᘖᴺ"
+      "Һ⸝ōᕂⴳᘖᴺ"
     ]
   },
   {
@@ -2875,7 +2875,7 @@ window.signFontDictionary = [
       "b&!MEFE"
     ],
     "unicodeSigns": [
-      "ΠO̱ⵀⴳṾᘐṾ"
+      "Π⍛ⵀⴳṾᘐṾ"
     ]
   },
   {
@@ -2884,7 +2884,7 @@ window.signFontDictionary = [
       "uR\"b!MKA"
     ],
     "unicodeSigns": [
-      "ᐯ℩⊖Πⵀⴳ≈<"
+      "ᐯ℩⊖Πⵀⴳ≈ᐸ"
     ]
   },
   {
@@ -2893,7 +2893,7 @@ window.signFontDictionary = [
       "p#6MK-oS!b!MGy"
     ],
     "unicodeSigns": [
-      "✳ⵚ⩇ⴳ≈-O⁊ⵀΠⵀⴳᕤᴺ"
+      "✳ⵚ⩇ⴳ≈-О⁊ⵀΠⵀⴳᕤᴺ"
     ]
   },
   {
@@ -2911,7 +2911,7 @@ window.signFontDictionary = [
       "oQ\"6Ggy"
     ],
     "unicodeSigns": [
-      "Oₒ⊖⩇ᕤ⊃ᴺ"
+      "Оₒ⊖⩇ᕤ⊃ᴺ"
     ]
   },
   {
@@ -2920,7 +2920,7 @@ window.signFontDictionary = [
       "s%%9SJFzzv"
     ],
     "unicodeSigns": [
-      "രŌŌɤ⁊ᘕᘐ⁷⁷⁼"
+      "രōōɤ⁊ᘕᘐ⁷⁷⁼"
     ]
   },
   {
@@ -2938,7 +2938,7 @@ window.signFontDictionary = [
       "d(57MEdRvy"
     ],
     "unicodeSigns": [
-      "|ᓂᒍᒐⴳṾ|℩⁼ᴺ"
+      "∣ᓂᒍᒐⴳṾ∣℩⁼ᴺ"
     ]
   },
   {
@@ -2948,8 +2948,8 @@ window.signFontDictionary = [
       "c&b!Ly"
     ],
     "unicodeSigns": [
-      "CO̱ΠⵀXᐲᴺ",
-      "CO̱ΠⵀXᴺ"
+      "С⍛Πⵀ☓ᐲᴺ",
+      "С⍛Πⵀ☓ᴺ"
     ]
   },
   {
@@ -2967,7 +2967,7 @@ window.signFontDictionary = [
       "r%/1DFENvyF"
     ],
     "unicodeSigns": [
-      "୪ŌᕂᕃᐲᘐṾ¦⁼ᴺᘐ"
+      "୪ōᕂᕃᐲᘐṾ¦⁼ᴺᘐ"
     ]
   },
   {
@@ -2976,7 +2976,7 @@ window.signFontDictionary = [
       "n%%MABD"
     ],
     "unicodeSigns": [
-      "ቨŌŌⴳ<>ᐲ"
+      "ቨōōⴳᐸᐳᐲ"
     ]
   },
   {
@@ -2986,8 +2986,8 @@ window.signFontDictionary = [
       "d(b!MA"
     ],
     "unicodeSigns": [
-      "|ᓂΠ⊖ⴳ<",
-      "|ᓂΠⵀⴳ<"
+      "∣ᓂΠ⊖ⴳᐸ",
+      "∣ᓂΠⵀⴳᐸ"
     ]
   },
   {
@@ -2996,7 +2996,7 @@ window.signFontDictionary = [
       "d#qP!BLBy"
     ],
     "unicodeSigns": [
-      "|ⵚᕬ⸝ⵀ>X>ᴺ"
+      "∣ⵚᕬ⸝ⵀᐳ☓ᐳᴺ"
     ]
   },
   {
@@ -3005,7 +3005,7 @@ window.signFontDictionary = [
       "u%57Ghvy"
     ],
     "unicodeSigns": [
-      "ᐯŌᒍᒐᕤ⫪⁼ᴺ"
+      "ᐯōᒍᒐᕤ⫪⁼ᴺ"
     ]
   },
   {
@@ -3014,7 +3014,7 @@ window.signFontDictionary = [
       "h#6LEy"
     ],
     "unicodeSigns": [
-      "⫪ⵚ⩇XṾᴺ"
+      "⫪ⵚ⩇☓Ṿᴺ"
     ]
   },
   {
@@ -3041,7 +3041,7 @@ window.signFontDictionary = [
       "b&&5S7SJ&BA"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱ᒍ⁊ᒐ⁊ᘕO̱><"
+      "Π⍛⍛ᒍ⁊ᒐ⁊ᘕ⍛ᐳᐸ"
     ]
   },
   {
@@ -3050,7 +3050,7 @@ window.signFontDictionary = [
       "s&b!ELJD"
     ],
     "unicodeSigns": [
-      "രO̱ΠⵀṾXᘕᐲ"
+      "ര⍛ΠⵀṾ☓ᘕᐲ"
     ]
   },
   {
@@ -3059,7 +3059,7 @@ window.signFontDictionary = [
       "aQ!GcQy"
     ],
     "unicodeSigns": [
-      "റₒⵀᕤCₒᴺ"
+      "റₒⵀᕤСₒᴺ"
     ]
   },
   {
@@ -3068,7 +3068,7 @@ window.signFontDictionary = [
       "b%6L-b&)RL"
     ],
     "unicodeSigns": [
-      "ΠŌ⩇X-ΠO̱ᓇ℩X"
+      "Πō⩇☓-Π⍛ᓇ℩☓"
     ]
   },
   {
@@ -3077,7 +3077,7 @@ window.signFontDictionary = [
       "d)b\"MJ!BL"
     ],
     "unicodeSigns": [
-      "|ᓇΠ⊖ⴳᘕⵀ>X"
+      "∣ᓇΠ⊖ⴳᘕⵀᐳ☓"
     ]
   },
   {
@@ -3086,7 +3086,7 @@ window.signFontDictionary = [
       "b\"JA"
     ],
     "unicodeSigns": [
-      "Π⊖ᘕ<"
+      "Π⊖ᘕᐸ"
     ]
   },
   {
@@ -3095,7 +3095,7 @@ window.signFontDictionary = [
       "d#2LG6L"
     ],
     "unicodeSigns": [
-      "|ⵚᖌXᕤ⩇X"
+      "∣ⵚᖌ☓ᕤ⩇☓"
     ]
   },
   {
@@ -3104,7 +3104,7 @@ window.signFontDictionary = [
       "d(0L-fQ&ENv"
     ],
     "unicodeSigns": [
-      "|ᓂᨓX-ᗐₒO̱Ṿ¦⁼"
+      "∣ᓂᨓ☓-ᗐₒ⍛Ṿ¦⁼"
     ]
   },
   {
@@ -3113,7 +3113,7 @@ window.signFontDictionary = [
       "oS!!MJxy"
     ],
     "unicodeSigns": [
-      "O⁊ⵀⵀⴳᘕᙾᴺ"
+      "О⁊ⵀⵀⴳᘕᙾᴺ"
     ]
   },
   {
@@ -3122,7 +3122,7 @@ window.signFontDictionary = [
       "oS!!MJxzzy"
     ],
     "unicodeSigns": [
-      "O⁊ⵀⵀⴳᘕᙾ⁷⁷ᴺ"
+      "О⁊ⵀⵀⴳᘕᙾ⁷⁷ᴺ"
     ]
   },
   {
@@ -3131,7 +3131,7 @@ window.signFontDictionary = [
       "h#\"QLJA"
     ],
     "unicodeSigns": [
-      "⫪ⵚ⊖ₒXᘕ<"
+      "⫪ⵚ⊖ₒ☓ᘕᐸ"
     ]
   },
   {
@@ -3140,7 +3140,7 @@ window.signFontDictionary = [
       "pR!b!LEs"
     ],
     "unicodeSigns": [
-      "✳℩ⵀΠⵀXṾര"
+      "✳℩ⵀΠⵀ☓Ṿര"
     ]
   },
   {
@@ -3149,7 +3149,7 @@ window.signFontDictionary = [
       "c!b!LEsy"
     ],
     "unicodeSigns": [
-      "CⵀΠⵀXṾരᴺ"
+      "СⵀΠⵀ☓Ṿരᴺ"
     ]
   },
   {
@@ -3158,7 +3158,7 @@ window.signFontDictionary = [
       "p%/1LGv"
     ],
     "unicodeSigns": [
-      "✳ŌᕂᕃXᕤ⁼"
+      "✳ōᕂᕃ☓ᕤ⁼"
     ]
   },
   {
@@ -3167,7 +3167,7 @@ window.signFontDictionary = [
       "s&%99SGvy"
     ],
     "unicodeSigns": [
-      "രO̱Ōɤɤ⁊ᕤ⁼ᴺ"
+      "ര⍛ōɤɤ⁊ᕤ⁼ᴺ"
     ]
   },
   {
@@ -3176,7 +3176,7 @@ window.signFontDictionary = [
       "s&%Gvzzy"
     ],
     "unicodeSigns": [
-      "രO̱Ōᕤ⁼⁷⁷ᴺ"
+      "ര⍛ōᕤ⁼⁷⁷ᴺ"
     ]
   },
   {
@@ -3185,7 +3185,7 @@ window.signFontDictionary = [
       "cS$b\"MoS"
     ],
     "unicodeSigns": [
-      "C⁊ⵕΠ⊖ⴳO⁊"
+      "С⁊ⵕΠ⊖ⴳО⁊"
     ]
   },
   {
@@ -3195,8 +3195,8 @@ window.signFontDictionary = [
       "q!6LGqW"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀ⩇Xᕤ⁷⁷",
-      "ᕬⵀ⩇Xᕤᕬɳ"
+      "ᕬ⸝ⵀ⩇☓ᕤ⁷⁷",
+      "ᕬⵀ⩇☓ᕤᕬꞃ"
     ]
   },
   {
@@ -3205,7 +3205,7 @@ window.signFontDictionary = [
       "dR!b!LFvzz"
     ],
     "unicodeSigns": [
-      "|℩ⵀΠⵀXᘐ⁼⁷⁷"
+      "∣℩ⵀΠⵀ☓ᘐ⁼⁷⁷"
     ]
   },
   {
@@ -3215,8 +3215,8 @@ window.signFontDictionary = [
       "uP!:DEyA8"
     ],
     "unicodeSigns": [
-      "|ₒŌᨓṾᴺ",
-      "ᐯ⸝ⵀᑲᐲṾᴺ<ᑯ"
+      "∣ₒōᨓṾᴺ",
+      "ᐯ⸝ⵀᑲᐲṾᴺᐸᑯ"
     ]
   },
   {
@@ -3225,7 +3225,7 @@ window.signFontDictionary = [
       "dR!6(Ly"
     ],
     "unicodeSigns": [
-      "|℩ⵀ⩇ᓂXᴺ"
+      "∣℩ⵀ⩇ᓂ☓ᴺ"
     ]
   },
   {
@@ -3234,7 +3234,7 @@ window.signFontDictionary = [
       "b%%Aav"
     ],
     "unicodeSigns": [
-      "ΠŌŌ<റ⁼"
+      "Πōōᐸറ⁼"
     ]
   },
   {
@@ -3243,7 +3243,7 @@ window.signFontDictionary = [
       "d#\"PLEvy"
     ],
     "unicodeSigns": [
-      "|ⵚ⊖⸝XṾ⁼ᴺ"
+      "∣ⵚ⊖⸝☓Ṿ⁼ᴺ"
     ]
   },
   {
@@ -3252,7 +3252,7 @@ window.signFontDictionary = [
       "aP%%LIAB"
     ],
     "unicodeSigns": [
-      "റ⸝ŌŌXᘖ<>"
+      "റ⸝ōō☓ᘖᐸᐳ"
     ]
   },
   {
@@ -3279,7 +3279,7 @@ window.signFontDictionary = [
       "dQ!!MGFxy"
     ],
     "unicodeSigns": [
-      "|ₒⵀⵀⴳᕤᘐᙾᴺ"
+      "∣ₒⵀⵀⴳᕤᘐᙾᴺ"
     ]
   },
   {
@@ -3288,7 +3288,7 @@ window.signFontDictionary = [
       "pR!!FaLGx"
     ],
     "unicodeSigns": [
-      "✳℩ⵀⵀᘐറXᕤᙾ"
+      "✳℩ⵀⵀᘐറ☓ᕤᙾ"
     ]
   },
   {
@@ -3297,7 +3297,7 @@ window.signFontDictionary = [
       "aP&JvyE"
     ],
     "unicodeSigns": [
-      "റ⸝O̱ᘕ⁼ᴺṾ"
+      "റ⸝⍛ᘕ⁼ᴺṾ"
     ]
   },
   {
@@ -3306,7 +3306,7 @@ window.signFontDictionary = [
       "dQ!b\"LJyD"
     ],
     "unicodeSigns": [
-      "|ₒⵀΠ⊖Xᘕᴺᐲ"
+      "∣ₒⵀΠ⊖☓ᘕᴺᐲ"
     ]
   },
   {
@@ -3315,7 +3315,7 @@ window.signFontDictionary = [
       "a&By-a&Bp"
     ],
     "unicodeSigns": [
-      "റO̱>ᴺ-റO̱>✳"
+      "റ⍛ᐳᴺ-റ⍛ᐳ✳"
     ]
   },
   {
@@ -3324,7 +3324,7 @@ window.signFontDictionary = [
       "dQ!b!LFy"
     ],
     "unicodeSigns": [
-      "|ₒⵀΠⵀXᘐᴺ"
+      "∣ₒⵀΠⵀ☓ᘐᴺ"
     ]
   },
   {
@@ -3334,8 +3334,8 @@ window.signFontDictionary = [
       "b%&JxAv"
     ],
     "unicodeSigns": [
-      "Π⊖ᘕ<",
-      "ΠŌO̱ᘕᙾ<⁼"
+      "Π⊖ᘕᐸ",
+      "Πō⍛ᘕᙾᐸ⁼"
     ]
   },
   {
@@ -3344,7 +3344,7 @@ window.signFontDictionary = [
       "d#\"QLAB"
     ],
     "unicodeSigns": [
-      "|ⵚ⊖ₒX<>"
+      "∣ⵚ⊖ₒ☓ᐸᐳ"
     ]
   },
   {
@@ -3353,7 +3353,7 @@ window.signFontDictionary = [
       "bR\"Qb!FLFy"
     ],
     "unicodeSigns": [
-      "Π℩⊖ₒΠⵀᘐXᘐᴺ"
+      "Π℩⊖ₒΠⵀᘐ☓ᘐᴺ"
     ]
   },
   {
@@ -3362,7 +3362,7 @@ window.signFontDictionary = [
       "d((LB"
     ],
     "unicodeSigns": [
-      "|ᓂᓂX>"
+      "∣ᓂᓂ☓ᐳ"
     ]
   },
   {
@@ -3371,7 +3371,7 @@ window.signFontDictionary = [
       "o)b\"MIy"
     ],
     "unicodeSigns": [
-      "OᓇΠ⊖ⴳᘖᴺ"
+      "ОᓇΠ⊖ⴳᘖᴺ"
     ]
   },
   {
@@ -3389,7 +3389,7 @@ window.signFontDictionary = [
       "d(0L-d((LAB"
     ],
     "unicodeSigns": [
-      "|ᓂᨓX-|ᓂᓂX<>"
+      "∣ᓂᨓ☓-∣ᓂᓂ☓ᐸᐳ"
     ]
   },
   {
@@ -3398,7 +3398,7 @@ window.signFontDictionary = [
       "d(6FLzz"
     ],
     "unicodeSigns": [
-      "|ᓂ⩇ᘐX⁷⁷"
+      "∣ᓂ⩇ᘐ☓⁷⁷"
     ]
   },
   {
@@ -3407,7 +3407,7 @@ window.signFontDictionary = [
       "fQ**LABp"
     ],
     "unicodeSigns": [
-      "ᗐₒ⊕⊕X<>✳"
+      "ᗐₒ⊕⊕☓ᐸᐳ✳"
     ]
   },
   {
@@ -3416,7 +3416,7 @@ window.signFontDictionary = [
       "d&Pb!ELy"
     ],
     "unicodeSigns": [
-      "|O̱⸝ΠⵀṾXᴺ"
+      "∣⍛⸝ΠⵀṾ☓ᴺ"
     ]
   },
   {
@@ -3435,8 +3435,8 @@ window.signFontDictionary = [
       "cQ%%EN"
     ],
     "unicodeSigns": [
-      "|℩⸝ŌŌṾ¦",
-      "CₒŌŌṾ¦"
+      "∣℩⸝ōōṾ¦",
+      "СₒōōṾ¦"
     ]
   },
   {
@@ -3445,7 +3445,7 @@ window.signFontDictionary = [
       "s%8IAzz"
     ],
     "unicodeSigns": [
-      "രŌᑯᘖ<⁷⁷"
+      "രōᑯᘖᐸ⁷⁷"
     ]
   },
   {
@@ -3454,7 +3454,7 @@ window.signFontDictionary = [
       "s&8SGNv"
     ],
     "unicodeSigns": [
-      "രO̱ᑯ⁊ᕤ¦⁼"
+      "ര⍛ᑯ⁊ᕤ¦⁼"
     ]
   },
   {
@@ -3463,7 +3463,7 @@ window.signFontDictionary = [
       "h(\"QLJE"
     ],
     "unicodeSigns": [
-      "⫪ᓂ⊖ₒXᘕṾ"
+      "⫪ᓂ⊖ₒ☓ᘕṾ"
     ]
   },
   {
@@ -3472,7 +3472,7 @@ window.signFontDictionary = [
       "b&%LIEAB"
     ],
     "unicodeSigns": [
-      "ΠO̱ŌXᘖṾ<>"
+      "Π⍛ō☓ᘖṾᐸᐳ"
     ]
   },
   {
@@ -3481,7 +3481,7 @@ window.signFontDictionary = [
       "dQ!!LIAB"
     ],
     "unicodeSigns": [
-      "|ₒⵀⵀXᘖ<>"
+      "∣ₒⵀⵀ☓ᘖᐸᐳ"
     ]
   },
   {
@@ -3499,7 +3499,7 @@ window.signFontDictionary = [
       "dQ&&hQHvy"
     ],
     "unicodeSigns": [
-      "|ₒO̱O̱⫪ₒꕊ⁼ᴺ"
+      "∣ₒ⍛⍛⫪ₒꕊ⁼ᴺ"
     ]
   },
   {
@@ -3509,8 +3509,8 @@ window.signFontDictionary = [
       "fS!$SLy"
     ],
     "unicodeSigns": [
-      "|ₒⵀⵕ⁊Xᴺ",
-      "ᗐ⁊ⵀⵕ⁊Xᴺ"
+      "∣ₒⵀⵕ⁊☓ᴺ",
+      "ᗐ⁊ⵀⵕ⁊☓ᴺ"
     ]
   },
   {
@@ -3519,7 +3519,7 @@ window.signFontDictionary = [
       "b#\"QFLFwy"
     ],
     "unicodeSigns": [
-      "Πⵚ⊖ₒᘐXᘐᣛᴺ"
+      "Πⵚ⊖ₒᘐ☓ᘐᣛᴺ"
     ]
   },
   {
@@ -3528,7 +3528,7 @@ window.signFontDictionary = [
       "dQ!Ngy"
     ],
     "unicodeSigns": [
-      "|ₒⵀ¦⊃ᴺ"
+      "∣ₒⵀ¦⊃ᴺ"
     ]
   },
   {
@@ -3537,7 +3537,7 @@ window.signFontDictionary = [
       "dR%3LEy"
     ],
     "unicodeSigns": [
-      "|℩Ō⦣XṾᴺ"
+      "∣℩ō⦣☓Ṿᴺ"
     ]
   },
   {
@@ -3546,7 +3546,7 @@ window.signFontDictionary = [
       "o*b#LAy"
     ],
     "unicodeSigns": [
-      "O⊕ΠⵚX<ᴺ"
+      "О⊕Πⵚ☓ᐸᴺ"
     ]
   },
   {
@@ -3555,7 +3555,7 @@ window.signFontDictionary = [
       "hS!!Lvy"
     ],
     "unicodeSigns": [
-      "⫪⁊ⵀⵀX⁼ᴺ"
+      "⫪⁊ⵀⵀ☓⁼ᴺ"
     ]
   },
   {
@@ -3564,7 +3564,7 @@ window.signFontDictionary = [
       "bP%/MbUy"
     ],
     "unicodeSigns": [
-      "Π⸝ŌᕂⴳΠ⁊⸝ᴺ"
+      "Π⸝ōᕂⴳΠ⁊⸝ᴺ"
     ]
   },
   {
@@ -3574,8 +3574,8 @@ window.signFontDictionary = [
       "o!3LIGp"
     ],
     "unicodeSigns": [
-      "|ᓂ⦣Xᘖᕤ",
-      "Oⵀ⦣Xᘖᕤ✳"
+      "∣ᓂ⦣☓ᘖᕤ",
+      "Оⵀ⦣☓ᘖᕤ✳"
     ]
   },
   {
@@ -3584,7 +3584,7 @@ window.signFontDictionary = [
       "b(0LIG"
     ],
     "unicodeSigns": [
-      "ΠᓂᨓXᘖᕤ"
+      "Πᓂᨓ☓ᘖᕤ"
     ]
   },
   {
@@ -3593,7 +3593,7 @@ window.signFontDictionary = [
       "pR&&Ivzz"
     ],
     "unicodeSigns": [
-      "✳℩O̱O̱ᘖ⁼⁷⁷"
+      "✳℩⍛⍛ᘖ⁼⁷⁷"
     ]
   },
   {
@@ -3602,7 +3602,7 @@ window.signFontDictionary = [
       "b%%LJAy"
     ],
     "unicodeSigns": [
-      "ΠŌŌXᘕ<ᴺ"
+      "Πōō☓ᘕᐸᴺ"
     ]
   },
   {
@@ -3611,7 +3611,7 @@ window.signFontDictionary = [
       "dQ!5LFL"
     ],
     "unicodeSigns": [
-      "|ₒⵀᒍXᘐX"
+      "∣ₒⵀᒍ☓ᘐ☓"
     ]
   },
   {
@@ -3620,7 +3620,7 @@ window.signFontDictionary = [
       "pT!b!LyE"
     ],
     "unicodeSigns": [
-      "✳℩⸝ⵀΠⵀXᴺṾ"
+      "✳℩⸝ⵀΠⵀ☓ᴺṾ"
     ]
   },
   {
@@ -3647,7 +3647,7 @@ window.signFontDictionary = [
       "d(E;S"
     ],
     "unicodeSigns": [
-      "|ᓂṾᕟ⁊"
+      "∣ᓂṾᕟ⁊"
     ]
   },
   {
@@ -3656,7 +3656,7 @@ window.signFontDictionary = [
       "aP%8:LEGwy"
     ],
     "unicodeSigns": [
-      "റ⸝ŌᑯᑲXṾᕤᣛᴺ"
+      "റ⸝ōᑯᑲ☓Ṿᕤᣛᴺ"
     ]
   },
   {
@@ -3674,7 +3674,7 @@ window.signFontDictionary = [
       "s&&;S=SFvy"
     ],
     "unicodeSigns": [
-      "രO̱O̱ᕟ⁊ᕞ⁊ᘐ⁼ᴺ"
+      "ര⍛⍛ᕟ⁊ᕞ⁊ᘐ⁼ᴺ"
     ]
   },
   {
@@ -3683,7 +3683,7 @@ window.signFontDictionary = [
       "d(0LKG"
     ],
     "unicodeSigns": [
-      "|ᓂᨓX≈ᕤ"
+      "∣ᓂᨓ☓≈ᕤ"
     ]
   },
   {
@@ -3692,7 +3692,7 @@ window.signFontDictionary = [
       "iP%b!Hy"
     ],
     "unicodeSigns": [
-      "Һ⸝ŌΠⵀꕊᴺ"
+      "Һ⸝ōΠⵀꕊᴺ"
     ]
   },
   {
@@ -3701,7 +3701,7 @@ window.signFontDictionary = [
       "dP(b+ME"
     ],
     "unicodeSigns": [
-      "|⸝ᓂΠ◷ⴳṾ"
+      "∣⸝ᓂΠ◷ⴳṾ"
     ]
   },
   {
@@ -3710,7 +3710,7 @@ window.signFontDictionary = [
       "dP(b+MEy"
     ],
     "unicodeSigns": [
-      "|⸝ᓂΠ◷ⴳṾᴺ"
+      "∣⸝ᓂΠ◷ⴳṾᴺ"
     ]
   },
   {
@@ -3719,7 +3719,7 @@ window.signFontDictionary = [
       "cQ$6MI"
     ],
     "unicodeSigns": [
-      "Cₒⵕ⩇ⴳᘖ"
+      "Сₒⵕ⩇ⴳᘖ"
     ]
   },
   {
@@ -3728,7 +3728,7 @@ window.signFontDictionary = [
       "cQ%6MIy"
     ],
     "unicodeSigns": [
-      "CₒŌ⩇ⴳᘖᴺ"
+      "Сₒō⩇ⴳᘖᴺ"
     ]
   },
   {
@@ -3737,7 +3737,7 @@ window.signFontDictionary = [
       "n(d%LEy"
     ],
     "unicodeSigns": [
-      "ቨᓂ|ŌXṾᴺ"
+      "ቨᓂ∣ō☓Ṿᴺ"
     ]
   },
   {
@@ -3746,7 +3746,7 @@ window.signFontDictionary = [
       "s&EDwy"
     ],
     "unicodeSigns": [
-      "രO̱Ṿᐲᣛᴺ"
+      "ര⍛Ṿᐲᣛᴺ"
     ]
   },
   {
@@ -3773,7 +3773,7 @@ window.signFontDictionary = [
       "uR!6LJ\"E"
     ],
     "unicodeSigns": [
-      "ᐯ℩ⵀ⩇Xᘕ⊖Ṿ"
+      "ᐯ℩ⵀ⩇☓ᘕ⊖Ṿ"
     ]
   },
   {
@@ -3782,7 +3782,7 @@ window.signFontDictionary = [
       "g!NVoQy"
     ],
     "unicodeSigns": [
-      "⊃ⵀ¦ʟOₒᴺ"
+      "⊃ⵀ¦ʟОₒᴺ"
     ]
   },
   {
@@ -3791,7 +3791,7 @@ window.signFontDictionary = [
       "d%6MAdR"
     ],
     "unicodeSigns": [
-      "|Ō⩇ⴳ<|℩"
+      "∣ō⩇ⴳᐸ∣℩"
     ]
   },
   {
@@ -3800,7 +3800,7 @@ window.signFontDictionary = [
       "d%6MAdRy"
     ],
     "unicodeSigns": [
-      "|Ō⩇ⴳ<|℩ᴺ"
+      "∣ō⩇ⴳᐸ∣℩ᴺ"
     ]
   },
   {
@@ -3818,7 +3818,7 @@ window.signFontDictionary = [
       "iP%3LEG"
     ],
     "unicodeSigns": [
-      "Һ⸝Ō⦣XṾᕤ"
+      "Һ⸝ō⦣☓Ṿᕤ"
     ]
   },
   {
@@ -3827,7 +3827,7 @@ window.signFontDictionary = [
       "aP($LEy"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂⵕXṾᴺ"
+      "റ⸝ᓂⵕ☓Ṿᴺ"
     ]
   },
   {
@@ -3836,7 +3836,7 @@ window.signFontDictionary = [
       "qP!b\"LDG"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀΠ⊖Xᐲᕤ"
+      "ᕬ⸝ⵀΠ⊖☓ᐲᕤ"
     ]
   },
   {
@@ -3845,7 +3845,7 @@ window.signFontDictionary = [
       "b)R&;MGN"
     ],
     "unicodeSigns": [
-      "Πᓇ℩O̱ᕟⴳᕤ¦"
+      "Πᓇ℩⍛ᕟⴳᕤ¦"
     ]
   },
   {
@@ -3854,7 +3854,7 @@ window.signFontDictionary = [
       "b!24Lvy"
     ],
     "unicodeSigns": [
-      "ΠⵀᖌᖍX⁼ᴺ"
+      "Πⵀᖌᖍ☓⁼ᴺ"
     ]
   },
   {
@@ -3863,7 +3863,7 @@ window.signFontDictionary = [
       "pR&b!BFsL"
     ],
     "unicodeSigns": [
-      "✳℩O̱Πⵀ>ᘐരX"
+      "✳℩⍛Πⵀᐳᘐര☓"
     ]
   },
   {
@@ -3881,7 +3881,7 @@ window.signFontDictionary = [
       "dT!24MoQy"
     ],
     "unicodeSigns": [
-      "|℩⸝ⵀᖌᖍⴳOₒᴺ"
+      "∣℩⸝ⵀᖌᖍⴳОₒᴺ"
     ]
   },
   {
@@ -3899,7 +3899,7 @@ window.signFontDictionary = [
       "e&AN"
     ],
     "unicodeSigns": [
-      "ΩO̱<¦"
+      "Ω⍛ᐸ¦"
     ]
   },
   {
@@ -3908,7 +3908,7 @@ window.signFontDictionary = [
       "e&/S1SIvy"
     ],
     "unicodeSigns": [
-      "ΩO̱ᕂ⁊ᕃ⁊ᘖ⁼ᴺ"
+      "Ω⍛ᕂ⁊ᕃ⁊ᘖ⁼ᴺ"
     ]
   },
   {
@@ -3917,7 +3917,7 @@ window.signFontDictionary = [
       "b#\"QLDy"
     ],
     "unicodeSigns": [
-      "Πⵚ⊖ₒXᐲᴺ"
+      "Πⵚ⊖ₒ☓ᐲᴺ"
     ]
   },
   {
@@ -3928,9 +3928,9 @@ window.signFontDictionary = [
       "oS!6Ly"
     ],
     "unicodeSigns": [
-      "O⁊ⵀ⩇X",
-      "O⁊ⵀ⩇ᘐX",
-      "O⁊ⵀ⩇Xᴺ"
+      "О⁊ⵀ⩇☓",
+      "О⁊ⵀ⩇ᘐ☓",
+      "О⁊ⵀ⩇☓ᴺ"
     ]
   },
   {
@@ -3939,7 +3939,7 @@ window.signFontDictionary = [
       "d(b!BLG"
     ],
     "unicodeSigns": [
-      "|ᓂΠⵀ>Xᕤ"
+      "∣ᓂΠⵀᐳ☓ᕤ"
     ]
   },
   {
@@ -3948,7 +3948,7 @@ window.signFontDictionary = [
       "e%6LGABkN"
     ],
     "unicodeSigns": [
-      "ΩŌ⩇Xᕤ<>७¦"
+      "Ωō⩇☓ᕤᐸᐳ७¦"
     ]
   },
   {
@@ -3957,7 +3957,7 @@ window.signFontDictionary = [
       "h&P%PLIvy"
     ],
     "unicodeSigns": [
-      "⫪O̱⸝Ō⸝Xᘖ⁼ᴺ"
+      "⫪⍛⸝ō⸝☓ᘖ⁼ᴺ"
     ]
   },
   {
@@ -3966,7 +3966,7 @@ window.signFontDictionary = [
       "dR\"0Ly"
     ],
     "unicodeSigns": [
-      "|℩⊖ᨓXᴺ"
+      "∣℩⊖ᨓ☓ᴺ"
     ]
   },
   {
@@ -3975,7 +3975,7 @@ window.signFontDictionary = [
       "pR%%HxyD"
     ],
     "unicodeSigns": [
-      "✳℩ŌŌꕊᙾᴺᐲ"
+      "✳℩ōōꕊᙾᴺᐲ"
     ]
   },
   {
@@ -3984,7 +3984,7 @@ window.signFontDictionary = [
       "d()Ly"
     ],
     "unicodeSigns": [
-      "|ᓂᓇXᴺ"
+      "∣ᓂᓇ☓ᴺ"
     ]
   },
   {
@@ -3993,7 +3993,7 @@ window.signFontDictionary = [
       "dR((BALy"
     ],
     "unicodeSigns": [
-      "|℩ᓂᓂ><Xᴺ"
+      "∣℩ᓂᓂᐳᐸ☓ᴺ"
     ]
   },
   {
@@ -4002,7 +4002,7 @@ window.signFontDictionary = [
       "u++GLy"
     ],
     "unicodeSigns": [
-      "ᐯ◷◷ᕤXᴺ"
+      "ᐯ◷◷ᕤ☓ᴺ"
     ]
   },
   {
@@ -4011,7 +4011,7 @@ window.signFontDictionary = [
       "b\"3L-b(GEG"
     ],
     "unicodeSigns": [
-      "Π⊖⦣X-ΠᓂᕤṾᕤ"
+      "Π⊖⦣☓-ΠᓂᕤṾᕤ"
     ]
   },
   {
@@ -4020,7 +4020,7 @@ window.signFontDictionary = [
       "e%d%MDy"
     ],
     "unicodeSigns": [
-      "ΩŌ|Ōⴳᐲᴺ"
+      "Ωō∣ōⴳᐲᴺ"
     ]
   },
   {
@@ -4038,7 +4038,7 @@ window.signFontDictionary = [
       "e&Ay"
     ],
     "unicodeSigns": [
-      "ΩO̱<ᴺ"
+      "Ω⍛ᐸᴺ"
     ]
   },
   {
@@ -4047,7 +4047,7 @@ window.signFontDictionary = [
       "aP%b!MJ"
     ],
     "unicodeSigns": [
-      "റ⸝ŌΠⵀⴳᘕ"
+      "റ⸝ōΠⵀⴳᘕ"
     ]
   },
   {
@@ -4056,7 +4056,7 @@ window.signFontDictionary = [
       "qP!b\"LG"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀΠ⊖Xᕤ"
+      "ᕬ⸝ⵀΠ⊖☓ᕤ"
     ]
   },
   {
@@ -4065,7 +4065,7 @@ window.signFontDictionary = [
       "c&b!MGs"
     ],
     "unicodeSigns": [
-      "CO̱Πⵀⴳᕤര"
+      "С⍛Πⵀⴳᕤര"
     ]
   },
   {
@@ -4083,7 +4083,7 @@ window.signFontDictionary = [
       "bR!\"LFvy"
     ],
     "unicodeSigns": [
-      "Π℩ⵀ⊖Xᘐ⁼ᴺ"
+      "Π℩ⵀ⊖☓ᘐ⁼ᴺ"
     ]
   },
   {
@@ -4119,7 +4119,7 @@ window.signFontDictionary = [
       "s&%0LABc"
     ],
     "unicodeSigns": [
-      "രO̱ŌᨓX<>C"
+      "ര⍛ōᨓ☓ᐸᐳС"
     ]
   },
   {
@@ -4128,7 +4128,7 @@ window.signFontDictionary = [
       "e\"EyA"
     ],
     "unicodeSigns": [
-      "Ω⊖Ṿᴺ<"
+      "Ω⊖Ṿᴺᐸ"
     ]
   },
   {
@@ -4139,7 +4139,7 @@ window.signFontDictionary = [
     ],
     "unicodeSigns": [
       "ΠⵕᕟᕞⴳṾ⁼",
-      "ΠO̱ᕟ⁊ᕞ⁊Ṿ⁼"
+      "Π⍛ᕟ⁊ᕞ⁊Ṿ⁼"
     ]
   },
   {
@@ -4148,7 +4148,7 @@ window.signFontDictionary = [
       "s&b!MFGy"
     ],
     "unicodeSigns": [
-      "രO̱Πⵀⴳᘐᕤᴺ"
+      "ര⍛Πⵀⴳᘐᕤᴺ"
     ]
   },
   {
@@ -4157,7 +4157,7 @@ window.signFontDictionary = [
       "s&b!MFGzzy"
     ],
     "unicodeSigns": [
-      "രO̱Πⵀⴳᘐᕤ⁷⁷ᴺ"
+      "ര⍛Πⵀⴳᘐᕤ⁷⁷ᴺ"
     ]
   },
   {
@@ -4166,7 +4166,7 @@ window.signFontDictionary = [
       "d(b+LG"
     ],
     "unicodeSigns": [
-      "|ᓂΠ◷Xᕤ"
+      "∣ᓂΠ◷☓ᕤ"
     ]
   },
   {
@@ -4175,7 +4175,7 @@ window.signFontDictionary = [
       "aP&s\"JEL"
     ],
     "unicodeSigns": [
-      "റ⸝O̱ര⊖ᘕṾX"
+      "റ⸝⍛ര⊖ᘕṾ☓"
     ]
   },
   {
@@ -4184,7 +4184,7 @@ window.signFontDictionary = [
       "e!0HL"
     ],
     "unicodeSigns": [
-      "ΩⵀᨓꕊX"
+      "Ωⵀᨓꕊ☓"
     ]
   },
   {
@@ -4193,7 +4193,7 @@ window.signFontDictionary = [
       "b)%MA"
     ],
     "unicodeSigns": [
-      "ΠᓇŌⴳ<"
+      "Πᓇōⴳᐸ"
     ]
   },
   {
@@ -4202,7 +4202,7 @@ window.signFontDictionary = [
       "a!5LGy"
     ],
     "unicodeSigns": [
-      "റⵀᒍXᕤᴺ"
+      "റⵀᒍ☓ᕤᴺ"
     ]
   },
   {
@@ -4220,7 +4220,7 @@ window.signFontDictionary = [
       "d!b!MHy"
     ],
     "unicodeSigns": [
-      "|ⵀΠⵀⴳꕊᴺ"
+      "∣ⵀΠⵀⴳꕊᴺ"
     ]
   },
   {
@@ -4240,7 +4240,7 @@ window.signFontDictionary = [
       "d\"Q\"QMEy"
     ],
     "unicodeSigns": [
-      "|⊖ₒ⊖ₒⴳṾᴺ"
+      "∣⊖ₒ⊖ₒⴳṾᴺ"
     ]
   },
   {
@@ -4249,7 +4249,7 @@ window.signFontDictionary = [
       "d(S(SMEy"
     ],
     "unicodeSigns": [
-      "|ᓂ⁊ᓂ⁊ⴳṾᴺ"
+      "∣ᓂ⁊ᓂ⁊ⴳṾᴺ"
     ]
   },
   {
@@ -4258,7 +4258,7 @@ window.signFontDictionary = [
       "b)R&MA"
     ],
     "unicodeSigns": [
-      "Πᓇ℩O̱ⴳ<"
+      "Πᓇ℩⍛ⴳᐸ"
     ]
   },
   {
@@ -4267,7 +4267,7 @@ window.signFontDictionary = [
       "bS$%MA"
     ],
     "unicodeSigns": [
-      "Π⁊ⵕŌⴳ<"
+      "Π⁊ⵕōⴳᐸ"
     ]
   },
   {
@@ -4285,7 +4285,7 @@ window.signFontDictionary = [
       "b%%/S1SEv"
     ],
     "unicodeSigns": [
-      "ΠŌŌᕂ⁊ᕃ⁊Ṿ⁼"
+      "Πōōᕂ⁊ᕃ⁊Ṿ⁼"
     ]
   },
   {
@@ -4295,7 +4295,7 @@ window.signFontDictionary = [
       "t!NhyE"
     ],
     "unicodeSigns": [
-      "⫪O̱Ṿ",
+      "⫪⍛Ṿ",
       "൪ⵀ¦⫪ᴺṾ"
     ]
   },
@@ -4323,7 +4323,7 @@ window.signFontDictionary = [
       "d!b!MAy"
     ],
     "unicodeSigns": [
-      "|ⵀΠⵀⴳ<ᴺ"
+      "∣ⵀΠⵀⴳᐸᴺ"
     ]
   },
   {
@@ -4332,7 +4332,7 @@ window.signFontDictionary = [
       "s&%LGdy"
     ],
     "unicodeSigns": [
-      "രO̱ŌXᕤ|ᴺ"
+      "ര⍛ō☓ᕤ∣ᴺ"
     ]
   },
   {
@@ -4341,7 +4341,7 @@ window.signFontDictionary = [
       "oQ!!HL"
     ],
     "unicodeSigns": [
-      "OₒⵀⵀꕊX"
+      "Оₒⵀⵀꕊ☓"
     ]
   },
   {
@@ -4359,7 +4359,7 @@ window.signFontDictionary = [
       "qP!8:LIDvzz"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀᑯᑲXᘖᐲ⁼⁷⁷"
+      "ᕬ⸝ⵀᑯᑲ☓ᘖᐲ⁼⁷⁷"
     ]
   },
   {
@@ -4368,7 +4368,7 @@ window.signFontDictionary = [
       "qP!9LDwy"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀɤXᐲᣛᴺ"
+      "ᕬ⸝ⵀɤ☓ᐲᣛᴺ"
     ]
   },
   {
@@ -4377,7 +4377,7 @@ window.signFontDictionary = [
       "b#!LGy"
     ],
     "unicodeSigns": [
-      "ΠⵚⵀXᕤᴺ"
+      "Πⵚⵀ☓ᕤᴺ"
     ]
   },
   {
@@ -4386,7 +4386,7 @@ window.signFontDictionary = [
       "b$!LGzzy"
     ],
     "unicodeSigns": [
-      "ΠⵕⵀXᕤ⁷⁷ᴺ"
+      "Πⵕⵀ☓ᕤ⁷⁷ᴺ"
     ]
   },
   {
@@ -4395,7 +4395,7 @@ window.signFontDictionary = [
       "bS#b!LGy"
     ],
     "unicodeSigns": [
-      "Π⁊ⵚΠⵀXᕤᴺ"
+      "Π⁊ⵚΠⵀ☓ᕤᴺ"
     ]
   },
   {
@@ -4404,7 +4404,7 @@ window.signFontDictionary = [
       "s%8:DABy"
     ],
     "unicodeSigns": [
-      "രŌᑯᑲᐲ<>ᴺ"
+      "രōᑯᑲᐲᐸᐳᴺ"
     ]
   },
   {
@@ -4413,7 +4413,7 @@ window.signFontDictionary = [
       "s%8:DABzzy"
     ],
     "unicodeSigns": [
-      "രŌᑯᑲᐲ<>⁷⁷ᴺ"
+      "രōᑯᑲᐲᐸᐳ⁷⁷ᴺ"
     ]
   },
   {
@@ -4422,7 +4422,7 @@ window.signFontDictionary = [
       "p\"c*LGo"
     ],
     "unicodeSigns": [
-      "✳⊖C⊕XᕤO"
+      "✳⊖С⊕☓ᕤО"
     ]
   },
   {
@@ -4431,7 +4431,7 @@ window.signFontDictionary = [
       "d(0L-b%5S:SNbSvy"
     ],
     "unicodeSigns": [
-      "|ᓂᨓX-ΠŌᒍ⁊ᑲ⁊¦Π⁊⁼ᴺ"
+      "∣ᓂᨓ☓-Πōᒍ⁊ᑲ⁊¦Π⁊⁼ᴺ"
     ]
   },
   {
@@ -4440,7 +4440,7 @@ window.signFontDictionary = [
       "pS!5LEoy"
     ],
     "unicodeSigns": [
-      "✳⁊ⵀᒍXṾOᴺ"
+      "✳⁊ⵀᒍ☓ṾОᴺ"
     ]
   },
   {
@@ -4458,7 +4458,7 @@ window.signFontDictionary = [
       "s&%LABpS"
     ],
     "unicodeSigns": [
-      "രO̱ŌX<>✳⁊"
+      "ര⍛ō☓ᐸᐳ✳⁊"
     ]
   },
   {
@@ -4467,7 +4467,7 @@ window.signFontDictionary = [
       "d(2QLy"
     ],
     "unicodeSigns": [
-      "|ᓂᖌₒXᴺ"
+      "∣ᓂᖌₒ☓ᴺ"
     ]
   },
   {
@@ -4476,7 +4476,7 @@ window.signFontDictionary = [
       "n%2Q4QLGD"
     ],
     "unicodeSigns": [
-      "ቨŌᖌₒᖍₒXᕤᐲ"
+      "ቨōᖌₒᖍₒ☓ᕤᐲ"
     ]
   },
   {
@@ -4485,7 +4485,7 @@ window.signFontDictionary = [
       "g!0MA"
     ],
     "unicodeSigns": [
-      "⊃ⵀᨓⴳ<"
+      "⊃ⵀᨓⴳᐸ"
     ]
   },
   {
@@ -4494,7 +4494,7 @@ window.signFontDictionary = [
       "g%2Q4QMABoQvy"
     ],
     "unicodeSigns": [
-      "⊃Ōᖌₒᖍₒⴳ<>Oₒ⁼ᴺ"
+      "⊃ōᖌₒᖍₒⴳᐸᐳОₒ⁼ᴺ"
     ]
   },
   {
@@ -4503,7 +4503,7 @@ window.signFontDictionary = [
       "d(2QLB4QL"
     ],
     "unicodeSigns": [
-      "|ᓂᖌₒX>ᖍₒX"
+      "∣ᓂᖌₒ☓ᐳᖍₒ☓"
     ]
   },
   {
@@ -4521,7 +4521,7 @@ window.signFontDictionary = [
       "d(3H"
     ],
     "unicodeSigns": [
-      "|ᓂ⦣ꕊ"
+      "∣ᓂ⦣ꕊ"
     ]
   },
   {
@@ -4539,7 +4539,7 @@ window.signFontDictionary = [
       "u\"b!LG"
     ],
     "unicodeSigns": [
-      "ᐯ⊖ΠⵀXᕤ"
+      "ᐯ⊖Πⵀ☓ᕤ"
     ]
   },
   {
@@ -4549,8 +4549,8 @@ window.signFontDictionary = [
       "d%6BLB"
     ],
     "unicodeSigns": [
-      "|Ō⦣>X>",
-      "|Ō⩇>X>"
+      "∣ō⦣ᐳ☓ᐳ",
+      "∣ō⩇ᐳ☓ᐳ"
     ]
   },
   {
@@ -4559,7 +4559,7 @@ window.signFontDictionary = [
       "b%s)MEy"
     ],
     "unicodeSigns": [
-      "ΠŌരᓇⴳṾᴺ"
+      "ΠōരᓇⴳṾᴺ"
     ]
   },
   {
@@ -4568,7 +4568,7 @@ window.signFontDictionary = [
       "u(b!LJE"
     ],
     "unicodeSigns": [
-      "ᐯᓂΠⵀXᘕṾ"
+      "ᐯᓂΠⵀ☓ᘕṾ"
     ]
   },
   {
@@ -4578,8 +4578,8 @@ window.signFontDictionary = [
       "pR%3N-a!!L"
     ],
     "unicodeSigns": [
-      "Π℩O̱ŌᘕṾX",
-      "✳℩Ō⦣¦-റⵀⵀX"
+      "Π℩⍛ōᘕṾ☓",
+      "✳℩ō⦣¦-റⵀⵀ☓"
     ]
   },
   {
@@ -4597,7 +4597,7 @@ window.signFontDictionary = [
       "d(3L-d!b!LG"
     ],
     "unicodeSigns": [
-      "|ᓂ⦣X-|ⵀΠⵀXᕤ"
+      "∣ᓂ⦣☓-∣ⵀΠⵀ☓ᕤ"
     ]
   },
   {
@@ -4615,7 +4615,7 @@ window.signFontDictionary = [
       "fQ%%LJLv"
     ],
     "unicodeSigns": [
-      "ᗐₒŌŌXᘕX⁼"
+      "ᗐₒōō☓ᘕ☓⁼"
     ]
   },
   {
@@ -4624,7 +4624,7 @@ window.signFontDictionary = [
       "d(57LHAB"
     ],
     "unicodeSigns": [
-      "|ᓂᒍᒐXꕊ<>"
+      "∣ᓂᒍᒐ☓ꕊᐸᐳ"
     ]
   },
   {
@@ -4633,7 +4633,7 @@ window.signFontDictionary = [
       "a!!LDGzz"
     ],
     "unicodeSigns": [
-      "റⵀⵀXᐲᕤ⁷⁷"
+      "റⵀⵀ☓ᐲᕤ⁷⁷"
     ]
   },
   {
@@ -4642,7 +4642,7 @@ window.signFontDictionary = [
       "p%6MAy"
     ],
     "unicodeSigns": [
-      "✳Ō⩇ⴳ<ᴺ"
+      "✳ō⩇ⴳᐸᴺ"
     ]
   },
   {
@@ -4651,7 +4651,7 @@ window.signFontDictionary = [
       "dP($FdTzzv"
     ],
     "unicodeSigns": [
-      "|⸝ᓂⵕᘐ|℩⸝⁷⁷⁼"
+      "∣⸝ᓂⵕᘐ∣℩⸝⁷⁷⁼"
     ]
   },
   {
@@ -4660,7 +4660,7 @@ window.signFontDictionary = [
       "pR!57ABzN"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᒍᒐ<>⁷¦"
+      "✳℩ⵀᒍᒐᐸᐳ⁷¦"
     ]
   },
   {
@@ -4669,7 +4669,7 @@ window.signFontDictionary = [
       "p%0Ly"
     ],
     "unicodeSigns": [
-      "✳ŌᨓXᴺ"
+      "✳ōᨓ☓ᴺ"
     ]
   },
   {
@@ -4678,7 +4678,7 @@ window.signFontDictionary = [
       "pR!J&zzy"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᘕO̱⁷⁷ᴺ"
+      "✳℩ⵀᘕ⍛⁷⁷ᴺ"
     ]
   },
   {
@@ -4687,7 +4687,7 @@ window.signFontDictionary = [
       "p!9<Bxy"
     ],
     "unicodeSigns": [
-      "✳ⵀɤЭ>ᙾᴺ"
+      "✳ⵀɤЭᐳᙾᴺ"
     ]
   },
   {
@@ -4696,7 +4696,7 @@ window.signFontDictionary = [
       "oS!6L-oS&&Gvy"
     ],
     "unicodeSigns": [
-      "O⁊ⵀ⩇X-O⁊O̱O̱ᕤ⁼ᴺ"
+      "О⁊ⵀ⩇☓-О⁊⍛⍛ᕤ⁼ᴺ"
     ]
   },
   {
@@ -4705,7 +4705,7 @@ window.signFontDictionary = [
       "qP!9LDy"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀɤXᐲᴺ"
+      "ᕬ⸝ⵀɤ☓ᐲᴺ"
     ]
   },
   {
@@ -4714,7 +4714,7 @@ window.signFontDictionary = [
       "n((LAB"
     ],
     "unicodeSigns": [
-      "ቨᓂᓂX<>"
+      "ቨᓂᓂ☓ᐸᐳ"
     ]
   },
   {
@@ -4724,8 +4724,8 @@ window.signFontDictionary = [
       "a%J%n"
     ],
     "unicodeSigns": [
-      "റŌ<ቨ",
-      "റŌᘕŌቨ"
+      "റōᐸቨ",
+      "റōᘕōቨ"
     ]
   },
   {
@@ -4734,7 +4734,7 @@ window.signFontDictionary = [
       "s&%BLBxy"
     ],
     "unicodeSigns": [
-      "രO̱Ō>X>ᙾᴺ"
+      "ര⍛ōᐳ☓ᐳᙾᴺ"
     ]
   },
   {
@@ -4743,7 +4743,7 @@ window.signFontDictionary = [
       "a%%AByE"
     ],
     "unicodeSigns": [
-      "റŌŌ<>ᴺṾ"
+      "റōōᐸᐳᴺṾ"
     ]
   },
   {
@@ -4752,7 +4752,7 @@ window.signFontDictionary = [
       "k&%MBxy"
     ],
     "unicodeSigns": [
-      "७O̱Ōⴳ>ᙾᴺ"
+      "७⍛ōⴳᐳᙾᴺ"
     ]
   },
   {
@@ -4770,7 +4770,7 @@ window.signFontDictionary = [
       "h#d(MGFzzy"
     ],
     "unicodeSigns": [
-      "⫪ⵚ|ᓂⴳᕤᘐ⁷⁷ᴺ"
+      "⫪ⵚ∣ᓂⴳᕤᘐ⁷⁷ᴺ"
     ]
   },
   {
@@ -4779,7 +4779,7 @@ window.signFontDictionary = [
       "p!s%BMB"
     ],
     "unicodeSigns": [
-      "✳ⵀരŌ>ⴳ>"
+      "✳ⵀരōᐳⴳᐳ"
     ]
   },
   {
@@ -4788,7 +4788,7 @@ window.signFontDictionary = [
       "aP%s%J%L"
     ],
     "unicodeSigns": [
-      "റ⸝ŌരŌᘕŌX"
+      "റ⸝ōരōᘕō☓"
     ]
   },
   {
@@ -4797,7 +4797,7 @@ window.signFontDictionary = [
       "fQ$b!MJ&y"
     ],
     "unicodeSigns": [
-      "ᗐₒⵕΠⵀⴳᘕO̱ᴺ"
+      "ᗐₒⵕΠⵀⴳᘕ⍛ᴺ"
     ]
   },
   {
@@ -4826,7 +4826,7 @@ window.signFontDictionary = [
       "p%9LGy"
     ],
     "unicodeSigns": [
-      "✳ŌɤXᕤᴺ"
+      "✳ōɤ☓ᕤᴺ"
     ]
   },
   {
@@ -4835,7 +4835,7 @@ window.signFontDictionary = [
       "d(p#MA"
     ],
     "unicodeSigns": [
-      "|ᓂ✳ⵚⴳ<"
+      "∣ᓂ✳ⵚⴳᐸ"
     ]
   },
   {
@@ -4853,7 +4853,7 @@ window.signFontDictionary = [
       "p&KAy"
     ],
     "unicodeSigns": [
-      "✳O̱≈<ᴺ"
+      "✳⍛≈ᐸᴺ"
     ]
   },
   {
@@ -4862,7 +4862,7 @@ window.signFontDictionary = [
       "p&Izzv"
     ],
     "unicodeSigns": [
-      "✳O̱ᘖ⁷⁷⁼"
+      "✳⍛ᘖ⁷⁷⁼"
     ]
   },
   {
@@ -4871,7 +4871,7 @@ window.signFontDictionary = [
       "dR!6Ly"
     ],
     "unicodeSigns": [
-      "|℩ⵀ⩇Xᴺ"
+      "∣℩ⵀ⩇☓ᴺ"
     ]
   },
   {
@@ -4880,7 +4880,7 @@ window.signFontDictionary = [
       "b\"Qs%FLF"
     ],
     "unicodeSigns": [
-      "Π⊖ₒരŌᘐXᘐ"
+      "Π⊖ₒരōᘐ☓ᘐ"
     ]
   },
   {
@@ -4889,7 +4889,7 @@ window.signFontDictionary = [
       "pS&&KDv"
     ],
     "unicodeSigns": [
-      "✳⁊O̱O̱≈ᐲ⁼"
+      "✳⁊⍛⍛≈ᐲ⁼"
     ]
   },
   {
@@ -4898,7 +4898,7 @@ window.signFontDictionary = [
       "b\"S0Ly"
     ],
     "unicodeSigns": [
-      "Π⊖⁊ᨓXᴺ"
+      "Π⊖⁊ᨓ☓ᴺ"
     ]
   },
   {
@@ -4916,7 +4916,7 @@ window.signFontDictionary = [
       "d(8PD/P-s%&AB-d%%LDwy"
     ],
     "unicodeSigns": [
-      "|ᓂᑯ⸝ᐲᕂ⸝-രŌO̱<>-|ŌŌXᐲᣛᴺ"
+      "∣ᓂᑯ⸝ᐲᕂ⸝-രō⍛ᐸᐳ-∣ōō☓ᐲᣛᴺ"
     ]
   },
   {
@@ -4925,7 +4925,7 @@ window.signFontDictionary = [
       "d#aP#JL"
     ],
     "unicodeSigns": [
-      "|ⵚറ⸝ⵚᘕX"
+      "∣ⵚറ⸝ⵚᘕ☓"
     ]
   },
   {
@@ -4934,7 +4934,7 @@ window.signFontDictionary = [
       "a&%J%vy"
     ],
     "unicodeSigns": [
-      "റO̱ŌᘕŌ⁼ᴺ"
+      "റ⍛ōᘕō⁼ᴺ"
     ]
   },
   {
@@ -4943,7 +4943,7 @@ window.signFontDictionary = [
       "b$(LJ!G"
     ],
     "unicodeSigns": [
-      "ΠⵕᓂXᘕⵀᕤ"
+      "Πⵕᓂ☓ᘕⵀᕤ"
     ]
   },
   {
@@ -4952,7 +4952,7 @@ window.signFontDictionary = [
       "pR++GL"
     ],
     "unicodeSigns": [
-      "✳℩◷◷ᕤX"
+      "✳℩◷◷ᕤ☓"
     ]
   },
   {
@@ -4961,7 +4961,7 @@ window.signFontDictionary = [
       "fQ!JdRzz"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀᘕ|℩⁷⁷"
+      "ᗐₒⵀᘕ∣℩⁷⁷"
     ]
   },
   {
@@ -4970,7 +4970,7 @@ window.signFontDictionary = [
       "b%&LG"
     ],
     "unicodeSigns": [
-      "ΠŌO̱Xᕤ"
+      "Πō⍛☓ᕤ"
     ]
   },
   {
@@ -4979,7 +4979,7 @@ window.signFontDictionary = [
       "cS$b\"MoS"
     ],
     "unicodeSigns": [
-      "C⁊ⵕΠ⊖ⴳO⁊"
+      "С⁊ⵕΠ⊖ⴳО⁊"
     ]
   },
   {
@@ -4988,7 +4988,7 @@ window.signFontDictionary = [
       "qP!6Ly"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀ⩇Xᴺ"
+      "ᕬ⸝ⵀ⩇☓ᴺ"
     ]
   },
   {
@@ -4997,7 +4997,7 @@ window.signFontDictionary = [
       "oS*b#LJ\"vy"
     ],
     "unicodeSigns": [
-      "O⁊⊕ΠⵚXᘕ⊖⁼ᴺ"
+      "О⁊⊕Πⵚ☓ᘕ⊖⁼ᴺ"
     ]
   },
   {
@@ -5006,7 +5006,7 @@ window.signFontDictionary = [
       "p%%LKGvy"
     ],
     "unicodeSigns": [
-      "✳ŌŌX≈ᕤ⁼ᴺ"
+      "✳ōō☓≈ᕤ⁼ᴺ"
     ]
   },
   {
@@ -5015,7 +5015,7 @@ window.signFontDictionary = [
       "b%%LAB"
     ],
     "unicodeSigns": [
-      "ΠŌŌX<>"
+      "Πōō☓ᐸᐳ"
     ]
   },
   {
@@ -5024,7 +5024,7 @@ window.signFontDictionary = [
       "p%%DEwy"
     ],
     "unicodeSigns": [
-      "✳ŌŌᐲṾᣛᴺ"
+      "✳ōōᐲṾᣛᴺ"
     ]
   },
   {
@@ -5033,7 +5033,7 @@ window.signFontDictionary = [
       "o!3LJBL"
     ],
     "unicodeSigns": [
-      "Oⵀ⦣Xᘕ>X"
+      "Оⵀ⦣☓ᘕᐳ☓"
     ]
   },
   {
@@ -5042,7 +5042,7 @@ window.signFontDictionary = [
       "fQ%b!BL"
     ],
     "unicodeSigns": [
-      "ᗐₒŌΠⵀ>X"
+      "ᗐₒōΠⵀᐳ☓"
     ]
   },
   {
@@ -5060,7 +5060,7 @@ window.signFontDictionary = [
       "aQ&9S1SEvy"
     ],
     "unicodeSigns": [
-      "റₒO̱ɤ⁊ᕃ⁊Ṿ⁼ᴺ"
+      "റₒ⍛ɤ⁊ᕃ⁊Ṿ⁼ᴺ"
     ]
   },
   {
@@ -5069,7 +5069,7 @@ window.signFontDictionary = [
       "b&&MI!!L"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱ⴳᘖⵀⵀX"
+      "Π⍛⍛ⴳᘖⵀⵀ☓"
     ]
   },
   {
@@ -5078,7 +5078,7 @@ window.signFontDictionary = [
       "g*b&MD"
     ],
     "unicodeSigns": [
-      "⊃⊕ΠO̱ⴳᐲ"
+      "⊃⊕Π⍛ⴳᐲ"
     ]
   },
   {
@@ -5087,7 +5087,7 @@ window.signFontDictionary = [
       "aP($LGv"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂⵕXᕤ⁼"
+      "റ⸝ᓂⵕ☓ᕤ⁼"
     ]
   },
   {
@@ -5096,7 +5096,7 @@ window.signFontDictionary = [
       "oS!6Ly"
     ],
     "unicodeSigns": [
-      "O⁊ⵀ⩇Xᴺ"
+      "О⁊ⵀ⩇☓ᴺ"
     ]
   },
   {
@@ -5105,7 +5105,7 @@ window.signFontDictionary = [
       "a!d%PGL"
     ],
     "unicodeSigns": [
-      "റⵀ|Ō⸝ᕤX"
+      "റⵀ∣ō⸝ᕤ☓"
     ]
   },
   {
@@ -5114,7 +5114,7 @@ window.signFontDictionary = [
       "iP%3J!B"
     ],
     "unicodeSigns": [
-      "Һ⸝Ō⦣ᘕⵀ>"
+      "Һ⸝ō⦣ᘕⵀᐳ"
     ]
   },
   {
@@ -5123,7 +5123,7 @@ window.signFontDictionary = [
       "p++BAy"
     ],
     "unicodeSigns": [
-      "✳◷◷><ᴺ"
+      "✳◷◷ᐳᐸᴺ"
     ]
   },
   {
@@ -5132,7 +5132,7 @@ window.signFontDictionary = [
       "d(0LJG"
     ],
     "unicodeSigns": [
-      "|ᓂᨓXᘕᕤ"
+      "∣ᓂᨓ☓ᘕᕤ"
     ]
   },
   {
@@ -5141,7 +5141,7 @@ window.signFontDictionary = [
       "iP!b!BLzz"
     ],
     "unicodeSigns": [
-      "Һ⸝ⵀΠⵀ>X⁷⁷"
+      "Һ⸝ⵀΠⵀᐳ☓⁷⁷"
     ]
   },
   {
@@ -5150,7 +5150,7 @@ window.signFontDictionary = [
       "d(0MH"
     ],
     "unicodeSigns": [
-      "|ᓂᨓⴳꕊ"
+      "∣ᓂᨓⴳꕊ"
     ]
   },
   {
@@ -5159,7 +5159,7 @@ window.signFontDictionary = [
       "d(/LGH-iP(G"
     ],
     "unicodeSigns": [
-      "|ᓂᕂXᕤꕊ-Һ⸝ᓂᕤ"
+      "∣ᓂᕂ☓ᕤꕊ-Һ⸝ᓂᕤ"
     ]
   },
   {
@@ -5168,7 +5168,7 @@ window.signFontDictionary = [
       "b#0LAaP"
     ],
     "unicodeSigns": [
-      "ΠⵚᨓX<റ⸝"
+      "Πⵚᨓ☓ᐸറ⸝"
     ]
   },
   {
@@ -5177,7 +5177,7 @@ window.signFontDictionary = [
       "fQ%b!LEL"
     ],
     "unicodeSigns": [
-      "ᗐₒŌΠⵀXṾX"
+      "ᗐₒōΠⵀ☓Ṿ☓"
     ]
   },
   {
@@ -5186,7 +5186,7 @@ window.signFontDictionary = [
       "fQ%3MJ!y"
     ],
     "unicodeSigns": [
-      "ᗐₒŌ⦣ⴳᘕⵀᴺ"
+      "ᗐₒō⦣ⴳᘕⵀᴺ"
     ]
   },
   {
@@ -5197,9 +5197,9 @@ window.signFontDictionary = [
       "fQ%%LABNENBAL"
     ],
     "unicodeSigns": [
-      "⊃ŌŌX<>¦Ṿ¦><X",
-      "⊃ѵŌŌX<>¦Ṿ¦><X",
-      "ᗐₒŌŌX<>¦Ṿ¦><X"
+      "⊃ōō☓ᐸᐳ¦Ṿ¦ᐳᐸ☓",
+      "⊃ѵōō☓ᐸᐳ¦Ṿ¦ᐳᐸ☓",
+      "ᗐₒōō☓ᐸᐳ¦Ṿ¦ᐳᐸ☓"
     ]
   },
   {
@@ -5217,7 +5217,7 @@ window.signFontDictionary = [
       "pR!57LvyE"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᒍᒐX⁼ᴺṾ"
+      "✳℩ⵀᒍᒐ☓⁼ᴺṾ"
     ]
   },
   {
@@ -5226,7 +5226,7 @@ window.signFontDictionary = [
       "fQ\"S$SLIAB"
     ],
     "unicodeSigns": [
-      "ᗐₒ⊖⁊ⵕ⁊Xᘖ<>"
+      "ᗐₒ⊖⁊ⵕ⁊☓ᘖᐸᐳ"
     ]
   },
   {
@@ -5235,7 +5235,7 @@ window.signFontDictionary = [
       "p%%GpRzzv"
     ],
     "unicodeSigns": [
-      "✳ŌŌᕤ✳℩⁷⁷⁼"
+      "✳ōōᕤ✳℩⁷⁷⁼"
     ]
   },
   {
@@ -5253,7 +5253,7 @@ window.signFontDictionary = [
       "fQ!ENAEN"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀṾ¦<Ṿ¦"
+      "ᗐₒⵀṾ¦ᐸṾ¦"
     ]
   },
   {
@@ -5262,7 +5262,7 @@ window.signFontDictionary = [
       "b(d%GLy"
     ],
     "unicodeSigns": [
-      "Πᓂ|ŌᕤXᴺ"
+      "Πᓂ∣ōᕤ☓ᴺ"
     ]
   },
   {
@@ -5271,7 +5271,7 @@ window.signFontDictionary = [
       "b(%GLy"
     ],
     "unicodeSigns": [
-      "ΠᓂŌᕤXᴺ"
+      "Πᓂōᕤ☓ᴺ"
     ]
   },
   {
@@ -5289,7 +5289,7 @@ window.signFontDictionary = [
       "dR##LJxL"
     ],
     "unicodeSigns": [
-      "|℩ⵚⵚXᘕᙾX"
+      "∣℩ⵚⵚ☓ᘕᙾ☓"
     ]
   },
   {
@@ -5298,7 +5298,7 @@ window.signFontDictionary = [
       "p(57KAB"
     ],
     "unicodeSigns": [
-      "✳ᓂᒍᒐ≈<>"
+      "✳ᓂᒍᒐ≈ᐸᐳ"
     ]
   },
   {
@@ -5317,8 +5317,8 @@ window.signFontDictionary = [
       "dR(d%PLJ%F"
     ],
     "unicodeSigns": [
-      "|ᓂᓂXᘕŌᘐ|℩",
-      "|℩ᓂ|Ō⸝XᘕŌᘐ"
+      "∣ᓂᓂ☓ᘕōᘐ∣℩",
+      "∣℩ᓂ∣ō⸝☓ᘕōᘐ"
     ]
   },
   {
@@ -5354,7 +5354,7 @@ window.signFontDictionary = [
       "b\"6FLzz"
     ],
     "unicodeSigns": [
-      "Π⊖⩇ᘐX⁷⁷"
+      "Π⊖⩇ᘐ☓⁷⁷"
     ]
   },
   {
@@ -5363,7 +5363,7 @@ window.signFontDictionary = [
       "p!s%BMB"
     ],
     "unicodeSigns": [
-      "✳ⵀരŌ>ⴳ>"
+      "✳ⵀരōᐳⴳᐳ"
     ]
   },
   {
@@ -5372,7 +5372,7 @@ window.signFontDictionary = [
       "b\"6DL"
     ],
     "unicodeSigns": [
-      "Π⊖⩇ᐲX"
+      "Π⊖⩇ᐲ☓"
     ]
   },
   {
@@ -5381,7 +5381,7 @@ window.signFontDictionary = [
       "b$;=AExy"
     ],
     "unicodeSigns": [
-      "Πⵕᕟᕞ<Ṿᙾᴺ"
+      "ΠⵕᕟᕞᐸṾᙾᴺ"
     ]
   },
   {
@@ -5390,7 +5390,7 @@ window.signFontDictionary = [
       "h#3L-h#\"QL"
     ],
     "unicodeSigns": [
-      "⫪ⵚ⦣X-⫪ⵚ⊖ₒX"
+      "⫪ⵚ⦣☓-⫪ⵚ⊖ₒ☓"
     ]
   },
   {
@@ -5399,7 +5399,7 @@ window.signFontDictionary = [
       "h#3LEy"
     ],
     "unicodeSigns": [
-      "⫪ⵚ⦣XṾᴺ"
+      "⫪ⵚ⦣☓Ṿᴺ"
     ]
   },
   {
@@ -5408,7 +5408,7 @@ window.signFontDictionary = [
       "fQ&Cy"
     ],
     "unicodeSigns": [
-      "ᗐₒO̱ⵢᴺ"
+      "ᗐₒ⍛ⵢᴺ"
     ]
   },
   {
@@ -5417,7 +5417,7 @@ window.signFontDictionary = [
       "bP%5LGENGE"
     ],
     "unicodeSigns": [
-      "Π⸝ŌᒍXᕤṾ¦ᕤṾ"
+      "Π⸝ōᒍ☓ᕤṾ¦ᕤṾ"
     ]
   },
   {
@@ -5426,7 +5426,7 @@ window.signFontDictionary = [
       "u%%EFuRvy"
     ],
     "unicodeSigns": [
-      "ᐯŌŌṾᘐᐯ℩⁼ᴺ"
+      "ᐯōōṾᘐᐯ℩⁼ᴺ"
     ]
   },
   {
@@ -5435,7 +5435,7 @@ window.signFontDictionary = [
       "aP((BALy"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂᓂ><Xᴺ"
+      "റ⸝ᓂᓂᐳᐸ☓ᴺ"
     ]
   },
   {
@@ -5444,7 +5444,7 @@ window.signFontDictionary = [
       "uP%b!Gy"
     ],
     "unicodeSigns": [
-      "ᐯ⸝ŌΠⵀᕤᴺ"
+      "ᐯ⸝ōΠⵀᕤᴺ"
     ]
   },
   {
@@ -5454,8 +5454,8 @@ window.signFontDictionary = [
       "aP%s%ELy"
     ],
     "unicodeSigns": [
-      "റ⸝ŌരŌXᴺ",
-      "റ⸝ŌരŌṾXᴺ"
+      "റ⸝ōരō☓ᴺ",
+      "റ⸝ōരōṾ☓ᴺ"
     ]
   },
   {
@@ -5464,7 +5464,7 @@ window.signFontDictionary = [
       "p&%MKvy"
     ],
     "unicodeSigns": [
-      "✳O̱Ōⴳ≈⁼ᴺ"
+      "✳⍛ōⴳ≈⁼ᴺ"
     ]
   },
   {
@@ -5482,7 +5482,7 @@ window.signFontDictionary = [
       "pR&%FsLv"
     ],
     "unicodeSigns": [
-      "✳℩O̱ŌᘐരX⁼"
+      "✳℩⍛ōᘐര☓⁼"
     ]
   },
   {
@@ -5500,7 +5500,7 @@ window.signFontDictionary = [
       "hR#c%IL"
     ],
     "unicodeSigns": [
-      "⫪℩ⵚCŌᘖX"
+      "⫪℩ⵚСōᘖ☓"
     ]
   },
   {
@@ -5510,8 +5510,8 @@ window.signFontDictionary = [
       "hR#c%LIA"
     ],
     "unicodeSigns": [
-      "⫪℩ⵚCŌX<",
-      "⫪℩ⵚCŌXᘖ<"
+      "⫪℩ⵚСō☓ᐸ",
+      "⫪℩ⵚСō☓ᘖᐸ"
     ]
   },
   {
@@ -5521,8 +5521,8 @@ window.signFontDictionary = [
       "qP!09FLv"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀᨓᘐX",
-      "ᕬ⸝ⵀᨓɤᘐX⁼"
+      "ᕬ⸝ⵀᨓᘐ☓",
+      "ᕬ⸝ⵀᨓɤᘐ☓⁼"
     ]
   },
   {
@@ -5531,7 +5531,7 @@ window.signFontDictionary = [
       "c!9(LDG"
     ],
     "unicodeSigns": [
-      "CⵀɤᓂXᐲᕤ"
+      "Сⵀɤᓂ☓ᐲᕤ"
     ]
   },
   {
@@ -5540,7 +5540,7 @@ window.signFontDictionary = [
       "aP%5LGy"
     ],
     "unicodeSigns": [
-      "റ⸝ŌᒍXᕤᴺ"
+      "റ⸝ōᒍ☓ᕤᴺ"
     ]
   },
   {
@@ -5549,7 +5549,7 @@ window.signFontDictionary = [
       "oS\"J\"G"
     ],
     "unicodeSigns": [
-      "O⁊⊖ᘕ⊖ᕤ"
+      "О⁊⊖ᘕ⊖ᕤ"
     ]
   },
   {
@@ -5558,7 +5558,7 @@ window.signFontDictionary = [
       "oS%GyAB"
     ],
     "unicodeSigns": [
-      "O⁊Ōᕤᴺ<>"
+      "О⁊ōᕤᴺᐸᐳ"
     ]
   },
   {
@@ -5567,7 +5567,7 @@ window.signFontDictionary = [
       "dP\"JA"
     ],
     "unicodeSigns": [
-      "|⸝⊖ᘕ<"
+      "∣⸝⊖ᘕᐸ"
     ]
   },
   {
@@ -5585,7 +5585,7 @@ window.signFontDictionary = [
       "p#\"LFy"
     ],
     "unicodeSigns": [
-      "✳ⵚ⊖Xᘐᴺ"
+      "✳ⵚ⊖☓ᘐᴺ"
     ]
   },
   {
@@ -5594,7 +5594,7 @@ window.signFontDictionary = [
       "iP%b!MGy"
     ],
     "unicodeSigns": [
-      "Һ⸝ŌΠⵀⴳᕤᴺ"
+      "Һ⸝ōΠⵀⴳᕤᴺ"
     ]
   },
   {
@@ -5603,7 +5603,7 @@ window.signFontDictionary = [
       "d!J!G"
     ],
     "unicodeSigns": [
-      "|ⵀᘕⵀᕤ"
+      "∣ⵀᘕⵀᕤ"
     ]
   },
   {
@@ -5630,7 +5630,7 @@ window.signFontDictionary = [
       "p\"/GoS"
     ],
     "unicodeSigns": [
-      "✳⊖ᕂᕤO⁊"
+      "✳⊖ᕂᕤО⁊"
     ]
   },
   {
@@ -5639,7 +5639,7 @@ window.signFontDictionary = [
       "b&%DJ&GE"
     ],
     "unicodeSigns": [
-      "ΠO̱ŌᐲᘕO̱ᕤṾ"
+      "Π⍛ōᐲᘕ⍛ᕤṾ"
     ]
   },
   {
@@ -5648,7 +5648,7 @@ window.signFontDictionary = [
       "h(o*QGMG"
     ],
     "unicodeSigns": [
-      "⫪ᓂO⊕ₒᕤⴳᕤ"
+      "⫪ᓂО⊕ₒᕤⴳᕤ"
     ]
   },
   {
@@ -5657,7 +5657,7 @@ window.signFontDictionary = [
       "d(0L-d(%PGvy"
     ],
     "unicodeSigns": [
-      "|ᓂᨓX-|ᓂŌ⸝ᕤ⁼ᴺ"
+      "∣ᓂᨓ☓-∣ᓂō⸝ᕤ⁼ᴺ"
     ]
   },
   {
@@ -5666,7 +5666,7 @@ window.signFontDictionary = [
       "b%0SJ%E"
     ],
     "unicodeSigns": [
-      "ΠŌᨓ⁊ᘕŌṾ"
+      "Πōᨓ⁊ᘕōṾ"
     ]
   },
   {
@@ -5675,7 +5675,7 @@ window.signFontDictionary = [
       "jP(2L-iP&Iy"
     ],
     "unicodeSigns": [
-      "Ч⸝ᓂᖌX-Һ⸝O̱ᘖᴺ"
+      "Ч⸝ᓂᖌ☓-Һ⸝⍛ᘖᴺ"
     ]
   },
   {
@@ -5684,7 +5684,7 @@ window.signFontDictionary = [
       "b#6LGN"
     ],
     "unicodeSigns": [
-      "Πⵚ⩇Xᕤ¦"
+      "Πⵚ⩇☓ᕤ¦"
     ]
   },
   {
@@ -5693,7 +5693,7 @@ window.signFontDictionary = [
       "hZ\"6L-hQ!)PLy"
     ],
     "unicodeSigns": [
-      "⫪⊥⊖⩇X-⫪ₒⵀᓇ⸝Xᴺ"
+      "⫪⊥⊖⩇☓-⫪ₒⵀᓇ⸝☓ᴺ"
     ]
   },
   {
@@ -5702,7 +5702,7 @@ window.signFontDictionary = [
       "a!8:FLwy"
     ],
     "unicodeSigns": [
-      "റⵀᑯᑲᘐXᣛᴺ"
+      "റⵀᑯᑲᘐ☓ᣛᴺ"
     ]
   },
   {
@@ -5711,7 +5711,7 @@ window.signFontDictionary = [
       "g%6Lv-g!!oQvyH"
     ],
     "unicodeSigns": [
-      "⊃Ō⩇X⁼-⊃ⵀⵀOₒ⁼ᴺꕊ"
+      "⊃ō⩇☓⁼-⊃ⵀⵀОₒ⁼ᴺꕊ"
     ]
   },
   {
@@ -5721,8 +5721,8 @@ window.signFontDictionary = [
       "d(/HL"
     ],
     "unicodeSigns": [
-      "|ᓂᕂᘕ|℩>|X",
-      "|ᓂᕂꕊX"
+      "∣ᓂᕂᘕ∣℩ᐳ∣☓",
+      "∣ᓂᕂꕊ☓"
     ]
   },
   {
@@ -5731,7 +5731,7 @@ window.signFontDictionary = [
       "c&GEFszz"
     ],
     "unicodeSigns": [
-      "CO̱ᕤṾᘐര⁷⁷"
+      "С⍛ᕤṾᘐര⁷⁷"
     ]
   },
   {
@@ -5740,7 +5740,7 @@ window.signFontDictionary = [
       "g&b!HL"
     ],
     "unicodeSigns": [
-      "⊃O̱ΠⵀꕊX"
+      "⊃⍛Πⵀꕊ☓"
     ]
   },
   {
@@ -5749,7 +5749,7 @@ window.signFontDictionary = [
       "p%0LGENGE"
     ],
     "unicodeSigns": [
-      "✳ŌᨓXᕤṾ¦ᕤṾ"
+      "✳ōᨓ☓ᕤṾ¦ᕤṾ"
     ]
   },
   {
@@ -5758,7 +5758,7 @@ window.signFontDictionary = [
       "p%6LGENGE"
     ],
     "unicodeSigns": [
-      "✳Ō⩇XᕤṾ¦ᕤṾ"
+      "✳ō⩇☓ᕤṾ¦ᕤṾ"
     ]
   },
   {
@@ -5767,7 +5767,7 @@ window.signFontDictionary = [
       "fQ!6LIy"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀ⩇Xᘖᴺ"
+      "ᗐₒⵀ⩇☓ᘖᴺ"
     ]
   },
   {
@@ -5776,7 +5776,7 @@ window.signFontDictionary = [
       "pR$6LGEy"
     ],
     "unicodeSigns": [
-      "✳℩ⵕ⩇XᕤṾᴺ"
+      "✳℩ⵕ⩇☓ᕤṾᴺ"
     ]
   },
   {
@@ -5785,7 +5785,7 @@ window.signFontDictionary = [
       "q*b&LEy"
     ],
     "unicodeSigns": [
-      "ᕬ⊕ΠO̱XṾᴺ"
+      "ᕬ⊕Π⍛☓Ṿᴺ"
     ]
   },
   {
@@ -5794,7 +5794,7 @@ window.signFontDictionary = [
       "p((GLGwy"
     ],
     "unicodeSigns": [
-      "✳ᓂᓂᕤXᕤᣛᴺ"
+      "✳ᓂᓂᕤ☓ᕤᣛᴺ"
     ]
   },
   {
@@ -5803,7 +5803,7 @@ window.signFontDictionary = [
       "g%3LEy"
     ],
     "unicodeSigns": [
-      "⊃Ō⦣XṾᴺ"
+      "⊃ō⦣☓Ṿᴺ"
     ]
   },
   {
@@ -5812,7 +5812,7 @@ window.signFontDictionary = [
       "g&Iy"
     ],
     "unicodeSigns": [
-      "⊃O̱ᘖᴺ"
+      "⊃⍛ᘖᴺ"
     ]
   },
   {
@@ -5824,10 +5824,10 @@ window.signFontDictionary = [
       "g%%LJLv"
     ],
     "unicodeSigns": [
-      "✳℩ŌŌᘕᕤ⁼",
-      "✳℩ŌŌXᘕX⁼",
-      "CŌŌXᘕX⁼",
-      "⊃ŌŌXᘕX⁼"
+      "✳℩ōōᘕᕤ⁼",
+      "✳℩ōō☓ᘕ☓⁼",
+      "Сōō☓ᘕ☓⁼",
+      "⊃ōō☓ᘕ☓⁼"
     ]
   },
   {
@@ -5836,7 +5836,7 @@ window.signFontDictionary = [
       "c%0BEs"
     ],
     "unicodeSigns": [
-      "CŌᨓ>Ṿര"
+      "СōᨓᐳṾര"
     ]
   },
   {
@@ -5854,7 +5854,7 @@ window.signFontDictionary = [
       "f%6L-s!b!DBb"
     ],
     "unicodeSigns": [
-      "ᗐŌ⩇X-രⵀΠⵀᐲ>Π"
+      "ᗐō⩇☓-രⵀΠⵀᐲᐳΠ"
     ]
   },
   {
@@ -5863,7 +5863,7 @@ window.signFontDictionary = [
       "oQ!8:Hvy"
     ],
     "unicodeSigns": [
-      "Oₒⵀᑯᑲꕊ⁼ᴺ"
+      "Оₒⵀᑯᑲꕊ⁼ᴺ"
     ]
   },
   {
@@ -5881,7 +5881,7 @@ window.signFontDictionary = [
       "b%n+BL"
     ],
     "unicodeSigns": [
-      "ΠŌቨ◷>X"
+      "Πōቨ◷ᐳ☓"
     ]
   },
   {
@@ -5890,7 +5890,7 @@ window.signFontDictionary = [
       "c**LJxL"
     ],
     "unicodeSigns": [
-      "C⊕⊕XᘕᙾX"
+      "С⊕⊕☓ᘕᙾ☓"
     ]
   },
   {
@@ -5899,7 +5899,7 @@ window.signFontDictionary = [
       "aQ(%ENy"
     ],
     "unicodeSigns": [
-      "റₒᓂŌṾ¦ᴺ"
+      "റₒᓂōṾ¦ᴺ"
     ]
   },
   {
@@ -5917,7 +5917,7 @@ window.signFontDictionary = [
       "oS!!:GEyG"
     ],
     "unicodeSigns": [
-      "O⁊ⵀⵀᑲᕤṾᴺᕤ"
+      "О⁊ⵀⵀᑲᕤṾᴺᕤ"
     ]
   },
   {
@@ -5926,7 +5926,7 @@ window.signFontDictionary = [
       "d(3H-b!!MG"
     ],
     "unicodeSigns": [
-      "|ᓂ⦣ꕊ-Πⵀⵀⴳᕤ"
+      "∣ᓂ⦣ꕊ-Πⵀⵀⴳᕤ"
     ]
   },
   {
@@ -5935,7 +5935,7 @@ window.signFontDictionary = [
       "s%8(LDAN"
     ],
     "unicodeSigns": [
-      "രŌᑯᓂXᐲ<¦"
+      "രōᑯᓂ☓ᐲᐸ¦"
     ]
   },
   {
@@ -5944,7 +5944,7 @@ window.signFontDictionary = [
       "dR#d(SEL"
     ],
     "unicodeSigns": [
-      "|℩ⵚ|ᓂ⁊ṾX"
+      "∣℩ⵚ∣ᓂ⁊Ṿ☓"
     ]
   },
   {
@@ -5953,7 +5953,7 @@ window.signFontDictionary = [
       "b!9LDy"
     ],
     "unicodeSigns": [
-      "ΠⵀɤXᐲᴺ"
+      "Πⵀɤ☓ᐲᴺ"
     ]
   },
   {
@@ -5962,7 +5962,7 @@ window.signFontDictionary = [
       "uR&%ELzz"
     ],
     "unicodeSigns": [
-      "ᐯ℩O̱ŌṾX⁷⁷"
+      "ᐯ℩⍛ōṾ☓⁷⁷"
     ]
   },
   {
@@ -5971,7 +5971,7 @@ window.signFontDictionary = [
       "h&ENAE"
     ],
     "unicodeSigns": [
-      "⫪O̱Ṿ¦<Ṿ"
+      "⫪⍛Ṿ¦ᐸṾ"
     ]
   },
   {
@@ -5980,7 +5980,7 @@ window.signFontDictionary = [
       "b#0(ELy"
     ],
     "unicodeSigns": [
-      "ΠⵚᨓᓂṾXᴺ"
+      "ΠⵚᨓᓂṾ☓ᴺ"
     ]
   },
   {
@@ -5989,7 +5989,7 @@ window.signFontDictionary = [
       "h&P%PLIEv"
     ],
     "unicodeSigns": [
-      "⫪O̱⸝Ō⸝XᘖṾ⁼"
+      "⫪⍛⸝ō⸝☓ᘖṾ⁼"
     ]
   },
   {
@@ -6007,7 +6007,7 @@ window.signFontDictionary = [
       "bU!9Lv"
     ],
     "unicodeSigns": [
-      "Π⁊⸝ⵀɤX⁼"
+      "Π⁊⸝ⵀɤ☓⁼"
     ]
   },
   {
@@ -6016,7 +6016,7 @@ window.signFontDictionary = [
       "p((BAsLzz"
     ],
     "unicodeSigns": [
-      "✳ᓂᓂ><രX⁷⁷"
+      "✳ᓂᓂᐳᐸര☓⁷⁷"
     ]
   },
   {
@@ -6026,8 +6026,8 @@ window.signFontDictionary = [
       "bS!5LEL"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀᕂXṾ⩇X",
-      "Π⁊ⵀᒍXṾX"
+      "Π⁊ⵀᕂ☓Ṿ⩇☓",
+      "Π⁊ⵀᒍ☓Ṿ☓"
     ]
   },
   {
@@ -6036,7 +6036,7 @@ window.signFontDictionary = [
       "aQ*3LGy"
     ],
     "unicodeSigns": [
-      "റₒ⊕⦣Xᕤᴺ"
+      "റₒ⊕⦣☓ᕤᴺ"
     ]
   },
   {
@@ -6045,7 +6045,7 @@ window.signFontDictionary = [
       "dS!!0BAy"
     ],
     "unicodeSigns": [
-      "|⁊ⵀⵀᨓ><ᴺ"
+      "∣⁊ⵀⵀᨓᐳᐸᴺ"
     ]
   },
   {
@@ -6054,7 +6054,7 @@ window.signFontDictionary = [
       "pR!8:LGsv"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᑯᑲXᕤര⁼"
+      "✳℩ⵀᑯᑲ☓ᕤര⁼"
     ]
   },
   {
@@ -6063,7 +6063,7 @@ window.signFontDictionary = [
       "d#2BL"
     ],
     "unicodeSigns": [
-      "|ⵚᖌ>X"
+      "∣ⵚᖌᐳ☓"
     ]
   },
   {
@@ -6072,7 +6072,7 @@ window.signFontDictionary = [
       "d#6LDGy"
     ],
     "unicodeSigns": [
-      "|ⵚ⩇Xᐲᕤᴺ"
+      "∣ⵚ⩇☓ᐲᕤᴺ"
     ]
   },
   {
@@ -6081,7 +6081,7 @@ window.signFontDictionary = [
       "qP!:HL"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀᑲꕊX"
+      "ᕬ⸝ⵀᑲꕊ☓"
     ]
   },
   {
@@ -6090,7 +6090,7 @@ window.signFontDictionary = [
       "bS!!Hw-ABN"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀⵀꕊᣛ-<>¦"
+      "Π⁊ⵀⵀꕊᣛ-ᐸᐳ¦"
     ]
   },
   {
@@ -6108,7 +6108,7 @@ window.signFontDictionary = [
       "pS#6LEoSy"
     ],
     "unicodeSigns": [
-      "✳⁊ⵚ⩇XṾO⁊ᴺ"
+      "✳⁊ⵚ⩇☓ṾО⁊ᴺ"
     ]
   },
   {
@@ -6117,7 +6117,7 @@ window.signFontDictionary = [
       "d%P0ELy"
     ],
     "unicodeSigns": [
-      "|Ō⸝ᨓṾXᴺ"
+      "∣ō⸝ᨓṾ☓ᴺ"
     ]
   },
   {
@@ -6126,7 +6126,7 @@ window.signFontDictionary = [
       "p!uP%MJy"
     ],
     "unicodeSigns": [
-      "✳ⵀᐯ⸝Ōⴳᘕᴺ"
+      "✳ⵀᐯ⸝ōⴳᘕᴺ"
     ]
   },
   {
@@ -6135,7 +6135,7 @@ window.signFontDictionary = [
       "h\":SA;S"
     ],
     "unicodeSigns": [
-      "⫪⊖ᑲ⁊<ᕟ⁊"
+      "⫪⊖ᑲ⁊ᐸᕟ⁊"
     ]
   },
   {
@@ -6144,7 +6144,7 @@ window.signFontDictionary = [
       "aP&b!LDv"
     ],
     "unicodeSigns": [
-      "റ⸝O̱ΠⵀXᐲ⁼"
+      "റ⸝⍛Πⵀ☓ᐲ⁼"
     ]
   },
   {
@@ -6153,7 +6153,7 @@ window.signFontDictionary = [
       "uP%6Ly"
     ],
     "unicodeSigns": [
-      "ᐯ⸝Ō⩇Xᴺ"
+      "ᐯ⸝ō⩇☓ᴺ"
     ]
   },
   {
@@ -6162,7 +6162,7 @@ window.signFontDictionary = [
       "b&&BAy"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱><ᴺ"
+      "Π⍛⍛ᐳᐸᴺ"
     ]
   },
   {
@@ -6171,7 +6171,7 @@ window.signFontDictionary = [
       "a%6L-a%c*L"
     ],
     "unicodeSigns": [
-      "റŌ⩇X-റŌC⊕X"
+      "റō⩇☓-റōС⊕☓"
     ]
   },
   {
@@ -6180,7 +6180,7 @@ window.signFontDictionary = [
       "h%D"
     ],
     "unicodeSigns": [
-      "⫪Ōᐲ"
+      "⫪ōᐲ"
     ]
   },
   {
@@ -6189,7 +6189,7 @@ window.signFontDictionary = [
       "dR!8:FLvy"
     ],
     "unicodeSigns": [
-      "|℩ⵀᑯᑲᘐX⁼ᴺ"
+      "∣℩ⵀᑯᑲᘐ☓⁼ᴺ"
     ]
   },
   {
@@ -6207,7 +6207,7 @@ window.signFontDictionary = [
       "bS!;Ly"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀᕟXᴺ"
+      "Π⁊ⵀᕟ☓ᴺ"
     ]
   },
   {
@@ -6225,7 +6225,7 @@ window.signFontDictionary = [
       "d##BLB"
     ],
     "unicodeSigns": [
-      "|ⵚⵚ>X>"
+      "∣ⵚⵚᐳ☓ᐳ"
     ]
   },
   {
@@ -6234,7 +6234,7 @@ window.signFontDictionary = [
       "s&Hzzy"
     ],
     "unicodeSigns": [
-      "രO̱ꕊ⁷⁷ᴺ"
+      "ര⍛ꕊ⁷⁷ᴺ"
     ]
   },
   {
@@ -6243,7 +6243,7 @@ window.signFontDictionary = [
       "c&9MEs"
     ],
     "unicodeSigns": [
-      "CO̱ɤⴳṾര"
+      "С⍛ɤⴳṾര"
     ]
   },
   {
@@ -6252,7 +6252,7 @@ window.signFontDictionary = [
       "c!NS"
     ],
     "unicodeSigns": [
-      "Cⵀ¦⁊"
+      "Сⵀ¦⁊"
     ]
   },
   {
@@ -6262,8 +6262,8 @@ window.signFontDictionary = [
       "pS!/1ABoS"
     ],
     "unicodeSigns": [
-      "Һ⸝Ō⦣XṾᕤ",
-      "✳⁊ⵀᕂᕃ<>O⁊"
+      "Һ⸝ō⦣☓Ṿᕤ",
+      "✳⁊ⵀᕂᕃᐸᐳО⁊"
     ]
   },
   {
@@ -6272,7 +6272,7 @@ window.signFontDictionary = [
       "o!5LFL"
     ],
     "unicodeSigns": [
-      "OⵀᒍXᘐX"
+      "Оⵀᒍ☓ᘐ☓"
     ]
   },
   {
@@ -6281,7 +6281,7 @@ window.signFontDictionary = [
       "h%P0LEG"
     ],
     "unicodeSigns": [
-      "⫪Ō⸝ᨓXṾᕤ"
+      "⫪ō⸝ᨓ☓Ṿᕤ"
     ]
   },
   {
@@ -6290,7 +6290,7 @@ window.signFontDictionary = [
       "b%5S:SNbSvy"
     ],
     "unicodeSigns": [
-      "ΠŌᒍ⁊ᑲ⁊¦Π⁊⁼ᴺ"
+      "Πōᒍ⁊ᑲ⁊¦Π⁊⁼ᴺ"
     ]
   },
   {
@@ -6299,7 +6299,7 @@ window.signFontDictionary = [
       "hP%/MhUy"
     ],
     "unicodeSigns": [
-      "⫪⸝Ōᕂⴳ⫪⁊⸝ᴺ"
+      "⫪⸝ōᕂⴳ⫪⁊⸝ᴺ"
     ]
   },
   {
@@ -6308,7 +6308,7 @@ window.signFontDictionary = [
       "h#)PMA-h\"Q)PME"
     ],
     "unicodeSigns": [
-      "⫪ⵚᓇ⸝ⴳ<-⫪⊖ₒᓇ⸝ⴳṾ"
+      "⫪ⵚᓇ⸝ⴳᐸ-⫪⊖ₒᓇ⸝ⴳṾ"
     ]
   },
   {
@@ -6326,7 +6326,7 @@ window.signFontDictionary = [
       "d!b!MH"
     ],
     "unicodeSigns": [
-      "|ⵀΠⵀⴳꕊ"
+      "∣ⵀΠⵀⴳꕊ"
     ]
   },
   {
@@ -6335,7 +6335,7 @@ window.signFontDictionary = [
       "b((EABN-b!!Ev"
     ],
     "unicodeSigns": [
-      "ΠᓂᓂṾ<>¦-ΠⵀⵀṾ⁼"
+      "ΠᓂᓂṾᐸᐳ¦-ΠⵀⵀṾ⁼"
     ]
   },
   {
@@ -6344,7 +6344,7 @@ window.signFontDictionary = [
       "bT((LJv"
     ],
     "unicodeSigns": [
-      "Π℩⸝ᓂᓂXᘕ⁼"
+      "Π℩⸝ᓂᓂ☓ᘕ⁼"
     ]
   },
   {
@@ -6362,7 +6362,7 @@ window.signFontDictionary = [
       "s\"b!LDp"
     ],
     "unicodeSigns": [
-      "ര⊖ΠⵀXᐲ✳"
+      "ര⊖Πⵀ☓ᐲ✳"
     ]
   },
   {
@@ -6371,7 +6371,7 @@ window.signFontDictionary = [
       "s!:8Lv"
     ],
     "unicodeSigns": [
-      "രⵀᑲᑯX⁼"
+      "രⵀᑲᑯ☓⁼"
     ]
   },
   {
@@ -6389,7 +6389,7 @@ window.signFontDictionary = [
       "h#8:LELv"
     ],
     "unicodeSigns": [
-      "⫪ⵚᑯᑲXṾX⁼"
+      "⫪ⵚᑯᑲ☓Ṿ☓⁼"
     ]
   },
   {
@@ -6398,7 +6398,7 @@ window.signFontDictionary = [
       "d%P6L-b&!ME"
     ],
     "unicodeSigns": [
-      "|Ō⸝⩇X-ΠO̱ⵀⴳṾ"
+      "∣ō⸝⩇☓-Π⍛ⵀⴳṾ"
     ]
   },
   {
@@ -6416,7 +6416,7 @@ window.signFontDictionary = [
       "p&Ay"
     ],
     "unicodeSigns": [
-      "✳O̱<ᴺ"
+      "✳⍛ᐸᴺ"
     ]
   },
   {
@@ -6425,7 +6425,7 @@ window.signFontDictionary = [
       "h&Evy"
     ],
     "unicodeSigns": [
-      "⫪O̱Ṿ⁼ᴺ"
+      "⫪⍛Ṿ⁼ᴺ"
     ]
   },
   {
@@ -6434,7 +6434,7 @@ window.signFontDictionary = [
       "d((JxBAz"
     ],
     "unicodeSigns": [
-      "|ᓂᓂᘕᙾ><⁷"
+      "∣ᓂᓂᘕᙾᐳᐸ⁷"
     ]
   },
   {
@@ -6443,7 +6443,7 @@ window.signFontDictionary = [
       "uU$3FhQL"
     ],
     "unicodeSigns": [
-      "ᐯ⁊⸝ⵕ⦣ᘐ⫪ₒX"
+      "ᐯ⁊⸝ⵕ⦣ᘐ⫪ₒ☓"
     ]
   },
   {
@@ -6452,7 +6452,7 @@ window.signFontDictionary = [
       "q!8FLzz"
     ],
     "unicodeSigns": [
-      "ᕬⵀᑯᘐX⁷⁷"
+      "ᕬⵀᑯᘐ☓⁷⁷"
     ]
   },
   {
@@ -6461,7 +6461,7 @@ window.signFontDictionary = [
       "c%0L-c**L"
     ],
     "unicodeSigns": [
-      "CŌᨓX-C⊕⊕X"
+      "Сōᨓ☓-С⊕⊕☓"
     ]
   },
   {
@@ -6470,7 +6470,7 @@ window.signFontDictionary = [
       "dP!8:GAB"
     ],
     "unicodeSigns": [
-      "|⸝ⵀᑯᑲᕤ<>"
+      "∣⸝ⵀᑯᑲᕤᐸᐳ"
     ]
   },
   {
@@ -6479,7 +6479,7 @@ window.signFontDictionary = [
       "d(9L"
     ],
     "unicodeSigns": [
-      "|ᓂɤX"
+      "∣ᓂɤ☓"
     ]
   },
   {
@@ -6488,7 +6488,7 @@ window.signFontDictionary = [
       "s%6LEGy"
     ],
     "unicodeSigns": [
-      "രŌ⩇XṾᕤᴺ"
+      "രō⩇☓Ṿᕤᴺ"
     ]
   },
   {
@@ -6498,8 +6498,8 @@ window.signFontDictionary = [
       "dR&&Gwy"
     ],
     "unicodeSigns": [
-      "|℩O̱O̱ᕤ⁼ᴺ",
-      "|℩O̱O̱ᕤᣛᴺ"
+      "∣℩⍛⍛ᕤ⁼ᴺ",
+      "∣℩⍛⍛ᕤᣛᴺ"
     ]
   },
   {
@@ -6509,8 +6509,8 @@ window.signFontDictionary = [
       "dR&&Gwzzy"
     ],
     "unicodeSigns": [
-      "|℩O̱O̱ᕤ⁼⁷⁷ᴺ",
-      "|℩O̱O̱ᕤᣛ⁷⁷ᴺ"
+      "∣℩⍛⍛ᕤ⁼⁷⁷ᴺ",
+      "∣℩⍛⍛ᕤᣛ⁷⁷ᴺ"
     ]
   },
   {
@@ -6519,7 +6519,7 @@ window.signFontDictionary = [
       "i(0LG"
     ],
     "unicodeSigns": [
-      "ҺᓂᨓXᕤ"
+      "Һᓂᨓ☓ᕤ"
     ]
   },
   {
@@ -6529,8 +6529,8 @@ window.signFontDictionary = [
       "i(5LGy"
     ],
     "unicodeSigns": [
-      "ҺᓂᕂXᕤᴺ",
-      "ҺᓂᒍXᕤᴺ"
+      "Һᓂᕂ☓ᕤᴺ",
+      "Һᓂᒍ☓ᕤᴺ"
     ]
   },
   {
@@ -6539,7 +6539,7 @@ window.signFontDictionary = [
       "n(3LGE"
     ],
     "unicodeSigns": [
-      "ቨᓂ⦣XᕤṾ"
+      "ቨᓂ⦣☓ᕤṾ"
     ]
   },
   {
@@ -6548,7 +6548,7 @@ window.signFontDictionary = [
       "i(0LG"
     ],
     "unicodeSigns": [
-      "ҺᓂᨓXᕤ"
+      "Һᓂᨓ☓ᕤ"
     ]
   },
   {
@@ -6557,7 +6557,7 @@ window.signFontDictionary = [
       "fQ%%IBAL"
     ],
     "unicodeSigns": [
-      "ᗐₒŌŌᘖ><X"
+      "ᗐₒōōᘖᐳᐸ☓"
     ]
   },
   {
@@ -6566,7 +6566,7 @@ window.signFontDictionary = [
       "b&\"SLFL"
     ],
     "unicodeSigns": [
-      "ΠO̱⊖⁊XᘐX"
+      "Π⍛⊖⁊☓ᘐ☓"
     ]
   },
   {
@@ -6575,7 +6575,7 @@ window.signFontDictionary = [
       "oS!o%EL"
     ],
     "unicodeSigns": [
-      "O⁊ⵀOŌṾX"
+      "О⁊ⵀОōṾ☓"
     ]
   },
   {
@@ -6584,7 +6584,7 @@ window.signFontDictionary = [
       "h#\"QIL"
     ],
     "unicodeSigns": [
-      "⫪ⵚ⊖ₒᘖX"
+      "⫪ⵚ⊖ₒᘖ☓"
     ]
   },
   {
@@ -6593,7 +6593,7 @@ window.signFontDictionary = [
       "i\"S#SLIAB"
     ],
     "unicodeSigns": [
-      "Һ⊖⁊ⵚ⁊Xᘖ<>"
+      "Һ⊖⁊ⵚ⁊☓ᘖᐸᐳ"
     ]
   },
   {
@@ -6602,7 +6602,7 @@ window.signFontDictionary = [
       "aP#0L"
     ],
     "unicodeSigns": [
-      "റ⸝ⵚᨓX"
+      "റ⸝ⵚᨓ☓"
     ]
   },
   {
@@ -6611,7 +6611,7 @@ window.signFontDictionary = [
       "fQ!3LD/L"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀ⦣XᐲᕂX"
+      "ᗐₒⵀ⦣☓ᐲᕂ☓"
     ]
   },
   {
@@ -6620,7 +6620,7 @@ window.signFontDictionary = [
       "o!09SLGpSv"
     ],
     "unicodeSigns": [
-      "Oⵀᨓɤ⁊Xᕤ✳⁊⁼"
+      "Оⵀᨓɤ⁊☓ᕤ✳⁊⁼"
     ]
   },
   {
@@ -6629,7 +6629,7 @@ window.signFontDictionary = [
       "uP(S)PFhQL"
     ],
     "unicodeSigns": [
-      "ᐯ⸝ᓂ⁊ᓇ⸝ᘐ⫪ₒX"
+      "ᐯ⸝ᓂ⁊ᓇ⸝ᘐ⫪ₒ☓"
     ]
   },
   {
@@ -6638,7 +6638,7 @@ window.signFontDictionary = [
       "h#6LEAB"
     ],
     "unicodeSigns": [
-      "⫪ⵚ⩇XṾ<>"
+      "⫪ⵚ⩇☓Ṿᐸᐳ"
     ]
   },
   {
@@ -6647,7 +6647,7 @@ window.signFontDictionary = [
       "uP%3MuTy"
     ],
     "unicodeSigns": [
-      "ᐯ⸝Ō⦣ⴳᐯ℩⸝ᴺ"
+      "ᐯ⸝ō⦣ⴳᐯ℩⸝ᴺ"
     ]
   },
   {
@@ -6656,7 +6656,7 @@ window.signFontDictionary = [
       "oS!cS*BL"
     ],
     "unicodeSigns": [
-      "O⁊ⵀC⁊⊕>X"
+      "О⁊ⵀС⁊⊕ᐳ☓"
     ]
   },
   {
@@ -6665,7 +6665,7 @@ window.signFontDictionary = [
       "s&<MDp9v"
     ],
     "unicodeSigns": [
-      "രO̱Эⴳᐲ✳ɤ⁼"
+      "ര⍛Эⴳᐲ✳ɤ⁼"
     ]
   },
   {
@@ -6674,7 +6674,7 @@ window.signFontDictionary = [
       "d(GJ%zz"
     ],
     "unicodeSigns": [
-      "|ᓂᕤᘕŌ⁷⁷"
+      "∣ᓂᕤᘕō⁷⁷"
     ]
   },
   {
@@ -6683,7 +6683,7 @@ window.signFontDictionary = [
       "p!9<LGqv"
     ],
     "unicodeSigns": [
-      "✳ⵀɤЭXᕤᕬ⁼"
+      "✳ⵀɤЭ☓ᕤᕬ⁼"
     ]
   },
   {
@@ -6692,7 +6692,7 @@ window.signFontDictionary = [
       "i&s!MHy"
     ],
     "unicodeSigns": [
-      "ҺO̱രⵀⴳꕊᴺ"
+      "Һ⍛രⵀⴳꕊᴺ"
     ]
   },
   {
@@ -6701,7 +6701,7 @@ window.signFontDictionary = [
       "fQ!!LJxL"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀⵀXᘕᙾX"
+      "ᗐₒⵀⵀ☓ᘕᙾ☓"
     ]
   },
   {
@@ -6710,7 +6710,7 @@ window.signFontDictionary = [
       "b&+GL"
     ],
     "unicodeSigns": [
-      "ΠO̱◷ᕤX"
+      "Π⍛◷ᕤ☓"
     ]
   },
   {
@@ -6719,7 +6719,7 @@ window.signFontDictionary = [
       "bS!!;S=SBAL"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀⵀᕟ⁊ᕞ⁊><X"
+      "Π⁊ⵀⵀᕟ⁊ᕞ⁊ᐳᐸ☓"
     ]
   },
   {
@@ -6728,7 +6728,7 @@ window.signFontDictionary = [
       "hT$b!LDG"
     ],
     "unicodeSigns": [
-      "⫪℩⸝ⵕΠⵀXᐲᕤ"
+      "⫪℩⸝ⵕΠⵀ☓ᐲᕤ"
     ]
   },
   {
@@ -6737,7 +6737,7 @@ window.signFontDictionary = [
       "b&8PEB9S"
     ],
     "unicodeSigns": [
-      "ΠO̱ᑯ⸝Ṿ>ɤ⁊"
+      "Π⍛ᑯ⸝Ṿᐳɤ⁊"
     ]
   },
   {
@@ -6747,8 +6747,8 @@ window.signFontDictionary = [
       "uR!s\"HL"
     ],
     "unicodeSigns": [
-      "⫪℩ⵀര⊖ꕊX",
-      "ᐯ℩ⵀര⊖ꕊX"
+      "⫪℩ⵀര⊖ꕊ☓",
+      "ᐯ℩ⵀര⊖ꕊ☓"
     ]
   },
   {
@@ -6758,8 +6758,8 @@ window.signFontDictionary = [
       "uR!s\"HL"
     ],
     "unicodeSigns": [
-      "⫪℩ⵀര⊖ꕊX",
-      "ᐯ℩ⵀര⊖ꕊX"
+      "⫪℩ⵀര⊖ꕊ☓",
+      "ᐯ℩ⵀര⊖ꕊ☓"
     ]
   },
   {
@@ -6786,7 +6786,7 @@ window.signFontDictionary = [
       "s&i(LGy"
     ],
     "unicodeSigns": [
-      "രO̱ҺᓂXᕤᴺ"
+      "ര⍛Һᓂ☓ᕤᴺ"
     ]
   },
   {
@@ -6795,7 +6795,7 @@ window.signFontDictionary = [
       "i&s\"MHy"
     ],
     "unicodeSigns": [
-      "ҺO̱ര⊖ⴳꕊᴺ"
+      "Һ⍛ര⊖ⴳꕊᴺ"
     ]
   },
   {
@@ -6804,7 +6804,7 @@ window.signFontDictionary = [
       "i(6LEBLE"
     ],
     "unicodeSigns": [
-      "Һᓂ⩇XṾ>XṾ"
+      "Һᓂ⩇☓Ṿᐳ☓Ṿ"
     ]
   },
   {
@@ -6813,7 +6813,7 @@ window.signFontDictionary = [
       "i(0E-i(0A"
     ],
     "unicodeSigns": [
-      "ҺᓂᨓṾ-Һᓂᨓ<"
+      "ҺᓂᨓṾ-Һᓂᨓᐸ"
     ]
   },
   {
@@ -6822,7 +6822,7 @@ window.signFontDictionary = [
       "aP(d%PLy"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂ|Ō⸝Xᴺ"
+      "റ⸝ᓂ∣ō⸝☓ᴺ"
     ]
   },
   {
@@ -6831,7 +6831,7 @@ window.signFontDictionary = [
       "n\"Q!Ly"
     ],
     "unicodeSigns": [
-      "ቨ⊖ₒⵀXᴺ"
+      "ቨ⊖ₒⵀ☓ᴺ"
     ]
   },
   {
@@ -6840,7 +6840,7 @@ window.signFontDictionary = [
       "g!!LDAx"
     ],
     "unicodeSigns": [
-      "⊃ⵀⵀXᐲ<ᙾ"
+      "⊃ⵀⵀ☓ᐲᐸᙾ"
     ]
   },
   {
@@ -6858,7 +6858,7 @@ window.signFontDictionary = [
       "i(6LJG"
     ],
     "unicodeSigns": [
-      "Һᓂ⩇Xᘕᕤ"
+      "Һᓂ⩇☓ᘕᕤ"
     ]
   },
   {
@@ -6867,7 +6867,7 @@ window.signFontDictionary = [
       "i(b!LJD"
     ],
     "unicodeSigns": [
-      "ҺᓂΠⵀXᘕᐲ"
+      "ҺᓂΠⵀ☓ᘕᐲ"
     ]
   },
   {
@@ -6877,8 +6877,8 @@ window.signFontDictionary = [
       "fQBAL"
     ],
     "unicodeSigns": [
-      "⊃ѵ><X",
-      "ᗐₒ><X"
+      "⊃ѵᐳᐸ☓",
+      "ᗐₒᐳᐸ☓"
     ]
   },
   {
@@ -6887,7 +6887,7 @@ window.signFontDictionary = [
       "fQ&EDwy"
     ],
     "unicodeSigns": [
-      "ᗐₒO̱Ṿᐲᣛᴺ"
+      "ᗐₒ⍛Ṿᐲᣛᴺ"
     ]
   },
   {
@@ -6896,7 +6896,7 @@ window.signFontDictionary = [
       "fQ&EDwzzy"
     ],
     "unicodeSigns": [
-      "ᗐₒO̱Ṿᐲᣛ⁷⁷ᴺ"
+      "ᗐₒ⍛Ṿᐲᣛ⁷⁷ᴺ"
     ]
   },
   {
@@ -6905,7 +6905,7 @@ window.signFontDictionary = [
       "u(b!LDuRy"
     ],
     "unicodeSigns": [
-      "ᐯᓂΠⵀXᐲᐯ℩ᴺ"
+      "ᐯᓂΠⵀ☓ᐲᐯ℩ᴺ"
     ]
   },
   {
@@ -6914,7 +6914,7 @@ window.signFontDictionary = [
       "dR(5LFy"
     ],
     "unicodeSigns": [
-      "|℩ᓂᒍXᘐᴺ"
+      "∣℩ᓂᒍ☓ᘐᴺ"
     ]
   },
   {
@@ -6923,7 +6923,7 @@ window.signFontDictionary = [
       "k&%EL"
     ],
     "unicodeSigns": [
-      "७O̱ŌṾX"
+      "७⍛ōṾ☓"
     ]
   },
   {
@@ -6932,7 +6932,7 @@ window.signFontDictionary = [
       "dR(b!MJy"
     ],
     "unicodeSigns": [
-      "|℩ᓂΠⵀⴳᘕᴺ"
+      "∣℩ᓂΠⵀⴳᘕᴺ"
     ]
   },
   {
@@ -6941,7 +6941,7 @@ window.signFontDictionary = [
       "b%&DL"
     ],
     "unicodeSigns": [
-      "ΠŌO̱ᐲX"
+      "Πō⍛ᐲ☓"
     ]
   },
   {
@@ -6950,7 +6950,7 @@ window.signFontDictionary = [
       "j%3MJy"
     ],
     "unicodeSigns": [
-      "ЧŌ⦣ⴳᘕᴺ"
+      "Чō⦣ⴳᘕᴺ"
     ]
   },
   {
@@ -6960,8 +6960,8 @@ window.signFontDictionary = [
       "k%b!ME"
     ],
     "unicodeSigns": [
-      "|ŌΠⵀⴳṾ",
-      "७ŌΠⵀⴳṾ"
+      "∣ōΠⵀⴳṾ",
+      "७ōΠⵀⴳṾ"
     ]
   },
   {
@@ -6970,7 +6970,7 @@ window.signFontDictionary = [
       "k&Cy"
     ],
     "unicodeSigns": [
-      "७O̱ⵢᴺ"
+      "७⍛ⵢᴺ"
     ]
   },
   {
@@ -6979,7 +6979,7 @@ window.signFontDictionary = [
       "k%:LE;L"
     ],
     "unicodeSigns": [
-      "७ŌᑲXṾᕟX"
+      "७ōᑲ☓Ṿᕟ☓"
     ]
   },
   {
@@ -6988,7 +6988,7 @@ window.signFontDictionary = [
       "o!5L-o!!L"
     ],
     "unicodeSigns": [
-      "OⵀᒍX-OⵀⵀX"
+      "Оⵀᒍ☓-Оⵀⵀ☓"
     ]
   },
   {
@@ -6997,7 +6997,7 @@ window.signFontDictionary = [
       "k!b!LJLy"
     ],
     "unicodeSigns": [
-      "७ⵀΠⵀXᘕXᴺ"
+      "७ⵀΠⵀ☓ᘕ☓ᴺ"
     ]
   },
   {
@@ -7006,7 +7006,7 @@ window.signFontDictionary = [
       "aQ&9S0SEvy"
     ],
     "unicodeSigns": [
-      "റₒO̱ɤ⁊ᨓ⁊Ṿ⁼ᴺ"
+      "റₒ⍛ɤ⁊ᨓ⁊Ṿ⁼ᴺ"
     ]
   },
   {
@@ -7015,7 +7015,7 @@ window.signFontDictionary = [
       "uR(b!EL"
     ],
     "unicodeSigns": [
-      "ᐯ℩ᓂΠⵀṾX"
+      "ᐯ℩ᓂΠⵀṾ☓"
     ]
   },
   {
@@ -7024,7 +7024,7 @@ window.signFontDictionary = [
       "d&P%PMIvy"
     ],
     "unicodeSigns": [
-      "|O̱⸝Ō⸝ⴳᘖ⁼ᴺ"
+      "∣⍛⸝ō⸝ⴳᘖ⁼ᴺ"
     ]
   },
   {
@@ -7033,7 +7033,7 @@ window.signFontDictionary = [
       "a!b!LSy"
     ],
     "unicodeSigns": [
-      "റⵀΠⵀX⁊ᴺ"
+      "റⵀΠⵀ☓⁊ᴺ"
     ]
   },
   {
@@ -7043,8 +7043,8 @@ window.signFontDictionary = [
       "bU!0Ly"
     ],
     "unicodeSigns": [
-      "Π⁊⸝ⵀᨓᘐX",
-      "Π⁊⸝ⵀᨓXᴺ"
+      "Π⁊⸝ⵀᨓᘐ☓",
+      "Π⁊⸝ⵀᨓ☓ᴺ"
     ]
   },
   {
@@ -7053,7 +7053,7 @@ window.signFontDictionary = [
       "b%0LIGEzz"
     ],
     "unicodeSigns": [
-      "ΠŌᨓXᘖᕤṾ⁷⁷"
+      "Πōᨓ☓ᘖᕤṾ⁷⁷"
     ]
   },
   {
@@ -7071,7 +7071,7 @@ window.signFontDictionary = [
       "h#b!MA"
     ],
     "unicodeSigns": [
-      "⫪ⵚΠⵀⴳ<"
+      "⫪ⵚΠⵀⴳᐸ"
     ]
   },
   {
@@ -7080,7 +7080,7 @@ window.signFontDictionary = [
       "h#b!MAy"
     ],
     "unicodeSigns": [
-      "⫪ⵚΠⵀⴳ<ᴺ"
+      "⫪ⵚΠⵀⴳᐸᴺ"
     ]
   },
   {
@@ -7089,7 +7089,7 @@ window.signFontDictionary = [
       "jP!b!EBL"
     ],
     "unicodeSigns": [
-      "Ч⸝ⵀΠⵀṾ>X"
+      "Ч⸝ⵀΠⵀṾᐳ☓"
     ]
   },
   {
@@ -7098,7 +7098,7 @@ window.signFontDictionary = [
       "dP%%LIyAB"
     ],
     "unicodeSigns": [
-      "|⸝ŌŌXᘖᴺ<>"
+      "∣⸝ōō☓ᘖᴺᐸᐳ"
     ]
   },
   {
@@ -7107,7 +7107,7 @@ window.signFontDictionary = [
       "dT!!ABN"
     ],
     "unicodeSigns": [
-      "|℩⸝ⵀⵀ<>¦"
+      "∣℩⸝ⵀⵀᐸᐳ¦"
     ]
   },
   {
@@ -7125,7 +7125,7 @@ window.signFontDictionary = [
       "i((ELE"
     ],
     "unicodeSigns": [
-      "ҺᓂᓂṾXṾ"
+      "ҺᓂᓂṾ☓Ṿ"
     ]
   },
   {
@@ -7143,7 +7143,7 @@ window.signFontDictionary = [
       "dP%b!MJ"
     ],
     "unicodeSigns": [
-      "|⸝ŌΠⵀⴳᘕ"
+      "∣⸝ōΠⵀⴳᘕ"
     ]
   },
   {
@@ -7152,7 +7152,7 @@ window.signFontDictionary = [
       "d#57LFvy"
     ],
     "unicodeSigns": [
-      "|ⵚᒍᒐXᘐ⁼ᴺ"
+      "∣ⵚᒍᒐ☓ᘐ⁼ᴺ"
     ]
   },
   {
@@ -7161,7 +7161,7 @@ window.signFontDictionary = [
       "dP!b!LEL"
     ],
     "unicodeSigns": [
-      "|⸝ⵀΠⵀXṾX"
+      "∣⸝ⵀΠⵀ☓Ṿ☓"
     ]
   },
   {
@@ -7170,7 +7170,7 @@ window.signFontDictionary = [
       "s%%Gvy"
     ],
     "unicodeSigns": [
-      "രŌŌᕤ⁼ᴺ"
+      "രōōᕤ⁼ᴺ"
     ]
   },
   {
@@ -7179,7 +7179,7 @@ window.signFontDictionary = [
       "dP!:Ly"
     ],
     "unicodeSigns": [
-      "|⸝ⵀᑲXᴺ"
+      "∣⸝ⵀᑲ☓ᴺ"
     ]
   },
   {
@@ -7188,7 +7188,7 @@ window.signFontDictionary = [
       "a*b(LGv"
     ],
     "unicodeSigns": [
-      "റ⊕ΠᓂXᕤ⁼"
+      "റ⊕Πᓂ☓ᕤ⁼"
     ]
   },
   {
@@ -7197,7 +7197,7 @@ window.signFontDictionary = [
       "n&8SEy"
     ],
     "unicodeSigns": [
-      "ቨO̱ᑯ⁊Ṿᴺ"
+      "ቨ⍛ᑯ⁊Ṿᴺ"
     ]
   },
   {
@@ -7206,7 +7206,7 @@ window.signFontDictionary = [
       "pS!b!LDo0L"
     ],
     "unicodeSigns": [
-      "✳⁊ⵀΠⵀXᐲOᨓX"
+      "✳⁊ⵀΠⵀ☓ᐲОᨓ☓"
     ]
   },
   {
@@ -7216,8 +7216,8 @@ window.signFontDictionary = [
       "b&5SJ&Gy"
     ],
     "unicodeSigns": [
-      "ΠO̱ᒍ⁊ᕤᴺ",
-      "ΠO̱ᒍ⁊ᘕO̱ᕤᴺ"
+      "Π⍛ᒍ⁊ᕤᴺ",
+      "Π⍛ᒍ⁊ᘕ⍛ᕤᴺ"
     ]
   },
   {
@@ -7226,7 +7226,7 @@ window.signFontDictionary = [
       "dP%6Ly"
     ],
     "unicodeSigns": [
-      "|⸝Ō⩇Xᴺ"
+      "∣⸝ō⩇☓ᴺ"
     ]
   },
   {
@@ -7235,7 +7235,7 @@ window.signFontDictionary = [
       "k&%LGEv"
     ],
     "unicodeSigns": [
-      "७O̱ŌXᕤṾ⁼"
+      "७⍛ō☓ᕤṾ⁼"
     ]
   },
   {
@@ -7245,8 +7245,8 @@ window.signFontDictionary = [
       "aP#6L-aP#b!L"
     ],
     "unicodeSigns": [
-      "റ⸝ⵚ⩇X-റ⸝ⵚⵚX",
-      "റ⸝ⵚ⩇X-റ⸝ⵚΠⵀX"
+      "റ⸝ⵚ⩇☓-റ⸝ⵚⵚ☓",
+      "റ⸝ⵚ⩇☓-റ⸝ⵚΠⵀ☓"
     ]
   },
   {
@@ -7255,7 +7255,7 @@ window.signFontDictionary = [
       "bS$$Ly"
     ],
     "unicodeSigns": [
-      "Π⁊ⵕⵕXᴺ"
+      "Π⁊ⵕⵕ☓ᴺ"
     ]
   },
   {
@@ -7264,7 +7264,7 @@ window.signFontDictionary = [
       "dP!Hy"
     ],
     "unicodeSigns": [
-      "|⸝ⵀꕊᴺ"
+      "∣⸝ⵀꕊᴺ"
     ]
   },
   {
@@ -7273,7 +7273,7 @@ window.signFontDictionary = [
       "dP%%BALy"
     ],
     "unicodeSigns": [
-      "|⸝ŌŌ><Xᴺ"
+      "∣⸝ōōᐳᐸ☓ᴺ"
     ]
   },
   {
@@ -7282,7 +7282,7 @@ window.signFontDictionary = [
       "h(5LDy"
     ],
     "unicodeSigns": [
-      "⫪ᓂᒍXᐲᴺ"
+      "⫪ᓂᒍ☓ᐲᴺ"
     ]
   },
   {
@@ -7291,7 +7291,7 @@ window.signFontDictionary = [
       "b%6LB"
     ],
     "unicodeSigns": [
-      "ΠŌ⩇X>"
+      "Πō⩇☓ᐳ"
     ]
   },
   {
@@ -7300,7 +7300,7 @@ window.signFontDictionary = [
       "u\"b!EL"
     ],
     "unicodeSigns": [
-      "ᐯ⊖ΠⵀṾX"
+      "ᐯ⊖ΠⵀṾ☓"
     ]
   },
   {
@@ -7309,7 +7309,7 @@ window.signFontDictionary = [
       "b&&Dv"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱ᐲ⁼"
+      "Π⍛⍛ᐲ⁼"
     ]
   },
   {
@@ -7318,7 +7318,7 @@ window.signFontDictionary = [
       "q6DqPLy"
     ],
     "unicodeSigns": [
-      "ᕬ⩇ᐲᕬ⸝Xᴺ"
+      "ᕬ⩇ᐲᕬ⸝☓ᴺ"
     ]
   },
   {
@@ -7327,7 +7327,7 @@ window.signFontDictionary = [
       "qP%%JDAB"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ŌŌᘕᐲ<>"
+      "ᕬ⸝ōōᘕᐲᐸᐳ"
     ]
   },
   {
@@ -7337,8 +7337,8 @@ window.signFontDictionary = [
       "d(/SCEzz"
     ],
     "unicodeSigns": [
-      "രᓂ|ᓂXⵢṾ|",
-      "|ᓂᕂ⁊ⵢṾ⁷⁷"
+      "രᓂ∣ᓂ☓ⵢṾ∣",
+      "∣ᓂᕂ⁊ⵢṾ⁷⁷"
     ]
   },
   {
@@ -7347,7 +7347,7 @@ window.signFontDictionary = [
       "qZ!9LGqN"
     ],
     "unicodeSigns": [
-      "ᕬ⊥ⵀɤXᕤᕬ¦"
+      "ᕬ⊥ⵀɤ☓ᕤᕬ¦"
     ]
   },
   {
@@ -7356,7 +7356,7 @@ window.signFontDictionary = [
       "c&%LFx"
     ],
     "unicodeSigns": [
-      "CO̱ŌXᘐᙾ"
+      "С⍛ō☓ᘐᙾ"
     ]
   },
   {
@@ -7365,7 +7365,7 @@ window.signFontDictionary = [
       "pR!0LDJF"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᨓXᐲᘕᘐ"
+      "✳℩ⵀᨓ☓ᐲᘕᘐ"
     ]
   },
   {
@@ -7401,7 +7401,7 @@ window.signFontDictionary = [
       "dR!6Czzy"
     ],
     "unicodeSigns": [
-      "|℩ⵀ⩇ⵢ⁷⁷ᴺ"
+      "∣℩ⵀ⩇ⵢ⁷⁷ᴺ"
     ]
   },
   {
@@ -7410,7 +7410,7 @@ window.signFontDictionary = [
       "f%6LGEG"
     ],
     "unicodeSigns": [
-      "ᗐŌ⩇XᕤṾᕤ"
+      "ᗐō⩇☓ᕤṾᕤ"
     ]
   },
   {
@@ -7419,7 +7419,7 @@ window.signFontDictionary = [
       "bS&b!LyE"
     ],
     "unicodeSigns": [
-      "Π⁊O̱ΠⵀXᴺṾ"
+      "Π⁊⍛Πⵀ☓ᴺṾ"
     ]
   },
   {
@@ -7428,7 +7428,7 @@ window.signFontDictionary = [
       "oS!b!MyE"
     ],
     "unicodeSigns": [
-      "O⁊ⵀΠⵀⴳᴺṾ"
+      "О⁊ⵀΠⵀⴳᴺṾ"
     ]
   },
   {
@@ -7437,7 +7437,7 @@ window.signFontDictionary = [
       "c%2L"
     ],
     "unicodeSigns": [
-      "CŌᖌX"
+      "Сōᖌ☓"
     ]
   },
   {
@@ -7446,7 +7446,7 @@ window.signFontDictionary = [
       "aQ&NaPy"
     ],
     "unicodeSigns": [
-      "റₒO̱¦റ⸝ᴺ"
+      "റₒ⍛¦റ⸝ᴺ"
     ]
   },
   {
@@ -7455,7 +7455,7 @@ window.signFontDictionary = [
       "bS!<Ly"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀЭXᴺ"
+      "Π⁊ⵀЭ☓ᴺ"
     ]
   },
   {
@@ -7464,7 +7464,7 @@ window.signFontDictionary = [
       "dP%9LDy"
     ],
     "unicodeSigns": [
-      "|⸝ŌɤXᐲᴺ"
+      "∣⸝ōɤ☓ᐲᴺ"
     ]
   },
   {
@@ -7482,7 +7482,7 @@ window.signFontDictionary = [
       "s&\"JL"
     ],
     "unicodeSigns": [
-      "രO̱⊖ᘕX"
+      "ര⍛⊖ᘕ☓"
     ]
   },
   {
@@ -7491,7 +7491,7 @@ window.signFontDictionary = [
       "d%P6LEGy"
     ],
     "unicodeSigns": [
-      "|Ō⸝⩇XṾᕤᴺ"
+      "∣ō⸝⩇☓Ṿᕤᴺ"
     ]
   },
   {
@@ -7500,7 +7500,7 @@ window.signFontDictionary = [
       "d#\"MF\"S"
     ],
     "unicodeSigns": [
-      "|ⵚ⊖ⴳᘐ⊖⁊"
+      "∣ⵚ⊖ⴳᘐ⊖⁊"
     ]
   },
   {
@@ -7509,7 +7509,7 @@ window.signFontDictionary = [
       "d!!ABN"
     ],
     "unicodeSigns": [
-      "|ⵀⵀ<>¦"
+      "∣ⵀⵀᐸᐳ¦"
     ]
   },
   {
@@ -7518,7 +7518,7 @@ window.signFontDictionary = [
       "cS!0E"
     ],
     "unicodeSigns": [
-      "C⁊ⵀᨓṾ"
+      "С⁊ⵀᨓṾ"
     ]
   },
   {
@@ -7536,7 +7536,7 @@ window.signFontDictionary = [
       "b%&LnnKE"
     ],
     "unicodeSigns": [
-      "ΠŌO̱Xቨቨ≈Ṿ"
+      "Πō⍛☓ቨቨ≈Ṿ"
     ]
   },
   {
@@ -7565,9 +7565,9 @@ window.signFontDictionary = [
       "c%3HyB"
     ],
     "unicodeSigns": [
-      "CŌ⦣ꕊᴺ",
-      "CŌ⦣ꕊ⁼ᴺ",
-      "CŌ⦣ꕊᴺ>"
+      "Сō⦣ꕊᴺ",
+      "Сō⦣ꕊ⁼ᴺ",
+      "Сō⦣ꕊᴺᐳ"
     ]
   },
   {
@@ -7576,7 +7576,7 @@ window.signFontDictionary = [
       "oS((LIEpv"
     ],
     "unicodeSigns": [
-      "O⁊ᓂᓂXᘖṾ✳⁼"
+      "О⁊ᓂᓂ☓ᘖṾ✳⁼"
     ]
   },
   {
@@ -7585,7 +7585,7 @@ window.signFontDictionary = [
       "uP%3LE"
     ],
     "unicodeSigns": [
-      "ᐯ⸝Ō⦣XṾ"
+      "ᐯ⸝ō⦣☓Ṿ"
     ]
   },
   {
@@ -7594,7 +7594,7 @@ window.signFontDictionary = [
       "a!:8Lv"
     ],
     "unicodeSigns": [
-      "റⵀᑲᑯX⁼"
+      "റⵀᑲᑯ☓⁼"
     ]
   },
   {
@@ -7612,7 +7612,7 @@ window.signFontDictionary = [
       "dP%6Ly"
     ],
     "unicodeSigns": [
-      "|⸝Ō⩇Xᴺ"
+      "∣⸝ō⩇☓ᴺ"
     ]
   },
   {
@@ -7630,7 +7630,7 @@ window.signFontDictionary = [
       "pR++MI&vy"
     ],
     "unicodeSigns": [
-      "✳℩◷◷ⴳᘖO̱⁼ᴺ"
+      "✳℩◷◷ⴳᘖ⍛⁼ᴺ"
     ]
   },
   {
@@ -7639,7 +7639,7 @@ window.signFontDictionary = [
       "g*b&MDy"
     ],
     "unicodeSigns": [
-      "⊃⊕ΠO̱ⴳᐲᴺ"
+      "⊃⊕Π⍛ⴳᐲᴺ"
     ]
   },
   {
@@ -7657,7 +7657,7 @@ window.signFontDictionary = [
       "s(c*LABcc"
     ],
     "unicodeSigns": [
-      "രᓂC⊕X<>CC"
+      "രᓂС⊕☓ᐸᐳСС"
     ]
   },
   {
@@ -7666,7 +7666,7 @@ window.signFontDictionary = [
       "s&%LJ\"Lv"
     ],
     "unicodeSigns": [
-      "രO̱ŌXᘕ⊖X⁼"
+      "ര⍛ō☓ᘕ⊖☓⁼"
     ]
   },
   {
@@ -7675,7 +7675,7 @@ window.signFontDictionary = [
       "iP!6FL"
     ],
     "unicodeSigns": [
-      "Һ⸝ⵀ⩇ᘐX"
+      "Һ⸝ⵀ⩇ᘐ☓"
     ]
   },
   {
@@ -7684,7 +7684,7 @@ window.signFontDictionary = [
       "b!!LJxL"
     ],
     "unicodeSigns": [
-      "ΠⵀⵀXᘕᙾX"
+      "Πⵀⵀ☓ᘕᙾ☓"
     ]
   },
   {
@@ -7694,8 +7694,8 @@ window.signFontDictionary = [
       "p%0LE9L"
     ],
     "unicodeSigns": [
-      "C⁊ŌᨓXᕤO⁊¦",
-      "✳ŌᨓXṾɤX"
+      "С⁊ōᨓ☓ᕤО⁊¦",
+      "✳ōᨓ☓Ṿɤ☓"
     ]
   },
   {
@@ -7722,7 +7722,7 @@ window.signFontDictionary = [
       "c**HL"
     ],
     "unicodeSigns": [
-      "C⊕⊕ꕊX"
+      "С⊕⊕ꕊ☓"
     ]
   },
   {
@@ -7731,7 +7731,7 @@ window.signFontDictionary = [
       "s&b!ELy"
     ],
     "unicodeSigns": [
-      "രO̱ΠⵀṾXᴺ"
+      "ര⍛ΠⵀṾ☓ᴺ"
     ]
   },
   {
@@ -7758,7 +7758,7 @@ window.signFontDictionary = [
       "fS&%LBxy"
     ],
     "unicodeSigns": [
-      "ᗐ⁊O̱ŌX>ᙾᴺ"
+      "ᗐ⁊⍛ō☓ᐳᙾᴺ"
     ]
   },
   {
@@ -7767,7 +7767,7 @@ window.signFontDictionary = [
       "u(b!LJL"
     ],
     "unicodeSigns": [
-      "ᐯᓂΠⵀXᘕX"
+      "ᐯᓂΠⵀ☓ᘕ☓"
     ]
   },
   {
@@ -7776,7 +7776,7 @@ window.signFontDictionary = [
       "iP%%Lvy"
     ],
     "unicodeSigns": [
-      "Һ⸝ŌŌX⁼ᴺ"
+      "Һ⸝ōō☓⁼ᴺ"
     ]
   },
   {
@@ -7785,7 +7785,7 @@ window.signFontDictionary = [
       "aQ((LGy"
     ],
     "unicodeSigns": [
-      "റₒᓂᓂXᕤᴺ"
+      "റₒᓂᓂ☓ᕤᴺ"
     ]
   },
   {
@@ -7794,7 +7794,7 @@ window.signFontDictionary = [
       "fQ*b%MJy"
     ],
     "unicodeSigns": [
-      "ᗐₒ⊕ΠŌⴳᘕᴺ"
+      "ᗐₒ⊕Πōⴳᘕᴺ"
     ]
   },
   {
@@ -7812,7 +7812,7 @@ window.signFontDictionary = [
       "d!!BAL"
     ],
     "unicodeSigns": [
-      "|ⵀⵀ><X"
+      "∣ⵀⵀᐳᐸ☓"
     ]
   },
   {
@@ -7821,7 +7821,7 @@ window.signFontDictionary = [
       "p!!BAoS$$L"
     ],
     "unicodeSigns": [
-      "✳ⵀⵀ><O⁊ⵕⵕX"
+      "✳ⵀⵀᐳᐸО⁊ⵕⵕ☓"
     ]
   },
   {
@@ -7830,7 +7830,7 @@ window.signFontDictionary = [
       "p!!BAoS$$y"
     ],
     "unicodeSigns": [
-      "✳ⵀⵀ><O⁊ⵕⵕᴺ"
+      "✳ⵀⵀᐳᐸО⁊ⵕⵕᴺ"
     ]
   },
   {
@@ -7839,7 +7839,7 @@ window.signFontDictionary = [
       "p(0LGs"
     ],
     "unicodeSigns": [
-      "✳ᓂᨓXᕤര"
+      "✳ᓂᨓ☓ᕤര"
     ]
   },
   {
@@ -7848,7 +7848,7 @@ window.signFontDictionary = [
       "dR(8L-dR**L"
     ],
     "unicodeSigns": [
-      "|℩ᓂᑯX-|℩⊕⊕X"
+      "∣℩ᓂᑯ☓-∣℩⊕⊕☓"
     ]
   },
   {
@@ -7857,7 +7857,7 @@ window.signFontDictionary = [
       "o&%MJ!vy"
     ],
     "unicodeSigns": [
-      "OO̱Ōⴳᘕⵀ⁼ᴺ"
+      "О⍛ōⴳᘕⵀ⁼ᴺ"
     ]
   },
   {
@@ -7866,7 +7866,7 @@ window.signFontDictionary = [
       "s!!8S:SBApABs"
     ],
     "unicodeSigns": [
-      "രⵀⵀᑯ⁊ᑲ⁊><✳<>ര"
+      "രⵀⵀᑯ⁊ᑲ⁊ᐳᐸ✳ᐸᐳര"
     ]
   },
   {
@@ -7875,7 +7875,7 @@ window.signFontDictionary = [
       "c(8SNsy"
     ],
     "unicodeSigns": [
-      "Cᓂᑯ⁊¦രᴺ"
+      "Сᓂᑯ⁊¦രᴺ"
     ]
   },
   {
@@ -7884,7 +7884,7 @@ window.signFontDictionary = [
       "c&Eswy"
     ],
     "unicodeSigns": [
-      "CO̱Ṿരᣛᴺ"
+      "С⍛Ṿരᣛᴺ"
     ]
   },
   {
@@ -7894,8 +7894,8 @@ window.signFontDictionary = [
       "d%b!FLy"
     ],
     "unicodeSigns": [
-      "|ŌΠⵀ>Xᴺ",
-      "|ŌΠⵀᘐXᴺ"
+      "∣ōΠⵀᐳ☓ᴺ",
+      "∣ōΠⵀᘐ☓ᴺ"
     ]
   },
   {
@@ -7904,7 +7904,7 @@ window.signFontDictionary = [
       "d!b!MJ&"
     ],
     "unicodeSigns": [
-      "|ⵀΠⵀⴳᘕO̱"
+      "∣ⵀΠⵀⴳᘕ⍛"
     ]
   },
   {
@@ -7922,7 +7922,7 @@ window.signFontDictionary = [
       "d#(SLAByA"
     ],
     "unicodeSigns": [
-      "|ⵚᓂ⁊X<>ᴺ<"
+      "∣ⵚᓂ⁊☓ᐸᐳᴺᐸ"
     ]
   },
   {
@@ -7931,7 +7931,7 @@ window.signFontDictionary = [
       "uP%/1LEuTvy"
     ],
     "unicodeSigns": [
-      "ᐯ⸝ŌᕂᕃXṾᐯ℩⸝⁼ᴺ"
+      "ᐯ⸝ōᕂᕃ☓Ṿᐯ℩⸝⁼ᴺ"
     ]
   },
   {
@@ -7940,7 +7940,7 @@ window.signFontDictionary = [
       "pR%6BEs"
     ],
     "unicodeSigns": [
-      "✳℩Ō⩇>Ṿര"
+      "✳℩ō⩇ᐳṾര"
     ]
   },
   {
@@ -7949,7 +7949,7 @@ window.signFontDictionary = [
       "iP!6Ly"
     ],
     "unicodeSigns": [
-      "Һ⸝ⵀ⩇Xᴺ"
+      "Һ⸝ⵀ⩇☓ᴺ"
     ]
   },
   {
@@ -7958,7 +7958,7 @@ window.signFontDictionary = [
       "pR!!9S<SAFwy"
     ],
     "unicodeSigns": [
-      "✳℩ⵀⵀɤ⁊Э⁊<ᘐᣛᴺ"
+      "✳℩ⵀⵀɤ⁊Э⁊ᐸᘐᣛᴺ"
     ]
   },
   {
@@ -7987,7 +7987,7 @@ window.signFontDictionary = [
       "oS(b!ELy"
     ],
     "unicodeSigns": [
-      "O⁊ᓂΠⵀṾXᴺ"
+      "О⁊ᓂΠⵀṾ☓ᴺ"
     ]
   },
   {
@@ -7996,7 +7996,7 @@ window.signFontDictionary = [
       "pR!;=LDvy"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᕟᕞXᐲ⁼ᴺ"
+      "✳℩ⵀᕟᕞ☓ᐲ⁼ᴺ"
     ]
   },
   {
@@ -8005,7 +8005,7 @@ window.signFontDictionary = [
       "d&P%PME"
     ],
     "unicodeSigns": [
-      "|O̱⸝Ō⸝ⴳṾ"
+      "∣⍛⸝ō⸝ⴳṾ"
     ]
   },
   {
@@ -8014,7 +8014,7 @@ window.signFontDictionary = [
       "hQ*d(LGvy"
     ],
     "unicodeSigns": [
-      "⫪ₒ⊕|ᓂXᕤ⁼ᴺ"
+      "⫪ₒ⊕∣ᓂ☓ᕤ⁼ᴺ"
     ]
   },
   {
@@ -8023,7 +8023,7 @@ window.signFontDictionary = [
       "p%/1LEGv"
     ],
     "unicodeSigns": [
-      "✳ŌᕂᕃXṾᕤ⁼"
+      "✳ōᕂᕃ☓Ṿᕤ⁼"
     ]
   },
   {
@@ -8050,7 +8050,7 @@ window.signFontDictionary = [
       "o!!Lvy"
     ],
     "unicodeSigns": [
-      "OⵀⵀX⁼ᴺ"
+      "Оⵀⵀ☓⁼ᴺ"
     ]
   },
   {
@@ -8059,7 +8059,7 @@ window.signFontDictionary = [
       "b)R&MJ!"
     ],
     "unicodeSigns": [
-      "Πᓇ℩O̱ⴳᘕⵀ"
+      "Πᓇ℩⍛ⴳᘕⵀ"
     ]
   },
   {
@@ -8068,7 +8068,7 @@ window.signFontDictionary = [
       "aP!!DLD"
     ],
     "unicodeSigns": [
-      "റ⸝ⵀⵀᐲXᐲ"
+      "റ⸝ⵀⵀᐲ☓ᐲ"
     ]
   },
   {
@@ -8077,7 +8077,7 @@ window.signFontDictionary = [
       "p%6Ly"
     ],
     "unicodeSigns": [
-      "✳Ō⩇Xᴺ"
+      "✳ō⩇☓ᴺ"
     ]
   },
   {
@@ -8088,7 +8088,7 @@ window.signFontDictionary = [
     ],
     "unicodeSigns": [
       "രᓂᕟ⁊ᕞ⁊ᘖ⁼⁷⁷ᴺ",
-      "രŌŌᕟ⁊ᕞ⁊ᘖ⊖⁼⁷⁷ᴺ"
+      "രōōᕟ⁊ᕞ⁊ᘖ⊖⁼⁷⁷ᴺ"
     ]
   },
   {
@@ -8097,7 +8097,7 @@ window.signFontDictionary = [
       "d%3ALAy"
     ],
     "unicodeSigns": [
-      "|Ō⦣<X<ᴺ"
+      "∣ō⦣ᐸ☓ᐸᴺ"
     ]
   },
   {
@@ -8106,7 +8106,7 @@ window.signFontDictionary = [
       "d(6MH"
     ],
     "unicodeSigns": [
-      "|ᓂ⩇ⴳꕊ"
+      "∣ᓂ⩇ⴳꕊ"
     ]
   },
   {
@@ -8115,7 +8115,7 @@ window.signFontDictionary = [
       "o%%8SB:Sv"
     ],
     "unicodeSigns": [
-      "OŌŌᑯ⁊>ᑲ⁊⁼"
+      "Оōōᑯ⁊ᐳᑲ⁊⁼"
     ]
   },
   {
@@ -8124,7 +8124,7 @@ window.signFontDictionary = [
       "c!!BGBv"
     ],
     "unicodeSigns": [
-      "Cⵀⵀ>ᕤ>⁼"
+      "Сⵀⵀᐳᕤᐳ⁼"
     ]
   },
   {
@@ -8133,7 +8133,7 @@ window.signFontDictionary = [
       "oS%%J\"Apv"
     ],
     "unicodeSigns": [
-      "O⁊ŌŌᘕ⊖<✳⁼"
+      "О⁊ōōᘕ⊖ᐸ✳⁼"
     ]
   },
   {
@@ -8142,7 +8142,7 @@ window.signFontDictionary = [
       "p$b%MJy"
     ],
     "unicodeSigns": [
-      "✳ⵕΠŌⴳᘕᴺ"
+      "✳ⵕΠōⴳᘕᴺ"
     ]
   },
   {
@@ -8151,7 +8151,7 @@ window.signFontDictionary = [
       "s%%EGv"
     ],
     "unicodeSigns": [
-      "രŌŌṾᕤ⁼"
+      "രōōṾᕤ⁼"
     ]
   },
   {
@@ -8160,7 +8160,7 @@ window.signFontDictionary = [
       "o!0KHy"
     ],
     "unicodeSigns": [
-      "Oⵀᨓ≈ꕊᴺ"
+      "Оⵀᨓ≈ꕊᴺ"
     ]
   },
   {
@@ -8169,7 +8169,7 @@ window.signFontDictionary = [
       "k&%MBx"
     ],
     "unicodeSigns": [
-      "७O̱Ōⴳ>ᙾ"
+      "७⍛ōⴳᐳᙾ"
     ]
   },
   {
@@ -8178,7 +8178,7 @@ window.signFontDictionary = [
       "oQ!6MAB"
     ],
     "unicodeSigns": [
-      "Oₒⵀ⩇ⴳ<>"
+      "Оₒⵀ⩇ⴳᐸᐳ"
     ]
   },
   {
@@ -8187,7 +8187,7 @@ window.signFontDictionary = [
       "b!9L"
     ],
     "unicodeSigns": [
-      "ΠⵀɤX"
+      "Πⵀɤ☓"
     ]
   },
   {
@@ -8196,7 +8196,7 @@ window.signFontDictionary = [
       "aP(9Ly"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂɤXᴺ"
+      "റ⸝ᓂɤ☓ᴺ"
     ]
   },
   {
@@ -8205,7 +8205,7 @@ window.signFontDictionary = [
       "aQ(%Ezzy"
     ],
     "unicodeSigns": [
-      "റₒᓂŌṾ⁷⁷ᴺ"
+      "റₒᓂōṾ⁷⁷ᴺ"
     ]
   },
   {
@@ -8214,7 +8214,7 @@ window.signFontDictionary = [
       "h&P%PLGv"
     ],
     "unicodeSigns": [
-      "⫪O̱⸝Ō⸝Xᕤ⁼"
+      "⫪⍛⸝ō⸝☓ᕤ⁼"
     ]
   },
   {
@@ -8223,7 +8223,7 @@ window.signFontDictionary = [
       "h&P%PLy"
     ],
     "unicodeSigns": [
-      "⫪O̱⸝Ō⸝Xᴺ"
+      "⫪⍛⸝ō⸝☓ᴺ"
     ]
   },
   {
@@ -8232,7 +8232,7 @@ window.signFontDictionary = [
       "bS!!BAN"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀⵀ><¦"
+      "Π⁊ⵀⵀᐳᐸ¦"
     ]
   },
   {
@@ -8242,8 +8242,8 @@ window.signFontDictionary = [
       "b\"!GL"
     ],
     "unicodeSigns": [
-      "Πⵀ⊖ᘐX",
-      "Π⊖ⵀᕤX"
+      "Πⵀ⊖ᘐ☓",
+      "Π⊖ⵀᕤ☓"
     ]
   },
   {
@@ -8252,7 +8252,7 @@ window.signFontDictionary = [
       "bS!8(LEL"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀᑯᓂXṾX"
+      "Π⁊ⵀᑯᓂ☓Ṿ☓"
     ]
   },
   {
@@ -8261,7 +8261,7 @@ window.signFontDictionary = [
       "d(9MABDvy"
     ],
     "unicodeSigns": [
-      "|ᓂɤⴳ<>ᐲ⁼ᴺ"
+      "∣ᓂɤⴳᐸᐳᐲ⁼ᴺ"
     ]
   },
   {
@@ -8279,7 +8279,7 @@ window.signFontDictionary = [
       "b!\"LGE"
     ],
     "unicodeSigns": [
-      "Πⵀ⊖XᕤṾ"
+      "Πⵀ⊖☓ᕤṾ"
     ]
   },
   {
@@ -8288,7 +8288,7 @@ window.signFontDictionary = [
       "hS%/Iy"
     ],
     "unicodeSigns": [
-      "⫪⁊Ōᕂᘖᴺ"
+      "⫪⁊ōᕂᘖᴺ"
     ]
   },
   {
@@ -8307,8 +8307,8 @@ window.signFontDictionary = [
       "b&AEA"
     ],
     "unicodeSigns": [
-      "ΠO̱ⵢṾ",
-      "ΠO̱<Ṿ<"
+      "Π⍛ⵢṾ",
+      "Π⍛ᐸṾᐸ"
     ]
   },
   {
@@ -8317,7 +8317,7 @@ window.signFontDictionary = [
       "bS\"b!BLBy"
     ],
     "unicodeSigns": [
-      "Π⁊⊖Πⵀ>X>ᴺ"
+      "Π⁊⊖Πⵀᐳ☓ᐳᴺ"
     ]
   },
   {
@@ -8335,7 +8335,7 @@ window.signFontDictionary = [
       "g$b!oQLy"
     ],
     "unicodeSigns": [
-      "⊃ⵕΠⵀOₒXᴺ"
+      "⊃ⵕΠⵀОₒ☓ᴺ"
     ]
   },
   {
@@ -8353,7 +8353,7 @@ window.signFontDictionary = [
       "hS%5Iy"
     ],
     "unicodeSigns": [
-      "⫪⁊Ōᒍᘖᴺ"
+      "⫪⁊ōᒍᘖᴺ"
     ]
   },
   {
@@ -8362,7 +8362,7 @@ window.signFontDictionary = [
       "bS$b%Ly"
     ],
     "unicodeSigns": [
-      "Π⁊ⵕΠŌXᴺ"
+      "Π⁊ⵕΠō☓ᴺ"
     ]
   },
   {
@@ -8380,7 +8380,7 @@ window.signFontDictionary = [
       "p(24LIGvy"
     ],
     "unicodeSigns": [
-      "✳ᓂᖌᖍXᘖᕤ⁼ᴺ"
+      "✳ᓂᖌᖍ☓ᘖᕤ⁼ᴺ"
     ]
   },
   {
@@ -8390,8 +8390,8 @@ window.signFontDictionary = [
       "o&JEvzz"
     ],
     "unicodeSigns": [
-      "OO̱<>Ṿ",
-      "OO̱ᘕṾ⁼⁷⁷"
+      "О⍛ᐸᐳṾ",
+      "О⍛ᘕṾ⁼⁷⁷"
     ]
   },
   {
@@ -8400,7 +8400,7 @@ window.signFontDictionary = [
       "b)\"Ly"
     ],
     "unicodeSigns": [
-      "Πᓇ⊖Xᴺ"
+      "Πᓇ⊖☓ᴺ"
     ]
   },
   {
@@ -8419,8 +8419,8 @@ window.signFontDictionary = [
       "hS%0Hy"
     ],
     "unicodeSigns": [
-      "⫪⁊Ōᨓ>ᴺ",
-      "⫪⁊Ōᨓꕊᴺ"
+      "⫪⁊ōᨓᐳᴺ",
+      "⫪⁊ōᨓꕊᴺ"
     ]
   },
   {
@@ -8429,7 +8429,7 @@ window.signFontDictionary = [
       "d(3Ly"
     ],
     "unicodeSigns": [
-      "|ᓂ⦣Xᴺ"
+      "∣ᓂ⦣☓ᴺ"
     ]
   },
   {
@@ -8438,7 +8438,7 @@ window.signFontDictionary = [
       "aP#6LGzz"
     ],
     "unicodeSigns": [
-      "റ⸝ⵚ⩇Xᕤ⁷⁷"
+      "റ⸝ⵚ⩇☓ᕤ⁷⁷"
     ]
   },
   {
@@ -8447,7 +8447,7 @@ window.signFontDictionary = [
       "d(3LIG"
     ],
     "unicodeSigns": [
-      "|ᓂ⦣Xᘖᕤ"
+      "∣ᓂ⦣☓ᘖᕤ"
     ]
   },
   {
@@ -8465,7 +8465,7 @@ window.signFontDictionary = [
       "s\"69SLGpv"
     ],
     "unicodeSigns": [
-      "ര⊖⩇ɤ⁊Xᕤ✳⁼"
+      "ര⊖⩇ɤ⁊☓ᕤ✳⁼"
     ]
   },
   {
@@ -8474,7 +8474,7 @@ window.signFontDictionary = [
       "dR!2QLJGN"
     ],
     "unicodeSigns": [
-      "|℩ⵀᖌₒXᘕᕤ¦"
+      "∣℩ⵀᖌₒ☓ᘕᕤ¦"
     ]
   },
   {
@@ -8492,7 +8492,7 @@ window.signFontDictionary = [
       "o!!LJxL"
     ],
     "unicodeSigns": [
-      "OⵀⵀXᘕᙾX"
+      "Оⵀⵀ☓ᘕᙾ☓"
     ]
   },
   {
@@ -8501,7 +8501,7 @@ window.signFontDictionary = [
       "h#b$SLy"
     ],
     "unicodeSigns": [
-      "⫪ⵚΠⵕ⁊Xᴺ"
+      "⫪ⵚΠⵕ⁊☓ᴺ"
     ]
   },
   {
@@ -8510,7 +8510,7 @@ window.signFontDictionary = [
       "aP#6LGy"
     ],
     "unicodeSigns": [
-      "റ⸝ⵚ⩇Xᕤᴺ"
+      "റ⸝ⵚ⩇☓ᕤᴺ"
     ]
   },
   {
@@ -8519,7 +8519,7 @@ window.signFontDictionary = [
       "o!09SLEpv"
     ],
     "unicodeSigns": [
-      "Oⵀᨓɤ⁊XṾ✳⁼"
+      "Оⵀᨓɤ⁊☓Ṿ✳⁼"
     ]
   },
   {
@@ -8528,7 +8528,7 @@ window.signFontDictionary = [
       "p%8:FLv"
     ],
     "unicodeSigns": [
-      "✳ŌᑯᑲᘐX⁼"
+      "✳ōᑯᑲᘐ☓⁼"
     ]
   },
   {
@@ -8537,7 +8537,7 @@ window.signFontDictionary = [
       "b&&GEv"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱ᕤṾ⁼"
+      "Π⍛⍛ᕤṾ⁼"
     ]
   },
   {
@@ -8546,7 +8546,7 @@ window.signFontDictionary = [
       "o!!J\"vGx"
     ],
     "unicodeSigns": [
-      "Oⵀⵀᘕ⊖⁼ᕤᙾ"
+      "Оⵀⵀᘕ⊖⁼ᕤᙾ"
     ]
   },
   {
@@ -8555,7 +8555,7 @@ window.signFontDictionary = [
       "o&GkN"
     ],
     "unicodeSigns": [
-      "OO̱ᕤ७¦"
+      "О⍛ᕤ७¦"
     ]
   },
   {
@@ -8564,7 +8564,7 @@ window.signFontDictionary = [
       "o&b!EkL"
     ],
     "unicodeSigns": [
-      "OO̱ΠⵀṾ७X"
+      "О⍛ΠⵀṾ७☓"
     ]
   },
   {
@@ -8573,7 +8573,7 @@ window.signFontDictionary = [
       "c%6LEs"
     ],
     "unicodeSigns": [
-      "CŌ⩇XṾര"
+      "Сō⩇☓Ṿര"
     ]
   },
   {
@@ -8582,7 +8582,7 @@ window.signFontDictionary = [
       "b#\"EL"
     ],
     "unicodeSigns": [
-      "Πⵚ⊖ṾX"
+      "Πⵚ⊖Ṿ☓"
     ]
   },
   {
@@ -8591,7 +8591,7 @@ window.signFontDictionary = [
       "d(b!LJD"
     ],
     "unicodeSigns": [
-      "|ᓂΠⵀXᘕᐲ"
+      "∣ᓂΠⵀ☓ᘕᐲ"
     ]
   },
   {
@@ -8600,7 +8600,7 @@ window.signFontDictionary = [
       "dR(/MJy"
     ],
     "unicodeSigns": [
-      "|℩ᓂᕂⴳᘕᴺ"
+      "∣℩ᓂᕂⴳᘕᴺ"
     ]
   },
   {
@@ -8609,7 +8609,7 @@ window.signFontDictionary = [
       "d!Jzz"
     ],
     "unicodeSigns": [
-      "|ⵀᘕ⁷⁷"
+      "∣ⵀᘕ⁷⁷"
     ]
   },
   {
@@ -8618,7 +8618,7 @@ window.signFontDictionary = [
       "b%%LJAB"
     ],
     "unicodeSigns": [
-      "ΠŌŌXᘕ<>"
+      "Πōō☓ᘕᐸᐳ"
     ]
   },
   {
@@ -8627,7 +8627,7 @@ window.signFontDictionary = [
       "b%%LJA"
     ],
     "unicodeSigns": [
-      "ΠŌŌXᘕ<"
+      "Πōō☓ᘕᐸ"
     ]
   },
   {
@@ -8636,7 +8636,7 @@ window.signFontDictionary = [
       "s&&;S=SFv"
     ],
     "unicodeSigns": [
-      "രO̱O̱ᕟ⁊ᕞ⁊ᘐ⁼"
+      "ര⍛⍛ᕟ⁊ᕞ⁊ᘐ⁼"
     ]
   },
   {
@@ -8645,7 +8645,7 @@ window.signFontDictionary = [
       "b&%LD"
     ],
     "unicodeSigns": [
-      "ΠO̱ŌXᐲ"
+      "Π⍛ō☓ᐲ"
     ]
   },
   {
@@ -8654,7 +8654,7 @@ window.signFontDictionary = [
       "b!!LJv"
     ],
     "unicodeSigns": [
-      "ΠⵀⵀXᘕ⁼"
+      "Πⵀⵀ☓ᘕ⁼"
     ]
   },
   {
@@ -8663,7 +8663,7 @@ window.signFontDictionary = [
       "s&%LD"
     ],
     "unicodeSigns": [
-      "രO̱ŌXᐲ"
+      "ര⍛ō☓ᐲ"
     ]
   },
   {
@@ -8672,7 +8672,7 @@ window.signFontDictionary = [
       "d((LABE"
     ],
     "unicodeSigns": [
-      "|ᓂᓂX<>Ṿ"
+      "∣ᓂᓂ☓ᐸᐳṾ"
     ]
   },
   {
@@ -8681,7 +8681,7 @@ window.signFontDictionary = [
       "b!d(LEvy"
     ],
     "unicodeSigns": [
-      "Πⵀ|ᓂXṾ⁼ᴺ"
+      "Πⵀ∣ᓂ☓Ṿ⁼ᴺ"
     ]
   },
   {
@@ -8691,8 +8691,8 @@ window.signFontDictionary = [
       "o(dP%L-o(dP(L"
     ],
     "unicodeSigns": [
-      "|ᓂ|⸝ŌX-|ᓂ|⸝ᓂX",
-      "Oᓂ|⸝ŌX-Oᓂ|⸝ᓂX"
+      "∣ᓂ∣⸝ō☓-∣ᓂ∣⸝ᓂ☓",
+      "Оᓂ∣⸝ō☓-Оᓂ∣⸝ᓂ☓"
     ]
   },
   {
@@ -8701,7 +8701,7 @@ window.signFontDictionary = [
       "c%6Msy"
     ],
     "unicodeSigns": [
-      "CŌ⩇ⴳരᴺ"
+      "Сō⩇ⴳരᴺ"
     ]
   },
   {
@@ -8710,7 +8710,7 @@ window.signFontDictionary = [
       "o!6LBL"
     ],
     "unicodeSigns": [
-      "Oⵀ⩇X>X"
+      "Оⵀ⩇☓ᐳ☓"
     ]
   },
   {
@@ -8719,7 +8719,7 @@ window.signFontDictionary = [
       "bR%8LJB:L"
     ],
     "unicodeSigns": [
-      "Π℩ŌᑯXᘕ>ᑲX"
+      "Π℩ōᑯ☓ᘕᐳᑲ☓"
     ]
   },
   {
@@ -8728,7 +8728,7 @@ window.signFontDictionary = [
       "pS\"c*LAo"
     ],
     "unicodeSigns": [
-      "✳⁊⊖C⊕X<O"
+      "✳⁊⊖С⊕☓ᐸО"
     ]
   },
   {
@@ -8746,7 +8746,7 @@ window.signFontDictionary = [
       "b!3J&E"
     ],
     "unicodeSigns": [
-      "Πⵀ⦣ᘕO̱Ṿ"
+      "Πⵀ⦣ᘕ⍛Ṿ"
     ]
   },
   {
@@ -8755,7 +8755,7 @@ window.signFontDictionary = [
       "p!3Eo-fQ%b&D"
     ],
     "unicodeSigns": [
-      "✳ⵀ⦣ṾO-ᗐₒŌΠO̱ᐲ"
+      "✳ⵀ⦣ṾО-ᗐₒōΠ⍛ᐲ"
     ]
   },
   {
@@ -8764,7 +8764,7 @@ window.signFontDictionary = [
       "d(b!Ly"
     ],
     "unicodeSigns": [
-      "|ᓂΠⵀXᴺ"
+      "∣ᓂΠⵀ☓ᴺ"
     ]
   },
   {
@@ -8773,7 +8773,7 @@ window.signFontDictionary = [
       "dS!!BAy"
     ],
     "unicodeSigns": [
-      "|⁊ⵀⵀ><ᴺ"
+      "∣⁊ⵀⵀᐳᐸᴺ"
     ]
   },
   {
@@ -8809,7 +8809,7 @@ window.signFontDictionary = [
       "cQ!<MABy"
     ],
     "unicodeSigns": [
-      "CₒⵀЭⴳ<>ᴺ"
+      "СₒⵀЭⴳᐸᐳᴺ"
     ]
   },
   {
@@ -8819,8 +8819,8 @@ window.signFontDictionary = [
       "b&;)MEv-b&=)MEv"
     ],
     "unicodeSigns": [
-      "ΠⵚᕟᓇᕞᓇXᐲΠ℩⁼ᴺ",
-      "ΠO̱ᕟᓇⴳṾ⁼-ΠO̱ᕞᓇⴳṾ⁼"
+      "Πⵚᕟᓇᕞᓇ☓ᐲΠ℩⁼ᴺ",
+      "Π⍛ᕟᓇⴳṾ⁼-Π⍛ᕞᓇⴳṾ⁼"
     ]
   },
   {
@@ -8830,8 +8830,8 @@ window.signFontDictionary = [
       "bLBxy"
     ],
     "unicodeSigns": [
-      "ΠX>ᴺ",
-      "ΠX>ᙾᴺ"
+      "Π☓ᐳᴺ",
+      "Π☓ᐳᙾᴺ"
     ]
   },
   {
@@ -8858,7 +8858,7 @@ window.signFontDictionary = [
       "d%%Gvz"
     ],
     "unicodeSigns": [
-      "|ŌŌᕤ⁼⁷"
+      "∣ōōᕤ⁼⁷"
     ]
   },
   {
@@ -8867,7 +8867,7 @@ window.signFontDictionary = [
       "p%6LD0L"
     ],
     "unicodeSigns": [
-      "✳Ō⩇XᐲᨓX"
+      "✳ō⩇☓ᐲᨓ☓"
     ]
   },
   {
@@ -8876,7 +8876,7 @@ window.signFontDictionary = [
       "u##BADL"
     ],
     "unicodeSigns": [
-      "ᐯⵚⵚ><ᐲX"
+      "ᐯⵚⵚᐳᐸᐲ☓"
     ]
   },
   {
@@ -8885,7 +8885,7 @@ window.signFontDictionary = [
       "pR++BALy"
     ],
     "unicodeSigns": [
-      "✳℩◷◷><Xᴺ"
+      "✳℩◷◷ᐳᐸ☓ᴺ"
     ]
   },
   {
@@ -8895,8 +8895,8 @@ window.signFontDictionary = [
       "k%%Ivy"
     ],
     "unicodeSigns": [
-      "७ŌŌᘖᙾ<⁼ᴺ",
-      "७ŌŌᘖ⁼ᴺ"
+      "७ōōᘖᙾᐸ⁼ᴺ",
+      "७ōōᘖ⁼ᴺ"
     ]
   },
   {
@@ -8905,7 +8905,7 @@ window.signFontDictionary = [
       "aP!!GLG"
     ],
     "unicodeSigns": [
-      "റ⸝ⵀⵀᕤXᕤ"
+      "റ⸝ⵀⵀᕤ☓ᕤ"
     ]
   },
   {
@@ -8914,7 +8914,7 @@ window.signFontDictionary = [
       "aP($LAG"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂⵕX<ᕤ"
+      "റ⸝ᓂⵕ☓ᐸᕤ"
     ]
   },
   {
@@ -8923,7 +8923,7 @@ window.signFontDictionary = [
       "a%6ME"
     ],
     "unicodeSigns": [
-      "റŌ⩇ⴳṾ"
+      "റō⩇ⴳṾ"
     ]
   },
   {
@@ -8932,7 +8932,7 @@ window.signFontDictionary = [
       "d(b!LJ\""
     ],
     "unicodeSigns": [
-      "|ᓂΠⵀXᘕ⊖"
+      "∣ᓂΠⵀ☓ᘕ⊖"
     ]
   },
   {
@@ -8941,7 +8941,7 @@ window.signFontDictionary = [
       "b%57LGv"
     ],
     "unicodeSigns": [
-      "ΠŌᒍᒐXᕤ⁼"
+      "Πōᒍᒐ☓ᕤ⁼"
     ]
   },
   {
@@ -8950,7 +8950,7 @@ window.signFontDictionary = [
       "qP!b!LF-b!!MG"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀΠⵀXᘐ-Πⵀⵀⴳᕤ"
+      "ᕬ⸝ⵀΠⵀ☓ᘐ-Πⵀⵀⴳᕤ"
     ]
   },
   {
@@ -8959,7 +8959,7 @@ window.signFontDictionary = [
       "o!5MHy"
     ],
     "unicodeSigns": [
-      "Oⵀᒍⴳꕊᴺ"
+      "Оⵀᒍⴳꕊᴺ"
     ]
   },
   {
@@ -8968,7 +8968,7 @@ window.signFontDictionary = [
       "oQ*d(LBy"
     ],
     "unicodeSigns": [
-      "Oₒ⊕|ᓂX>ᴺ"
+      "Оₒ⊕∣ᓂ☓ᐳᴺ"
     ]
   },
   {
@@ -8986,7 +8986,7 @@ window.signFontDictionary = [
       "o*(LAo!!L"
     ],
     "unicodeSigns": [
-      "O⊕ᓂX<OⵀⵀX"
+      "О⊕ᓂ☓ᐸОⵀⵀ☓"
     ]
   },
   {
@@ -8995,7 +8995,7 @@ window.signFontDictionary = [
       "s!b%D-uS!b%I"
     ],
     "unicodeSigns": [
-      "രⵀΠŌᐲ-ᐯ⁊ⵀΠŌᘖ"
+      "രⵀΠōᐲ-ᐯ⁊ⵀΠōᘖ"
     ]
   },
   {
@@ -9004,7 +9004,7 @@ window.signFontDictionary = [
       "b%2Q4QLv"
     ],
     "unicodeSigns": [
-      "ΠŌᖌₒᖍₒX⁼"
+      "Πōᖌₒᖍₒ☓⁼"
     ]
   },
   {
@@ -9013,7 +9013,7 @@ window.signFontDictionary = [
       "oQ!b!LGDzzy"
     ],
     "unicodeSigns": [
-      "OₒⵀΠⵀXᕤᐲ⁷⁷ᴺ"
+      "ОₒⵀΠⵀ☓ᕤᐲ⁷⁷ᴺ"
     ]
   },
   {
@@ -9033,7 +9033,7 @@ window.signFontDictionary = [
     ],
     "unicodeSigns": [
       "ᗐₒⵀṾᴺ",
-      "ᗐₒŌṾᴺ"
+      "ᗐₒōṾᴺ"
     ]
   },
   {
@@ -9042,7 +9042,7 @@ window.signFontDictionary = [
       "i!0BNAz"
     ],
     "unicodeSigns": [
-      "Һⵀᨓ>¦<⁷"
+      "Һⵀᨓᐳ¦ᐸ⁷"
     ]
   },
   {
@@ -9051,7 +9051,7 @@ window.signFontDictionary = [
       "hR!p+SL"
     ],
     "unicodeSigns": [
-      "⫪℩ⵀ✳◷⁊X"
+      "⫪℩ⵀ✳◷⁊☓"
     ]
   },
   {
@@ -9061,8 +9061,8 @@ window.signFontDictionary = [
       "fQ!!HEL"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀⵀꕊX",
-      "ᗐₒⵀⵀꕊṾX"
+      "ᗐₒⵀⵀꕊ☓",
+      "ᗐₒⵀⵀꕊṾ☓"
     ]
   },
   {
@@ -9071,7 +9071,7 @@ window.signFontDictionary = [
       "aP%b!MG"
     ],
     "unicodeSigns": [
-      "റ⸝ŌΠⵀⴳᕤ"
+      "റ⸝ōΠⵀⴳᕤ"
     ]
   },
   {
@@ -9080,7 +9080,7 @@ window.signFontDictionary = [
       "d(#GL"
     ],
     "unicodeSigns": [
-      "|ᓂⵚᕤX"
+      "∣ᓂⵚᕤ☓"
     ]
   },
   {
@@ -9098,7 +9098,7 @@ window.signFontDictionary = [
       "b#\"LFy"
     ],
     "unicodeSigns": [
-      "Πⵚ⊖Xᘐᴺ"
+      "Πⵚ⊖☓ᘐᴺ"
     ]
   },
   {
@@ -9107,7 +9107,7 @@ window.signFontDictionary = [
       "iP!5L"
     ],
     "unicodeSigns": [
-      "Һ⸝ⵀᒍX"
+      "Һ⸝ⵀᒍ☓"
     ]
   },
   {
@@ -9116,7 +9116,7 @@ window.signFontDictionary = [
       "iP!5Ly"
     ],
     "unicodeSigns": [
-      "Һ⸝ⵀᒍXᴺ"
+      "Һ⸝ⵀᒍ☓ᴺ"
     ]
   },
   {
@@ -9125,7 +9125,7 @@ window.signFontDictionary = [
       "pR%%KCvzzy"
     ],
     "unicodeSigns": [
-      "✳℩ŌŌ≈ⵢ⁼⁷⁷ᴺ"
+      "✳℩ōō≈ⵢ⁼⁷⁷ᴺ"
     ]
   },
   {
@@ -9134,7 +9134,7 @@ window.signFontDictionary = [
       "oQ!d%PLy"
     ],
     "unicodeSigns": [
-      "Oₒⵀ|Ō⸝Xᴺ"
+      "Оₒⵀ∣ō⸝☓ᴺ"
     ]
   },
   {
@@ -9143,7 +9143,7 @@ window.signFontDictionary = [
       "c%5L-c%b!L"
     ],
     "unicodeSigns": [
-      "CŌᒍX-CŌΠⵀX"
+      "Сōᒍ☓-СōΠⵀ☓"
     ]
   },
   {
@@ -9161,7 +9161,7 @@ window.signFontDictionary = [
       "bR%6LJE9L"
     ],
     "unicodeSigns": [
-      "Π℩Ō⩇XᘕṾɤX"
+      "Π℩ō⩇☓ᘕṾɤ☓"
     ]
   },
   {
@@ -9170,7 +9170,7 @@ window.signFontDictionary = [
       "p%%LJABE"
     ],
     "unicodeSigns": [
-      "✳ŌŌXᘕ<>Ṿ"
+      "✳ōō☓ᘕᐸᐳṾ"
     ]
   },
   {
@@ -9179,7 +9179,7 @@ window.signFontDictionary = [
       "oQ!6FdPzzy"
     ],
     "unicodeSigns": [
-      "Oₒⵀ⩇ᘐ|⸝⁷⁷ᴺ"
+      "Оₒⵀ⩇ᘐ∣⸝⁷⁷ᴺ"
     ]
   },
   {
@@ -9189,8 +9189,8 @@ window.signFontDictionary = [
       "fQ%2QJ!y"
     ],
     "unicodeSigns": [
-      "CₒŌOŌⴳᘕ",
-      "ᗐₒŌᖌₒᘕⵀᴺ"
+      "СₒōОōⴳᘕ",
+      "ᗐₒōᖌₒᘕⵀᴺ"
     ]
   },
   {
@@ -9199,7 +9199,7 @@ window.signFontDictionary = [
       "k!6LEy"
     ],
     "unicodeSigns": [
-      "७ⵀ⩇XṾᴺ"
+      "७ⵀ⩇☓Ṿᴺ"
     ]
   },
   {
@@ -9208,7 +9208,7 @@ window.signFontDictionary = [
       "iP%6LGzzy"
     ],
     "unicodeSigns": [
-      "Һ⸝Ō⩇Xᕤ⁷⁷ᴺ"
+      "Һ⸝ō⩇☓ᕤ⁷⁷ᴺ"
     ]
   },
   {
@@ -9226,7 +9226,7 @@ window.signFontDictionary = [
       "n#p!ME-n\"Qp!MA"
     ],
     "unicodeSigns": [
-      "ቨⵚ✳ⵀⴳṾ-ቨ⊖ₒ✳ⵀⴳ<"
+      "ቨⵚ✳ⵀⴳṾ-ቨ⊖ₒ✳ⵀⴳᐸ"
     ]
   },
   {
@@ -9235,7 +9235,7 @@ window.signFontDictionary = [
       "n#9MA-n!Q9ME"
     ],
     "unicodeSigns": [
-      "ቨⵚɤⴳ<-ቨⵀₒɤⴳṾ"
+      "ቨⵚɤⴳᐸ-ቨⵀₒɤⴳṾ"
     ]
   },
   {
@@ -9244,7 +9244,7 @@ window.signFontDictionary = [
       "b!!AvyA"
     ],
     "unicodeSigns": [
-      "Πⵀⵀ<⁼ᴺ<"
+      "Πⵀⵀᐸ⁼ᴺᐸ"
     ]
   },
   {
@@ -9253,7 +9253,7 @@ window.signFontDictionary = [
       "b!!Avy"
     ],
     "unicodeSigns": [
-      "Πⵀⵀ<⁼ᴺ"
+      "Πⵀⵀᐸ⁼ᴺ"
     ]
   },
   {
@@ -9262,7 +9262,7 @@ window.signFontDictionary = [
       "o\"Qc*LDpSy"
     ],
     "unicodeSigns": [
-      "O⊖ₒC⊕Xᐲ✳⁊ᴺ"
+      "О⊖ₒС⊕☓ᐲ✳⁊ᴺ"
     ]
   },
   {
@@ -9271,7 +9271,7 @@ window.signFontDictionary = [
       "oS%b%GaN"
     ],
     "unicodeSigns": [
-      "O⁊ŌΠŌᕤറ¦"
+      "О⁊ōΠōᕤറ¦"
     ]
   },
   {
@@ -9280,7 +9280,7 @@ window.signFontDictionary = [
       "iP&Ivy"
     ],
     "unicodeSigns": [
-      "Һ⸝O̱ᘖ⁼ᴺ"
+      "Һ⸝⍛ᘖ⁼ᴺ"
     ]
   },
   {
@@ -9289,7 +9289,7 @@ window.signFontDictionary = [
       "s&%LGBvy"
     ],
     "unicodeSigns": [
-      "രO̱ŌXᕤ>⁼ᴺ"
+      "ര⍛ō☓ᕤᐳ⁼ᴺ"
     ]
   },
   {
@@ -9298,7 +9298,7 @@ window.signFontDictionary = [
       "aQ!8SJBNIA"
     ],
     "unicodeSigns": [
-      "റₒⵀᑯ⁊ᘕ>¦ᘖ<"
+      "റₒⵀᑯ⁊ᘕᐳ¦ᘖᐸ"
     ]
   },
   {
@@ -9316,7 +9316,7 @@ window.signFontDictionary = [
       "u++GL"
     ],
     "unicodeSigns": [
-      "ᐯ◷◷ᕤX"
+      "ᐯ◷◷ᕤ☓"
     ]
   },
   {
@@ -9334,7 +9334,7 @@ window.signFontDictionary = [
       "u+d%MJ%y"
     ],
     "unicodeSigns": [
-      "ᐯ◷|ŌⴳᘕŌᴺ"
+      "ᐯ◷∣ōⴳᘕōᴺ"
     ]
   },
   {
@@ -9343,7 +9343,7 @@ window.signFontDictionary = [
       "s%b\"2S;SJELzz"
     ],
     "unicodeSigns": [
-      "രŌΠ⊖ᖌ⁊ᕟ⁊ᘕṾX⁷⁷"
+      "രōΠ⊖ᖌ⁊ᕟ⁊ᘕṾ☓⁷⁷"
     ]
   },
   {
@@ -9352,7 +9352,7 @@ window.signFontDictionary = [
       "d#(ELy"
     ],
     "unicodeSigns": [
-      "|ⵚᓂṾXᴺ"
+      "∣ⵚᓂṾ☓ᴺ"
     ]
   },
   {
@@ -9361,7 +9361,7 @@ window.signFontDictionary = [
       "uR\"S$SLy"
     ],
     "unicodeSigns": [
-      "ᐯ℩⊖⁊ⵕ⁊Xᴺ"
+      "ᐯ℩⊖⁊ⵕ⁊☓ᴺ"
     ]
   },
   {
@@ -9370,7 +9370,7 @@ window.signFontDictionary = [
       "aP#3LDy"
     ],
     "unicodeSigns": [
-      "റ⸝ⵚ⦣Xᐲᴺ"
+      "റ⸝ⵚ⦣☓ᐲᴺ"
     ]
   },
   {
@@ -9379,7 +9379,7 @@ window.signFontDictionary = [
       "c%:Ly"
     ],
     "unicodeSigns": [
-      "CŌᑲXᴺ"
+      "Сōᑲ☓ᴺ"
     ]
   },
   {
@@ -9397,7 +9397,7 @@ window.signFontDictionary = [
       "p%9Ly"
     ],
     "unicodeSigns": [
-      "✳ŌɤXᴺ"
+      "✳ōɤ☓ᴺ"
     ]
   },
   {
@@ -9406,7 +9406,7 @@ window.signFontDictionary = [
       "fQ&b!LyCE"
     ],
     "unicodeSigns": [
-      "ᗐₒO̱ΠⵀXᴺⵢṾ"
+      "ᗐₒ⍛Πⵀ☓ᴺⵢṾ"
     ]
   },
   {
@@ -9415,7 +9415,7 @@ window.signFontDictionary = [
       "o*)LEy"
     ],
     "unicodeSigns": [
-      "O⊕ᓇXṾᴺ"
+      "О⊕ᓇ☓Ṿᴺ"
     ]
   },
   {
@@ -9424,7 +9424,7 @@ window.signFontDictionary = [
       "pR!d%PLy"
     ],
     "unicodeSigns": [
-      "✳℩ⵀ|Ō⸝Xᴺ"
+      "✳℩ⵀ∣ō⸝☓ᴺ"
     ]
   },
   {
@@ -9433,7 +9433,7 @@ window.signFontDictionary = [
       "fQ!!LGE"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀⵀXᕤṾ"
+      "ᗐₒⵀⵀ☓ᕤṾ"
     ]
   },
   {
@@ -9442,7 +9442,7 @@ window.signFontDictionary = [
       "uR!s\"Ly"
     ],
     "unicodeSigns": [
-      "ᐯ℩ⵀര⊖Xᴺ"
+      "ᐯ℩ⵀര⊖☓ᴺ"
     ]
   },
   {
@@ -9451,7 +9451,7 @@ window.signFontDictionary = [
       "iP%c%IB"
     ],
     "unicodeSigns": [
-      "Һ⸝ŌCŌᘖ>"
+      "Һ⸝ōСōᘖᐳ"
     ]
   },
   {
@@ -9460,7 +9460,7 @@ window.signFontDictionary = [
       "c%IE"
     ],
     "unicodeSigns": [
-      "CŌᘖṾ"
+      "СōᘖṾ"
     ]
   },
   {
@@ -9470,8 +9470,8 @@ window.signFontDictionary = [
       "c!!GJ&Ev"
     ],
     "unicodeSigns": [
-      "CⵀⵀᕤᘕṾ⁼",
-      "CⵀⵀᕤᘕO̱Ṿ⁼"
+      "СⵀⵀᕤᘕṾ⁼",
+      "Сⵀⵀᕤᘕ⍛Ṿ⁼"
     ]
   },
   {
@@ -9480,7 +9480,7 @@ window.signFontDictionary = [
       "a!d%MGFy"
     ],
     "unicodeSigns": [
-      "റⵀ|Ōⴳᕤᘐᴺ"
+      "റⵀ∣ōⴳᕤᘐᴺ"
     ]
   },
   {
@@ -9489,7 +9489,7 @@ window.signFontDictionary = [
       "d(6L-b!!Ly"
     ],
     "unicodeSigns": [
-      "|ᓂ⩇X-ΠⵀⵀXᴺ"
+      "∣ᓂ⩇☓-Πⵀⵀ☓ᴺ"
     ]
   },
   {
@@ -9498,7 +9498,7 @@ window.signFontDictionary = [
       "d(6L-b!!Lzzy"
     ],
     "unicodeSigns": [
-      "|ᓂ⩇X-ΠⵀⵀX⁷⁷ᴺ"
+      "∣ᓂ⩇☓-Πⵀⵀ☓⁷⁷ᴺ"
     ]
   },
   {
@@ -9525,7 +9525,7 @@ window.signFontDictionary = [
       "fQ!!LDF"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀⵀXᐲᘐ"
+      "ᗐₒⵀⵀ☓ᐲᘐ"
     ]
   },
   {
@@ -9534,7 +9534,7 @@ window.signFontDictionary = [
       "d!!GENv"
     ],
     "unicodeSigns": [
-      "|ⵀⵀᕤṾ¦⁼"
+      "∣ⵀⵀᕤṾ¦⁼"
     ]
   },
   {
@@ -9543,7 +9543,7 @@ window.signFontDictionary = [
       "pR%/1EABsv"
     ],
     "unicodeSigns": [
-      "✳℩ŌᕂᕃṾ<>ര⁼"
+      "✳℩ōᕂᕃṾᐸᐳര⁼"
     ]
   },
   {
@@ -9552,7 +9552,7 @@ window.signFontDictionary = [
       "p!3BEoS"
     ],
     "unicodeSigns": [
-      "✳ⵀ⦣>ṾO⁊"
+      "✳ⵀ⦣ᐳṾО⁊"
     ]
   },
   {
@@ -9561,7 +9561,7 @@ window.signFontDictionary = [
       "b&%GL"
     ],
     "unicodeSigns": [
-      "ΠO̱ŌᕤX"
+      "Π⍛ōᕤ☓"
     ]
   },
   {
@@ -9570,7 +9570,7 @@ window.signFontDictionary = [
       "fQ!!Lvy"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀⵀX⁼ᴺ"
+      "ᗐₒⵀⵀ☓⁼ᴺ"
     ]
   },
   {
@@ -9579,7 +9579,7 @@ window.signFontDictionary = [
       "g%9(LAy"
     ],
     "unicodeSigns": [
-      "⊃ŌɤᓂX<ᴺ"
+      "⊃ōɤᓂ☓ᐸᴺ"
     ]
   },
   {
@@ -9588,7 +9588,7 @@ window.signFontDictionary = [
       "k!:LE;L"
     ],
     "unicodeSigns": [
-      "७ⵀᑲXṾᕟX"
+      "७ⵀᑲ☓Ṿᕟ☓"
     ]
   },
   {
@@ -9597,7 +9597,7 @@ window.signFontDictionary = [
       "k!b\"HL"
     ],
     "unicodeSigns": [
-      "७ⵀΠ⊖ꕊX"
+      "७ⵀΠ⊖ꕊ☓"
     ]
   },
   {
@@ -9606,7 +9606,7 @@ window.signFontDictionary = [
       "g$b!EoQL"
     ],
     "unicodeSigns": [
-      "⊃ⵕΠⵀṾOₒX"
+      "⊃ⵕΠⵀṾОₒ☓"
     ]
   },
   {
@@ -9615,7 +9615,7 @@ window.signFontDictionary = [
       "uR((LJxL"
     ],
     "unicodeSigns": [
-      "ᐯ℩ᓂᓂXᘕᙾX"
+      "ᐯ℩ᓂᓂ☓ᘕᙾ☓"
     ]
   },
   {
@@ -9624,7 +9624,7 @@ window.signFontDictionary = [
       "fQ%8ME"
     ],
     "unicodeSigns": [
-      "ᗐₒŌᑯⴳṾ"
+      "ᗐₒōᑯⴳṾ"
     ]
   },
   {
@@ -9633,7 +9633,7 @@ window.signFontDictionary = [
       "fQ%8MEy"
     ],
     "unicodeSigns": [
-      "ᗐₒŌᑯⴳṾᴺ"
+      "ᗐₒōᑯⴳṾᴺ"
     ]
   },
   {
@@ -9651,7 +9651,7 @@ window.signFontDictionary = [
       "dP!b!BLzz"
     ],
     "unicodeSigns": [
-      "|⸝ⵀΠⵀ>X⁷⁷"
+      "∣⸝ⵀΠⵀᐳ☓⁷⁷"
     ]
   },
   {
@@ -9660,7 +9660,7 @@ window.signFontDictionary = [
       "d(6L-b!s%L"
     ],
     "unicodeSigns": [
-      "|ᓂ⩇X-ΠⵀരŌX"
+      "∣ᓂ⩇☓-Πⵀരō☓"
     ]
   },
   {
@@ -9687,7 +9687,7 @@ window.signFontDictionary = [
       "b\"!ELy"
     ],
     "unicodeSigns": [
-      "Π⊖ⵀṾXᴺ"
+      "Π⊖ⵀṾ☓ᴺ"
     ]
   },
   {
@@ -9696,7 +9696,7 @@ window.signFontDictionary = [
       "aP%9MD"
     ],
     "unicodeSigns": [
-      "റ⸝Ōɤⴳᐲ"
+      "റ⸝ōɤⴳᐲ"
     ]
   },
   {
@@ -9705,7 +9705,7 @@ window.signFontDictionary = [
       "b\"!ELzz"
     ],
     "unicodeSigns": [
-      "Π⊖ⵀṾX⁷⁷"
+      "Π⊖ⵀṾ☓⁷⁷"
     ]
   },
   {
@@ -9714,7 +9714,7 @@ window.signFontDictionary = [
       "s%&9PFv"
     ],
     "unicodeSigns": [
-      "രŌO̱ɤ⸝ᘐ⁼"
+      "രō⍛ɤ⸝ᘐ⁼"
     ]
   },
   {
@@ -9732,7 +9732,7 @@ window.signFontDictionary = [
       "b%9<DFLv"
     ],
     "unicodeSigns": [
-      "ΠŌɤЭᐲᘐX⁼"
+      "ΠōɤЭᐲᘐ☓⁼"
     ]
   },
   {
@@ -9741,7 +9741,7 @@ window.signFontDictionary = [
       "q!s\"qPLy"
     ],
     "unicodeSigns": [
-      "ᕬⵀര⊖ᕬ⸝Xᴺ"
+      "ᕬⵀര⊖ᕬ⸝☓ᴺ"
     ]
   },
   {
@@ -9750,7 +9750,7 @@ window.signFontDictionary = [
       "d(b+MG"
     ],
     "unicodeSigns": [
-      "|ᓂΠ◷ⴳᕤ"
+      "∣ᓂΠ◷ⴳᕤ"
     ]
   },
   {
@@ -9759,7 +9759,7 @@ window.signFontDictionary = [
       "d%P)ELE"
     ],
     "unicodeSigns": [
-      "|Ō⸝ᓇṾXṾ"
+      "∣ō⸝ᓇṾ☓Ṿ"
     ]
   },
   {
@@ -9786,7 +9786,7 @@ window.signFontDictionary = [
       "oS(J!GN"
     ],
     "unicodeSigns": [
-      "O⁊ᓂᘕⵀᕤ¦"
+      "О⁊ᓂᘕⵀᕤ¦"
     ]
   },
   {
@@ -9804,7 +9804,7 @@ window.signFontDictionary = [
       "gX%2Q4QFLv"
     ],
     "unicodeSigns": [
-      "⊃ѵŌᖌₒᖍₒᘐX⁼"
+      "⊃ѵōᖌₒᖍₒᘐ☓⁼"
     ]
   },
   {
@@ -9813,7 +9813,7 @@ window.signFontDictionary = [
       "o!8SDGN"
     ],
     "unicodeSigns": [
-      "Oⵀᑯ⁊ᐲᕤ¦"
+      "Оⵀᑯ⁊ᐲᕤ¦"
     ]
   },
   {
@@ -9822,7 +9822,7 @@ window.signFontDictionary = [
       "oS!/SN-oS\"b!GN"
     ],
     "unicodeSigns": [
-      "O⁊ⵀᕂ⁊¦-O⁊⊖Πⵀᕤ¦"
+      "О⁊ⵀᕂ⁊¦-О⁊⊖Πⵀᕤ¦"
     ]
   },
   {
@@ -9831,7 +9831,7 @@ window.signFontDictionary = [
       "oS(b\"0PGL"
     ],
     "unicodeSigns": [
-      "O⁊ᓂΠ⊖ᨓ⸝ᕤX"
+      "О⁊ᓂΠ⊖ᨓ⸝ᕤ☓"
     ]
   },
   {
@@ -9840,7 +9840,7 @@ window.signFontDictionary = [
       "g%:LE;L"
     ],
     "unicodeSigns": [
-      "⊃ŌᑲXṾᕟX"
+      "⊃ōᑲ☓Ṿᕟ☓"
     ]
   },
   {
@@ -9851,7 +9851,7 @@ window.signFontDictionary = [
     ],
     "unicodeSigns": [
       "റₒⵀⵀṾറ⸝⁷⁷⁼",
-      "റₒⵀⵀᘕO̱Ṿറ⸝⁷⁷⁼"
+      "റₒⵀⵀᘕ⍛Ṿറ⸝⁷⁷⁼"
     ]
   },
   {
@@ -9860,7 +9860,7 @@ window.signFontDictionary = [
       "h(o*LF"
     ],
     "unicodeSigns": [
-      "⫪ᓂO⊕Xᘐ"
+      "⫪ᓂО⊕☓ᘐ"
     ]
   },
   {
@@ -9869,7 +9869,7 @@ window.signFontDictionary = [
       "h&/1MhSvy"
     ],
     "unicodeSigns": [
-      "⫪O̱ᕂᕃⴳ⫪⁊⁼ᴺ"
+      "⫪⍛ᕂᕃⴳ⫪⁊⁼ᴺ"
     ]
   },
   {
@@ -9878,7 +9878,7 @@ window.signFontDictionary = [
       "u#2Q4QABhy"
     ],
     "unicodeSigns": [
-      "ᐯⵚᖌₒᖍₒ<>⫪ᴺ"
+      "ᐯⵚᖌₒᖍₒᐸᐳ⫪ᴺ"
     ]
   },
   {
@@ -9923,7 +9923,7 @@ window.signFontDictionary = [
       "pR!bR\"LyA"
     ],
     "unicodeSigns": [
-      "✳℩ⵀΠ℩⊖Xᴺ<"
+      "✳℩ⵀΠ℩⊖☓ᴺᐸ"
     ]
   },
   {
@@ -9932,7 +9932,7 @@ window.signFontDictionary = [
       "pR!b!LFy"
     ],
     "unicodeSigns": [
-      "✳℩ⵀΠⵀXᘐᴺ"
+      "✳℩ⵀΠⵀ☓ᘐᴺ"
     ]
   },
   {
@@ -9941,7 +9941,7 @@ window.signFontDictionary = [
       "pR!b!LFzzy"
     ],
     "unicodeSigns": [
-      "✳℩ⵀΠⵀXᘐ⁷⁷ᴺ"
+      "✳℩ⵀΠⵀ☓ᘐ⁷⁷ᴺ"
     ]
   },
   {
@@ -9950,7 +9950,7 @@ window.signFontDictionary = [
       "r(/1LHGv"
     ],
     "unicodeSigns": [
-      "୪ᓂᕂᕃXꕊᕤ⁼"
+      "୪ᓂᕂᕃ☓ꕊᕤ⁼"
     ]
   },
   {
@@ -9959,7 +9959,7 @@ window.signFontDictionary = [
       "r%3BLBy"
     ],
     "unicodeSigns": [
-      "୪Ō⦣>X>ᴺ"
+      "୪ō⦣ᐳ☓ᐳᴺ"
     ]
   },
   {
@@ -9968,7 +9968,7 @@ window.signFontDictionary = [
       "u(b!LEy"
     ],
     "unicodeSigns": [
-      "ᐯᓂΠⵀXṾᴺ"
+      "ᐯᓂΠⵀ☓Ṿᴺ"
     ]
   },
   {
@@ -9977,7 +9977,7 @@ window.signFontDictionary = [
       "d%6LDG"
     ],
     "unicodeSigns": [
-      "|Ō⩇Xᐲᕤ"
+      "∣ō⩇☓ᐲᕤ"
     ]
   },
   {
@@ -9986,7 +9986,7 @@ window.signFontDictionary = [
       "oS(Hwy"
     ],
     "unicodeSigns": [
-      "O⁊ᓂꕊᣛᴺ"
+      "О⁊ᓂꕊᣛᴺ"
     ]
   },
   {
@@ -10005,8 +10005,8 @@ window.signFontDictionary = [
       "g!!LABoQv"
     ],
     "unicodeSigns": [
-      "|⸝ⵀⵀX<>Oₒ",
-      "⊃ⵀⵀX<>Oₒ⁼"
+      "∣⸝ⵀⵀ☓ᐸᐳОₒ",
+      "⊃ⵀⵀ☓ᐸᐳОₒ⁼"
     ]
   },
   {
@@ -10015,7 +10015,7 @@ window.signFontDictionary = [
       "d#6LEdRy"
     ],
     "unicodeSigns": [
-      "|ⵚ⩇XṾ|℩ᴺ"
+      "∣ⵚ⩇☓Ṿ∣℩ᴺ"
     ]
   },
   {
@@ -10024,7 +10024,7 @@ window.signFontDictionary = [
       "r(b!BLG"
     ],
     "unicodeSigns": [
-      "୪ᓂΠⵀ>Xᕤ"
+      "୪ᓂΠⵀᐳ☓ᕤ"
     ]
   },
   {
@@ -10033,7 +10033,7 @@ window.signFontDictionary = [
       "s$$ABzzy-b%%LABN-b&8S:SENv"
     ],
     "unicodeSigns": [
-      "രⵕⵕ<>⁷⁷ᴺ-ΠŌŌX<>¦-ΠO̱ᑯ⁊ᑲ⁊Ṿ¦⁼"
+      "രⵕⵕᐸᐳ⁷⁷ᴺ-Πōō☓ᐸᐳ¦-Π⍛ᑯ⁊ᑲ⁊Ṿ¦⁼"
     ]
   },
   {
@@ -10042,7 +10042,7 @@ window.signFontDictionary = [
       "aP%s%IEL"
     ],
     "unicodeSigns": [
-      "റ⸝ŌരŌᘖṾX"
+      "റ⸝ōരōᘖṾ☓"
     ]
   },
   {
@@ -10051,7 +10051,7 @@ window.signFontDictionary = [
       "aP%8FN"
     ],
     "unicodeSigns": [
-      "റ⸝Ōᑯᘐ¦"
+      "റ⸝ōᑯᘐ¦"
     ]
   },
   {
@@ -10060,7 +10060,7 @@ window.signFontDictionary = [
       "d&%LyG"
     ],
     "unicodeSigns": [
-      "|O̱ŌXᴺᕤ"
+      "∣⍛ō☓ᴺᕤ"
     ]
   },
   {
@@ -10069,7 +10069,7 @@ window.signFontDictionary = [
       "bR!b!LDbzz"
     ],
     "unicodeSigns": [
-      "Π℩ⵀΠⵀXᐲΠ⁷⁷"
+      "Π℩ⵀΠⵀ☓ᐲΠ⁷⁷"
     ]
   },
   {
@@ -10078,7 +10078,7 @@ window.signFontDictionary = [
       "b%9<MEv"
     ],
     "unicodeSigns": [
-      "ΠŌɤЭⴳṾ⁼"
+      "ΠōɤЭⴳṾ⁼"
     ]
   },
   {
@@ -10087,7 +10087,7 @@ window.signFontDictionary = [
       "r(:LIG"
     ],
     "unicodeSigns": [
-      "୪ᓂᑲXᘖᕤ"
+      "୪ᓂᑲ☓ᘖᕤ"
     ]
   },
   {
@@ -10097,8 +10097,8 @@ window.signFontDictionary = [
       "aP#0L-aP##L"
     ],
     "unicodeSigns": [
-      "റ⸝ⵚᨓX-റ⸝ⵚᓂX",
-      "റ⸝ⵚᨓX-റ⸝ⵚⵚX"
+      "റ⸝ⵚᨓ☓-റ⸝ⵚᓂ☓",
+      "റ⸝ⵚᨓ☓-റ⸝ⵚⵚ☓"
     ]
   },
   {
@@ -10107,7 +10107,7 @@ window.signFontDictionary = [
       "bS!s\"GLy"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀര⊖ᕤXᴺ"
+      "Π⁊ⵀര⊖ᕤ☓ᴺ"
     ]
   },
   {
@@ -10116,7 +10116,7 @@ window.signFontDictionary = [
       "dR(NaQy"
     ],
     "unicodeSigns": [
-      "|℩ᓂ¦റₒᴺ"
+      "∣℩ᓂ¦റₒᴺ"
     ]
   },
   {
@@ -10125,7 +10125,7 @@ window.signFontDictionary = [
       "c!b!ELEs"
     ],
     "unicodeSigns": [
-      "CⵀΠⵀṾXṾര"
+      "СⵀΠⵀṾ☓Ṿര"
     ]
   },
   {
@@ -10134,7 +10134,7 @@ window.signFontDictionary = [
       "b&s\"SLFDy"
     ],
     "unicodeSigns": [
-      "ΠO̱ര⊖⁊Xᘐᐲᴺ"
+      "Π⍛ര⊖⁊☓ᘐᐲᴺ"
     ]
   },
   {
@@ -10143,7 +10143,7 @@ window.signFontDictionary = [
       "c%%DsNvzz"
     ],
     "unicodeSigns": [
-      "CŌŌᐲര¦⁼⁷⁷"
+      "Сōōᐲര¦⁼⁷⁷"
     ]
   },
   {
@@ -10152,7 +10152,7 @@ window.signFontDictionary = [
       "d(3H-iP&Ay"
     ],
     "unicodeSigns": [
-      "|ᓂ⦣ꕊ-Һ⸝O̱<ᴺ"
+      "∣ᓂ⦣ꕊ-Һ⸝⍛ᐸᴺ"
     ]
   },
   {
@@ -10161,7 +10161,7 @@ window.signFontDictionary = [
       "b!:8Lv"
     ],
     "unicodeSigns": [
-      "ΠⵀᑲᑯX⁼"
+      "Πⵀᑲᑯ☓⁼"
     ]
   },
   {
@@ -10170,7 +10170,7 @@ window.signFontDictionary = [
       "r(6LBL"
     ],
     "unicodeSigns": [
-      "୪ᓂ⩇X>X"
+      "୪ᓂ⩇☓ᐳ☓"
     ]
   },
   {
@@ -10179,7 +10179,7 @@ window.signFontDictionary = [
       "r!ENAE"
     ],
     "unicodeSigns": [
-      "୪ⵀṾ¦<Ṿ"
+      "୪ⵀṾ¦ᐸṾ"
     ]
   },
   {
@@ -10188,7 +10188,7 @@ window.signFontDictionary = [
       "iP%3LEG"
     ],
     "unicodeSigns": [
-      "Һ⸝Ō⦣XṾᕤ"
+      "Һ⸝ō⦣☓Ṿᕤ"
     ]
   },
   {
@@ -10197,7 +10197,7 @@ window.signFontDictionary = [
       "s&b!LDpR"
     ],
     "unicodeSigns": [
-      "രO̱ΠⵀXᐲ✳℩"
+      "ര⍛Πⵀ☓ᐲ✳℩"
     ]
   },
   {
@@ -10206,7 +10206,7 @@ window.signFontDictionary = [
       "hR#c&LGv"
     ],
     "unicodeSigns": [
-      "⫪℩ⵚCO̱Xᕤ⁼"
+      "⫪℩ⵚС⍛☓ᕤ⁼"
     ]
   },
   {
@@ -10216,8 +10216,8 @@ window.signFontDictionary = [
       "dP($8S:PGvy"
     ],
     "unicodeSigns": [
-      "|⸝ᓂⵕᑯ⁊ᑲ⸝Ṿ⁼ᴺ",
-      "|⸝ᓂⵕᑯ⁊ᑲ⸝ᕤ⁼ᴺ"
+      "∣⸝ᓂⵕᑯ⁊ᑲ⸝Ṿ⁼ᴺ",
+      "∣⸝ᓂⵕᑯ⁊ᑲ⸝ᕤ⁼ᴺ"
     ]
   },
   {
@@ -10226,7 +10226,7 @@ window.signFontDictionary = [
       "d&%EL"
     ],
     "unicodeSigns": [
-      "|O̱ŌṾX"
+      "∣⍛ōṾ☓"
     ]
   },
   {
@@ -10235,7 +10235,7 @@ window.signFontDictionary = [
       "d%b!BLy"
     ],
     "unicodeSigns": [
-      "|ŌΠⵀ>Xᴺ"
+      "∣ōΠⵀᐳ☓ᴺ"
     ]
   },
   {
@@ -10262,7 +10262,7 @@ window.signFontDictionary = [
       "hS%3L-hP&Ev"
     ],
     "unicodeSigns": [
-      "⫪⁊Ō⦣X-⫪⸝O̱Ṿ⁼"
+      "⫪⁊ō⦣☓-⫪⸝⍛Ṿ⁼"
     ]
   },
   {
@@ -10271,7 +10271,7 @@ window.signFontDictionary = [
       "a!\"Ly"
     ],
     "unicodeSigns": [
-      "റⵀ⊖Xᴺ"
+      "റⵀ⊖☓ᴺ"
     ]
   },
   {
@@ -10280,7 +10280,7 @@ window.signFontDictionary = [
       "r%b!MDy"
     ],
     "unicodeSigns": [
-      "୪ŌΠⵀⴳᐲᴺ"
+      "୪ōΠⵀⴳᐲᴺ"
     ]
   },
   {
@@ -10289,7 +10289,7 @@ window.signFontDictionary = [
       "uP!!J%vy"
     ],
     "unicodeSigns": [
-      "ᐯ⸝ⵀⵀᘕŌ⁼ᴺ"
+      "ᐯ⸝ⵀⵀᘕō⁼ᴺ"
     ]
   },
   {
@@ -10298,7 +10298,7 @@ window.signFontDictionary = [
       "d((HwyG"
     ],
     "unicodeSigns": [
-      "|ᓂᓂꕊᣛᴺᕤ"
+      "∣ᓂᓂꕊᣛᴺᕤ"
     ]
   },
   {
@@ -10307,7 +10307,7 @@ window.signFontDictionary = [
       "d!\"Hwy"
     ],
     "unicodeSigns": [
-      "|ⵀ⊖ꕊᣛᴺ"
+      "∣ⵀ⊖ꕊᣛᴺ"
     ]
   },
   {
@@ -10316,7 +10316,7 @@ window.signFontDictionary = [
       "uR&&GFwzzy"
     ],
     "unicodeSigns": [
-      "ᐯ℩O̱O̱ᕤᘐᣛ⁷⁷ᴺ"
+      "ᐯ℩⍛⍛ᕤᘐᣛ⁷⁷ᴺ"
     ]
   },
   {
@@ -10325,7 +10325,7 @@ window.signFontDictionary = [
       "uR&&GFwy"
     ],
     "unicodeSigns": [
-      "ᐯ℩O̱O̱ᕤᘐᣛᴺ"
+      "ᐯ℩⍛⍛ᕤᘐᣛᴺ"
     ]
   },
   {
@@ -10334,7 +10334,7 @@ window.signFontDictionary = [
       "b((DBAL"
     ],
     "unicodeSigns": [
-      "Πᓂᓂᐲ><X"
+      "Πᓂᓂᐲᐳᐸ☓"
     ]
   },
   {
@@ -10343,7 +10343,7 @@ window.signFontDictionary = [
       "bS(#ABb"
     ],
     "unicodeSigns": [
-      "Π⁊ᓂⵚ<>Π"
+      "Π⁊ᓂⵚᐸᐳΠ"
     ]
   },
   {
@@ -10352,7 +10352,7 @@ window.signFontDictionary = [
       "uP%0Ly"
     ],
     "unicodeSigns": [
-      "ᐯ⸝ŌᨓXᴺ"
+      "ᐯ⸝ōᨓ☓ᴺ"
     ]
   },
   {
@@ -10361,7 +10361,7 @@ window.signFontDictionary = [
       "pR!b!LGzz"
     ],
     "unicodeSigns": [
-      "✳℩ⵀΠⵀXᕤ⁷⁷"
+      "✳℩ⵀΠⵀ☓ᕤ⁷⁷"
     ]
   },
   {
@@ -10370,7 +10370,7 @@ window.signFontDictionary = [
       "s%%8S:SGEvy"
     ],
     "unicodeSigns": [
-      "രŌŌᑯ⁊ᑲ⁊ᕤṾ⁼ᴺ"
+      "രōōᑯ⁊ᑲ⁊ᕤṾ⁼ᴺ"
     ]
   },
   {
@@ -10388,7 +10388,7 @@ window.signFontDictionary = [
       "qP!b!LGzz"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀΠⵀXᕤ⁷⁷"
+      "ᕬ⸝ⵀΠⵀ☓ᕤ⁷⁷"
     ]
   },
   {
@@ -10398,8 +10398,8 @@ window.signFontDictionary = [
       "dR&%MJ%G"
     ],
     "unicodeSigns": [
-      "|℩O̱ŌXᕤ",
-      "|℩O̱ŌⴳᘕŌᕤ"
+      "∣℩⍛ō☓ᕤ",
+      "∣℩⍛ōⴳᘕōᕤ"
     ]
   },
   {
@@ -10408,7 +10408,7 @@ window.signFontDictionary = [
       "s&8S:SCwy"
     ],
     "unicodeSigns": [
-      "രO̱ᑯ⁊ᑲ⁊ⵢᣛᴺ"
+      "ര⍛ᑯ⁊ᑲ⁊ⵢᣛᴺ"
     ]
   },
   {
@@ -10417,7 +10417,7 @@ window.signFontDictionary = [
       "dT+*LKGv"
     ],
     "unicodeSigns": [
-      "|℩⸝◷⊕X≈ᕤ⁼"
+      "∣℩⸝◷⊕☓≈ᕤ⁼"
     ]
   },
   {
@@ -10426,7 +10426,7 @@ window.signFontDictionary = [
       "dT+*LHv"
     ],
     "unicodeSigns": [
-      "|℩⸝◷⊕Xꕊ⁼"
+      "∣℩⸝◷⊕☓ꕊ⁼"
     ]
   },
   {
@@ -10435,7 +10435,7 @@ window.signFontDictionary = [
       "p%;=Lvy"
     ],
     "unicodeSigns": [
-      "✳ŌᕟᕞX⁼ᴺ"
+      "✳ōᕟᕞ☓⁼ᴺ"
     ]
   },
   {
@@ -10444,7 +10444,7 @@ window.signFontDictionary = [
       "b%&LIyG"
     ],
     "unicodeSigns": [
-      "ΠŌO̱Xᘖᴺᕤ"
+      "Πō⍛☓ᘖᴺᕤ"
     ]
   },
   {
@@ -10462,7 +10462,7 @@ window.signFontDictionary = [
       "pR((BADy"
     ],
     "unicodeSigns": [
-      "✳℩ᓂᓂ><ᐲᴺ"
+      "✳℩ᓂᓂᐳᐸᐲᴺ"
     ]
   },
   {
@@ -10480,7 +10480,7 @@ window.signFontDictionary = [
       "d%%Ly"
     ],
     "unicodeSigns": [
-      "|ŌŌXᴺ"
+      "∣ōō☓ᴺ"
     ]
   },
   {
@@ -10489,7 +10489,7 @@ window.signFontDictionary = [
       "dR*p+LFy"
     ],
     "unicodeSigns": [
-      "|℩⊕✳◷Xᘐᴺ"
+      "∣℩⊕✳◷☓ᘐᴺ"
     ]
   },
   {
@@ -10507,7 +10507,7 @@ window.signFontDictionary = [
       "c%%LsvyAB"
     ],
     "unicodeSigns": [
-      "CŌŌXര⁼ᴺ<>"
+      "Сōō☓ര⁼ᴺᐸᐳ"
     ]
   },
   {
@@ -10516,7 +10516,7 @@ window.signFontDictionary = [
       "u#s\"FLy"
     ],
     "unicodeSigns": [
-      "ᐯⵚര⊖ᘐXᴺ"
+      "ᐯⵚര⊖ᘐ☓ᴺ"
     ]
   },
   {
@@ -10525,7 +10525,7 @@ window.signFontDictionary = [
       "oS!o%BLy"
     ],
     "unicodeSigns": [
-      "O⁊ⵀOŌ>Xᴺ"
+      "О⁊ⵀОōᐳ☓ᴺ"
     ]
   },
   {
@@ -10534,7 +10534,7 @@ window.signFontDictionary = [
       "b&\"MGFy"
     ],
     "unicodeSigns": [
-      "ΠO̱⊖ⴳᕤᘐᴺ"
+      "Π⍛⊖ⴳᕤᘐᴺ"
     ]
   },
   {
@@ -10543,7 +10543,7 @@ window.signFontDictionary = [
       "d(6Ly"
     ],
     "unicodeSigns": [
-      "|ᓂ⩇Xᴺ"
+      "∣ᓂ⩇☓ᴺ"
     ]
   },
   {
@@ -10561,7 +10561,7 @@ window.signFontDictionary = [
       "b%%EDxy"
     ],
     "unicodeSigns": [
-      "ΠŌŌṾᐲᙾᴺ"
+      "ΠōōṾᐲᙾᴺ"
     ]
   },
   {
@@ -10570,7 +10570,7 @@ window.signFontDictionary = [
       "s!8:BAp"
     ],
     "unicodeSigns": [
-      "രⵀᑯᑲ><✳"
+      "രⵀᑯᑲᐳᐸ✳"
     ]
   },
   {
@@ -10579,7 +10579,7 @@ window.signFontDictionary = [
       "c!!9HLABo"
     ],
     "unicodeSigns": [
-      "CⵀⵀɤꕊX<>O"
+      "Сⵀⵀɤꕊ☓ᐸᐳО"
     ]
   },
   {
@@ -10588,7 +10588,7 @@ window.signFontDictionary = [
       "b!!Ly"
     ],
     "unicodeSigns": [
-      "ΠⵀⵀXᴺ"
+      "Πⵀⵀ☓ᴺ"
     ]
   },
   {
@@ -10606,7 +10606,7 @@ window.signFontDictionary = [
       "d&5SJ&Gy"
     ],
     "unicodeSigns": [
-      "|O̱ᒍ⁊ᘕO̱ᕤᴺ"
+      "∣⍛ᒍ⁊ᘕ⍛ᕤᴺ"
     ]
   },
   {
@@ -10615,7 +10615,7 @@ window.signFontDictionary = [
       "n#:MA-n\":ME"
     ],
     "unicodeSigns": [
-      "ቨⵚᑲⴳ<-ቨ⊖ᑲⴳṾ"
+      "ቨⵚᑲⴳᐸ-ቨ⊖ᑲⴳṾ"
     ]
   },
   {
@@ -10651,7 +10651,7 @@ window.signFontDictionary = [
       "k!5L-k!b!MG"
     ],
     "unicodeSigns": [
-      "७ⵀᒍX-७ⵀΠⵀⴳᕤ"
+      "७ⵀᒍ☓-७ⵀΠⵀⴳᕤ"
     ]
   },
   {
@@ -10661,8 +10661,8 @@ window.signFontDictionary = [
       "u(3LG"
     ],
     "unicodeSigns": [
-      "ᐯᓂᖌₒXᕤ",
-      "ᐯᓂ⦣Xᕤ"
+      "ᐯᓂᖌₒ☓ᕤ",
+      "ᐯᓂ⦣☓ᕤ"
     ]
   },
   {
@@ -10680,7 +10680,7 @@ window.signFontDictionary = [
       "oS%%5S7SJ\"v"
     ],
     "unicodeSigns": [
-      "O⁊ŌŌᒍ⁊ᒐ⁊ᘕ⊖⁼"
+      "О⁊ōōᒍ⁊ᒐ⁊ᘕ⊖⁼"
     ]
   },
   {
@@ -10690,8 +10690,8 @@ window.signFontDictionary = [
       "b!\"LJ\"G"
     ],
     "unicodeSigns": [
-      "Π⁊⸝ⵀΠ⊖XᕤΠ",
-      "Πⵀ⊖Xᘕ⊖ᕤ"
+      "Π⁊⸝ⵀΠ⊖☓ᕤΠ",
+      "Πⵀ⊖☓ᘕ⊖ᕤ"
     ]
   },
   {
@@ -10700,7 +10700,7 @@ window.signFontDictionary = [
       "bR((LAB"
     ],
     "unicodeSigns": [
-      "Π℩ᓂᓂX<>"
+      "Π℩ᓂᓂ☓ᐸᐳ"
     ]
   },
   {
@@ -10709,7 +10709,7 @@ window.signFontDictionary = [
       "b&&;S=SGFwzzy"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱ᕟ⁊ᕞ⁊ᕤᘐᣛ⁷⁷ᴺ"
+      "Π⍛⍛ᕟ⁊ᕞ⁊ᕤᘐᣛ⁷⁷ᴺ"
     ]
   },
   {
@@ -10718,7 +10718,7 @@ window.signFontDictionary = [
       "b&&;S=SGFwy"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱ᕟ⁊ᕞ⁊ᕤᘐᣛᴺ"
+      "Π⍛⍛ᕟ⁊ᕞ⁊ᕤᘐᣛᴺ"
     ]
   },
   {
@@ -10736,7 +10736,7 @@ window.signFontDictionary = [
       "fQ!!LDAy"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀⵀXᐲ<ᴺ"
+      "ᗐₒⵀⵀ☓ᐲᐸᴺ"
     ]
   },
   {
@@ -10745,7 +10745,7 @@ window.signFontDictionary = [
       "dR!b!MGFy"
     ],
     "unicodeSigns": [
-      "|℩ⵀΠⵀⴳᕤᘐᴺ"
+      "∣℩ⵀΠⵀⴳᕤᘐᴺ"
     ]
   },
   {
@@ -10754,7 +10754,7 @@ window.signFontDictionary = [
       "dR!b!MGFzzy"
     ],
     "unicodeSigns": [
-      "|℩ⵀΠⵀⴳᕤᘐ⁷⁷ᴺ"
+      "∣℩ⵀΠⵀⴳᕤᘐ⁷⁷ᴺ"
     ]
   },
   {
@@ -10763,7 +10763,7 @@ window.signFontDictionary = [
       "bS\"Q5LJG"
     ],
     "unicodeSigns": [
-      "Π⁊⊖ₒᒍXᘕᕤ"
+      "Π⁊⊖ₒᒍ☓ᘕᕤ"
     ]
   },
   {
@@ -10772,7 +10772,7 @@ window.signFontDictionary = [
       "b&%MC"
     ],
     "unicodeSigns": [
-      "ΠO̱Ōⴳⵢ"
+      "Π⍛ōⴳⵢ"
     ]
   },
   {
@@ -10781,7 +10781,7 @@ window.signFontDictionary = [
       "dR%5MEy"
     ],
     "unicodeSigns": [
-      "|℩ŌᒍⴳṾᴺ"
+      "∣℩ōᒍⴳṾᴺ"
     ]
   },
   {
@@ -10790,7 +10790,7 @@ window.signFontDictionary = [
       "iP%5MEy"
     ],
     "unicodeSigns": [
-      "Һ⸝ŌᒍⴳṾᴺ"
+      "Һ⸝ōᒍⴳṾᴺ"
     ]
   },
   {
@@ -10799,7 +10799,7 @@ window.signFontDictionary = [
       "aQ((BAy"
     ],
     "unicodeSigns": [
-      "റₒᓂᓂ><ᴺ"
+      "റₒᓂᓂᐳᐸᴺ"
     ]
   },
   {
@@ -10808,7 +10808,7 @@ window.signFontDictionary = [
       "aQ((BAzzy"
     ],
     "unicodeSigns": [
-      "റₒᓂᓂ><⁷⁷ᴺ"
+      "റₒᓂᓂᐳᐸ⁷⁷ᴺ"
     ]
   },
   {
@@ -10817,7 +10817,7 @@ window.signFontDictionary = [
       "u\"Q$PLFy"
     ],
     "unicodeSigns": [
-      "ᐯ⊖ₒⵕ⸝Xᘐᴺ"
+      "ᐯ⊖ₒⵕ⸝☓ᘐᴺ"
     ]
   },
   {
@@ -10826,7 +10826,7 @@ window.signFontDictionary = [
       "b%%LABNyE"
     ],
     "unicodeSigns": [
-      "ΠŌŌX<>¦ᴺṾ"
+      "Πōō☓ᐸᐳ¦ᴺṾ"
     ]
   },
   {
@@ -10835,7 +10835,7 @@ window.signFontDictionary = [
       "uP%b!LGy"
     ],
     "unicodeSigns": [
-      "ᐯ⸝ŌΠⵀXᕤᴺ"
+      "ᐯ⸝ōΠⵀ☓ᕤᴺ"
     ]
   },
   {
@@ -10844,7 +10844,7 @@ window.signFontDictionary = [
       "fQ*9LGy"
     ],
     "unicodeSigns": [
-      "ᗐₒ⊕ɤXᕤᴺ"
+      "ᗐₒ⊕ɤ☓ᕤᴺ"
     ]
   },
   {
@@ -10855,7 +10855,7 @@ window.signFontDictionary = [
     ],
     "unicodeSigns": [
       "✳℩ⵀᕟ⁊ᕞ⁊Ṿ⁷⁷⁼",
-      "രŌᖌₒᖍₒ¦C⁼"
+      "രōᖌₒᖍₒ¦С⁼"
     ]
   },
   {
@@ -10864,7 +10864,7 @@ window.signFontDictionary = [
       "s%2Q4QNcvzz"
     ],
     "unicodeSigns": [
-      "രŌᖌₒᖍₒ¦C⁼⁷⁷"
+      "രōᖌₒᖍₒ¦С⁼⁷⁷"
     ]
   },
   {
@@ -10873,7 +10873,7 @@ window.signFontDictionary = [
       "s%%Lvy"
     ],
     "unicodeSigns": [
-      "രŌŌX⁼ᴺ"
+      "രōō☓⁼ᴺ"
     ]
   },
   {
@@ -10882,7 +10882,7 @@ window.signFontDictionary = [
       "dP(GdT"
     ],
     "unicodeSigns": [
-      "|⸝ᓂᕤ|℩⸝"
+      "∣⸝ᓂᕤ∣℩⸝"
     ]
   },
   {
@@ -10891,7 +10891,7 @@ window.signFontDictionary = [
       "dP($8S:PEv"
     ],
     "unicodeSigns": [
-      "|⸝ᓂⵕᑯ⁊ᑲ⸝Ṿ⁼"
+      "∣⸝ᓂⵕᑯ⁊ᑲ⸝Ṿ⁼"
     ]
   },
   {
@@ -10900,7 +10900,7 @@ window.signFontDictionary = [
       "oS(b!LGy"
     ],
     "unicodeSigns": [
-      "O⁊ᓂΠⵀXᕤᴺ"
+      "О⁊ᓂΠⵀ☓ᕤᴺ"
     ]
   },
   {
@@ -10909,7 +10909,7 @@ window.signFontDictionary = [
       "oS(b!LGDy"
     ],
     "unicodeSigns": [
-      "O⁊ᓂΠⵀXᕤᐲᴺ"
+      "О⁊ᓂΠⵀ☓ᕤᐲᴺ"
     ]
   },
   {
@@ -10927,7 +10927,7 @@ window.signFontDictionary = [
       "d!!BAq"
     ],
     "unicodeSigns": [
-      "|ⵀⵀ><ᕬ"
+      "∣ⵀⵀᐳᐸᕬ"
     ]
   },
   {
@@ -10936,7 +10936,7 @@ window.signFontDictionary = [
       "h&S%SMGFy"
     ],
     "unicodeSigns": [
-      "⫪O̱⁊Ō⁊ⴳᕤᘐᴺ"
+      "⫪⍛⁊ō⁊ⴳᕤᘐᴺ"
     ]
   },
   {
@@ -10946,8 +10946,8 @@ window.signFontDictionary = [
       "bS&57Lvy"
     ],
     "unicodeSigns": [
-      "ΠO̱ᒍᒐ>ᙾXᴺ",
-      "Π⁊O̱ᒍᒐX⁼ᴺ"
+      "Π⍛ᒍᒐᐳᙾ☓ᴺ",
+      "Π⁊⍛ᒍᒐ☓⁼ᴺ"
     ]
   },
   {
@@ -10956,7 +10956,7 @@ window.signFontDictionary = [
       "bS!8Ly"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀᑯXᴺ"
+      "Π⁊ⵀᑯ☓ᴺ"
     ]
   },
   {
@@ -10965,7 +10965,7 @@ window.signFontDictionary = [
       "bR\"Qb!FLFzzy"
     ],
     "unicodeSigns": [
-      "Π℩⊖ₒΠⵀᘐXᘐ⁷⁷ᴺ"
+      "Π℩⊖ₒΠⵀᘐ☓ᘐ⁷⁷ᴺ"
     ]
   },
   {
@@ -10974,7 +10974,7 @@ window.signFontDictionary = [
       "d(b!LGv"
     ],
     "unicodeSigns": [
-      "|ᓂΠⵀXᕤ⁼"
+      "∣ᓂΠⵀ☓ᕤ⁼"
     ]
   },
   {
@@ -10994,7 +10994,7 @@ window.signFontDictionary = [
       "d(b!LFv"
     ],
     "unicodeSigns": [
-      "|ᓂΠⵀXᘐ⁼"
+      "∣ᓂΠⵀ☓ᘐ⁼"
     ]
   },
   {
@@ -11013,8 +11013,8 @@ window.signFontDictionary = [
       "qP!09Lvy"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀᨓXᴺ",
-      "ᕬ⸝ⵀᨓɤX⁼ᴺ"
+      "ᕬ⸝ⵀᨓ☓ᴺ",
+      "ᕬ⸝ⵀᨓɤ☓⁼ᴺ"
     ]
   },
   {
@@ -11023,7 +11023,7 @@ window.signFontDictionary = [
       "bS!;BLy"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀᕟ>Xᴺ"
+      "Π⁊ⵀᕟᐳ☓ᴺ"
     ]
   },
   {
@@ -11032,7 +11032,7 @@ window.signFontDictionary = [
       "d((Hwy"
     ],
     "unicodeSigns": [
-      "|ᓂᓂꕊᣛᴺ"
+      "∣ᓂᓂꕊᣛᴺ"
     ]
   },
   {
@@ -11041,7 +11041,7 @@ window.signFontDictionary = [
       "d((Hwzzy"
     ],
     "unicodeSigns": [
-      "|ᓂᓂꕊᣛ⁷⁷ᴺ"
+      "∣ᓂᓂꕊᣛ⁷⁷ᴺ"
     ]
   },
   {
@@ -11050,7 +11050,7 @@ window.signFontDictionary = [
       "iP%3By"
     ],
     "unicodeSigns": [
-      "Һ⸝Ō⦣>ᴺ"
+      "Һ⸝ō⦣ᐳᴺ"
     ]
   },
   {
@@ -11059,7 +11059,7 @@ window.signFontDictionary = [
       "d&P%PMGy-u(b!L-u#6L"
     ],
     "unicodeSigns": [
-      "|O̱⸝Ō⸝ⴳᕤᴺ-ᐯᓂΠⵀX-ᐯⵚ⩇X"
+      "∣⍛⸝ō⸝ⴳᕤᴺ-ᐯᓂΠⵀ☓-ᐯⵚ⩇☓"
     ]
   },
   {
@@ -11068,7 +11068,7 @@ window.signFontDictionary = [
       "fQ!!ALA"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀⵀ<X<"
+      "ᗐₒⵀⵀᐸ☓ᐸ"
     ]
   },
   {
@@ -11077,7 +11077,7 @@ window.signFontDictionary = [
       "b&$PJFIGy"
     ],
     "unicodeSigns": [
-      "ΠO̱ⵕ⸝ᘕᘐᘖᕤᴺ"
+      "Π⍛ⵕ⸝ᘕᘐᘖᕤᴺ"
     ]
   },
   {
@@ -11086,7 +11086,7 @@ window.signFontDictionary = [
       "b!!MH-b&&LAB-b%;S=SDv"
     ],
     "unicodeSigns": [
-      "Πⵀⵀⴳꕊ-ΠO̱O̱X<>-ΠŌᕟ⁊ᕞ⁊ᐲ⁼"
+      "Πⵀⵀⴳꕊ-Π⍛⍛☓ᐸᐳ-Πōᕟ⁊ᕞ⁊ᐲ⁼"
     ]
   },
   {
@@ -11095,7 +11095,7 @@ window.signFontDictionary = [
       "dP%6L-dP&%L"
     ],
     "unicodeSigns": [
-      "|⸝Ō⩇X-|⸝O̱ŌX"
+      "∣⸝ō⩇☓-∣⸝⍛ō☓"
     ]
   },
   {
@@ -11104,7 +11104,7 @@ window.signFontDictionary = [
       "hR#\"QEL"
     ],
     "unicodeSigns": [
-      "⫪℩ⵚ⊖ₒṾX"
+      "⫪℩ⵚ⊖ₒṾ☓"
     ]
   },
   {
@@ -11113,7 +11113,7 @@ window.signFontDictionary = [
       "n%%LJLv"
     ],
     "unicodeSigns": [
-      "ቨŌŌXᘕX⁼"
+      "ቨōō☓ᘕ☓⁼"
     ]
   },
   {
@@ -11122,7 +11122,7 @@ window.signFontDictionary = [
       "iP%%Lvzzy"
     ],
     "unicodeSigns": [
-      "Һ⸝ŌŌX⁼⁷⁷ᴺ"
+      "Һ⸝ōō☓⁼⁷⁷ᴺ"
     ]
   },
   {
@@ -11131,7 +11131,7 @@ window.signFontDictionary = [
       "uR&&Gvy"
     ],
     "unicodeSigns": [
-      "ᐯ℩O̱O̱ᕤ⁼ᴺ"
+      "ᐯ℩⍛⍛ᕤ⁼ᴺ"
     ]
   },
   {
@@ -11140,7 +11140,7 @@ window.signFontDictionary = [
       "dR&&EGv"
     ],
     "unicodeSigns": [
-      "|℩O̱O̱Ṿᕤ⁼"
+      "∣℩⍛⍛Ṿᕤ⁼"
     ]
   },
   {
@@ -11149,7 +11149,7 @@ window.signFontDictionary = [
       "dR&&AGNBGv"
     ],
     "unicodeSigns": [
-      "|℩O̱O̱<ᕤ¦>ᕤ⁼"
+      "∣℩⍛⍛ᐸᕤ¦ᐳᕤ⁼"
     ]
   },
   {
@@ -11167,7 +11167,7 @@ window.signFontDictionary = [
       "i((LE"
     ],
     "unicodeSigns": [
-      "ҺᓂᓂXṾ"
+      "Һᓂᓂ☓Ṿ"
     ]
   },
   {
@@ -11176,7 +11176,7 @@ window.signFontDictionary = [
       "p%;=LGEv"
     ],
     "unicodeSigns": [
-      "✳ŌᕟᕞXᕤṾ⁼"
+      "✳ōᕟᕞ☓ᕤṾ⁼"
     ]
   },
   {
@@ -11185,7 +11185,7 @@ window.signFontDictionary = [
       "dR&&EGvy"
     ],
     "unicodeSigns": [
-      "|℩O̱O̱Ṿᕤ⁼ᴺ"
+      "∣℩⍛⍛Ṿᕤ⁼ᴺ"
     ]
   },
   {
@@ -11194,7 +11194,7 @@ window.signFontDictionary = [
       "k%0LDF"
     ],
     "unicodeSigns": [
-      "७ŌᨓXᐲᘐ"
+      "७ōᨓ☓ᐲᘐ"
     ]
   },
   {
@@ -11203,7 +11203,7 @@ window.signFontDictionary = [
       "s$S\"SLEAEB"
     ],
     "unicodeSigns": [
-      "രⵕ⁊⊖⁊XṾ<Ṿ>"
+      "രⵕ⁊⊖⁊☓ṾᐸṾᐳ"
     ]
   },
   {
@@ -11212,7 +11212,7 @@ window.signFontDictionary = [
       "pS!3EoS"
     ],
     "unicodeSigns": [
-      "✳⁊ⵀ⦣ṾO⁊"
+      "✳⁊ⵀ⦣ṾО⁊"
     ]
   },
   {
@@ -11239,7 +11239,7 @@ window.signFontDictionary = [
       "b!c%ELEy"
     ],
     "unicodeSigns": [
-      "ΠⵀCŌṾXṾᴺ"
+      "ΠⵀСōṾ☓Ṿᴺ"
     ]
   },
   {
@@ -11248,7 +11248,7 @@ window.signFontDictionary = [
       "hR(b\"LEG"
     ],
     "unicodeSigns": [
-      "⫪℩ᓂΠ⊖XṾᕤ"
+      "⫪℩ᓂΠ⊖☓Ṿᕤ"
     ]
   },
   {
@@ -11257,7 +11257,7 @@ window.signFontDictionary = [
       "dS%bR!CG"
     ],
     "unicodeSigns": [
-      "|⁊ŌΠ℩ⵀⵢᕤ"
+      "∣⁊ōΠ℩ⵀⵢᕤ"
     ]
   },
   {
@@ -11275,7 +11275,7 @@ window.signFontDictionary = [
       "b!!BAy"
     ],
     "unicodeSigns": [
-      "Πⵀⵀ><ᴺ"
+      "Πⵀⵀᐳᐸᴺ"
     ]
   },
   {
@@ -11293,7 +11293,7 @@ window.signFontDictionary = [
       "hR&N"
     ],
     "unicodeSigns": [
-      "⫪℩O̱¦"
+      "⫪℩⍛¦"
     ]
   },
   {
@@ -11302,7 +11302,7 @@ window.signFontDictionary = [
       "d(P0LGzz"
     ],
     "unicodeSigns": [
-      "|ᓂ⸝ᨓXᕤ⁷⁷"
+      "∣ᓂ⸝ᨓ☓ᕤ⁷⁷"
     ]
   },
   {
@@ -11320,7 +11320,7 @@ window.signFontDictionary = [
       "cS%6LJ!AB"
     ],
     "unicodeSigns": [
-      "C⁊Ō⩇Xᘕⵀ<>"
+      "С⁊ō⩇☓ᘕⵀᐸᐳ"
     ]
   },
   {
@@ -11329,7 +11329,7 @@ window.signFontDictionary = [
       "u#6Ly"
     ],
     "unicodeSigns": [
-      "ᐯⵚ⩇Xᴺ"
+      "ᐯⵚ⩇☓ᴺ"
     ]
   },
   {
@@ -11347,7 +11347,7 @@ window.signFontDictionary = [
       "iP%6LGy"
     ],
     "unicodeSigns": [
-      "Һ⸝Ō⩇Xᕤᴺ"
+      "Һ⸝ō⩇☓ᕤᴺ"
     ]
   },
   {
@@ -11356,7 +11356,7 @@ window.signFontDictionary = [
       "oS(Gav"
     ],
     "unicodeSigns": [
-      "O⁊ᓂᕤറ⁼"
+      "О⁊ᓂᕤറ⁼"
     ]
   },
   {
@@ -11365,7 +11365,7 @@ window.signFontDictionary = [
       "dR!b\"MKF"
     ],
     "unicodeSigns": [
-      "|℩ⵀΠ⊖ⴳ≈ᘐ"
+      "∣℩ⵀΠ⊖ⴳ≈ᘐ"
     ]
   },
   {
@@ -11374,7 +11374,7 @@ window.signFontDictionary = [
       "uR\"6LHG"
     ],
     "unicodeSigns": [
-      "ᐯ℩⊖⩇Xꕊᕤ"
+      "ᐯ℩⊖⩇☓ꕊᕤ"
     ]
   },
   {
@@ -11383,7 +11383,7 @@ window.signFontDictionary = [
       "d(3L-dR#%LyG"
     ],
     "unicodeSigns": [
-      "|ᓂ⦣X-|℩ⵚŌXᴺᕤ"
+      "∣ᓂ⦣☓-∣℩ⵚō☓ᴺᕤ"
     ]
   },
   {
@@ -11392,7 +11392,7 @@ window.signFontDictionary = [
       "b(8:Lv-p!8S:SKEv"
     ],
     "unicodeSigns": [
-      "ΠᓂᑯᑲX⁼-✳ⵀᑯ⁊ᑲ⁊≈Ṿ⁼"
+      "Πᓂᑯᑲ☓⁼-✳ⵀᑯ⁊ᑲ⁊≈Ṿ⁼"
     ]
   },
   {
@@ -11401,7 +11401,7 @@ window.signFontDictionary = [
       "b#$LFy"
     ],
     "unicodeSigns": [
-      "ΠⵚⵕXᘐᴺ"
+      "Πⵚⵕ☓ᘐᴺ"
     ]
   },
   {
@@ -11410,7 +11410,7 @@ window.signFontDictionary = [
       "b%&DLy"
     ],
     "unicodeSigns": [
-      "ΠŌO̱ᐲXᴺ"
+      "Πō⍛ᐲ☓ᴺ"
     ]
   },
   {
@@ -11419,7 +11419,7 @@ window.signFontDictionary = [
       "d%%MGFxy"
     ],
     "unicodeSigns": [
-      "|ŌŌⴳᕤᘐᙾᴺ"
+      "∣ōōⴳᕤᘐᙾᴺ"
     ]
   },
   {
@@ -11428,7 +11428,7 @@ window.signFontDictionary = [
       "fQ!s%LDpEL"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀരŌXᐲ✳ṾX"
+      "ᗐₒⵀരō☓ᐲ✳Ṿ☓"
     ]
   },
   {
@@ -11446,7 +11446,7 @@ window.signFontDictionary = [
       "oS(8Say"
     ],
     "unicodeSigns": [
-      "O⁊ᓂᑯ⁊റᴺ"
+      "О⁊ᓂᑯ⁊റᴺ"
     ]
   },
   {
@@ -11455,7 +11455,7 @@ window.signFontDictionary = [
       "b&!MF"
     ],
     "unicodeSigns": [
-      "ΠO̱ⵀⴳᘐ"
+      "Π⍛ⵀⴳᘐ"
     ]
   },
   {
@@ -11464,7 +11464,7 @@ window.signFontDictionary = [
       "d\"Hy"
     ],
     "unicodeSigns": [
-      "|⊖ꕊᴺ"
+      "∣⊖ꕊᴺ"
     ]
   },
   {
@@ -11473,7 +11473,7 @@ window.signFontDictionary = [
       "d(b!LJDy"
     ],
     "unicodeSigns": [
-      "|ᓂΠⵀXᘕᐲᴺ"
+      "∣ᓂΠⵀ☓ᘕᐲᴺ"
     ]
   },
   {
@@ -11482,7 +11482,7 @@ window.signFontDictionary = [
       "b%0L-b&)RL"
     ],
     "unicodeSigns": [
-      "ΠŌᨓX-ΠO̱ᓇ℩X"
+      "Πōᨓ☓-Π⍛ᓇ℩☓"
     ]
   },
   {
@@ -11491,7 +11491,7 @@ window.signFontDictionary = [
       "b&$PJFIGzzy"
     ],
     "unicodeSigns": [
-      "ΠO̱ⵕ⸝ᘕᘐᘖᕤ⁷⁷ᴺ"
+      "Π⍛ⵕ⸝ᘕᘐᘖᕤ⁷⁷ᴺ"
     ]
   },
   {
@@ -11500,7 +11500,7 @@ window.signFontDictionary = [
       "s&%Hwy"
     ],
     "unicodeSigns": [
-      "രO̱Ōꕊᣛᴺ"
+      "ര⍛ōꕊᣛᴺ"
     ]
   },
   {
@@ -11527,7 +11527,7 @@ window.signFontDictionary = [
       "h(c*-h#6D"
     ],
     "unicodeSigns": [
-      "⫪ᓂC⊕-⫪ⵚ⩇ᐲ"
+      "⫪ᓂС⊕-⫪ⵚ⩇ᐲ"
     ]
   },
   {
@@ -11536,7 +11536,7 @@ window.signFontDictionary = [
       "d(6MJ"
     ],
     "unicodeSigns": [
-      "|ᓂ⩇ⴳᘕ"
+      "∣ᓂ⩇ⴳᘕ"
     ]
   },
   {
@@ -11545,7 +11545,7 @@ window.signFontDictionary = [
       "s&E"
     ],
     "unicodeSigns": [
-      "രO̱Ṿ"
+      "ര⍛Ṿ"
     ]
   },
   {
@@ -11555,8 +11555,8 @@ window.signFontDictionary = [
       "dR(8:Lv-dRL"
     ],
     "unicodeSigns": [
-      "|℩ᓂᑯX-|℩X",
-      "|℩ᓂᑯᑲX⁼-|℩X"
+      "∣℩ᓂᑯ☓-∣℩☓",
+      "∣℩ᓂᑯᑲ☓⁼-∣℩☓"
     ]
   },
   {
@@ -11574,7 +11574,7 @@ window.signFontDictionary = [
       "s&;=LGpvy"
     ],
     "unicodeSigns": [
-      "രO̱ᕟᕞXᕤ✳⁼ᴺ"
+      "ര⍛ᕟᕞ☓ᕤ✳⁼ᴺ"
     ]
   },
   {
@@ -11583,7 +11583,7 @@ window.signFontDictionary = [
       "pR!\"LKGv"
     ],
     "unicodeSigns": [
-      "✳℩ⵀ⊖X≈ᕤ⁼"
+      "✳℩ⵀ⊖☓≈ᕤ⁼"
     ]
   },
   {
@@ -11592,7 +11592,7 @@ window.signFontDictionary = [
       "oS%%LGABp"
     ],
     "unicodeSigns": [
-      "O⁊ŌŌXᕤ<>✳"
+      "О⁊ōō☓ᕤᐸᐳ✳"
     ]
   },
   {
@@ -11601,7 +11601,7 @@ window.signFontDictionary = [
       "oQ!J&azz"
     ],
     "unicodeSigns": [
-      "OₒⵀᘕO̱റ⁷⁷"
+      "Оₒⵀᘕ⍛റ⁷⁷"
     ]
   },
   {
@@ -11610,7 +11610,7 @@ window.signFontDictionary = [
       "s\"6LDGd"
     ],
     "unicodeSigns": [
-      "ര⊖⩇Xᐲᕤ|"
+      "ര⊖⩇☓ᐲᕤ∣"
     ]
   },
   {
@@ -11619,7 +11619,7 @@ window.signFontDictionary = [
       "h\"Qs%LGE"
     ],
     "unicodeSigns": [
-      "⫪⊖ₒരŌXᕤṾ"
+      "⫪⊖ₒരō☓ᕤṾ"
     ]
   },
   {
@@ -11628,7 +11628,7 @@ window.signFontDictionary = [
       "c**EL"
     ],
     "unicodeSigns": [
-      "C⊕⊕ṾX"
+      "С⊕⊕Ṿ☓"
     ]
   },
   {
@@ -11637,7 +11637,7 @@ window.signFontDictionary = [
       "oS!!LGABp"
     ],
     "unicodeSigns": [
-      "O⁊ⵀⵀXᕤ<>✳"
+      "О⁊ⵀⵀ☓ᕤᐸᐳ✳"
     ]
   },
   {
@@ -11646,7 +11646,7 @@ window.signFontDictionary = [
       "h#b!MGyA"
     ],
     "unicodeSigns": [
-      "⫪ⵚΠⵀⴳᕤᴺ<"
+      "⫪ⵚΠⵀⴳᕤᴺᐸ"
     ]
   },
   {
@@ -11655,7 +11655,7 @@ window.signFontDictionary = [
       "o\"c*MDpy"
     ],
     "unicodeSigns": [
-      "O⊖C⊕ⴳᐲ✳ᴺ"
+      "О⊖С⊕ⴳᐲ✳ᴺ"
     ]
   },
   {
@@ -11664,7 +11664,7 @@ window.signFontDictionary = [
       "oS!b!KH"
     ],
     "unicodeSigns": [
-      "O⁊ⵀΠⵀ≈ꕊ"
+      "О⁊ⵀΠⵀ≈ꕊ"
     ]
   },
   {
@@ -11673,7 +11673,7 @@ window.signFontDictionary = [
       "s&b!ELzz"
     ],
     "unicodeSigns": [
-      "രO̱ΠⵀṾX⁷⁷"
+      "ര⍛ΠⵀṾ☓⁷⁷"
     ]
   },
   {
@@ -11682,7 +11682,7 @@ window.signFontDictionary = [
       "h#6L-h##L"
     ],
     "unicodeSigns": [
-      "⫪ⵚ⩇X-⫪ⵚⵚX"
+      "⫪ⵚ⩇☓-⫪ⵚⵚ☓"
     ]
   },
   {
@@ -11691,7 +11691,7 @@ window.signFontDictionary = [
       "s&b!ELzD"
     ],
     "unicodeSigns": [
-      "രO̱ΠⵀṾX⁷ᐲ"
+      "ര⍛ΠⵀṾ☓⁷ᐲ"
     ]
   },
   {
@@ -11700,7 +11700,7 @@ window.signFontDictionary = [
       "u(b!EL"
     ],
     "unicodeSigns": [
-      "ᐯᓂΠⵀṾX"
+      "ᐯᓂΠⵀṾ☓"
     ]
   },
   {
@@ -11709,7 +11709,7 @@ window.signFontDictionary = [
       "n%%LJLv"
     ],
     "unicodeSigns": [
-      "ቨŌŌXᘕX⁼"
+      "ቨōō☓ᘕ☓⁼"
     ]
   },
   {
@@ -11718,7 +11718,7 @@ window.signFontDictionary = [
       "uR!b!IL"
     ],
     "unicodeSigns": [
-      "ᐯ℩ⵀΠⵀᘖX"
+      "ᐯ℩ⵀΠⵀᘖ☓"
     ]
   },
   {
@@ -11727,7 +11727,7 @@ window.signFontDictionary = [
       "aP&b\"L"
     ],
     "unicodeSigns": [
-      "റ⸝O̱Π⊖X"
+      "റ⸝⍛Π⊖☓"
     ]
   },
   {
@@ -11736,7 +11736,7 @@ window.signFontDictionary = [
       "bT%b%Nay"
     ],
     "unicodeSigns": [
-      "Π℩⸝ŌΠŌ¦റᴺ"
+      "Π℩⸝ōΠō¦റᴺ"
     ]
   },
   {
@@ -11754,7 +11754,7 @@ window.signFontDictionary = [
       "d#b+MJ"
     ],
     "unicodeSigns": [
-      "|ⵚΠ◷ⴳᘕ"
+      "∣ⵚΠ◷ⴳᘕ"
     ]
   },
   {
@@ -11763,7 +11763,7 @@ window.signFontDictionary = [
       "u!s)AuR"
     ],
     "unicodeSigns": [
-      "ᐯⵀരᓇ<ᐯ℩"
+      "ᐯⵀരᓇᐸᐯ℩"
     ]
   },
   {
@@ -11772,7 +11772,7 @@ window.signFontDictionary = [
       "b%&DJyD"
     ],
     "unicodeSigns": [
-      "ΠŌO̱ᐲᘕᴺᐲ"
+      "Πō⍛ᐲᘕᴺᐲ"
     ]
   },
   {
@@ -11790,7 +11790,7 @@ window.signFontDictionary = [
       "iP&IGv"
     ],
     "unicodeSigns": [
-      "Һ⸝O̱ᘖᕤ⁼"
+      "Һ⸝⍛ᘖᕤ⁼"
     ]
   },
   {
@@ -11799,7 +11799,7 @@ window.signFontDictionary = [
       "oQ!b\"ELzzD"
     ],
     "unicodeSigns": [
-      "OₒⵀΠ⊖ṾX⁷⁷ᐲ"
+      "ОₒⵀΠ⊖Ṿ☓⁷⁷ᐲ"
     ]
   },
   {
@@ -11808,7 +11808,7 @@ window.signFontDictionary = [
       "aQ(c%Hy"
     ],
     "unicodeSigns": [
-      "റₒᓂCŌꕊᴺ"
+      "റₒᓂСōꕊᴺ"
     ]
   },
   {
@@ -11817,7 +11817,7 @@ window.signFontDictionary = [
       "bS!=Ly"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀᕞXᴺ"
+      "Π⁊ⵀᕞ☓ᴺ"
     ]
   },
   {
@@ -11835,7 +11835,7 @@ window.signFontDictionary = [
       "b&!EL"
     ],
     "unicodeSigns": [
-      "ΠO̱ⵀṾX"
+      "Π⍛ⵀṾ☓"
     ]
   },
   {
@@ -11844,7 +11844,7 @@ window.signFontDictionary = [
       "oS%%5S7SJ\"vy"
     ],
     "unicodeSigns": [
-      "O⁊ŌŌᒍ⁊ᒐ⁊ᘕ⊖⁼ᴺ"
+      "О⁊ōōᒍ⁊ᒐ⁊ᘕ⊖⁼ᴺ"
     ]
   },
   {
@@ -11853,7 +11853,7 @@ window.signFontDictionary = [
       "fQ**LABy"
     ],
     "unicodeSigns": [
-      "ᗐₒ⊕⊕X<>ᴺ"
+      "ᗐₒ⊕⊕☓ᐸᐳᴺ"
     ]
   },
   {
@@ -11862,7 +11862,7 @@ window.signFontDictionary = [
       "b&%MG"
     ],
     "unicodeSigns": [
-      "ΠO̱Ōⴳᕤ"
+      "Π⍛ōⴳᕤ"
     ]
   },
   {
@@ -11871,7 +11871,7 @@ window.signFontDictionary = [
       "c%3BLJ!"
     ],
     "unicodeSigns": [
-      "CŌ⦣>Xᘕⵀ"
+      "Сō⦣ᐳ☓ᘕⵀ"
     ]
   },
   {
@@ -11882,9 +11882,9 @@ window.signFontDictionary = [
       "c&%LGvy"
     ],
     "unicodeSigns": [
-      "CO̱Ōⴳᘕⵀ⁼ᴺ",
-      "CO̱Ōⴳᘕ⊖⁼ᴺ",
-      "CO̱ŌXᕤ⁼ᴺ"
+      "С⍛ōⴳᘕⵀ⁼ᴺ",
+      "С⍛ōⴳᘕ⊖⁼ᴺ",
+      "С⍛ō☓ᕤ⁼ᴺ"
     ]
   },
   {
@@ -11893,7 +11893,7 @@ window.signFontDictionary = [
       "d#6LE-a%6L"
     ],
     "unicodeSigns": [
-      "|ⵚ⩇XṾ-റŌ⩇X"
+      "∣ⵚ⩇☓Ṿ-റō⩇☓"
     ]
   },
   {
@@ -11903,8 +11903,8 @@ window.signFontDictionary = [
       "uR%3FL"
     ],
     "unicodeSigns": [
-      "⫪℩Ō⦣ᘐX",
-      "ᐯ℩Ō⦣ᘐX"
+      "⫪℩ō⦣ᘐ☓",
+      "ᐯ℩ō⦣ᘐ☓"
     ]
   },
   {
@@ -11913,7 +11913,7 @@ window.signFontDictionary = [
       "aQ(b!LJDG"
     ],
     "unicodeSigns": [
-      "റₒᓂΠⵀXᘕᐲᕤ"
+      "റₒᓂΠⵀ☓ᘕᐲᕤ"
     ]
   },
   {
@@ -11922,7 +11922,7 @@ window.signFontDictionary = [
       "i((LA"
     ],
     "unicodeSigns": [
-      "ҺᓂᓂX<"
+      "Һᓂᓂ☓ᐸ"
     ]
   },
   {
@@ -11933,7 +11933,7 @@ window.signFontDictionary = [
     ],
     "unicodeSigns": [
       "ര⊖ᕤ⁷⁷⁼",
-      "രO̱Ṿ⁷⁷⁼"
+      "ര⍛Ṿ⁷⁷⁼"
     ]
   },
   {
@@ -11942,7 +11942,7 @@ window.signFontDictionary = [
       "bP%/MbUzz"
     ],
     "unicodeSigns": [
-      "Π⸝ŌᕂⴳΠ⁊⸝⁷⁷"
+      "Π⸝ōᕂⴳΠ⁊⸝⁷⁷"
     ]
   },
   {
@@ -11951,7 +11951,7 @@ window.signFontDictionary = [
       "u(9(FL"
     ],
     "unicodeSigns": [
-      "ᐯᓂɤᓂᘐX"
+      "ᐯᓂɤᓂᘐ☓"
     ]
   },
   {
@@ -11960,7 +11960,7 @@ window.signFontDictionary = [
       "pS!b!LDoS-b&8:Ev"
     ],
     "unicodeSigns": [
-      "✳⁊ⵀΠⵀXᐲO⁊-ΠO̱ᑯᑲṾ⁼"
+      "✳⁊ⵀΠⵀ☓ᐲО⁊-Π⍛ᑯᑲṾ⁼"
     ]
   },
   {
@@ -11987,7 +11987,7 @@ window.signFontDictionary = [
       "u\"0FL"
     ],
     "unicodeSigns": [
-      "ᐯ⊖ᨓᘐX"
+      "ᐯ⊖ᨓᘐ☓"
     ]
   },
   {
@@ -11996,7 +11996,7 @@ window.signFontDictionary = [
       "uP!b&JyE"
     ],
     "unicodeSigns": [
-      "ᐯ⸝ⵀΠO̱ᘕᴺṾ"
+      "ᐯ⸝ⵀΠ⍛ᘕᴺṾ"
     ]
   },
   {
@@ -12005,7 +12005,7 @@ window.signFontDictionary = [
       "c!b!ELEs"
     ],
     "unicodeSigns": [
-      "CⵀΠⵀṾXṾര"
+      "СⵀΠⵀṾ☓Ṿര"
     ]
   },
   {
@@ -12014,7 +12014,7 @@ window.signFontDictionary = [
       "d%b!MGy"
     ],
     "unicodeSigns": [
-      "|ŌΠⵀⴳᕤᴺ"
+      "∣ōΠⵀⴳᕤᴺ"
     ]
   },
   {
@@ -12023,7 +12023,7 @@ window.signFontDictionary = [
       "s&%GEwy"
     ],
     "unicodeSigns": [
-      "രO̱ŌᕤṾᣛᴺ"
+      "ര⍛ōᕤṾᣛᴺ"
     ]
   },
   {
@@ -12032,7 +12032,7 @@ window.signFontDictionary = [
       "h#6LEy"
     ],
     "unicodeSigns": [
-      "⫪ⵚ⩇XṾᴺ"
+      "⫪ⵚ⩇☓Ṿᴺ"
     ]
   },
   {
@@ -12041,7 +12041,7 @@ window.signFontDictionary = [
       "b&&DGv"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱ᐲᕤ⁼"
+      "Π⍛⍛ᐲᕤ⁼"
     ]
   },
   {
@@ -12060,8 +12060,8 @@ window.signFontDictionary = [
       "d%P0MAdRy"
     ],
     "unicodeSigns": [
-      "|Ō⸝ᨓⴳ<|℩",
-      "|Ō⸝ᨓⴳ<|℩ᴺ"
+      "∣ō⸝ᨓⴳᐸ∣℩",
+      "∣ō⸝ᨓⴳᐸ∣℩ᴺ"
     ]
   },
   {
@@ -12088,7 +12088,7 @@ window.signFontDictionary = [
       "c%b&D"
     ],
     "unicodeSigns": [
-      "CŌΠO̱ᐲ"
+      "СōΠ⍛ᐲ"
     ]
   },
   {
@@ -12097,7 +12097,7 @@ window.signFontDictionary = [
       "c%b&E"
     ],
     "unicodeSigns": [
-      "CŌΠO̱Ṿ"
+      "СōΠ⍛Ṿ"
     ]
   },
   {
@@ -12106,7 +12106,7 @@ window.signFontDictionary = [
       "o!/S1SEpv"
     ],
     "unicodeSigns": [
-      "Oⵀᕂ⁊ᕃ⁊Ṿ✳⁼"
+      "Оⵀᕂ⁊ᕃ⁊Ṿ✳⁼"
     ]
   },
   {
@@ -12115,7 +12115,7 @@ window.signFontDictionary = [
       "h(\"QLEGv"
     ],
     "unicodeSigns": [
-      "⫪ᓂ⊖ₒXṾᕤ⁼"
+      "⫪ᓂ⊖ₒ☓Ṿᕤ⁼"
     ]
   },
   {
@@ -12124,7 +12124,7 @@ window.signFontDictionary = [
       "h(\"QLGvy"
     ],
     "unicodeSigns": [
-      "⫪ᓂ⊖ₒXᕤ⁼ᴺ"
+      "⫪ᓂ⊖ₒ☓ᕤ⁼ᴺ"
     ]
   },
   {
@@ -12133,7 +12133,7 @@ window.signFontDictionary = [
       "aP%b!MGy"
     ],
     "unicodeSigns": [
-      "റ⸝ŌΠⵀⴳᕤᴺ"
+      "റ⸝ōΠⵀⴳᕤᴺ"
     ]
   },
   {
@@ -12142,7 +12142,7 @@ window.signFontDictionary = [
       "oQ%2Q4QLDdPzzy"
     ],
     "unicodeSigns": [
-      "OₒŌᖌₒᖍₒXᐲ|⸝⁷⁷ᴺ"
+      "Оₒōᖌₒᖍₒ☓ᐲ∣⸝⁷⁷ᴺ"
     ]
   },
   {
@@ -12151,7 +12151,7 @@ window.signFontDictionary = [
       "iP%%MJy"
     ],
     "unicodeSigns": [
-      "Һ⸝ŌŌⴳᘕᴺ"
+      "Һ⸝ōōⴳᘕᴺ"
     ]
   },
   {
@@ -12160,7 +12160,7 @@ window.signFontDictionary = [
       "hS!;=FhQLvy"
     ],
     "unicodeSigns": [
-      "⫪⁊ⵀᕟᕞᘐ⫪ₒX⁼ᴺ"
+      "⫪⁊ⵀᕟᕞᘐ⫪ₒ☓⁼ᴺ"
     ]
   },
   {
@@ -12189,9 +12189,9 @@ window.signFontDictionary = [
       "s%0Hy"
     ],
     "unicodeSigns": [
-      "✳⁊⊕Π⊖⁊XᐲO⁊ᴺ",
-      "രŌᨓṾᴺ",
-      "രŌᨓꕊᴺ"
+      "✳⁊⊕Π⊖⁊☓ᐲО⁊ᴺ",
+      "രōᨓṾᴺ",
+      "രōᨓꕊᴺ"
     ]
   },
   {
@@ -12200,7 +12200,7 @@ window.signFontDictionary = [
       "b&!FLFy"
     ],
     "unicodeSigns": [
-      "ΠO̱ⵀᘐXᘐᴺ"
+      "Π⍛ⵀᘐ☓ᘐᴺ"
     ]
   },
   {
@@ -12209,7 +12209,7 @@ window.signFontDictionary = [
       "b#6LEy"
     ],
     "unicodeSigns": [
-      "Πⵚ⩇XṾᴺ"
+      "Πⵚ⩇☓Ṿᴺ"
     ]
   },
   {
@@ -12218,7 +12218,7 @@ window.signFontDictionary = [
       "pR!!LABz"
     ],
     "unicodeSigns": [
-      "✳℩ⵀⵀX<>⁷"
+      "✳℩ⵀⵀ☓ᐸᐳ⁷"
     ]
   },
   {
@@ -12227,7 +12227,7 @@ window.signFontDictionary = [
       "b%%GABy"
     ],
     "unicodeSigns": [
-      "ΠŌŌᕤ<>ᴺ"
+      "Πōōᕤᐸᐳᴺ"
     ]
   },
   {
@@ -12236,7 +12236,7 @@ window.signFontDictionary = [
       "hR#h\"QLJ\"GJ!Fvy"
     ],
     "unicodeSigns": [
-      "⫪℩ⵚ⫪⊖ₒXᘕ⊖ᕤᘕⵀᘐ⁼ᴺ"
+      "⫪℩ⵚ⫪⊖ₒ☓ᘕ⊖ᕤᘕⵀᘐ⁼ᴺ"
     ]
   },
   {
@@ -12245,7 +12245,7 @@ window.signFontDictionary = [
       "s&%LGBv"
     ],
     "unicodeSigns": [
-      "രO̱ŌXᕤ>⁼"
+      "ര⍛ō☓ᕤᐳ⁼"
     ]
   },
   {
@@ -12263,7 +12263,7 @@ window.signFontDictionary = [
       "dR%J%y"
     ],
     "unicodeSigns": [
-      "|℩ŌᘕŌᴺ"
+      "∣℩ōᘕōᴺ"
     ]
   },
   {
@@ -12272,7 +12272,7 @@ window.signFontDictionary = [
       "dR%J&EN"
     ],
     "unicodeSigns": [
-      "|℩ŌᘕO̱Ṿ¦"
+      "∣℩ōᘕ⍛Ṿ¦"
     ]
   },
   {
@@ -12281,7 +12281,7 @@ window.signFontDictionary = [
       "dR%J%DN"
     ],
     "unicodeSigns": [
-      "|℩ŌᘕŌᐲ¦"
+      "∣℩ōᘕōᐲ¦"
     ]
   },
   {
@@ -12291,8 +12291,8 @@ window.signFontDictionary = [
       "cQ!9ME-cQ!9MA"
     ],
     "unicodeSigns": [
-      "CⵀɤⴳṾ-Cⵀɤⴳ<",
-      "CₒⵀɤⴳṾ-Cₒⵀɤⴳ<"
+      "СⵀɤⴳṾ-Сⵀɤⴳᐸ",
+      "СₒⵀɤⴳṾ-Сₒⵀɤⴳᐸ"
     ]
   },
   {
@@ -12301,7 +12301,7 @@ window.signFontDictionary = [
       "b!\"PLy"
     ],
     "unicodeSigns": [
-      "Πⵀ⊖⸝Xᴺ"
+      "Πⵀ⊖⸝☓ᴺ"
     ]
   },
   {
@@ -12310,7 +12310,7 @@ window.signFontDictionary = [
       "s%6J!y"
     ],
     "unicodeSigns": [
-      "രŌ⩇ᘕⵀᴺ"
+      "രō⩇ᘕⵀᴺ"
     ]
   },
   {
@@ -12330,7 +12330,7 @@ window.signFontDictionary = [
       "b&&G8Pv"
     ],
     "unicodeSigns": [
-      "ΠO̱O̱ᕤᑯ⸝⁼"
+      "Π⍛⍛ᕤᑯ⸝⁼"
     ]
   },
   {
@@ -12340,8 +12340,8 @@ window.signFontDictionary = [
       "s!6Fdy"
     ],
     "unicodeSigns": [
-      "Oₒⵀ⩇ᘐ|⸝ᴺ",
-      "രⵀ⩇ᘐ|ᴺ"
+      "Оₒⵀ⩇ᘐ∣⸝ᴺ",
+      "രⵀ⩇ᘐ∣ᴺ"
     ]
   },
   {
@@ -12350,7 +12350,7 @@ window.signFontDictionary = [
       "k&%Ly"
     ],
     "unicodeSigns": [
-      "७O̱ŌXᴺ"
+      "७⍛ō☓ᴺ"
     ]
   },
   {
@@ -12359,7 +12359,7 @@ window.signFontDictionary = [
       "p!ENAENv"
     ],
     "unicodeSigns": [
-      "✳ⵀṾ¦<Ṿ¦⁼"
+      "✳ⵀṾ¦ᐸṾ¦⁼"
     ]
   },
   {
@@ -12368,7 +12368,7 @@ window.signFontDictionary = [
       "jP!b!LDG"
     ],
     "unicodeSigns": [
-      "Ч⸝ⵀΠⵀXᐲᕤ"
+      "Ч⸝ⵀΠⵀ☓ᐲᕤ"
     ]
   },
   {
@@ -12377,7 +12377,7 @@ window.signFontDictionary = [
       "h#\"QLG"
     ],
     "unicodeSigns": [
-      "⫪ⵚ⊖ₒXᕤ"
+      "⫪ⵚ⊖ₒ☓ᕤ"
     ]
   },
   {
@@ -12386,7 +12386,7 @@ window.signFontDictionary = [
       "dP%dT%57NdT"
     ],
     "unicodeSigns": [
-      "|⸝Ō|℩⸝Ōᒍᒐ¦|℩⸝"
+      "∣⸝ō∣℩⸝ōᒍᒐ¦∣℩⸝"
     ]
   },
   {
@@ -12395,7 +12395,7 @@ window.signFontDictionary = [
       "n%6LGy"
     ],
     "unicodeSigns": [
-      "ቨŌ⩇Xᕤᴺ"
+      "ቨō⩇☓ᕤᴺ"
     ]
   },
   {
@@ -12413,7 +12413,7 @@ window.signFontDictionary = [
       "t%5ME"
     ],
     "unicodeSigns": [
-      "൪ŌᒍⴳṾ"
+      "൪ōᒍⴳṾ"
     ]
   },
   {
@@ -12431,7 +12431,7 @@ window.signFontDictionary = [
       "qP!6Ly"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀ⩇Xᴺ"
+      "ᕬ⸝ⵀ⩇☓ᴺ"
     ]
   },
   {
@@ -12440,7 +12440,7 @@ window.signFontDictionary = [
       "fQ!o%MH"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀOŌⴳꕊ"
+      "ᗐₒⵀОōⴳꕊ"
     ]
   },
   {
@@ -12449,7 +12449,7 @@ window.signFontDictionary = [
       "oS&8S:SGvy"
     ],
     "unicodeSigns": [
-      "O⁊O̱ᑯ⁊ᑲ⁊ᕤ⁼ᴺ"
+      "О⁊⍛ᑯ⁊ᑲ⁊ᕤ⁼ᴺ"
     ]
   },
   {
@@ -12458,7 +12458,7 @@ window.signFontDictionary = [
       "oS&8S:SGv-b&8S:SEvN"
     ],
     "unicodeSigns": [
-      "O⁊O̱ᑯ⁊ᑲ⁊ᕤ⁼-ΠO̱ᑯ⁊ᑲ⁊Ṿ⁼¦"
+      "О⁊⍛ᑯ⁊ᑲ⁊ᕤ⁼-Π⍛ᑯ⁊ᑲ⁊Ṿ⁼¦"
     ]
   },
   {
@@ -12467,7 +12467,7 @@ window.signFontDictionary = [
       "aQ%%LFx"
     ],
     "unicodeSigns": [
-      "റₒŌŌXᘐᙾ"
+      "റₒōō☓ᘐᙾ"
     ]
   },
   {
@@ -12476,7 +12476,7 @@ window.signFontDictionary = [
       "d(57MEdRvzzy"
     ],
     "unicodeSigns": [
-      "|ᓂᒍᒐⴳṾ|℩⁼⁷⁷ᴺ"
+      "∣ᓂᒍᒐⴳṾ∣℩⁼⁷⁷ᴺ"
     ]
   },
   {
@@ -12485,7 +12485,7 @@ window.signFontDictionary = [
       "qP!b!LGy"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀΠⵀXᕤᴺ"
+      "ᕬ⸝ⵀΠⵀ☓ᕤᴺ"
     ]
   },
   {
@@ -12494,7 +12494,7 @@ window.signFontDictionary = [
       "qP!b!LG"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀΠⵀXᕤ"
+      "ᕬ⸝ⵀΠⵀ☓ᕤ"
     ]
   },
   {
@@ -12503,7 +12503,7 @@ window.signFontDictionary = [
       "c&%3MJ!y"
     ],
     "unicodeSigns": [
-      "CO̱Ō⦣ⴳᘕⵀᴺ"
+      "С⍛ō⦣ⴳᘕⵀᴺ"
     ]
   },
   {
@@ -12512,7 +12512,7 @@ window.signFontDictionary = [
       "d\"Q6LJ\"G"
     ],
     "unicodeSigns": [
-      "|⊖ₒ⩇Xᘕ⊖ᕤ"
+      "∣⊖ₒ⩇☓ᘕ⊖ᕤ"
     ]
   },
   {
@@ -12521,7 +12521,7 @@ window.signFontDictionary = [
       "fQ**LEABy"
     ],
     "unicodeSigns": [
-      "ᗐₒ⊕⊕XṾ<>ᴺ"
+      "ᗐₒ⊕⊕☓Ṿᐸᐳᴺ"
     ]
   },
   {
@@ -12530,7 +12530,7 @@ window.signFontDictionary = [
       "d\"Q6LJ\"G8P"
     ],
     "unicodeSigns": [
-      "|⊖ₒ⩇Xᘕ⊖ᕤᑯ⸝"
+      "∣⊖ₒ⩇☓ᘕ⊖ᕤᑯ⸝"
     ]
   },
   {
@@ -12539,7 +12539,7 @@ window.signFontDictionary = [
       "d&P%PMDEy"
     ],
     "unicodeSigns": [
-      "|O̱⸝Ō⸝ⴳᐲṾᴺ"
+      "∣⍛⸝ō⸝ⴳᐲṾᴺ"
     ]
   },
   {
@@ -12548,7 +12548,7 @@ window.signFontDictionary = [
       "aQ!8SJBNIA"
     ],
     "unicodeSigns": [
-      "റₒⵀᑯ⁊ᘕ>¦ᘖ<"
+      "റₒⵀᑯ⁊ᘕᐳ¦ᘖᐸ"
     ]
   },
   {
@@ -12557,7 +12557,7 @@ window.signFontDictionary = [
       "d%%EdRv"
     ],
     "unicodeSigns": [
-      "|ŌŌṾ|℩⁼"
+      "∣ōōṾ∣℩⁼"
     ]
   },
   {
@@ -12566,7 +12566,7 @@ window.signFontDictionary = [
       "d%%EdRvy"
     ],
     "unicodeSigns": [
-      "|ŌŌṾ|℩⁼ᴺ"
+      "∣ōōṾ∣℩⁼ᴺ"
     ]
   },
   {
@@ -12575,7 +12575,7 @@ window.signFontDictionary = [
       "b#6LJ\"G"
     ],
     "unicodeSigns": [
-      "Πⵚ⩇Xᘕ⊖ᕤ"
+      "Πⵚ⩇☓ᘕ⊖ᕤ"
     ]
   },
   {
@@ -12584,7 +12584,7 @@ window.signFontDictionary = [
       "b#6L-a&&Gbv"
     ],
     "unicodeSigns": [
-      "Πⵚ⩇X-റO̱O̱ᕤΠ⁼"
+      "Πⵚ⩇☓-റ⍛⍛ᕤΠ⁼"
     ]
   },
   {
@@ -12594,8 +12594,8 @@ window.signFontDictionary = [
       "iP!b!EL"
     ],
     "unicodeSigns": [
-      "Һ⸝ⵀΠⵀ>X",
-      "Һ⸝ⵀΠⵀṾX"
+      "Һ⸝ⵀΠⵀᐳ☓",
+      "Һ⸝ⵀΠⵀṾ☓"
     ]
   },
   {
@@ -12622,7 +12622,7 @@ window.signFontDictionary = [
       "b!8PGA"
     ],
     "unicodeSigns": [
-      "Πⵀᑯ⸝ᕤ<"
+      "Πⵀᑯ⸝ᕤᐸ"
     ]
   },
   {
@@ -12632,8 +12632,8 @@ window.signFontDictionary = [
       "aP(8PGA"
     ],
     "unicodeSigns": [
-      "റ⸝ᓂᑯ⸝ᕤᴺ<",
-      "റ⸝ᓂᑯ⸝ᕤ<"
+      "റ⸝ᓂᑯ⸝ᕤᴺᐸ",
+      "റ⸝ᓂᑯ⸝ᕤᐸ"
     ]
   },
   {
@@ -12642,7 +12642,7 @@ window.signFontDictionary = [
       "d(:PN"
     ],
     "unicodeSigns": [
-      "|ᓂᑲ⸝¦"
+      "∣ᓂᑲ⸝¦"
     ]
   },
   {
@@ -12652,8 +12652,8 @@ window.signFontDictionary = [
       "d(6Ly"
     ],
     "unicodeSigns": [
-      "|⁊ⵀ⩇Xᴺ",
-      "|ᓂ⩇Xᴺ"
+      "∣⁊ⵀ⩇☓ᴺ",
+      "∣ᓂ⩇☓ᴺ"
     ]
   },
   {
@@ -12662,7 +12662,7 @@ window.signFontDictionary = [
       "d(8PGA"
     ],
     "unicodeSigns": [
-      "|ᓂᑯ⸝ᕤ<"
+      "∣ᓂᑯ⸝ᕤᐸ"
     ]
   },
   {
@@ -12671,7 +12671,7 @@ window.signFontDictionary = [
       "u!s)AuRy"
     ],
     "unicodeSigns": [
-      "ᐯⵀരᓇ<ᐯ℩ᴺ"
+      "ᐯⵀരᓇᐸᐯ℩ᴺ"
     ]
   },
   {
@@ -12689,7 +12689,7 @@ window.signFontDictionary = [
       "d(0Ly"
     ],
     "unicodeSigns": [
-      "|ᓂᨓXᴺ"
+      "∣ᓂᨓ☓ᴺ"
     ]
   },
   {
@@ -12698,7 +12698,7 @@ window.signFontDictionary = [
       "d(0Hy"
     ],
     "unicodeSigns": [
-      "|ᓂᨓꕊᴺ"
+      "∣ᓂᨓꕊᴺ"
     ]
   },
   {
@@ -12707,7 +12707,7 @@ window.signFontDictionary = [
       "d(0FL"
     ],
     "unicodeSigns": [
-      "|ᓂᨓᘐX"
+      "∣ᓂᨓᘐ☓"
     ]
   },
   {
@@ -12716,7 +12716,7 @@ window.signFontDictionary = [
       "d#9(ME"
     ],
     "unicodeSigns": [
-      "|ⵚɤᓂⴳṾ"
+      "∣ⵚɤᓂⴳṾ"
     ]
   },
   {
@@ -12726,8 +12726,8 @@ window.signFontDictionary = [
       "d(b!BLy"
     ],
     "unicodeSigns": [
-      "|ᓂΠⵀ>X",
-      "|ᓂΠⵀ>Xᴺ"
+      "∣ᓂΠⵀᐳ☓",
+      "∣ᓂΠⵀᐳ☓ᴺ"
     ]
   },
   {
@@ -12736,7 +12736,7 @@ window.signFontDictionary = [
       "u&8PBy"
     ],
     "unicodeSigns": [
-      "ᐯO̱ᑯ⸝>ᴺ"
+      "ᐯ⍛ᑯ⸝ᐳᴺ"
     ]
   },
   {
@@ -12754,7 +12754,7 @@ window.signFontDictionary = [
       "s&5J&GuP"
     ],
     "unicodeSigns": [
-      "രO̱ᒍᘕO̱ᕤᐯ⸝"
+      "ര⍛ᒍᘕ⍛ᕤᐯ⸝"
     ]
   },
   {
@@ -12763,7 +12763,7 @@ window.signFontDictionary = [
       "s&%DApv"
     ],
     "unicodeSigns": [
-      "രO̱Ōᐲ<✳⁼"
+      "ര⍛ōᐲᐸ✳⁼"
     ]
   },
   {
@@ -12772,7 +12772,7 @@ window.signFontDictionary = [
       "d(2L-s&8S:SCwy"
     ],
     "unicodeSigns": [
-      "|ᓂᖌX-രO̱ᑯ⁊ᑲ⁊ⵢᣛᴺ"
+      "∣ᓂᖌ☓-ര⍛ᑯ⁊ᑲ⁊ⵢᣛᴺ"
     ]
   },
   {
@@ -12799,7 +12799,7 @@ window.signFontDictionary = [
       "uR+b&BLy"
     ],
     "unicodeSigns": [
-      "ᐯ℩◷ΠO̱>Xᴺ"
+      "ᐯ℩◷Π⍛ᐳ☓ᴺ"
     ]
   },
   {
@@ -12808,7 +12808,7 @@ window.signFontDictionary = [
       "aQ((HwLAB"
     ],
     "unicodeSigns": [
-      "റₒᓂᓂꕊᣛX<>"
+      "റₒᓂᓂꕊᣛ☓ᐸᐳ"
     ]
   },
   {
@@ -12817,7 +12817,7 @@ window.signFontDictionary = [
       "pR!57LABy"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᒍᒐX<>ᴺ"
+      "✳℩ⵀᒍᒐ☓ᐸᐳᴺ"
     ]
   },
   {
@@ -12826,7 +12826,7 @@ window.signFontDictionary = [
       "s%d%PJE"
     ],
     "unicodeSigns": [
-      "രŌ|Ō⸝ᘕṾ"
+      "രō∣ō⸝ᘕṾ"
     ]
   },
   {
@@ -12835,7 +12835,7 @@ window.signFontDictionary = [
       "dR!s\"SLy"
     ],
     "unicodeSigns": [
-      "|℩ⵀര⊖⁊Xᴺ"
+      "∣℩ⵀര⊖⁊☓ᴺ"
     ]
   },
   {
@@ -12844,7 +12844,7 @@ window.signFontDictionary = [
       "g$b!L"
     ],
     "unicodeSigns": [
-      "⊃ⵕΠⵀX"
+      "⊃ⵕΠⵀ☓"
     ]
   },
   {
@@ -12853,7 +12853,7 @@ window.signFontDictionary = [
       "dS!EwyG"
     ],
     "unicodeSigns": [
-      "|⁊ⵀṾᣛᴺᕤ"
+      "∣⁊ⵀṾᣛᴺᕤ"
     ]
   },
   {
@@ -12881,8 +12881,8 @@ window.signFontDictionary = [
       "a!!LHvy"
     ],
     "unicodeSigns": [
-      "റⵀⵀXᕤ⁼ᴺ",
-      "റⵀⵀXꕊ⁼ᴺ"
+      "റⵀⵀ☓ᕤ⁼ᴺ",
+      "റⵀⵀ☓ꕊ⁼ᴺ"
     ]
   },
   {
@@ -12891,7 +12891,7 @@ window.signFontDictionary = [
       "t%By"
     ],
     "unicodeSigns": [
-      "൪Ō>ᴺ"
+      "൪ōᐳᴺ"
     ]
   },
   {
@@ -12900,7 +12900,7 @@ window.signFontDictionary = [
       "d%P6L-d#\"QELE"
     ],
     "unicodeSigns": [
-      "|Ō⸝⩇X-|ⵚ⊖ₒṾXṾ"
+      "∣ō⸝⩇☓-∣ⵚ⊖ₒṾ☓Ṿ"
     ]
   },
   {
@@ -12909,7 +12909,7 @@ window.signFontDictionary = [
       "aP%5LJG"
     ],
     "unicodeSigns": [
-      "റ⸝ŌᒍXᘕᕤ"
+      "റ⸝ōᒍ☓ᘕᕤ"
     ]
   },
   {
@@ -12918,7 +12918,7 @@ window.signFontDictionary = [
       "d(6QLy"
     ],
     "unicodeSigns": [
-      "|ᓂ⩇ₒXᴺ"
+      "∣ᓂ⩇ₒ☓ᴺ"
     ]
   },
   {
@@ -12927,7 +12927,7 @@ window.signFontDictionary = [
       "bS#\"QLDG"
     ],
     "unicodeSigns": [
-      "Π⁊ⵚ⊖ₒXᐲᕤ"
+      "Π⁊ⵚ⊖ₒ☓ᐲᕤ"
     ]
   },
   {
@@ -12936,7 +12936,7 @@ window.signFontDictionary = [
       "dR!6QLy"
     ],
     "unicodeSigns": [
-      "|℩ⵀ⩇ₒXᴺ"
+      "∣℩ⵀ⩇ₒ☓ᴺ"
     ]
   },
   {
@@ -12945,7 +12945,7 @@ window.signFontDictionary = [
       "d%6Bzzy"
     ],
     "unicodeSigns": [
-      "|Ō⩇>⁷⁷ᴺ"
+      "∣ō⩇ᐳ⁷⁷ᴺ"
     ]
   },
   {
@@ -12954,7 +12954,7 @@ window.signFontDictionary = [
       "oS!6L-oS($Gavy"
     ],
     "unicodeSigns": [
-      "O⁊ⵀ⩇X-O⁊ᓂⵕᕤറ⁼ᴺ"
+      "О⁊ⵀ⩇☓-О⁊ᓂⵕᕤറ⁼ᴺ"
     ]
   },
   {
@@ -12963,7 +12963,7 @@ window.signFontDictionary = [
       "b!!LJxLy"
     ],
     "unicodeSigns": [
-      "ΠⵀⵀXᘕᙾXᴺ"
+      "Πⵀⵀ☓ᘕᙾ☓ᴺ"
     ]
   },
   {
@@ -12972,7 +12972,7 @@ window.signFontDictionary = [
       "uR!b!LJLy"
     ],
     "unicodeSigns": [
-      "ᐯ℩ⵀΠⵀXᘕXᴺ"
+      "ᐯ℩ⵀΠⵀ☓ᘕ☓ᴺ"
     ]
   },
   {
@@ -12981,7 +12981,7 @@ window.signFontDictionary = [
       "qP!s\"EL"
     ],
     "unicodeSigns": [
-      "ᕬ⸝ⵀര⊖ṾX"
+      "ᕬ⸝ⵀര⊖Ṿ☓"
     ]
   },
   {
@@ -12990,7 +12990,7 @@ window.signFontDictionary = [
       "dR##LAv"
     ],
     "unicodeSigns": [
-      "|℩ⵚⵚX<⁼"
+      "∣℩ⵚⵚ☓ᐸ⁼"
     ]
   },
   {
@@ -13000,8 +13000,8 @@ window.signFontDictionary = [
       "d##GEL"
     ],
     "unicodeSigns": [
-      "|ᓂᓂᕤṾX",
-      "|ⵚⵚᕤṾX"
+      "∣ᓂᓂᕤṾ☓",
+      "∣ⵚⵚᕤṾ☓"
     ]
   },
   {
@@ -13010,7 +13010,7 @@ window.signFontDictionary = [
       "s%8:Cvzzy"
     ],
     "unicodeSigns": [
-      "രŌᑯᑲⵢ⁼⁷⁷ᴺ"
+      "രōᑯᑲⵢ⁼⁷⁷ᴺ"
     ]
   },
   {
@@ -13019,7 +13019,7 @@ window.signFontDictionary = [
       "s%8:Cxy"
     ],
     "unicodeSigns": [
-      "രŌᑯᑲⵢᙾᴺ"
+      "രōᑯᑲⵢᙾᴺ"
     ]
   },
   {
@@ -13028,7 +13028,7 @@ window.signFontDictionary = [
       "oS!3L-oS!b!LyG"
     ],
     "unicodeSigns": [
-      "O⁊ⵀ⦣X-O⁊ⵀΠⵀXᴺᕤ"
+      "О⁊ⵀ⦣☓-О⁊ⵀΠⵀ☓ᴺᕤ"
     ]
   },
   {
@@ -13055,7 +13055,7 @@ window.signFontDictionary = [
       "t!d%MGFy"
     ],
     "unicodeSigns": [
-      "൪ⵀ|Ōⴳᕤᘐᴺ"
+      "൪ⵀ∣ōⴳᕤᘐᴺ"
     ]
   },
   {
@@ -13064,7 +13064,7 @@ window.signFontDictionary = [
       "t!d%MGFzzy"
     ],
     "unicodeSigns": [
-      "൪ⵀ|Ōⴳᕤᘐ⁷⁷ᴺ"
+      "൪ⵀ∣ōⴳᕤᘐ⁷⁷ᴺ"
     ]
   },
   {
@@ -13073,7 +13073,7 @@ window.signFontDictionary = [
       "uR&IA"
     ],
     "unicodeSigns": [
-      "ᐯ℩O̱ᘖ<"
+      "ᐯ℩⍛ᘖᐸ"
     ]
   },
   {
@@ -13082,7 +13082,7 @@ window.signFontDictionary = [
       "d%$PLEF-d%)SL"
     ],
     "unicodeSigns": [
-      "|Ōⵕ⸝XṾᘐ-|Ōᓇ⁊X"
+      "∣ōⵕ⸝☓Ṿᘐ-∣ōᓇ⁊☓"
     ]
   },
   {
@@ -13091,7 +13091,7 @@ window.signFontDictionary = [
       "d((Hwy"
     ],
     "unicodeSigns": [
-      "|ᓂᓂꕊᣛᴺ"
+      "∣ᓂᓂꕊᣛᴺ"
     ]
   },
   {
@@ -13101,8 +13101,8 @@ window.signFontDictionary = [
       "oS(OVGa"
     ],
     "unicodeSigns": [
-      "O⁊ⵀᕤറ",
-      "O⁊ᓂ¦ᐨʟᕤറ"
+      "О⁊ⵀᕤറ",
+      "О⁊ᓂ¦ᐨʟᕤറ"
     ]
   },
   {
@@ -13147,7 +13147,7 @@ window.signFontDictionary = [
       "g%3LE9L"
     ],
     "unicodeSigns": [
-      "⊃Ō⦣XṾɤX"
+      "⊃ō⦣☓Ṿɤ☓"
     ]
   },
   {
@@ -13156,7 +13156,7 @@ window.signFontDictionary = [
       "dR(b!MJ"
     ],
     "unicodeSigns": [
-      "|℩ᓂΠⵀⴳᘕ"
+      "∣℩ᓂΠⵀⴳᘕ"
     ]
   },
   {
@@ -13165,7 +13165,7 @@ window.signFontDictionary = [
       "b&GJB"
     ],
     "unicodeSigns": [
-      "ΠO̱ᕤᘕ>"
+      "Π⍛ᕤᘕᐳ"
     ]
   },
   {
@@ -13174,7 +13174,7 @@ window.signFontDictionary = [
       "p!/S1SEoSv"
     ],
     "unicodeSigns": [
-      "✳ⵀᕂ⁊ᕃ⁊ṾO⁊⁼"
+      "✳ⵀᕂ⁊ᕃ⁊ṾО⁊⁼"
     ]
   },
   {
@@ -13183,7 +13183,7 @@ window.signFontDictionary = [
       "pR!J%"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᘕŌ"
+      "✳℩ⵀᘕō"
     ]
   },
   {
@@ -13192,7 +13192,7 @@ window.signFontDictionary = [
       "oS!/S1SDpSv"
     ],
     "unicodeSigns": [
-      "O⁊ⵀᕂ⁊ᕃ⁊ᐲ✳⁊⁼"
+      "О⁊ⵀᕂ⁊ᕃ⁊ᐲ✳⁊⁼"
     ]
   },
   {
@@ -13201,7 +13201,7 @@ window.signFontDictionary = [
       "pR!J&"
     ],
     "unicodeSigns": [
-      "✳℩ⵀᘕO̱"
+      "✳℩ⵀᘕ⍛"
     ]
   },
   {
@@ -13219,7 +13219,7 @@ window.signFontDictionary = [
       "b&GIA"
     ],
     "unicodeSigns": [
-      "ΠO̱ᕤᘖ<"
+      "Π⍛ᕤᘖᐸ"
     ]
   },
   {
@@ -13228,7 +13228,7 @@ window.signFontDictionary = [
       "aP%c*MK"
     ],
     "unicodeSigns": [
-      "റ⸝ŌC⊕ⴳ≈"
+      "റ⸝ōС⊕ⴳ≈"
     ]
   },
   {
@@ -13237,7 +13237,7 @@ window.signFontDictionary = [
       "h%6LBL"
     ],
     "unicodeSigns": [
-      "⫪Ō⩇X>X"
+      "⫪ō⩇☓ᐳ☓"
     ]
   },
   {
@@ -13246,7 +13246,7 @@ window.signFontDictionary = [
       "nT%%KEwy"
     ],
     "unicodeSigns": [
-      "ቨ℩⸝ŌŌ≈Ṿᣛᴺ"
+      "ቨ℩⸝ōō≈Ṿᣛᴺ"
     ]
   },
   {
@@ -13255,7 +13255,7 @@ window.signFontDictionary = [
       "nT%%KEwzzy"
     ],
     "unicodeSigns": [
-      "ቨ℩⸝ŌŌ≈Ṿᣛ⁷⁷ᴺ"
+      "ቨ℩⸝ōō≈Ṿᣛ⁷⁷ᴺ"
     ]
   },
   {
@@ -13264,7 +13264,7 @@ window.signFontDictionary = [
       "d%3AdR"
     ],
     "unicodeSigns": [
-      "|Ō⦣<|℩"
+      "∣ō⦣ᐸ∣℩"
     ]
   },
   {
@@ -13273,7 +13273,7 @@ window.signFontDictionary = [
       "s&%LDy"
     ],
     "unicodeSigns": [
-      "രO̱ŌXᐲᴺ"
+      "ര⍛ō☓ᐲᴺ"
     ]
   },
   {
@@ -13282,7 +13282,7 @@ window.signFontDictionary = [
       "h%P5LEy"
     ],
     "unicodeSigns": [
-      "⫪Ō⸝ᒍXṾᴺ"
+      "⫪ō⸝ᒍ☓Ṿᴺ"
     ]
   },
   {
@@ -13291,7 +13291,7 @@ window.signFontDictionary = [
       "aP%b!<S9SHy"
     ],
     "unicodeSigns": [
-      "റ⸝ŌΠⵀЭ⁊ɤ⁊ꕊᴺ"
+      "റ⸝ōΠⵀЭ⁊ɤ⁊ꕊᴺ"
     ]
   },
   {
@@ -13300,7 +13300,7 @@ window.signFontDictionary = [
       "pR!6LEsy"
     ],
     "unicodeSigns": [
-      "✳℩ⵀ⩇XṾരᴺ"
+      "✳℩ⵀ⩇☓Ṿരᴺ"
     ]
   },
   {
@@ -13309,7 +13309,7 @@ window.signFontDictionary = [
       "h!b!LADB"
     ],
     "unicodeSigns": [
-      "⫪ⵀΠⵀX<ᐲ>"
+      "⫪ⵀΠⵀ☓ᐸᐲᐳ"
     ]
   },
   {
@@ -13318,7 +13318,7 @@ window.signFontDictionary = [
       "fQ**LABp"
     ],
     "unicodeSigns": [
-      "ᗐₒ⊕⊕X<>✳"
+      "ᗐₒ⊕⊕☓ᐸᐳ✳"
     ]
   },
   {
@@ -13327,7 +13327,7 @@ window.signFontDictionary = [
       "d(D/S"
     ],
     "unicodeSigns": [
-      "|ᓂᐲᕂ⁊"
+      "∣ᓂᐲᕂ⁊"
     ]
   },
   {
@@ -13336,7 +13336,7 @@ window.signFontDictionary = [
       "aP&b\"EL"
     ],
     "unicodeSigns": [
-      "റ⸝O̱Π⊖ṾX"
+      "റ⸝⍛Π⊖Ṿ☓"
     ]
   },
   {
@@ -13354,7 +13354,7 @@ window.signFontDictionary = [
       "d(8LB:L"
     ],
     "unicodeSigns": [
-      "|ᓂᑯX>ᑲX"
+      "∣ᓂᑯ☓ᐳᑲ☓"
     ]
   },
   {
@@ -13364,8 +13364,8 @@ window.signFontDictionary = [
       "c&b!MGs"
     ],
     "unicodeSigns": [
-      "CO̱Πⵀⴳ<ര",
-      "CO̱Πⵀⴳᕤര"
+      "С⍛Πⵀⴳᐸര",
+      "С⍛Πⵀⴳᕤര"
     ]
   },
   {
@@ -13374,7 +13374,7 @@ window.signFontDictionary = [
       "p%8:FLv"
     ],
     "unicodeSigns": [
-      "✳ŌᑯᑲᘐX⁼"
+      "✳ōᑯᑲᘐ☓⁼"
     ]
   },
   {
@@ -13384,7 +13384,7 @@ window.signFontDictionary = [
       "pS!b!MGFy"
     ],
     "unicodeSigns": [
-      "റₒŌᕤᘐᴺ",
+      "റₒōᕤᘐᴺ",
       "✳⁊ⵀΠⵀⴳᕤᘐᴺ"
     ]
   },
@@ -13405,7 +13405,7 @@ window.signFontDictionary = [
       "u##LABDBAEL"
     ],
     "unicodeSigns": [
-      "ᐯⵚⵚX<>ᐲ><ṾX"
+      "ᐯⵚⵚ☓ᐸᐳᐲᐳᐸṾ☓"
     ]
   },
   {
@@ -13414,7 +13414,7 @@ window.signFontDictionary = [
       "oS!!ABa"
     ],
     "unicodeSigns": [
-      "O⁊ⵀⵀ<>റ"
+      "О⁊ⵀⵀᐸᐳറ"
     ]
   },
   {
@@ -13423,7 +13423,7 @@ window.signFontDictionary = [
       "d#\"QLABvA"
     ],
     "unicodeSigns": [
-      "|ⵚ⊖ₒX<>⁼<"
+      "∣ⵚ⊖ₒ☓ᐸᐳ⁼ᐸ"
     ]
   },
   {
@@ -13432,7 +13432,7 @@ window.signFontDictionary = [
       "d((EDxyAB"
     ],
     "unicodeSigns": [
-      "|ᓂᓂṾᐲᙾᴺ<>"
+      "∣ᓂᓂṾᐲᙾᴺᐸᐳ"
     ]
   },
   {
@@ -13441,7 +13441,7 @@ window.signFontDictionary = [
       "d((DExyAB"
     ],
     "unicodeSigns": [
-      "|ᓂᓂᐲṾᙾᴺ<>"
+      "∣ᓂᓂᐲṾᙾᴺᐸᐳ"
     ]
   },
   {
@@ -13450,7 +13450,7 @@ window.signFontDictionary = [
       "d((Ivy"
     ],
     "unicodeSigns": [
-      "|ᓂᓂᘖ⁼ᴺ"
+      "∣ᓂᓂᘖ⁼ᴺ"
     ]
   },
   {
@@ -13459,7 +13459,7 @@ window.signFontDictionary = [
       "bS!8:LEvy"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀᑯᑲXṾ⁼ᴺ"
+      "Π⁊ⵀᑯᑲ☓Ṿ⁼ᴺ"
     ]
   },
   {
@@ -13468,7 +13468,7 @@ window.signFontDictionary = [
       "u%b!LHtL"
     ],
     "unicodeSigns": [
-      "ᐯŌΠⵀXꕊ൪X"
+      "ᐯōΠⵀ☓ꕊ൪☓"
     ]
   },
   {
@@ -13477,7 +13477,7 @@ window.signFontDictionary = [
       "u%2LhSL"
     ],
     "unicodeSigns": [
-      "ᐯŌᖌX⫪⁊X"
+      "ᐯōᖌ☓⫪⁊☓"
     ]
   },
   {
@@ -13495,7 +13495,7 @@ window.signFontDictionary = [
       "fQ*8LGzzy"
     ],
     "unicodeSigns": [
-      "ᗐₒ⊕ᑯXᕤ⁷⁷ᴺ"
+      "ᗐₒ⊕ᑯ☓ᕤ⁷⁷ᴺ"
     ]
   },
   {
@@ -13504,7 +13504,7 @@ window.signFontDictionary = [
       "fQ*8LGy"
     ],
     "unicodeSigns": [
-      "ᗐₒ⊕ᑯXᕤᴺ"
+      "ᗐₒ⊕ᑯ☓ᕤᴺ"
     ]
   },
   {
@@ -13513,7 +13513,7 @@ window.signFontDictionary = [
       "fQ!o*QEL"
     ],
     "unicodeSigns": [
-      "ᗐₒⵀO⊕ₒṾX"
+      "ᗐₒⵀО⊕ₒṾ☓"
     ]
   },
   {
@@ -13531,7 +13531,7 @@ window.signFontDictionary = [
       "oQ%2Q4QMdP"
     ],
     "unicodeSigns": [
-      "OₒŌᖌₒᖍₒⴳ|⸝"
+      "Оₒōᖌₒᖍₒⴳ∣⸝"
     ]
   },
   {
@@ -13558,7 +13558,7 @@ window.signFontDictionary = [
       "b%%LEv"
     ],
     "unicodeSigns": [
-      "ΠŌŌXṾ⁼"
+      "Πōō☓Ṿ⁼"
     ]
   },
   {
@@ -13567,7 +13567,7 @@ window.signFontDictionary = [
       "g%6LJEoQv"
     ],
     "unicodeSigns": [
-      "⊃Ō⩇XᘕṾOₒ⁼"
+      "⊃ō⩇☓ᘕṾОₒ⁼"
     ]
   },
   {
@@ -13576,7 +13576,7 @@ window.signFontDictionary = [
       "d(CG"
     ],
     "unicodeSigns": [
-      "|ᓂⵢᕤ"
+      "∣ᓂⵢᕤ"
     ]
   },
   {
@@ -13612,7 +13612,7 @@ window.signFontDictionary = [
       "b#\"Ly"
     ],
     "unicodeSigns": [
-      "Πⵚ⊖Xᴺ"
+      "Πⵚ⊖☓ᴺ"
     ]
   },
   {
@@ -13675,7 +13675,7 @@ window.signFontDictionary = [
       "f(8LGH"
     ],
     "unicodeSigns": [
-      "ᗐᓂᑯXᕤꕊ"
+      "ᗐᓂᑯ☓ᕤꕊ"
     ]
   },
   {
@@ -13684,7 +13684,7 @@ window.signFontDictionary = [
       "dT!6LG"
     ],
     "unicodeSigns": [
-      "|℩⸝ⵀ⩇Xᕤ"
+      "∣℩⸝ⵀ⩇☓ᕤ"
     ]
   },
   {
@@ -13693,7 +13693,7 @@ window.signFontDictionary = [
       "f%6Ly"
     ],
     "unicodeSigns": [
-      "ᗐŌ⩇Xᴺ"
+      "ᗐō⩇☓ᴺ"
     ]
   },
   {
@@ -13702,7 +13702,7 @@ window.signFontDictionary = [
       "fQ%6L-dT%Ay"
     ],
     "unicodeSigns": [
-      "ᗐₒŌ⩇X-|℩⸝Ō<ᴺ"
+      "ᗐₒō⩇☓-∣℩⸝ōᐸᴺ"
     ]
   },
   {
@@ -13711,7 +13711,7 @@ window.signFontDictionary = [
       "f%6L-q!b\"qPLy"
     ],
     "unicodeSigns": [
-      "ᗐŌ⩇X-ᕬⵀΠ⊖ᕬ⸝Xᴺ"
+      "ᗐō⩇☓-ᕬⵀΠ⊖ᕬ⸝☓ᴺ"
     ]
   },
   {
@@ -13720,7 +13720,7 @@ window.signFontDictionary = [
       "p%%8S:SDEBv"
     ],
     "unicodeSigns": [
-      "✳ŌŌᑯ⁊ᑲ⁊ᐲṾ>⁼"
+      "✳ōōᑯ⁊ᑲ⁊ᐲṾᐳ⁼"
     ]
   },
   {
@@ -13729,7 +13729,7 @@ window.signFontDictionary = [
       "p&By"
     ],
     "unicodeSigns": [
-      "✳O̱>ᴺ"
+      "✳⍛ᐳᴺ"
     ]
   },
   {
@@ -13747,7 +13747,7 @@ window.signFontDictionary = [
       "p!\"MJ&Gvy"
     ],
     "unicodeSigns": [
-      "✳ⵀ⊖ⴳᘕO̱ᕤ⁼ᴺ"
+      "✳ⵀ⊖ⴳᘕ⍛ᕤ⁼ᴺ"
     ]
   },
   {
@@ -13756,7 +13756,7 @@ window.signFontDictionary = [
       "p%%JBAoS*(L"
     ],
     "unicodeSigns": [
-      "✳ŌŌᘕ><O⁊⊕ᓂX"
+      "✳ōōᘕᐳᐸО⁊⊕ᓂ☓"
     ]
   },
   {
@@ -13774,7 +13774,7 @@ window.signFontDictionary = [
       "d!b!MG"
     ],
     "unicodeSigns": [
-      "|ⵀΠⵀⴳᕤ"
+      "∣ⵀΠⵀⴳᕤ"
     ]
   },
   {
@@ -13783,7 +13783,7 @@ window.signFontDictionary = [
       "d&Pb%MG-b!(E"
     ],
     "unicodeSigns": [
-      "|O̱⸝ΠŌⴳᕤ-ΠⵀᓂṾ"
+      "∣⍛⸝Πōⴳᕤ-ΠⵀᓂṾ"
     ]
   },
   {
@@ -13792,7 +13792,7 @@ window.signFontDictionary = [
       "dR!2Q:SLIEvy"
     ],
     "unicodeSigns": [
-      "|℩ⵀᖌₒᑲ⁊XᘖṾ⁼ᴺ"
+      "∣℩ⵀᖌₒᑲ⁊☓ᘖṾ⁼ᴺ"
     ]
   },
   {
@@ -13801,7 +13801,7 @@ window.signFontDictionary = [
       "dP(b!C"
     ],
     "unicodeSigns": [
-      "|⸝ᓂΠⵀⵢ"
+      "∣⸝ᓂΠⵀⵢ"
     ]
   },
   {
@@ -13810,7 +13810,7 @@ window.signFontDictionary = [
       "f%BN"
     ],
     "unicodeSigns": [
-      "ᗐŌ>¦"
+      "ᗐōᐳ¦"
     ]
   },
   {
@@ -13819,7 +13819,7 @@ window.signFontDictionary = [
       "p(6L-p\"EoSvy"
     ],
     "unicodeSigns": [
-      "✳ᓂ⩇X-✳⊖ṾO⁊⁼ᴺ"
+      "✳ᓂ⩇☓-✳⊖ṾО⁊⁼ᴺ"
     ]
   },
   {
@@ -13828,7 +13828,7 @@ window.signFontDictionary = [
       "dP&&NoQvy"
     ],
     "unicodeSigns": [
-      "|⸝O̱O̱¦Oₒ⁼ᴺ"
+      "∣⸝⍛⍛¦Оₒ⁼ᴺ"
     ]
   },
   {
@@ -13838,8 +13838,8 @@ window.signFontDictionary = [
       "p&&BAy"
     ],
     "unicodeSigns": [
-      "✳O̱>ᴺ",
-      "✳O̱O̱><ᴺ"
+      "✳⍛ᐳᴺ",
+      "✳⍛⍛ᐳᐸᴺ"
     ]
   },
   {
@@ -13850,7 +13850,7 @@ window.signFontDictionary = [
     ],
     "unicodeSigns": [
       "ᗐₒᘕ⫪റ൪",
-      "ቨO̱ᘕ൪"
+      "ቨ⍛ᘕ൪"
     ]
   },
   {
@@ -13859,7 +13859,7 @@ window.signFontDictionary = [
       "d((HL"
     ],
     "unicodeSigns": [
-      "|ᓂᓂꕊX"
+      "∣ᓂᓂꕊ☓"
     ]
   },
   {
@@ -13868,7 +13868,7 @@ window.signFontDictionary = [
       "d&Ay"
     ],
     "unicodeSigns": [
-      "|O̱<ᴺ"
+      "∣⍛ᐸᴺ"
     ]
   },
   {
@@ -13877,7 +13877,7 @@ window.signFontDictionary = [
       "aP%DEwy"
     ],
     "unicodeSigns": [
-      "റ⸝ŌᐲṾᣛᴺ"
+      "റ⸝ōᐲṾᣛᴺ"
     ]
   },
   {
@@ -13886,7 +13886,7 @@ window.signFontDictionary = [
       "p!9LGo"
     ],
     "unicodeSigns": [
-      "✳ⵀɤXᕤO"
+      "✳ⵀɤ☓ᕤО"
     ]
   },
   {
@@ -13895,7 +13895,7 @@ window.signFontDictionary = [
       "p!9LGo-o!3Fp"
     ],
     "unicodeSigns": [
-      "✳ⵀɤXᕤO-Oⵀ⦣ᘐ✳"
+      "✳ⵀɤ☓ᕤО-Оⵀ⦣ᘐ✳"
     ]
   },
   {
@@ -13904,7 +13904,7 @@ window.signFontDictionary = [
       "dP%6MK"
     ],
     "unicodeSigns": [
-      "|⸝Ō⩇ⴳ≈"
+      "∣⸝ō⩇ⴳ≈"
     ]
   },
   {
@@ -13915,7 +13915,7 @@ window.signFontDictionary = [
     ],
     "unicodeSigns": [
       "✳ⵀᒍ⁊¦ᕬ⸝ᴺ",
-      "Π⸝ⵚᨓXᕤҺ⸝"
+      "Π⸝ⵚᨓ☓ᕤҺ⸝"
     ]
   },
   {
@@ -13924,7 +13924,7 @@ window.signFontDictionary = [
       "b!!ABN"
     ],
     "unicodeSigns": [
-      "Πⵀⵀ<>¦"
+      "Πⵀⵀᐸᐳ¦"
     ]
   },
   {
@@ -13933,7 +13933,7 @@ window.signFontDictionary = [
       "c%6L-c**L"
     ],
     "unicodeSigns": [
-      "CŌ⩇X-C⊕⊕X"
+      "Сō⩇☓-С⊕⊕☓"
     ]
   },
   {
@@ -13942,7 +13942,7 @@ window.signFontDictionary = [
       "pS$c*KJ!"
     ],
     "unicodeSigns": [
-      "✳⁊ⵕC⊕≈ᘕⵀ"
+      "✳⁊ⵕС⊕≈ᘕⵀ"
     ]
   },
   {
@@ -13960,7 +13960,7 @@ window.signFontDictionary = [
       "b&%ELy"
     ],
     "unicodeSigns": [
-      "ΠO̱ŌṾXᴺ"
+      "Π⍛ōṾ☓ᴺ"
     ]
   },
   {
@@ -13970,8 +13970,8 @@ window.signFontDictionary = [
       "s!!;=BAvzzy"
     ],
     "unicodeSigns": [
-      "ᗐⵀⵀᕟᕞ><⁼⁷⁷ᴺ",
-      "രⵀⵀᕟᕞ><⁼⁷⁷ᴺ"
+      "ᗐⵀⵀᕟᕞᐳᐸ⁼⁷⁷ᴺ",
+      "രⵀⵀᕟᕞᐳᐸ⁼⁷⁷ᴺ"
     ]
   },
   {
@@ -13981,8 +13981,8 @@ window.signFontDictionary = [
       "dR%0J!y"
     ],
     "unicodeSigns": [
-      "|℩ŌᨓṾᴺ",
-      "|℩Ōᨓᘕⵀᴺ"
+      "∣℩ōᨓṾᴺ",
+      "∣℩ōᨓᘕⵀᴺ"
     ]
   },
   {
@@ -14000,7 +14000,7 @@ window.signFontDictionary = [
       "dR\"3L-dR!!L"
     ],
     "unicodeSigns": [
-      "|℩⊖⦣X-|℩ⵀⵀX"
+      "∣℩⊖⦣☓-∣℩ⵀⵀ☓"
     ]
   },
   {
@@ -14009,7 +14009,7 @@ window.signFontDictionary = [
       "a!!L"
     ],
     "unicodeSigns": [
-      "റⵀⵀX"
+      "റⵀⵀ☓"
     ]
   },
   {
@@ -14018,7 +14018,7 @@ window.signFontDictionary = [
       "pR!b!LDs"
     ],
     "unicodeSigns": [
-      "✳℩ⵀΠⵀXᐲര"
+      "✳℩ⵀΠⵀ☓ᐲര"
     ]
   },
   {
@@ -14027,7 +14027,7 @@ window.signFontDictionary = [
       "a!!LABp"
     ],
     "unicodeSigns": [
-      "റⵀⵀX<>✳"
+      "റⵀⵀ☓ᐸᐳ✳"
     ]
   },
   {
@@ -14036,7 +14036,7 @@ window.signFontDictionary = [
       "pR!3LGo"
     ],
     "unicodeSigns": [
-      "✳℩ⵀ⦣XᕤO"
+      "✳℩ⵀ⦣☓ᕤО"
     ]
   },
   {
@@ -14045,7 +14045,7 @@ window.signFontDictionary = [
       "p%6LE9L"
     ],
     "unicodeSigns": [
-      "✳Ō⩇XṾɤX"
+      "✳ō⩇☓Ṿɤ☓"
     ]
   },
   {
@@ -14054,7 +14054,7 @@ window.signFontDictionary = [
       "b&\"MGFy"
     ],
     "unicodeSigns": [
-      "ΠO̱⊖ⴳᕤᘐᴺ"
+      "Π⍛⊖ⴳᕤᘐᴺ"
     ]
   },
   {
@@ -14063,7 +14063,7 @@ window.signFontDictionary = [
       "s$\"Ly"
     ],
     "unicodeSigns": [
-      "രⵕ⊖Xᴺ"
+      "രⵕ⊖☓ᴺ"
     ]
   },
   {
@@ -14072,7 +14072,7 @@ window.signFontDictionary = [
       "s$\"Lzzy"
     ],
     "unicodeSigns": [
-      "രⵕ⊖X⁷⁷ᴺ"
+      "രⵕ⊖☓⁷⁷ᴺ"
     ]
   },
   {
@@ -14081,7 +14081,7 @@ window.signFontDictionary = [
       "f%%LJsLv"
     ],
     "unicodeSigns": [
-      "ᗐŌŌXᘕരX⁼"
+      "ᗐōō☓ᘕര☓⁼"
     ]
   },
   {
@@ -14090,7 +14090,7 @@ window.signFontDictionary = [
       "dR%b!MKG"
     ],
     "unicodeSigns": [
-      "|℩ŌΠⵀⴳ≈ᕤ"
+      "∣℩ōΠⵀⴳ≈ᕤ"
     ]
   },
   {
@@ -14099,7 +14099,7 @@ window.signFontDictionary = [
       "k&%MBx"
     ],
     "unicodeSigns": [
-      "७O̱Ōⴳ>ᙾ"
+      "७⍛ōⴳᐳᙾ"
     ]
   },
   {
@@ -14108,7 +14108,7 @@ window.signFontDictionary = [
       "uR(b!LEFvy"
     ],
     "unicodeSigns": [
-      "ᐯ℩ᓂΠⵀXṾᘐ⁼ᴺ"
+      "ᐯ℩ᓂΠⵀ☓Ṿᘐ⁼ᴺ"
     ]
   },
   {
@@ -14118,8 +14118,8 @@ window.signFontDictionary = [
       "pR!6J&y"
     ],
     "unicodeSigns": [
-      "✳O̱ᘕO̱Ṿᴺ",
-      "✳℩ⵀ⩇ᘕO̱ᴺ"
+      "✳⍛ᘕ⍛Ṿᴺ",
+      "✳℩ⵀ⩇ᘕ⍛ᴺ"
     ]
   },
   {
@@ -14128,7 +14128,7 @@ window.signFontDictionary = [
       "p++LJ&vy"
     ],
     "unicodeSigns": [
-      "✳◷◷XᘕO̱⁼ᴺ"
+      "✳◷◷☓ᘕ⍛⁼ᴺ"
     ]
   },
   {
@@ -14137,7 +14137,7 @@ window.signFontDictionary = [
       "p++LJvzzy"
     ],
     "unicodeSigns": [
-      "✳◷◷Xᘕ⁼⁷⁷ᴺ"
+      "✳◷◷☓ᘕ⁼⁷⁷ᴺ"
     ]
   },
   {
@@ -14146,7 +14146,7 @@ window.signFontDictionary = [
       "s%%MJx"
     ],
     "unicodeSigns": [
-      "രŌŌⴳᘕᙾ"
+      "രōōⴳᘕᙾ"
     ]
   },
   {
@@ -14155,7 +14155,7 @@ window.signFontDictionary = [
       "fQ&s\"SELy"
     ],
     "unicodeSigns": [
-      "ᗐₒO̱ര⊖⁊ṾXᴺ"
+      "ᗐₒ⍛ര⊖⁊Ṿ☓ᴺ"
     ]
   },
   {
@@ -14164,7 +14164,7 @@ window.signFontDictionary = [
       "oQ!b!LGy"
     ],
     "unicodeSigns": [
-      "OₒⵀΠⵀXᕤᴺ"
+      "ОₒⵀΠⵀ☓ᕤᴺ"
     ]
   },
   {
@@ -14173,7 +14173,7 @@ window.signFontDictionary = [
       "iP!6Ly"
     ],
     "unicodeSigns": [
-      "Һ⸝ⵀ⩇Xᴺ"
+      "Һ⸝ⵀ⩇☓ᴺ"
     ]
   },
   {
@@ -14182,7 +14182,7 @@ window.signFontDictionary = [
       "s&%HL"
     ],
     "unicodeSigns": [
-      "രO̱ŌꕊX"
+      "ര⍛ōꕊ☓"
     ]
   },
   {
@@ -14191,7 +14191,7 @@ window.signFontDictionary = [
       "pR&&6DAB"
     ],
     "unicodeSigns": [
-      "✳℩O̱O̱⩇ᐲ<>"
+      "✳℩⍛⍛⩇ᐲᐸᐳ"
     ]
   },
   {
@@ -14200,7 +14200,7 @@ window.signFontDictionary = [
       "iP&Iy"
     ],
     "unicodeSigns": [
-      "Һ⸝O̱ᘖᴺ"
+      "Һ⸝⍛ᘖᴺ"
     ]
   },
   {
@@ -14222,7 +14222,7 @@ window.signFontDictionary = [
       "aP%5LFL"
     ],
     "unicodeSigns": [
-      "റ⸝ŌᒍXᘐX"
+      "റ⸝ōᒍ☓ᘐ☓"
     ]
   },
   {
@@ -14231,7 +14231,7 @@ window.signFontDictionary = [
       "d(9PN"
     ],
     "unicodeSigns": [
-      "|ᓂɤ⸝¦"
+      "∣ᓂɤ⸝¦"
     ]
   },
   {
@@ -14240,7 +14240,7 @@ window.signFontDictionary = [
       "d(9PGA"
     ],
     "unicodeSigns": [
-      "|ᓂɤ⸝ᕤ<"
+      "∣ᓂɤ⸝ᕤᐸ"
     ]
   },
   {
@@ -14249,7 +14249,7 @@ window.signFontDictionary = [
       "u%9PBy"
     ],
     "unicodeSigns": [
-      "ᐯŌɤ⸝>ᴺ"
+      "ᐯōɤ⸝ᐳᴺ"
     ]
   },
   {
@@ -14258,7 +14258,7 @@ window.signFontDictionary = [
       "bS!8:LDvy"
     ],
     "unicodeSigns": [
-      "Π⁊ⵀᑯᑲXᐲ⁼ᴺ"
+      "Π⁊ⵀᑯᑲ☓ᐲ⁼ᴺ"
     ]
   },
   {
@@ -14285,7 +14285,7 @@ window.signFontDictionary = [
       "iP!:LE;L"
     ],
     "unicodeSigns": [
-      "Һ⸝ⵀᑲXṾᕟX"
+      "Һ⸝ⵀᑲ☓Ṿᕟ☓"
     ]
   },
   {
@@ -14294,7 +14294,7 @@ window.signFontDictionary = [
       "n((DEyA"
     ],
     "unicodeSigns": [
-      "ቨᓂᓂᐲṾᴺ<"
+      "ቨᓂᓂᐲṾᴺᐸ"
     ]
   },
   {
@@ -14303,7 +14303,7 @@ window.signFontDictionary = [
       "aQ((LDN"
     ],
     "unicodeSigns": [
-      "റₒᓂᓂXᐲ¦"
+      "റₒᓂᓂ☓ᐲ¦"
     ]
   },
   {
@@ -14312,7 +14312,7 @@ window.signFontDictionary = [
       "aQ((LDy"
     ],
     "unicodeSigns": [
-      "റₒᓂᓂXᐲᴺ"
+      "റₒᓂᓂ☓ᐲᴺ"
     ]
   }
 ];
