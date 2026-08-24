@@ -392,8 +392,10 @@
       background: rgba(15, 23, 42, 0.85);
     }
 
+    html body textarea#ascii-input.signfont-font,
+    html body textarea#ascii-input.keymanweb-font,
     .converter-textarea.signfont-font {
-      font-family: 'SignFont New', sans-serif;
+      font-family: 'SignFont New', 'SignFontNew', sans-serif !important;
       font-size: 1.8rem;
     }
 
@@ -849,7 +851,8 @@
         </div>
         <div class="editor-actions">
           <div class="action-btn-group">
-            <button class="btn-sm" id="copy-ascii-btn"><i class="fa-regular fa-copy"></i> Copy</button>
+            <button class="btn-sm" id="copy-ascii-btn"><i class="fa-regular fa-copy"></i> Copy Text</button>
+            <button class="btn-sm" id="copy-ascii-image-btn" title="Copy Cherology render API image link to clipboard"><i class="fa-regular fa-image"></i> Copy Image URL</button>
             <button class="btn-sm" id="clear-ascii-btn"><i class="fa-solid fa-trash-can"></i> Clear</button>
           </div>
           <div class="editor-stats">
@@ -1231,9 +1234,26 @@
     }
 
     document.getElementById('copy-ascii-btn').addEventListener('click', () => {
-      if (!asciiInput.value) return;
+      if (!asciiInput.value) return showToast('Input is empty!');
       navigator.clipboard.writeText(asciiInput.value);
       showToast('Copied SignFont ASCII notation to clipboard!');
+    });
+
+    document.getElementById('copy-ascii-image-btn').addEventListener('click', () => {
+      if (!asciiInput.value) return showToast('Input is empty!');
+      const params = new URLSearchParams({
+        text: asciiInput.value,
+        font: 'signfontwithunicode',
+        font_size: '32',
+        color: '212529',
+        bg_color: 'F8F9FA',
+        padding: '16',
+        max_width: '550',
+        align: 'left'
+      });
+      const imageUrl = `https://api.cherology.net/v1/text?${params.toString()}`;
+      navigator.clipboard.writeText(imageUrl);
+      showToast('Copied image link to clipboard!');
     });
 
     document.getElementById('copy-unicode-btn').addEventListener('click', () => {
@@ -1246,6 +1266,11 @@
     toggleFontViewBtn.addEventListener('click', () => {
       asciiInput.classList.toggle('signfont-font');
       const isFont = asciiInput.classList.contains('signfont-font');
+      if (isFont) {
+        asciiInput.style.setProperty('font-family', "'SignFont New', 'SignFontNew', sans-serif", 'important');
+      } else {
+        asciiInput.style.setProperty('font-family', 'inherit', 'important');
+      }
       toggleFontViewBtn.classList.toggle('active', isFont);
       toggleFontViewBtn.innerHTML = isFont ?
         '<i class="fa-solid fa-font"></i> Rendered SignFont Font' :
@@ -1254,14 +1279,26 @@
 
     // Keyman Web Integration
     if (typeof keyman !== 'undefined') {
-      keyman.init({ attachType: 'manual' });
+      keyman.init({ attachType: 'auto' });
       keyman.addKeyboards({
         name: 'SignFont',
         id: 'signfont',
         filename: './signfont.js',
         version: '1.0',
-        language: [{ name: 'SignFont', id: 'en', region: 'us' }]
+        language: [{ name: 'SignFont', id: 'en', region: 'us' }],
+        font: {
+          family: 'SignFont New',
+          source: ['./SignFontNew.ttf']
+        }
       });
+
+      // Ensure keyman is active on asciiInput and disabled on unicodeInput
+      if (unicodeInput) {
+        try { keyman.disableControl(unicodeInput); } catch (e) {}
+      }
+
+      keymanEnabled = true;
+      toggleKeymanBtn.classList.add('active');
 
       toggleKeymanBtn.addEventListener('click', () => {
         keymanEnabled = !keymanEnabled;
