@@ -1013,6 +1013,9 @@
         <button class="btn" id="open-ref-btn">
           <i class="fa-solid fa-circle-info"></i> SignFont Reference Chart
         </button>
+        <a href="./crisscross.html" class="btn">
+          <i class="fa-solid fa-puzzle-piece"></i> Criss-Cross Puzzle
+        </a>
         <a href="./flashcards.html" class="btn">
           <i class="fa-solid fa-graduation-cap"></i> Practice Flashcards
         </a>
@@ -1208,12 +1211,23 @@
 
   <script>
     // Global SignFont to Unicode Map from SignFontUnicode.json
-    window.signFontUnicodeMap = {"A": "ᐸ", "B": "ᐳ", "C": "ⵢ", "D": "ᐲ", "E": "Ṿ", "F": "ᘐ", "G": "ᕤ", "H": "ꕊ", "I": "ᘖ", "J": "ᘕ", "K": "≈", "L": "☓", "M": "ⴳ", "N": "¦", "O": "¦ᐨ", "P": "⸝", "Q": "ₒ", "R": "℩", "S": "⁊", "T": "℩⸝", "U": "⁊⸝", "V": "ʟ", "W": "ꞃ", "X": "ѵ", "Y": "⩝", "Z": "⊥", "Ã": "|˘", "Ï": "Ж˘", "Ô": "ᐯ˘", "a": "റ", "b": "Π", "c": "С", "d": "∣", "e": "Ω", "f": "ᗐ", "g": "⊃", "h": "⫪", "i": "Һ", "j": "Ч", "k": "७", "l": "⫛", "m": "爪", "n": "ቨ", "o": "О", "p": "Ж", "q": "ᕬ", "r": "୪", "s": "ര", "t": "൪", "u": "ᐯ", "v": "⁼", "w": "ᣛ", "x": "ᙾ", "y": "ᴺ", "z": "⁷", "0": "ᨓ", "1": "ᕃ", "2": "ᖌ", "3": "⦣", "4": "ᖍ", "5": "ᒍ", "6": "⩇", "7": "ᒐ", "8": "ᑯ", "9": "ɤ", "!": "ⵀ", "\"": "ⴱ", "#": "ⵚ", "$": "ⵕ", "%": "Ȏ", "&": "O̮", "(": "ᓂ", ")": "ᓇ", "*": "ⴲ", "+": "◷", "/": "ᕂ", ":": "ᑲ", ";": "ᕟ", "<": "Э", "=": "ᕞ", ">": "ᗫ", "?": "⍰", "@": "ᗠ", "[": "⍃", "\": "⍌", "]": "⍄", "^": "⍓", "_": "⦵", "`": "◫", "{": "ᗟ", "|": "⌽", "}": "ᗥ", "~": "Ø", " ": " "};
+    window.signFontUnicodeMap = {"A": "ᐸ", "B": "ᐳ", "C": "ⵢ", "D": "ᐲ", "E": "Ṿ", "F": "ᘐ", "G": "ᕤ", "H": "ꕊ", "I": "ᘖ", "J": "ᘕ", "K": "≈", "L": "☓", "M": "ⴳ", "N": "¦", "O": "¦ᐨ", "P": "⸝", "Q": "ₒ", "R": "℩", "S": "⁊", "T": "℩⸝", "U": "⁊⸝", "V": "ʟ", "W": "ꞃ", "X": "ѵ", "Y": "⩝", "Z": "⊥", "Ã": "|˘", "Ï": "Ж˘", "Ô": "ᐯ˘", "a": "റ", "b": "Π", "c": "С", "d": "∣", "e": "Ω", "f": "ᗐ", "g": "⊃", "h": "⫪", "i": "Һ", "j": "Ч", "k": "७", "l": "⫛", "m": "爪", "n": "ቨ", "o": "О", "p": "Ж", "q": "ᕬ", "r": "୪", "s": "ര", "t": "൪", "u": "ᐯ", "v": "⁼", "w": "ᣛ", "x": "ᙾ", "y": "ᴺ", "z": "⁷", "0": "ᨓ", "1": "ᕃ", "2": "ᖌ", "3": "⦣", "4": "ᖍ", "5": "ᒍ", "6": "⩇", "7": "ᒐ", "8": "ᑯ", "9": "ɤ", "!": "ⵀ", "\"": "ⴱ", "#": "ⵚ", "$": "ⵕ", "%": "Ȏ", "&": "O̮", "(": "ᓂ", ")": "ᓇ", "*": "ⴲ", "+": "◷", "/": "ᕂ", ":": "ᑲ", ";": "ᕟ", "<": "Э", "=": "ᕞ", ">": "ᗫ", "?": "⍰", "@": "ᗠ", "[": "⍃", "\\": "⍌", "]": "⍄", "^": "⍓", "_": "⦵", "`": "◫", "{": "ᗟ", "|": "⌽", "}": "ᗥ", "~": "Ø", " ": " "};
+    window.reverseSignFontUnicodeMap = {};
+
+    function buildReverseMap() {
+      const map = window.signFontUnicodeMap || {};
+      window.reverseSignFontUnicodeMap = {};
+      for (const [k, v] of Object.entries(map)) {
+        window.reverseSignFontUnicodeMap[v] = k;
+      }
+    }
+    buildReverseMap();
 
     fetch('./SignFontUnicode.json')
       .then(res => res.json())
       .then(data => {
         window.signFontUnicodeMap = data;
+        buildReverseMap();
       })
       .catch(err => console.warn('Could not fetch SignFontUnicode.json, using fallback map:', err));
 
@@ -1235,6 +1249,30 @@
         }
         if (!matched) {
           res += signStr[i];
+          i++;
+        }
+      }
+      return res;
+    }
+
+    function unicodeToAscii(uniStr) {
+      if (!uniStr) return '';
+      const map = window.reverseSignFontUnicodeMap || {};
+      const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+      let i = 0;
+      let res = '';
+      while (i < uniStr.length) {
+        let matched = false;
+        for (let k of keys) {
+          if (uniStr.startsWith(k, i)) {
+            res += map[k];
+            i += k.length;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          res += uniStr[i];
           i++;
         }
       }
@@ -1653,18 +1691,37 @@
 
       function setSignSearchMode(mode) {
         currentSignSearchMode = mode;
+        const oskBtn = document.getElementById('osk-toggle-btn');
         if (mode === 'original') {
           btnModeOriginal.classList.add('active');
           btnModeUnicode.classList.remove('active');
           signfontSearch.placeholder = '_ d((Hwy, b&&BAy nT%%KEwy';
           signfontSearch.style.setProperty('font-family', "'SignFont New', 'SignFontNew', sans-serif", 'important');
           if (keymanBadge) keymanBadge.style.display = 'inline-flex';
+          if (oskBtn) oskBtn.style.display = 'inline-flex';
+          if (typeof keyman !== 'undefined') {
+            try {
+              keyman.enableControl(signfontSearch);
+            } catch (e) {}
+          }
         } else {
           btnModeUnicode.classList.add('active');
           btnModeOriginal.classList.remove('active');
-          signfontSearch.placeholder = 'e.g. റ⸝O̮രⴱXᕤ, ΠO̮ⴱ...';
+          signfontSearch.placeholder = 'e.g. റ⸝O̮രⴱ☓ᕤ, ΠO̮ⴱ, or type/paste Unicode...';
           signfontSearch.style.setProperty('font-family', "'Space Grotesk', system-ui, sans-serif", 'important');
           if (keymanBadge) keymanBadge.style.display = 'none';
+          if (oskBtn) {
+            oskBtn.style.display = 'none';
+            oskBtn.classList.remove('active');
+          }
+          if (typeof keyman !== 'undefined') {
+            try {
+              if (keyman.osk && typeof keyman.osk.isEnabled === 'function' && keyman.osk.isEnabled()) {
+                keyman.osk.hide();
+              }
+              keyman.disableControl(signfontSearch);
+            } catch (e) {}
+          }
         }
         refilter();
       }
@@ -1792,13 +1849,22 @@
           return item.english.toLowerCase().includes(engQuery);
         });
       } else if (signQuery) {
+        const queryAsUnicode = convertToUnicode(signQuery);
+        const queryAsAscii = unicodeToAscii(signQuery);
+
         filteredDictionary = window.signFontDictionary.filter(item => {
           if (currentSignSearchMode === 'unicode') {
-            const matchUnicode = item.unicodeSigns && item.unicodeSigns.some(uSign => uSign.includes(signQuery));
-            const matchConverted = item.signs && item.signs.some(sign => convertToUnicode(sign).includes(signQuery));
-            return matchUnicode || matchConverted;
+            const matchDirectUnicode = item.unicodeSigns && item.unicodeSigns.some(uSign => uSign.includes(signQuery));
+            const matchConvertedItem = item.signs && item.signs.some(sign => convertToUnicode(sign).includes(signQuery));
+            const matchQueryAsUnicode = queryAsUnicode && item.unicodeSigns && item.unicodeSigns.some(uSign => uSign.includes(queryAsUnicode));
+            const matchQueryAsAscii = queryAsAscii && item.signs && item.signs.some(sign => sign.includes(queryAsAscii));
+            return matchDirectUnicode || matchConvertedItem || matchQueryAsUnicode || matchQueryAsAscii;
           } else {
-            return item.signs && item.signs.some(sign => sign.includes(signQuery));
+            const matchDirectAscii = item.signs && item.signs.some(sign => sign.includes(signQuery));
+            const matchQueryAsAscii = queryAsAscii && item.signs && item.signs.some(sign => sign.includes(queryAsAscii));
+            const matchDirectUnicode = item.unicodeSigns && item.unicodeSigns.some(uSign => uSign.includes(signQuery));
+            const matchQueryAsUnicode = queryAsUnicode && item.unicodeSigns && item.unicodeSigns.some(uSign => uSign.includes(queryAsUnicode));
+            return matchDirectAscii || matchQueryAsAscii || matchDirectUnicode || matchQueryAsUnicode;
           }
         });
       } else {
