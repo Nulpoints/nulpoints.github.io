@@ -1125,6 +1125,27 @@
         </h2>
 
         <div class="form-grid">
+          <!-- Practice Content Choice (Vocabulary vs Letters & Digraphs) -->
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label">Practice Content</label>
+            <div class="radio-group" style="grid-template-columns: 1fr 1fr;">
+              <label>
+                <input type="radio" name="practice-content" value="vocab" class="radio-input" checked>
+                <div class="radio-btn">
+                  <i class="fa-solid fa-book"></i>
+                  <span>Vocabulary Words (ASL Dictionary)</span>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="practice-content" value="symbols" class="radio-input">
+                <div class="radio-btn">
+                  <i class="fa-solid fa-shapes"></i>
+                  <span>Letters &amp; Digraphs (System Reference)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
           <!-- Test Mode Choice -->
           <div class="form-group">
             <label class="form-label">Practice Mode</label>
@@ -1154,14 +1175,14 @@
                 <input type="radio" name="practice-direction" value="eng-to-sign" class="radio-input" checked>
                 <div class="radio-btn">
                   <i class="fa-solid fa-font"></i>
-                  <span>English → Sign</span>
+                  <span id="dir-eng-to-sign-label">English → Sign</span>
                 </div>
               </label>
               <label>
                 <input type="radio" name="practice-direction" value="sign-to-eng" class="radio-input">
                 <div class="radio-btn">
                   <i class="fa-solid fa-hands-asl-interpreting"></i>
-                  <span>Sign → English</span>
+                  <span id="dir-sign-to-eng-label">Sign → English</span>
                 </div>
               </label>
             </div>
@@ -1178,8 +1199,8 @@
             </select>
           </div>
 
-          <!-- Alphabetical scope picker -->
-          <div class="form-group">
+          <!-- Vocabulary Scope (Shown when Vocabulary is active) -->
+          <div class="form-group" id="vocab-scope-group">
             <label class="form-label" for="session-scope">Vocabulary Scope</label>
             <select class="select-input" id="session-scope">
               <option value="all" selected>Full Dictionary (Randomized)</option>
@@ -1188,6 +1209,25 @@
               <option value="K-O">Words beginning with K to O</option>
               <option value="P-T">Words beginning with P to T</option>
               <option value="U-Z">Words beginning with U to Z</option>
+            </select>
+          </div>
+
+          <!-- Symbol Category (Shown when Letters & Digraphs is active) -->
+          <div class="form-group" id="symbol-category-group" style="display: none;">
+            <label class="form-label" for="symbol-category">Symbol Category</label>
+            <select class="select-input" id="symbol-category">
+              <option value="all" selected>All Symbols &amp; Digraphs (170+)</option>
+              <option value="all-basic">All Basic Symbols (Handshapes, Diacritics, Action Areas, Locations, Movements)</option>
+              <option value="handshapes">Handshapes (a–u)</option>
+              <option value="diacritics">Handshape Diacritics (P–Z, -)</option>
+              <option value="action-areas">Action Areas (! to +)</option>
+              <option value="locations">Locations (/ to =)</option>
+              <option value="movements">Movements &amp; Modifiers (A–M, N, y, etc.)</option>
+              <option value="all-digraphs">All Digraphs &amp; Multigraphs</option>
+              <option value="digraphs-handshapes">Handshape Digraphs &amp; Classifiers</option>
+              <option value="digraphs-action-areas">Action Area Digraphs</option>
+              <option value="digraphs-locations">Location Digraphs</option>
+              <option value="digraphs-movements">Movement &amp; Marker Digraphs</option>
             </select>
           </div>
         </div>
@@ -1429,16 +1469,22 @@
   <script src='https://s.keyman.com/kmw/engine/18.0.235/keymanweb.js'></script>
   <script src='https://s.keyman.com/kmw/engine/18.0.235/kmwuitoggle.js'></script>
 
+  <!-- Load SignFont Symbols Data Definition -->
+  <script src="./signfont-symbols.js"></script>
+
   <!-- Load Dictionary Data from Clean Generated File -->
   <script src="./dictionary-data.js"></script>
 
   <script>
     // Global parameters for session
     let db = [];
+    let symbolDb = [];
+    let practiceContent = 'vocab'; // 'vocab' or 'symbols'
     let practiceMode = 'flip'; // 'flip' or 'type'
     let practiceDirection = 'eng-to-sign'; // 'eng-to-sign' or 'sign-to-eng'
     let sessionSize = 20;
     let sessionScope = 'all';
+    let symbolCategory = 'all';
 
     // Active state parameters
     let sessionCards = [];
@@ -1457,6 +1503,12 @@
     const setupBox = document.getElementById('setup-box');
     const sessionBox = document.getElementById('session-box');
     const resultsBox = document.getElementById('results-box');
+
+    const vocabScopeGroup = document.getElementById('vocab-scope-group');
+    const symbolCategoryGroup = document.getElementById('symbol-category-group');
+    const dirEngToSignLabel = document.getElementById('dir-eng-to-sign-label');
+    const dirSignToEngLabel = document.getElementById('dir-sign-to-eng-label');
+    const sessionSizeSelect = document.getElementById('session-size');
 
     const startSessionBtn = document.getElementById('start-session-btn');
     const quitSessionBtn = document.getElementById('quit-session-btn');
@@ -1615,16 +1667,25 @@
 
     // --- Initialize Application ---
     function initApplication() {
+      // Load Symbol Flashcards from signfont-symbols.js
+      if (window.SIGNFONT_SYMBOL_FLASHCARDS && window.SIGNFONT_SYMBOL_FLASHCARDS.length > 0) {
+        symbolDb = window.SIGNFONT_SYMBOL_FLASHCARDS;
+      }
+
       // Check if dataset is successfully loaded
       if (window.signFontDictionary && window.signFontDictionary.length > 0) {
         db = window.signFontDictionary;
         loadingBox.style.display = 'none';
         setupBox.style.display = 'block';
+      } else if (symbolDb.length > 0) {
+        // Fallback: allow symbol practice even if dictionary is unavailable
+        loadingBox.style.display = 'none';
+        setupBox.style.display = 'block';
       } else {
         loadingBox.innerHTML = `
           <i class="fa-solid fa-triangle-exclamation" style="font-size: 3rem; color: #f87171; margin-bottom: 1.5rem;"></i>
-          <p style="font-size: 1.2rem; font-weight: 500; color: var(--text-main);">Dictionary dataset missing</p>
-          <p style="margin-top: 0.5rem; color: var(--text-muted);">Please make sure dictionary-data.js exists in the SignFont directory.</p>
+          <p style="font-size: 1.2rem; font-weight: 500; color: var(--text-main);">Practice dataset missing</p>
+          <p style="margin-top: 0.5rem; color: var(--text-muted);">Please make sure dictionary-data.js and signfont-symbols.js exist in the SignFont directory.</p>
         `;
       }
 
@@ -1646,6 +1707,15 @@
     }
 
     function setupBoxEventListeners() {
+      // Content Type switch (Vocabulary vs Letters & Digraphs)
+      const contentRadios = document.querySelectorAll('input[name="practice-content"]');
+      contentRadios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          practiceContent = e.target.value;
+          updateContentSettingsUI();
+        });
+      });
+
       // Start session button
       startSessionBtn.addEventListener('click', startPracticeSession);
 
@@ -1679,12 +1749,9 @@
 
       // Card Flip actions
       interactiveCard.addEventListener('click', () => {
-        // card flipping is allowed in both Flip mode (at any time)
-        // and Type mode (only after submission to inspect composition details)
         if (practiceMode === 'flip') {
           toggleCardFlip();
         } else {
-          // in Type mode, flipping is permitted only after answer submission
           if (submitBtn.style.display === 'none' && nextBtn.style.display === 'inline-flex') {
             toggleCardFlip();
           }
@@ -1733,6 +1800,22 @@
       });
     }
 
+    function updateContentSettingsUI() {
+      if (practiceContent === 'vocab') {
+        vocabScopeGroup.style.display = 'flex';
+        symbolCategoryGroup.style.display = 'none';
+        dirEngToSignLabel.innerText = "English → Sign";
+        dirSignToEngLabel.innerText = "Sign → English";
+        sessionSizeSelect.options[3].text = "All Dictionary Cards (1,500+)";
+      } else {
+        vocabScopeGroup.style.display = 'none';
+        symbolCategoryGroup.style.display = 'flex';
+        dirEngToSignLabel.innerText = "Meaning → Sign";
+        dirSignToEngLabel.innerText = "Sign → Meaning";
+        sessionSizeSelect.options[3].text = "All in Category (Up to 170+)";
+      }
+    }
+
     // --- Populate Answer Text dynamically when flipping to prevent spoilers ---
     function populateAnswerText() {
       const item = sessionCards[currentIndex];
@@ -1768,36 +1851,74 @@
     // --- Practice Engine Start ---
     function startPracticeSession() {
       // Gather configs
+      practiceContent = document.querySelector('input[name="practice-content"]:checked').value;
       practiceMode = document.querySelector('input[name="practice-mode"]:checked').value;
       practiceDirection = document.querySelector('input[name="practice-direction"]:checked').value;
       sessionSize = document.getElementById('session-size').value;
       sessionScope = document.getElementById('session-scope').value;
+      symbolCategory = document.getElementById('symbol-category').value;
 
-      // Filter DB according to scope selection
-      let vocabularyPool = [...db];
-      if (sessionScope !== 'all') {
-        const ranges = {
-          'A-E': /^[a-e]/i,
-          'F-J': /^[f-j]/i,
-          'K-O': /^[k-o]/i,
-          'P-T': /^[p-t]/i,
-          'U-Z': /^[u-z]/i
-        };
-        const activeRegex = ranges[sessionScope];
-        vocabularyPool = db.filter(item => activeRegex.test(item.english));
+      let pool = [];
+
+      if (practiceContent === 'vocab') {
+        pool = [...db];
+        if (sessionScope !== 'all') {
+          const ranges = {
+            'A-E': /^[a-e]/i,
+            'F-J': /^[f-j]/i,
+            'K-O': /^[k-o]/i,
+            'P-T': /^[p-t]/i,
+            'U-Z': /^[u-z]/i
+          };
+          const activeRegex = ranges[sessionScope];
+          pool = db.filter(item => activeRegex.test(item.english));
+        }
+      } else {
+        // Filter symbol database
+        const sourceSymbols = (window.SIGNFONT_SYMBOL_FLASHCARDS && window.SIGNFONT_SYMBOL_FLASHCARDS.length > 0)
+          ? window.SIGNFONT_SYMBOL_FLASHCARDS
+          : symbolDb;
+
+        if (symbolCategory === 'all') {
+          pool = [...sourceSymbols];
+        } else if (symbolCategory === 'all-basic') {
+          pool = sourceSymbols.filter(s => s.category !== 'Digraph');
+        } else if (symbolCategory === 'handshapes') {
+          pool = sourceSymbols.filter(s => s.subcategory === 'Handshapes');
+        } else if (symbolCategory === 'diacritics') {
+          pool = sourceSymbols.filter(s => s.subcategory === 'Diacritics');
+        } else if (symbolCategory === 'action-areas') {
+          pool = sourceSymbols.filter(s => s.subcategory === 'Action Areas');
+        } else if (symbolCategory === 'locations') {
+          pool = sourceSymbols.filter(s => s.subcategory === 'Locations');
+        } else if (symbolCategory === 'movements') {
+          pool = sourceSymbols.filter(s => s.subcategory === 'Movements');
+        } else if (symbolCategory === 'all-digraphs') {
+          pool = sourceSymbols.filter(s => s.category === 'Digraph');
+        } else if (symbolCategory === 'digraphs-handshapes') {
+          pool = sourceSymbols.filter(s => s.subcategory === 'Handshape Digraphs');
+        } else if (symbolCategory === 'digraphs-action-areas') {
+          pool = sourceSymbols.filter(s => s.subcategory === 'Action Area Digraphs');
+        } else if (symbolCategory === 'digraphs-locations') {
+          pool = sourceSymbols.filter(s => s.subcategory === 'Location Digraphs');
+        } else if (symbolCategory === 'digraphs-movements') {
+          pool = sourceSymbols.filter(s => s.subcategory === 'Movement Digraphs' || s.subcategory === 'Marker Digraphs');
+        } else {
+          pool = [...sourceSymbols];
+        }
       }
 
-      if (vocabularyPool.length === 0) {
-        showToast("Selected scope has no words! Try another scope.");
+      if (pool.length === 0) {
+        showToast("Selected category/scope has no cards! Try another.");
         return;
       }
 
       // Shuffle pool
-      shuffleArray(vocabularyPool);
+      shuffleArray(pool);
 
       // Select segment
-      const targetSize = sessionSize === 'all' ? vocabularyPool.length : parseInt(sessionSize, 10);
-      sessionCards = vocabularyPool.slice(0, targetSize);
+      const targetSize = sessionSize === 'all' ? pool.length : parseInt(sessionSize, 10);
+      sessionCards = pool.slice(0, targetSize);
 
       // Reset statistics state
       currentIndex = 0;
@@ -1852,6 +1973,9 @@
       interactiveCard.classList.remove('flipped');
 
       const item = sessionCards[currentIndex];
+      const isSymbolMode = practiceContent === 'symbols' || Boolean(item.category);
+      const catBadge = item.subcategory || item.category || 'Vocabulary';
+
       cardCounter.innerText = `Card ${currentIndex + 1} of ${sessionCards.length}`;
       progressIndicator.style.width = `${(currentIndex / sessionCards.length) * 100}%`;
 
@@ -1867,13 +1991,21 @@
 
       // Switch prompt and answer depending on Testing Direction
       if (practiceDirection === 'eng-to-sign') {
-        // English prompt on front
-        frontLabel.innerText = "Translate English word to SignFont";
+        // English / Meaning prompt on front
+        if (isSymbolMode) {
+          frontLabel.innerText = `IDENTIFY SIGNFONT [${catBadge.toUpperCase()}]`;
+          backLabel.innerText = `Correct SignFont Symbol (${catBadge})`;
+          typingInputLabel.innerText = `Your SignFont Answer for "${item.english}"`;
+        } else {
+          frontLabel.innerText = "Translate English word to SignFont";
+          backLabel.innerText = "Correct SignFont Transcription(s)";
+          typingInputLabel.innerText = "Your SignFont Answer (Type using keyboard)";
+        }
+
         promptElement.innerText = item.english;
         promptElement.className = "prompt-text";
 
         // SignFont answers on back
-        backLabel.innerText = "Correct SignFont Transcription(s)";
         answerElement.innerText = "";
         answerElement.className = "answer-text signfont";
 
@@ -1881,7 +2013,6 @@
         if (practiceMode === 'type') {
           englishInputWrapper.style.display = 'none';
           signfontInputWrapper.style.display = 'flex';
-          typingInputLabel.innerText = "Your SignFont Answer (Type using keyboard)";
           signfontAnswer.value = '';
 
           // Focus input box immediately
@@ -1894,12 +2025,20 @@
         }
       } else {
         // SignFont prompt on front
-        frontLabel.innerText = "Translate SignFont symbol to English";
-        promptElement.innerText = item.signs[0]; // test on their primary sign representation
+        if (isSymbolMode) {
+          frontLabel.innerText = `SIGNFONT CHARACTER [${catBadge.toUpperCase()}]`;
+          backLabel.innerText = `Meaning / Description`;
+          typingInputLabel.innerText = "Your Meaning / Description Answer";
+        } else {
+          frontLabel.innerText = "Translate SignFont symbol to English";
+          backLabel.innerText = "Correct English Meaning";
+          typingInputLabel.innerText = "Your English Answer";
+        }
+
+        promptElement.innerText = item.signs[0];
         promptElement.className = "prompt-text signfont";
 
         // English answer on back
-        backLabel.innerText = "Correct English Meaning";
         answerElement.innerText = "";
         answerElement.className = "answer-text";
 
@@ -1907,7 +2046,6 @@
         if (practiceMode === 'type') {
           signfontInputWrapper.style.display = 'none';
           englishInputWrapper.style.display = 'flex';
-          typingInputLabel.innerText = "Your English Answer";
           englishAnswer.value = '';
 
           // Disable Keyman on this input explicitly
@@ -1969,6 +2107,7 @@
     // --- Typing Answer Validation (Type Mode) ---
     function validateUserSubmission() {
       const item = sessionCards[currentIndex];
+      const isSymbolMode = practiceContent === 'symbols' || Boolean(item.category);
       let userVal = '';
       let isCorrect = false;
       let promptDisplay = '';
@@ -1979,15 +2118,29 @@
         promptDisplay = item.english;
         correctDisplay = item.signs.join(', ');
 
-        // Exact case-sensitive match against *any* valid sign transcriptions
+        // Exact match against any valid sign notation
         isCorrect = item.signs.some(sign => sign.trim() === userVal);
       } else {
         userVal = englishAnswer.value.trim();
         promptDisplay = item.signs[0];
         correctDisplay = item.english;
 
-        // Case-insensitive match against standard english meaning
-        isCorrect = userVal.toLowerCase() === item.english.trim().toLowerCase();
+        const normalizedUser = userVal.toLowerCase();
+        const normalizedCorrect = item.english.trim().toLowerCase();
+
+        if (isSymbolMode) {
+          // Forgiving grading for symbol descriptions: matches exact description, or any alias keyword, or substring
+          if (normalizedUser === normalizedCorrect) {
+            isCorrect = true;
+          } else if (item.aliases && item.aliases.some(a => a.toLowerCase() === normalizedUser)) {
+            isCorrect = true;
+          } else if (normalizedUser.length >= 3 && normalizedCorrect.includes(normalizedUser)) {
+            isCorrect = true;
+          }
+        } else {
+          // Case-insensitive match against standard vocabulary English meaning
+          isCorrect = normalizedUser === normalizedCorrect;
+        }
       }
 
       // Disable submission inputs until we move forward
@@ -2139,6 +2292,7 @@
 
       resultsHistory.forEach(record => {
         const item = record.item;
+        const isSymbol = Boolean(item.category);
 
         let promptVal = '';
         let correctVal = '';
@@ -2164,15 +2318,20 @@
         }
 
         const typedDisplay = record.userTyped;
+        const categoryBadge = isSymbol
+          ? `<span style="font-size: 0.72rem; font-weight: 700; color: #a78bfa; background: rgba(139, 92, 246, 0.15); padding: 2px 8px; border-radius: 99px; margin-right: 6px; display: inline-block;">${escapeHtml(item.subcategory || item.category)}</span>`
+          : '';
 
         html += `
           <tr class="review-row">
-            <td><span class="${promptFontClass}">${escapeHtml(promptVal)}</span></td>
+            <td>
+              <div>${categoryBadge}<span class="${promptFontClass}">${escapeHtml(promptVal)}</span></div>
+            </td>
             <td><span class="${typedFontClass}">${escapeHtml(typedDisplay)}</span></td>
             <td>
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
                 <span class="${correctFontClass}">${escapeHtml(correctVal)}</span>
-                <button class="copy-btn" onclick="copyValue(event, '${item.signs[0].replace(/'/g, "\\'")}')" title="Copy primary sign transcription">
+                <button class="copy-btn" onclick="copyValue(event, '${item.signs[0].replace(/'/g, "\\'")}')" title="Copy primary sign notation">
                   <i class="fa-regular fa-copy"></i>
                 </button>
               </div>
