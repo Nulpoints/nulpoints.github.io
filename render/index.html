@@ -837,8 +837,7 @@
       max-width: 100%;
       word-break: break-word;
       white-space: pre-wrap;
-      line-height: 1.35;
-      border-radius: var(--radius-sm);
+      line-height: 1.1;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
       transition: box-shadow 0.2s ease;
       transform-origin: center center;
@@ -1496,7 +1495,7 @@
   <!-- Application Logic -->
   <script>
     // API Configuration
-    const API_BASE = 'https://render.cherology.net';
+    const API_BASE = 'https://api.cherology.net';
 
     // State Variables
     let currentBlob = null;
@@ -1812,20 +1811,25 @@
 
         const lines = text.split('\n');
         let maxLineWidth = 0;
-        lines.forEach(l => {
-          const metrics = ctx.measureText(l);
-          if (metrics.width > maxLineWidth) maxLineWidth = metrics.width;
+        let totalTextHeight = 0;
+        const lineMetrics = lines.map(line => {
+          const m = ctx.measureText(line);
+          const w = m.width;
+          if (w > maxLineWidth) maxLineWidth = w;
+          const ascent = m.actualBoundingBoxAscent || (fontSize * 0.8);
+          const descent = m.actualBoundingBoxDescent || (fontSize * 0.2);
+          const h = ascent + descent;
+          totalTextHeight += h;
+          return { line, width: w, ascent, descent, height: h };
         });
 
-        const lineHeight = fontSize * 1.35;
-        const width = Math.max(64, Math.round(maxLineWidth + padding * 2));
-        const height = Math.max(64, Math.round(lines.length * lineHeight + padding * 2));
+        const width = Math.max(32, Math.round(maxLineWidth + padding * 2));
+        const height = Math.max(32, Math.round(totalTextHeight + padding * 2));
 
         canvas.width = width;
         canvas.height = height;
 
         ctx.font = fontStr;
-        ctx.textBaseline = 'top';
 
         if (!isTransparent) {
           ctx.fillStyle = `#${bgHex}`;
@@ -1833,17 +1837,17 @@
         }
 
         ctx.fillStyle = `#${textHex}`;
-        lines.forEach((line, idx) => {
+        let currentY = padding;
+        lineMetrics.forEach(item => {
           let x = padding;
           if (currentAlign === 'center') {
-            const lw = ctx.measureText(line).width;
-            x = (width - lw) / 2;
+            x = (width - item.width) / 2;
           } else if (currentAlign === 'right') {
-            const lw = ctx.measureText(line).width;
-            x = width - padding - lw;
+            x = width - padding - item.width;
           }
-          const y = padding + idx * lineHeight;
-          ctx.fillText(line, x, y);
+          const baselineY = currentY + item.ascent;
+          ctx.fillText(item.line, x, baselineY);
+          currentY += item.height;
         });
 
         canvas.toBlob(blob => {
