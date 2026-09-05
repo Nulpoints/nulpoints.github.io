@@ -104,8 +104,13 @@
     }
 
     @keyframes pulse {
-      0% { transform: scale(1) translate(0, 0); }
-      100% { transform: scale(1.1) translate(30px, -20px); }
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+
+      100% {
+        transform: scale(1.1) translate(30px, -20px);
+      }
     }
 
     .app-container {
@@ -216,7 +221,7 @@
       justify-content: center;
       gap: 12px;
       margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
     .unicode-notice-banner strong {
@@ -260,7 +265,8 @@
       transition: var(--transition-smooth);
     }
 
-    .preset-select:hover, .preset-select:focus {
+    .preset-select:hover,
+    .preset-select:focus {
       border-color: var(--accent-primary);
       box-shadow: 0 0 10px var(--accent-glow);
     }
@@ -692,7 +698,8 @@
       text-align: left;
     }
 
-    .matrix-table th, .matrix-table td {
+    .matrix-table th,
+    .matrix-table td {
       padding: 0.75rem 1rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
@@ -786,6 +793,9 @@
         <a href="./convert.html" class="nav-link active">
           <i class="fa-solid fa-arrow-right-arrow-left"></i> Converter
         </a>
+        <a href="../render/index.html" class="nav-link">
+          <i class="fa-solid fa-paint-brush"></i> PNG Studio
+        </a>
       </div>
     </nav>
 
@@ -793,13 +803,15 @@
     <header>
       <div class="header-title-section">
         <h1>SignFont Bidirectional Converter</h1>
-        <p class="tagline">Convert long-form SignFont text into adapted Unicode representation and vice versa. Type in real time using original SignFont notation or standard Unicode symbols.</p>
+        <p class="tagline">Convert long-form SignFont text into adapted Unicode representation and vice versa. Type in
+          real time using original SignFont notation or standard Unicode symbols.</p>
       </div>
 
       <!-- Credit Banner -->
       <div class="unicode-notice-banner">
         <i class="fa-solid fa-sparkles" style="color: #a78bfa; font-size: 1.1rem;"></i>
-        <span><strong>Adapted Unicode Specification:</strong> Developed by <strong>jan Olipija</strong> for native cross-platform Unicode text rendering, preserving original 1987 SignFont structural phonology.</span>
+        <span><strong>Adapted Unicode Specification:</strong> Developed by <strong>jan Olipija</strong> for native
+          cross-platform Unicode text rendering, preserving original 1987 SignFont structural phonology.</span>
       </div>
     </header>
 
@@ -825,10 +837,12 @@
         <button id="toggle-keyman" class="toggle-btn" title="Toggle Keyman virtual keyboard layout integration">
           <i class="fa-solid fa-keyboard"></i> Direct Keyboard Schema
         </button>
-        <button id="toggle-font-view" class="toggle-btn active" title="Toggle visual SignFont font glyphs vs raw ASCII font">
+        <button id="toggle-font-view" class="toggle-btn active"
+          title="Toggle visual SignFont font glyphs vs raw ASCII font">
           <i class="fa-solid fa-font"></i> Rendered SignFont Font
         </button>
-        <button id="open-matrix-btn" class="toggle-btn" title="Open complete 94-character conversion cheat sheet matrix">
+        <button id="open-matrix-btn" class="toggle-btn"
+          title="Open complete 94-character conversion cheat sheet matrix">
           <i class="fa-solid fa-table-cells"></i> Mapping Table
         </button>
       </div>
@@ -847,12 +861,15 @@
         </div>
         <div class="editor-textarea-wrapper">
           <textarea id="ascii-input" class="converter-textarea signfont-font"
-            placeholder="Type or paste SignFont notation (e.g. aP&s&quot;LG)..." autocomplete="off" spellcheck="false"></textarea>
+            placeholder="Type or paste SignFont notation (e.g. aP&s&quot;LG)..." autocomplete="off"
+            spellcheck="false"></textarea>
         </div>
         <div class="editor-actions">
           <div class="action-btn-group">
             <button class="btn-sm" id="copy-ascii-btn"><i class="fa-regular fa-copy"></i> Copy Text</button>
-            <button class="btn-sm" id="copy-ascii-image-btn" title="Copy Cherology render API image link to clipboard"><i class="fa-regular fa-image"></i> Copy Image URL</button>
+            <button class="btn-sm" id="copy-ascii-image-btn"
+              title="Copy Cherology render API image link to clipboard"><i class="fa-regular fa-image"></i> Copy Image
+              URL</button>
             <button class="btn-sm" id="clear-ascii-btn"><i class="fa-solid fa-trash-can"></i> Clear</button>
           </div>
           <div class="editor-stats">
@@ -875,15 +892,19 @@
             <i class="fa-solid fa-code"></i>
             <h2>SignFont Unicode</h2>
           </div>
-          <span class="badge-sub" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);">jan Olipija</span>
+          <span class="badge-sub"
+            style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);">jan
+            Olipija</span>
         </div>
         <div class="editor-textarea-wrapper">
           <textarea id="unicode-input" class="converter-textarea unicode-font"
-            placeholder="Converted Unicode text will appear here (or type Unicode directly e.g. റ⸝O̮രⴱXᕤ)..." autocomplete="off" spellcheck="false" data-keyman-disabled="true"></textarea>
+            placeholder="Converted Unicode text will appear here (or type Unicode directly e.g. റ⸝Ọ̮രⴱ☓ᕤ)..."
+            autocomplete="off" spellcheck="false" data-keyman-disabled="true"></textarea>
         </div>
         <div class="editor-actions">
           <div class="action-btn-group">
-            <button class="btn-sm btn-primary-sm" id="copy-unicode-btn"><i class="fa-regular fa-copy"></i> Copy Unicode</button>
+            <button class="btn-sm btn-primary-sm" id="copy-unicode-btn"><i class="fa-regular fa-copy"></i> Copy
+              Unicode</button>
             <button class="btn-sm" id="clear-unicode-btn"><i class="fa-solid fa-trash-can"></i> Clear</button>
           </div>
           <div class="editor-stats">
@@ -899,7 +920,8 @@
         <i class="fa-solid fa-file-arrow-up" style="font-size: 1.4rem; color: var(--accent-primary);"></i>
         <div>
           <strong style="font-size: 0.95rem;">Batch File Conversion:</strong>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Import a plain text file (.txt) with SignFont text to convert instantly.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Import a plain text file (.txt) with SignFont text to
+            convert instantly.</p>
         </div>
       </div>
       <div class="action-btn-group">
@@ -920,7 +942,8 @@
     <section class="breakdown-card">
       <div class="breakdown-header">
         <h3><i class="fa-solid fa-microscope"></i> Live Component Breakdown Inspector</h3>
-        <span style="font-size: 0.85rem; color: var(--text-muted);">Parses current sign into Handshape, Diacritic, Region, Location &amp; Movement</span>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Parses current sign into Handshape, Diacritic,
+          Region, Location &amp; Movement</span>
       </div>
       <div id="breakdown-container" class="components-grid">
         <div class="comp-pill">
@@ -975,12 +998,14 @@
   <div id="matrix-modal" class="modal-overlay">
     <div class="modal-container">
       <div class="modal-header">
-        <h3><i class="fa-solid fa-table-cells" style="color: var(--accent-primary);"></i> SignFont to Unicode Complete Mapping Table</h3>
+        <h3><i class="fa-solid fa-table-cells" style="color: var(--accent-primary);"></i> SignFont to Unicode Complete
+          Mapping Table</h3>
         <button class="modal-close-btn" id="close-matrix-btn"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="modal-body">
         <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1rem;">
-          Complete 94-character bidirectional mapping table for original 1987 SignFont ASCII notation and jan Olipija's adapted Unicode representation.
+          Complete 94-character bidirectional mapping table for original 1987 SignFont ASCII notation and jan Olipija's
+          adapted Unicode representation.
         </p>
         <table class="matrix-table">
           <thead>
@@ -1012,7 +1037,7 @@
 
   <script>
     // Primary SignFont to Unicode Master Dictionary
-    const SIGNFONT_UNICODE_MAP = {"A": "ᐸ", "B": "ᐳ", "C": "ⵢ", "D": "ᐲ", "E": "Ṿ", "F": "ᘐ", "G": "ᕤ", "H": "ꕊ", "I": "ᘖ", "J": "ᘕ", "K": "≈", "L": "☓", "M": "ⴳ", "N": "¦", "O": "¦ᐨ", "P": "⸝", "Q": "ₒ", "R": "℩", "S": "⁊", "T": "℩⸝", "U": "⁊⸝", "V": "ʟ", "W": "ꞃ", "X": "ѵ", "Y": "⩝", "Z": "⊥", "Ã": "|˘", "Ï": "Ж˘", "Ô": "ᐯ˘", "a": "റ", "b": "Π", "c": "С", "d": "∣", "e": "Ω", "f": "ᗐ", "g": "⊃", "h": "⫪", "i": "Һ", "j": "Ч", "k": "७", "l": "⫛", "m": "爪", "n": "ቨ", "o": "О", "p": "Ж", "q": "ᕬ", "r": "୪", "s": "ര", "t": "൪", "u": "ᐯ", "v": "⁼", "w": "ᣛ", "x": "ᙾ", "y": "ᴺ", "z": "⁷", "0": "ᨓ", "1": "ᕃ", "2": "ᖌ", "3": "⦣", "4": "ᖍ", "5": "ᒍ", "6": "⩇", "7": "ᒐ", "8": "ᑯ", "9": "ɤ", "!": "ⵀ", "\"": "ⴱ", "#": "ⵚ", "$": "ⵕ", "%": "Ȏ", "&": "O̮", "(": "ᓂ", ")": "ᓇ", "*": "ⴲ", "+": "◷", "/": "ᕂ", ":": "ᑲ", ";": "ᕟ", "<": "Э", "=": "ᕞ", ">": "ᗫ", "?": "⍰", "@": "ᗠ", "[": "⍃", "\\": "⍌", "]": "⍄", "^": "⍓", "_": "⦵", "`": "◫", "{": "ᗟ", "|": "⌽", "}": "ᗥ", "~": "Ø", " ": " "};
+    const SIGNFONT_UNICODE_MAP = { "A": "ᐸ", "B": "ᐳ", "C": "ⵢ", "D": "ᐲ", "E": "Ṿ", "F": "ᘐ", "G": "ᕤ", "H": "ꕊ", "I": "ᘖ", "J": "ᘕ", "K": "≈", "L": "☓", "M": "ⴳ", "N": "¦", "O": "¦ᐨ", "P": "⸝", "Q": "ₒ", "R": "℩", "S": "⁊", "T": "℩⸝", "U": "⁊⸝", "V": "ʟ", "W": "ꞃ", "X": "ѵ", "Y": "⩝", "Z": "⊥", "Ã": "|˘", "Ï": "Ж˘", "Ô": "ᐯ˘", "a": "റ", "b": "Π", "c": "С", "d": "∣", "e": "Ω", "f": "ᗐ", "g": "⊃", "h": "⫪", "i": "Һ", "j": "Ч", "k": "७", "l": "⫛", "m": "爪", "n": "ቨ", "o": "О", "p": "Ж", "q": "ᕬ", "r": "୪", "s": "ര", "t": "൪", "u": "ᐯ", "v": "⁼", "w": "ᣛ", "x": "ᙾ", "y": "ᴺ", "z": "⁷", "0": "ᨓ", "1": "ᖍ", "2": "ᒙ", "3": "⦣", "4": "ᒜ", "5": "ᒍ", "6": "⩇", "7": "ᒐ", "8": "ᑯ", "9": "ɤ", "!": "ⵀ", "\"": "ⴱ", "#": "ⵚ", "$": "ⵕ", "%": "Ȯ̑", "&": "Ọ̮", "(": "ᓂ", ")": "ᓇ", "*": "ⴲ", "+": "◷", "/": "ᖌ", ":": "ᑲ", ";": "ᕟ", "<": "Э", "=": "ᕞ", ">": "ᗫ", "?": "⍰", "@": "ᗠ", "[": "⍃", "\\": "⍌", "]": "⍄", "^": "⍓", "_": "⦵", "`": "◫", "{": "ᗟ", "|": "⌽", "}": "ᗥ", "~": "Ø", " ": " " };
 
     // Reverse Map: Unicode -> ASCII
     const REVERSE_UNICODE_MAP = {};
@@ -1252,7 +1277,7 @@
       const params = new URLSearchParams({
         text: asciiInput.value,
         font: 'signfontwithunicode',
-        font_size: '32',
+        font_size: '40',
         color: '212529',
         bg_color: 'F8F9FA',
         padding: '16',
@@ -1302,7 +1327,7 @@
 
       // Ensure keyman is active on asciiInput and disabled on unicodeInput
       if (unicodeInput) {
-        try { keyman.disableControl(unicodeInput); } catch (e) {}
+        try { keyman.disableControl(unicodeInput); } catch (e) { }
       }
 
       keymanEnabled = true;

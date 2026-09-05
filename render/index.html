@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Font & Text PNG Rendering Studio | Nulpoints</title>
+  <meta name="description"
+    content="Interactive UI for the Cherology Font & Text PNG Rendering Service. Render text in custom sign language and unicode fonts with real-time styling, high-res export, and embedded PNG metadata.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Portal Central Theme -->
+  <link rel="stylesheet" href="../theme.css">
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      --glass-bg: rgba(30, 41, 59, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-hover-border: rgba(255, 255, 255, 0.18);
+
+      --accent-primary: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      --accent-glow: rgba(124, 58, 237, 0.35);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(15, 23, 42, 0.65);
+
+      --color-success: #10b981;
+      --color-info: #3b82f6;
+      --color-warning: #f59e0b;
+      --color-danger: #ef4444;
+
+      --transition-spring: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 3rem;
+      position: relative;
+    }
+
+    /* Ambient Background Glows */
+    .bg-blobs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+      animation: pulse 12s ease-in-out infinite alternate;
+    }
+
+    .blob-1 {
+      top: -10%;
+      left: -10%;
+      width: 55vw;
+      height: 55vw;
+      background: #4c1d95;
+    }
+
+    .blob-2 {
+      bottom: -15%;
+      right: -10%;
+      width: 60vw;
+      height: 60vw;
+      background: #1e3a8a;
+      animation-delay: -6s;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+      100% {
+        transform: scale(1.1) translate(30px, -20px);
+      }
+    }
+
+    .app-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* Header Navigation */
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1.15rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .brand-logo i {
+      font-size: 1.4rem;
+      color: var(--accent-primary);
+      filter: drop-shadow(0 0 8px var(--accent-glow));
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: var(--transition-smooth);
+      border: 1px solid transparent;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-link.active {
+      color: #ffffff;
+      background: var(--accent-gradient);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    /* Header Title */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .header-title-section h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.4rem;
+    }
+
+    .header-title-section p.tagline {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 800px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.5;
+    }
+
+    .api-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #6ee7b7;
+      font-weight: 500;
+    }
+
+    .api-status-badge .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* Toolbar / Presets */
+    .control-toolbar {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 0.85rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .preset-select {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--glass-hover-border);
+      color: var(--text-main);
+      padding: 0.55rem 1rem;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .preset-select:hover,
+    .preset-select:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      border-color: var(--glass-hover-border);
+    }
+
+    /* Main Dual Workspace Grid */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 960px) {
+      .studio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .editor-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      transition: var(--transition-smooth);
+    }
+
+    .editor-card:focus-within {
+      border-color: rgba(139, 92, 246, 0.4);
+      box-shadow: 0 12px 40px rgba(124, 58, 237, 0.15);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title-group h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .card-title-group i {
+      color: var(--accent-primary);
+      font-size: 1.15rem;
+    }
+
+    .badge-tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(139, 92, 246, 0.18);
+      color: #a78bfa;
+      font-weight: 600;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    /* Text Input Area */
+    .textarea-wrapper {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .render-textarea {
+      width: 100%;
+      min-height: 150px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 1rem;
+      color: var(--text-main);
+      font-size: 1.2rem;
+      line-height: 1.5;
+      resize: vertical;
+      outline: none;
+      transition: var(--transition-smooth);
+      font-family: 'Space Grotesk', 'Outfit', sans-serif;
+    }
+
+    .render-textarea:focus {
+      border-color: var(--accent-primary);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .textarea-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Form Controls Section */
+    .control-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .control-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .control-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .control-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .control-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .control-label span.val-display {
+      color: var(--accent-primary);
+      font-family: 'Fira Code', monospace;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    .custom-select,
+    .custom-input {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      padding: 0.6rem 0.85rem;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      transition: var(--transition-smooth);
+      width: 100%;
+    }
+
+    .custom-select:focus,
+    .custom-input:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    /* Range Sliders */
+    .range-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .custom-range {
+      flex: 1;
+      accent-color: var(--accent-primary);
+      cursor: pointer;
+    }
+
+    /* Color Picker Row */
+    .color-pick-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .color-preview-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid var(--glass-border);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .color-preview-box input[type="color"] {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 60px;
+      height: 60px;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .palette-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .palette-chip {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .palette-chip:hover {
+      transform: scale(1.2);
+    }
+
+    /* Color Scheme Presets */
+    .color-presets-wrapper {
+      margin-bottom: 0.25rem;
+    }
+
+    .color-presets-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .color-preset-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.42rem 0.8rem;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      user-select: none;
+    }
+
+    .color-preset-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--glass-hover-border);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .color-preset-btn.active {
+      background: rgba(139, 92, 246, 0.18);
+      border-color: var(--accent-primary);
+      color: #ffffff;
+      box-shadow: 0 0 14px var(--accent-glow);
+    }
+
+    .preset-chip-preview {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    /* Segmented Controls (Align, etc.) */
+    .segmented-control {
+      display: flex;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .segmented-btn {
+      flex: 1;
+      padding: 0.5rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 7px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .segmented-btn:hover {
+      color: var(--text-main);
+    }
+
+    .segmented-btn.active {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    /* Toggle switch */
+    .toggle-check-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle-check-label input {
+      accent-color: var(--accent-primary);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    /* Preview Canvas Area */
+    .preview-stage {
+      flex: 1;
+      min-height: 280px;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: auto;
+      padding: 1.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    /* Background Modes for Transparent PNGs */
+    .preview-stage.bg-dark-checker {
+      background-color: #0b0f19;
+      background-image: linear-gradient(45deg, #151d2f 25%, transparent 25%),
+        linear-gradient(-45deg, #151d2f 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #151d2f 75%),
+        linear-gradient(-45deg, transparent 75%, #151d2f 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+
+    .preview-stage.bg-light-checker {
+      background-color: #f1f5f9;
+      background-image: linear-gradient(45deg, #cbd5e1 25%, transparent 25%),
+        linear-gradient(-45deg, #cbd5e1 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #cbd5e1 75%),
+        linear-gradient(-45deg, transparent 75%, #cbd5e1 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+
+    .preview-stage.bg-solid-dark {
+      background: #0f172a;
+    }
+
+    .preview-stage.bg-solid-light {
+      background: #ffffff;
+    }
+
+    .rendered-img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      transition: transform 0.2s ease, opacity 0.25s ease;
+    }
+
+    .rendered-img.loading {
+      opacity: 0.4;
+      filter: blur(2px);
+    }
+
+    .preview-loading-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      border-radius: 16px;
+    }
+
+    .preview-loading-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top-color: var(--accent-primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Preview Controls Bar */
+    .preview-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .preview-info {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .preview-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action-primary {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.55rem 1.1rem;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-spring);
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    .btn-action-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+    }
+
+    /* Metadata Inspector Card & Dropzone */
+    .metadata-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .dropzone {
+      border: 2px dashed rgba(139, 92, 246, 0.35);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+      background: rgba(139, 92, 246, 0.05);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .dropzone:hover,
+    .dropzone.dragover {
+      border-color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.12);
+    }
+
+    .dropzone i {
+      font-size: 2rem;
+      color: var(--accent-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .meta-extracted-box {
+      margin-top: 1rem;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--accent-primary);
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      color: #ffffff;
+      box-shadow: 0 8px 30px var(--accent-glow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      z-index: 10000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: var(--transition-spring);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast.error {
+      border-color: var(--color-danger);
+    }
+
+    .toast.error i {
+      color: var(--color-danger);
+    }
+
+    .toast i {
+      color: var(--color-success);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Ambient Background Art -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+      <a href="../SignFont/convert.html" class="brand-logo">
+        <i class="fa-solid fa-file-image"></i>
+        <span>Font & Text PNG Rendering Studio</span>
+      </a>
+      <div class="nav-links">
+        <a href="../SignFont/dictionary.html" class="nav-link">
+          <i class="fa-solid fa-book"></i> SignFont
+        </a>
+        <a href="../elis/index.html" class="nav-link">
+          <i class="fa-solid fa-graduation-cap"></i> ELiS
+        </a>
+        <a href="../SignFont/convert.html" class="nav-link">
+          <i class="fa-solid fa-arrow-right-arrow-left"></i> Converter
+        </a>
+        <a href="./index.html" class="nav-link active">
+          <i class="fa-solid fa-paint-brush"></i> PNG Studio
+        </a>
+      </div>
+    </nav>
+
+    <!-- Header Area -->
+    <header>
+      <div class="header-title-section">
+        <h1>Font & Text PNG Rendering Service</h1>
+        <p class="tagline">Rasterize sign language notations, Unicode glyphs, and custom typography into high-fidelity PNG images with real-time styling controls and embedded text metadata.</p>
+        <div id="api-status-badge" class="api-status-badge">
+          <span class="status-dot"></span>
+          <span id="api-status-text">Checking Cherology API...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Preset & Quick Action Toolbar -->
+    <section class="control-toolbar">
+      <div class="toolbar-group">
+        <label for="preset-select" style="font-size: 0.9rem; font-weight: 500; color: var(--text-muted);">
+          <i class="fa-solid fa-folder-open"></i> Sample Presets:
+        </label>
+        <select id="preset-select" class="preset-select">
+          <option value="">-- Choose a sample sign notation --</option>
+          <option value="signfont:aP&s&quot;LG">SignFont: Accuse (aP&amp;s&quot;LG)</option>
+          <option value="signfont:b&amp;&quot;MGJ&amp;">SignFont: Across (b&amp;&quot;MGJ&amp;)</option>
+          <option value="signfont:pR%%Cvzzy">SignFont: Activity (pR%%Cvzzy)</option>
+          <option value="elis:d5%3'm,p*">ELiS: Example Sign</option>
+          <option value="aslwrite:ASLwrite Sample">ASLwrite: Sample</option>
+          <option value="hamnosysunicode:HamNoSys Sequence">HamNoSys: Sequence</option>
+          <option value="fairfaxhd:Fairfax HD Unicode">Fairfax HD: Glyphs</option>
+        </select>
+      </div>
+
+      <div class="toolbar-group">
+        <button id="btn-sample-clear" class="btn-secondary" title="Clear input text">
+          <i class="fa-solid fa-eraser"></i> Clear Text
+        </button>
+        <button id="btn-reset-defaults" class="btn-secondary" title="Reset all settings and styling to default">
+          <i class="fa-solid fa-rotate-left"></i> Reset Defaults
+        </button>
+        <button id="btn-share-link" class="btn-secondary" title="Copy shareable link with current configuration">
+          <i class="fa-solid fa-share-nodes"></i> Share Config
+        </button>
+      </div>
+    </section>
+
+    <!-- Studio Grid Workspace -->
+    <main class="studio-grid">
+      <!-- Left Panel: Control & Input Hub -->
+      <section class="editor-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <i class="fa-solid fa-sliders"></i>
+            <h2>Configuration & Text</h2>
+          </div>
+          <span class="badge-tag">API: /v1/text</span>
+        </div>
+
+        <!-- Text Input -->
+        <div class="textarea-wrapper">
+          <textarea id="text-input" class="render-textarea" placeholder="Type or paste sign notation or text to render..." maxlength="2000"></textarea>
+          <div class="textarea-footer">
+            <span id="char-count">0 / 2000 characters</span>
+            <span id="word-count">0 words</span>
+          </div>
+        </div>
+
+        <!-- Controls Section -->
+        <div class="control-section">
+          <!-- Font Selection -->
+          <div class="control-item">
+            <label class="control-label" for="font-select">
+              <span><i class="fa-solid fa-font"></i> Font</span>
+              <span id="font-filename-display" class="val-display">SignFontNew.ttf</span>
+            </label>
+            <select id="font-select" class="custom-select">
+              <option value="signfontnew" selected>SignFont New (SignFontNew.ttf)</option>
+              <option value="elis2">ELiS 2 (Elis2.ttf)</option>
+              <option value="aslwrite">ASLwrite (ASLWrite.otf)</option>
+              <option value="hamnosysunicode">HamNoSys Unicode (HamNoSysUnicode.ttf)</option>
+              <option value="fairfaxhd">Fairfax HD (FairfaxHD.ttf)</option>
+              <option value="icoglyphsforbanzsl">Icoglyphs for BANZSL (IcoglyphsforBANZSL.otf)</option>
+              <option value="rsl-font">RSL Font (rsl-font.ttf)</option>
+              <option value="symbol-font-for-asl">Symbol Font for ASL (symbol_font_for_asl.ttf)</option>
+              <option value="signfontwithunicode">SignFont With Unicode (SignFontWithUnicode.ttf)</option>
+              <option value="default">Default Font</option>
+            </select>
+          </div>
+
+          <!-- Font Size & Padding -->
+          <div class="control-row">
+            <div class="control-item">
+              <label class="control-label" for="font-size-range">
+                <span><i class="fa-solid fa-text-height"></i> Font Size</span>
+                <span id="font-size-val" class="val-display">40 pt</span>
+              </label>
+              <div class="range-wrap">
+                <input type="range" id="font-size-range" class="custom-range" min="8" max="256" value="40">
+              </div>
+            </div>
+
+            <div class="control-item">
+              <label class="control-label" for="padding-range">
+                <span><i class="fa-solid fa-border-all"></i> Padding</span>
+                <span id="padding-val" class="val-display">16 px</span>
+              </label>
+              <div class="range-wrap">
+                <input type="range" id="padding-range" class="custom-range" min="0" max="500" value="16">
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Scheme Presets -->
+          <div class="control-item color-presets-wrapper">
+            <label class="control-label">
+              <span><i class="fa-solid fa-swatchbook"></i> Color Scheme Presets</span>
+              <span style="font-size: 0.78rem; color: var(--text-muted); font-weight: normal;">Text &amp; Background</span>
+            </label>
+            <div class="color-presets-grid" id="color-presets">
+              <button type="button" class="color-preset-btn active" data-text="ffffff" data-bg="000000" title="White text on Black background (Default)">
+                <span class="preset-chip-preview" style="background: #000000; border-color: #475569;">
+                  <span style="color: #ffffff;">A</span>
+                </span>
+                <span>White on Black</span>
+              </button>
+              <button type="button" class="color-preset-btn" data-text="000000" data-bg="ffffff" title="Black text on White background">
+                <span class="preset-chip-preview" style="background: #ffffff; border-color: #cbd5e1;">
+                  <span style="color: #000000;">A</span>
+                </span>
+                <span>Black on White</span>
+              </button>
+              <button type="button" class="color-preset-btn" data-text="38bdf8" data-bg="0f172a" title="Cyan text on Dark Slate background">
+                <span class="preset-chip-preview" style="background: #0f172a; border-color: #38bdf8;">
+                  <span style="color: #38bdf8;">A</span>
+                </span>
+                <span>Cyberpunk Cyan</span>
+              </button>
+              <button type="button" class="color-preset-btn" data-text="4ade80" data-bg="052e16" title="Emerald text on Deep Green background">
+                <span class="preset-chip-preview" style="background: #052e16; border-color: #4ade80;">
+                  <span style="color: #4ade80;">A</span>
+                </span>
+                <span>Terminal Emerald</span>
+              </button>
+              <button type="button" class="color-preset-btn" data-text="fbbf24" data-bg="1e1b4b" title="Amber text on Dark Navy background">
+                <span class="preset-chip-preview" style="background: #1e1b4b; border-color: #fbbf24;">
+                  <span style="color: #fbbf24;">A</span>
+                </span>
+                <span>Solarized Amber</span>
+              </button>
+              <button type="button" class="color-preset-btn" data-text="f87171" data-bg="18181b" title="Coral text on Charcoal background">
+                <span class="preset-chip-preview" style="background: #18181b; border-color: #f87171;">
+                  <span style="color: #f87171;">A</span>
+                </span>
+                <span>Coral Slate</span>
+              </button>
+              <button type="button" class="color-preset-btn" data-text="ffffff" data-bg="transparent" title="White text on Transparent background">
+                <span class="preset-chip-preview" style="background: repeating-conic-gradient(#64748b 0% 25%, #334155 0% 50%) 50% / 6px 6px; border-color: #94a3b8;">
+                  <span style="color: #ffffff;">A</span>
+                </span>
+                <span>White on Transparent</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Text Color & Background Color -->
+          <div class="control-row">
+            <!-- Text Color -->
+            <div class="control-item">
+              <label class="control-label">
+                <span><i class="fa-solid fa-palette"></i> Text Color</span>
+                <span id="text-color-val" class="val-display">#ffffff</span>
+              </label>
+              <div class="color-pick-wrap">
+                <div class="color-preview-box" id="text-color-preview" style="background: #ffffff;">
+                  <input type="color" id="text-color-picker" value="#ffffff">
+                </div>
+                <input type="text" id="text-color-input" class="custom-input" value="ffffff" placeholder="ffffff" maxlength="7">
+              </div>
+              <div class="palette-chips" id="text-palette-chips">
+                <span class="palette-chip" style="background:#ffffff;" data-color="ffffff" title="White"></span>
+                <span class="palette-chip" style="background:#a78bfa;" data-color="a78bfa" title="Purple"></span>
+                <span class="palette-chip" style="background:#38bdf8;" data-color="38bdf8" title="Cyan"></span>
+                <span class="palette-chip" style="background:#4ade80;" data-color="4ade80" title="Green"></span>
+                <span class="palette-chip" style="background:#fbbf24;" data-color="fbbf24" title="Gold"></span>
+                <span class="palette-chip" style="background:#f87171;" data-color="f87171" title="Coral"></span>
+              </div>
+            </div>
+
+            <!-- Background Color -->
+            <div class="control-item">
+              <label class="control-label">
+                <span><i class="fa-solid fa-fill-drip"></i> Background Color</span>
+                <span id="bg-color-val" class="val-display">#000000</span>
+              </label>
+              <div class="color-pick-wrap">
+                <div class="color-preview-box" id="bg-color-preview" style="background: #000000;">
+                  <input type="color" id="bg-color-picker" value="#000000">
+                </div>
+                <input type="text" id="bg-color-input" class="custom-input" value="000000" placeholder="transparent or hex">
+              </div>
+              <div class="palette-chips" id="bg-palette-chips">
+                <span class="palette-chip" style="background: repeating-conic-gradient(#64748b 0% 25%, #334155 0% 50%) 50% / 8px 8px;" data-bg="transparent" title="Transparent"></span>
+                <span class="palette-chip" style="background:#000000;" data-bg="000000" title="Pure Black"></span>
+                <span class="palette-chip" style="background:#0f172a;" data-bg="0f172a" title="Dark Slate"></span>
+                <span class="palette-chip" style="background:#1e1b4b;" data-bg="1e1b4b" title="Dark Navy"></span>
+                <span class="palette-chip" style="background:#18181b;" data-bg="18181b" title="Charcoal"></span>
+                <span class="palette-chip" style="background:#ffffff;" data-bg="ffffff" title="Pure White"></span>
+                <span class="palette-chip" style="background:#f1f5f9;" data-bg="f1f5f9" title="Light Slate"></span>
+                <span class="palette-chip" style="background:#1e3a8a;" data-bg="1e3a8a" title="Deep Blue"></span>
+              </div>
+              <div style="margin-top: 6px; display: flex; align-items: center; justify-content: space-between;">
+                <label class="toggle-check-label">
+                  <input type="checkbox" id="bg-transparent-toggle">
+                  <span>Transparent Background</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Max Width & Alignment -->
+          <div class="control-row">
+            <div class="control-item">
+              <label class="control-label" for="max-width-range">
+                <span><i class="fa-solid fa-arrows-left-right-to-line"></i> Max Width (Wrap)</span>
+                <span id="max-width-val" class="val-display">0 (Off)</span>
+              </label>
+              <div class="range-wrap">
+                <input type="range" id="max-width-range" class="custom-range" min="0" max="4000" step="50" value="0">
+              </div>
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">
+                <span><i class="fa-solid fa-align-center"></i> Text Alignment</span>
+                <span id="align-val" class="val-display">Center</span>
+              </label>
+              <div class="segmented-control" id="align-control">
+                <button type="button" class="segmented-btn" data-align="left">
+                  <i class="fa-solid fa-align-left"></i> Left
+                </button>
+                <button type="button" class="segmented-btn active" data-align="center">
+                  <i class="fa-solid fa-align-center"></i> Center
+                </button>
+                <button type="button" class="segmented-btn" data-align="right">
+                  <i class="fa-solid fa-align-right"></i> Right
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Panel: Live PNG Render Stage & Inspector -->
+      <section class="editor-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <i class="fa-solid fa-image"></i>
+            <h2>Rendered PNG Preview</h2>
+          </div>
+          <div style="display: flex; gap: 6px;">
+            <button class="btn-secondary" id="btn-bg-toggle" title="Cycle preview background mode">
+              <i class="fa-solid fa-chess-board"></i> Backdrop
+            </button>
+          </div>
+        </div>
+
+        <!-- Canvas Stage -->
+        <div class="preview-stage bg-dark-checker" id="preview-stage">
+          <img id="rendered-image" class="rendered-img" alt="Rendered text output" src="" style="display: none;">
+          
+          <div id="preview-placeholder" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+            <i class="fa-solid fa-wand-magic-sparkles" style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-primary); opacity: 0.6;"></i>
+            <p style="font-size: 1.05rem;">Type text on the left to render PNG in real time.</p>
+          </div>
+
+          <div class="preview-loading-overlay" id="loading-overlay">
+            <div class="spinner"></div>
+            <span style="font-size: 0.88rem; color: #f8fafc; font-weight: 500;">Rendering PNG from API...</span>
+          </div>
+        </div>
+
+        <!-- Preview Actions Bar -->
+        <div class="preview-bar">
+          <div class="preview-info" id="image-dimensions-info">
+            <i class="fa-solid fa-circle-info"></i>
+            <span id="dims-display">Ready</span>
+          </div>
+
+          <div class="preview-actions">
+            <button id="btn-copy-img" class="btn-secondary" title="Copy PNG image to clipboard (includes embedded text metadata)">
+              <i class="fa-solid fa-copy"></i> Copy Image
+            </button>
+            <button id="btn-download-png" class="btn-action-primary" title="Download PNG with embedded text metadata">
+              <i class="fa-solid fa-download"></i> Download PNG
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Embedded Metadata Dropzone / Reader -->
+    <section class="metadata-card">
+      <div class="card-header">
+        <div class="card-title-group">
+          <i class="fa-solid fa-fingerprint"></i>
+          <h2>PNG Text Metadata Inspector</h2>
+        </div>
+        <span class="badge-tag">ISO iTXt Metadata</span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1rem;">
+        Every PNG downloaded or copied from this studio automatically contains the original text string and styling parameters embedded inside a standard PNG <code style="color: #a78bfa;">iTXt</code> metadata chunk. Drop any PNG here to restore its exact text and settings.
+      </p>
+
+      <div class="dropzone" id="png-dropzone">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <h4 style="font-size: 1.05rem; margin-bottom: 0.25rem;">Drop a Cherology PNG file here or click to inspect</h4>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Automatically extracts and restores original text notation and font parameters</p>
+        <input type="file" id="png-file-input" accept="image/png" style="display: none;">
+      </div>
+
+      <div class="meta-extracted-box" id="meta-extracted-box">
+        <!-- Filled dynamically -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-message">Success message</span>
+  </div>
+
+  <!-- Central Theme Controller Script -->
+  <script src="../theme.js"></script>
+
+  <!-- Application Logic -->
+  <script>
+    // API Configuration
+    const API_BASE = 'https://api.cherology.net';
+
+    // State Variables
+    let currentBlob = null;
+    let currentPngBytes = null;
+    let renderDebounceTimer = null;
+    let currentAlign = 'center';
+    let backdropModes = ['bg-dark-checker', 'bg-light-checker', 'bg-solid-dark', 'bg-solid-light'];
+    let currentBackdropIndex = 0;
+
+    // DOM Elements
+    const textInput = document.getElementById('text-input');
+    const charCount = document.getElementById('char-count');
+    const wordCount = document.getElementById('word-count');
+    const fontSelect = document.getElementById('font-select');
+    const fontFilenameDisplay = document.getElementById('font-filename-display');
+    const fontSizeRange = document.getElementById('font-size-range');
+    const fontSizeVal = document.getElementById('font-size-val');
+    const paddingRange = document.getElementById('padding-range');
+    const paddingVal = document.getElementById('padding-val');
+    const maxWidthRange = document.getElementById('max-width-range');
+    const maxWidthVal = document.getElementById('max-width-val');
+    const textColorInput = document.getElementById('text-color-input');
+    const textColorPicker = document.getElementById('text-color-picker');
+    const textColorPreview = document.getElementById('text-color-preview');
+    const textColorVal = document.getElementById('text-color-val');
+    const bgColorInput = document.getElementById('bg-color-input');
+    const bgColorPicker = document.getElementById('bg-color-picker');
+    const bgColorPreview = document.getElementById('bg-color-preview');
+    const bgColorVal = document.getElementById('bg-color-val');
+    const bgTransparentToggle = document.getElementById('bg-transparent-toggle');
+    const presetSelect = document.getElementById('preset-select');
+    const alignControl = document.getElementById('align-control');
+    const alignVal = document.getElementById('align-val');
+    const renderedImage = document.getElementById('rendered-image');
+    const previewPlaceholder = document.getElementById('preview-placeholder');
+    const previewStage = document.getElementById('preview-stage');
+    const loadingOverlay = document.getElementById('loading-overlay');
+    const dimsDisplay = document.getElementById('dims-display');
+    const btnCopyImg = document.getElementById('btn-copy-img');
+    const btnDownloadPng = document.getElementById('btn-download-png');
+    const btnBgToggle = document.getElementById('btn-bg-toggle');
+    const btnShareLink = document.getElementById('btn-share-link');
+    const btnSampleClear = document.getElementById('btn-sample-clear');
+    const btnResetDefaults = document.getElementById('btn-reset-defaults');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+    const apiStatusText = document.getElementById('api-status-text');
+    const apiStatusBadge = document.getElementById('api-status-badge');
+    const pngDropzone = document.getElementById('png-dropzone');
+    const pngFileInput = document.getElementById('png-file-input');
+    const metaExtractedBox = document.getElementById('meta-extracted-box');
+
+    // CRC32 Table & Calculator for standard PNG chunks
+    const makeCrcTable = () => {
+      let c;
+      const table = new Uint32Array(256);
+      for (let n = 0; n < 256; n++) {
+        c = n;
+        for (let k = 0; k < 8; k++) {
+          c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+        }
+        table[n] = c;
+      }
+      return table;
+    };
+    const crcTable = makeCrcTable();
+    function crc32(buf, offset, length) {
+      let c = 0xffffffff;
+      for (let i = offset; i < offset + length; i++) {
+        c = crcTable[(c ^ buf[i]) & 0xff] ^ (c >>> 8);
+      }
+      return (c ^ 0xffffffff) >>> 0;
+    }
+
+    // Embed iTXt Chunk into PNG Uint8Array
+    function createITXtChunk(keyword, text) {
+      const enc = new TextEncoder();
+      const kwBytes = enc.encode(keyword);
+      const textBytes = enc.encode(text);
+      const dataLen = kwBytes.length + 1 + 1 + 1 + 1 + 1 + textBytes.length;
+      const chunk = new Uint8Array(4 + 4 + dataLen + 4);
+      const view = new DataView(chunk.buffer);
+      
+      view.setUint32(0, dataLen);
+      chunk.set([0x69, 0x54, 0x58, 0x74], 4); // 'iTXt'
+      
+      let pos = 8;
+      chunk.set(kwBytes, pos); pos += kwBytes.length;
+      chunk[pos++] = 0; // null terminator for keyword
+      chunk[pos++] = 0; // compression flag (0 = uncompressed)
+      chunk[pos++] = 0; // compression method (0)
+      chunk[pos++] = 0; // null language tag
+      chunk[pos++] = 0; // null translated keyword
+      chunk.set(textBytes, pos); pos += textBytes.length;
+      
+      const crc = crc32(chunk, 4, 4 + dataLen);
+      view.setUint32(pos, crc);
+      return chunk;
+    }
+
+    // Injects original text & metadata into a PNG binary
+    function injectMetadataIntoPng(pngUint8Array, metadataObj) {
+      const chunks = [];
+      const view = new DataView(pngUint8Array.buffer, pngUint8Array.byteOffset, pngUint8Array.byteLength);
+      let pos = 8; // skip 8-byte PNG signature
+      let ihdrEndPos = 8;
+
+      while (pos < pngUint8Array.length) {
+        const length = view.getUint32(pos);
+        const type = String.fromCharCode(
+          pngUint8Array[pos + 4],
+          pngUint8Array[pos + 5],
+          pngUint8Array[pos + 6],
+          pngUint8Array[pos + 7]
+        );
+        if (type === 'IHDR') {
+          ihdrEndPos = pos + 8 + length + 4;
+        }
+        if (type === 'IEND') {
+          break;
+        }
+        pos += 8 + length + 4;
+      }
+
+      // Generate iTXt chunks
+      const textChunk = createITXtChunk('Text', metadataObj.text || '');
+      const metaChunk = createITXtChunk('CherologyConfig', JSON.stringify(metadataObj));
+
+      // Concatenate PNG header + IHDR + new iTXt chunks + remaining PNG data
+      const beforeIhdr = pngUint8Array.slice(0, ihdrEndPos);
+      const afterIhdr = pngUint8Array.slice(ihdrEndPos);
+
+      const combinedLength = beforeIhdr.length + textChunk.length + metaChunk.length + afterIhdr.length;
+      const finalPng = new Uint8Array(combinedLength);
+      let offset = 0;
+      finalPng.set(beforeIhdr, offset); offset += beforeIhdr.length;
+      finalPng.set(textChunk, offset); offset += textChunk.length;
+      finalPng.set(metaChunk, offset); offset += metaChunk.length;
+      finalPng.set(afterIhdr, offset);
+
+      return finalPng;
+    }
+
+    // Extract iTXt Chunks from PNG
+    function extractITXtChunks(buffer) {
+      const view = new DataView(buffer.buffer, buffer.byteOffset, buffer.byteLength);
+      const results = {};
+      let pos = 8;
+      const dec = new TextDecoder('utf-8');
+      
+      while (pos < buffer.length - 8) {
+        const length = view.getUint32(pos);
+        const type = String.fromCharCode(buffer[pos+4], buffer[pos+5], buffer[pos+6], buffer[pos+7]);
+        if (type === 'iTXt') {
+          const chunkData = buffer.slice(pos + 8, pos + 8 + length);
+          let null1 = chunkData.indexOf(0);
+          if (null1 !== -1) {
+            const keyword = dec.decode(chunkData.slice(0, null1));
+            let null2 = chunkData.indexOf(0, null1 + 3);
+            let null3 = chunkData.indexOf(0, null2 + 1);
+            const text = dec.decode(chunkData.slice(null3 + 1));
+            results[keyword] = text;
+          }
+        }
+        pos += 8 + length + 4;
+      }
+      return results;
+    }
+
+    // Check API Health
+    async function checkApiHealth() {
+      try {
+        const res = await fetch(`${API_BASE}/health`, { method: 'GET' });
+        if (res.ok) {
+          apiStatusText.textContent = 'Cherology API Online';
+          apiStatusBadge.style.background = 'rgba(16, 185, 129, 0.12)';
+          apiStatusBadge.style.borderColor = 'rgba(16, 185, 129, 0.35)';
+          apiStatusBadge.style.color = '#6ee7b7';
+        } else {
+          throw new Error('Health check non-200');
+        }
+      } catch (err) {
+        apiStatusText.textContent = 'Cherology API Unavailable';
+        apiStatusBadge.style.background = 'rgba(239, 68, 68, 0.12)';
+        apiStatusBadge.style.borderColor = 'rgba(239, 68, 68, 0.35)';
+        apiStatusBadge.style.color = '#fca5a5';
+      }
+    }
+
+    // Load available fonts from API
+    async function loadFonts() {
+      try {
+        const res = await fetch(`${API_BASE}/v1/fonts`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && Array.isArray(data.fonts) && data.fonts.length > 0) {
+            const currentSelected = fontSelect.value;
+            fontSelect.innerHTML = '';
+            data.fonts.forEach(f => {
+              const opt = document.createElement('option');
+              opt.value = f.id;
+              opt.textContent = `${f.name} (${f.filename})`;
+              opt.dataset.filename = f.filename;
+              fontSelect.appendChild(opt);
+            });
+            // default fallback option
+            const defOpt = document.createElement('option');
+            defOpt.value = 'default';
+            defOpt.textContent = 'Default Font';
+            defOpt.dataset.filename = 'System Default';
+            fontSelect.appendChild(defOpt);
+
+            if (data.fonts.some(f => f.id === currentSelected)) {
+              fontSelect.value = currentSelected;
+            } else {
+              fontSelect.value = 'signfontnew';
+            }
+            updateFontFilenameDisplay();
+          }
+        }
+      } catch (e) {
+        console.warn('Using built-in font list fallback:', e);
+      }
+    }
+
+    function updateFontFilenameDisplay() {
+      const selected = fontSelect.options[fontSelect.selectedIndex];
+      if (selected) {
+        fontFilenameDisplay.textContent = selected.dataset.filename || selected.value;
+      }
+    }
+
+    // Core Render Function
+    async function triggerRender() {
+      const text = textInput.value.trim();
+      if (!text) {
+        renderedImage.style.display = 'none';
+        previewPlaceholder.style.display = 'block';
+        dimsDisplay.textContent = 'Ready';
+        currentBlob = null;
+        currentPngBytes = null;
+        return;
+      }
+
+      loadingOverlay.classList.add('active');
+      renderedImage.classList.add('loading');
+
+      const params = new URLSearchParams({
+        text: text,
+        font: fontSelect.value || 'signfontnew',
+        font_size: fontSizeRange.value,
+        color: textColorInput.value.replace('#', '') || 'ffffff',
+        bg_color: bgTransparentToggle.checked ? 'transparent' : (bgColorInput.value.replace('#', '') || 'transparent'),
+        padding: paddingRange.value,
+        max_width: maxWidthRange.value,
+        align: currentAlign
+      });
+
+      const url = `${API_BASE}/v1/text?${params.toString()}`;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.detail?.[0]?.msg || `HTTP Error ${response.status}`);
+        }
+
+        const arrayBuffer = await response.arrayBuffer();
+        const rawBytes = new Uint8Array(arrayBuffer);
+
+        // Inject original text and settings into metadata
+        const metadata = {
+          text: text,
+          font: fontSelect.value,
+          font_size: parseInt(fontSizeRange.value),
+          color: textColorInput.value,
+          bg_color: bgTransparentToggle.checked ? 'transparent' : bgColorInput.value,
+          padding: parseInt(paddingRange.value),
+          max_width: parseInt(maxWidthRange.value),
+          align: currentAlign,
+          timestamp: new Date().toISOString(),
+          software: 'Cherology Font Studio (nulpoints.github.io)'
+        };
+
+        currentPngBytes = injectMetadataIntoPng(rawBytes, metadata);
+        currentBlob = new Blob([currentPngBytes], { type: 'image/png' });
+
+        const objectUrl = URL.createObjectURL(currentBlob);
+        renderedImage.src = objectUrl;
+        renderedImage.style.display = 'block';
+        previewPlaceholder.style.display = 'none';
+
+        renderedImage.onload = () => {
+          dimsDisplay.textContent = `${renderedImage.naturalWidth} × ${renderedImage.naturalHeight} px (${(currentPngBytes.length / 1024).toFixed(1)} KB)`;
+          loadingOverlay.classList.remove('active');
+          renderedImage.classList.remove('loading');
+        };
+
+      } catch (err) {
+        console.error('Render error:', err);
+        loadingOverlay.classList.remove('active');
+        renderedImage.classList.remove('loading');
+        showToast(`Render failed: ${err.message}`, true);
+      }
+    }
+
+    function scheduleRender() {
+      clearTimeout(renderDebounceTimer);
+      renderDebounceTimer = setTimeout(triggerRender, 250);
+    }
+
+    // UI Updates and Sync
+    function updateTextStats() {
+      const val = textInput.value;
+      charCount.textContent = `${val.length} / 2000 characters`;
+      const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+      wordCount.textContent = `${words} word${words === 1 ? '' : 's'}`;
+    }
+
+    // Event Listeners
+    textInput.addEventListener('input', () => {
+      updateTextStats();
+      scheduleRender();
+    });
+
+    fontSelect.addEventListener('change', () => {
+      updateFontFilenameDisplay();
+      scheduleRender();
+    });
+
+    fontSizeRange.addEventListener('input', (e) => {
+      fontSizeVal.textContent = `${e.target.value} pt`;
+      scheduleRender();
+    });
+
+    paddingRange.addEventListener('input', (e) => {
+      paddingVal.textContent = `${e.target.value} px`;
+      scheduleRender();
+    });
+
+    maxWidthRange.addEventListener('input', (e) => {
+      maxWidthVal.textContent = e.target.value === '0' ? '0 (Off)' : `${e.target.value} px`;
+      scheduleRender();
+    });
+
+    // Color Scheme Presets Helper Functions
+    function applyColorScheme(textColor, bgColor) {
+      textColor = textColor.toLowerCase().replace('#', '');
+      bgColor = bgColor.toLowerCase().replace('#', '');
+
+      textColorInput.value = textColor;
+      textColorPicker.value = `#${textColor}`;
+      textColorPreview.style.background = `#${textColor}`;
+      textColorVal.textContent = `#${textColor}`;
+
+      if (bgColor === 'transparent') {
+        bgTransparentToggle.checked = true;
+        bgColorInput.value = 'transparent';
+        bgColorPreview.style.background = 'transparent';
+        bgColorVal.textContent = 'transparent';
+      } else {
+        bgTransparentToggle.checked = false;
+        bgColorInput.value = bgColor;
+        bgColorPicker.value = `#${bgColor}`;
+        bgColorPreview.style.background = `#${bgColor}`;
+        bgColorVal.textContent = `#${bgColor}`;
+      }
+
+      syncColorPresetActiveState();
+      scheduleRender();
+    }
+
+    function syncColorPresetActiveState() {
+      const curText = textColorInput.value.toLowerCase().replace('#', '');
+      const curBg = bgTransparentToggle.checked ? 'transparent' : bgColorInput.value.toLowerCase().replace('#', '');
+
+      document.querySelectorAll('#color-presets .color-preset-btn').forEach(btn => {
+        const btnText = btn.dataset.text.toLowerCase().replace('#', '');
+        const btnBg = btn.dataset.bg.toLowerCase().replace('#', '');
+        if (curText === btnText && curBg === btnBg) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    // Color Scheme Preset Buttons Event Listeners
+    document.querySelectorAll('#color-presets .color-preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyColorScheme(btn.dataset.text, btn.dataset.bg);
+      });
+    });
+
+    // Text Color
+    textColorPicker.addEventListener('input', (e) => {
+      const hex = e.target.value.replace('#', '');
+      textColorInput.value = hex;
+      textColorPreview.style.background = e.target.value;
+      textColorVal.textContent = `#${hex}`;
+      syncColorPresetActiveState();
+      scheduleRender();
+    });
+
+    textColorInput.addEventListener('input', (e) => {
+      let val = e.target.value.trim().replace('#', '');
+      if (/^[0-9A-Fa-f]{3,6}$/.test(val)) {
+        textColorPicker.value = `#${val}`;
+        textColorPreview.style.background = `#${val}`;
+        textColorVal.textContent = `#${val}`;
+        syncColorPresetActiveState();
+        scheduleRender();
+      }
+    });
+
+    // Text Color Chips
+    document.querySelectorAll('#text-palette-chips .palette-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const color = chip.dataset.color;
+        textColorInput.value = color;
+        textColorPicker.value = `#${color}`;
+        textColorPreview.style.background = `#${color}`;
+        textColorVal.textContent = `#${color}`;
+        syncColorPresetActiveState();
+        scheduleRender();
+      });
+    });
+
+    // Background Color Chips
+    document.querySelectorAll('#bg-palette-chips .palette-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const bg = chip.dataset.bg;
+        if (bg === 'transparent') {
+          bgTransparentToggle.checked = true;
+          bgColorInput.value = 'transparent';
+          bgColorPreview.style.background = 'transparent';
+          bgColorVal.textContent = 'transparent';
+        } else {
+          bgTransparentToggle.checked = false;
+          bgColorInput.value = bg;
+          bgColorPicker.value = `#${bg}`;
+          bgColorPreview.style.background = `#${bg}`;
+          bgColorVal.textContent = `#${bg}`;
+        }
+        syncColorPresetActiveState();
+        scheduleRender();
+      });
+    });
+
+    // Background Color
+    bgColorPicker.addEventListener('input', (e) => {
+      const hex = e.target.value.replace('#', '');
+      bgColorInput.value = hex;
+      bgColorPreview.style.background = e.target.value;
+      bgColorVal.textContent = `#${hex}`;
+      bgTransparentToggle.checked = false;
+      syncColorPresetActiveState();
+      scheduleRender();
+    });
+
+    bgColorInput.addEventListener('input', (e) => {
+      let val = e.target.value.trim().replace('#', '');
+      if (val.toLowerCase() === 'transparent') {
+        bgTransparentToggle.checked = true;
+        bgColorPreview.style.background = 'transparent';
+        bgColorVal.textContent = 'transparent';
+        syncColorPresetActiveState();
+        scheduleRender();
+      } else if (/^[0-9A-Fa-f]{3,6}$/.test(val)) {
+        bgTransparentToggle.checked = false;
+        bgColorPicker.value = `#${val}`;
+        bgColorPreview.style.background = `#${val}`;
+        bgColorVal.textContent = `#${val}`;
+        syncColorPresetActiveState();
+        scheduleRender();
+      }
+    });
+
+    bgTransparentToggle.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        bgColorInput.value = 'transparent';
+        bgColorPreview.style.background = 'transparent';
+        bgColorVal.textContent = 'transparent';
+      } else {
+        const hex = bgColorPicker.value.replace('#', '');
+        bgColorInput.value = hex;
+        bgColorPreview.style.background = bgColorPicker.value;
+        bgColorVal.textContent = `#${hex}`;
+      }
+      syncColorPresetActiveState();
+      scheduleRender();
+    });
+
+    // Alignment
+    alignControl.querySelectorAll('.segmented-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alignControl.querySelectorAll('.segmented-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentAlign = btn.dataset.align;
+        alignVal.textContent = currentAlign.charAt(0).toUpperCase() + currentAlign.slice(1);
+        scheduleRender();
+      });
+    });
+
+    // Preset selection
+    presetSelect.addEventListener('change', (e) => {
+      const val = e.target.value;
+      if (!val) return;
+
+      if (val.startsWith('signfont:')) {
+        fontSelect.value = 'signfontnew';
+        textInput.value = val.replace('signfont:', '');
+      } else if (val.startsWith('elis:')) {
+        fontSelect.value = 'elis2';
+        textInput.value = val.replace('elis:', '');
+      } else if (val.startsWith('aslwrite:')) {
+        fontSelect.value = 'aslwrite';
+        textInput.value = val.replace('aslwrite:', '');
+      } else if (val.startsWith('hamnosysunicode:')) {
+        fontSelect.value = 'hamnosysunicode';
+        textInput.value = val.replace('hamnosysunicode:', '');
+      } else if (val.startsWith('fairfaxhd:')) {
+        fontSelect.value = 'fairfaxhd';
+        textInput.value = val.replace('fairfaxhd:', '');
+      }
+      updateFontFilenameDisplay();
+      updateTextStats();
+      triggerRender();
+    });
+
+    // Clear Button
+    btnSampleClear.addEventListener('click', () => {
+      textInput.value = '';
+      presetSelect.value = '';
+      updateTextStats();
+      triggerRender();
+      showToast('Input cleared');
+    });
+
+    // Reset to Defaults Button
+    function resetToDefaults() {
+      // Reset Font
+      if (Array.from(fontSelect.options).some(o => o.value === 'signfontnew')) {
+        fontSelect.value = 'signfontnew';
+      } else if (fontSelect.options.length > 0) {
+        fontSelect.selectedIndex = 0;
+      }
+      updateFontFilenameDisplay();
+
+      // Reset Font Size (40 pt) & Padding (16 px)
+      fontSizeRange.value = 40;
+      fontSizeVal.textContent = '40 pt';
+      paddingRange.value = 16;
+      paddingVal.textContent = '16 px';
+
+      // Reset Max Width & Align
+      maxWidthRange.value = 0;
+      maxWidthVal.textContent = '0 (Off)';
+      currentAlign = 'center';
+      alignControl.querySelectorAll('.segmented-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.align === 'center');
+      });
+      alignVal.textContent = 'Center';
+
+      // Reset Colors to White on Black (Default)
+      applyColorScheme('ffffff', '000000');
+
+      // Reset Preset Selection
+      presetSelect.value = '';
+
+      // Trigger Render with default settings
+      triggerRender();
+      showToast('Reset all settings to default (40pt, 16px padding, White on Black)');
+    }
+
+    btnResetDefaults.addEventListener('click', () => {
+      resetToDefaults();
+    });
+
+    // Backdrop Toggle
+    btnBgToggle.addEventListener('click', () => {
+      previewStage.classList.remove(backdropModes[currentBackdropIndex]);
+      currentBackdropIndex = (currentBackdropIndex + 1) % backdropModes.length;
+      previewStage.classList.add(backdropModes[currentBackdropIndex]);
+    });
+
+    // Download PNG with Metadata
+    btnDownloadPng.addEventListener('click', () => {
+      if (!currentBlob) {
+        showToast('Please enter text to render first', true);
+        return;
+      }
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(currentBlob);
+      const fontName = fontSelect.value || 'render';
+      a.download = `${fontName}-${Date.now()}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast('PNG downloaded with embedded metadata!');
+    });
+
+    // Copy Image to Clipboard
+    btnCopyImg.addEventListener('click', async () => {
+      if (!currentBlob) {
+        showToast('Please enter text to render first', true);
+        return;
+      }
+      try {
+        if (navigator.clipboard && window.ClipboardItem) {
+          const item = new ClipboardItem({ 'image/png': currentBlob });
+          await navigator.clipboard.write([item]);
+          showToast('PNG image copied to clipboard!');
+        } else {
+          throw new Error('ClipboardItem API not supported in this browser context');
+        }
+      } catch (err) {
+        console.error('Clipboard copy error:', err);
+        showToast(`Could not copy image: ${err.message}`, true);
+      }
+    });
+
+    // Share Link
+    btnShareLink.addEventListener('click', () => {
+      const text = textInput.value.trim();
+      if (!text) {
+        showToast('Enter text before sharing link', true);
+        return;
+      }
+      const state = {
+        t: text,
+        f: fontSelect.value,
+        s: fontSizeRange.value,
+        c: textColorInput.value,
+        bg: bgTransparentToggle.checked ? 'transparent' : bgColorInput.value,
+        p: paddingRange.value,
+        w: maxWidthRange.value,
+        a: currentAlign
+      };
+      const hash = encodeURIComponent(JSON.stringify(state));
+      const shareUrl = `${window.location.origin}${window.location.pathname}#cfg=${hash}`;
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        showToast('Shareable link copied to clipboard!');
+      });
+    });
+
+    // Load URL Hash state if present
+    function loadStateFromUrl() {
+      if (window.location.hash && window.location.hash.startsWith('#cfg=')) {
+        try {
+          const jsonStr = decodeURIComponent(window.location.hash.replace('#cfg=', ''));
+          const state = JSON.parse(jsonStr);
+          if (state.t) textInput.value = state.t;
+          if (state.f) fontSelect.value = state.f;
+          if (state.s) {
+            fontSizeRange.value = state.s;
+            fontSizeVal.textContent = `${state.s} pt`;
+          }
+          if (state.c) {
+            textColorInput.value = state.c;
+            textColorPicker.value = `#${state.c}`;
+            textColorPreview.style.background = `#${state.c}`;
+            textColorVal.textContent = `#${state.c}`;
+          }
+          if (state.bg) {
+            if (state.bg === 'transparent') {
+              bgTransparentToggle.checked = true;
+              bgColorInput.value = 'transparent';
+              bgColorPreview.style.background = 'transparent';
+              bgColorVal.textContent = 'transparent';
+            } else {
+              bgTransparentToggle.checked = false;
+              bgColorInput.value = state.bg;
+              bgColorPicker.value = `#${state.bg}`;
+              bgColorPreview.style.background = `#${state.bg}`;
+              bgColorVal.textContent = `#${state.bg}`;
+            }
+          }
+          if (state.p) {
+            paddingRange.value = state.p;
+            paddingVal.textContent = `${state.p} px`;
+          }
+          if (state.w) {
+            maxWidthRange.value = state.w;
+            maxWidthVal.textContent = state.w === '0' ? '0 (Off)' : `${state.w} px`;
+          }
+          if (state.a) {
+            currentAlign = state.a;
+            alignControl.querySelectorAll('.segmented-btn').forEach(btn => {
+              btn.classList.toggle('active', btn.dataset.align === currentAlign);
+            });
+            alignVal.textContent = currentAlign.charAt(0).toUpperCase() + currentAlign.slice(1);
+          }
+          updateFontFilenameDisplay();
+          updateTextStats();
+          syncColorPresetActiveState();
+        } catch (e) {
+          console.warn('Could not parse config from URL hash:', e);
+        }
+      }
+    }
+
+    // Drag and Drop PNG Inspector
+    pngDropzone.addEventListener('click', () => pngFileInput.click());
+
+    pngDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      pngDropzone.classList.add('dragover');
+    });
+
+    pngDropzone.addEventListener('dragleave', () => {
+      pngDropzone.classList.remove('dragover');
+    });
+
+    pngDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      pngDropzone.classList.remove('dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handlePngFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    pngFileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        handlePngFile(e.target.files[0]);
+      }
+    });
+
+    async function handlePngFile(file) {
+      if (file.type !== 'image/png') {
+        showToast('Please upload a valid PNG image file', true);
+        return;
+      }
+      try {
+        const buffer = await file.arrayBuffer();
+        const extracted = extractITXtChunks(new Uint8Array(buffer));
+        
+        let displayHtml = '';
+        if (extracted.Text || extracted.CherologyConfig) {
+          displayHtml += `<div style="color: #4ade80; font-weight: 600; margin-bottom: 0.5rem;"><i class="fa-solid fa-check-circle"></i> Embedded Metadata Found:</div>`;
+          if (extracted.Text) {
+            displayHtml += `<div><strong>Original Text:</strong> <span style="color:#ffffff;">${escapeHtml(extracted.Text)}</span></div>`;
+          }
+          if (extracted.CherologyConfig) {
+            try {
+              const cfg = JSON.parse(extracted.CherologyConfig);
+              displayHtml += `<div style="margin-top: 0.5rem; font-size: 0.8rem; color: #94a3b8;"><pre>${escapeHtml(JSON.stringify(cfg, null, 2))}</pre></div>`;
+              // Restore settings
+              if (cfg.text) textInput.value = cfg.text;
+              if (cfg.font) fontSelect.value = cfg.font;
+              if (cfg.font_size) {
+                fontSizeRange.value = cfg.font_size;
+                fontSizeVal.textContent = `${cfg.font_size} pt`;
+              }
+              if (cfg.color) {
+                textColorInput.value = cfg.color.replace('#', '');
+                textColorPicker.value = `#${cfg.color.replace('#', '')}`;
+                textColorPreview.style.background = `#${cfg.color.replace('#', '')}`;
+              }
+              if (cfg.bg_color) {
+                if (cfg.bg_color === 'transparent') {
+                  bgTransparentToggle.checked = true;
+                  bgColorInput.value = 'transparent';
+                  bgColorPreview.style.background = 'transparent';
+                } else {
+                  bgTransparentToggle.checked = false;
+                  bgColorInput.value = cfg.bg_color.replace('#', '');
+                  bgColorPicker.value = `#${cfg.bg_color.replace('#', '')}`;
+                  bgColorPreview.style.background = `#${cfg.bg_color.replace('#', '')}`;
+                }
+              }
+              if (cfg.padding !== undefined) {
+                paddingRange.value = cfg.padding;
+                paddingVal.textContent = `${cfg.padding} px`;
+              }
+              if (cfg.max_width !== undefined) {
+                maxWidthRange.value = cfg.max_width;
+                maxWidthVal.textContent = cfg.max_width === 0 ? '0 (Off)' : `${cfg.max_width} px`;
+              }
+              if (cfg.align) {
+                currentAlign = cfg.align;
+                alignControl.querySelectorAll('.segmented-btn').forEach(btn => {
+                  btn.classList.toggle('active', btn.dataset.align === currentAlign);
+                });
+                alignVal.textContent = currentAlign.charAt(0).toUpperCase() + currentAlign.slice(1);
+              }
+              updateFontFilenameDisplay();
+              updateTextStats();
+              syncColorPresetActiveState();
+              triggerRender();
+              showToast('Restored settings and text from PNG metadata!');
+            } catch (jsonErr) {
+              // text only
+              if (extracted.Text) {
+                textInput.value = extracted.Text;
+                updateTextStats();
+                triggerRender();
+                showToast('Restored original text from PNG metadata!');
+              }
+            }
+          }
+        } else {
+          displayHtml += `<div style="color: #fca5a5;"><i class="fa-solid fa-triangle-exclamation"></i> No embedded iTXt text metadata found in this PNG.</div>`;
+        }
+        metaExtractedBox.innerHTML = displayHtml;
+        metaExtractedBox.style.display = 'block';
+      } catch (err) {
+        console.error('Failed to read PNG metadata:', err);
+        showToast('Error reading PNG file structure', true);
+      }
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    function showToast(message, isError = false) {
+      toastMessage.textContent = message;
+      toast.classList.toggle('error', isError);
+      const icon = toast.querySelector('i');
+      if (isError) {
+        icon.className = 'fa-solid fa-circle-exclamation';
+      } else {
+        icon.className = 'fa-solid fa-circle-check';
+      }
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+    }
+
+    // Initialization
+    async function init() {
+      checkApiHealth();
+      await loadFonts();
+      loadStateFromUrl();
+      if (!textInput.value) {
+        textInput.value = 'aP&s"LG';
+      }
+      updateTextStats();
+      syncColorPresetActiveState();
+      triggerRender();
+    }
+
+    init();
+  </script>
+</body>
+
+</html>

@@ -73,13 +73,14 @@ The ASLwrite open-source iconic featural writing system for American Sign Langua
 
 ---
 
-## 🤖 Other Sign Language Tools
+## 🤖 Other Sign Language & Rendering Tools
 
-### Hamburg Sign Language Notation System (HamNoSys)
-An interactive application implementing the Hamburg Sign Language Notation System.
+### Font & Text PNG Rendering Studio (Cherology API)
+Interactive web studio interface for the stateless Cherology Text/Font PNG Rendering Service API.
 
 | App / Resource | Direct Launch Link | Key Features & Highlights |
 | :--- | :--- | :--- |
+| 🖼️ **PNG Rendering Studio** | [**Launch Studio 🚀**](./render/index.html) | Live interactive rendering of SignFont, ELiS, ASLwrite, HamNoSys, and custom fonts into transparent PNGs with full styling controls and embedded metadata. |
 | 🤖 **HamNoSys 3D WebGL Avatar** | [**Launch 3D Avatar 🚀**](./elis/HamNoSysAvatar.html) | Advanced WebGL 3D signing avatar utilizing ARP technology to dynamically play back notation signs. |
 
 ---
