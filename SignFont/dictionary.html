@@ -619,6 +619,370 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
+    /* Main View Switcher (Dictionary vs Minimal Pairs) */
+    .main-view-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .view-tab-btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      padding: 0.65rem 1.4rem;
+      border-radius: 9999px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-smooth);
+      backdrop-filter: blur(12px);
+    }
+
+    .view-tab-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent-primary);
+      transform: translateY(-1px);
+    }
+
+    .view-tab-btn.active {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%) !important;
+      color: #ffffff !important;
+      border-color: #a78bfa !important;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4) !important;
+    }
+
+    html[data-theme="light"] .view-tab-btn {
+      background: rgba(241, 245, 249, 0.85);
+      border-color: rgba(203, 213, 225, 0.8);
+      color: #475569;
+    }
+
+    html[data-theme="light"] .view-tab-btn.active {
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(109, 40, 217, 0.3) !important;
+    }
+
+    /* Minimal Pairs Explorer Banner & Filter Bar */
+    .pairs-header-banner {
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .pairs-banner-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #c084fc;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pairs-banner-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .pairs-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding: 0.5rem 0;
+    }
+
+    .filter-pill {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      padding: 0.45rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .filter-pill:hover {
+      color: var(--text-main);
+      border-color: var(--accent-primary);
+    }
+
+    .filter-pill.active {
+      background: rgba(139, 92, 246, 0.25) !important;
+      border-color: #a78bfa !important;
+      color: #f8fafc !important;
+      box-shadow: 0 0 12px rgba(139, 92, 246, 0.3) !important;
+    }
+
+    html[data-theme="light"] .filter-pill {
+      background: rgba(226, 232, 240, 0.7);
+      border-color: rgba(203, 213, 225, 0.8);
+      color: #475569;
+    }
+
+    html[data-theme="light"] .filter-pill.active {
+      background: rgba(109, 40, 217, 0.15) !important;
+      border-color: #6d28d9 !important;
+      color: #4c1d95 !important;
+    }
+
+    /* Pair Cards Grid (Default Categorized View) */
+    .pairs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1rem;
+    }
+
+    .pair-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pair-card:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .pair-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .pair-cat-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tag-location { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .tag-handshape { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .tag-movement { background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }
+    .tag-actionarea { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+    .tag-diacritic { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .tag-affix { background: rgba(14, 165, 233, 0.2); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.3); }
+
+    .pair-contrast-box {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .pair-item-box {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 0.65rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .pair-item-box:hover {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: rgba(139, 92, 246, 0.35);
+    }
+
+    .pair-item-word {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pair-item-sign {
+      font-family: 'SignFont New', 'SignFontNew', sans-serif;
+      font-size: 1.3rem;
+      color: #c084fc;
+      line-height: 1.2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .pair-item-unicode {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .pair-divider-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .pair-status-badge {
+      font-size: 0.75rem;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .pair-diff-chip {
+      font-size: 0.8rem;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      color: #e2e8f0;
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      line-height: 1.4;
+      overflow: hidden;
+    }
+
+    .diff-symbol-badge {
+      font-family: 'SignFont New', 'SignFontNew', sans-serif;
+      font-size: 1.25rem;
+      color: #c084fc;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .diff-code-tag {
+      font-family: monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #a78bfa;
+      background: rgba(139, 92, 246, 0.2);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    .diff-desc-text {
+      color: #cbd5e1;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .diff-arrow-icon {
+      color: var(--accent-primary);
+      font-size: 0.75rem;
+      margin: 0 2px;
+      flex-shrink: 0;
+    }
+
+    /* Target Word Similarity View (Active Query) */
+    .target-active-card {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(30, 41, 59, 0.6) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: 14px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .target-details {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .similarity-item-row {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .similarity-item-row:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .similarity-score-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dist-1-badge { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .dist-2-badge { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .dist-3-badge { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    /* Breakdown Drawer Similarity list */
+    .breakdown-similarity-section {
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--glass-border);
+    }
+
     @media (max-width: 768px) {
       .dict-header-row {
         display: none;
@@ -1025,13 +1389,23 @@
       </div>
     </header>
 
+    <!-- Main View Mode Switcher -->
+    <div class="main-view-switcher">
+      <button type="button" class="view-tab-btn active" id="tab-view-dict">
+        <i class="fa-solid fa-book-open"></i> Full Dictionary
+      </button>
+      <button type="button" class="view-tab-btn" id="tab-view-pairs">
+        <i class="fa-solid fa-code-compare"></i> Minimal Pairs & Similarity
+      </button>
+    </div>
+
     <!-- Search Section -->
     <section class="search-section">
       <div class="search-grid">
         <!-- English Search Box -->
         <div class="search-group">
           <label for="english-search" class="search-label">
-            English Lookup
+            <span id="english-search-title">English Lookup</span>
             <i class="fa-solid fa-language text-muted"></i>
           </label>
           <div class="search-input-wrapper">
@@ -1098,12 +1472,98 @@
       </div>
     </div>
 
-    <!-- Dictionary Results List -->
+    <!-- Dictionary Results List (Full Dictionary View) -->
     <main class="dict-list" id="dictionary-grid">
       <!-- Injected via JavaScript -->
       <div class="loading-state">
         <i class="fa-solid fa-circle-notch loading-spinner"></i>
         <p>Loading dictionary dataset...</p>
+      </div>
+    </main>
+
+    <!-- Minimal Pairs & Similarity View Container -->
+    <main id="minimal-pairs-view" style="display: none;">
+      <!-- Default Categorized Clusters View (Shown when no active target query) -->
+      <div id="pairs-default-container">
+        <div class="pairs-header-banner">
+          <div class="pairs-banner-title">
+            <i class="fa-solid fa-code-compare"></i> ASL SignFont Minimal Pair Explorer
+          </div>
+          <div class="pairs-banner-desc">
+            In ASL phonology and SignFont, <strong>minimal pairs</strong> are words that differ by <em>exactly one symbol</em> (such as Location, Handshape, Movement, or Action Area). Browse the categorized contrasts below, or search for any word above to inspect all its closest phonological relatives!
+          </div>
+        </div>
+
+        <div class="pairs-filter-bar" id="pairs-category-filters">
+          <button type="button" class="filter-pill active" data-cat="all">
+            <i class="fa-solid fa-layer-group"></i> All Categories <span id="count-cat-all">(0)</span>
+          </button>
+          <button type="button" class="filter-pill" data-cat="Location">
+            <i class="fa-solid fa-location-dot"></i> Location <span id="count-cat-location">(0)</span>
+          </button>
+          <button type="button" class="filter-pill" data-cat="Handshape">
+            <i class="fa-solid fa-hand"></i> Handshape <span id="count-cat-handshape">(0)</span>
+          </button>
+          <button type="button" class="filter-pill" data-cat="Movement">
+            <i class="fa-solid fa-arrows-up-down-left-right"></i> Movement <span id="count-cat-movement">(0)</span>
+          </button>
+          <button type="button" class="filter-pill" data-cat="Action Area">
+            <i class="fa-solid fa-bullseye"></i> Action Area <span id="count-cat-actionarea">(0)</span>
+          </button>
+          <button type="button" class="filter-pill" data-cat="Diacritic">
+            <i class="fa-solid fa-asterisk"></i> Diacritic <span id="count-cat-diacritic">(0)</span>
+          </button>
+          <button type="button" class="filter-pill" data-cat="Length / Modifier">
+            <i class="fa-solid fa-plus-minus"></i> Affix / Modifier <span id="count-cat-affix">(0)</span>
+          </button>
+        </div>
+
+        <div class="pairs-grid" id="pairs-cluster-grid">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Active Target Word Similarity Results (Shown when user searches or clicks 'Explore Similar') -->
+      <div id="pairs-search-container" style="display: none;">
+        <div class="target-active-card" id="target-active-card">
+          <div class="target-details">
+            <div>
+              <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600;">Target Word:</span>
+              <h2 id="target-word-title" style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; color: #f8fafc; margin-top: 2px;">Apple</h2>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span class="notation-badge" style="font-size: 1.4rem; padding: 0.3rem 0.8rem;" id="target-sign-badge">
+                <span class="notation-text" id="target-sign-text">dR(6MJy</span>
+              </span>
+              <span class="unicode-badge" style="font-size: 0.95rem; padding: 0.3rem 0.6rem;" id="target-unicode-badge">
+                <span class="unicode-text" id="target-unicode-text">റ⸝...</span>
+              </span>
+            </div>
+          </div>
+          <button type="button" class="btn" id="btn-clear-target" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Categorized Pairs
+          </button>
+        </div>
+
+        <div class="pairs-filter-bar" id="pairs-distance-filters">
+          <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-right: 4px;">Filter Distance:</span>
+          <button type="button" class="filter-pill active" data-dist="all">
+            <i class="fa-solid fa-list-check"></i> All Similar (Dist ≤ 3)
+          </button>
+          <button type="button" class="filter-pill" data-dist="1">
+            <i class="fa-solid fa-star"></i> Minimal Pairs Only (Dist = 1)
+          </button>
+          <button type="button" class="filter-pill" data-dist="2">
+            <i class="fa-solid fa-circle-dot"></i> Near Relatives (Dist = 2)
+          </button>
+          <button type="button" class="filter-pill" data-dist="3">
+            <i class="fa-solid fa-circle-notch"></i> Distance = 3
+          </button>
+        </div>
+
+        <div class="dict-list" id="similarity-results-grid">
+          <!-- Injected via JavaScript -->
+        </div>
       </div>
     </main>
 
@@ -1191,6 +1651,24 @@
         <h3 style="margin-bottom: 1rem; font-family: 'Space Grotesk', sans-serif;">Symbol Composition</h3>
         <div id="breakdown-items-container">
           <!-- Injected via JavaScript -->
+        </div>
+
+        <!-- Minimal Pairs & Similar Signs Section -->
+        <div class="breakdown-similarity-section" id="breakdown-similarity-section">
+          <h3 style="margin-bottom: 0.5rem; font-family: 'Space Grotesk', sans-serif; display: flex; align-items: center; justify-content: space-between;">
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-code-compare text-accent"></i> Minimal Pairs & Similar Signs
+            </span>
+            <button type="button" class="btn" id="btn-breakdown-explore-full" style="padding: 0.25rem 0.75rem; font-size: 0.78rem;">
+              Explore in Full View <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.85rem;">
+            Words in the dictionary differing from this sign by 1 to 2 symbols:
+          </p>
+          <div id="breakdown-pairs-container">
+            <!-- Injected via JavaScript -->
+          </div>
         </div>
       </div>
     </div>
@@ -1293,13 +1771,45 @@
     const MOVEMENTS = window.SIGNFONT_MOVEMENTS || {};
     const DIGRAPHS = window.SIGNFONT_DIGRAPHS || {};
 
-    // Global Search and pagination parameters
+    // Global Search, View Mode, and Pagination Parameters
+    let currentMainView = 'dictionary'; // 'dictionary' or 'minimal-pairs'
     let filteredDictionary = [];
     let currentLimit = 60;
     const itemsPerChunk = 60;
     let currentSignSearchMode = 'original'; // 'original' or 'unicode'
 
-    // DOM References
+    // Minimal Pairs State
+    let activePairsCategory = 'all';
+    let activeTargetWord = null; // { english, sign, unicodeSign }
+    let activeDistanceFilter = 'all'; // 'all', '1', '2', '3'
+    let minimalPairClusters = {
+      'all': [],
+      'Location': [],
+      'Handshape': [],
+      'Movement': [],
+      'Action Area': [],
+      'Diacritic': [],
+      'Length / Modifier': []
+    };
+    let currentSimilarityMatches = [];
+
+    // DOM References - Main App & Tabs
+    const tabViewDict = document.getElementById('tab-view-dict');
+    const tabViewPairs = document.getElementById('tab-view-pairs');
+    const dictionaryGrid = document.getElementById('dictionary-grid');
+    const minimalPairsView = document.getElementById('minimal-pairs-view');
+    const pairsDefaultContainer = document.getElementById('pairs-default-container');
+    const pairsSearchContainer = document.getElementById('pairs-search-container');
+    const pairsClusterGrid = document.getElementById('pairs-cluster-grid');
+    const similarityResultsGrid = document.getElementById('similarity-results-grid');
+    const targetWordTitle = document.getElementById('target-word-title');
+    const targetSignText = document.getElementById('target-sign-text');
+    const targetUnicodeText = document.getElementById('target-unicode-text');
+    const btnClearTarget = document.getElementById('btn-clear-target');
+    const englishSearchTitle = document.getElementById('english-search-title');
+    const signfontSearchTitle = document.getElementById('signfont-search-title');
+
+    // DOM References - Search & Inputs
     const englishSearch = document.getElementById('english-search');
     const signfontSearch = document.getElementById('signfont-search');
     const clearEnglishBtn = document.getElementById('clear-english');
@@ -1308,11 +1818,11 @@
     const btnModeUnicode = document.getElementById('btn-mode-unicode');
     const keymanBadge = document.getElementById('keyman-badge');
 
-    const dictionaryGrid = document.getElementById('dictionary-grid');
     const resultsMeta = document.getElementById('results-meta');
     const loadMoreBox = document.getElementById('load-more-box');
     const loadMoreBtn = document.getElementById('load-more-btn');
 
+    // DOM References - Drawers
     const refDrawerOverlay = document.getElementById('ref-drawer-overlay');
     const closeRefBtn = document.getElementById('close-ref-btn');
     const openRefBtn = document.getElementById('open-ref-btn');
@@ -1324,8 +1834,582 @@
     const breakdownNotationLarge = document.getElementById('breakdown-notation-large');
     const breakdownNotationRaw = document.getElementById('breakdown-notation-raw');
     const breakdownContainer = document.getElementById('breakdown-items-container');
+    const breakdownPairsContainer = document.getElementById('breakdown-pairs-container');
+    const btnBreakdownExploreFull = document.getElementById('btn-breakdown-explore-full');
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toast-message');
+
+    // --- Sign Tokenizer and Symbol Classification ---
+    function tokenizeSign(sign) {
+      if (!sign) return [];
+      const tokens = [];
+      let i = 0;
+      while (i < sign.length) {
+        let matched = false;
+        // Check 3-char, 2-char multigraphs first
+        for (let len = 3; len >= 2; len--) {
+          if (i + len <= sign.length) {
+            const sub = sign.substring(i, i + len);
+            if (DIGRAPHS && DIGRAPHS[sub]) {
+              tokens.push(sub);
+              i += len;
+              matched = true;
+              break;
+            }
+          }
+        }
+        if (!matched) {
+          tokens.push(sign[i]);
+          i++;
+        }
+      }
+      return tokens;
+    }
+
+    function getSymbolCategory(token) {
+      if (!token) return 'Marker';
+      if (DIGRAPHS && DIGRAPHS[token]) return DIGRAPHS[token].category;
+      if (HANDSHAPES && HANDSHAPES[token]) return 'Handshape';
+      if (LOCATIONS && LOCATIONS[token]) return 'Location';
+      if (MOVEMENTS && MOVEMENTS[token]) return 'Movement';
+      if (ACTION_AREAS && ACTION_AREAS[token]) return 'Action Area';
+      if (DIACRITICS && DIACRITICS[token]) return 'Diacritic';
+      return 'Marker';
+    }
+
+    function getSymbolDescription(token) {
+      if (!token) return '';
+      if (DIGRAPHS && DIGRAPHS[token]) return DIGRAPHS[token].desc;
+      if (HANDSHAPES && HANDSHAPES[token]) return HANDSHAPES[token];
+      if (LOCATIONS && LOCATIONS[token]) return LOCATIONS[token];
+      if (MOVEMENTS && MOVEMENTS[token]) return MOVEMENTS[token];
+      if (ACTION_AREAS && ACTION_AREAS[token]) return ACTION_AREAS[token];
+      if (DIACRITICS && DIACRITICS[token]) return DIACRITICS[token];
+      return token;
+    }
+
+    function getShortSymbolDescription(token) {
+      const full = getSymbolDescription(token);
+      if (!full) return '';
+      let clean = full.split('/')[0].trim();
+      clean = clean.replace(/classifier.*$/i, '').trim();
+      clean = clean.replace(/\(.*\)/g, '').trim();
+      if (clean.length > 24) clean = clean.substring(0, 23) + '...';
+      return clean || full;
+    }
+
+    // Levenshtein token distance calculation
+    function levenshteinTokens(t1, t2) {
+      const m = t1.length, n = t2.length;
+      const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+      for (let i = 0; i <= m; i++) dp[i][0] = i;
+      for (let j = 0; j <= n; j++) dp[0][j] = j;
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          if (t1[i - 1] === t2[j - 1]) dp[i][j] = dp[i - 1][j - 1];
+          else dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+        }
+      }
+      return dp[m][n];
+    }
+
+    // Detailed Diff Analysis between two signs
+    function getSignDiffInfo(s1, s2) {
+      const t1 = tokenizeSign(s1);
+      const t2 = tokenizeSign(s2);
+      const dist = levenshteinTokens(t1, t2);
+
+      let category = 'Length / Modifier';
+      let diffDetails = [];
+      let diffSummary = '';
+
+      if (t1.length === t2.length && dist === 1) {
+        for (let i = 0; i < t1.length; i++) {
+          if (t1[i] !== t2[i]) {
+            const cat1 = getSymbolCategory(t1[i]);
+            const cat2 = getSymbolCategory(t2[i]);
+            category = (cat1 === cat2) ? cat1 : (cat1 !== 'Marker' ? cat1 : cat2);
+            const desc1 = getSymbolDescription(t1[i]);
+            const desc2 = getSymbolDescription(t2[i]);
+            const short1 = getShortSymbolDescription(t1[i]);
+            const short2 = getShortSymbolDescription(t2[i]);
+            diffDetails.push({
+              pos: i,
+              from: t1[i],
+              fromDesc: desc1,
+              fromShortDesc: short1,
+              to: t2[i],
+              toDesc: desc2,
+              toShortDesc: short2,
+              category
+            });
+            diffSummary = `${t1[i]} (${short1}) ⇄ ${t2[i]} (${short2})`;
+          }
+        }
+      } else if (dist === 1) {
+        category = 'Length / Modifier';
+        if (t1.length < t2.length) {
+          diffSummary = `Symbol added (+1 symbol)`;
+        } else {
+          diffSummary = `Symbol removed (-1 symbol)`;
+        }
+      } else {
+        category = `Multi-Symbol Variation (${dist} edits)`;
+        diffSummary = `${dist} symbol differences`;
+      }
+
+      const maxLen = Math.max(t1.length, t2.length, 1);
+      const similarityPercent = Math.max(0, Math.round((1 - (dist / maxLen)) * 100));
+
+      return {
+        dist,
+        category,
+        diffDetails,
+        diffSummary,
+        similarityPercent
+      };
+    }
+
+    // Precompute / Build Minimal Pair Clusters for Default View (Ultra-fast inverted bucket algorithm)
+    let hasBuiltClusters = false;
+    function buildMinimalPairClusters() {
+      if (hasBuiltClusters || !window.signFontDictionary || window.signFontDictionary.length === 0) return;
+      hasBuiltClusters = true;
+
+      const dict = window.signFontDictionary;
+
+      // 1. Pre-tokenize all dictionary entries once
+      dict.forEach(entry => {
+        if (!entry._tokens) {
+          entry._tokens = entry.signs && entry.signs[0] ? tokenizeSign(entry.signs[0]) : [];
+        }
+      });
+
+      // 2. Build inverted token-mask index for distance 1 candidates
+      const subMap = new Map();
+      const exactMap = new Map();
+      const delMap = new Map();
+
+      dict.forEach((entry, idx) => {
+        const tokens = entry._tokens;
+        if (!tokens || tokens.length === 0) return;
+
+        const exactKey = tokens.join('\u0001');
+        if (!exactMap.has(exactKey)) exactMap.set(exactKey, []);
+        exactMap.get(exactKey).push(idx);
+
+        for (let i = 0; i < tokens.length; i++) {
+          const subKey = tokens.slice(0, i).join('\u0001') + '\u0000' + tokens.slice(i + 1).join('\u0001');
+          if (!subMap.has(subKey)) subMap.set(subKey, []);
+          subMap.get(subKey).push(idx);
+
+          const delKey = tokens.slice(0, i).concat(tokens.slice(i + 1)).join('\u0001');
+          if (!delMap.has(delKey)) delMap.set(delKey, []);
+          delMap.get(delKey).push(idx);
+        }
+      });
+
+      // 3. Find candidate pairs (pruning from 1.2M comparisons down to < 500)
+      const candidatePairs = new Set();
+      subMap.forEach(indices => {
+        if (indices.length > 1) {
+          for (let i = 0; i < indices.length; i++) {
+            for (let j = i + 1; j < indices.length; j++) {
+              const a = Math.min(indices[i], indices[j]);
+              const b = Math.max(indices[i], indices[j]);
+              candidatePairs.add(a + ':' + b);
+            }
+          }
+        }
+      });
+
+      delMap.forEach((delIndices, delKey) => {
+        if (exactMap.has(delKey)) {
+          const exactIndices = exactMap.get(delKey);
+          for (let i of delIndices) {
+            for (let j of exactIndices) {
+              if (i !== j) {
+                const a = Math.min(i, j);
+                const b = Math.max(i, j);
+                candidatePairs.add(a + ':' + b);
+              }
+            }
+          }
+        }
+      });
+
+      // 4. Verify candidate pairs and group into categories
+      const allPairs = [];
+      const clusters = {
+        'all': [],
+        'Location': [],
+        'Handshape': [],
+        'Movement': [],
+        'Action Area': [],
+        'Diacritic': [],
+        'Length / Modifier': []
+      };
+
+      const seenPairKeys = new Set();
+
+      candidatePairs.forEach(pairKey => {
+        const [iStr, jStr] = pairKey.split(':');
+        const i = parseInt(iStr, 10);
+        const j = parseInt(jStr, 10);
+        const item1 = dict[i];
+        const item2 = dict[j];
+        const s1 = item1.signs && item1.signs[0];
+        const s2 = item2.signs && item2.signs[0];
+        if (!s1 || !s2 || s1 === s2) return;
+
+        const diffInfo = getSignDiffInfo(s1, s2, item1._tokens, item2._tokens);
+        if (diffInfo.dist === 1) {
+          const pKey = `${item1.english}::${item2.english}`;
+          if (!seenPairKeys.has(pKey)) {
+            seenPairKeys.add(pKey);
+            const u1 = (item1.unicodeSigns && item1.unicodeSigns[0]) || convertToUnicode(s1);
+            const u2 = (item2.unicodeSigns && item2.unicodeSigns[0]) || convertToUnicode(s2);
+
+            const pairObj = {
+              word1: item1.english,
+              sign1: s1,
+              unicode1: u1,
+              word2: item2.english,
+              sign2: s2,
+              unicode2: u2,
+              diffInfo
+            };
+
+            allPairs.push(pairObj);
+            const catKey = clusters[diffInfo.category] ? diffInfo.category : 'Length / Modifier';
+            clusters[catKey].push(pairObj);
+          }
+        }
+      });
+
+      clusters['all'] = allPairs;
+      minimalPairClusters = clusters;
+
+      // Update badge counts in filter buttons
+      const setBadge = (id, count) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = `(${count})`;
+      };
+      setBadge('count-cat-all', clusters['all'].length);
+      setBadge('count-cat-location', clusters['Location'].length);
+      setBadge('count-cat-handshape', clusters['Handshape'].length);
+      setBadge('count-cat-movement', clusters['Movement'].length);
+      setBadge('count-cat-actionarea', clusters['Action Area'].length);
+      setBadge('count-cat-diacritic', clusters['Diacritic'].length);
+      setBadge('count-cat-affix', clusters['Length / Modifier'].length);
+
+      renderMinimalPairClusters();
+    }
+
+    // Render Default Categorized Minimal Pair Cards Grid
+    function renderMinimalPairClusters() {
+      if (!pairsClusterGrid) return;
+      const list = minimalPairClusters[activePairsCategory] || minimalPairClusters['all'] || [];
+
+      if (list.length === 0) {
+        pairsClusterGrid.innerHTML = `
+          <div class="loading-state" style="grid-column: 1 / -1; padding: 4rem 1rem;">
+            <i class="fa-solid fa-code-compare" style="font-size: 2.5rem; color: var(--accent-primary); margin-bottom: 1rem;"></i>
+            <p style="font-size: 1.15rem; font-weight: 500;">No minimal pairs found in this category.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const getCatTagClass = (cat) => {
+        if (cat === 'Location') return 'tag-location';
+        if (cat === 'Handshape') return 'tag-handshape';
+        if (cat === 'Movement') return 'tag-movement';
+        if (cat === 'Action Area') return 'tag-actionarea';
+        if (cat === 'Diacritic') return 'tag-diacritic';
+        return 'tag-affix';
+      };
+
+      const getCatIcon = (cat) => {
+        if (cat === 'Location') return '<i class="fa-solid fa-location-dot"></i>';
+        if (cat === 'Handshape') return '<i class="fa-solid fa-hand"></i>';
+        if (cat === 'Movement') return '<i class="fa-solid fa-arrows-up-down-left-right"></i>';
+        if (cat === 'Action Area') return '<i class="fa-solid fa-bullseye"></i>';
+        if (cat === 'Diacritic') return '<i class="fa-solid fa-asterisk"></i>';
+        return '<i class="fa-solid fa-plus-minus"></i>';
+      };
+
+      let html = '';
+      list.forEach((pair) => {
+        const catClass = getCatTagClass(pair.diffInfo.category);
+        const catIcon = getCatIcon(pair.diffInfo.category);
+        const w1Esc = pair.word1.replace(/'/g, "\\'");
+        const w2Esc = pair.word2.replace(/'/g, "\\'");
+        const s1Esc = pair.sign1.replace(/'/g, "\\'");
+        const s2Esc = pair.sign2.replace(/'/g, "\\'");
+
+        html += `
+          <div class="pair-card">
+            <div class="pair-card-header">
+              <span class="pair-cat-tag ${catClass}">
+                ${catIcon} ${escapeHtml(pair.diffInfo.category)} Contrast
+              </span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="pair-status-badge">
+                  <i class="fa-solid fa-circle-check"></i> Minimal Pair
+                </span>
+                <button class="action-icon-btn" title="Explore similarities for ${escapeHtml(pair.word1)}" onclick="exploreWordSimilarity('${w1Esc}', '${s1Esc}')">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+              </div>
+            </div>
+            <div class="pair-contrast-box">
+              <div class="pair-item-box" title="Click to view breakdown for ${escapeHtml(pair.word1)}" onclick="openWordBreakdownByName('${w1Esc}')">
+                <span class="pair-item-word">${escapeHtml(pair.word1)}</span>
+                <span class="pair-item-sign">${escapeHtml(pair.sign1)}</span>
+                <span class="pair-item-unicode">${escapeHtml(pair.unicode1)}</span>
+              </div>
+              <div class="pair-divider-badge">
+                <i class="fa-solid fa-arrow-right-arrow-left" style="color: var(--accent-primary); font-size: 0.85rem;"></i>
+              </div>
+              <div class="pair-item-box" title="Click to view breakdown for ${escapeHtml(pair.word2)}" onclick="openWordBreakdownByName('${w2Esc}')">
+                <span class="pair-item-word">${escapeHtml(pair.word2)}</span>
+                <span class="pair-item-sign">${escapeHtml(pair.sign2)}</span>
+                <span class="pair-item-unicode">${escapeHtml(pair.unicode2)}</span>
+              </div>
+            </div>
+            <div class="pair-diff-chip" title="${escapeHtml(pair.diffInfo.diffSummary || '')}">
+              ${pair.diffInfo.diffDetails && pair.diffInfo.diffDetails.length > 0 ? `
+                <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+                  <span class="diff-symbol-badge">${escapeHtml(pair.diffInfo.diffDetails[0].from)}</span>
+                  <span class="diff-code-tag">${escapeHtml(pair.diffInfo.diffDetails[0].from)}</span>
+                  <span class="diff-desc-text">(${escapeHtml(pair.diffInfo.diffDetails[0].fromShortDesc)})</span>
+                </div>
+                <i class="fa-solid fa-arrow-right-arrow-left diff-arrow-icon"></i>
+                <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+                  <span class="diff-symbol-badge">${escapeHtml(pair.diffInfo.diffDetails[0].to)}</span>
+                  <span class="diff-code-tag">${escapeHtml(pair.diffInfo.diffDetails[0].to)}</span>
+                  <span class="diff-desc-text">(${escapeHtml(pair.diffInfo.diffDetails[0].toShortDesc)})</span>
+                </div>
+              ` : `
+                <span class="diff-desc-text">${escapeHtml(pair.diffInfo.diffSummary || '1 Symbol Difference')}</span>
+              `}
+            </div>
+          </div>
+        `;
+      });
+
+      pairsClusterGrid.innerHTML = html;
+    }
+
+    // Helper to open breakdown by English word name
+    function openWordBreakdownByName(wordName) {
+      if (!window.signFontDictionary) return;
+      const found = window.signFontDictionary.find(d => d.english.toLowerCase() === wordName.toLowerCase());
+      if (found) {
+        const signsJson = found.signs;
+        const unicodeSignsJson = found.unicodeSigns || found.signs.map(convertToUnicode);
+        openBreakdown(found.english, signsJson, unicodeSignsJson, 0);
+      }
+    }
+
+    // Explore similarity rankings for a target word
+    function exploreWordSimilarity(english, signStr) {
+      switchMainView('minimal-pairs');
+      const uSign = convertToUnicode(signStr);
+      renderTargetWordSimilarity(english, signStr, uSign);
+    }
+
+    // Calculate and render similarity list for a target word/sign
+    function renderTargetWordSimilarity(targetEnglish, targetSign, targetUnicode) {
+      if (!window.signFontDictionary) return;
+
+      activeTargetWord = {
+        english: targetEnglish,
+        sign: targetSign,
+        unicodeSign: targetUnicode || convertToUnicode(targetSign)
+      };
+
+      // Show search container, hide default categorized container
+      if (pairsDefaultContainer) pairsDefaultContainer.style.display = 'none';
+      if (pairsSearchContainer) pairsSearchContainer.style.display = 'block';
+
+      if (targetWordTitle) targetWordTitle.innerText = targetEnglish;
+      if (targetSignText) targetSignText.innerText = targetSign;
+      if (targetUnicodeText) targetUnicodeText.innerText = activeTargetWord.unicodeSign;
+
+      // Compute distances against all dictionary entries
+      const matches = [];
+      const dict = window.signFontDictionary;
+
+      dict.forEach(entry => {
+        if (entry.english.toLowerCase() === targetEnglish.toLowerCase()) return; // skip self
+        const entrySign = entry.signs && entry.signs[0];
+        if (!entrySign) return;
+
+        const diffInfo = getSignDiffInfo(targetSign, entrySign);
+        if (diffInfo.dist <= 3) {
+          const entryUnicode = (entry.unicodeSigns && entry.unicodeSigns[0]) || convertToUnicode(entrySign);
+          matches.push({
+            entry,
+            english: entry.english,
+            sign: entrySign,
+            unicodeSign: entryUnicode,
+            diffInfo
+          });
+        }
+      });
+
+      // Sort by distance ASC, then by similarity score DESC, then alphabetically
+      matches.sort((a, b) => {
+        if (a.diffInfo.dist !== b.diffInfo.dist) return a.diffInfo.dist - b.diffInfo.dist;
+        return a.english.localeCompare(b.english);
+      });
+
+      currentSimilarityMatches = matches;
+      renderSimilarityResultsGrid();
+    }
+
+    function renderSimilarityResultsGrid() {
+      if (!similarityResultsGrid) return;
+
+      let filtered = currentSimilarityMatches;
+      if (activeDistanceFilter !== 'all') {
+        const targetDist = parseInt(activeDistanceFilter, 10);
+        filtered = currentSimilarityMatches.filter(m => m.diffInfo.dist === targetDist);
+      }
+
+      if (filtered.length === 0) {
+        similarityResultsGrid.innerHTML = `
+          <div class="loading-state" style="padding: 4rem 1rem;">
+            <i class="fa-solid fa-circle-question" style="font-size: 2.5rem; color: var(--accent-primary); margin-bottom: 1rem;"></i>
+            <p style="font-size: 1.15rem; font-weight: 500;">No similar words found matching distance filter (${activeDistanceFilter}).</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Try selecting "All Similar" to view all phonological relatives.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = `
+        <div class="dict-header-row">
+          <div style="flex: 0 0 25%;">Related Word</div>
+          <div style="flex: 0 0 35%;">Sign & Unicode</div>
+          <div style="flex: 0 0 25%;">Phonological Difference</div>
+          <div style="flex: 0 0 15%; text-align: right;">Distance & Match</div>
+        </div>
+      `;
+
+      filtered.forEach(m => {
+        const dist = m.diffInfo.dist;
+        let badgeClass = 'dist-1-badge';
+        let distLabel = 'Minimal Pair (Dist 1)';
+        if (dist === 2) {
+          badgeClass = 'dist-2-badge';
+          distLabel = 'Near Pair (Dist 2)';
+        } else if (dist === 3) {
+          badgeClass = 'dist-3-badge';
+          distLabel = 'Relative (Dist 3)';
+        }
+
+        const engEsc = m.english.replace(/'/g, "\\'");
+        const sEsc = m.sign.replace(/'/g, "\\'");
+
+        html += `
+          <div class="similarity-item-row" onclick="openWordBreakdownByName('${engEsc}')">
+            <div style="flex: 0 0 25%; font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 1rem;">
+              ${escapeHtml(m.english)}
+            </div>
+            <div style="flex: 0 0 35%; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span class="notation-badge" style="font-size: 1.25rem;">
+                <span class="notation-text">${escapeHtml(m.sign)}</span>
+              </span>
+              <span class="unicode-badge" style="font-size: 0.8rem;">
+                <span class="unicode-text">${escapeHtml(m.unicodeSign)}</span>
+              </span>
+            </div>
+            <div style="flex: 0 0 25%; font-size: 0.85rem; color: #cbd5e1; padding-right: 0.5rem; overflow: hidden;">
+              <span class="pair-diff-chip" style="font-size: 0.78rem; padding: 0.2rem 0.5rem; width: auto; display: inline-flex;" title="${escapeHtml(m.diffInfo.diffSummary || (m.diffInfo.category))}">
+                ${escapeHtml(m.diffInfo.diffSummary || (m.diffInfo.category))}
+              </span>
+            </div>
+            <div style="flex: 0 0 15%; display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+              <span class="similarity-score-badge ${badgeClass}">
+                ${dist === 1 ? '<i class="fa-solid fa-star"></i>' : ''} ${distLabel}
+              </span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); font-family: 'Space Grotesk', sans-serif; font-weight: 600;">
+                ${m.diffInfo.similarityPercent}% Match
+              </span>
+            </div>
+          </div>
+        `;
+      });
+
+      similarityResultsGrid.innerHTML = html;
+    }
+
+    // Switch between Dictionary and Minimal Pairs View
+    function switchMainView(view) {
+      currentMainView = view;
+      if (view === 'dictionary') {
+        if (tabViewDict) tabViewDict.classList.add('active');
+        if (tabViewPairs) tabViewPairs.classList.remove('active');
+        if (dictionaryGrid) dictionaryGrid.style.display = 'flex';
+        if (minimalPairsView) minimalPairsView.style.display = 'none';
+        if (loadMoreBox) loadMoreBox.style.display = filteredDictionary.length > currentLimit ? 'flex' : 'none';
+        if (englishSearchTitle) englishSearchTitle.innerText = 'English Lookup';
+        if (signfontSearchTitle) signfontSearchTitle.innerText = 'SignFont Lookup';
+        refilter();
+      } else {
+        if (tabViewPairs) tabViewPairs.classList.add('active');
+        if (tabViewDict) tabViewDict.classList.remove('active');
+        if (dictionaryGrid) dictionaryGrid.style.display = 'none';
+        if (minimalPairsView) minimalPairsView.style.display = 'block';
+        if (loadMoreBox) loadMoreBox.style.display = 'none';
+        if (englishSearchTitle) englishSearchTitle.innerText = 'Find Similar to English Word';
+        if (signfontSearchTitle) signfontSearchTitle.innerText = 'Find Similar to Sign';
+
+        if (!hasBuiltClusters) {
+          buildMinimalPairClusters();
+        }
+
+        // If a query is in the search box, trigger similarity search
+        const engQ = englishSearch.value.trim();
+        const signQ = signfontSearch.value.trim();
+        if (engQ || signQ) {
+          triggerMinimalPairSearch();
+        } else if (!activeTargetWord) {
+          if (pairsDefaultContainer) pairsDefaultContainer.style.display = 'block';
+          if (pairsSearchContainer) pairsSearchContainer.style.display = 'none';
+        }
+      }
+    }
+
+    function triggerMinimalPairSearch() {
+      const engQ = englishSearch.value.trim().toLowerCase();
+      const signQ = signfontSearch.value.trim();
+
+      if (!window.signFontDictionary) return;
+
+      let found = null;
+      if (engQ) {
+        found = window.signFontDictionary.find(d => d.english.toLowerCase() === engQ)
+          || window.signFontDictionary.find(d => d.english.toLowerCase().startsWith(engQ));
+      } else if (signQ) {
+        const queryAsUnicode = convertToUnicode(signQ);
+        found = window.signFontDictionary.find(d => d.signs && d.signs.includes(signQ))
+          || window.signFontDictionary.find(d => d.unicodeSigns && d.unicodeSigns.includes(queryAsUnicode));
+      }
+
+      if (found) {
+        renderTargetWordSimilarity(found.english, found.signs[0], found.unicodeSigns && found.unicodeSigns[0]);
+      } else if (signQ) {
+        // Direct arbitrary SignFont string query!
+        renderTargetWordSimilarity(`Custom Sign "${signQ}"`, signQ, convertToUnicode(signQ));
+      } else {
+        if (pairsDefaultContainer) pairsDefaultContainer.style.display = 'block';
+        if (pairsSearchContainer) pairsSearchContainer.style.display = 'none';
+      }
+    }
 
     // --- Keyman Keyboard Hookup ---
     let keymanAvailable = false;
@@ -1367,17 +2451,13 @@
             if (!hasPositionedOSK) {
               setTimeout(() => {
                 try {
-                  // Only programmatically position if user hasn't manually moved it yet
                   if (typeof keyman.osk.userLocated === 'function' && keyman.osk.userLocated()) {
                     hasPositionedOSK = true;
                     return;
                   }
-
                   const rect = keyman.osk.getRect();
                   const oskWidth = rect.width || 600;
                   const oskHeight = rect.height || 250;
-
-                  // Calculate a comfortable bottom-right margin on wide screen
                   const targetLeft = Math.max(20, window.innerWidth - oskWidth - 40);
                   const targetTop = Math.max(20, window.innerHeight - oskHeight - 40);
 
@@ -1395,7 +2475,6 @@
           });
         }
 
-        // Hook up custom toggle button in input wrapper
         const oskToggleBtn = document.getElementById('osk-toggle-btn');
         if (oskToggleBtn) {
           oskToggleBtn.addEventListener('click', (e) => {
@@ -1420,17 +2499,12 @@
           });
         }
 
-        // Keep the toggler's visual state synced with the keyboard's visibility
         if (keyman.osk) {
           keyman.osk.addEventListener('show', () => {
-            if (oskToggleBtn) {
-              oskToggleBtn.classList.add('active');
-            }
+            if (oskToggleBtn) oskToggleBtn.classList.add('active');
           });
           keyman.osk.addEventListener('hide', () => {
-            if (oskToggleBtn) {
-              oskToggleBtn.classList.remove('active');
-            }
+            if (oskToggleBtn) oskToggleBtn.classList.remove('active');
           });
         }
       }
@@ -1443,7 +2517,6 @@
       // populate the Reference Grids in Sidebar
       populateRefGrids();
 
-      // Programmatically disable Keyman on the English search field as a secondary check
       if (typeof keyman !== 'undefined' && englishSearch) {
         try {
           keyman.disableControl(englishSearch);
@@ -1454,6 +2527,60 @@
       if (window.signFontDictionary) {
         filteredDictionary = [...window.signFontDictionary];
         renderDictionary();
+        // Defer background building of minimal pair clusters so initial page load is instantaneous
+        setTimeout(buildMinimalPairClusters, 0);
+      }
+
+      // Main View Switching tabs
+      if (tabViewDict && tabViewPairs) {
+        tabViewDict.addEventListener('click', () => switchMainView('dictionary'));
+        tabViewPairs.addEventListener('click', () => switchMainView('minimal-pairs'));
+      }
+
+      // Category Filter Buttons (Minimal Pairs Default View)
+      const catButtons = document.querySelectorAll('#pairs-category-filters .filter-pill');
+      catButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          catButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activePairsCategory = btn.getAttribute('data-cat');
+          renderMinimalPairClusters();
+        });
+      });
+
+      // Distance Filter Buttons (Similarity View)
+      const distButtons = document.querySelectorAll('#pairs-distance-filters .filter-pill');
+      distButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          distButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeDistanceFilter = btn.getAttribute('data-dist');
+          renderSimilarityResultsGrid();
+        });
+      });
+
+      // Back to categorized pairs button
+      if (btnClearTarget) {
+        btnClearTarget.addEventListener('click', () => {
+          activeTargetWord = null;
+          englishSearch.value = '';
+          signfontSearch.value = '';
+          clearEnglishBtn.classList.remove('active');
+          clearSignfontBtn.classList.remove('active');
+          if (pairsDefaultContainer) pairsDefaultContainer.style.display = 'block';
+          if (pairsSearchContainer) pairsSearchContainer.style.display = 'none';
+        });
+      }
+
+      // Explore in full view from breakdown drawer button
+      if (btnBreakdownExploreFull) {
+        btnBreakdownExploreFull.addEventListener('click', () => {
+          if (currentBreakdownData) {
+            const { english, signs, selectedIndex } = currentBreakdownData;
+            breakdownDrawerOverlay.classList.remove('active');
+            exploreWordSimilarity(english, signs[selectedIndex]);
+          }
+        });
       }
 
       // Event Listeners for inputs
@@ -1484,7 +2611,7 @@
           if (typeof keyman !== 'undefined') {
             try {
               keyman.enableControl(signfontSearch);
-            } catch (e) {}
+            } catch (e) { }
           }
         } else {
           btnModeUnicode.classList.add('active');
@@ -1502,10 +2629,14 @@
                 keyman.osk.hide();
               }
               keyman.disableControl(signfontSearch);
-            } catch (e) {}
+            } catch (e) { }
           }
         }
-        refilter();
+        if (currentMainView === 'dictionary') {
+          refilter();
+        } else {
+          triggerMinimalPairSearch();
+        }
       }
 
       // Programmatically enforce font family based on active search mode
@@ -1526,13 +2657,25 @@
       clearEnglishBtn.addEventListener('click', () => {
         englishSearch.value = '';
         clearEnglishBtn.classList.remove('active');
-        refilter();
+        if (currentMainView === 'dictionary') {
+          refilter();
+        } else {
+          activeTargetWord = null;
+          if (pairsDefaultContainer) pairsDefaultContainer.style.display = 'block';
+          if (pairsSearchContainer) pairsSearchContainer.style.display = 'none';
+        }
       });
 
       clearSignfontBtn.addEventListener('click', () => {
         signfontSearch.value = '';
         clearSignfontBtn.classList.remove('active');
-        refilter();
+        if (currentMainView === 'dictionary') {
+          refilter();
+        } else {
+          activeTargetWord = null;
+          if (pairsDefaultContainer) pairsDefaultContainer.style.display = 'block';
+          if (pairsSearchContainer) pairsSearchContainer.style.display = 'none';
+        }
       });
 
       loadMoreBtn.addEventListener('click', () => {
@@ -1580,49 +2723,53 @@
 
       // Reference Panel Filtering
       refSearch.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().strip ? e.target.value.toLowerCase().strip() : e.target.value.toLowerCase();
+        const query = e.target.value.toLowerCase().trim ? e.target.value.toLowerCase().trim() : e.target.value.toLowerCase();
         filterReferenceItems(query);
       });
     });
 
     // --- Search Handlers ---
     function handleEnglishInput() {
-      // Toggle clear button
       if (englishSearch.value.length > 0) {
         clearEnglishBtn.classList.add('active');
       } else {
         clearEnglishBtn.classList.remove('active');
       }
 
-      // Clear other search field
       if (signfontSearch.value.length > 0) {
         signfontSearch.value = '';
         clearSignfontBtn.classList.remove('active');
       }
 
-      refilter();
+      if (currentMainView === 'dictionary') {
+        refilter();
+      } else {
+        triggerMinimalPairSearch();
+      }
     }
 
     function handleSignfontInput() {
-      // Toggle clear button
       if (signfontSearch.value.length > 0) {
         clearSignfontBtn.classList.add('active');
       } else {
         clearSignfontBtn.classList.remove('active');
       }
 
-      // Clear other search field
       if (englishSearch.value.length > 0) {
         englishSearch.value = '';
         clearEnglishBtn.classList.remove('active');
       }
 
-      refilter();
+      if (currentMainView === 'dictionary') {
+        refilter();
+      } else {
+        triggerMinimalPairSearch();
+      }
     }
 
     function refilter() {
       const engQuery = englishSearch.value.toLowerCase().trim();
-      const signQuery = signfontSearch.value.trim(); // keep case as is since SignFont notations are case sensitive
+      const signQuery = signfontSearch.value.trim();
 
       if (!window.signFontDictionary) return;
 
@@ -1682,11 +2829,14 @@
           <div class="col-actions">Actions</div>
         </div>
       `;
-      displayChunk.forEach((item, index) => {
+      displayChunk.forEach((item) => {
         const escapedEnglish = item.english.replace(/'/g, "\\'");
         const signsJson = JSON.stringify(item.signs).replace(/"/g, '&quot;');
         const unicodeSigns = item.unicodeSigns || item.signs.map(convertToUnicode);
         const unicodeSignsJson = JSON.stringify(unicodeSigns).replace(/"/g, '&quot;');
+        const firstSign = item.signs[0];
+        const escapedFirstSign = firstSign ? firstSign.replace(/'/g, "\\'") : '';
+
         html += `
           <div class="dict-row" onclick="openBreakdown('${escapedEnglish}', ${signsJson}, ${unicodeSignsJson}, 0)">
             <div class="col-word" title="${escapeHtml(item.english)}">${escapeHtml(item.english)}</div>
@@ -1711,6 +2861,9 @@
               `}).join('')}
             </div>
             <div class="col-actions">
+              <button class="action-icon-btn" title="Explore Minimal Pairs & Similar Signs" onclick="event.stopPropagation(); exploreWordSimilarity('${escapedEnglish}', '${escapedFirstSign}')">
+                <i class="fa-solid fa-code-compare"></i>
+              </button>
               <button class="action-icon-btn" title="View Breakdown" onclick="event.stopPropagation(); openBreakdown('${escapedEnglish}', ${signsJson}, ${unicodeSignsJson}, 0)">
                 <i class="fa-solid fa-circle-nodes"></i>
               </button>
@@ -1729,6 +2882,7 @@
         loadMoreBox.style.display = 'none';
       }
     }
+
     // --- Sign Breakdown Logic ---
     let currentBreakdownData = null;
 
@@ -1794,7 +2948,6 @@
         let desc = '';
         let category = '';
 
-        // Try lengths 3, 2 first for digraphs/multigraphs
         for (let len = 3; len >= 2; len--) {
           if (i + len <= sign.length) {
             const sub = sign.substring(i, i + len);
@@ -1809,7 +2962,6 @@
           }
         }
 
-        // Fallback to single character lookup
         if (!matched) {
           const char = sign[i];
           token = char;
@@ -1848,11 +3000,74 @@
       }
 
       breakdownContainer.innerHTML = itemsHtml;
+
+      // Populate Minimal Pairs list inside the drawer
+      renderBreakdownMinimalPairs(english, sign);
+    }
+
+    function renderBreakdownMinimalPairs(currentEnglish, currentSign) {
+      if (!breakdownPairsContainer || !window.signFontDictionary) return;
+
+      const similar = [];
+      window.signFontDictionary.forEach(entry => {
+        if (entry.english.toLowerCase() === currentEnglish.toLowerCase()) return;
+        const s2 = entry.signs && entry.signs[0];
+        if (!s2) return;
+
+        const diff = getSignDiffInfo(currentSign, s2);
+        if (diff.dist <= 2) {
+          similar.push({
+            english: entry.english,
+            sign: s2,
+            unicode: (entry.unicodeSigns && entry.unicodeSigns[0]) || convertToUnicode(s2),
+            diff
+          });
+        }
+      });
+
+      similar.sort((a, b) => a.diff.dist - b.diff.dist);
+
+      if (similar.length === 0) {
+        breakdownPairsContainer.innerHTML = `
+          <div style="padding: 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; background: rgba(255,255,255,0.02); border-radius: 10px;">
+            No close minimal pairs (distance ≤ 2) recorded in the dictionary for this sign variant.
+          </div>
+        `;
+        return;
+      }
+
+      let html = '<div style="display: flex; flex-direction: column; gap: 8px;">';
+      similar.slice(0, 8).forEach(item => {
+        const engEsc = item.english.replace(/'/g, "\\'");
+        const sEsc = item.sign.replace(/'/g, "\\'");
+        const isMinPair = item.diff.dist === 1;
+
+        html += `
+          <div class="breakdown-item" style="padding: 0.75rem 1rem; margin-bottom: 0; justify-content: space-between;" onclick="breakdownDrawerOverlay.classList.remove('active'); exploreWordSimilarity('${engEsc}', '${sEsc}')">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-family: 'SignFont New'; font-size: 1.5rem; color: #c084fc; width: 40px; text-align: center;">${escapeHtml(item.sign)}</span>
+              <div style="display: flex; flex-direction: column;">
+                <span style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">${escapeHtml(item.english)}</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">${escapeHtml(item.diff.diffSummary || item.diff.category)}</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="similarity-score-badge ${isMinPair ? 'dist-1-badge' : 'dist-2-badge'}" style="font-size: 0.75rem;">
+                ${isMinPair ? '<i class="fa-solid fa-star"></i> Minimal Pair' : 'Dist = 2'}
+              </span>
+              <i class="fa-solid fa-arrow-right" style="color: var(--text-muted); font-size: 0.8rem;"></i>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+
+      breakdownPairsContainer.innerHTML = html;
     }
 
     // --- Helper Utilities ---
     function copySign(event, text) {
-      event.stopPropagation(); // prevent card click breakdown trigger
+      event.stopPropagation();
       navigator.clipboard.writeText(text).then(() => {
         showToast(`Copied sign: ${text}`);
       }).catch(err => {
@@ -1874,7 +3089,6 @@
 
     // --- Populate Reference Side Panel Grids ---
     function populateRefGrids() {
-      // Handshapes
       const containerHandshapes = document.getElementById('grid-handshapes');
       let html = '';
       for (const [key, value] of Object.entries(HANDSHAPES)) {
@@ -1882,7 +3096,6 @@
       }
       containerHandshapes.innerHTML = html;
 
-      // Diacritics
       const containerDiacritics = document.getElementById('grid-diacritics');
       html = '';
       for (const [key, value] of Object.entries(DIACRITICS)) {
@@ -1890,7 +3103,6 @@
       }
       containerDiacritics.innerHTML = html;
 
-      // Contacts
       const containerContacts = document.getElementById('grid-contacts');
       html = '';
       for (const [key, value] of Object.entries(CONTACTS)) {
@@ -1898,7 +3110,6 @@
       }
       containerContacts.innerHTML = html;
 
-      // Locations
       const containerLocations = document.getElementById('grid-locations');
       html = '';
       for (const [key, value] of Object.entries(LOCATIONS)) {
@@ -1906,7 +3117,6 @@
       }
       containerLocations.innerHTML = html;
 
-      // Movements
       const containerMovements = document.getElementById('grid-movements');
       html = '';
       for (const [key, value] of Object.entries(MOVEMENTS)) {
