@@ -460,6 +460,19 @@
       color: #ffffff;
     }
 
+    .btn-danger-sm,
+    .btn-danger {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-danger-sm:hover,
+    .btn-danger:hover {
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+      color: #ffffff;
+    }
+
     .editor-stats {
       font-size: 0.82rem;
       color: var(--text-muted);
@@ -1025,6 +1038,29 @@
     </div>
   </div>
 
+  <!-- Confirm Clear Modal -->
+  <div id="confirm-clear-modal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 460px;">
+      <div class="modal-header">
+        <h3 style="display: flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-triangle-exclamation" style="color: #f87171;"></i> Clear Editor Text?
+        </h3>
+        <button class="modal-close-btn" id="cancel-clear-x-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="padding: 1.5rem;">
+        <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.55; margin-bottom: 1.5rem;">
+          Are you sure you want to clear all text? This will reset both SignFont ASCII and Unicode editor fields.
+        </p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button class="btn-sm" id="cancel-clear-btn" type="button">Cancel</button>
+          <button class="btn-sm btn-danger-sm" id="confirm-clear-action-btn" type="button">
+            <i class="fa-solid fa-trash-can"></i> Yes, Clear Text
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification Container -->
   <div id="toast" class="toast">
     <i class="fa-solid fa-circle-check"></i>
@@ -1247,15 +1283,39 @@
       showToast('Swapped input and output!');
     });
 
-    // Clear Buttons
-    document.getElementById('clear-ascii-btn').addEventListener('click', () => {
-      asciiInput.value = '';
-      syncFromAscii();
+    // Clear Buttons & Confirmation Modal
+    const confirmClearModal = document.getElementById('confirm-clear-modal');
+    const cancelClearBtn = document.getElementById('cancel-clear-btn');
+    const cancelClearXBtn = document.getElementById('cancel-clear-x-btn');
+    const confirmClearActionBtn = document.getElementById('confirm-clear-action-btn');
+
+    function openClearModal() {
+      if (!asciiInput.value && !unicodeInput.value) {
+        showToast('Editor is already empty!');
+        return;
+      }
+      confirmClearModal.classList.add('open');
+    }
+
+    function closeClearModal() {
+      confirmClearModal.classList.remove('open');
+    }
+
+    document.getElementById('clear-ascii-btn').addEventListener('click', openClearModal);
+    document.getElementById('clear-unicode-btn').addEventListener('click', openClearModal);
+
+    cancelClearBtn.addEventListener('click', closeClearModal);
+    cancelClearXBtn.addEventListener('click', closeClearModal);
+    confirmClearModal.addEventListener('click', (e) => {
+      if (e.target === confirmClearModal) closeClearModal();
     });
 
-    document.getElementById('clear-unicode-btn').addEventListener('click', () => {
+    confirmClearActionBtn.addEventListener('click', () => {
+      asciiInput.value = '';
       unicodeInput.value = '';
-      syncFromUnicode();
+      syncFromAscii();
+      closeClearModal();
+      showToast('All editor text cleared!');
     });
 
     // Copy Buttons with Toast
@@ -1426,6 +1486,14 @@
     function escapeHtml(str) {
       return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
+
+    // Keyboard navigation: Close modals on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (confirmClearModal.classList.contains('open')) closeClearModal();
+        if (matrixModal.classList.contains('open')) matrixModal.classList.remove('open');
+      }
+    });
 
     // Initialize with default sample
     asciiInput.value = 'aP&s"LG';
