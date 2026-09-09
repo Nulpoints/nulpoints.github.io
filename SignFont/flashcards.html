@@ -1216,13 +1216,14 @@
           <div class="form-group" id="symbol-category-group" style="display: none;">
             <label class="form-label" for="symbol-category">Symbol Category</label>
             <select class="select-input" id="symbol-category">
-              <option value="all" selected>All Symbols &amp; Digraphs (170+)</option>
-              <option value="all-basic">All Basic Symbols (Handshapes, Diacritics, Action Areas, Locations, Movements)</option>
+              <option value="all" selected>All Symbols &amp; Digraphs (180+)</option>
+              <option value="all-basic">All Basic Symbols (Handshapes, Diacritics, Action Areas, Locations, Movements, Markers)</option>
               <option value="handshapes">Handshapes (a–u)</option>
               <option value="diacritics">Handshape Diacritics (P–Z, -)</option>
               <option value="action-areas">Action Areas (! to +)</option>
               <option value="locations">Locations (/ to =)</option>
               <option value="movements">Movements &amp; Modifiers (A–M, N, y, etc.)</option>
+              <option value="markers">Non-Manual Markers (? ~ | _ &gt; { } @ [ ] ^ \ `)</option>
               <option value="all-digraphs">All Digraphs &amp; Multigraphs</option>
               <option value="digraphs-handshapes">Handshape Digraphs &amp; Classifiers</option>
               <option value="digraphs-action-areas">Action Area Digraphs</option>
@@ -1893,6 +1894,8 @@
           pool = sourceSymbols.filter(s => s.subcategory === 'Locations');
         } else if (symbolCategory === 'movements') {
           pool = sourceSymbols.filter(s => s.subcategory === 'Movements');
+        } else if (symbolCategory === 'markers') {
+          pool = sourceSymbols.filter(s => s.subcategory === 'Non-Manual Markers');
         } else if (symbolCategory === 'all-digraphs') {
           pool = sourceSymbols.filter(s => s.category === 'Digraph');
         } else if (symbolCategory === 'digraphs-handshapes') {

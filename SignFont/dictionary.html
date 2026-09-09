@@ -1599,6 +1599,7 @@
           <button class="drawer-tab" data-target="ref-contacts">Action Areas (!-+)</button>
           <button class="drawer-tab" data-target="ref-locations">Locations (/-=)</button>
           <button class="drawer-tab" data-target="ref-movements">Movements (A-M)</button>
+          <button class="drawer-tab" data-target="ref-markers">Non-Manual Markers (?~|_...)</button>
         </div>
 
         <!-- Handshapes Grid -->
@@ -1624,6 +1625,11 @@
         <!-- Movements Grid -->
         <div class="ref-section" id="ref-movements">
           <div class="ref-grid" id="grid-movements"></div>
+        </div>
+
+        <!-- Non-Manual Markers Grid -->
+        <div class="ref-section" id="ref-markers">
+          <div class="ref-grid" id="grid-markers"></div>
         </div>
       </div>
     </div>
@@ -1769,6 +1775,7 @@
     const ACTION_AREAS = CONTACTS;
     const LOCATIONS = window.SIGNFONT_LOCATIONS || {};
     const MOVEMENTS = window.SIGNFONT_MOVEMENTS || {};
+    const MARKERS = window.SIGNFONT_NON_MANUAL_MARKERS || window.SIGNFONT_MARKERS || {};
     const DIGRAPHS = window.SIGNFONT_DIGRAPHS || {};
 
     // Global Search, View Mode, and Pagination Parameters
@@ -1874,6 +1881,7 @@
       if (MOVEMENTS && MOVEMENTS[token]) return 'Movement';
       if (ACTION_AREAS && ACTION_AREAS[token]) return 'Action Area';
       if (DIACRITICS && DIACRITICS[token]) return 'Diacritic';
+      if (MARKERS && MARKERS[token]) return 'Marker';
       return 'Marker';
     }
 
@@ -1885,6 +1893,7 @@
       if (MOVEMENTS && MOVEMENTS[token]) return MOVEMENTS[token];
       if (ACTION_AREAS && ACTION_AREAS[token]) return ACTION_AREAS[token];
       if (DIACRITICS && DIACRITICS[token]) return DIACRITICS[token];
+      if (MARKERS && MARKERS[token]) return MARKERS[token];
       return token;
     }
 
@@ -2980,6 +2989,9 @@
           } else if (MOVEMENTS[char]) {
             desc = MOVEMENTS[char];
             category = 'Movement';
+          } else if (MARKERS[char]) {
+            desc = MARKERS[char];
+            category = 'Marker';
           } else {
             desc = 'Structural or unknown marker';
             category = 'Marker';
@@ -3123,6 +3135,15 @@
         html += createRefCardHtml(key, value);
       }
       containerMovements.innerHTML = html;
+
+      const containerMarkers = document.getElementById('grid-markers');
+      if (containerMarkers) {
+        html = '';
+        for (const [key, value] of Object.entries(MARKERS)) {
+          html += createRefCardHtml(key, value);
+        }
+        containerMarkers.innerHTML = html;
+      }
     }
 
     function createRefCardHtml(key, value) {

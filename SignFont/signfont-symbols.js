@@ -80,6 +80,23 @@
     '=': 'Contralateral abdomen'
   };
 
+  // --- Non-Manual Markers (? to `) ---
+  const NON_MANUAL_MARKERS = {
+    '?': 'Begins a question (YES/NO and WH questions)',
+    '~': 'Negation (usually shaking head)',
+    '|': 'Exclamation or assertion (usually nodding head)',
+    '_': 'Topic marker (raised eyebrows without raised chin)',
+    '>': 'Adverbial "just" or "close by" (mouth pulled back)',
+    '{': 'Adverbial "carelessly" or "out of control" (tongue protrudes)',
+    '}': 'Pout (everything going normally)',
+    '@': 'Emphatic "very" marker (stress size, shape, or quality)',
+    '[': 'Turn toward dominant side',
+    ']': 'Turn toward non-dominant side',
+    '^': 'Look up',
+    '\\': 'Look down',
+    '`': 'Tilt back'
+  };
+
   // --- Movements & Modifiers (A-M, N, y, O, v, w, x, z) ---
   const MOVEMENTS = {
     'A': 'Move toward ipsilateral side',
@@ -379,7 +396,34 @@
     });
   });
 
-  // 6. Digraphs
+  // 6. Non-Manual Markers (Single-character)
+  Object.keys(NON_MANUAL_MARKERS).forEach(sym => {
+    let safeId = sym;
+    if (sym === '\\') safeId = 'backslash';
+    else if (sym === '`') safeId = 'backtick';
+    else if (sym === '?') safeId = 'question';
+    else if (sym === '~') safeId = 'tilde';
+    else if (sym === '|') safeId = 'pipe';
+    else if (sym === '_') safeId = 'underscore';
+    else if (sym === '>') safeId = 'gt';
+    else if (sym === '{') safeId = 'lbrace';
+    else if (sym === '}') safeId = 'rbrace';
+    else if (sym === '@') safeId = 'at';
+    else if (sym === '[') safeId = 'lbracket';
+    else if (sym === ']') safeId = 'rbracket';
+    else if (sym === '^') safeId = 'caret';
+
+    SYMBOL_FLASHCARDS.push({
+      id: 'marker_' + safeId,
+      english: NON_MANUAL_MARKERS[sym],
+      signs: [sym],
+      category: 'Marker',
+      subcategory: 'Non-Manual Markers',
+      aliases: extractAliases(sym, NON_MANUAL_MARKERS[sym])
+    });
+  });
+
+  // 7. Digraphs
   Object.keys(DIGRAPHS).forEach(sym => {
     const item = DIGRAPHS[sym];
     let subcategory = 'Digraphs';
@@ -407,6 +451,8 @@
     CONTACTS: ACTION_AREAS, // Backward-compatibility alias
     LOCATIONS,
     MOVEMENTS,
+    NON_MANUAL_MARKERS,
+    MARKERS: NON_MANUAL_MARKERS,
     DIGRAPHS,
     SYMBOL_FLASHCARDS,
 
@@ -451,6 +497,9 @@
           } else if (MOVEMENTS[char]) {
             desc = MOVEMENTS[char];
             category = 'Movement';
+          } else if (NON_MANUAL_MARKERS[char]) {
+            desc = NON_MANUAL_MARKERS[char];
+            category = 'Marker';
           }
           tokens.push({ token: char, desc, category });
           i++;
@@ -467,6 +516,8 @@
   global.SIGNFONT_CONTACTS = ACTION_AREAS;
   global.SIGNFONT_LOCATIONS = LOCATIONS;
   global.SIGNFONT_MOVEMENTS = MOVEMENTS;
+  global.SIGNFONT_NON_MANUAL_MARKERS = NON_MANUAL_MARKERS;
+  global.SIGNFONT_MARKERS = NON_MANUAL_MARKERS;
   global.SIGNFONT_DIGRAPHS = DIGRAPHS;
   global.SIGNFONT_SYMBOL_FLASHCARDS = SYMBOL_FLASHCARDS;
   global.SignFontSymbols = SignFontSymbols;
@@ -479,6 +530,8 @@
     window.CONTACTS = ACTION_AREAS;
     window.LOCATIONS = LOCATIONS;
     window.MOVEMENTS = MOVEMENTS;
+    window.NON_MANUAL_MARKERS = NON_MANUAL_MARKERS;
+    window.MARKERS = NON_MANUAL_MARKERS;
     window.DIGRAPHS = DIGRAPHS;
   }
 

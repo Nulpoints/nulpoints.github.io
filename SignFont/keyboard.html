@@ -377,6 +377,20 @@
           <td>Continuous contact</td>
         </tr>
       </table>
+
+      <p>Non-Manual Markers (? ~ | _ &gt; { } @ [ ] ^ \ `) specify facial expressions, head movements, and body postures.</p>
+      <table class="w3-table-all w3-card-4 w3-small w3-center">
+        <tr>
+          <th colspan="4" class="w3-blue-grey w3-center">Non-Manual Markers</th>
+        </tr>
+        <tr><td class="signfont">?</td><td>Begins a question (YES/NO &amp; WH)</td><td class="signfont">~</td><td>Negation (head shake)</td></tr>
+        <tr><td class="signfont">|</td><td>Exclamation / assertion (head nod)</td><td class="signfont">_</td><td>Topic marker (raised eyebrows)</td></tr>
+        <tr><td class="signfont">&gt;</td><td>Adverbial "just" / "close by"</td><td class="signfont">{</td><td>Adverbial "carelessly" / "out of control"</td></tr>
+        <tr><td class="signfont">}</td><td>Pout (going normally)</td><td class="signfont">@</td><td>Emphatic "very" marker</td></tr>
+        <tr><td class="signfont">[</td><td>Turn toward dominant side</td><td class="signfont">]</td><td>Turn toward non-dominant side</td></tr>
+        <tr><td class="signfont">^</td><td>Look up</td><td class="signfont">\</td><td>Look down</td></tr>
+        <tr><td class="signfont">`</td><td>Tilt back</td><td colspan="2"></td></tr>
+      </table>
     </div>
   </div>
 
@@ -546,6 +560,22 @@
       'v': 'Simultaneous idential movement by both hands', 'w': 'Alternating identical movement by both hands',
       'x': 'Simultaneous movemetn by both hands, performed in retrograde fashion by the non-dominant hand',
       'z': 'Slow emphasis, super tense. Fast when doubled.'
+    };
+
+    const MARKERS = {
+      '?': 'Begins a question (YES/NO and WH questions)',
+      '~': 'Negation (usually shaking head)',
+      '|': 'Exclamation or assertion (usually nodding head)',
+      '_': 'Topic marker (raised eyebrows without raised chin)',
+      '>': 'Adverbial "just" or "close by" (mouth pulled back)',
+      '{': 'Adverbial "carelessly" or "out of control" (tongue protrudes)',
+      '}': 'Pout (everything going normally)',
+      '@': 'Emphatic "very" marker (stress size, shape, or quality)',
+      '[': 'Turn toward dominant side',
+      ']': 'Turn toward non-dominant side',
+      '^': 'Look up',
+      '\\': 'Look down',
+      '`': 'Tilt back'
     };
 
     const DIGRAPHS = {
@@ -824,6 +854,7 @@
             else if (CONTACTS[char]) { desc = CONTACTS[char]; category = 'Contacting Region'; }
             else if (LOCATIONS[char]) { desc = LOCATIONS[char]; category = 'Location'; }
             else if (MOVEMENTS[char]) { desc = MOVEMENTS[char]; category = 'Movement'; }
+            else if (MARKERS[char]) { desc = MARKERS[char]; category = 'Marker'; }
             else { desc = 'Marker / symbol'; category = 'Marker'; }
             i++;
           }

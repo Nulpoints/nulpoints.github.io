@@ -1003,6 +1003,15 @@
           </div>
           <span class="comp-desc" id="breakdown-mov-desc">None detected</span>
         </div>
+
+        <div class="comp-pill">
+          <div class="comp-label"><span>Non-Manual Marker</span><span style="color: #a78bfa;">? to `</span></div>
+          <div class="comp-values">
+            <span class="glyph-badge sf-font" id="breakdown-nmm-sf">-</span>
+            <span class="glyph-badge" id="breakdown-nmm-uni">-</span>
+          </div>
+          <span class="comp-desc" id="breakdown-nmm-desc">None detected</span>
+        </div>
       </div>
     </section>
   </div>
@@ -1132,6 +1141,22 @@
       'K': 'Wiggle the fingers', 'L': 'Touch', 'M': 'Continuous contact'
     };
 
+    const MARKERS = {
+      '?': 'Begins a question (YES/NO and WH questions)',
+      '~': 'Negation (usually shaking head)',
+      '|': 'Exclamation or assertion (usually nodding head)',
+      '_': 'Topic marker (raised eyebrows without raised chin)',
+      '>': 'Adverbial "just" or "close by" (mouth pulled back)',
+      '{': 'Adverbial "carelessly" or "out of control" (tongue protrudes)',
+      '}': 'Pout (everything going normally)',
+      '@': 'Emphatic "very" marker (stress size, shape, or quality)',
+      '[': 'Turn toward dominant side',
+      ']': 'Turn toward non-dominant side',
+      '^': 'Look up',
+      '\\': 'Look down',
+      '`': 'Tilt back'
+    };
+
     // Forward Conversion: ASCII -> Unicode
     function asciiToUnicode(asciiStr) {
       if (!asciiStr) return '';
@@ -1229,11 +1254,12 @@
         setBreakdownPill('reg', '-', '-', 'None detected');
         setBreakdownPill('loc', '-', '-', 'None detected');
         setBreakdownPill('mov', '-', '-', 'None detected');
+        setBreakdownPill('nmm', '-', '-', 'None detected');
         return;
       }
 
       // Find first matching component character in sequence
-      let hs = '', dia = '', reg = '', loc = '', mov = '';
+      let hs = '', dia = '', reg = '', loc = '', mov = '', nmm = '';
 
       for (let ch of asciiStr) {
         if (!hs && HANDSHAPES[ch]) hs = ch;
@@ -1241,6 +1267,7 @@
         if (!reg && REGIONS[ch]) reg = ch;
         if (!loc && LOCATIONS[ch]) loc = ch;
         if (!mov && MOVEMENTS[ch]) mov = ch;
+        if (!nmm && MARKERS[ch]) nmm = ch;
       }
 
       setBreakdownPill('hs', hs || '-', hs ? (SIGNFONT_UNICODE_MAP[hs] || '-') : '-', hs ? HANDSHAPES[hs] : 'None detected');
@@ -1248,6 +1275,7 @@
       setBreakdownPill('reg', reg || '-', reg ? (SIGNFONT_UNICODE_MAP[reg] || '-') : '-', reg ? REGIONS[reg] : 'None detected');
       setBreakdownPill('loc', loc || '-', loc ? (SIGNFONT_UNICODE_MAP[loc] || '-') : '-', loc ? LOCATIONS[loc] : 'None detected');
       setBreakdownPill('mov', mov || '-', mov ? (SIGNFONT_UNICODE_MAP[mov] || '-') : '-', mov ? MOVEMENTS[mov] : 'None detected');
+      setBreakdownPill('nmm', nmm || '-', nmm ? (SIGNFONT_UNICODE_MAP[nmm] || '-') : '-', nmm ? MARKERS[nmm] : 'None detected');
     }
 
     function setBreakdownPill(id, sfVal, uniVal, desc) {
@@ -1467,6 +1495,7 @@
         else if (REGIONS[asciiKey]) cat = `Region: ${REGIONS[asciiKey]}`;
         else if (LOCATIONS[asciiKey]) cat = `Location: ${LOCATIONS[asciiKey]}`;
         else if (MOVEMENTS[asciiKey]) cat = `Movement: ${MOVEMENTS[asciiKey]}`;
+        else if (MARKERS[asciiKey]) cat = `Marker: ${MARKERS[asciiKey]}`;
 
         const codePoints = [...uniVal].map(ch => `U+${ch.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')}`).join(' ');
 
