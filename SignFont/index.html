@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The SignFont Revival · Don Newkirk's 1987 ASL Orthography</title>
   <meta name="description"
-    content="The SignFont Revival Project: Revitalizing Don Newkirk's landmark 1987 Deaf-created American Sign Language phonetic orthography. Interactive dictionaries, virtual keyboards, converters, rendering tools, and fonts — an ongoing community work in progress.">
+    content="The SignFont Revival Project: Revitalizing Don Newkirk's landmark 1987 American Sign Language phonetic orthography. Interactive dictionaries, virtual keyboards, converters, rendering tools, and fonts — an ongoing community work in progress.">
 
   <!-- Editorial & Specimen Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
     /* -------------------------------------------------------------
        THE SIGNFONT REVIVAL · BESPOKE EDITORIAL DESIGN SYSTEM
        A clean, celebratory, tactile specimen aesthetic honoring 
-       Don Newkirk's 1987 Deaf-created ASL orthography.
+       Don Newkirk's 1987 ASL orthography.
     ---------------------------------------------------------------- */
     @font-face {
       font-family: 'SignFont New';
@@ -277,10 +277,10 @@
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: 3.4rem;
-      line-height: 1.1;
+      font-size: clamp(2.3rem, 4.5vw, 3.2rem);
+      line-height: 1.3;
       font-weight: 700;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
       color: var(--text-heading);
       margin-bottom: 1.25rem;
     }
@@ -354,7 +354,7 @@
       background: var(--surface-elevated);
     }
 
-    /* Specimen Hero Plaque (Right Column) */
+    /* Sign Hero Card (Right Column) */
     .hero-specimen-plaque {
       background: var(--surface-card);
       border: 1px solid var(--border-medium);
@@ -365,7 +365,7 @@
     }
 
     .hero-specimen-plaque::before {
-      content: "SPECIMEN NO. 1987-ASL";
+      content: "ASL SIGN · 1987";
       position: absolute;
       top: -10px;
       right: 20px;
@@ -416,8 +416,8 @@
     }
 
     .plaque-meta {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 0.75rem;
       font-size: 0.825rem;
     }
@@ -550,7 +550,7 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--text-heading);
-      line-height: 1.2;
+      line-height: 1.3;
       margin-bottom: 1rem;
     }
 
@@ -561,7 +561,7 @@
     }
 
     /* -------------------------------------------------------------
-       HISTORICAL HERITAGE & DEAF CREATOR STORY
+       HISTORICAL ORIGINS & TIMELINE
     ---------------------------------------------------------------- */
     .heritage-grid {
       display: grid;
@@ -1222,8 +1222,8 @@
 
       <nav style="display: flex; align-items: center; gap: 1.5rem;">
         <ul class="nav-links">
-          <li><a href="#heritage">Heritage</a></li>
-          <li><a href="#specimen">Specimen & Anatomy</a></li>
+          <li><a href="#history">Origins &amp; History</a></li>
+          <li><a href="#anatomy">Sign Anatomy &amp; Tester</a></li>
           <li><a href="#tools">Interactive Tools</a></li>
           <li><a href="#downloads">Downloads</a></li>
         </ul>
@@ -1239,13 +1239,13 @@
     <div class="container hero-wrapper">
       <div class="hero-left">
         <div class="revival-seal">
-          <i class="fa-solid fa-scroll"></i> Deaf Heritage & Digital Preservation
+          <i class="fa-solid fa-scroll"></i> Historical Orthography &amp; Digital Preservation
         </div>
         <h1 class="hero-title">
-          The Typography of <em>Movement</em> and Silence.
+          A Typable Alphabet for <em>Signed</em> Languages.
         </h1>
         <p class="hero-lead">
-          In 1987, Deaf researcher and linguist <strong>Don Newkirk</strong> designed <strong>SignFont</strong> — a breakthrough phonetic orthography transcribing American Sign Language into a linear, typable alphabet. <strong>The SignFont Revival</strong> is an ongoing, community-driven work in progress to revitalize this landmark system for the modern web.
+          In 1987, linguist and researcher <strong>Don Newkirk</strong> designed <strong>SignFont</strong> — a breakthrough phonetic orthography transcribing American Sign Language into a linear, typable alphabet. <strong>The SignFont Revival</strong> is an ongoing, community-driven work in progress to revitalize this landmark system for the modern web.
         </p>
 
         <div class="hero-actions">
@@ -1267,10 +1267,10 @@
         </div>
       </div>
 
-      <!-- Specimen Plaque Card -->
+      <!-- Featured Sign Card -->
       <div class="hero-specimen-plaque">
         <div class="plaque-header">
-          <div class="plaque-label">Historic Specimen</div>
+          <div class="plaque-label">Featured Sign</div>
           <div class="plaque-word" id="plaqueGloss">CELEBRATE</div>
         </div>
 
@@ -1282,12 +1282,8 @@
             <strong id="heroSignUnicode">റₒⵀᖌᖍꕊ⁼ᴺ</strong>
           </div>
           <div class="plaque-meta-item">
-            <span>Spatial Location</span>
-            <strong id="heroSignLoc">Both Temples (/ 1)</strong>
-          </div>
-          <div class="plaque-meta-item" style="grid-column: span 2;">
-            <span>Phonological Description</span>
-            <strong id="heroSignDesc" style="font-size: 0.775rem; font-weight: 500;">Curled fists twirling with joy at temples · Simultaneous dual motion</strong>
+            <span>Description</span>
+            <strong id="heroSignDesc" style="font-size: 0.85rem; font-weight: 500;">Curled fists twirling with joy at temples · Simultaneous dual motion</strong>
           </div>
         </div>
       </div>
@@ -1299,66 +1295,66 @@
     <div class="ribbon-track">
       <div class="ribbon-badge"><i class="fa-solid fa-sparkles"></i> Vocabulary Sampler:</div>
 
-      <div class="ribbon-item" onclick="loadSpecimen('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion', 'Both Temples (/ 1)')">
+      <div class="ribbon-item" onclick="loadSign('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion')">
         <span class="ribbon-sign">aQ!/1Hvy</span>
         <span class="ribbon-gloss">CELEBRATE</span>
       </div>
 
-      <div class="ribbon-item" onclick="loadSpecimen('bP++MbTvy', 'BUTTERFLY', 'Interlocked thumbs fluttering wings in flight · Dual motion', 'Neutral Space')">
+      <div class="ribbon-item" onclick="loadSign('bP++MbTvy', 'BUTTERFLY', 'Interlocked thumbs fluttering wings in flight · Dual motion')">
         <span class="ribbon-sign">bP++MbTvy</span>
         <span class="ribbon-gloss">BUTTERFLY</span>
       </div>
 
-      <div class="ribbon-item" onclick="loadSpecimen('fQ%%LJLv', 'FAMILY', 'F-hands tracing circle to meet at pinkies · Dual motion', 'Neutral Space')">
+      <div class="ribbon-item" onclick="loadSign('fQ%%LJLv', 'FAMILY', 'F-hands tracing circle to meet at pinkies · Dual motion')">
         <span class="ribbon-sign">fQ%%LJLv</span>
         <span class="ribbon-gloss">FAMILY</span>
       </div>
 
-      <div class="ribbon-item" onclick="loadSpecimen('dR##LJxL', 'FRIEND', 'Curled index fingers linking in reciprocal clasp', 'Neutral Space')">
+      <div class="ribbon-item" onclick="loadSign('dR##LJxL', 'FRIEND', 'Curled index fingers linking in reciprocal clasp')">
         <span class="ribbon-sign">dR##LJxL</span>
         <span class="ribbon-gloss">FRIEND</span>
       </div>
 
-      <div class="ribbon-item" onclick="loadSpecimen('uS!b!Iy', 'DANCE', 'V-legs swaying playfully on upright palm · Repeated', 'Non-dominant Palm')">
+      <div class="ribbon-item" onclick="loadSign('uS!b!Iy', 'DANCE', 'V-legs swaying playfully on upright palm · Repeated')">
         <span class="ribbon-sign">uS!b!Iy</span>
         <span class="ribbon-gloss">DANCE</span>
       </div>
 
-      <div class="ribbon-item" onclick="loadSpecimen('d(0LKG', 'DREAM', 'Index finger at forehead wiggling upward into space', 'Forehead (0)')">
+      <div class="ribbon-item" onclick="loadSign('d(0LKG', 'DREAM', 'Index finger at forehead wiggling upward into space')">
         <span class="ribbon-sign">d(0LKG</span>
         <span class="ribbon-gloss">DREAM</span>
       </div>
 
-      <div class="ribbon-item" onclick="loadSpecimen('o!3LJBL', 'FLOWER', 'Fingertips touching nose from side to side', 'Nose (3)')">
+      <div class="ribbon-item" onclick="loadSign('o!3LJBL', 'FLOWER', 'Fingertips touching nose from side to side')">
         <span class="ribbon-sign">o!3LJBL</span>
         <span class="ribbon-gloss">FLOWER</span>
       </div>
 
-      <div class="ribbon-item" onclick="loadSpecimen('q*s&quot;MJy', 'EARTH', 'Thumb and middle finger gripping spherical fist', 'Non-dominant Fist')">
+      <div class="ribbon-item" onclick="loadSign('q*s&quot;MJy', 'EARTH', 'Thumb and middle finger gripping spherical fist')">
         <span class="ribbon-sign">q*s"MJy</span>
         <span class="ribbon-gloss">EARTH</span>
       </div>
 
-      <div class="ribbon-item" onclick="loadSpecimen('jP(5SGy', 'AIRPLANE', 'I-L-Y hand soaring outward forward in flight', 'Ipsilateral Space')">
+      <div class="ribbon-item" onclick="loadSign('jP(5SGy', 'AIRPLANE', 'I-L-Y hand soaring outward forward in flight')">
         <span class="ribbon-sign">jP(5SGy</span>
         <span class="ribbon-gloss">AIRPLANE</span>
       </div>
 
-      <div class="ribbon-item" onclick="loadSpecimen('d#2LG6L', 'DEAF', 'Index finger touching ear then mouth/chin', 'Ear (2) to Chin (6)')">
+      <div class="ribbon-item" onclick="loadSign('d#2LG6L', 'DEAF', 'Index finger touching ear then mouth/chin')">
         <span class="ribbon-sign">d#2LG6L</span>
         <span class="ribbon-gloss">DEAF</span>
       </div>
     </div>
   </section>
 
-  <!-- HISTORICAL HERITAGE SECTION -->
-  <section class="section-padding" id="heritage">
+  <!-- HISTORICAL ORIGINS & TIMELINE SECTION -->
+  <section class="section-padding" id="history">
     <div class="container">
       <div class="section-header">
         <div class="section-kicker"><i class="fa-solid fa-landmark"></i> The Story of SignFont</div>
-        <h2 class="section-title">Created by the Deaf Community. Revitalized for the Modern Web.</h2>
+        <h2 class="section-title">A Landmark 1987 Orthography. Revitalized for the Modern Web.</h2>
         <p class="section-subtitle">
-          Unlike many sign notation systems engineered strictly from outside perspectives, SignFont was developed from within the Deaf linguistic community by Don Newkirk in 1987.
+          SignFont was created in 1987 by researcher and linguist Don Newkirk as a linear, keyboard-native writing system for American Sign Language.
         </p>
       </div>
 
@@ -1366,7 +1362,7 @@
         <div class="heritage-content">
           <h3>The Vision of Don Newkirk (1987)</h3>
           <p>
-            During the 1980s at the intersection of early computational linguistics and Deaf culture, researcher <strong>Don Newkirk</strong> recognized a fundamental void: while spoken languages had thousands of typographic fonts and standard keyboard layouts, American Sign Language users had no native way to type their language on standard computer terminals without cumbersome graphics programs.
+            During the 1980s at the intersection of early computational linguistics and sign language research, researcher <strong>Don Newkirk</strong> recognized a fundamental void: while spoken languages had thousands of typographic fonts and standard keyboard layouts, American Sign Language users had no native way to type their language on standard computer terminals without cumbersome graphics programs.
           </p>
 
           <div class="heritage-quote">
@@ -1415,8 +1411,8 @@
     </div>
   </section>
 
-  <!-- INTERACTIVE ANATOMY & LIVE SPECIMEN EXPLORER -->
-  <section class="section-padding" id="specimen" style="background: var(--surface-card); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+  <!-- INTERACTIVE ANATOMY & LIVE SIGN TESTER -->
+  <section class="section-padding" id="anatomy" style="background: var(--surface-card); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
     <div class="container">
       <div class="section-header">
         <div class="section-kicker"><i class="fa-solid fa-cubes"></i> Linguistic Architecture</div>
@@ -1495,19 +1491,19 @@
             </div>
 
             <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.5rem;">
-              <i class="fa-solid fa-bookmark" style="color: var(--gold-primary);"></i> Or select a curated ASL sign to test:
+              <i class="fa-solid fa-bookmark" style="color: var(--gold-primary);"></i> Or select an ASL sign to test:
             </label>
             <div class="sample-pill-list">
-              <button class="sample-pill" onclick="loadSpecimen('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion', 'Both Temples (/ 1)')">🎉 Celebrate</button>
-              <button class="sample-pill" onclick="loadSpecimen('bP++MbTvy', 'BUTTERFLY', 'Interlocked thumbs fluttering wings in flight · Dual motion', 'Neutral Space')">🦋 Butterfly</button>
-              <button class="sample-pill" onclick="loadSpecimen('fQ%%LJLv', 'FAMILY', 'F-hands tracing circle to meet at pinkies · Dual motion', 'Neutral Space')">👨‍👩‍👧 Family</button>
-              <button class="sample-pill" onclick="loadSpecimen('dR##LJxL', 'FRIEND', 'Curled index fingers linking in reciprocal clasp', 'Neutral Space')">🤝 Friend</button>
-              <button class="sample-pill" onclick="loadSpecimen('uS!b!Iy', 'DANCE', 'V-legs swaying playfully on upright palm · Repeated', 'Non-dominant Palm')">💃 Dance</button>
-              <button class="sample-pill" onclick="loadSpecimen('d(0LKG', 'DREAM', 'Index finger at forehead wiggling upward into space', 'Forehead (0)')">✨ Dream</button>
-              <button class="sample-pill" onclick="loadSpecimen('o!3LJBL', 'FLOWER', 'Fingertips touching nose from side to side', 'Nose (3)')">🌸 Flower</button>
-              <button class="sample-pill" onclick="loadSpecimen('q*s&quot;MJy', 'EARTH', 'Thumb and middle finger gripping spherical fist', 'Non-dominant Fist')">🌍 Earth</button>
-              <button class="sample-pill" onclick="loadSpecimen('jP(5SGy', 'AIRPLANE', 'I-L-Y hand soaring outward forward in flight', 'Ipsilateral Space')">✈️ Airplane</button>
-              <button class="sample-pill" onclick="loadSpecimen('d#2LG6L', 'DEAF', 'Index finger touching ear then mouth/chin', 'Ear (2) to Chin (6)')">🤟 Deaf</button>
+              <button class="sample-pill" onclick="loadSign('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion')">🎉 Celebrate</button>
+              <button class="sample-pill" onclick="loadSign('bP++MbTvy', 'BUTTERFLY', 'Interlocked thumbs fluttering wings in flight · Dual motion')">🦋 Butterfly</button>
+              <button class="sample-pill" onclick="loadSign('fQ%%LJLv', 'FAMILY', 'F-hands tracing circle to meet at pinkies · Dual motion')">👨‍👩‍👧 Family</button>
+              <button class="sample-pill" onclick="loadSign('dR##LJxL', 'FRIEND', 'Curled index fingers linking in reciprocal clasp')">🤝 Friend</button>
+              <button class="sample-pill" onclick="loadSign('uS!b!Iy', 'DANCE', 'V-legs swaying playfully on upright palm · Repeated')">💃 Dance</button>
+              <button class="sample-pill" onclick="loadSign('d(0LKG', 'DREAM', 'Index finger at forehead wiggling upward into space')">✨ Dream</button>
+              <button class="sample-pill" onclick="loadSign('o!3LJBL', 'FLOWER', 'Fingertips touching nose from side to side')">🌸 Flower</button>
+              <button class="sample-pill" onclick="loadSign('q*s&quot;MJy', 'EARTH', 'Thumb and middle finger gripping spherical fist')">🌍 Earth</button>
+              <button class="sample-pill" onclick="loadSign('jP(5SGy', 'AIRPLANE', 'I-L-Y hand soaring outward forward in flight')">✈️ Airplane</button>
+              <button class="sample-pill" onclick="loadSign('d#2LG6L', 'DEAF', 'Index finger touching ear then mouth/chin')">🤟 Deaf</button>
             </div>
 
             <!-- Discord Community Coordination Notice -->
@@ -1528,7 +1524,7 @@
           <div class="live-display-screen">
             <div>
               <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; text-align: center;">
-                Rendered SignFont Specimen
+                Rendered Sign
               </div>
               <div class="display-preview" id="liveGlyphPreview">aQ!/1Hvy</div>
               <div class="display-unicode" id="liveUnicodePreview">റₒⵀᖌᖍꕊ⁼ᴺ</div>
@@ -1833,7 +1829,7 @@
           Join the SignFont Revival
         </h2>
         <p style="font-size: 1rem; color: var(--text-body); max-width: 600px; margin: 0 auto 1.75rem; line-height: 1.65;">
-          The revival of Don Newkirk's 1987 orthography is an open community effort. Join linguists, developers, and Deaf community members on Discord to discuss Unicode adaptation, font metrics, dictionary expansion, and web tools!
+          The revival of Don Newkirk's 1987 orthography is an open community effort. Join linguists, developers, and enthusiasts on Discord to discuss Unicode adaptation, font metrics, dictionary expansion, and web tools!
         </p>
         <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
           <a href="https://discord.gg/rfrem9f29" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: #4f46e5; border-color: #6366f1; padding: 0.8rem 1.6rem; font-size: 0.95rem; text-decoration: none;">
@@ -1857,7 +1853,7 @@
             An ongoing community-driven digital preservation initiative dedicated to documenting, reviving, and developing open-source web tools for Don Newkirk's 1987 American Sign Language orthography.
           </p>
           <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-primary); margin-bottom: 0.75rem;">
-            Created by Deaf linguist Don Newkirk (1987) · Active Community Revival (Work in Progress)
+            Created by Don Newkirk (1987) · Active Community Revival (Work in Progress)
           </div>
           <div>
             <a href="https://discord.gg/rfrem9f29" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #a5b4fc; text-decoration: none; font-weight: 500;">
@@ -1893,7 +1889,7 @@
 
       <div class="footer-bottom">
         <div>
-          © 2026 Nulpoints Sign Notation Portal · Dedicated to Deaf linguistic preservation.
+          © 2026 Nulpoints Sign Notation Portal · Dedicated to sign language notation and digital preservation.
         </div>
         <div>
           <a href="#top" style="color: var(--text-muted); text-decoration: none;"><i class="fa-solid fa-arrow-up"></i> Back to Top</a>
@@ -2015,7 +2011,7 @@
       'z': 'Modifier: Tense emphasis'
     };
 
-    let currentSpecimenAscii = 'aQ!/1Hvy';
+    let currentSignAscii = 'aQ!/1Hvy';
 
     function asciiToUnicode(asciiStr) {
       let result = '';
@@ -2032,7 +2028,7 @@
 
       if (!liveGlyph || !liveUnicode || !breakdownBox) return;
 
-      currentSpecimenAscii = asciiStr;
+      currentSignAscii = asciiStr;
       liveGlyph.textContent = asciiStr || ' ';
       liveUnicode.textContent = asciiToUnicode(asciiStr) || ' ';
 
@@ -2050,26 +2046,26 @@
       }
     }
 
-    function loadSpecimen(asciiStr, glossName, description, location) {
+    function loadSign(asciiStr, glossName, description) {
       const tester = document.getElementById('signfontTesterInput');
       if (tester) {
         tester.value = asciiStr;
       }
       updateWorkbench(asciiStr);
 
-      // Also update hero specimen plaque
+      // Also update hero sign card
       const heroGlyph = document.getElementById('heroSignGlyph');
       const heroUni = document.getElementById('heroSignUnicode');
       const plaqueWord = document.getElementById('plaqueGloss');
       const heroDesc = document.getElementById('heroSignDesc');
-      const heroLoc = document.getElementById('heroSignLoc');
 
       if (heroGlyph) heroGlyph.textContent = asciiStr;
       if (heroUni) heroUni.textContent = asciiToUnicode(asciiStr);
       if (plaqueWord && glossName) plaqueWord.textContent = glossName;
       if (heroDesc && description) heroDesc.textContent = description;
-      if (heroLoc && location) heroLoc.textContent = location;
     }
+
+    const loadSpecimen = loadSign;
 
     function clearTester() {
       const tester = document.getElementById('signfontTesterInput');
@@ -2082,7 +2078,7 @@
 
     function copySignfontText() {
       const tester = document.getElementById('signfontTesterInput');
-      const text = tester ? tester.value : currentSpecimenAscii;
+      const text = tester ? tester.value : currentSignAscii;
       if (!text) return;
       navigator.clipboard.writeText(text).then(() => {
         alert('Copied SignFont text to clipboard: ' + text);
@@ -2090,7 +2086,7 @@
     }
 
     function copySignUnicode() {
-      const unicodeText = asciiToUnicode(currentSpecimenAscii);
+      const unicodeText = asciiToUnicode(currentSignAscii);
       if (!unicodeText) return;
       navigator.clipboard.writeText(unicodeText).then(() => {
         alert('Copied SignFont Unicode symbols to clipboard: ' + unicodeText);
@@ -2120,7 +2116,7 @@
           });
         });
       }
-      loadSpecimen('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion', 'Both Temples (/ 1)');
+      loadSign('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion');
     });
   </script>
 </body>
