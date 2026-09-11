@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The SignFont Revival · Don Newkirk's 1987 ASL Orthography</title>
+  <meta name="description"
+    content="The SignFont Revival Project: Revitalizing Don Newkirk's landmark 1987 Deaf-created American Sign Language phonetic orthography. Interactive dictionaries, virtual keyboards, converters, rendering tools, and fonts — an ongoing community work in progress.">
+
+  <!-- Editorial & Specimen Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Central Theme Support -->
+  <link rel="stylesheet" href="../theme.css">
+  <script src="../theme.js" defer></script>
+
+  <!-- Keyman Web Engine & Virtual Keyboard Integration -->
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/keymanweb.js'></script>
+  <script src='https://s.keyman.com/kmw/engine/18.0.235/kmwuitoggle.js'></script>
+
+  <style>
+    /* -------------------------------------------------------------
+       THE SIGNFONT REVIVAL · BESPOKE EDITORIAL DESIGN SYSTEM
+       A clean, celebratory, tactile specimen aesthetic honoring 
+       Don Newkirk's 1987 Deaf-created ASL orthography.
+    ---------------------------------------------------------------- */
+    @font-face {
+      font-family: 'SignFont New';
+      src: url('./SignFontNew.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    :root {
+      /* Editorial Palette */
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sign: 'SignFont New', sans-serif;
+
+      --gold-primary: #d97706;
+      --gold-light: #f59e0b;
+      --gold-glow: rgba(245, 158, 11, 0.2);
+      --vermilion: #e11d48;
+      --indigo-accent: #4f46e5;
+      --emerald-accent: #059669;
+
+      /* Dark Theme (Default) */
+      --page-bg: #090d16;
+      --surface-bg: #111827;
+      --surface-card: #162032;
+      --surface-elevated: #1e293b;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.16);
+      --border-strong: rgba(245, 158, 11, 0.4);
+      --text-heading: #f8fafc;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
+      --specimen-bg: #0d131f;
+      --badge-bg: rgba(245, 158, 11, 0.12);
+      --badge-text: #fbbf24;
+      --shadow-elevation: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    html[data-theme="light"] {
+      --page-bg: #f8f6f0;
+      --surface-bg: #ffffff;
+      --surface-card: #fdfbf7;
+      --surface-elevated: #f1ede4;
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --border-medium: rgba(0, 0, 0, 0.15);
+      --border-strong: rgba(217, 119, 6, 0.5);
+      --text-heading: #1c1917;
+      --text-body: #44403c;
+      --text-muted: #78716c;
+      --specimen-bg: #f4efe6;
+      --badge-bg: rgba(217, 119, 6, 0.1);
+      --badge-text: #b45309;
+      --shadow-elevation: 0 10px 30px -10px rgba(120, 113, 108, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--page-bg) !important;
+      color: var(--text-body) !important;
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Architectural Grid Watermark */
+    .grid-backdrop {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    /* Global Container */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* -------------------------------------------------------------
+       TOP NAVIGATION BAR
+    ---------------------------------------------------------------- */
+    .revival-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(9, 13, 22, 0.85);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.3s ease;
+    }
+
+    html[data-theme="light"] .revival-nav {
+      background: rgba(248, 246, 240, 0.88);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 1.5rem;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      text-decoration: none;
+      color: var(--text-heading);
+    }
+
+    .brand-glyph {
+      font-family: var(--font-sign);
+      font-size: 1.85rem;
+      color: var(--gold-light);
+      background: var(--surface-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 8px;
+      padding: 0 0.65rem;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-body);
+      text-decoration: none;
+      font-size: 0.925rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      background: var(--surface-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      color: var(--text-heading) !important;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      border-color: var(--gold-primary);
+      transform: translateY(-1px);
+    }
+
+    /* -------------------------------------------------------------
+       HERO EXHIBITION SECTION
+    ---------------------------------------------------------------- */
+    .hero-section {
+      padding: 4.5rem 0 3.5rem;
+      position: relative;
+    }
+
+    .hero-wrapper {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .revival-seal {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background: var(--badge-bg);
+      border: 1px solid var(--border-strong);
+      border-radius: 4px;
+      color: var(--badge-text);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 3.4rem;
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-heading);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold-light);
+    }
+
+    .hero-lead {
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--text-body);
+      margin-bottom: 2rem;
+      max-width: 580px;
+    }
+
+    .hero-lead strong {
+      color: var(--text-heading);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.6rem;
+      background: var(--gold-primary);
+      color: #ffffff !important;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.5rem;
+      background: var(--surface-card);
+      color: var(--text-heading) !important;
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-muted);
+      transform: translateY(-2px);
+      background: var(--surface-elevated);
+    }
+
+    /* Specimen Hero Plaque (Right Column) */
+    .hero-specimen-plaque {
+      background: var(--surface-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: var(--shadow-elevation);
+    }
+
+    .hero-specimen-plaque::before {
+      content: "SPECIMEN NO. 1987-ASL";
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: var(--gold-primary);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.15rem 0.55rem;
+      border-radius: 3px;
+    }
+
+    .plaque-header {
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .plaque-label {
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold-primary);
+      font-weight: 600;
+    }
+
+    .plaque-word {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+
+    .plaque-signfont {
+      font-family: var(--font-sign);
+      font-size: 4rem;
+      line-height: 1.2;
+      color: var(--gold-light);
+      text-align: center;
+      padding: 1.25rem 0;
+      background: var(--specimen-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.05em;
+    }
+
+    .plaque-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      font-size: 0.825rem;
+    }
+
+    .plaque-meta-item {
+      background: var(--surface-bg);
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .plaque-meta-item span {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .plaque-meta-item strong {
+      font-family: var(--font-mono);
+      color: var(--text-heading);
+      font-size: 0.85rem;
+    }
+
+    /* -------------------------------------------------------------
+       INTERACTIVE SIGN TICKER / RIBBON
+    ---------------------------------------------------------------- */
+    .sign-ribbon-section {
+      background: var(--surface-bg);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.25rem 0;
+      overflow-x: auto;
+    }
+
+    .ribbon-track {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      white-space: nowrap;
+      padding: 0 1.5rem;
+      justify-content: flex-start;
+      min-width: max-content;
+    }
+
+    .ribbon-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold-primary);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .ribbon-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .ribbon-item:hover {
+      border-color: var(--gold-primary);
+      transform: translateY(-2px);
+    }
+
+    .ribbon-sign {
+      font-family: var(--font-sign);
+      font-size: 1.7rem;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .ribbon-gloss {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-heading);
+    }
+
+    .ribbon-ascii {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* -------------------------------------------------------------
+       SECTION HEADERS & EDITORIAL ARCHITECTURE
+    ---------------------------------------------------------------- */
+    .section-padding {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-header.text-left {
+      text-align: left;
+      margin-left: 0;
+    }
+
+    .section-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-heading);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    /* -------------------------------------------------------------
+       HISTORICAL HERITAGE & DEAF CREATOR STORY
+    ---------------------------------------------------------------- */
+    .heritage-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+      background: var(--surface-bg);
+      border: 1px solid var(--border-medium);
+      border-radius: 12px;
+      padding: 3rem;
+      position: relative;
+    }
+
+    .heritage-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+    }
+
+    .heritage-content p {
+      margin-bottom: 1.25rem;
+      font-size: 0.975rem;
+      line-height: 1.7;
+    }
+
+    .heritage-quote {
+      border-left: 3px solid var(--gold-primary);
+      padding-left: 1.25rem;
+      margin: 1.5rem 0;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-heading);
+    }
+
+    .heritage-quote cite {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-style: normal;
+      color: var(--gold-primary);
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .heritage-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .heritage-timeline {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .heritage-timeline::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: var(--border-medium);
+    }
+
+    .timeline-node {
+      display: flex;
+      gap: 1.25rem;
+      position: relative;
+    }
+
+    .node-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--surface-bg);
+      border: 2px solid var(--gold-primary);
+      display: grid;
+      place-items: center;
+      font-size: 0.6rem;
+      color: var(--gold-primary);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .node-text h4 {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--gold-primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .node-text p {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* -------------------------------------------------------------
+       INTERACTIVE ANATOMY & LIVE SPECIMEN EXPLORER
+    ---------------------------------------------------------------- */
+    .specimen-station {
+      background: var(--surface-bg);
+      border: 1px solid var(--border-medium);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-elevation);
+    }
+
+    .anatomy-banner {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .anatomy-box {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .anatomy-box.active,
+    .anatomy-box:hover {
+      border-color: var(--gold-primary);
+      background: var(--surface-elevated);
+      transform: translateY(-2px);
+    }
+
+    .anatomy-step {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold-primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .anatomy-char {
+      font-family: var(--font-sign);
+      font-size: 2.5rem;
+      color: var(--gold-light);
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .anatomy-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-heading);
+      margin-bottom: 0.2rem;
+    }
+
+    .anatomy-desc {
+      font-size: 0.725rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* Live Interactive Tester Workbench */
+    .workbench-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 2rem;
+    }
+
+    .workbench-input-group label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-row input {
+      flex: 1;
+      background: var(--surface-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      color: var(--text-heading);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .input-row input:focus {
+      border-color: var(--gold-primary);
+    }
+
+    .sample-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sample-pill {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.775rem;
+      color: var(--text-body);
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: all 0.15s ease;
+    }
+
+    .sample-pill:hover {
+      border-color: var(--gold-primary);
+      color: var(--gold-light);
+    }
+
+    /* SignFont Interactive Tester & Keyman Integration */
+    .tester-input-wrapper {
+      margin-bottom: 0.75rem;
+    }
+
+    .tester-textarea,
+    html body textarea#signfontTesterInput,
+    html body textarea#signfontTesterInput.signfont-font,
+    html body textarea#signfontTesterInput.keymanweb-font {
+      width: 100%;
+      min-height: 85px;
+      background: var(--specimen-bg);
+      border: 1px solid var(--border-medium);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      font-family: 'SignFont New', sans-serif !important;
+      font-size: 2.2rem !important;
+      line-height: 1.3;
+      color: var(--gold-light) !important;
+      outline: none;
+      resize: vertical;
+      letter-spacing: 0.04em;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tester-textarea:focus,
+    html body textarea#signfontTesterInput:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 3px var(--gold-glow);
+    }
+
+    /* Live Display Screen */
+    .live-display-screen {
+      background: var(--specimen-bg);
+      border: 1px solid var(--border-medium);
+      border-radius: 8px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 240px;
+    }
+
+    .display-preview {
+      font-family: var(--font-sign);
+      font-size: 3.5rem;
+      color: var(--gold-light);
+      text-align: center;
+      line-height: 1.2;
+      min-height: 80px;
+      word-break: break-all;
+      letter-spacing: 0.04em;
+    }
+
+    .display-unicode {
+      font-family: var(--font-sans);
+      font-size: 1.25rem;
+      color: var(--text-body);
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .display-breakdown {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .breakdown-token {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.725rem;
+      font-family: var(--font-mono);
+    }
+
+    .breakdown-token span.code {
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    /* -------------------------------------------------------------
+       THE 7 SIGNFONT APPLICATIONS & TOOLS GALLERY
+    ---------------------------------------------------------------- */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .tool-card {
+      background: var(--surface-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .tool-card:hover {
+      border-color: var(--gold-primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-elevation);
+    }
+
+    .tool-card.featured {
+      border-color: var(--border-strong);
+      background: linear-gradient(180deg, var(--surface-card) 0%, var(--surface-bg) 100%);
+    }
+
+    .tool-card-top {
+      margin-bottom: 1.5rem;
+    }
+
+    .tool-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .tool-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+
+    .tool-badge.dict { background: rgba(217, 119, 6, 0.15); color: #f59e0b; }
+    .tool-badge.kb { background: rgba(79, 70, 229, 0.15); color: #818cf8; }
+    .tool-badge.flash { background: rgba(225, 29, 72, 0.15); color: #fb7185; }
+    .tool-badge.conv { background: rgba(5, 150, 105, 0.15); color: #34d399; }
+    .tool-badge.asl { background: rgba(14, 165, 233, 0.15); color: #38bdf8; }
+    .tool-badge.game { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+    .tool-badge.render { background: rgba(234, 88, 12, 0.15); color: #fb923c; }
+
+    .tool-icon {
+      font-size: 1.75rem;
+      color: var(--text-heading);
+    }
+
+    .tool-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+
+    .tool-desc {
+      font-size: 0.925rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .tool-features {
+      list-style: none;
+      margin: 1.25rem 0;
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .tool-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tool-features li i {
+      color: var(--gold-primary);
+      font-size: 0.75rem;
+    }
+
+    .tool-launch-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--surface-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      color: var(--text-heading) !important;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .tool-launch-btn:hover {
+      background: var(--gold-primary);
+      color: #ffffff !important;
+      border-color: var(--gold-primary);
+    }
+
+    /* -------------------------------------------------------------
+       DOWNLOADS & PRESERVATION ARCHIVE
+    ---------------------------------------------------------------- */
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .download-card {
+      background: var(--surface-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .download-card:hover {
+      border-color: var(--border-medium);
+      transform: translateY(-2px);
+    }
+
+    .download-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .download-icon {
+      font-size: 1.5rem;
+      color: var(--gold-primary);
+      background: var(--surface-card);
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .download-meta h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0.2rem;
+    }
+
+    .download-meta span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .download-desc {
+      font-size: 0.85rem;
+      color: var(--text-body);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.6rem;
+      background: var(--surface-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 5px;
+      color: var(--text-heading) !important;
+      font-size: 0.825rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .download-btn:hover {
+      border-color: var(--gold-primary);
+      color: var(--gold-light) !important;
+    }
+
+    /* -------------------------------------------------------------
+       FOOTER & COLOPHON
+    ---------------------------------------------------------------- */
+    .revival-footer {
+      background: var(--surface-bg);
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col p {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text-body);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 900px) {
+      .hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .heritage-grid {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+
+      .anatomy-banner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .workbench-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .anatomy-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-backdrop"></div>
+
+  <!-- TOP NAVIGATION -->
+  <header class="revival-nav">
+    <div class="container nav-inner">
+      <a href="./index.html" class="brand-mark">
+        <div class="brand-glyph">s!NfQ</div>
+        <div class="brand-titles">
+          <span class="brand-name">SignFont <em>1987</em></span>
+          <span class="brand-tag">The Revival Project</span>
+        </div>
+      </a>
+
+      <nav style="display: flex; align-items: center; gap: 1.5rem;">
+        <ul class="nav-links">
+          <li><a href="#heritage">Heritage</a></li>
+          <li><a href="#specimen">Specimen & Anatomy</a></li>
+          <li><a href="#tools">Interactive Tools</a></li>
+          <li><a href="#downloads">Downloads</a></li>
+        </ul>
+        <a href="https://discord.gg/rfrem9f29" target="_blank" rel="noopener noreferrer" class="nav-cta" style="background: rgba(79, 70, 229, 0.15); border-color: rgba(79, 70, 229, 0.4); color: #a5b4fc !important;">
+          <i class="fa-brands fa-discord" style="color: #818cf8;"></i> Join Discord
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="container hero-wrapper">
+      <div class="hero-left">
+        <div class="revival-seal">
+          <i class="fa-solid fa-scroll"></i> Deaf Heritage & Digital Preservation
+        </div>
+        <h1 class="hero-title">
+          The Typography of <em>Movement</em> and Silence.
+        </h1>
+        <p class="hero-lead">
+          In 1987, Deaf researcher and linguist <strong>Don Newkirk</strong> designed <strong>SignFont</strong> — a breakthrough phonetic orthography transcribing American Sign Language into a linear, typable alphabet. <strong>The SignFont Revival</strong> is an ongoing, community-driven work in progress to revitalize this landmark system for the modern web.
+        </p>
+
+        <div class="hero-actions">
+          <a href="./dictionary.html" class="btn-primary">
+            <i class="fa-solid fa-book-open"></i> Launch Dictionary
+          </a>
+          <a href="#tools" class="btn-secondary">
+            <i class="fa-solid fa-layer-group"></i> Explore Tools (WIP)
+          </a>
+          <a href="https://discord.gg/rfrem9f29" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="border-color: rgba(79, 70, 229, 0.4); color: #a5b4fc !important;">
+            <i class="fa-brands fa-discord" style="color: #818cf8;"></i> Join Discord Revival
+          </a>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1.5rem; font-size: 0.825rem; color: var(--text-muted);">
+          <span><i class="fa-solid fa-check" style="color: var(--gold-primary);"></i> 1,500+ Lexical Signs</span>
+          <span><i class="fa-solid fa-check" style="color: var(--gold-primary);"></i> Custom TrueType Font</span>
+          <span><i class="fa-solid fa-check" style="color: var(--gold-primary);"></i> Standard QWERTY Input</span>
+        </div>
+      </div>
+
+      <!-- Specimen Plaque Card -->
+      <div class="hero-specimen-plaque">
+        <div class="plaque-header">
+          <div class="plaque-label">Historic Specimen</div>
+          <div class="plaque-word" id="plaqueGloss">CELEBRATE</div>
+        </div>
+
+        <div class="plaque-signfont" id="heroSignGlyph">aQ!/1Hvy</div>
+
+        <div class="plaque-meta">
+          <div class="plaque-meta-item">
+            <span>Adapted Unicode</span>
+            <strong id="heroSignUnicode">റₒⵀᖌᖍꕊ⁼ᴺ</strong>
+          </div>
+          <div class="plaque-meta-item">
+            <span>Spatial Location</span>
+            <strong id="heroSignLoc">Both Temples (/ 1)</strong>
+          </div>
+          <div class="plaque-meta-item" style="grid-column: span 2;">
+            <span>Phonological Description</span>
+            <strong id="heroSignDesc" style="font-size: 0.775rem; font-weight: 500;">Curled fists twirling with joy at temples · Simultaneous dual motion</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE SIGN RIBBON / TICKER -->
+  <section class="sign-ribbon-section">
+    <div class="ribbon-track">
+      <div class="ribbon-badge"><i class="fa-solid fa-sparkles"></i> Vocabulary Sampler:</div>
+
+      <div class="ribbon-item" onclick="loadSpecimen('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion', 'Both Temples (/ 1)')">
+        <span class="ribbon-sign">aQ!/1Hvy</span>
+        <span class="ribbon-gloss">CELEBRATE</span>
+      </div>
+
+      <div class="ribbon-item" onclick="loadSpecimen('bP++MbTvy', 'BUTTERFLY', 'Interlocked thumbs fluttering wings in flight · Dual motion', 'Neutral Space')">
+        <span class="ribbon-sign">bP++MbTvy</span>
+        <span class="ribbon-gloss">BUTTERFLY</span>
+      </div>
+
+      <div class="ribbon-item" onclick="loadSpecimen('fQ%%LJLv', 'FAMILY', 'F-hands tracing circle to meet at pinkies · Dual motion', 'Neutral Space')">
+        <span class="ribbon-sign">fQ%%LJLv</span>
+        <span class="ribbon-gloss">FAMILY</span>
+      </div>
+
+      <div class="ribbon-item" onclick="loadSpecimen('dR##LJxL', 'FRIEND', 'Curled index fingers linking in reciprocal clasp', 'Neutral Space')">
+        <span class="ribbon-sign">dR##LJxL</span>
+        <span class="ribbon-gloss">FRIEND</span>
+      </div>
+
+      <div class="ribbon-item" onclick="loadSpecimen('uS!b!Iy', 'DANCE', 'V-legs swaying playfully on upright palm · Repeated', 'Non-dominant Palm')">
+        <span class="ribbon-sign">uS!b!Iy</span>
+        <span class="ribbon-gloss">DANCE</span>
+      </div>
+
+      <div class="ribbon-item" onclick="loadSpecimen('d(0LKG', 'DREAM', 'Index finger at forehead wiggling upward into space', 'Forehead (0)')">
+        <span class="ribbon-sign">d(0LKG</span>
+        <span class="ribbon-gloss">DREAM</span>
+      </div>
+
+      <div class="ribbon-item" onclick="loadSpecimen('o!3LJBL', 'FLOWER', 'Fingertips touching nose from side to side', 'Nose (3)')">
+        <span class="ribbon-sign">o!3LJBL</span>
+        <span class="ribbon-gloss">FLOWER</span>
+      </div>
+
+      <div class="ribbon-item" onclick="loadSpecimen('q*s&quot;MJy', 'EARTH', 'Thumb and middle finger gripping spherical fist', 'Non-dominant Fist')">
+        <span class="ribbon-sign">q*s"MJy</span>
+        <span class="ribbon-gloss">EARTH</span>
+      </div>
+
+      <div class="ribbon-item" onclick="loadSpecimen('jP(5SGy', 'AIRPLANE', 'I-L-Y hand soaring outward forward in flight', 'Ipsilateral Space')">
+        <span class="ribbon-sign">jP(5SGy</span>
+        <span class="ribbon-gloss">AIRPLANE</span>
+      </div>
+
+      <div class="ribbon-item" onclick="loadSpecimen('d#2LG6L', 'DEAF', 'Index finger touching ear then mouth/chin', 'Ear (2) to Chin (6)')">
+        <span class="ribbon-sign">d#2LG6L</span>
+        <span class="ribbon-gloss">DEAF</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORICAL HERITAGE SECTION -->
+  <section class="section-padding" id="heritage">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker"><i class="fa-solid fa-landmark"></i> The Story of SignFont</div>
+        <h2 class="section-title">Created by the Deaf Community. Revitalized for the Modern Web.</h2>
+        <p class="section-subtitle">
+          Unlike many sign notation systems engineered strictly from outside perspectives, SignFont was developed from within the Deaf linguistic community by Don Newkirk in 1987.
+        </p>
+      </div>
+
+      <div class="heritage-grid">
+        <div class="heritage-content">
+          <h3>The Vision of Don Newkirk (1987)</h3>
+          <p>
+            During the 1980s at the intersection of early computational linguistics and Deaf culture, researcher <strong>Don Newkirk</strong> recognized a fundamental void: while spoken languages had thousands of typographic fonts and standard keyboard layouts, American Sign Language users had no native way to type their language on standard computer terminals without cumbersome graphics programs.
+          </p>
+
+          <div class="heritage-quote">
+            "SignFont was engineered to be a true orthography: linear, typable on any standard 101-key keyboard, and phonologically rigorous across 19 basic handshapes and bodily spatial coordinates."
+            <cite>— Don Newkirk, The SignFont Handbook (1987)</cite>
+          </div>
+
+          <p>
+            As proprietary operating systems shifted away from 1980s 8-bit character mapping, the original SignFont font files became unreadable on modern platforms. The <strong>SignFont Revival Project</strong> is an ongoing work in progress, prototyping custom TrueType font rendering, Keyman keyboard drivers, and modern interactive digital interfaces.
+          </p>
+        </div>
+
+        <div class="heritage-card">
+          <ul class="heritage-timeline">
+            <li class="timeline-node">
+              <div class="node-dot"><i class="fa-solid fa-pen-nib"></i></div>
+              <div class="node-text">
+                <h4>1987 · The Salk Institute Handbook</h4>
+                <p>Don Newkirk and researchers at the Salk Institute &amp; Emerson and Stern publish the <a href="https://archive.org/details/micro_IA41153306_0396" target="_blank" style="color: var(--gold-light); text-decoration: underline;">Final Version Signfont Handbook</a>, defining 19 basic handshapes and bodily spatial coordinates.</p>
+              </div>
+            </li>
+            <li class="timeline-node">
+              <div class="node-dot"><i class="fa-solid fa-keyboard"></i></div>
+              <div class="node-text">
+                <h4>1990s · The Digital Barrier</h4>
+                <p>Early desktop operating systems phase out custom character maps, leaving SignFont stored primarily on paper archives.</p>
+              </div>
+            </li>
+            <li class="timeline-node">
+              <div class="node-dot"><i class="fa-brands fa-discord"></i></div>
+              <div class="node-text">
+                <h4>Active · Unicode Adaptation &amp; Discord Coordination</h4>
+                <p>Unicode character mapping is currently still happening, coordinated and actively discussed on the <a href="https://discord.gg/rfrem9f29" target="_blank" rel="noopener noreferrer" style="color: #a5b4fc; text-decoration: underline; font-weight: 600;"><i class="fa-brands fa-discord"></i> Signed Conlangs &amp; Linguistics Discord</a> (building upon the <a href="https://drive.google.com/drive/folders/19nUdJEk5-anopUbJUwfGY2w5-JbdNm9P?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--gold-light); text-decoration: underline;">Unicode project archive by jan Olipija</a>). <a href="https://discord.gg/rfrem9f29" target="_blank" rel="noopener noreferrer" style="color: var(--gold-light); font-size: 0.8rem; font-weight: 600; margin-left: 0.5rem;">Join server &rarr;</a></p>
+              </div>
+            </li>
+            <li class="timeline-node">
+              <div class="node-dot"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+              <div class="node-text">
+                <h4>Active · The SignFont Revival (Work in Progress)</h4>
+                <p>An ongoing, iterative community effort to build accessible web utilities—prototyping font rendering engines, interactive dictionaries, virtual keyboards, converters, and study tools. Nothing is final; the revival is an evolving work in progress.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE ANATOMY & LIVE SPECIMEN EXPLORER -->
+  <section class="section-padding" id="specimen" style="background: var(--surface-card); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker"><i class="fa-solid fa-cubes"></i> Linguistic Architecture</div>
+        <h2 class="section-title">The Anatomy of a SignFont Word</h2>
+        <p class="section-subtitle">
+          Every SignFont sign is constructed from 5 modular phonological tiers, reading smoothly from left to right.
+        </p>
+      </div>
+
+      <div class="specimen-station">
+        <!-- 5 Tiers Banner -->
+        <div class="anatomy-banner">
+          <div class="anatomy-box active">
+            <div class="anatomy-step">1. Handshape Prime</div>
+            <div class="anatomy-char" id="anatHand">aQ</div>
+            <div class="anatomy-name" id="anatHandName">Curled Fists (Baby-O)</div>
+            <div class="anatomy-desc">Base hand configuration from the 19 core handshape classes (a–u) with diacritic modifier.</div>
+          </div>
+
+          <div class="anatomy-box">
+            <div class="anatomy-step">2. Action Surface</div>
+            <div class="anatomy-char" id="anatAction">!</div>
+            <div class="anatomy-name" id="anatActionName">Palm Side</div>
+            <div class="anatomy-desc">Active contact surface: palm side (!), back ("), radial edge (%), or interdigital space (+).</div>
+          </div>
+
+          <div class="anatomy-box">
+            <div class="anatomy-step">3. Body Location</div>
+            <div class="anatomy-char" id="anatLoc">/ 1</div>
+            <div class="anatomy-name" id="anatLocName">Both Temples</div>
+            <div class="anatomy-desc">Spatial landmark on head or torso (temples, nose, chin, chest, or neutral space).</div>
+          </div>
+
+          <div class="anatomy-box">
+            <div class="anatomy-step">4. Motion Vector</div>
+            <div class="anatomy-char" id="anatMove">H</div>
+            <div class="anatomy-name" id="anatMoveName">Circular Path</div>
+            <div class="anatomy-desc">3D movement trajectory: circular sweep (H), wrist twist (I/J), upward (D), or outward (G).</div>
+          </div>
+
+          <div class="anatomy-box">
+            <div class="anatomy-step">5. Dynamic Modifier</div>
+            <div class="anatomy-char" id="anatMod">vy</div>
+            <div class="anatomy-name" id="anatModName">Dual Hands &amp; Repeated</div>
+            <div class="anatomy-desc">Both hands identical (v), alternating (w), tense emphasis (z), or repeated (y).</div>
+          </div>
+        </div>
+
+        <!-- Live Typer Workbench -->
+        <div class="workbench-grid">
+          <div class="workbench-input-group">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+              <label for="signfontTesterInput" style="font-weight: 600; color: var(--text-heading); font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-keyboard" style="color: var(--gold-primary);"></i> Interactive Sign Tester (SignFont JS Keyboard):
+              </label>
+              <button id="toggleKeymanOskBtn" type="button" class="btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.775rem; gap: 0.35rem; cursor: pointer;" onclick="toggleKeymanOSK()">
+                <i class="fa-solid fa-table-cells"></i> <span id="oskBtnText">Toggle On-Screen Keyboard</span>
+              </button>
+            </div>
+
+            <!-- SignFont Textarea (Displays directly in SignFont New font and receives Keyman typing) -->
+            <div class="tester-input-wrapper">
+              <textarea id="signfontTesterInput" class="tester-textarea signfont-font" rows="2" placeholder="Type here using your keyboard (Keyman enabled)..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+              <button class="btn-primary" style="padding: 0.55rem 1rem; font-size: 0.825rem;" onclick="copySignUnicode()">
+                <i class="fa-solid fa-copy"></i> Copy Unicode Symbols
+              </button>
+              <button class="btn-secondary" style="padding: 0.55rem 0.9rem; font-size: 0.825rem;" onclick="copySignfontText()">
+                <i class="fa-solid fa-font"></i> Copy SignFont Text
+              </button>
+              <button class="btn-secondary" style="padding: 0.55rem 0.8rem; font-size: 0.825rem;" onclick="clearTester()">
+                <i class="fa-solid fa-eraser"></i> Clear
+              </button>
+            </div>
+
+            <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.5rem;">
+              <i class="fa-solid fa-bookmark" style="color: var(--gold-primary);"></i> Or select a curated ASL sign to test:
+            </label>
+            <div class="sample-pill-list">
+              <button class="sample-pill" onclick="loadSpecimen('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion', 'Both Temples (/ 1)')">🎉 Celebrate</button>
+              <button class="sample-pill" onclick="loadSpecimen('bP++MbTvy', 'BUTTERFLY', 'Interlocked thumbs fluttering wings in flight · Dual motion', 'Neutral Space')">🦋 Butterfly</button>
+              <button class="sample-pill" onclick="loadSpecimen('fQ%%LJLv', 'FAMILY', 'F-hands tracing circle to meet at pinkies · Dual motion', 'Neutral Space')">👨‍👩‍👧 Family</button>
+              <button class="sample-pill" onclick="loadSpecimen('dR##LJxL', 'FRIEND', 'Curled index fingers linking in reciprocal clasp', 'Neutral Space')">🤝 Friend</button>
+              <button class="sample-pill" onclick="loadSpecimen('uS!b!Iy', 'DANCE', 'V-legs swaying playfully on upright palm · Repeated', 'Non-dominant Palm')">💃 Dance</button>
+              <button class="sample-pill" onclick="loadSpecimen('d(0LKG', 'DREAM', 'Index finger at forehead wiggling upward into space', 'Forehead (0)')">✨ Dream</button>
+              <button class="sample-pill" onclick="loadSpecimen('o!3LJBL', 'FLOWER', 'Fingertips touching nose from side to side', 'Nose (3)')">🌸 Flower</button>
+              <button class="sample-pill" onclick="loadSpecimen('q*s&quot;MJy', 'EARTH', 'Thumb and middle finger gripping spherical fist', 'Non-dominant Fist')">🌍 Earth</button>
+              <button class="sample-pill" onclick="loadSpecimen('jP(5SGy', 'AIRPLANE', 'I-L-Y hand soaring outward forward in flight', 'Ipsilateral Space')">✈️ Airplane</button>
+              <button class="sample-pill" onclick="loadSpecimen('d#2LG6L', 'DEAF', 'Index finger touching ear then mouth/chin', 'Ear (2) to Chin (6)')">🤟 Deaf</button>
+            </div>
+
+            <!-- Discord Community Coordination Notice -->
+            <div style="background: rgba(79, 70, 229, 0.12); border: 1px solid rgba(79, 70, 229, 0.35); border-radius: 8px; padding: 0.85rem 1rem; margin-top: 1.25rem; font-size: 0.825rem; color: var(--text-body); line-height: 1.5; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: flex-start; gap: 0.75rem; flex: 1; min-width: 240px;">
+                <i class="fa-brands fa-discord" style="color: #818cf8; font-size: 1.3rem; margin-top: 2px;"></i>
+                <div>
+                  <strong style="color: #a5b4fc;">Join the Revival on Discord:</strong> Unicode adaptation and software development are actively coordinated on the <strong>Signed Conlangs &amp; Linguistics Discord</strong> (building upon <a href="https://drive.google.com/drive/folders/19nUdJEk5-anopUbJUwfGY2w5-JbdNm9P?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: #cbd5e1; text-decoration: underline;">jan Olipija's Unicode schema</a>).
+                </div>
+              </div>
+              <a href="https://discord.gg/rfrem9f29" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: #4f46e5; border-color: #6366f1; font-size: 0.775rem; padding: 0.45rem 0.9rem; text-decoration: none; white-space: nowrap;">
+                <i class="fa-brands fa-discord"></i> Join Discord
+              </a>
+            </div>
+          </div>
+
+          <!-- Live Output Screen -->
+          <div class="live-display-screen">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; text-align: center;">
+                Rendered SignFont Specimen
+              </div>
+              <div class="display-preview" id="liveGlyphPreview">aQ!/1Hvy</div>
+              <div class="display-unicode" id="liveUnicodePreview">റₒⵀᖌᖍꕊ⁼ᴺ</div>
+            </div>
+
+            <div>
+              <div class="display-breakdown" id="liveBreakdownContainer">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SIGNFONT APPLICATIONS & TOOLS (WORK IN PROGRESS) -->
+  <section class="section-padding" id="tools">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker"><i class="fa-solid fa-layer-group"></i> Active Ecosystem · Work in Progress</div>
+        <h2 class="section-title">SignFont Web Tools &amp; Utilities</h2>
+        <p class="section-subtitle">
+          Interactive web applications and experimental prototypes built to search, practice, translate, transcribe, and render SignFont orthography. The revival is an active, ongoing effort.
+        </p>
+      </div>
+
+      <div class="tools-grid">
+        <!-- 1. Dictionary -->
+        <div class="tool-card featured">
+          <div class="tool-card-top">
+            <div class="tool-badge-row">
+              <span class="tool-badge dict">1,500+ Entries</span>
+              <i class="fa-solid fa-book-bookmark tool-icon" style="color: var(--gold-light);"></i>
+            </div>
+            <h3 class="tool-title">Bidirectional Dictionary</h3>
+            <p class="tool-desc">
+              Search English glosses and instant SignFont transcriptions with smart Keyman keyboard mapping, filter drawers, and phonetic breakdowns.
+            </p>
+            <ul class="tool-features">
+              <li><i class="fa-solid fa-check"></i> Instant bidirectional fuzzy search</li>
+              <li><i class="fa-solid fa-check"></i> Keyman on-screen keyboard helper</li>
+              <li><i class="fa-solid fa-check"></i> Deep token analysis drawer for each sign</li>
+            </ul>
+          </div>
+          <a href="./dictionary.html" class="tool-launch-btn">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Launch Dictionary
+          </a>
+        </div>
+
+        <!-- 2. Keyboard -->
+        <div class="tool-card">
+          <div class="tool-card-top">
+            <div class="tool-badge-row">
+              <span class="tool-badge kb">Virtual Keymap</span>
+              <i class="fa-solid fa-keyboard tool-icon" style="color: #818cf8;"></i>
+            </div>
+            <h3 class="tool-title">Interactive Virtual Keyboard</h3>
+            <p class="tool-desc">
+              Visual on-screen keyboard displaying character assignments for handshapes, diacritics, bodily landmarks, and motion vectors.
+            </p>
+            <ul class="tool-features">
+              <li><i class="fa-solid fa-check"></i> Direct in-browser character typing</li>
+              <li><i class="fa-solid fa-check"></i> Mobile and desktop responsive layouts</li>
+              <li><i class="fa-solid fa-check"></i> Character category grouping</li>
+            </ul>
+          </div>
+          <a href="./keyboard.html" class="tool-launch-btn">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Keyboard
+          </a>
+        </div>
+
+        <!-- 3. Flashcards -->
+        <div class="tool-card">
+          <div class="tool-card-top">
+            <div class="tool-badge-row">
+              <span class="tool-badge flash">Study Deck</span>
+              <i class="fa-solid fa-bolt tool-icon" style="color: #fb7185;"></i>
+            </div>
+            <h3 class="tool-title">Interactive Flashcards</h3>
+            <p class="tool-desc">
+              Master SignFont character recognition and ASL vocabulary through spaced repetition, card flip animations, and real-time score tracking.
+            </p>
+            <ul class="tool-features">
+              <li><i class="fa-solid fa-check"></i> Dynamic study decks &amp; session timers</li>
+              <li><i class="fa-solid fa-check"></i> Symbol-to-gloss &amp; gloss-to-symbol modes</li>
+              <li><i class="fa-solid fa-check"></i> Progress retention metrics</li>
+            </ul>
+          </div>
+          <a href="./flashcards.html" class="tool-launch-btn">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Practice Flashcards
+          </a>
+        </div>
+
+        <!-- 4. Unicode Converter -->
+        <div class="tool-card">
+          <div class="tool-card-top">
+            <div class="tool-badge-row">
+              <span class="tool-badge conv">Unicode Bridge · WIP</span>
+              <i class="fa-solid fa-repeat tool-icon" style="color: #34d399;"></i>
+            </div>
+            <h3 class="tool-title">Bidirectional Unicode Converter</h3>
+            <p class="tool-desc">
+              Convert between 1987 ASCII SignFont transcriptions and modern adapted Unicode characters. Active adaptation is ongoing and discussed on the Signed Conlangs &amp; Linguistics Discord.
+            </p>
+            <ul class="tool-features">
+              <li><i class="fa-solid fa-check"></i> Real-time bidirectional text synchronization</li>
+              <li><i class="fa-solid fa-check"></i> Coordinated with Signed Conlangs Discord community</li>
+              <li><i class="fa-solid fa-check"></i> Token breakdown and diagnostics matrix</li>
+            </ul>
+          </div>
+          <a href="./convert.html" class="tool-launch-btn">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Unicode Converter
+          </a>
+        </div>
+
+        <!-- 6. Criss-Cross Puzzles -->
+        <div class="tool-card">
+          <div class="tool-card-top">
+            <div class="tool-badge-row">
+              <span class="tool-badge game">Classroom &amp; Games</span>
+              <i class="fa-solid fa-puzzle-piece tool-icon" style="color: #c084fc;"></i>
+            </div>
+            <h3 class="tool-title">Criss-Cross Puzzle Generator</h3>
+            <p class="tool-desc">
+              Generate dynamic crossword puzzles using SignFont vocabulary. Solve interactively on screen or export printable PDF study worksheets.
+            </p>
+            <ul class="tool-features">
+              <li><i class="fa-solid fa-check"></i> Custom grid density &amp; word selection</li>
+              <li><i class="fa-solid fa-check"></i> Printable worksheet &amp; answer key export</li>
+              <li><i class="fa-solid fa-check"></i> In-game SignFont keyboard integration</li>
+            </ul>
+          </div>
+          <a href="./crisscross.html" class="tool-launch-btn">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Criss-Cross
+          </a>
+        </div>
+
+        <!-- 7. Cherology PNG Render Studio -->
+        <div class="tool-card">
+          <div class="tool-card-top">
+            <div class="tool-badge-row">
+              <span class="tool-badge render">Render Studio</span>
+              <i class="fa-solid fa-image tool-icon" style="color: #fb923c;"></i>
+            </div>
+            <h3 class="tool-title">Cherology PNG Rendering Studio</h3>
+            <p class="tool-desc">
+              Stateless high-resolution raster and vector sign image generator. Render SignFont strings into transparent PNGs with full styling controls.
+            </p>
+            <ul class="tool-features">
+              <li><i class="fa-solid fa-check"></i> Custom font size, colors, padding &amp; borders</li>
+              <li><i class="fa-solid fa-check"></i> Multi-line sign layout with embedded metadata</li>
+              <li><i class="fa-solid fa-check"></i> REST API URL generation for external apps</li>
+            </ul>
+          </div>
+          <a href="../render/index.html" class="tool-launch-btn">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Render Studio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOADS & PRESERVATION ARCHIVES -->
+  <section class="section-padding" id="downloads" style="background: var(--surface-card); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker"><i class="fa-solid fa-download"></i> Preservation Archive</div>
+        <h2 class="section-title">Fonts, Keyboards &amp; Historical Documents</h2>
+        <p class="section-subtitle">
+          Download everything needed to install SignFont on Windows, macOS, iOS, or Android, plus historical documentation.
+        </p>
+      </div>
+
+      <div class="download-grid">
+        <!-- Font -->
+        <div class="download-card">
+          <div>
+            <div class="download-header">
+              <div class="download-icon"><i class="fa-solid fa-font"></i></div>
+              <div class="download-meta">
+                <h4>SignFont Custom Font</h4>
+                <span>TrueType Font · .TTF (21 KB)</span>
+              </div>
+            </div>
+            <p class="download-desc">
+              Custom TrueType font file designed for accurate character alignment, ligature spacing, and native rendering across all desktop apps.
+            </p>
+          </div>
+          <a href="./SignFontNew.ttf" download class="download-btn">
+            <i class="fa-solid fa-download"></i> Download Font (.TTF)
+          </a>
+        </div>
+
+        <!-- Keyman -->
+        <div class="download-card">
+          <div>
+            <div class="download-header">
+              <div class="download-icon"><i class="fa-solid fa-keyboard"></i></div>
+              <div class="download-meta">
+                <h4>Keyman Keyboard Package</h4>
+                <span>Keyboard Bundle · .KMP (20 KB)</span>
+              </div>
+            </div>
+            <p class="download-desc">
+              Ready-to-install Keyman package enabling system-wide typing of SignFont glyphs in Microsoft Word, browsers, chat apps, and mobile.
+            </p>
+          </div>
+          <a href="./signfont.kmp" download class="download-btn">
+            <i class="fa-solid fa-download"></i> Download Keyman (.KMP)
+          </a>
+        </div>
+
+        <!-- 1987 PDF Manual -->
+        <div class="download-card">
+          <div>
+            <div class="download-header">
+              <div class="download-icon"><i class="fa-solid fa-file-pdf"></i></div>
+              <div class="download-meta">
+                <h4>SignFont Explained (1987)</h4>
+                <span>Historical PDF · 228 KB</span>
+              </div>
+            </div>
+            <p class="download-desc">
+              Don Newkirk's original seminal publication explaining the linguistic taxonomy, phonological tiers, and design principles of SignFont.
+            </p>
+          </div>
+          <a href="./SignFont%20Explained.pdf" target="_blank" class="download-btn">
+            <i class="fa-solid fa-file-arrow-down"></i> Read Original PDF Guide
+          </a>
+        </div>
+
+        <!-- 1987 Salk Institute Notebook / Internet Archive -->
+        <div class="download-card">
+          <div>
+            <div class="download-header">
+              <div class="download-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
+              <div class="download-meta">
+                <h4>Original Handbook Notebook (1987)</h4>
+                <span>Salk Institute / ERIC · Internet Archive</span>
+              </div>
+            </div>
+            <p class="download-desc">
+              The original historical archival notebook: <em>Architect: Final Version Signfont Handbook</em> created at the Salk Institute for Biological Studies and Emerson &amp; Stern Associates.
+            </p>
+          </div>
+          <a href="https://archive.org/details/micro_IA41153306_0396" target="_blank" rel="noopener noreferrer" class="download-btn">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Notebook on Archive.org
+          </a>
+        </div>
+
+
+        <!-- jan Olipija Unicode Project Drive -->
+        <div class="download-card">
+          <div>
+            <div class="download-header">
+              <div class="download-icon"><i class="fa-brands fa-google-drive"></i></div>
+              <div class="download-meta">
+                <h4>jan Olipija Unicode Project</h4>
+                <span>Research Archive · Google Drive</span>
+              </div>
+            </div>
+            <p class="download-desc">
+              Access jan Olipija's research folder, schema specifications, character mapping documentation, and font resources for SignFont Unicode adaptation.
+            </p>
+          </div>
+          <a href="https://drive.google.com/drive/folders/19nUdJEk5-anopUbJUwfGY2w5-JbdNm9P?usp=sharing" target="_blank" rel="noopener noreferrer" class="download-btn">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Google Drive Folder
+          </a>
+        </div>
+
+        <!-- Layout Graphic -->
+        <div class="download-card">
+          <div>
+            <div class="download-header">
+              <div class="download-icon"><i class="fa-solid fa-image"></i></div>
+              <div class="download-meta">
+                <h4>Keyboard Layout Diagram</h4>
+                <span>Schematic Image · JPG (169 KB)</span>
+              </div>
+            </div>
+            <p class="download-desc">
+              High-resolution visual schematic showing all primary and shifted character assignments across a standard 101-key keyboard.
+            </p>
+          </div>
+          <a href="./SignFontKeyboard.jpg" target="_blank" class="download-btn">
+            <i class="fa-solid fa-eye"></i> View Keyboard Chart
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN THE REVIVAL CALLOUT BANNER -->
+  <section class="section-padding" style="padding: 3.5rem 0; background: linear-gradient(180deg, var(--surface-bg) 0%, rgba(79, 70, 229, 0.08) 100%); border-top: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="background: var(--surface-card); border: 1px solid rgba(79, 70, 229, 0.35); border-radius: 12px; padding: 2.5rem 2rem; text-align: center; max-width: 820px; margin: 0 auto; box-shadow: var(--shadow-elevation); position: relative;">
+        <div style="font-size: 2.75rem; color: #818cf8; margin-bottom: 0.75rem;">
+          <i class="fa-brands fa-discord"></i>
+        </div>
+        <h2 style="font-family: var(--font-display); font-size: 2.1rem; font-weight: 700; color: var(--text-heading); margin-bottom: 0.75rem;">
+          Join the SignFont Revival
+        </h2>
+        <p style="font-size: 1rem; color: var(--text-body); max-width: 600px; margin: 0 auto 1.75rem; line-height: 1.65;">
+          The revival of Don Newkirk's 1987 orthography is an open community effort. Join linguists, developers, and Deaf community members on Discord to discuss Unicode adaptation, font metrics, dictionary expansion, and web tools!
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a href="https://discord.gg/rfrem9f29" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: #4f46e5; border-color: #6366f1; padding: 0.8rem 1.6rem; font-size: 0.95rem; text-decoration: none;">
+            <i class="fa-brands fa-discord"></i> Join Discord Server
+          </a>
+          <a href="https://github.com/nulpoints/nulpoints.github.io" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 0.8rem 1.4rem; font-size: 0.95rem;">
+            <i class="fa-brands fa-github"></i> View GitHub Repository
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER & COLOPHON -->
+  <footer class="revival-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>The SignFont Revival Project</h4>
+          <p>
+            An ongoing community-driven digital preservation initiative dedicated to documenting, reviving, and developing open-source web tools for Don Newkirk's 1987 American Sign Language orthography.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-primary); margin-bottom: 0.75rem;">
+            Created by Deaf linguist Don Newkirk (1987) · Active Community Revival (Work in Progress)
+          </div>
+          <div>
+            <a href="https://discord.gg/rfrem9f29" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #a5b4fc; text-decoration: none; font-weight: 500;">
+              <i class="fa-brands fa-discord" style="color: #818cf8;"></i> Signed Conlangs Discord Server
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>SignFont Applications</h4>
+          <ul class="footer-links">
+            <li><a href="./dictionary.html">Bidirectional Dictionary</a></li>
+            <li><a href="./keyboard.html">Virtual Keyboard</a></li>
+            <li><a href="./flashcards.html">Interactive Flashcards</a></li>
+            <li><a href="./convert.html">Unicode Converter</a></li>
+            <li><a href="./crisscross.html">Criss-Cross Puzzle Generator</a></li>
+            <li><a href="../render/index.html">Cherology PNG Render Studio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community &amp; Other Suites</h4>
+          <ul class="footer-links">
+            <li><a href="https://discord.gg/rfrem9f29" target="_blank" rel="noopener noreferrer" style="color: #a5b4fc; font-weight: 600;"><i class="fa-brands fa-discord"></i> Join Revival Discord</a></li>
+            <li><a href="../SLD/dictionary.html">SLD Transcription Suite</a></li>
+            <li><a href="../elis/index.html">ELiS (Escrita das Línguas de Sinais)</a></li>
+            <li><a href="../ASLWrite/keyboard.html">ASLwrite Orthography</a></li>
+            <li><a href="../index.html">Complete Notation Portal</a></li>
+            <li><a href="https://github.com/nulpoints/nulpoints.github.io" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repository</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Nulpoints Sign Notation Portal · Dedicated to Deaf linguistic preservation.
+        </div>
+        <div>
+          <a href="#top" style="color: var(--text-muted); text-decoration: none;"><i class="fa-solid fa-arrow-up"></i> Back to Top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT FOR INTERACTIVE WORKBENCH & UNICODE MAPPER -->
+  <script>
+    // Initialize KeymanWeb for SignFont JavaScript Keyboard
+    if (typeof keyman !== 'undefined') {
+      try {
+        keyman.init({ attachType: 'auto' });
+        keyman.addKeyboards({
+          name: 'SignFont',
+          id: 'signfont',
+          filename: './signfont.js',
+          version: '1.0',
+          language: [{
+            name: 'SignFont',
+            id: 'en',
+            region: 'us'
+          }]
+        });
+      } catch (err) {
+        console.warn('KeymanWeb init notice:', err);
+      }
+    }
+
+    // Unicode Mapping Dictionary from jan Olipija's SignFontUnicode.json
+    const UNICODE_MAP = {
+      "A": "ᐸ", "B": "ᐳ", "C": "ⵢ", "D": "ᐲ", "E": "Ṿ", "F": "ᘐ", "G": "ᕤ", "H": "ꕊ",
+      "I": "ᘖ", "J": "ᘕ", "K": "≈", "L": "☓", "M": "ⴳ", "N": "¦", "O": "¦ᐨ", "P": "⸝",
+      "Q": "ₒ", "R": "℩", "S": "⁊", "T": "℩⸝", "U": "⁊⸝", "V": "ʟ", "W": "ꞃ", "X": "ѵ",
+      "Y": "⩝", "Z": "⊥", "Ã": "|˘", "Ï": "Ж˘", "Ô": "ᐯ˘", "a": "റ", "b": "Π", "c": "С",
+      "d": "∣", "e": "Ω", "f": "ᗐ", "g": "⊃", "h": "⫪", "i": "Һ", "j": "Ч", "k": "७",
+      "l": "⫛", "m": "爪", "n": "ቨ", "o": "О", "p": "Ж", "q": "ᕬ", "r": "୪", "s": "ര",
+      "t": "൪", "u": "ᐯ", "v": "⁼", "w": "ᣛ", "x": "ᙾ", "y": "ᴺ", "z": "⁷", "0": "ᨓ",
+      "1": "ᖍ", "2": "ᒙ", "3": "⦣", "4": "ᒜ", "5": "ᒍ", "6": "⩇", "7": "ᒐ", "8": "ᑯ",
+      "9": "ɤ", "!": "ⵀ", "\"": "ⴱ", "#": "ⵚ", "$": "ⵕ", "%": "Ȏ", "&": "Ơ̮", "(": "ᓂ",
+      ")": "ᓇ", "*": "ⴲ", "+": "◷", "/": "ᖌ", ":": "ᑲ", ";": "ᕟ", "<": "Э", "=": "ᕞ",
+      ">": "ᗫ", "?": "⍰", "@": "ᗠ", "[": "⍃", "\\": "⍌", "]": "⍄", "^": "⍓", "_": "⦵",
+      "`": "◫", "{": "ᗟ", "|": "⌽", "}": "ᗥ", "~": "Ø", " ": " "
+    };
+
+    const SYMBOL_CATEGORIES = {
+      'a': 'Handshape: Fist (A)',
+      'b': 'Handshape: Flat hand (B)',
+      'c': 'Handshape: Cupped hand (C)',
+      'd': 'Handshape: Pointing 1',
+      'e': 'Handshape: Fingerspelling E',
+      'f': 'Handshape: W / 3-finger spread',
+      'g': 'Handshape: G (Index & Thumb)',
+      'h': 'Handshape: H/U (Index & Middle)',
+      'i': 'Handshape: I (Pinky)',
+      'j': 'Handshape: Horns (Index & Pinky)',
+      'k': 'Handshape: K/P',
+      'l': 'Handshape: Middle finger extended',
+      'm': 'Handshape: M (3 touching)',
+      'n': 'Handshape: 4 (Four spread)',
+      'o': 'Handshape: O (Thumb loop)',
+      'p': 'Handshape: 5 (Open spread)',
+      'q': 'Handshape: 8 (Middle loop)',
+      'r': 'Handshape: R (Crossed)',
+      's': 'Handshape: S (Fist over thumb)',
+      't': 'Handshape: T (Thumb under index)',
+      'u': 'Handshape: V (Index & middle spread)',
+      'P': 'Diacritic: Thumb extended parallel',
+      'Q': 'Diacritic: Baby-O loop',
+      'R': 'Diacritic: Curled fingers',
+      'S': 'Diacritic: Proximal bent fingers',
+      'T': 'Diacritic: Thumb extended, fingers curled',
+      'U': 'Diacritic: Thumb extended, fingers bent',
+      'V': 'Diacritic: Pinky extended',
+      '!': 'Action Area: Palm side',
+      '"': 'Action Area: Back side',
+      '#': 'Action Area: Palm side of fingers',
+      '$': 'Action Area: Heel of hand',
+      '%': 'Action Area: Radial edge',
+      '&': 'Action Area: Ulnar edge',
+      '(': 'Action Area: Distal tip',
+      ')': 'Action Area: Elbow end',
+      '*': 'Action Area: Space between thumb/digits',
+      '+': 'Action Area: Interdigital space',
+      '/': 'Location: Ipsilateral Temple',
+      '0': 'Location: Forehead',
+      '1': 'Location: Contralateral Temple',
+      '2': 'Location: Ipsilateral Ear',
+      '3': 'Location: Nose',
+      '4': 'Location: Contralateral Ear',
+      '5': 'Location: Ipsilateral Cheek',
+      '6': 'Location: Chin / Mouth',
+      '7': 'Location: Contralateral Cheek',
+      '8': 'Location: Ipsilateral Shoulder',
+      '9': 'Location: Sternum / Chest',
+      ':': 'Location: Contralateral Shoulder',
+      ';': 'Location: Ipsilateral Abdomen',
+      '<': 'Location: Middle Abdomen',
+      '=': 'Location: Contralateral Abdomen',
+      'A': 'Movement: Move ipsilateral',
+      'B': 'Movement: Move contralateral',
+      'C': 'Movement: Lateral oscillation',
+      'D': 'Movement: Move upward',
+      'E': 'Movement: Move downward',
+      'F': 'Movement: Move toward body',
+      'G': 'Movement: Move away from body',
+      'H': 'Movement: Circular path',
+      'I': 'Movement: Wrist twist inward',
+      'J': 'Movement: Wrist twist outward',
+      'K': 'Movement: Finger wiggle',
+      'L': 'Movement: Contact / Touch',
+      'M': 'Movement: Continuous contact',
+      'N': 'Movement: Pause / Virtual contact',
+      'y': 'Modifier: Sequential Repetition',
+      'v': 'Modifier: Dual hands simultaneous',
+      'w': 'Modifier: Dual hands alternating',
+      'x': 'Modifier: Dual hands retrograde',
+      'z': 'Modifier: Tense emphasis'
+    };
+
+    let currentSpecimenAscii = 'aQ!/1Hvy';
+
+    function asciiToUnicode(asciiStr) {
+      let result = '';
+      for (let char of asciiStr) {
+        result += UNICODE_MAP[char] || char;
+      }
+      return result;
+    }
+
+    function updateWorkbench(asciiStr) {
+      const liveGlyph = document.getElementById('liveGlyphPreview');
+      const liveUnicode = document.getElementById('liveUnicodePreview');
+      const breakdownBox = document.getElementById('liveBreakdownContainer');
+
+      if (!liveGlyph || !liveUnicode || !breakdownBox) return;
+
+      currentSpecimenAscii = asciiStr;
+      liveGlyph.textContent = asciiStr || ' ';
+      liveUnicode.textContent = asciiToUnicode(asciiStr) || ' ';
+
+      // Render breakdown tokens with visual glyph and linguistic role (no raw ASCII code)
+      breakdownBox.innerHTML = '';
+      if (!asciiStr) return;
+
+      for (let i = 0; i < asciiStr.length; i++) {
+        const char = asciiStr[i];
+        const desc = SYMBOL_CATEGORIES[char] || 'Phonological Element';
+        const span = document.createElement('span');
+        span.className = 'breakdown-token';
+        span.innerHTML = `<span style="font-family: var(--font-sign); font-size: 1.3rem; color: var(--gold-light); vertical-align: middle; margin-right: 0.35rem;">${char}</span> <span style="font-weight: 500;">${desc}</span>`;
+        breakdownBox.appendChild(span);
+      }
+    }
+
+    function loadSpecimen(asciiStr, glossName, description, location) {
+      const tester = document.getElementById('signfontTesterInput');
+      if (tester) {
+        tester.value = asciiStr;
+      }
+      updateWorkbench(asciiStr);
+
+      // Also update hero specimen plaque
+      const heroGlyph = document.getElementById('heroSignGlyph');
+      const heroUni = document.getElementById('heroSignUnicode');
+      const plaqueWord = document.getElementById('plaqueGloss');
+      const heroDesc = document.getElementById('heroSignDesc');
+      const heroLoc = document.getElementById('heroSignLoc');
+
+      if (heroGlyph) heroGlyph.textContent = asciiStr;
+      if (heroUni) heroUni.textContent = asciiToUnicode(asciiStr);
+      if (plaqueWord && glossName) plaqueWord.textContent = glossName;
+      if (heroDesc && description) heroDesc.textContent = description;
+      if (heroLoc && location) heroLoc.textContent = location;
+    }
+
+    function clearTester() {
+      const tester = document.getElementById('signfontTesterInput');
+      if (tester) {
+        tester.value = '';
+        tester.focus();
+      }
+      updateWorkbench('');
+    }
+
+    function copySignfontText() {
+      const tester = document.getElementById('signfontTesterInput');
+      const text = tester ? tester.value : currentSpecimenAscii;
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied SignFont text to clipboard: ' + text);
+      });
+    }
+
+    function copySignUnicode() {
+      const unicodeText = asciiToUnicode(currentSpecimenAscii);
+      if (!unicodeText) return;
+      navigator.clipboard.writeText(unicodeText).then(() => {
+        alert('Copied SignFont Unicode symbols to clipboard: ' + unicodeText);
+      });
+    }
+
+    function toggleKeymanOSK() {
+      if (typeof keyman !== 'undefined' && keyman.osk) {
+        if (typeof keyman.osk.isEnabled === 'function' && keyman.osk.isEnabled()) {
+          keyman.osk.hide();
+        } else if (typeof keyman.osk.show === 'function') {
+          keyman.osk.show();
+        }
+      } else {
+        alert('SignFont Keyman keyboard is active. Type on your physical keyboard to produce SignFont characters.');
+      }
+    }
+
+    // Initialize workbench and event listeners on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const tester = document.getElementById('signfontTesterInput');
+      if (tester) {
+        tester.value = 'aQ!/1Hvy';
+        ['input', 'keyup', 'change', 'paste', 'propertychange'].forEach(evt => {
+          tester.addEventListener(evt, () => {
+            updateWorkbench(tester.value);
+          });
+        });
+      }
+      loadSpecimen('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion', 'Both Temples (/ 1)');
+    });
+  </script>
+</body>
+
+</html>

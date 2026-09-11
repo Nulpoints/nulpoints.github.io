@@ -33,15 +33,19 @@ A high-fidelity suite designed for parsing, analyzing, and looking up SLD notati
 ---
 
 ### 2. SignFont Suite (American Sign Language Notation)
-Explore Don Newkirk's 1987 SignFont writing system with modern virtual interfaces and learning tools.
+Explore Don Newkirk's 1987 SignFont writing system with modern virtual interfaces and learning tools. Active Unicode adaptation and tool development are coordinated on the [**Signed Conlangs & Linguistics Discord**](https://discord.gg/rfrem9f29).
 
 | App / Resource | Direct Launch Link | Key Features & Highlights |
 | :--- | :--- | :--- |
+| 🏛️ **The SignFont Revival Portal** | [**Explore Showcase & Exhibition 🚀**](./SignFont/index.html) | Celebratory showcase and advertising exhibition for Don Newkirk's 1987 Deaf-created ASL orthography, featuring interactive sign anatomy and live workbench sampler. |
 | 📖 **SignFont Bidirectional Dictionary** | [**Launch Dictionary 🚀**](./SignFont/dictionary.html) | Interactive bidirectional lookup matching English words to SignFont transcriptions, with smart Keyman keyboard toggling. |
 | ⌨️ **SignFont Keyboard** | [**Open Keyboard 🚀**](./SignFont/keyboard.html) | Virtual keymap layout for typing SignFont directly in-browser using custom font rendering. |
 | ⚡ **SignFont Flashcards Practice** | [**Practice Flashcards 🚀**](./SignFont/flashcards.html) | Memorize SignFont character meanings and visual configurations through dynamic flashcard practice. |
-| 📄 **SignFont Sheet Reference** | [**View Cheatsheet 🚀**](./SignFont/signfontsheet.md) | Structured markdown chart documenting SignFont keyboard mapping codes and descriptions. |
+| 🔄 **SignFont Unicode Converter** | [**Open Converter 🚀**](./SignFont/convert.html) | Bidirectional conversion between 1987 ASCII SignFont transcriptions and modern adapted Unicode characters. |
+| 🧩 **SignFont Criss-Cross Puzzles** | [**Play Criss-Cross 🚀**](./SignFont/crisscross.html) | Dynamic crossword puzzle generator for ASL vocabulary with printable worksheets and in-browser solving. |
 | 📘 **SignFont Explained Guide** | [**Download PDF 🚀**](./SignFont/SignFont%20Explained.pdf) | Original explanatory documentation on SignFont design principles, handshapes, and positions by Don Newkirk. |
+| 📜 **Original 1987 Handbook Notebook** | [**View on Internet Archive 🌐**](https://archive.org/details/micro_IA41153306_0396) | Historical archival notebook preserved in the ERIC microfiche archive (*Architect: Final Version Signfont Handbook*, Salk Institute / Emerson & Stern, 1987). |
+| 📁 **jan Olipija Unicode Project** | [**View Google Drive 🌐**](https://drive.google.com/drive/folders/19nUdJEk5-anopUbJUwfGY2w5-JbdNm9P?usp=sharing) | Research folder, character mappings, and schemas for SignFont Unicode adaptation by jan Olipija. |
 | 📦 **SignFont Custom Font** | [**Download Font (.TTF) 📥**](./SignFont/SignFontNew.ttf) | Custom-made TrueType Font designed for correct alignment and rendering of SignFont characters. |
 | ⌨️ **Keyman Keyboard File** | [**Download Keyboard (.KMP) 📥**](./SignFont/signfont.kmp) | Keyman Desktop/Mobile package for system-wide native typing of SignFont characters. |
 | 🖼️ **Physical Keyboard Layout** | [**View Layout Image 🖼️**](./SignFont/SignFontKeyboard.jpg) | High-resolution keymap illustration for quick visual typing reference. |
