@@ -126,6 +126,18 @@
       padding: 0 1.5rem;
       position: relative;
       z-index: 1;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+
+    /* Reset global heading gradients from external theme */
+    h1, h2, h3, h4, h5, h6, .hero-title, .section-title {
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: initial !important;
+      color: var(--text-heading) !important;
     }
 
     /* -------------------------------------------------------------
@@ -311,47 +323,53 @@
       margin-bottom: 2.5rem;
     }
 
-    .btn-primary {
+    .btn-primary, button.btn-primary, a.btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
       padding: 0.85rem 1.6rem;
-      background: var(--gold-primary);
-      color: #ffffff !important;
-      border: 1px solid transparent;
+      background: var(--gold-primary) !important;
+      background-color: var(--gold-primary) !important;
+      color: #0f172a !important; /* High contrast dark text on gold button */
+      border: 1px solid var(--gold-light) !important;
       border-radius: 6px;
-      font-weight: 600;
+      font-weight: 700 !important;
       font-size: 0.95rem;
-      text-decoration: none;
-      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);
+      text-decoration: none !important;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35) !important;
       transition: all 0.2s ease;
     }
 
-    .btn-primary:hover {
-      background: var(--gold-light);
+    .btn-primary:hover, button.btn-primary:hover, a.btn-primary:hover {
+      background: var(--gold-light) !important;
+      background-color: var(--gold-light) !important;
+      color: #000000 !important;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5) !important;
     }
 
-    .btn-secondary {
+    .btn-secondary, button.btn-secondary, a.btn-secondary {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
       padding: 0.85rem 1.5rem;
-      background: var(--surface-card);
+      background: var(--surface-card) !important;
+      background-color: var(--surface-card) !important;
       color: var(--text-heading) !important;
-      border: 1px solid var(--border-medium);
+      border: 1px solid var(--border-medium) !important;
       border-radius: 6px;
       font-weight: 600;
       font-size: 0.95rem;
-      text-decoration: none;
+      text-decoration: none !important;
       transition: all 0.2s ease;
     }
 
-    .btn-secondary:hover {
-      border-color: var(--text-muted);
+    .btn-secondary:hover, button.btn-secondary:hover, a.btn-secondary:hover {
+      border-color: var(--gold-primary) !important;
+      color: var(--gold-light) !important;
       transform: translateY(-2px);
-      background: var(--surface-elevated);
+      background: var(--surface-elevated) !important;
+      background-color: var(--surface-elevated) !important;
     }
 
     /* Sign Hero Card (Right Column) */

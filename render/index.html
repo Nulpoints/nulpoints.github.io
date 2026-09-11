@@ -22,6 +22,27 @@
   <link rel="stylesheet" href="../theme.css">
 
   <style>
+    @font-face {
+      font-family: 'SignFont New';
+      src: url('../SignFont/SignFontNew.ttf') format('truetype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Elis2';
+      src: url('../elis/Elis2.ttf') format('truetype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'ASLWrite';
+      src: url('../ASLWrite/ASLWrite1.7.otf') format('opentype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'HamNoSysUnicode';
+      src: url('https://vhg.cmp.uea.ac.uk/tech/hamnosys/HamNoSysUnicode.ttf') format('truetype');
+      font-display: swap;
+    }
+
     :root {
       --bg-gradient: linear-gradient(135deg, #0b1120 0%, #1e1b4b 50%, #0f172a 100%);
       --glass-bg: rgba(30, 41, 59, 0.72);
@@ -502,7 +523,7 @@
       resize: vertical;
       outline: none;
       transition: var(--transition-smooth);
-      font-family: inherit;
+      font-family: 'SignFont New', sans-serif;
     }
 
     .render-textarea:focus {
@@ -800,8 +821,8 @@
       border-radius: var(--radius-lg);
       border: 1px solid var(--glass-border);
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: safe center;
+      justify-content: safe center;
       overflow: auto;
       padding: 1.25rem;
       transition: var(--transition-smooth);
@@ -847,10 +868,10 @@
     /* Live HTML/Font Preview Box */
     .live-preview-box {
       display: inline-block;
-      max-width: 100%;
-      word-break: break-word;
-      white-space: pre-wrap;
-      line-height: 1.1;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      margin: auto;
+      line-height: 1.15;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
       transition: box-shadow 0.2s ease;
       transform-origin: center center;
@@ -1733,10 +1754,10 @@
             <div class="control-item">
               <label class="control-label" for="max-width-range">
                 <span><i class="fa-solid fa-arrows-left-right-to-line"></i> Max Width (Wrap)</span>
-                <span id="max-width-val" class="val-display">0 (Off)</span>
+                <span id="max-width-val" class="val-display">500 px</span>
               </label>
               <div class="range-wrap">
-                <input type="range" id="max-width-range" class="custom-range" min="0" max="2500" step="50" value="0">
+                <input type="range" id="max-width-range" class="custom-range" min="0" max="2500" step="50" value="500">
               </div>
             </div>
 
@@ -1887,7 +1908,7 @@
     // State Variables
     let currentBlob = null;
     let currentPngBytes = null;
-    let activeFontFamily = 'inherit';
+    let activeFontFamily = 'SignFont New';
     let currentAlign = 'center';
     let currentViewMode = 'live'; // 'live' | 'server'
     let isRawInputMode = false;
@@ -1955,12 +1976,28 @@
     // ==========================================
     // 1. Dynamic Font Loading via FontFace API
     // ==========================================
+    const KNOWN_FONTS = {
+      'signfontnew': { family: 'SignFont New', localUrl: '../SignFont/SignFontNew.ttf' },
+      'signfontwithunicode': { family: 'SignFont New', localUrl: '../SignFont/SignFontNew.ttf' },
+      'elis2': { family: 'Elis2', localUrl: '../elis/Elis2.ttf' },
+      'aslwrite': { family: 'ASLWrite', localUrl: '../ASLWrite/ASLWrite1.7.otf' },
+      'hamnosysunicode': { family: 'HamNoSysUnicode', localUrl: 'https://vhg.cmp.uea.ac.uk/tech/hamnosys/HamNoSysUnicode.ttf' }
+    };
+
     async function loadPreviewFont(fontId) {
       if (!fontId || fontId === 'default') {
-        activeFontFamily = 'inherit';
+        activeFontFamily = 'sans-serif';
         applyFontToUI(activeFontFamily);
         fontStatusText.textContent = 'System Default Font';
-        return 'inherit';
+        return activeFontFamily;
+      }
+
+      if (KNOWN_FONTS[fontId]) {
+        const known = KNOWN_FONTS[fontId];
+        activeFontFamily = known.family;
+        fontStatusText.textContent = `Loaded: ${known.family}`;
+        applyFontToUI(activeFontFamily);
+        return activeFontFamily;
       }
 
       const familyName = `CustomFont_${fontId}`;
@@ -1986,7 +2023,6 @@
           fontStatusText.textContent = `Loaded: ${fontId}`;
           return familyName;
         } else {
-          // Fallback to CSS @font-face rule
           injectCssFontFace(familyName, fontUrl);
           loadedFontFaces.set(fontId, familyName);
           activeFontFamily = familyName;
@@ -1996,26 +2032,10 @@
         }
       } catch (err) {
         console.warn(`Could not load web font for ${fontId} from API:`, err);
-        // Secondary fallback to local font if SignFont
-        if (fontId === 'signfontnew' || fontId === 'signfontwithunicode') {
-          try {
-            const localUrl = '../SignFont/SignFontNew.ttf';
-            const localFont = new FontFace(familyName, `url("${localUrl}")`);
-            const loadedLocal = await localFont.load();
-            document.fonts.add(loadedLocal);
-            loadedFontFaces.set(fontId, familyName);
-            activeFontFamily = familyName;
-            applyFontToUI(familyName);
-            fontStatusText.textContent = `Loaded (Local): ${fontId}`;
-            return familyName;
-          } catch (e2) {
-            console.error('Local font fallback failed:', e2);
-          }
-        }
-        activeFontFamily = 'inherit';
-        applyFontToUI('inherit');
-        fontStatusText.textContent = `Font: ${fontId} (Fallback)`;
-        return 'inherit';
+        activeFontFamily = 'SignFont New';
+        applyFontToUI(activeFontFamily);
+        fontStatusText.textContent = `Font: ${fontId}`;
+        return activeFontFamily;
       }
     }
 
@@ -2037,9 +2057,9 @@
 
     function applyFontToUI(familyName) {
       if (!isRawInputMode) {
-        textInput.style.fontFamily = `'${familyName}', 'Space Grotesk', sans-serif`;
+        textInput.style.fontFamily = `'${familyName}', sans-serif`;
       }
-      livePreviewBox.style.fontFamily = `'${familyName}', 'Space Grotesk', sans-serif`;
+      livePreviewBox.style.fontFamily = `'${familyName}', sans-serif`;
       updateLivePreview();
     }
 
@@ -2055,9 +2075,98 @@
         fontModeToggle.classList.add('active');
         fontModeLabel.textContent = 'Font Glyphs';
         textInput.classList.remove('raw-mode');
-        textInput.style.fontFamily = `'${activeFontFamily}', 'Space Grotesk', sans-serif`;
+        textInput.style.fontFamily = `'${activeFontFamily}', sans-serif`;
       }
     });
+
+    // Helper: Wrap text by words at maxTextWidth matching server PIL textwrap behavior
+    function wrapTextToLines(text, activeFont, fontSize, padding, maxWidth) {
+      if (!text) return '';
+      if (maxWidth <= 0) {
+        return text;
+      }
+      const maxTextWidth = Math.max(10, maxWidth - padding * 2);
+      let canvas, ctx;
+      try {
+        canvas = document.createElement('canvas');
+        ctx = canvas.getContext('2d');
+        ctx.font = `${fontSize}px "${activeFont}", sans-serif`;
+      } catch (e) {
+        return text;
+      }
+
+      const paragraphs = text.split('\n');
+      const wrappedLines = [];
+
+      paragraphs.forEach(para => {
+        if (!para) {
+          wrappedLines.push('');
+          return;
+        }
+        const words = para.split(' ');
+        let currentLine = '';
+
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i];
+          const testLine = currentLine ? `${currentLine} ${word}` : word;
+          let textWidth = 0;
+          try {
+            textWidth = ctx.measureText(testLine).width;
+          } catch (me) {
+            textWidth = testLine.length * (fontSize * 0.6);
+          }
+
+          // Only wrap to next line if adding word exceeds width and we already have words on this line
+          if (textWidth > maxTextWidth && currentLine) {
+            wrappedLines.push(currentLine);
+            currentLine = word;
+          } else {
+            currentLine = testLine;
+          }
+        }
+        if (currentLine) {
+          wrappedLines.push(currentLine);
+        }
+      });
+
+      return wrappedLines.join('\n');
+    }
+
+    function getLineMetrics(text, activeFont, fontSize, padding, maxWidth) {
+      const wrappedText = wrapTextToLines(text, activeFont, fontSize, padding, maxWidth);
+      let canvas, ctx;
+      try {
+        canvas = document.createElement('canvas');
+        ctx = canvas.getContext('2d');
+        ctx.font = `${fontSize}px "${activeFont}", sans-serif`;
+      } catch (e) {
+        // fallback
+      }
+      
+      const lines = wrappedText.split('\n');
+      let maxLineWidth = 0;
+      let totalTextHeight = 0;
+      const lineMetrics = lines.map(line => {
+        let w = 0;
+        let ascent = fontSize * 0.8;
+        let descent = fontSize * 0.2;
+        if (line && ctx) {
+          try {
+            const m = ctx.measureText(line);
+            w = m.width;
+            ascent = m.actualBoundingBoxAscent || (fontSize * 0.8);
+            descent = m.actualBoundingBoxDescent || (fontSize * 0.2);
+          } catch (me) {
+            w = line.length * (fontSize * 0.6);
+          }
+        }
+        if (w > maxLineWidth) maxLineWidth = w;
+        const h = ascent + descent;
+        totalTextHeight += h;
+        return { line, width: w, ascent, descent, height: h };
+      });
+      return { wrappedText, lineMetrics, maxLineWidth, totalTextHeight };
+    }
 
     // ==========================================
     // 2. Client-Side Instant Live Preview
@@ -2075,28 +2184,27 @@
       previewPlaceholder.style.display = 'none';
 
       // Apply live styling directly in the webapp
-      const fontSize = fontSizeRange.value;
-      const padding = paddingRange.value;
+      const fontSize = parseInt(fontSizeRange.value, 10);
+      const padding = parseInt(paddingRange.value, 10);
       const maxWidth = parseInt(maxWidthRange.value, 10);
       const isTransparent = bgTransparentToggle.checked;
       const textHex = textColorInput.value.replace('#', '') || 'ffffff';
       const bgHex = bgColorInput.value.replace('#', '') || '000000';
 
-      livePreviewBox.textContent = text;
-      livePreviewBox.style.fontFamily = `'${activeFontFamily}', 'Space Grotesk', sans-serif`;
+      const wrappedText = wrapTextToLines(text, activeFontFamily, fontSize, padding, maxWidth);
+
+      livePreviewBox.textContent = wrappedText;
+      livePreviewBox.style.fontFamily = `'${activeFontFamily}', sans-serif`;
       livePreviewBox.style.fontSize = `${fontSize}px`;
       livePreviewBox.style.padding = `${padding}px`;
       livePreviewBox.style.color = `#${textHex}`;
       livePreviewBox.style.backgroundColor = isTransparent ? 'transparent' : `#${bgHex}`;
       livePreviewBox.style.textAlign = currentAlign;
-      
-      if (maxWidth > 0) {
-        livePreviewBox.style.maxWidth = `${maxWidth}px`;
-        livePreviewBox.style.width = '100%';
-      } else {
-        livePreviewBox.style.maxWidth = 'none';
-        livePreviewBox.style.width = 'auto';
-      }
+      livePreviewBox.style.whiteSpace = 'pre';
+      livePreviewBox.style.wordBreak = 'normal';
+      livePreviewBox.style.overflowWrap = 'normal';
+      livePreviewBox.style.maxWidth = 'none';
+      livePreviewBox.style.width = 'max-content';
 
       if (currentViewMode === 'live') {
         livePreviewBox.style.display = 'inline-block';
@@ -2187,28 +2295,16 @@
       try {
         const fontSize = parseInt(fontSizeRange.value, 10);
         const padding = parseInt(paddingRange.value, 10);
+        const maxWidth = parseInt(maxWidthRange.value, 10);
         const isTransparent = bgTransparentToggle.checked;
         const textHex = textColorInput.value.replace('#', '') || 'ffffff';
         const bgHex = bgColorInput.value.replace('#', '') || '000000';
 
+        const { lineMetrics, maxLineWidth, totalTextHeight } = getLineMetrics(text, activeFontFamily, fontSize, padding, maxWidth);
+
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         const fontStr = `${fontSize}px "${activeFontFamily}", sans-serif`;
-        ctx.font = fontStr;
-
-        const lines = text.split('\n');
-        let maxLineWidth = 0;
-        let totalTextHeight = 0;
-        const lineMetrics = lines.map(line => {
-          const m = ctx.measureText(line);
-          const w = m.width;
-          if (w > maxLineWidth) maxLineWidth = w;
-          const ascent = m.actualBoundingBoxAscent || (fontSize * 0.8);
-          const descent = m.actualBoundingBoxDescent || (fontSize * 0.2);
-          const h = ascent + descent;
-          totalTextHeight += h;
-          return { line, width: w, ascent, descent, height: h };
-        });
 
         const width = Math.max(32, Math.round(maxLineWidth + padding * 2));
         const height = Math.max(32, Math.round(totalTextHeight + padding * 2));
@@ -2233,7 +2329,9 @@
             x = width - padding - item.width;
           }
           const baselineY = currentY + item.ascent;
-          ctx.fillText(item.line, x, baselineY);
+          if (item.line) {
+            ctx.fillText(item.line, x, baselineY);
+          }
           currentY += item.height;
         });
 
@@ -2678,27 +2776,35 @@
       const val = e.target.value;
       if (!val) return;
 
-      if (val.startsWith('signfont:')) {
-        fontSelect.value = 'signfontnew';
-        textInput.value = val.replace('signfont:', '');
-      } else if (val.startsWith('elis:')) {
-        fontSelect.value = 'elis2';
-        textInput.value = val.replace('elis:', '');
-      } else if (val.startsWith('aslwrite:')) {
-        fontSelect.value = 'aslwrite';
-        textInput.value = val.replace('aslwrite:', '');
-      } else if (val.startsWith('hamnosysunicode:')) {
-        fontSelect.value = 'hamnosysunicode';
-        textInput.value = val.replace('hamnosysunicode:', '');
-      } else if (val.startsWith('fairfaxhd:')) {
-        fontSelect.value = 'fairfaxhd';
-        textInput.value = val.replace('fairfaxhd:', '');
+      const colonIdx = val.indexOf(':');
+      if (colonIdx !== -1) {
+        const prefix = val.slice(0, colonIdx);
+        const sampleText = val.slice(colonIdx + 1);
+        textInput.value = sampleText;
+
+        if (prefix === 'signfont') {
+          fontSelect.value = 'signfontnew';
+        } else if (prefix === 'elis') {
+          fontSelect.value = 'elis2';
+        } else if (prefix === 'aslwrite') {
+          fontSelect.value = 'aslwrite';
+        } else if (prefix === 'hamnosysunicode') {
+          fontSelect.value = 'hamnosysunicode';
+        } else if (prefix === 'fairfaxhd') {
+          fontSelect.value = 'fairfaxhd';
+        }
+      } else {
+        textInput.value = val;
       }
 
+      currentBlob = null;
       updateFontFilenameDisplay();
       updateTextStats();
       await loadPreviewFont(fontSelect.value);
       updateLivePreview();
+      if (currentViewMode === 'server') {
+        await triggerServerRender();
+      }
     });
 
     // Clear Text Button
@@ -2725,8 +2831,8 @@
       paddingRange.value = 16;
       paddingVal.textContent = '16 px';
 
-      maxWidthRange.value = 0;
-      maxWidthVal.textContent = '0 (Off)';
+      maxWidthRange.value = 500;
+      maxWidthVal.textContent = '500 px';
       currentAlign = 'center';
       alignControl.querySelectorAll('.segmented-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.align === 'center');
