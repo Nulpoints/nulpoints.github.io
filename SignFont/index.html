@@ -45,45 +45,58 @@
       --font-mono: 'JetBrains Mono', monospace;
       --font-sign: 'SignFont New', sans-serif;
 
-      --gold-primary: #d97706;
-      --gold-light: #f59e0b;
-      --gold-glow: rgba(245, 158, 11, 0.2);
+      --accent-primary: #6366f1;
+      --accent-light: #818cf8;
+      --accent-dark: #4f46e5;
+      --accent-glow: rgba(99, 102, 241, 0.22);
+      --glyph-color: #f8fafc;
+      --gold-primary: #6366f1;
+      --gold-light: #818cf8;
+      --gold-glow: rgba(99, 102, 241, 0.22);
       --vermilion: #e11d48;
-      --indigo-accent: #4f46e5;
+      --indigo-accent: #6366f1;
       --emerald-accent: #059669;
 
       /* Dark Theme (Default) */
       --page-bg: #090d16;
-      --surface-bg: #111827;
-      --surface-card: #162032;
+      --surface-bg: #0f172a;
+      --surface-card: #172033;
       --surface-elevated: #1e293b;
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-medium: rgba(255, 255, 255, 0.16);
-      --border-strong: rgba(245, 158, 11, 0.4);
+      --border-strong: rgba(99, 102, 241, 0.45);
       --text-heading: #f8fafc;
       --text-body: #cbd5e1;
       --text-muted: #94a3b8;
-      --specimen-bg: #0d131f;
-      --badge-bg: rgba(245, 158, 11, 0.12);
-      --badge-text: #fbbf24;
+      --specimen-bg: #0b1120;
+      --badge-bg: rgba(99, 102, 241, 0.14);
+      --badge-text: #a5b4fc;
       --shadow-elevation: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     }
 
     html[data-theme="light"] {
-      --page-bg: #f8f6f0;
+      --page-bg: #f8fafc;
       --surface-bg: #ffffff;
-      --surface-card: #fdfbf7;
-      --surface-elevated: #f1ede4;
+      --surface-card: #ffffff;
+      --surface-elevated: #f1f5f9;
       --border-subtle: rgba(0, 0, 0, 0.08);
-      --border-medium: rgba(0, 0, 0, 0.15);
-      --border-strong: rgba(217, 119, 6, 0.5);
-      --text-heading: #1c1917;
-      --text-body: #44403c;
-      --text-muted: #78716c;
-      --specimen-bg: #f4efe6;
-      --badge-bg: rgba(217, 119, 6, 0.1);
-      --badge-text: #b45309;
-      --shadow-elevation: 0 10px 30px -10px rgba(120, 113, 108, 0.2);
+      --border-medium: rgba(0, 0, 0, 0.14);
+      --border-strong: rgba(79, 70, 229, 0.4);
+      --text-heading: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --specimen-bg: #f8fafc;
+      --glyph-color: #0f172a;
+      --accent-primary: #4f46e5;
+      --accent-light: #6366f1;
+      --accent-dark: #3730a3;
+      --accent-glow: rgba(79, 70, 229, 0.15);
+      --badge-bg: rgba(79, 70, 229, 0.08);
+      --badge-text: #4338ca;
+      --gold-primary: #4f46e5;
+      --gold-light: #6366f1;
+      --gold-glow: rgba(79, 70, 229, 0.15);
+      --shadow-elevation: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -142,7 +155,7 @@
 
     /* -------------------------------------------------------------
        TOP NAVIGATION BAR
-    ---------------------------------------------------------------- */
+     ---------------------------------------------------------------- */
     .revival-nav {
       position: sticky;
       top: 0;
@@ -155,7 +168,7 @@
     }
 
     html[data-theme="light"] .revival-nav {
-      background: rgba(248, 246, 240, 0.88);
+      background: rgba(248, 250, 252, 0.9);
     }
 
     .nav-inner {
@@ -177,7 +190,7 @@
     .brand-glyph {
       font-family: var(--font-sign);
       font-size: 1.85rem;
-      color: var(--gold-light);
+      color: var(--glyph-color);
       background: var(--surface-card);
       border: 1px solid var(--border-medium);
       border-radius: 8px;
@@ -212,7 +225,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--gold-primary);
+      color: var(--accent-primary);
       font-weight: 600;
     }
 
@@ -232,7 +245,7 @@
     }
 
     .nav-links a:hover {
-      color: var(--gold-light);
+      color: var(--accent-light);
     }
 
     .nav-cta {
@@ -251,13 +264,13 @@
     }
 
     .nav-cta:hover {
-      border-color: var(--gold-primary);
+      border-color: var(--accent-primary);
       transform: translateY(-1px);
     }
 
     /* -------------------------------------------------------------
        HERO EXHIBITION SECTION
-    ---------------------------------------------------------------- */
+     ---------------------------------------------------------------- */
     .hero-section {
       padding: 4.5rem 0 3.5rem;
       position: relative;
@@ -300,7 +313,7 @@
     .hero-title em {
       font-style: italic;
       font-weight: 400;
-      color: var(--gold-light);
+      color: var(--accent-light);
     }
 
     .hero-lead {
@@ -328,24 +341,24 @@
       align-items: center;
       gap: 0.6rem;
       padding: 0.85rem 1.6rem;
-      background: var(--gold-primary) !important;
-      background-color: var(--gold-primary) !important;
-      color: #0f172a !important; /* High contrast dark text on gold button */
-      border: 1px solid var(--gold-light) !important;
+      background: var(--accent-primary) !important;
+      background-color: var(--accent-primary) !important;
+      color: #ffffff !important;
+      border: 1px solid var(--accent-light) !important;
       border-radius: 6px;
       font-weight: 700 !important;
       font-size: 0.95rem;
       text-decoration: none !important;
-      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35) !important;
+      box-shadow: 0 4px 14px var(--accent-glow) !important;
       transition: all 0.2s ease;
     }
 
     .btn-primary:hover, button.btn-primary:hover, a.btn-primary:hover {
-      background: var(--gold-light) !important;
-      background-color: var(--gold-light) !important;
-      color: #000000 !important;
+      background: var(--accent-dark) !important;
+      background-color: var(--accent-dark) !important;
+      color: #ffffff !important;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5) !important;
+      box-shadow: 0 6px 20px var(--accent-glow) !important;
     }
 
     .btn-secondary, button.btn-secondary, a.btn-secondary {
@@ -365,8 +378,8 @@
     }
 
     .btn-secondary:hover, button.btn-secondary:hover, a.btn-secondary:hover {
-      border-color: var(--gold-primary) !important;
-      color: var(--gold-light) !important;
+      border-color: var(--accent-primary) !important;
+      color: var(--accent-primary) !important;
       transform: translateY(-2px);
       background: var(--surface-elevated) !important;
       background-color: var(--surface-elevated) !important;
@@ -387,7 +400,7 @@
       position: absolute;
       top: -10px;
       right: 20px;
-      background: var(--gold-primary);
+      background: var(--accent-primary);
       color: #fff;
       font-family: var(--font-mono);
       font-size: 0.65rem;
@@ -408,7 +421,7 @@
       font-size: 0.725rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--gold-primary);
+      color: var(--accent-primary);
       font-weight: 600;
     }
 
@@ -423,7 +436,7 @@
       font-family: var(--font-sign);
       font-size: 4rem;
       line-height: 1.2;
-      color: var(--gold-light);
+      color: var(--glyph-color);
       text-align: center;
       padding: 1.25rem 0;
       background: var(--specimen-bg);
@@ -464,7 +477,7 @@
 
     /* -------------------------------------------------------------
        INTERACTIVE SIGN TICKER / RIBBON
-    ---------------------------------------------------------------- */
+     ---------------------------------------------------------------- */
     .sign-ribbon-section {
       background: var(--surface-bg);
       border-top: 1px solid var(--border-subtle);
@@ -488,7 +501,7 @@
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--gold-primary);
+      color: var(--accent-primary);
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -508,14 +521,14 @@
     }
 
     .ribbon-item:hover {
-      border-color: var(--gold-primary);
+      border-color: var(--accent-primary);
       transform: translateY(-2px);
     }
 
     .ribbon-sign {
       font-family: var(--font-sign);
       font-size: 1.7rem;
-      color: var(--gold-light);
+      color: var(--glyph-color);
       line-height: 1;
     }
 
@@ -533,7 +546,7 @@
 
     /* -------------------------------------------------------------
        SECTION HEADERS & EDITORIAL ARCHITECTURE
-    ---------------------------------------------------------------- */
+     ---------------------------------------------------------------- */
     .section-padding {
       padding: 5rem 0;
     }
@@ -554,7 +567,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gold-primary);
+      color: var(--accent-primary);
       font-weight: 700;
       display: inline-flex;
       align-items: center;
@@ -580,7 +593,7 @@
 
     /* -------------------------------------------------------------
        HISTORICAL ORIGINS & TIMELINE
-    ---------------------------------------------------------------- */
+     ---------------------------------------------------------------- */
     .heritage-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -609,7 +622,7 @@
     }
 
     .heritage-quote {
-      border-left: 3px solid var(--gold-primary);
+      border-left: 3px solid var(--accent-primary);
       padding-left: 1.25rem;
       margin: 1.5rem 0;
       font-family: var(--font-display);
@@ -623,7 +636,7 @@
       font-family: var(--font-mono);
       font-size: 0.75rem;
       font-style: normal;
-      color: var(--gold-primary);
+      color: var(--accent-primary);
       margin-top: 0.5rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -665,11 +678,11 @@
       height: 24px;
       border-radius: 50%;
       background: var(--surface-bg);
-      border: 2px solid var(--gold-primary);
+      border: 2px solid var(--accent-primary);
       display: grid;
       place-items: center;
       font-size: 0.6rem;
-      color: var(--gold-primary);
+      color: var(--accent-primary);
       flex-shrink: 0;
       z-index: 1;
     }
@@ -677,7 +690,7 @@
     .node-text h4 {
       font-family: var(--font-mono);
       font-size: 0.85rem;
-      color: var(--gold-primary);
+      color: var(--accent-primary);
       margin-bottom: 0.2rem;
     }
 
@@ -690,7 +703,7 @@
 
     /* -------------------------------------------------------------
        INTERACTIVE ANATOMY & LIVE SPECIMEN EXPLORER
-    ---------------------------------------------------------------- */
+     ---------------------------------------------------------------- */
     .specimen-station {
       background: var(--surface-bg);
       border: 1px solid var(--border-medium);
@@ -717,7 +730,7 @@
 
     .anatomy-box.active,
     .anatomy-box:hover {
-      border-color: var(--gold-primary);
+      border-color: var(--accent-primary);
       background: var(--surface-elevated);
       transform: translateY(-2px);
     }
@@ -727,7 +740,7 @@
       font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--gold-primary);
+      color: var(--accent-primary);
       font-weight: 700;
       margin-bottom: 0.4rem;
     }
@@ -735,7 +748,7 @@
     .anatomy-char {
       font-family: var(--font-sign);
       font-size: 2.5rem;
-      color: var(--gold-light);
+      color: var(--glyph-color);
       line-height: 1.1;
       margin-bottom: 0.4rem;
     }
@@ -793,7 +806,7 @@
     }
 
     .input-row input:focus {
-      border-color: var(--gold-primary);
+      border-color: var(--accent-primary);
     }
 
     .sample-pill-list {
@@ -816,11 +829,21 @@
     }
 
     .sample-pill:hover {
-      border-color: var(--gold-primary);
-      color: var(--gold-light);
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
     }
 
     /* SignFont Interactive Tester & Keyman Integration */
+    .signfont-inline {
+      font-family: var(--font-sign) !important;
+      font-size: 1.2em;
+      color: var(--glyph-color);
+      display: inline-block;
+      line-height: 1;
+      vertical-align: middle;
+      padding: 0 0.1em;
+    }
+
     .tester-input-wrapper {
       margin-bottom: 0.75rem;
     }
@@ -838,7 +861,7 @@
       font-family: 'SignFont New', sans-serif !important;
       font-size: 2.2rem !important;
       line-height: 1.3;
-      color: var(--gold-light) !important;
+      color: var(--glyph-color) !important;
       outline: none;
       resize: vertical;
       letter-spacing: 0.04em;
@@ -846,10 +869,17 @@
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
+    .tester-textarea::placeholder,
+    html body textarea#signfontTesterInput::placeholder {
+      font-family: 'SignFont New', sans-serif !important;
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
     .tester-textarea:focus,
     html body textarea#signfontTesterInput:focus {
-      border-color: var(--gold-primary);
-      box-shadow: 0 0 0 3px var(--gold-glow);
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
     }
 
     /* Live Display Screen */
@@ -867,7 +897,7 @@
     .display-preview {
       font-family: var(--font-sign);
       font-size: 3.5rem;
-      color: var(--gold-light);
+      color: var(--glyph-color);
       text-align: center;
       line-height: 1.2;
       min-height: 80px;
@@ -903,13 +933,13 @@
     }
 
     .breakdown-token span.code {
-      color: var(--gold-light);
+      color: var(--accent-primary);
       font-weight: 700;
     }
 
     /* -------------------------------------------------------------
        THE 7 SIGNFONT APPLICATIONS & TOOLS GALLERY
-    ---------------------------------------------------------------- */
+     ---------------------------------------------------------------- */
     .tools-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -929,7 +959,7 @@
     }
 
     .tool-card:hover {
-      border-color: var(--gold-primary);
+      border-color: var(--accent-primary);
       transform: translateY(-4px);
       box-shadow: var(--shadow-elevation);
     }
@@ -960,7 +990,7 @@
       font-weight: 700;
     }
 
-    .tool-badge.dict { background: rgba(217, 119, 6, 0.15); color: #f59e0b; }
+    .tool-badge.dict { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
     .tool-badge.kb { background: rgba(79, 70, 229, 0.15); color: #818cf8; }
     .tool-badge.flash { background: rgba(225, 29, 72, 0.15); color: #fb7185; }
     .tool-badge.conv { background: rgba(5, 150, 105, 0.15); color: #34d399; }
@@ -1005,7 +1035,7 @@
     }
 
     .tool-features li i {
-      color: var(--gold-primary);
+      color: var(--accent-primary);
       font-size: 0.75rem;
     }
 
@@ -1027,14 +1057,14 @@
     }
 
     .tool-launch-btn:hover {
-      background: var(--gold-primary);
+      background: var(--accent-primary);
       color: #ffffff !important;
-      border-color: var(--gold-primary);
+      border-color: var(--accent-primary);
     }
 
     /* -------------------------------------------------------------
        DOWNLOADS & PRESERVATION ARCHIVE
-    ---------------------------------------------------------------- */
+     ---------------------------------------------------------------- */
     .download-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1066,7 +1096,7 @@
 
     .download-icon {
       font-size: 1.5rem;
-      color: var(--gold-primary);
+      color: var(--accent-primary);
       background: var(--surface-card);
       width: 44px;
       height: 44px;
@@ -1116,8 +1146,8 @@
     }
 
     .download-btn:hover {
-      border-color: var(--gold-primary);
-      color: var(--gold-light) !important;
+      border-color: var(--accent-primary);
+      color: var(--accent-primary) !important;
     }
 
     /* -------------------------------------------------------------
@@ -1279,9 +1309,9 @@
         </div>
 
         <div style="display: flex; align-items: center; gap: 1.5rem; font-size: 0.825rem; color: var(--text-muted);">
-          <span><i class="fa-solid fa-check" style="color: var(--gold-primary);"></i> 1,500+ Lexical Signs</span>
-          <span><i class="fa-solid fa-check" style="color: var(--gold-primary);"></i> Custom TrueType Font</span>
-          <span><i class="fa-solid fa-check" style="color: var(--gold-primary);"></i> Standard QWERTY Input</span>
+          <span><i class="fa-solid fa-check" style="color: var(--accent-primary);"></i> 1,500+ Lexical Signs</span>
+          <span><i class="fa-solid fa-check" style="color: var(--accent-primary);"></i> Custom TrueType Font</span>
+          <span><i class="fa-solid fa-check" style="color: var(--accent-primary);"></i> Standard QWERTY Input</span>
         </div>
       </div>
 
@@ -1426,6 +1456,31 @@
           </ul>
         </div>
       </div>
+
+      <!-- Original SignFont Origin Story Specimen -->
+      <div class="origin-story-card" style="margin-top: 2.5rem; background: var(--surface-bg); border: 1px solid var(--border-medium); border-radius: 12px; padding: 2.5rem; box-shadow: var(--shadow-elevation);">
+        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem;">
+          <div class="section-kicker" style="margin-bottom: 0.35rem;"><i class="fa-solid fa-scroll"></i> Original SignFont Text</div>
+          <h3 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--text-heading); margin: 0;">
+            The Origin Story of SignFont in the Original ASL
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
+            The authentic historical SignFont orthography transcription of the origin story, rendered in the SignFont font.
+          </p>
+        </div>
+
+        <div class="origin-story-text" id="originStoryContent" style="font-family: var(--font-sign); font-size: 1.15rem; line-height: 1.75; color: var(--text-body); columns: 2 340px; column-gap: 2.5rem; letter-spacing: 0.02em;">
+          <p style="margin-bottom: 1.25rem; break-inside: avoid;">? sighSfQohSt --s!NfQ-- p&amp;By. d(9LBL t(EGv n%0LDG oQ!b!LGy d(/LIG d!!Hwy dP%%LIxyAB. s!NfQ b#&quot;DLDy p(b!LDoS0L, b#&quot;DLDy u(b!LEy, b#&quot;DLDy oQ!b!MDEyA aP%Dwy pR!KEwy. bU!8FLy aP%IA k%%Hwy t(EGv iP!C, _ b!8SN pS!5LEoSy | d(9LBL u!!8SFuR-u!!G.</p>
+
+          <p style="margin-bottom: 1.25rem; break-inside: avoid;">d(9LBL b!!9PLFEv s&amp;b!LFv s&amp;%LJ!Lv s!NfQ d&amp;6SIDv, aP#%LGv dQ!b!MD. u&quot;N-s&amp;%HL s&quot;Gpvy k%%Hwy d(5LGL b&quot;&lt;Hv sahS dQiego pS&quot;AoS p!Hz p**LHv _ r(b!LGy, dP%%LABs, i&amp;b!LEy, oS&amp;0Gvy, oQ!b!LGy | d(5LGL pS&quot;AoS d#6LDGy, d(8SGA b!!MGFxy b&quot;Gv i(/LGy.</p>
+
+          <p style="margin-bottom: 1.25rem; break-inside: avoid;">b!!LIvy uR!57J h&quot;ahSdQbook t(EGv s&amp;b!LG9Pv p(b!LDoS0L s!NfQ d!!FdRvzz. b!!LIvy bU!9Lv uP&quot;N</p>
+
+          <p style="margin-bottom: 1.25rem; break-inside: avoid;">b&amp;!MFJ!. _ d!Jy, s!NfQ p&amp;KAy. bU!9Lv b&quot;!HL b&amp;!MFJ! b!:SGy d!!Hwy, _ bU!/Ly b&amp;%MGw-aP%%ABEyE, oS!Hwy, jP((LKAB. _ u!Jy, d&amp;b!Ly p&amp;KAy b&amp;&amp;EvyA. _ uP!Jy, dQ!b!LAy bU!9Lv s&quot;Gpvy d!!Hwy. p!o%HoSL b&quot;!HL d!!Hwy oS!o%L h&quot;ahSdQbook, d%%LyA s&quot;Gpzz aP%JA. iP!C bU!9Lv kErohSohhS, p&amp;KAy, oS!!LJxL.</p>
+
+          <p style="margin-bottom: 0; break-inside: avoid;">b!9MH u(b!LEy h&quot;ahSdQbook k&amp;%LHv. t(EGv a!d%MGFy. _ b&amp;&quot;MGE b&amp;!MFJ! uR!57J a!!LJv oQ!b!LGy, bU!9Lv b&quot;!HL d&quot;6LJ!v. u(3Ly d(9PN s!0LDd.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1447,35 +1502,35 @@
             <div class="anatomy-step">1. Handshape Prime</div>
             <div class="anatomy-char" id="anatHand">aQ</div>
             <div class="anatomy-name" id="anatHandName">Curled Fists (Baby-O)</div>
-            <div class="anatomy-desc">Base hand configuration from the 19 core handshape classes (a–u) with diacritic modifier.</div>
+            <div class="anatomy-desc">Base hand configuration from the 19 core handshape classes (<span class="signfont-inline">a</span>–<span class="signfont-inline">u</span>) with diacritic modifier.</div>
           </div>
 
           <div class="anatomy-box">
             <div class="anatomy-step">2. Action Surface</div>
             <div class="anatomy-char" id="anatAction">!</div>
             <div class="anatomy-name" id="anatActionName">Palm Side</div>
-            <div class="anatomy-desc">Active contact surface: palm side (!), back ("), radial edge (%), or interdigital space (+).</div>
+            <div class="anatomy-desc">Active contact surface: palm side (<span class="signfont-inline">!</span>), back (<span class="signfont-inline">"</span>), radial edge (<span class="signfont-inline">%</span>), or interdigital space (<span class="signfont-inline">+</span>).</div>
           </div>
 
           <div class="anatomy-box">
             <div class="anatomy-step">3. Body Location</div>
             <div class="anatomy-char" id="anatLoc">/ 1</div>
             <div class="anatomy-name" id="anatLocName">Both Temples</div>
-            <div class="anatomy-desc">Spatial landmark on head or torso (temples, nose, chin, chest, or neutral space).</div>
+            <div class="anatomy-desc">Spatial landmark on head or torso: temples (<span class="signfont-inline">/</span>), nose (<span class="signfont-inline">3</span>), chin (<span class="signfont-inline">6</span>), chest (<span class="signfont-inline">9</span>), or neutral space (<span class="signfont-inline">_</span>).</div>
           </div>
 
           <div class="anatomy-box">
             <div class="anatomy-step">4. Motion Vector</div>
             <div class="anatomy-char" id="anatMove">H</div>
             <div class="anatomy-name" id="anatMoveName">Circular Path</div>
-            <div class="anatomy-desc">3D movement trajectory: circular sweep (H), wrist twist (I/J), upward (D), or outward (G).</div>
+            <div class="anatomy-desc">3D movement trajectory: circular sweep (<span class="signfont-inline">H</span>), wrist twist (<span class="signfont-inline">I</span>/<span class="signfont-inline">J</span>), upward (<span class="signfont-inline">D</span>), or outward (<span class="signfont-inline">G</span>).</div>
           </div>
 
           <div class="anatomy-box">
             <div class="anatomy-step">5. Dynamic Modifier</div>
             <div class="anatomy-char" id="anatMod">vy</div>
             <div class="anatomy-name" id="anatModName">Dual Hands &amp; Repeated</div>
-            <div class="anatomy-desc">Both hands identical (v), alternating (w), tense emphasis (z), or repeated (y).</div>
+            <div class="anatomy-desc">Both hands identical (<span class="signfont-inline">v</span>), alternating (<span class="signfont-inline">w</span>), tense emphasis (<span class="signfont-inline">z</span>), or repeated (<span class="signfont-inline">y</span>).</div>
           </div>
         </div>
 
@@ -1484,7 +1539,7 @@
           <div class="workbench-input-group">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
               <label for="signfontTesterInput" style="font-weight: 600; color: var(--text-heading); font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">
-                <i class="fa-solid fa-keyboard" style="color: var(--gold-primary);"></i> Interactive Sign Tester (SignFont JS Keyboard):
+                <i class="fa-solid fa-keyboard" style="color: var(--accent-primary);"></i> Interactive Sign Tester (SignFont JS Keyboard):
               </label>
               <button id="toggleKeymanOskBtn" type="button" class="btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.775rem; gap: 0.35rem; cursor: pointer;" onclick="toggleKeymanOSK()">
                 <i class="fa-solid fa-table-cells"></i> <span id="oskBtnText">Toggle On-Screen Keyboard</span>
@@ -1493,7 +1548,7 @@
 
             <!-- SignFont Textarea (Displays directly in SignFont New font and receives Keyman typing) -->
             <div class="tester-input-wrapper">
-              <textarea id="signfontTesterInput" class="tester-textarea signfont-font" rows="2" placeholder="Type here using your keyboard (Keyman enabled)..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+              <textarea id="signfontTesterInput" class="tester-textarea signfont-font" rows="2" placeholder="_ d((Hwy, b&amp;&amp;BAy nT%%KEwy" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
             </div>
 
             <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
@@ -1509,7 +1564,7 @@
             </div>
 
             <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.5rem;">
-              <i class="fa-solid fa-bookmark" style="color: var(--gold-primary);"></i> Or select an ASL sign to test:
+              <i class="fa-solid fa-bookmark" style="color: var(--accent-primary);"></i> Or select an ASL sign to test:
             </label>
             <div class="sample-pill-list">
               <button class="sample-pill" onclick="loadSign('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion')">🎉 Celebrate</button>
@@ -1541,7 +1596,7 @@
           <!-- Live Output Screen -->
           <div class="live-display-screen">
             <div>
-              <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; text-align: center;">
+              <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; text-align: center;">
                 Rendered Sign
               </div>
               <div class="display-preview" id="liveGlyphPreview">aQ!/1Hvy</div>
@@ -1576,7 +1631,7 @@
           <div class="tool-card-top">
             <div class="tool-badge-row">
               <span class="tool-badge dict">1,500+ Entries</span>
-              <i class="fa-solid fa-book-bookmark tool-icon" style="color: var(--gold-light);"></i>
+              <i class="fa-solid fa-book-bookmark tool-icon" style="color: var(--accent-light);"></i>
             </div>
             <h3 class="tool-title">Bidirectional Dictionary</h3>
             <p class="tool-desc">
@@ -1919,9 +1974,16 @@
   <!-- SCRIPT FOR INTERACTIVE WORKBENCH & UNICODE MAPPER -->
   <script>
     // Initialize KeymanWeb for SignFont JavaScript Keyboard
+    let keymanAvailable = false;
     if (typeof keyman !== 'undefined') {
       try {
-        keyman.init({ attachType: 'auto' });
+        keyman.init({
+          attachType: 'auto',
+          ui: {
+            name: 'float',
+            right: true
+          }
+        });
         keyman.addKeyboards({
           name: 'SignFont',
           id: 'signfont',
@@ -1931,8 +1993,13 @@
             name: 'SignFont',
             id: 'en',
             region: 'us'
-          }]
+          }],
+          font: {
+            family: 'SignFont New',
+            source: ['./SignFontNew.ttf']
+          }
         });
+        keymanAvailable = true;
       } catch (err) {
         console.warn('KeymanWeb init notice:', err);
       }
@@ -2059,7 +2126,7 @@
         const desc = SYMBOL_CATEGORIES[char] || 'Phonological Element';
         const span = document.createElement('span');
         span.className = 'breakdown-token';
-        span.innerHTML = `<span style="font-family: var(--font-sign); font-size: 1.3rem; color: var(--gold-light); vertical-align: middle; margin-right: 0.35rem;">${char}</span> <span style="font-weight: 500;">${desc}</span>`;
+        span.innerHTML = `<span style="font-family: var(--font-sign); font-size: 1.3rem; color: var(--glyph-color); vertical-align: middle; margin-right: 0.35rem;">${char}</span> <span style="font-weight: 500;">${desc}</span>`;
         breakdownBox.appendChild(span);
       }
     }
@@ -2096,7 +2163,7 @@
 
     function copySignfontText() {
       const tester = document.getElementById('signfontTesterInput');
-      const text = tester ? tester.value : currentSignAscii;
+      const text = (tester && tester.value) ? tester.value : currentSignAscii;
       if (!text) return;
       navigator.clipboard.writeText(text).then(() => {
         alert('Copied SignFont text to clipboard: ' + text);
@@ -2104,37 +2171,111 @@
     }
 
     function copySignUnicode() {
-      const unicodeText = asciiToUnicode(currentSignAscii);
+      const tester = document.getElementById('signfontTesterInput');
+      const text = (tester && tester.value) ? tester.value : currentSignAscii;
+      const unicodeText = asciiToUnicode(text);
       if (!unicodeText) return;
       navigator.clipboard.writeText(unicodeText).then(() => {
         alert('Copied SignFont Unicode symbols to clipboard: ' + unicodeText);
       });
     }
 
-    function toggleKeymanOSK() {
+    function copyOriginStory() {
+      const storyText = `? sighSfQohSt --s!NfQ-- p&By. d(9LBL t(EGv n%0LDG oQ!b!LGy d(/LIG d!!Hwy dP%%LIxyAB. s!NfQ b#"DLDy p(b!LDoS0L, b#"DLDy u(b!LEy, b#"DLDy oQ!b!MDEyA aP%Dwy pR!KEwy. bU!8FLy aP%IA k%%Hwy t(EGv iP!C, _ b!8SN pS!5LEoSy | d(9LBL u!!8SFuR-u!!G.
+
+d(9LBL b!!9PLFEv s&b!LFv s&%LJ!Lv s!NfQ d&6SIDv, aP#%LGv dQ!b!MD. u"N-s&%HL s"Gpvy k%%Hwy d(5LGL b"<Hv sahS dQiego pS"AoS p!Hz p**LHv _ r(b!LGy, dP%%LABs, i&b!LEy, oS&0Gvy, oQ!b!LGy | d(5LGL pS"AoS d#6LDGy, d(8SGA b!!MGFxy b"Gv i(/LGy.
+
+b!!LIvy uR!57J h"ahSdQbook t(EGv s&b!LG9Pv p(b!LDoS0L s!NfQ d!!FdRvzz. b!!LIvy bU!9Lv uP"N
+
+b&!MFJ!. _ d!Jy, s!NfQ p&KAy. bU!9Lv b"!HL b&!MFJ! b!:SGy d!!Hwy, _ bU!/Ly b&%MGw-aP%%ABEyE, oS!Hwy, jP((LKAB. _ u!Jy, d&b!Ly p&KAy b&&EvyA. _ uP!Jy, dQ!b!LAy bU!9Lv s"Gpvy d!!Hwy. p!o%HoSL b"!HL d!!Hwy oS!o%L h"ahSdQbook, d%%LyA s"Gpzz aP%JA. iP!C bU!9Lv kErohSohhS, p&KAy, oS!!LJxL.
+
+b!9MH u(b!LEy h"ahSdQbook k&%LHv. t(EGv a!d%MGFy. _ b&"MGE b&!MFJ! uR!57J a!!LJv oQ!b!LGy, bU!9Lv b"!HL d"6LJ!v. u(3Ly d(9PN s!0LDd.`;
+
+      navigator.clipboard.writeText(storyText).then(() => {
+        alert('Copied original SignFont origin story text to clipboard!');
+      });
+    }
+
+    function toggleKeymanOSK(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const tester = document.getElementById('signfontTesterInput');
+      const oskBtn = document.getElementById('toggleKeymanOskBtn');
+      if (tester) {
+        tester.focus();
+      }
       if (typeof keyman !== 'undefined' && keyman.osk) {
-        if (typeof keyman.osk.isEnabled === 'function' && keyman.osk.isEnabled()) {
-          keyman.osk.hide();
-        } else if (typeof keyman.osk.show === 'function') {
-          keyman.osk.show();
+        try {
+          if (typeof keyman.osk.isEnabled === 'function' && keyman.osk.isEnabled()) {
+            keyman.osk.hide();
+            if (oskBtn) oskBtn.classList.remove('active');
+          } else if (typeof keyman.osk.show === 'function') {
+            keyman.osk.show(true);
+            if (tester) {
+              tester.focus();
+            }
+            if (oskBtn) oskBtn.classList.add('active');
+          }
+        } catch (err) {
+          console.warn("Failed to toggle OSK:", err);
         }
       } else {
         alert('SignFont Keyman keyboard is active. Type on your physical keyboard to produce SignFont characters.');
       }
     }
 
+    // Manage OSK events and auto-repositioning
+    let hasPositionedOSK = false;
+    if (typeof keyman !== 'undefined' && keyman.osk) {
+      keyman.osk.addEventListener('show', () => {
+        const oskBtn = document.getElementById('toggleKeymanOskBtn');
+        if (oskBtn) oskBtn.classList.add('active');
+        if (!hasPositionedOSK) {
+          setTimeout(() => {
+            try {
+              if (typeof keyman.osk.userLocated === 'function' && keyman.osk.userLocated()) {
+                hasPositionedOSK = true;
+                return;
+              }
+              const rect = keyman.osk.getRect();
+              const oskWidth = (rect && rect.width) || 600;
+              const oskHeight = (rect && rect.height) || 250;
+              const targetLeft = Math.max(20, window.innerWidth - oskWidth - 40);
+              const targetTop = Math.max(20, window.innerHeight - oskHeight - 40);
+
+              if (typeof keyman.osk.setRect === 'function') {
+                keyman.osk.setRect({ left: targetLeft, top: targetTop });
+              } else if (typeof keyman.osk.setPos === 'function') {
+                keyman.osk.setPos(targetLeft, targetTop);
+              }
+              hasPositionedOSK = true;
+            } catch (err) {
+              console.warn("Failed to position Keyman OSK:", err);
+            }
+          }, 100);
+        }
+      });
+      keyman.osk.addEventListener('hide', () => {
+        const oskBtn = document.getElementById('toggleKeymanOskBtn');
+        if (oskBtn) oskBtn.classList.remove('active');
+      });
+    }
+
     // Initialize workbench and event listeners on page load
     document.addEventListener('DOMContentLoaded', () => {
       const tester = document.getElementById('signfontTesterInput');
       if (tester) {
-        tester.value = 'aQ!/1Hvy';
+        tester.value = ''; // Start empty so the SignFont placeholder is visible
         ['input', 'keyup', 'change', 'paste', 'propertychange'].forEach(evt => {
           tester.addEventListener(evt, () => {
             updateWorkbench(tester.value);
           });
         });
       }
-      loadSign('aQ!/1Hvy', 'CELEBRATE', 'Curled fists twirling with joy at temples · Simultaneous dual motion');
+      // Populate live specimen explorer display with featured sample
+      updateWorkbench('aQ!/1Hvy');
     });
   </script>
 </body>
