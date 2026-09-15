@@ -396,7 +396,7 @@
     }
 
     .hero-specimen-plaque::before {
-      content: "ASL SIGN · 1987";
+      content: "SignFont Dictionary Entry";
       position: absolute;
       top: -10px;
       right: 20px;
@@ -405,9 +405,30 @@
       font-family: var(--font-mono);
       font-size: 0.65rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      padding: 0.15rem 0.55rem;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.6rem;
       border-radius: 3px;
+    }
+
+    .plaque-breakdown {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.35rem;
+      text-transform: none !important;
+    }
+
+    .plaque-breakdown .breakdown-token {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.2rem 0.45rem;
+      font-size: 0.725rem;
+      font-family: var(--font-mono);
+      display: inline-flex;
+      align-items: center;
+      line-height: 1.3;
+      text-transform: none !important;
     }
 
     .plaque-header {
@@ -460,7 +481,7 @@
       border: 1px solid var(--border-subtle);
     }
 
-    .plaque-meta-item span {
+    .plaque-meta-item > span {
       display: block;
       font-family: var(--font-mono);
       font-size: 0.65rem;
@@ -930,11 +951,33 @@
       padding: 0.25rem 0.5rem;
       font-size: 0.725rem;
       font-family: var(--font-mono);
+      display: inline-flex;
+      align-items: center;
+      line-height: 1.3;
+      text-transform: none !important;
+    }
+
+    .breakdown-glyph {
+      font-family: var(--font-sign) !important;
+      font-size: 1.25rem;
+      color: var(--glyph-color);
+      vertical-align: middle;
+      margin-right: 0.35rem;
+      text-transform: none !important;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .breakdown-desc {
+      font-weight: 500;
+      color: var(--text-body);
+      text-transform: none !important;
     }
 
     .breakdown-token span.code {
       color: var(--accent-primary);
       font-weight: 700;
+      text-transform: none !important;
     }
 
     /* -------------------------------------------------------------
@@ -1330,8 +1373,17 @@
             <strong id="heroSignUnicode">റₒⵀᖌᖍꕊ⁼ᴺ</strong>
           </div>
           <div class="plaque-meta-item">
-            <span>Description</span>
-            <strong id="heroSignDesc" style="font-size: 0.85rem; font-weight: 500;">Curled fists twirling with joy at temples · Simultaneous dual motion</strong>
+            <span>Spelling Breakdown</span>
+            <div class="plaque-breakdown" id="heroSignBreakdown">
+              <span class="breakdown-token"><span class="breakdown-glyph">a</span><span class="breakdown-desc">Handshape: Fist (A)</span></span>
+              <span class="breakdown-token"><span class="breakdown-glyph">Q</span><span class="breakdown-desc">Diacritic: Baby-O loop</span></span>
+              <span class="breakdown-token"><span class="breakdown-glyph">!</span><span class="breakdown-desc">Action Area: Palm side</span></span>
+              <span class="breakdown-token"><span class="breakdown-glyph">/</span><span class="breakdown-desc">Location: Ipsilateral Temple</span></span>
+              <span class="breakdown-token"><span class="breakdown-glyph">1</span><span class="breakdown-desc">Location: Contralateral Temple</span></span>
+              <span class="breakdown-token"><span class="breakdown-glyph">H</span><span class="breakdown-desc">Movement: Circular path</span></span>
+              <span class="breakdown-token"><span class="breakdown-glyph">v</span><span class="breakdown-desc">Modifier: Dual hands simultaneous</span></span>
+              <span class="breakdown-token"><span class="breakdown-glyph">y</span><span class="breakdown-desc">Modifier: Sequential Repetition</span></span>
+            </div>
           </div>
         </div>
       </div>
@@ -2134,6 +2186,17 @@
       return result;
     }
 
+    function generateBreakdownHTML(asciiStr) {
+      if (!asciiStr) return '';
+      let html = '';
+      for (let i = 0; i < asciiStr.length; i++) {
+        const char = asciiStr[i];
+        const desc = SYMBOL_CATEGORIES[char] || 'Phonological Element';
+        html += `<span class="breakdown-token"><span class="breakdown-glyph">${char}</span><span class="breakdown-desc">${desc}</span></span>`;
+      }
+      return html;
+    }
+
     function updateWorkbench(asciiStr) {
       const liveGlyph = document.getElementById('liveGlyphPreview');
       const liveUnicode = document.getElementById('liveUnicodePreview');
@@ -2146,17 +2209,7 @@
       liveUnicode.textContent = asciiToUnicode(asciiStr) || ' ';
 
       // Render breakdown tokens with visual glyph and linguistic role (no raw ASCII code)
-      breakdownBox.innerHTML = '';
-      if (!asciiStr) return;
-
-      for (let i = 0; i < asciiStr.length; i++) {
-        const char = asciiStr[i];
-        const desc = SYMBOL_CATEGORIES[char] || 'Phonological Element';
-        const span = document.createElement('span');
-        span.className = 'breakdown-token';
-        span.innerHTML = `<span style="font-family: var(--font-sign); font-size: 1.3rem; color: var(--glyph-color); vertical-align: middle; margin-right: 0.35rem;">${char}</span> <span style="font-weight: 500;">${desc}</span>`;
-        breakdownBox.appendChild(span);
-      }
+      breakdownBox.innerHTML = generateBreakdownHTML(asciiStr);
     }
 
     function loadSign(asciiStr, glossName, description) {
@@ -2170,12 +2223,14 @@
       const heroGlyph = document.getElementById('heroSignGlyph');
       const heroUni = document.getElementById('heroSignUnicode');
       const plaqueWord = document.getElementById('plaqueGloss');
-      const heroDesc = document.getElementById('heroSignDesc');
+      const heroBreakdown = document.getElementById('heroSignBreakdown');
 
       if (heroGlyph) heroGlyph.textContent = asciiStr;
       if (heroUni) heroUni.textContent = asciiToUnicode(asciiStr);
       if (plaqueWord && glossName) plaqueWord.textContent = glossName;
-      if (heroDesc && description) heroDesc.textContent = description;
+      if (heroBreakdown) {
+        heroBreakdown.innerHTML = generateBreakdownHTML(asciiStr);
+      }
     }
 
     const loadSpecimen = loadSign;
@@ -2304,6 +2359,10 @@ b!9MH u(b!LEy h"ahSdQbook k&%LHv. t(EGv a!d%MGFy. _ b&"MGE b&!MFJ! uR!57J a!!LJv
       }
       // Populate live specimen explorer display with featured sample
       updateWorkbench('aQ!/1Hvy');
+      const heroBreakdown = document.getElementById('heroSignBreakdown');
+      if (heroBreakdown) {
+        heroBreakdown.innerHTML = generateBreakdownHTML('aQ!/1Hvy');
+      }
     });
   </script>
 </body>
