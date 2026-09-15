@@ -1375,8 +1375,7 @@
           <div class="plaque-meta-item">
             <span>Spelling Breakdown</span>
             <div class="plaque-breakdown" id="heroSignBreakdown">
-              <span class="breakdown-token"><span class="breakdown-glyph">a</span><span class="breakdown-desc">Handshape: Fist (A)</span></span>
-              <span class="breakdown-token"><span class="breakdown-glyph">Q</span><span class="breakdown-desc">Diacritic: Baby-O loop</span></span>
+              <span class="breakdown-token"><span class="breakdown-glyph">aQ</span><span class="breakdown-desc">Handshape: Sturdy grasping classifier (thumb in crook of curled index)</span></span>
               <span class="breakdown-token"><span class="breakdown-glyph">!</span><span class="breakdown-desc">Action Area: Palm side</span></span>
               <span class="breakdown-token"><span class="breakdown-glyph">/</span><span class="breakdown-desc">Location: Ipsilateral Temple</span></span>
               <span class="breakdown-token"><span class="breakdown-glyph">1</span><span class="breakdown-desc">Location: Contralateral Temple</span></span>
@@ -2051,6 +2050,9 @@
     </div>
   </footer>
 
+  <!-- SIGNFONT MASTER SYMBOLS & DIGRAPHS DATA -->
+  <script src="./signfont-symbols.js"></script>
+
   <!-- SCRIPT FOR INTERACTIVE WORKBENCH & UNICODE MAPPER -->
   <script>
     // Initialize KeymanWeb for SignFont JavaScript Keyboard
@@ -2188,11 +2190,51 @@
 
     function generateBreakdownHTML(asciiStr) {
       if (!asciiStr) return '';
+
+      let tokens = [];
+      if (typeof SignFontSymbols !== 'undefined' && typeof SignFontSymbols.tokenize === 'function') {
+        tokens = SignFontSymbols.tokenize(asciiStr);
+      } else {
+        // Fallback tokenizer matching digraphs of length 3, 2, then single characters
+        let i = 0;
+        const digraphs = (typeof SIGNFONT_DIGRAPHS !== 'undefined') ? SIGNFONT_DIGRAPHS : (typeof DIGRAPHS !== 'undefined' ? DIGRAPHS : {});
+        while (i < asciiStr.length) {
+          let matched = false;
+          for (let len = 3; len >= 2; len--) {
+            if (i + len <= asciiStr.length) {
+              const sub = asciiStr.substring(i, i + len);
+              if (digraphs[sub]) {
+                tokens.push({
+                  token: sub,
+                  category: digraphs[sub].category,
+                  desc: digraphs[sub].desc
+                });
+                i += len;
+                matched = true;
+                break;
+              }
+            }
+          }
+          if (!matched) {
+            const char = asciiStr[i];
+            const categoryDesc = SYMBOL_CATEGORIES[char] || 'Phonological Element';
+            tokens.push({
+              token: char,
+              category: '',
+              desc: categoryDesc
+            });
+            i++;
+          }
+        }
+      }
+
       let html = '';
-      for (let i = 0; i < asciiStr.length; i++) {
-        const char = asciiStr[i];
-        const desc = SYMBOL_CATEGORIES[char] || 'Phonological Element';
-        html += `<span class="breakdown-token"><span class="breakdown-glyph">${char}</span><span class="breakdown-desc">${desc}</span></span>`;
+      for (const t of tokens) {
+        let fullDesc = t.desc;
+        if (t.category && !t.desc.toLowerCase().startsWith(t.category.toLowerCase())) {
+          fullDesc = `${t.category}: ${t.desc}`;
+        }
+        html += `<span class="breakdown-token"><span class="breakdown-glyph">${t.token}</span><span class="breakdown-desc">${fullDesc}</span></span>`;
       }
       return html;
     }
